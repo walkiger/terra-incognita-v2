@@ -8,6 +8,7 @@ Greenfield-Neustart für das Thin-Shell-MVP: Planung und Produktcode unter **`ap
 |--------|------|
 | Produkt-Root | [`app/README.md`](app/README.md) |
 | Greenfield-Plan | [`app/docs/greenfield/README.md`](app/docs/greenfield/README.md) |
+| Projektgedächtnis / Archive | [`memory/README.md`](memory/README.md) |
 | Mitwirkung | [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 
 ## Tests
