@@ -1,0 +1,110 @@
+---
+alwaysApply: true
+---
+
+## Architecture Discipline
+
+- Never mix backend, frontend, and data responsibilities.
+- Always enforce separation of concerns.
+- Keep systems modular and composable.
+
+## Contract-First Principle
+
+- API contracts must be defined before implementation.
+- Frontend must never guess backend structure.
+- Backend must never adapt to frontend assumptions ad hoc.
+
+## PR Lifecycle Enforcement (MANDATORY)
+
+- Every change must run full lifecycle: Idea -> Plan -> Contract -> Implementation -> Test -> Security -> Docs -> Audit -> Merge.
+- No direct push to `main`.
+- No feature without PR.
+- No PR without tests.
+- No merge without security check.
+- No architecture change without `orch`.
+
+## Branch Model
+
+- `main` -> production
+- `feature/*` -> new features
+- `fix/*` -> bug fixes
+- `research/*` -> data and PDF extraction work
+- `audit/*` -> structural analysis and refactor planning
+- `hotfix/*` -> urgent production fixes
+- `test/*` -> validation-fix branches
+- `release/*` or `release` -> release readiness
+
+## Agent Responsibility Enforcement
+
+- `meta`: governance and execution permission only
+- `heal`: self-healing proposal generation only
+- `orch`: planning, decomposition, delegation, PR lifecycle control only
+- `backend-implementation-agent`: API and backend business logic only
+- `frontend-implementation-agent`: UI and rendering logic only
+- `research-agent`: extraction, normalization, data structuring only
+- `test-agent-fast-ci` and `test-agent-strict-reviewer`: validation only
+- `security-code-review-agent`: risk analysis only
+- `code-audit-agent`: structural audit only
+- `documentation-agent`: documentation only
+
+## Delegation unavailable
+
+If **Task/subagent delegation fails** (e.g. API usage limit, unavailable runner), the **parent agent** follows **`.cursor/rules/SUBAGENT-DELEGATION-FALLBACK.mdc`**: inlined orchestration checklist, explicit git hygiene verification, honest gate status — until delegation works again or the work unit closes.
+
+## No Cross-Agent Violations
+
+- Agents must not perform tasks outside their domain.
+- No agent may redesign system architecture except `orch`.
+- `meta` may block or guard execution but may not implement code.
+- `heal` may generate proposal PRs but may not directly patch production code.
+
+## Gate Failure Recovery Paths
+
+- Test fail -> back to implementation.
+- Security fail -> back to implementation.
+- Audit critical fail -> refactor cycle.
+
+## Commit Discipline
+
+- Commits must be atomic.
+- Preferred prefixes: `feat:`, `fix:`, `refactor:`, `test:`.
+- GitHub PR number is **mandatory in the commit subject line (first line)**: suffix **`(#NNN)`** (same convention as historical `9f638f5`: `fix: stabilize runtime contracts (#2)`). Draft PR early if needed; squash title must comply.
+
+## Code Quality Standards
+
+- Prefer clarity over cleverness.
+- Avoid unnecessary abstraction.
+- Keep functions focused and testable.
+
+## Async Backend Rule
+
+- FastAPI must use async-first design.
+- No blocking I/O in backend layer.
+
+## Frontend Rules
+
+- React remains component-driven.
+- three.js stays isolated from UI logic.
+- Avoid unnecessary re-renders.
+
+## Data Safety Rule
+
+- All external input is untrusted and must be validated.
+
+## Documentation Requirement
+
+- Major features must be documented.
+- API changes must be reflected in docs.
+
+## Memory Layer Requirement
+
+- Agents must read relevant files under `memory/` before significant actions.
+- Agents must update `memory/` after critical decisions, bugs, or structural findings.
+- Critical decision entries must include timestamps.
+- Outdated entries must be marked `Status: deprecated`.
+
+## Security Baseline
+
+- No unsafe input handling.
+- No direct exposure of internal errors.
+- Validate all external data sources.

@@ -1,0 +1,113 @@
+---
+description: Block silent deletion of protected paths. Every protected deletion must be classified and approved.
+alwaysApply: true
+---
+
+## Purpose
+
+Living docs, agent memory, tests, rules, and CI workflows are project memory.
+A silent deletion of any of them is treated as a regression event.
+This rule defines the protected paths, the required classification, the
+approval channels, and the enforcement gates (local + CI).
+
+## Protected paths
+
+A path is **protected** if it matches any of:
+
+### Exact (repo root)
+
+- `CLAUDE.md`
+- `Anweisungen.md`
+- `catchup.md`
+- `Implementierungen.Architektur.md`
+- `README.md`
+
+### Pattern (repo root)
+
+- `Implementierung.*.md`
+
+### Prefixes
+
+- `docs/**`
+- `knowledge/**`
+- `reference/**`
+- `memory/**`
+- `tests/**`
+- `.github/workflows/**`
+- `.cursor/rules/**`
+- `.cursor/agents/**`
+
+### Carve-outs (not protected even when matching above)
+
+- `**/__pycache__/**`
+- `**/.pytest_cache/**`
+- `**/node_modules/**`
+- `**/dist/**`
+- `**/build/**`
+
+## Classification (required for any deletion)
+
+Before deleting a protected path, the agent must classify it as exactly one of:
+
+- `ephemeral` — auto-generated, no historical value (must match a carve-out;
+  otherwise the classification is invalid).
+- `generated` — reproducible artifact; deletion allowed only with documented
+  regeneration steps in the deletion-introducing commit.
+- `deprecated-but-retained` — superseded but kept as historical reference;
+  **deletion not allowed** under this classification.
+- `approved-removal` — user has explicitly approved deletion in this PR.
+
+Only `approved-removal` permits deletion of a non-carve-out protected path.
+
+## Approval channels
+
+A protected deletion is allowed only if **at least one** of the following
+records the approval:
+
+1. A line in any commit body of this PR (CI scans the full PR range; local
+   pre-commit only sees the commit currently being authored):
+
+   ```
+   approved_deletions: <path1> <path2> ...
+   ```
+
+   Whitespace- or comma-separated. Trailing slashes match directory prefixes.
+
+2. The PR spec at `.agent-os/pr-spec.json` lists the path under
+   `approved_deletions: [...]`.
+
+3. A user approval in chat **plus** a `catchup.md` entry referencing that
+   approval. Channels 1 or 2 must still be present at gate time so the gate
+   can verify; channel 3 is the audit trail, not the bypass.
+
+## Enforcement
+
+- **Local (blocking):** `pre-commit` hook `check-protected-deletions`
+  registered in `.pre-commit-config.yaml`. Activate with `pre-commit install`.
+- **CI (blocking):** `.github/workflows/agent-ci.yml` step
+  *Protected Deletions Gate* runs the same script
+  (`scripts/check_protected_deletions.py`) against the full PR diff.
+- **Subagent fallback:** `.cursor/rules/SUBAGENT-DELEGATION-FALLBACK.mdc`
+  requires the parent agent to classify any deletion in the git-hygiene
+  narration when subagents fail to run.
+
+## Failure recovery
+
+If the gate blocks an intended deletion:
+
+1. Re-classify the file. If the correct classification is `deprecated-but-retained`
+   or any other non-removal, abort the deletion.
+2. If `approved-removal` is correct, add the approval line to the **next**
+   commit body (do **not** silently amend the protected commit) or update
+   `.agent-os/pr-spec.json`.
+3. If the gate still blocks, escalate to `meta` for governance review and
+   record the resolution in `memory/system/decisions.md`.
+
+## Out of scope
+
+- This rule does not gate creation, modification, or rename of protected
+  paths. Renames inside Git (which appear as add+delete) are allowed when
+  Git's similarity detection treats them as renames; if Git records them as
+  pure deletions, the same approval channels apply.
+- This rule does not replace `meta` governance, security review, or the
+  audit gate. It is a pre-flight hygiene gate only.

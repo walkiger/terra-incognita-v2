@@ -1,0 +1,135 @@
+---
+alwaysApply: true
+---
+
+## Subagent model switching protocol
+
+### Purpose
+
+Use higher-tier (more expensive / more capable) models **only when the work
+requires them**. **`composer-2-fast` is the system-wide default** for all
+agents and subagents. Upgrades and downgrades are user-approved transitions,
+not silent defaults. The protocol is a **conversational handshake**, not a
+repo event — model switches themselves never produce commits.
+
+This rule binds **`orch`** primarily, and any **parent agent acting in the
+`SUBAGENT-DELEGATION-FALLBACK` orchestration role** when `orch` is
+unavailable.
+
+### Tier table
+
+| Tier | Slug | When to use |
+|------|------|-------------|
+| **T0 — Default** | `composer-2-fast` | All routine work: git ops, file I/O, CI, mechanical refactors, extraction, plumbing. **This is the base tier; always return here after a task.** |
+| **T1 — Medium Thinking** | `claude-4.6-sonnet-medium-thinking` | Moderate reasoning: multi-file refactors with cross-cutting implications, non-trivial algorithm choices, moderate synthesis. |
+| **T2 — High Thinking** | `claude-opus-4-7-thinking-xhigh` | Heavy reasoning: architecture / system design, multi-document deep synthesis, governance arbitration, security-critical correctness. |
+
+> **Note:** There is no Composer thinking variant in the allowed slug list.
+> "Higher thinking" always means escalating to a Claude tier, not a Composer
+> tier. Propose T1 before T2 unless the task clearly requires T2.
+
+Other allowed slugs (`gpt-5.3-codex`, `gpt-5.5-medium`) may be used for
+specific extraction or code-generation tasks when explicitly discussed with
+the user; they are not part of the standard escalation path.
+
+### When to propose an upgrade (T0 → T1 or T2)
+
+Propose T1 when:
+- Non-trivial algorithm or data-structure decision spanning multiple files.
+- Moderate synthesis across 3–10 documents.
+- Contract formalization with edge-case implications.
+
+Propose T2 when:
+- Architecture / system design — multi-component decisions, cross-cutting
+  contracts, persistence/runtime trade-offs.
+- Heavy synthesis — 10+ document deep reading, comparative analysis,
+  rigorous specification drafting.
+- Subtle correctness — concurrency, numerics, security-critical reasoning.
+- Governance arbitration — `meta` verdicts reconciling competing rules.
+
+Routine plumbing (file I/O, git ops, CI wiring, mechanical refactors,
+straightforward extraction once a contract is fixed) **stays at T0**.
+
+### When to propose a downgrade (always back to T0)
+
+After every upgraded task completes, propose a return to `composer-2-fast`.
+Do not leave a higher tier running by default into the next task.
+
+### Required proposal shape
+
+Every model-switch proposal — upgrade or downgrade — must include:
+
+1. **Reason** — one or two sentences naming the concrete capability gap or
+   surplus.
+2. **Agent affected** — which subagent (or parent role); mention the call
+   site (e.g. "next `orch` invocation for design session").
+3. **Transition** — explicit `from-model` → `to-model` using allowed slugs.
+   State this both **before** the task starts and **after** it completes.
+
+Wait for the user's explicit confirmation **before** changing the model.
+
+### Allowed model slugs
+
+Only these may appear in `from-model` / `to-model`:
+
+- `composer-2-fast` ← **system default**
+- `claude-4.6-sonnet-medium-thinking`
+- `claude-opus-4-7-thinking-xhigh`
+- `gpt-5.3-codex`
+- `gpt-5.5-medium`
+
+If a needed model is **not** in this list, do not substitute. Surface the
+gap to the user and pause the proposal.
+
+### Repository discipline
+
+- **No commits** for model-switching events.
+- **No edits** to `.agent-os/pr-spec.json` or any other repo file solely to
+  record a model switch.
+- Lifecycle gates (`PR-WORKFLOW.mdc`, `meta` governance) are unaffected.
+
+### Conversation pattern (canonical)
+
+```
+[Pre-task]
+  orch: "Proposing upgrade for the next <agent> invocation.
+         Reason: <concrete capability need>.
+         Transition: composer-2-fast → <target-slug>.
+         Confirm to proceed."
+  user: "<approve | adjust | decline>"
+  → on approve: switch model, then start task.
+
+[Post-task]
+  orch: "Task complete. Proposing downgrade back to default.
+         Reason: <next-step nature does not require the upgraded tier>.
+         Transition: <upgraded-slug> → composer-2-fast.
+         Confirm to proceed."
+  user: "<approve | adjust | decline>"
+  → on approve: switch back to composer-2-fast.
+```
+
+### Failure modes (anti-patterns)
+
+- Using any model other than `composer-2-fast` without a user-approved
+  proposal (default is not optional).
+- Proposing an upgrade without naming the concrete capability gap.
+- Forgetting the post-task downgrade — leaving T1/T2 running as default.
+- Escalating directly to T2 when T1 would suffice.
+- Listing a model not in the allowed slugs.
+- Conflating model-switch handshakes with `meta` governance gates.
+
+### Relation to other rules
+
+- **`SUBAGENT-DELEGATION-FALLBACK.mdc`** — when subagent delegation fails,
+  the parent's fallback runs at `composer-2-fast` by default. It must still
+  honor this protocol for any subagent it would have delegated to.
+- **`PR-WORKFLOW.mdc`** — unchanged. Model proposals are not lifecycle
+  events.
+- **`GLOBAL-CURSOR-RULES-Agent-OS.mdc` / agent boundaries** — model
+  switching never expands an agent's domain.
+
+### Out of scope
+
+- Choosing models for the parent IDE chat — that is a UI concern.
+- Provider-side configuration (auth, rate limits, fallback behavior).
+- Cost accounting beyond the right-sizing intent stated above.

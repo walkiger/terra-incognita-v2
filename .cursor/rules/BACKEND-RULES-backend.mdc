@@ -1,0 +1,6 @@
+---
+globs: /backend
+alwaysApply: false
+---
+
+## Scope Applies only to FastAPI backend code.  ## Rules  - Use async/await for all I/O operations - Separate routers, services, schemas - Never include frontend logic - Always validate input using Pydantic - Return explicit HTTP status codes - Keep endpoints thin (no business logic in routers)

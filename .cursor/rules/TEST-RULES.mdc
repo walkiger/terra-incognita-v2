@@ -1,0 +1,14 @@
+---
+globs: /tests
+alwaysApply: false
+---
+
+## Scope
+All automated testing.
+
+## Rules
+
+- Tests must be deterministic
+- Focus on behavior, not implementation
+- Mock external dependencies where necessary
+- Cover critical paths first

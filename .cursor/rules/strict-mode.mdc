@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+---
+
+- No shortcuts allowed
+- Full validation required before implementation
+- All API contracts must be explicitly defined
+- All edge cases must be considered

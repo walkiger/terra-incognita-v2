@@ -1,0 +1,15 @@
+---
+globs: /research
+alwaysApply: false
+---
+
+## Scope
+PDF processing and external data extraction.
+
+## Rules
+
+- Treat all inputs as untrusted
+- Normalize and clean all extracted data
+- Avoid assumptions about structure
+- Output must always be structured (JSON or schema-based)
+- No business logic decisions

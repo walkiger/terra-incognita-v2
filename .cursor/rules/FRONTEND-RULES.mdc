@@ -1,0 +1,15 @@
+---
+globs: /frontend
+alwaysApply: false
+---
+
+## Scope
+React + three.js application only.
+
+## Rules
+
+- Components must be reusable and isolated
+- State must be predictable and minimal
+- Do not embed business logic in UI components
+- three.js must be separated from React rendering layer
+- Always handle loading/error states

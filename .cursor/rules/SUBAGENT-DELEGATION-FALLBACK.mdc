@@ -1,0 +1,46 @@
+---
+alwaysApply: true
+---
+
+## Subagent delegation failure — parent agent fallback
+
+### Default model in fallback mode
+
+When this rule is active (subagent delegation has failed), the parent agent
+operates at **`composer-2-fast`** by default. Upgrades to T1/T2 models still
+require a user-approved proposal per `MODEL-SWITCHING-PROTOCOL.mdc`.
+This ensures cost-minimized continuity without API-dependent subagents.
+
+### When this applies
+
+Use this section whenever **delegation to a named subagent fails** for operational reasons the parent cannot fix in-session — for example **API usage limit**, **quota**, **Task/subagent unavailable**, or **timeout** — *before* the delegated plan is delivered.
+
+This does **not** replace `meta` governance or specialist ownership long-term; it prevents **silent skips** of orchestration and hygiene.
+
+### Mandatory behavior (parent agent)
+
+1. **State the failure plainly** (one sentence): which agent was requested and that delegation did not run.
+2. **Inline the orchestration minimum** that `orch` would normally return:
+   - Numbered **execution checklist** (next 5–10 actions).
+   - **Agent ownership** table or bullets (who would own each action when delegation works again).
+   - **Risks** and **blockers**.
+   - **PR scope** recommendation (single vs split) when relevant.
+3. **Git hygiene verification** (must run or explicitly confirm when no git ops this turn):
+   - `git branch --show-current` and `git status -sb`.
+   - Intended payload: `git diff origin/main...HEAD --stat` (or `main...HEAD` if offline).
+   - **No blind `git add .`** — stage paths explicitly; reject ephemeral/tooling bundles unless the PR is scoped for them.
+   - Commit **subjects (first line)** on PR-bound branches must end with **`(#NNN)`** (GitHub form; repo example `9f638f5` — `fix: stabilize runtime contracts (#2)` — `Anweisungen.md` §5 / `PR-WORKFLOW.mdc`).
+   - If untracked noise remains: classify **ignore** (extend `.gitignore`) vs **defer** (leave `??`) vs **commit** (separate concern); say which.
+   - If the diff includes deletions: classify **each** deleted path per `.cursor/rules/NO-SILENT-DELETIONS.mdc` (`ephemeral` / `generated` / `deprecated-but-retained` / `approved-removal`). Protected deletions require an approval channel (`approved_deletions:` line in the commit body or `.agent-os/pr-spec.json`); the local pre-commit + CI gate `check_protected_deletions.py` is blocking — do not bypass it.
+4. **Lifecycle honesty:** Do not claim gates passed unless **you ran** the checks (e.g. tests). Say what still requires human/`meta`/CI.
+5. **Recovery:** When quotas reset, **prefer re-delegating** to `orch` (or the blocked specialist) for formal replanning if the branch or PR is still open — merge this session's checklist into theirs. Re-delegation returns the parent to `composer-2-fast` unless the task warrants an upgrade (see `MODEL-SWITCHING-PROTOCOL.mdc`).
+
+### Boundary
+
+- **May:** Plan, checklists, diff/stat review, hygiene narrative, run terminal/git/tests in parent scope.
+- **Must not:** Invent `meta` ALLOW/GUARD verdicts; impersonate security/audit sign-off; expand implementation into another agent's domain **without** scope alignment — note the gap instead.
+
+### Relation to enforcement
+
+- The deletion classification step above is backed by a **blocking** local pre-commit hook and CI gate (`scripts/check_protected_deletions.py`, see `.cursor/rules/NO-SILENT-DELETIONS.mdc`). The fallback narrates what the gate verifies; it does not replace it.
+- Other automated enforcement (further pre-commit hooks, CI path guards) may be added later; until then, **this rule is the binding fallback** for orchestration + hygiene **verification** when subagents do not run.

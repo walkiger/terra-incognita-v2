@@ -1,0 +1,32 @@
+# Contributing
+
+Danke für Beiträge zu **terra-incognita-v2**. Kurzfassung: **Produktcode und spätere Service-Bundles liegen unter [`app/`](app/README.md)**; **Deploy/Infra** unter **`deploy/`** am Repo-Root (Greenfield **M0**).
+
+## Vor jedem Code-Beitrag
+
+Lies die festgelegte Reihenfolge in **[`app/docs/greenfield/README.md`](app/docs/greenfield/README.md)** (Abschnitt „Lesereihenfolge“), mindestens:
+
+1. Diese README und **[`app/docs/greenfield/architecture/mvp.md`](app/docs/greenfield/architecture/mvp.md)**, bevor du am Thin-Shell-MVP arbeitest.
+2. Für den aktuellen MVP-Schritt die Datei **`app/docs/greenfield/implementation/mvp/M0..M8-*.md`** bzw. **`00-index.md`** (Status-Tabelle).
+
+Weitere Einstiege: **[`CLAUDE.md`](CLAUDE.md)**, **[`Anweisungen.md`](Anweisungen.md)**.
+
+## Layout (nach M0.1)
+
+| Bereich | Pfad |
+|---------|------|
+| Produkt + Greenfield-Doku | **`app/`** (`app/docs/greenfield/`, `app/backend`, `app/engine`, `app/web`, …) |
+| Compose / Ansible (Bootstrap) | **`deploy/`** |
+| Lokale Geheimnisse (nicht committen) | **`secrets/`** (nur Stub `.gitkeep` ist getrackt) |
+| Repo-weite Tests | **`tests/`** |
+
+## Branch- und PR-Disziplin
+
+- Siehe **`Anweisungen.md`** (Git, Commits, Tests) und die Workspace-Regel **`.cursor/rules/PR-WORKFLOW.mdc`**.
+- Sobald ein GitHub-PR existiert, endet die erste Zeile der Commit-Message mit **`(#NNN)`** (PR-Nummer).
+
+## Lokales Arbeiten
+
+- **Python:** Projekt nutzt typischerweise **Python 3.12** (siehe `.python-version` / CI).
+- **Tests:** `py -m pytest tests/test_repo_layout.py -q` oder `make test` (GNU Make).
+- **Windows:** `make` erfordert eine GNU-Make-Umgebung (z. B. Git Bash, WSL, oder separate Installation).

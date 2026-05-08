@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# Node (future app/web)
+node_modules/
+dist/
+build/
+.next/
+
+# Results / temp
+*_results.json
+*.log
+snapshots/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets material (never commit contents)
+.env
+*.key
+*.pem
+.env.local
+
+# DuckDB (future)
+*.duckdb
+*.duckdb.wal
+
+# Greenfield web bundle builds
+app/web/dist/
+app/web/.vite/
+
+# Local secrets tree — never commit contents (tracked stub via !secrets/.gitkeep)
+secrets/*
+!secrets/.gitkeep
+
+# Optional local archive mirrors (not part of this repo by default)
+archive/
+
+# Cursor IDE — ignore local/cache under .cursor/; keep shared committed rules + agents
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/agents/
+!.cursor/agents/**
+
+# Agent OS ephemeral / generated local state
+.agent-os/meta-state.json
+.agent-os/self-heal/
+
+# Local scratch
+.tmp_pr_body.md

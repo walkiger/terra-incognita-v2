@@ -1,0 +1,13 @@
+{
+  "feature": "terra-incognita-v2 Greenfield bootstrap (M0.1 skeleton)",
+  "branch": "main",
+  "agents": ["orch"],
+  "tasks": {
+    "orch": ["Advance M0.2 tooling (uv/ruff) when scoped"]
+  },
+  "approved_deletions": [],
+  "acceptance_criteria": [
+    "CI passes (tests/test_repo_layout.py)",
+    "No legacy Monolith tree committed unless explicitly scoped"
+  ]
+}

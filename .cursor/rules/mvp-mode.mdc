@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+
+- Minimal implementation allowed
+- Reduce abstraction layers
+- Focus on functionality over architecture perfection

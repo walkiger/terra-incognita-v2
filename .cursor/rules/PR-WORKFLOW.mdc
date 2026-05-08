@@ -1,0 +1,101 @@
+---
+alwaysApply: true
+---
+
+## PR Workflow (Agent OS + GitHub)
+
+This rule enforces a deterministic pull request lifecycle for all changes.
+
+## Full Automation Layer
+
+- PR creation should be driven by orchestrator spec outputs.
+- Agent assignment and labels should be auto-applied where possible.
+- CI outcomes should trigger feedback routing and fix-loop assignment.
+- Manual bypass of automation gates is not allowed.
+- Memory updates should be captured in `/memory/*` for significant decisions and fixes.
+- Recurring failures should trigger self-healing proposal generation.
+
+## Entry Point
+
+- Only `orch` may initiate the PR lifecycle.
+- `meta` must approve execution permission before orchestration proceeds.
+- No direct push to `main`.
+
+## Required Lifecycle
+
+Every change must pass:
+
+Idea -> Plan -> Contract -> Implementation -> Test -> Security -> Docs -> Audit -> PR -> Merge
+
+## Branch Model
+
+- `main` -> production
+- `feature/*` -> new features
+- `fix/*` -> bug fixes
+- `research/*` -> data / PDF / extraction
+- `audit/*` -> analysis and refactor planning
+- `hotfix/*` -> urgent production fixes
+- `test/*` -> validation-fix branches
+- `release/*` or `release` -> release readiness
+
+## Mandatory Gates
+
+- Meta-orchestrator governance gate is blocking.
+- Test gate is blocking.
+- Security gate is blocking.
+- Audit gate is blocking for critical findings.
+- CI pipeline gate is blocking for merge.
+- PR label compliance (`agent:*`) is blocking for merge.
+
+Failure loops:
+- Meta blocked/guarded conflict -> return to `orch` plan review.
+- Test fail -> back to implementation.
+- Security fail -> back to implementation.
+- Audit critical fail -> refactor cycle.
+
+## PR Preconditions
+
+Before PR creation, the following must be true:
+
+- orchestrator spec JSON is present and valid
+- canonical spec file: `.agent-os/pr-spec.json`
+- relevant memory context has been read
+- contract requirements are implemented
+- implementation is integrated
+- tests pass
+- security review completed
+- docs updated
+- audit status recorded (approved or refactor required)
+
+## Commit Discipline
+
+- Commits must be atomic.
+- Use conventional prefixes where applicable:
+  - `feat:`
+  - `fix:`
+  - `refactor:`
+  - `test:`
+- **Subject line MUST include the GitHub pull-request number** at the end of the first line once the PR exists, in GitHub form **`(#NNN)`** (spoken as “PR #NNN”; repository example: `9f638f5` — `fix: stabilize runtime contracts (#2)`). Same rule for squash-merge: the squash title must comply.
+- If commits are authored before the PR exists: open a **Draft PR promptly**, then amend or use subsequent commits with `(#NNN)` before merge/review concludes.
+
+## Agent Boundaries
+
+- `meta`: governance, arbitration, execution permission only
+- `heal`: detect patterns and propose fixes only (no direct implementation)
+- `orch`: planning, delegation, lifecycle control, merge readiness only
+- implementation agents: code changes in their domain only
+- test agents: validation only
+- security agent: risk analysis only
+- documentation agent: docs only
+- code-audit agent: structural analysis only
+- research agent: data extraction/normalization only
+
+## Merge Conditions
+
+- No merge without completed blocking gates.
+- No merge with failing GitHub Action status checks.
+- No architecture change without `orch` direction.
+- No lifecycle shortcuts.
+- No manual PR-fix process outside assigned agent loop.
+- Memory warning state reviewed when CI reports missing memory updates.
+- Self-healing proposal PRs require `orch` approval before implementation transfer.
