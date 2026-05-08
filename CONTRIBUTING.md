@@ -19,6 +19,8 @@ Weitere Einstiege: **[`CLAUDE.md`](CLAUDE.md)**, **[`Anweisungen.md`](Anweisunge
 | Compose / Ansible (Bootstrap) | **`deploy/`** |
 | Lokale Geheimnisse (nicht committen) | **`secrets/`** (nur Stub `.gitkeep` ist getrackt) |
 | Repo-weite Tests | **`tests/`** |
+| Projektgedächtnis / Archive | **`memory/`** (Session-Archive, Entscheidungs-Anhänge) |
+| Hilfs-Skripte (Migration / Research) | **`scripts/`** |
 
 ## Branch- und PR-Disziplin
 

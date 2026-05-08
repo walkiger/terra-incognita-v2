@@ -17,6 +17,7 @@
 1. [`README.md`](README.md) — Überblick  
 2. [`app/README.md`](app/README.md) — Produkt-Root  
 3. [`app/docs/greenfield/README.md`](app/docs/greenfield/README.md) — Lesepfad MVP M0–M8  
+4. [`memory/README.md`](memory/README.md) — Session-/System-Archive (Legacy‑Kontinuität zeigt auf **`walkiger/terra-incognita`**)
 
 Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 
