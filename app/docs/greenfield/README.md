@@ -31,6 +31,8 @@
    implementiert: erst die Registry-ID nachschlagen oder anlegen.
 9. **`protocols/pdf-lookup.md`** — wenn eine PDF-Stelle gebraucht wird.
 
+**Am Abschluss einer Phase `Mn`** (alle Steps dieser Phase in **`app/docs/greenfield/implementation/mvp/00-index.md`** auf `[x]`): Pflicht-Dokumentations-Bundle gemäß **`app/docs/greenfield/implementation/mvp/00-index.md`** §6–7 (Tag, `catchup.md`, Architektur-Spalte, README/CONTRIBUTING/CLAUDE vs CI/Makefile, Phasen-Gate, Memory).
+
 ---
 
 ## Versionsfahrplan auf einen Blick

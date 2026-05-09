@@ -21,3 +21,5 @@
 **2026-05-09 — M0.3 merge:** PR **#7** squash‑merged nach **`main`** (Docker Compose Hub‑Skelett).
 
 **2026-05-09 — M0.4:** Vault‑Compose‑Skelett (**`deploy/compose/vault*.yml`**), **`Caddyfile.vault`** (JSON‑Heartbeat **`/`**), **`r2-pull`**‑Stub‑Image unter **`deploy/workers/r2-pull/`** (Sleep‑Loop + **`/var/lib/vault`**‑Layout). pytest‑Marker **`compose_vault`**; CI **`compose-smoke`** läuft **`compose_hub or compose_vault`**. Host‑Port **8081** (Hub bleibt **8080**). PR **#8**.
+
+**2026-05-09 — Docs:** Pflicht‑**Dokumentations‑Bundle** am **Abschluss jeder MVP‑Phase `Mn`** in **`app/docs/greenfield/implementation/mvp/00-index.md`** §6–7 verankert (**Anweisungen.md**, **`M0-bootstrap.md`** Gate, **`app/docs/greenfield/README.md`**). README / CONTRIBUTING / CLAUDE: **`pytest`**‑ und **`ruff`**‑Snippets an CI/Makefile angeglichen. PR **#9**.

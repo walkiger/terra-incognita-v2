@@ -27,9 +27,11 @@ Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 
 ```text
 uv sync --extra dev
-uv run pytest tests -q
+uv run pytest tests -q -m "not compose_hub and not compose_vault"
 ```
 
-Details: **`CONTRIBUTING.md`**. Ohne globales `uv`: `py -m pip install uv` und dann `py -m uv sync --extra dev`.
+Voller Testlauf **inkl.** Docker-Compose-Smoke (wie CI-Job **`compose-smoke`**):  
+`uv run pytest tests/integration -q -m "compose_hub or compose_vault"`  
+Details und **ruff**: **`CONTRIBUTING.md`**. Ohne globales `uv`: `py -m pip install uv` und dann `py -m uv sync --extra dev`.
 
 Windows: siehe **`CONTRIBUTING.md`** (`py`, nicht `python3`).

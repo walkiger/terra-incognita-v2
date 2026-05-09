@@ -1,23 +1,22 @@
 {
-  "feature": "M0.4 Docker Compose vault skeleton — caddy heartbeat, r2-pull stub, profiles, compose smoke",
-  "branch": "feature/docker-compose-vault-skeleton",
-  "agents": ["orch", "test-agent-fast-ci"],
+  "feature": "MVP phase-end documentation bundle — 00-index §6–7, gate text, README/CONTRIBUTING/CLAUDE alignment",
+  "branch": "docs/mvp-phase-documentation-closure",
+  "agents": ["documentation-agent", "orch"],
   "tasks": {
-    "orch": [
-      "Land M0.4; merge-open-PR-first discipline",
-      "Commit subjects end with (#8)"
+    "documentation-agent": [
+      "Codify phase-completion doc checklist in 00-index, M0-bootstrap gate, Anweisungen, greenfield README",
+      "Align README/CONTRIBUTING/CLAUDE pytest and ruff snippets with CI/Makefile"
     ],
-    "test-agent-fast-ci": [
-      "compose_vault integration smoke; tooling excludes compose_hub and compose_vault"
+    "orch": [
+      "Commit subjects end with (#9)",
+      "Merge after tooling CI green"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "deploy/compose/vault.yml + vault.override.dev.yml + vault.override.ci.yml",
-    "deploy/caddy/Caddyfile.vault JSON on GET /",
-    "deploy/workers/r2-pull Dockerfile stub (sleep loop + /var/lib/vault layout)",
-    "Makefile compose-vault; CI compose-smoke runs hub + vault integration tests",
-    "minimal profile mem_limit sum ≤ 480 MB",
-    "00-index M0.4 [x]; memory/decisions entry"
+    "00-index §6 adds onboarding-doc parity item; §7 expands phase-closure checklist",
+    "M0-bootstrap AC fixes for M0.2 test cmd and M0.4 vault compose + doc gate item",
+    "README and CLAUDE document compose marker exclusions; CONTRIBUTING ruff paths match CI",
+    "memory/decisions entry for phase-documentation policy"
   ]
 }

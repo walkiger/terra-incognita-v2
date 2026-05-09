@@ -141,7 +141,7 @@ Querverweise:
 3. Linter / Formatter sind **`ruff`** (Lint + Format), Konfiguration im `pyproject.toml`. Keine separaten `flake8` / `black` / `isort`.
 4. `mypy --strict` ist aktiviert; `pyproject.toml` hat den Block `[tool.mypy]`.
 5. `pytest` + `pytest-asyncio` + `pytest-cov` + `coverage` sind als Dev-Deps gepinnt.
-6. `make test` führt `uv run pytest -q` aus.
+6. `make test` führt `uv run pytest -q` mit demselben Ausschluss der Docker-Compose-Smoke-Marker wie CI aus (`-m "not compose_hub and not compose_vault"`).
 7. Es gibt **kein** `requirements.txt` mehr; Migrationspfad in PR-Body dokumentiert.
 
 **Tests (neu/erweitert):**
@@ -236,7 +236,7 @@ deploy/
    * `minimal` — ohne `prom-node-exporter`
 4. `mem_limit`-Summe ≤ 480 MB für Profil `minimal`.
 5. `caddy` serviert eine Default-Seite `/` mit Status-JSON (Vault-Heartbeat).
-6. Lokal: `docker compose -f vault.yml up -d` läuft fehlerfrei.
+6. Lokal: `docker compose -f deploy/compose/vault.yml -f deploy/compose/vault.override.dev.yml --profile minimal up -d` läuft fehlerfrei (alle Vault-Services sind profilisiert; ohne `--profile` startet nichts).
 
 **Tests:**
 * `tests/integration/test_compose_vault_smoke.py::test_compose_brings_up`
@@ -492,8 +492,9 @@ M0 gilt als grün abgeschlossen, wenn:
    * `https://mirror.app.terra.<example>.tld/` zeigt Statusseite.
 4. **CI-Pipeline** ist grün auf einer leeren PR (zur Verifikation).
 5. **`pre-commit`** läuft lokal in < 10 s auf einem unveränderten Commit.
-6. **Tag** `v0.1.0` ist gesetzt und gepusht.
-7. **`catchup.md`** hat einen Eintrag „Greenfield M0 abgeschlossen".
+6. **Dokumentations-Abschluss:** Pflichtbundle gemäß **`app/docs/greenfield/implementation/mvp/00-index.md`** §6 (insb. Nr. 7) und §7 „Am Abschluss einer ganzen Phase".
+7. **Tag** `v0.1.0` ist gesetzt und gepusht.
+8. **`catchup.md`** hat einen Eintrag „Greenfield M0 abgeschlossen".
 
 ---
 
@@ -505,4 +506,4 @@ M0 gilt als grün abgeschlossen, wenn:
 
 ---
 
-*Stand: 2026-05-08 · Greenfield-Initial · M0 noch nicht eröffnet*
+*Stand: 2026-05-09 · M0 in Arbeit — §5 ist das Gate bei vollem Phasen-Abschluss.*
