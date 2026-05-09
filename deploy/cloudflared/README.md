@@ -7,6 +7,15 @@ Configs live beside Compose:
 | `config.hub.yml`   | Ingress for Hub VM (`terra…` → API, `app.terra…` → Caddy). |
 | `config.vault.yml` | Ingress for Vault VM (`mirror.app.terra…` → Caddy).        |
 
+## Operating modes (pick one connector per tunnel)
+
+| Mode                           | When                                                                                                                 | Origin / routing                                                                                                                                                                                                                                     |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Container + `config.*.yml`** | Credential JSON under `credentials/`; Compose **`cloudflared`** runs **`tunnel … run`** with mounted config.         | Ingress hostnames and **`http://api:8000`** / **`http://caddy:80`** are defined in YAML — no host port required for the tunnel path (optional **`hub.override.dev.yml`** still helps local curls).                                                   |
+| **Host + Zero Trust token**    | **`sudo cloudflared service install <TOKEN>`** (or **`tunnel run --token`**). Public routes edited in the dashboard. | Set **Public Hostname** service to **`http://127.0.0.1:8080`** when Caddy is published via **`hub.override.dev.yml`**. Use **`hub.override.host-tunnel.yml`** so the Compose **`cloudflared`** container does **not** connect the same tunnel twice. |
+
+**DNS:** If the domain is **not** a Cloudflare zone, skip **`tunnel route dns`** and create a **CNAME** at your registrar to **`<TUNNEL_UUID>.cfargotunnel.com`**.
+
 ## One-time tunnel creation (per VM)
 
 Run on the VM (after installing `cloudflared` from Cloudflare packages):
@@ -43,9 +52,11 @@ Vault VM: repeat with a **second** tunnel (`vault-prod`) and `config.vault.yml`,
 
 Use **`hub.override.quicktunnel.yml`** / **`vault.override.quicktunnel.yml`** with **`hub.override.dev.yml`** so `cloudflared` runs **`tunnel --url http://caddy:80`** instead of config-file mode. CI keeps replacing `cloudflared` with an Alpine sleep stub via `*.override.ci.yml`.
 
+Production **host** tunnel + Compose: use **`hub.override.host-tunnel.yml`** (same stub pattern — avoids two connectors for one tunnel).
+
 ## Manual acceptance (production)
 
-With DNS + credentials in place:
+With DNS plus either dashboard routes (**host tunnel**) or **`config.*.yml`** + credentials (**container tunnel**):
 
 ```text
 https://terra.<your-domain>/v1/health   → 200, Hub API JSON
