@@ -9,3 +9,14 @@ All repositories accept an aiosqlite connection and enforce tenant
 isolation via explicit user_id parameters (see BaseRepository in
 repos.base, added in M1.4).
 """
+
+from .base import BaseRepository
+from .exceptions import EmailAlreadyRegistered, RepositoryError
+from .users import UsersRepository
+
+__all__ = [
+    "BaseRepository",
+    "EmailAlreadyRegistered",
+    "RepositoryError",
+    "UsersRepository",
+]

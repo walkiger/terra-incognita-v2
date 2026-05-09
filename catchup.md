@@ -4,6 +4,12 @@
 
 ---
 
+## 2026-05-09 — M1.4 UsersRepository (`feature/repo-users`)
+
+**PR #20**: `BaseRepository`, `UsersRepository`, Pydantic `User` / `UserCredentials`; Runtime-Deps `pydantic`, `email-validator`. Index **M1.4** `[x]` und `M1-data-foundation.md` §6 mitgeführt.
+
+---
+
 ## 2026-05-09 — M1.3 Alembic gemerged; Index-/Doku-Bündel-Regel
 
 **PR #17** (`feat: Alembic migrations bootstrap M1.3`) ist auf **`main`**. **`00-index.md`** und **`M1-data-foundation.md`** §6 werden mit dieser Session nachgezogen (M1.3 **`[x]`**). **PR #18** verlagert Hub-API-Stubs nach **`app/backend/api/`** — für künftige Schritte gilt: **Index-Zeile + Phasendoku (+ bei Pfad-/Kommandoänderung CONTRIBUTING/CLAUDE/README) immer in derselben PR** (`00-index.md` §7, **`docs/operations/branch-and-pr-rules.md`**).
