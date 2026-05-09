@@ -1,0 +1,115 @@
+# Vault stack — Greenfield M0.4 (mirror / backup VM topology).
+# Profiles:
+#   --profile minimal  → caddy + cloudflared + r2-pull stub (Σ mem_limit ≤ 480 MB)
+#   --profile default  → minimal + prom-node-exporter
+
+services:
+  caddy:
+    profiles: ["minimal", "default"]
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    oom_score_adj: -200
+    mem_limit: 96m
+    mem_reservation: 64m
+    volumes:
+      - ../caddy/Caddyfile.vault:/etc/caddy/Caddyfile:ro
+    networks:
+      - vault
+    healthcheck:
+      test:
+        ["CMD-SHELL", "wget -qO- http://127.0.0.1:80/ >/dev/null"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  r2-pull:
+    profiles: ["minimal", "default"]
+    build:
+      context: ../workers/r2-pull
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    oom_score_adj: 300
+    mem_limit: 64m
+    mem_reservation: 32m
+    networks:
+      - vault
+    healthcheck:
+      test: ["CMD-SHELL", "kill -0 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  cloudflared:
+    profiles: ["minimal", "default"]
+    image: cloudflare/cloudflared:2025.2.0
+    restart: unless-stopped
+    oom_score_adj: 200
+    mem_limit: 96m
+    mem_reservation: 48m
+    command:
+      - tunnel
+      - --no-autoupdate
+      - --url
+      - http://caddy:80
+    networks:
+      - vault
+    depends_on:
+      caddy:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "cloudflared", "version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 25s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  prom-node-exporter:
+    profiles: ["default"]
+    image: prom/node-exporter:v1.8.2
+    restart: unless-stopped
+    oom_score_adj: 500
+    mem_limit: 48m
+    mem_reservation: 32m
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    pid: host
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - vault
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9100/metrics >/dev/null"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  vault:
+    driver: bridge

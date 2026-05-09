@@ -1,0 +1,5 @@
+# Local development: bind Caddy on loopback (avoid clashing with hub :8080).
+services:
+  caddy:
+    ports:
+      - "127.0.0.1:8081:80"

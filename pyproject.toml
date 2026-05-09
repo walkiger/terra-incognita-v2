@@ -30,6 +30,7 @@ asyncio_default_fixture_loop_scope = "function"
 pythonpath = ["app/backend"]
 markers = [
     "compose_hub: hub compose smoke tests (need Docker Compose v2)",
+    "compose_vault: vault compose smoke tests (need Docker Compose v2)",
 ]
 
 [tool.coverage.run]

@@ -18,4 +18,6 @@
 
 **2026-05-09 — M0.2:** **`pyproject.toml`** + **`uv.lock`**, Dev‑Extras (`ruff`, `mypy`, `pytest*`, `coverage`), CI über **`uv sync --frozen --extra dev`**. **`requirements-ci.txt`** / **`pytest.ini`** durch Tooling im **`pyproject.toml`** ersetzt. Stub **`app/engine`** (`terra_engine`) für späteres M3‑Paket.
 
-**2026-05-09 — M0.3:** Docker Compose Hub‑Skelett unter **`deploy/compose/`** (`hub.yml`, **`minimal`**/**`default`**‑Profile), Dev‑/CI‑Overrides, Stub‑API **`deploy/api`** (`GET /v1/health`), Caddy **`/v1*`** → API. CI: Job **`compose-smoke`** + pytest‑Marker **`compose_hub`** (Standardlauf schließt Compose‑Tests aus). Makefile‑Target **`compose-hub`**. PR **#7** (`feature/docker-compose-hub-skeleton`).
+**2026-05-09 — M0.3 merge:** PR **#7** squash‑merged nach **`main`** (Docker Compose Hub‑Skelett).
+
+**2026-05-09 — M0.4:** Vault‑Compose‑Skelett (**`deploy/compose/vault*.yml`**), **`Caddyfile.vault`** (JSON‑Heartbeat **`/`**), **`r2-pull`**‑Stub‑Image unter **`deploy/workers/r2-pull/`** (Sleep‑Loop + **`/var/lib/vault`**‑Layout). pytest‑Marker **`compose_vault`**; CI **`compose-smoke`** läuft **`compose_hub or compose_vault`**. Host‑Port **8081** (Hub bleibt **8080**). PR **#8**.

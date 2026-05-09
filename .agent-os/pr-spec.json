@@ -1,25 +1,23 @@
 {
-  "feature": "M0.3 Docker Compose hub skeleton — api+caddy+nats+cloudflared (profiles), CI compose smoke",
-  "branch": "feature/docker-compose-hub-skeleton",
-  "agents": ["orch", "backend-implementation-agent", "test-agent-fast-ci"],
+  "feature": "M0.4 Docker Compose vault skeleton — caddy heartbeat, r2-pull stub, profiles, compose smoke",
+  "branch": "feature/docker-compose-vault-skeleton",
+  "agents": ["orch", "test-agent-fast-ci"],
   "tasks": {
     "orch": [
-      "Land M0.3; merge-open-PR-first discipline",
-      "Commit subjects end with (#7)"
-    ],
-    "backend-implementation-agent": [
-      "Stub FastAPI GET /v1/health in deploy/api container image"
+      "Land M0.4; merge-open-PR-first discipline",
+      "Commit subjects end with (#8)"
     ],
     "test-agent-fast-ci": [
-      "compose_hub integration smoke; default pytest excludes compose_hub marker"
+      "compose_vault integration smoke; tooling excludes compose_hub and compose_vault"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "deploy/compose/hub.yml + hub.override.dev.yml + hub.override.ci.yml; deploy/README.md",
-    "deploy/api multi-stage Dockerfile + Caddy reverse_proxy /v1* → api",
-    "Makefile compose-hub; CI jobs tooling + compose-smoke green",
-    "tests/integration/test_compose_hub_smoke.py marks compose_hub",
-    "00-index M0.3 updated; memory/decisions entry"
+    "deploy/compose/vault.yml + vault.override.dev.yml + vault.override.ci.yml",
+    "deploy/caddy/Caddyfile.vault JSON on GET /",
+    "deploy/workers/r2-pull Dockerfile stub (sleep loop + /var/lib/vault layout)",
+    "Makefile compose-vault; CI compose-smoke runs hub + vault integration tests",
+    "minimal profile mem_limit sum ≤ 480 MB",
+    "00-index M0.4 [x]; memory/decisions entry"
   ]
 }

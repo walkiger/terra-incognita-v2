@@ -32,8 +32,8 @@ jobs:
       - name: Mypy (ti_hub)
         run: uv run mypy app/backend/ti_hub
 
-      - name: Pytest (unit + layout; excludes compose_hub)
-        run: uv run pytest tests -q -m "not compose_hub"
+      - name: Pytest (unit + layout; excludes compose_* markers)
+        run: uv run pytest tests -q -m "not compose_hub and not compose_vault"
 
   compose-smoke:
     runs-on: ubuntu-latest
@@ -48,5 +48,5 @@ jobs:
       - name: Sync deps (frozen lockfile)
         run: uv sync --frozen --extra dev
 
-      - name: Compose hub minimal smoke
-        run: uv run pytest tests/integration/test_compose_hub_smoke.py -q -m compose_hub
+      - name: Compose hub + vault minimal smoke
+        run: uv run pytest tests/integration -q -m "compose_hub or compose_vault"
