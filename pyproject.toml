@@ -26,6 +26,7 @@ dev = [
     "prometheus-client==0.21.1",
     "pytest-asyncio>=0.23",
     "pytest-cov>=6.0",
+    "pytest-timeout>=2.3",
     "pytest>=8.0",
     "pyyaml>=6.0",
     "ruff>=0.15.12,<0.16",
@@ -38,6 +39,7 @@ where = ["app/backend"]
 testpaths = ["tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
+addopts = ["--timeout=120"]
 pythonpath = ["app/backend"]
 markers = [
     "compose_hub: hub compose smoke tests (need Docker Compose v2)",

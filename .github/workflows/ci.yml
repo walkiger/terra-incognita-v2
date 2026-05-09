@@ -122,6 +122,6 @@ jobs:
           version: "0.11.12"
       - run: uv sync --frozen --extra dev
       - name: Compose hub + vault minimal smoke
-        run: uv run pytest tests/integration -q -m "compose_hub or compose_vault"
+        run: uv run pytest tests/integration -q -m "compose_hub or compose_vault" --timeout=0
       - name: Hub default profile (Prometheus + Grafana)
-        run: uv run pytest tests/integration -q -m compose_observability
+        run: uv run pytest tests/integration -q -m compose_observability --timeout=0
