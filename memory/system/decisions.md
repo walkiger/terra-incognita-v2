@@ -17,3 +17,5 @@
 **2026-05-09 — MVP:** Umsetzung **M1.1** gestartet (`feature/sqlite-baseline-schema`): Paket `app/backend/ti_hub/db`, Baseline‑DDL + `HubSQLite`/`open_readonly_connection`, Tests unter `tests/db/`.
 
 **2026-05-09 — M0.2:** **`pyproject.toml`** + **`uv.lock`**, Dev‑Extras (`ruff`, `mypy`, `pytest*`, `coverage`), CI über **`uv sync --frozen --extra dev`**. **`requirements-ci.txt`** / **`pytest.ini`** durch Tooling im **`pyproject.toml`** ersetzt. Stub **`app/engine`** (`terra_engine`) für späteres M3‑Paket.
+
+**2026-05-09 — M0.3:** Docker Compose Hub‑Skelett unter **`deploy/compose/`** (`hub.yml`, **`minimal`**/**`default`**‑Profile), Dev‑/CI‑Overrides, Stub‑API **`deploy/api`** (`GET /v1/health`), Caddy **`/v1*`** → API. CI: Job **`compose-smoke`** + pytest‑Marker **`compose_hub`** (Standardlauf schließt Compose‑Tests aus). Makefile‑Target **`compose-hub`**. PR **#7** (`feature/docker-compose-hub-skeleton`).

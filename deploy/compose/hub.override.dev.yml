@@ -1,0 +1,5 @@
+# Local development overlays (host port for Caddy → API).
+services:
+  caddy:
+    ports:
+      - "127.0.0.1:8080:80"

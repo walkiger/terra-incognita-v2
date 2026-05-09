@@ -226,7 +226,7 @@ Alle Gates blockieren den Merge.
 |-------|-----------------------------------|-------|-------------------------------------------|-----|--------|-------|
 | M0.1  | repo-greenfield-skeleton          | —     | `chore/repo-greenfield-skeleton`           | —   | [x]    | 2026-05-08 |
 | M0.2  | python-pyproject-baseline         | —     | `chore/python-pyproject-baseline`          | 6   | [x]    | 2026-05-09 |
-| M0.3  | docker-compose-hub-skeleton       | —     | `feature/docker-compose-hub-skeleton`      | —   | [ ]    |       |
+| M0.3  | docker-compose-hub-skeleton       | —     | `feature/docker-compose-hub-skeleton`      | 7   | [x]    | 2026-05-09 |
 | M0.4  | docker-compose-vault-skeleton     | —     | `feature/docker-compose-vault-skeleton`    | —   | [ ]    |       |
 | M0.5  | cloudflared-config-hub            | —     | `feature/cloudflared-config-hub`           | —   | [ ]    |       |
 | M0.6  | pre-commit-baseline               | —     | `chore/pre-commit-baseline`                | —   | [ ]    |       |
