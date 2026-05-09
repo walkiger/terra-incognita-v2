@@ -12,11 +12,12 @@
 | Oracle Compute **`terra-hub-01`**                                | erledigt              | Shape **`VM.Standard.E2.1.Micro`**, Region **`eu-frankfurt-1`**, Ubuntu **24.04 Minimal**, User **`ubuntu`**.                                                           |
 | Öffentliche IPv4                                                 | vorhanden             | Ephemeral — bei Änderung der Zuweisung neue IP in der OCI-Konsole prüfen.                                                                                               |
 | Docker Engine + Compose Plugin                                   | erledigt              | Manuelle Installation nach Cloud-init-YAML-Fehler (Unicode); **`docker run hello-world`** erfolgreich (**amd64**).                                                      |
-| Cloud-init User Data                                             | fehlgeschlagen / egal | Log: YAML konnte nicht gemerged werden („unacceptable character“ — typisch Umlaute/Sonderzeichen im eingefügten Text). Docker wurde nicht durch Cloud-init installiert. |
+| Cloud-init User Data                                             | fehlgeschlagen / egal | Log: YAML konnte nicht gemerged werden („unacceptable character” — typisch Umlaute/Sonderzeichen im eingefügten Text). Docker wurde nicht durch Cloud-init installiert. |
 | GitHub SSH-Zugriff für Clone                                     | erledigt              | **`ssh -T git@github.com`** erfolgreich; Repo **`terra-incognita-v2`** auf der VM geklont.                                                                              |
-| Cloudflare Tunnel (Connector „Replica connected“)                | nach Variante         | Siehe **§2** (Modus A vs. B).                                                                                                                                           |
-| **`docker compose … hub`** + erreichbarer Origin für Host-Tunnel | nach Variante         | Host-Tunnel **benötigt** **`hub.override.dev.yml`** (Port **8080**) — siehe **§4**.                                                                                     |
-| Smoke **`https://…/v1/health`** von außen                        | nach Variante         | Erst wenn Tunnel **und** Stack **und** Public Hostname / DNS stimmen.                                                                                                   |
+| **Domain**                                                       | erledigt              | **`terra-incognita.cloud`** bei checkdomain.de (~1 €/Jahr), Cloudflare Free zone, NS **`melissa`**/**`santino`**`.ns.cloudflare.com`. Hub-FQDN: **`hub.terra-incognita.cloud`**. |
+| Cloudflare Tunnel **`terra-hub`**                                | erledigt (Modus B)    | Tunnel-UUID **`8d4bb120-c82e-4344-be09-73fa4b012c74`**, systemd-Token, 4 Connections (Frankfurt). Published Route + CNAME (proxied) auf **`hub.terra-incognita.cloud`**. |
+| **`docker compose … hub`** + erreichbarer Origin für Host-Tunnel | erledigt              | **`hub.override.dev.yml`** (Port **8080**) + **`hub.override.host-tunnel.yml`**. Lokal **`curl http://127.0.0.1:8080/v1/health`** → **200**.                             |
+| Smoke **`https://hub.terra-incognita.cloud/v1/health`** extern   | wartend               | Wartet auf NS-Propagierung (checkdomain.de → Cloudflare). Danach erster externer Smoke.                                                                                 |
 | Zweite VM (Vault)                                                | offen                 | Separater Tunnel + **`vault.yml`** (nicht Teil dieser Seite).                                                                                                           |
 
 ---
@@ -79,7 +80,7 @@ cloudflared version
 1. Zero Trust → **Networks** → **Tunnels** → Tunnel erstellen (z. B. **`terra-hub`**).
 2. **Install connector** → OS **Linux** → Token kopieren.
 3. Auf der VM: **`sudo cloudflared service install <TOKEN>`** → Dienst aktiv (**`systemctl enable --now cloudflared`** falls nicht automatisch).
-4. Im Tunnel **Public Hostnames** (**Pflicht**, sonst extern **HTTP 530** — siehe §5.2): exakt den öffentlichen **FQDN** eintragen (z. B. **`terra-incognita.is-into.tech`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, kein `https://` zum localhost).
+4. Im Tunnel **Published Application Routes** (**Pflicht**, sonst extern **HTTP 530** — siehe §5.2): exakt den öffentlichen **FQDN** eintragen (z. B. **`hub.terra-incognita.cloud`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, kein `https://` zum localhost).
 5. DNS beim Provider: **CNAME** → **`<TUNNEL_UUID>.cfargotunnel.com`** (UUID aus der Tunnel-Übersicht, nicht die „Replica ID“).
 
 **Sicherheit:** Token wie ein Passwort behandeln; nicht ins Repo committen; bei Leak im Dashboard rotieren.
@@ -159,16 +160,14 @@ journalctl -u cloudflared -f   # Host-Connector (Modus B)
 ### 5.1 Extern
 
 ```text
-https://terra-incognita.is-into.tech/v1/health   → 200, JSON
+https://hub.terra-incognita.cloud/v1/health   → 200, JSON
 ```
-
-(Hostnamen anpassen.)
 
 ### 5.2 HTTP **530** trotz lokalem **`127.0.0.1:8080` → 200**
 
 **Symptom:** `curl -fsSI https://<öffentlicher-host>/v1/health` liefert **HTTP 530** (auch **von der Hub-VM** aus); parallel `curl -fsS http://127.0.0.1:8080/v1/health` → **200** mit JSON.
 
-**Typische Ursache:** Der Connector ist verbunden („Replica connected“), aber unter **Zero Trust → Tunnel → Public Hostnames** fehlt noch ein Eintrag für **genau diesen FQDN**. Der Edge weiß dann nicht, welche Origin-URL der Tunnel bedienen soll.
+**Typische Ursachen:** (a) Der Connector ist verbunden („Replica connected“), aber unter **Zero Trust → Tunnel → Public Hostnames** fehlt noch ein Eintrag für **genau diesen FQDN**. Der Edge weiß dann nicht, welche Origin-URL der Tunnel bedienen soll.
 
 **Maßnahme:** Public Hostname **hinzufügen**: Hostname = voller öffentlicher Name (z. B. **`terra-incognita.is-into.tech`**) → Service **`http://127.0.0.1:8080`**. DNS weiter per **CNAME** auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim Provider — **ohne** Cloudflare-Zone möglich.
 
@@ -182,7 +181,13 @@ https://terra-incognita.is-into.tech/v1/health   → 200, JSON
 | Stack nicht gestartet / Caddy unhealthy   | **`docker compose ps`**, Logs **`api`** / **`caddy`**.   |
 | Public Hostname zeigt auf falschen Port   | Im Tunnel **Service** exakt **`http://127.0.0.1:8080`**. |
 
-### 5.4 Doppelter Tunnel-Connector
+### 5.4 Free-Subdomain-Dienste und Cloudflare Tunnel
+
+Free-Subdomain-Dienste (z. B. `is-into.tech` via is-pro.dev) sind mit eigenem Cloudflare Tunnel **inkompatibel**, wenn der Dienst selbst einen Cloudflare-Proxy davorschaltet. Der Traffic landet dann beim Cloudflare-Account des Domain-Besitzers, nicht beim eigenen Tunnel. **Proxy deaktivieren** hilft nicht: `cfargotunnel.com` hat ohne Cloudflare-Proxy keine A-Records.
+
+**Empfehlung:** Eigene Domain (z. B. **`terra-incognita.cloud`**, ~1 EUR/Jahr) als Cloudflare Free zone. CNAME dort proxied anlegen.
+
+### 5.5 Doppelter Tunnel-Connector
 
 Symptome: instabile Replikas, unerwartete Fehler. **Nur einen** Connector pro Tunnel-ID — bei Host-Tunnel **`hub.override.host-tunnel.yml`** nutzen.
 
