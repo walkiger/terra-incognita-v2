@@ -1,24 +1,25 @@
 {
-  "feature": "M0.2 Python baseline — uv lockfile, ruff, mypy strict, pyproject (replace pip requirements-ci)",
-  "branch": "chore/python-pyproject-baseline",
+  "feature": "M0.3 Docker Compose hub skeleton — api+caddy+nats+cloudflared (profiles), CI compose smoke",
+  "branch": "feature/docker-compose-hub-skeleton",
   "agents": ["orch", "backend-implementation-agent", "test-agent-fast-ci"],
   "tasks": {
     "orch": [
-      "Land M0.2; keep merge-open-PR-first discipline",
-      "Commit subjects end with (#6)"
+      "Land M0.3; merge-open-PR-first discipline",
+      "Commit subjects end with (#7)"
     ],
     "backend-implementation-agent": [
-      "Keep ti_hub mypy-clean under strict settings"
+      "Stub FastAPI GET /v1/health in deploy/api container image"
     ],
     "test-agent-fast-ci": [
-      "Maintain tests/test_tooling.py + DB tests + layout tests green under uv CI"
+      "compose_hub integration smoke; default pytest excludes compose_hub marker"
     ]
   },
-  "approved_deletions": ["pytest.ini", "requirements-ci.txt"],
+  "approved_deletions": [],
   "acceptance_criteria": [
-    "CI: uv sync --frozen --extra dev + ruff check/format + mypy ti_hub + pytest",
-    "make bootstrap/test/fmt/lint use uv",
-    "uv.lock committed; no root requirements-ci.txt",
-    "app/engine/pyproject.toml stub present for separate engine package path"
+    "deploy/compose/hub.yml + hub.override.dev.yml + hub.override.ci.yml; deploy/README.md",
+    "deploy/api multi-stage Dockerfile + Caddy reverse_proxy /v1* → api",
+    "Makefile compose-hub; CI jobs tooling + compose-smoke green",
+    "tests/integration/test_compose_hub_smoke.py marks compose_hub",
+    "00-index M0.3 updated; memory/decisions entry"
   ]
 }
