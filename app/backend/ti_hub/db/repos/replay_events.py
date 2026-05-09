@@ -6,8 +6,15 @@ import json
 import sqlite3
 from typing import Any
 
-from models.replay_event import ReplayEvent, ReplayEventDraft
+from models.replay_event import (
+    ReplayEvent,
+    ReplayEventDraft,
+    ReplayItem,
+    ReplayWindowRequest,
+    ReplayWindowResponse,
+)
 
+from ..replay_query import query_replay_window
 from .base import BaseRepository
 from .exceptions import RepositoryError
 
@@ -66,6 +73,36 @@ class ReplayEventsRepository(BaseRepository):
         row = await sel.fetchone()
         assert row is not None
         return _row_to_replay_event(tuple(row))
+
+    async def query_window(
+        self,
+        user_id: int,
+        request: ReplayWindowRequest,
+    ) -> ReplayWindowResponse:
+        """Hybrid Planner port (terra-076..082) — see :mod:`ti_hub.db.replay_query`."""
+
+        uid = self.require_positive_user_id(user_id)
+        page = await query_replay_window(
+            self.conn,
+            user_id=uid,
+            limit=request.limit,
+            after_id=request.after_id,
+            since_ts=request.since_ts,
+            until_ts=request.until_ts,
+            kind=request.kind,
+            q=request.q,
+            q_match=request.q_match,
+            ranking_mode=request.ranking_mode,
+            ranking_policy=request.ranking_policy,
+            score_weights=request.score_weights,
+        )
+        return ReplayWindowResponse(
+            items=[ReplayItem(event=r.event, score=r.score) for r in page.rows],
+            truncated=page.truncated,
+            next_after_id=page.next_after_id,
+            effective_policy=page.effective_policy,
+            score_weights=request.score_weights,
+        )
 
     async def count_by_kind(self, user_id: int) -> dict[str, int]:
         """Per-tenant histogram. Used by ``/v1/diagnostic`` (M5.9)."""
