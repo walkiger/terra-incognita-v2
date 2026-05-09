@@ -27,3 +27,13 @@ Instanz **`terra-hub-01`** (Frankfurt, E2 Micro): Docker/Clone/Tunnel-Connector 
 **Betrieb:** Connector „connected“ allein reicht nicht — im Tunnel **Public Hostnames** muss der öffentliche **FQDN** auf **`http://127.0.0.1:8080`** zeigen; ohne Eintrag liefert **`curl https://<host>/…`** **HTTP 530** obwohl **`127.0.0.1:8080`** lokal **200** ist. **Ohne** Cloudflare-Zone: DNS nur per **CNAME** auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim Provider. Detail und Fehlerbilder: **`hub-oracle-vm1-deployment-status.md`** §2–§5; **`CLAUDE.md`** Lesepfad; **`deploy/cloudflared/README.md`**.
 
 ---
+
+## 2026-05-09 — Hub-FQDN `hub.terra-incognita.cloud`, DNS-Zone bei Cloudflare
+
+**Produktions-Hub:** öffentlicher FQDN **`hub.terra-incognita.cloud`** mit Cloudflare Tunnel (Modus B: systemd-Connector, Compose mit **`hub.override.dev.yml`** + **`hub.override.host-tunnel.yml`**). Repo-Doku **`deploy/cloudflared`**, Tunnel-Ingress/`config.hub.yml` und Playbook (**`hub-oracle-vm1-deployment-status.md`**) wurden auf diese Domain ausgerichtet (u. a. **PR #14** nach **`main`**).
+
+**Betrieb:** Lokal **`http://127.0.0.1:8080/v1/health`** bestätigt Stack; extern **`https://hub.terra-incognita.cloud/v1/health`** erst nach **NS-Propagierung** (Registrar → Cloudflare Nameserver) und **CNAME**-Eintrag **`hub`** → **`<TUNNEL_UUID>.cfargotunnel.com`** in der **Cloudflare-Zone** — nicht durch „Subdomain“-UI beim Registrar ohne passenden Tunnel-CNAME ersetzbar (**Playbook §2**, Abschnitt *DNS — Cloudflare-Zone*).
+
+**Governance:** Ein formaler **Verifier**-Lauf kann blocken, wenn pre-merge Behauptungen (z. B. „Smoke von außen grün“) **ohne Nachweis** stehen bleiben — dann entweder **Nachweis** erbringen oder **Governance-/PR-Spec** konsistent dokumentieren („externer Smoke ausstehend bis DNS aktiv“).
+
+---

@@ -40,7 +40,7 @@
 ### Modus B — Tunnel auf dem Host (Zero Trust UI + Token + `systemd`)
 
 - Im Dashboard: Tunnel anlegen → **Linux** installieren → **`sudo cloudflared service install <TOKEN>`**.
-- **Public Hostnames** im Tunnel: öffentlicher Hostname (z. B. **`terra-incognita.is-into.tech`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, nicht `https://` zum localhost).
+- **Public Hostnames** im Tunnel: öffentlicher Hostname (Produktion: **`hub.terra-incognita.cloud`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, nicht `https://` zum localhost).
 - **Pflicht:** **`hub.override.dev.yml`** published Caddy auf **`127.0.0.1:8080`** — sonst ist auf der VM **nichts** auf **8080** und Cloudflare liefert u. a. **HTTP 530**, lokal **`curl: (7) Failed to connect`**.
 - **Kein zweiter Connector:** Parallel dürfen **nicht** Host-`cloudflared` **und** der echte **`cloudflared`-Container** denselben Tunnel bedienen. Mit Host-Tunnel zusätzlich **`deploy/compose/hub.override.host-tunnel.yml`** verwenden — stubbt den Container wie CI (**Alpine `sleep`**).
 
@@ -49,6 +49,15 @@
 Wenn die Domain **nicht** als Zone in Cloudflare liegt (z. B. nur DNS bei **is-into.tech**): **`cloudflared tunnel route dns`** entfällt oder scheitert — stattdessen **CNAME** vom gewünschten Hostnamen auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim DNS-Provider setzen. Tunnel und Connector funktionieren trotzdem.
 
 **Wichtig:** Eine Zone bei Cloudflare ist **nicht** nötig, um im Tunnel einen **Public Hostname** (FQDN → Origin-URL) anzulegen — nur für automatisch angelegte DNS-Einträge. **Ohne** diesen Public-Hostname-Eintrag ist die Route für den FQDN leer.
+
+### DNS — Cloudflare-Zone (NS am Registrar)
+
+Wenn **`terra-incognita.cloud`** (oder eine andere Domain) die **Nameserver auf Cloudflare** zeigt, liegt die **authoritative Zone** im **Cloudflare-Dashboard** unter **DNS → Records** — nicht mehr beim Registrar (außer dortige NS-Einstellung).
+
+- Für den Hub-FQDN **`hub.terra-incognita.cloud`:** Eintrag **`hub`** vom Typ **CNAME** zum Ziel **`<TUNNEL_UUID>.cfargotunnel.com`** (UUID aus **Zero Trust → Tunnels**, nicht Replica-ID).
+- **„Subdomain anlegen“** beim Registrar mit Anzeige wie `http://hub.…` ersetzt **keinen** Tunnel-CNAME und kann bei **delegierter Zone** irrelevant oder verwirrend sein — maßgeblich sind **Cloudflare DNS** + **Public Hostname** (identischer FQDN) + (**NS-Propagierung**, bei `.cloud`/Donuts Registry teils langsamer als `.com`/`.de`).
+
+Historisch: **`*.is-into.tech`** (Free-Subdomain + fremde Cloudflare-Zone) erwies sich als **Sackgasse** für eigenes Routing; Produktions-Hub sollte **`hub.terra-incognita.cloud`** nutzen.
 
 ---
 
@@ -80,8 +89,8 @@ cloudflared version
 1. Zero Trust → **Networks** → **Tunnels** → Tunnel erstellen (z. B. **`terra-hub`**).
 2. **Install connector** → OS **Linux** → Token kopieren.
 3. Auf der VM: **`sudo cloudflared service install <TOKEN>`** → Dienst aktiv (**`systemctl enable --now cloudflared`** falls nicht automatisch).
-4. Im Tunnel **Published Application Routes** (**Pflicht**, sonst extern **HTTP 530** — siehe §5.2): exakt den öffentlichen **FQDN** eintragen (z. B. **`hub.terra-incognita.cloud`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, kein `https://` zum localhost).
-5. DNS beim Provider: **CNAME** → **`<TUNNEL_UUID>.cfargotunnel.com`** (UUID aus der Tunnel-Übersicht, nicht die „Replica ID“).
+4. Im Tunnel **Published application routes** (**Zero Trust** UI; je nach Version auch „Public Hostnames“ — **Pflicht**, sonst extern **HTTP 530**, siehe §5.2): öffentlichen **FQDN** eintragen (Produktion: **`hub.terra-incognita.cloud`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, kein `https://` zum localhost).
+5. **DNS:** Liegt die Zone bei Cloudflare (**NS** auf `*.ns.cloudflare.com`), den **CNAME** unter **DNS → Records** setzen (**Name** `hub`, Ziel **`<TUNNEL_UUID>.cfargotunnel.com`** — UUID aus Tunnel-Übersicht, nicht Replica-ID). Bei externem DNS-Provider denselben **CNAME** dort pflegen.
 
 **Sicherheit:** Token wie ein Passwort behandeln; nicht ins Repo committen; bei Leak im Dashboard rotieren.
 
@@ -163,13 +172,15 @@ journalctl -u cloudflared -f   # Host-Connector (Modus B)
 https://hub.terra-incognita.cloud/v1/health   → 200, JSON
 ```
 
+(Andere FQDNs nur, wenn Tunnel-Route und DNS exakt dazu passen.)
+
 ### 5.2 HTTP **530** trotz lokalem **`127.0.0.1:8080` → 200**
 
 **Symptom:** `curl -fsSI https://<öffentlicher-host>/v1/health` liefert **HTTP 530** (auch **von der Hub-VM** aus); parallel `curl -fsS http://127.0.0.1:8080/v1/health` → **200** mit JSON.
 
 **Typische Ursachen:** (a) Der Connector ist verbunden („Replica connected“), aber unter **Zero Trust → Tunnel → Public Hostnames** fehlt noch ein Eintrag für **genau diesen FQDN**. Der Edge weiß dann nicht, welche Origin-URL der Tunnel bedienen soll.
 
-**Maßnahme:** Public Hostname **hinzufügen**: Hostname = voller öffentlicher Name (z. B. **`terra-incognita.is-into.tech`**) → Service **`http://127.0.0.1:8080`**. DNS weiter per **CNAME** auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim Provider — **ohne** Cloudflare-Zone möglich.
+**Maßnahme:** Public Hostname **hinzufügen**: Hostname = voller öffentlicher Name (z. B. **`hub.terra-incognita.cloud`**) → Service **`http://127.0.0.1:8080`**. DNS: **CNAME** auf **`<TUNNEL_UUID>.cfargotunnel.com`** in der **Cloudflare-Zone** oder beim externen Provider — **ohne** Cloudflare-Zone am Domain-Namen geht Letzteres auch, aber **Public Hostname** bleibt Pflicht.
 
 **Verwechslung vermeiden:** Die **Tunnel-UUID** (für DNS/CNAME) ist **nicht** dieselbe wie eine **Replica-ID** in der Connector-Liste.
 
@@ -185,9 +196,15 @@ https://hub.terra-incognita.cloud/v1/health   → 200, JSON
 
 Free-Subdomain-Dienste (z. B. `is-into.tech` via is-pro.dev) sind mit eigenem Cloudflare Tunnel **inkompatibel**, wenn der Dienst selbst einen Cloudflare-Proxy davorschaltet. Der Traffic landet dann beim Cloudflare-Account des Domain-Besitzers, nicht beim eigenen Tunnel. **Proxy deaktivieren** hilft nicht: `cfargotunnel.com` hat ohne Cloudflare-Proxy keine A-Records.
 
-**Empfehlung:** Eigene Domain (z. B. **`terra-incognita.cloud`**, ~1 EUR/Jahr) als Cloudflare Free zone. CNAME dort proxied anlegen.
+**Empfehlung:** Eigene Domain (z. B. **`terra-incognita.cloud`**, ~1 EUR/Jahr) als Cloudflare Free zone. **CNAME** `hub` (proxied wie empfohlen) auf die Tunnel-Ziel-Adresse.
 
-### 5.5 Doppelter Tunnel-Connector
+### 5.5 DNS noch Parking / falscher A-Record trotz Tunnel
+
+**Symptom:** `dig hub.terra-incognita.cloud` zeigt z. B. eine **Parking-IP** des Registrars oder nicht Cloudflare; externer `curl` scheitert, lokal **`127.0.0.1:8080`** ist **200**.
+
+**Typische Ursache:** **NS-Umstellung** noch nicht vollständig propagiert (`.cloud`-TLD kann verzögern), oder **CNAME `hub`** fehlt in der **Cloudflare-Zone** (siehe §2, Abschnitt *DNS — Cloudflare-Zone*).
+
+### 5.6 Doppelter Tunnel-Connector
 
 Symptome: instabile Replikas, unerwartete Fehler. **Nur einen** Connector pro Tunnel-ID — bei Host-Tunnel **`hub.override.host-tunnel.yml`** nutzen.
 
