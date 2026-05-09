@@ -2,10 +2,10 @@
 
 Configs live beside Compose:
 
-| File | Role |
-|------|------|
-| `config.hub.yml` | Ingress for Hub VM (`terra…` → API, `app.terra…` → Caddy). |
-| `config.vault.yml` | Ingress for Vault VM (`mirror.app.terra…` → Caddy). |
+| File               | Role                                                       |
+| ------------------ | ---------------------------------------------------------- |
+| `config.hub.yml`   | Ingress for Hub VM (`terra…` → API, `app.terra…` → Caddy). |
+| `config.vault.yml` | Ingress for Vault VM (`mirror.app.terra…` → Caddy).        |
 
 ## One-time tunnel creation (per VM)
 
@@ -30,8 +30,8 @@ Vault VM: repeat with a **second** tunnel (`vault-prod`) and `config.vault.yml`,
 
 ## Where credentials live
 
-* **In Compose:** both `hub.yml` and `vault.yml` mount `../cloudflared/credentials` read-only at `/etc/cloudflared/credentials`.
-* **Never commit** JSON credentials — only `.gitkeep` is tracked in `credentials/`.
+- **In Compose:** both `hub.yml` and `vault.yml` mount `../cloudflared/credentials` read-only at `/etc/cloudflared/credentials`.
+- **Never commit** JSON credentials — only `.gitkeep` is tracked in `credentials/`.
 
 ## Changing tunnel ID
 

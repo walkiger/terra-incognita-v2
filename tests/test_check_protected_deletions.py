@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -10,6 +11,12 @@ from pathlib import Path
 import pytest
 
 REPO = Path(__file__).resolve().parents[1]
+
+
+def _subprocess_env() -> dict[str, str]:
+    """Strip Actions-only vars so the script uses staged-diff mode in temp repos."""
+    banned = {"GITHUB_ACTIONS", "GITHUB_BASE_REF"}
+    return {k: v for k, v in os.environ.items() if k not in banned}
 
 
 def _load_cpd():
@@ -52,6 +59,7 @@ def test_blocks_unapproved(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> N
         [sys.executable, str(REPO / "scripts" / "check_protected_deletions.py")],
         capture_output=True,
         text=True,
+        env=_subprocess_env(),
     )
     assert proc.returncode == 1
 
@@ -63,5 +71,6 @@ def test_allows_when_no_deletions(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
         [sys.executable, str(REPO / "scripts" / "check_protected_deletions.py")],
         capture_output=True,
         text=True,
+        env=_subprocess_env(),
     )
     assert proc.returncode == 0

@@ -27,6 +27,7 @@ repos:
     hooks:
       - id: prettier
         types_or: [markdown, yaml, json]
+        exclude: ^deploy/grafana/dashboards/
         files: ^(README\.md|CONTRIBUTING\.md|CLAUDE\.md|catchup\.md|docs/.+|deploy/.+|app/docs/greenfield/implementation/mvp/(00-index|M0-bootstrap)\.md|memory/system/decisions\.md|archive/legacy-docs/Implementierungen\.Architektur\.md|\.github/workflows/.+|\.agent-os/pr-spec\.json|\.pre-commit-config\.yaml)$
 
   - repo: local

@@ -6,14 +6,14 @@
 
 ## Branch-Namen
 
-| Präfix | Verwendung |
-|--------|------------|
-| `feature/` | Neue Funktionalität (Default) |
-| `fix/` | Bugfixes |
-| `refactor/` | Struktur ohne neues Verhalten |
-| `test/` | Reine Test-/Validierungs-Fixes |
-| `docs/` | Nur Dokumentation |
-| `chore/` | Tooling, Dependencies, Konfiguration |
+| Präfix      | Verwendung                           |
+| ----------- | ------------------------------------ |
+| `feature/`  | Neue Funktionalität (Default)        |
+| `fix/`      | Bugfixes                             |
+| `refactor/` | Struktur ohne neues Verhalten        |
+| `test/`     | Reine Test-/Validierungs-Fixes       |
+| `docs/`     | Nur Dokumentation                    |
+| `chore/`    | Tooling, Dependencies, Konfiguration |
 
 Slugs: kurz, **kebab-case**, keine Phasennummern im Namen (Zuordnung **`00-index.md`**).
 
@@ -64,7 +64,7 @@ Pfade unter **`NO-SILENT-DELETIONS.mdc`** dürfen nur mit Freigabe gelöscht wer
 
 ## Branch Protection (GitHub UI)
 
-Empfohlene Required Checks für **`main`** (nach **`ci.yml`**): **`lint`**, **`type-check`**, **`test`**, **`schema-lint`**, **`protected-deletions`**, **`secrets-lint`**, **`pre-commit-ci`**, **`compose-smoke`**.  
+Empfohlene Required Checks für **`main`** (nach **`ci.yml`**): **`lint`**, **`type-check`**, **`test`**, **`schema-lint`**, **`protected-deletions`**, **`secrets-lint`**, **`pre-commit-ci`**, **`compose-smoke`**.
 Squash-Merge, Reviews ≥ 1 — Details nach Team-Größe anpassen.
 
 ---
