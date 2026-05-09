@@ -18,7 +18,7 @@
 2. [`app/README.md`](app/README.md) — Produkt-Root
 3. [`app/docs/greenfield/README.md`](app/docs/greenfield/README.md) — Lesepfad MVP M0–M8
 4. [`memory/README.md`](memory/README.md) — Session-/System-Archive (Legacy‑Kontinuität zeigt auf **`walkiger/terra-incognita`**)
-5. [`docs/operations/hub-oracle-vm1-deployment-status.md`](docs/operations/hub-oracle-vm1-deployment-status.md) — Hub auf Oracle-VM: Cloudflare Tunnel (**Modus Container vs. Host**), Domain **`terra-incognita.cloud`** (Cloudflare Free zone), Hub-FQDN **`hub.terra-incognita.cloud`**, Fehlerbild **HTTP 530**, Free-Subdomain-Inkompatibilit&auml;t (§5.4).
+5. [`docs/operations/hub-oracle-vm1-deployment-status.md`](docs/operations/hub-oracle-vm1-deployment-status.md) — Hub auf Oracle-VM: Cloudflare Tunnel (**Modus Container vs. Host**); Domain **`terra-incognita.cloud`** (Cloudflare Free zone); Hub-FQDN **`hub.terra-incognita.cloud`**; **NS bei Cloudflare** = authoritative **DNS → Records** (Registrar-„Subdomain“ ohne CNAME zur Tunnel-UUID ersetzt das nicht); **Published application routes** / Zero-Trust-Hostnamen (**Pflicht**; sonst **HTTP 530** trotz lokalem Origin OK); ohne Cloudflare-Zone alternativ externer Provider-CNAME; Free-Subdomain-Fallen und Parking/Fehlzonen siehe §5.4–§5.6.
 
 Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 
