@@ -22,5 +22,5 @@ jobs:
       - name: Install test deps
         run: pip install -r requirements-ci.txt
 
-      - name: Layout tests (M0.1)
-        run: python -m pytest tests/test_repo_layout.py -q
+      - name: Tests (layout + M1.1 SQLite baseline)
+        run: python -m pytest tests -q
