@@ -98,7 +98,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: uv run pre-commit run --all-files
+      - name: Run pre-commit (PR = diff-only; push to main = full tree)
+        run: |
+          if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+            uv run pre-commit run --from-ref "origin/${GITHUB_BASE_REF}" --to-ref HEAD
+          else
+            uv run pre-commit run --all-files
+          fi
 
   compose-smoke:
     runs-on: ubuntu-latest
