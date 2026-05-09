@@ -1,0 +1,150 @@
+Abstract
+Inference-time computation techniques, analogous to human System 2 Thinking,
+have recently become popular for improving model performances. However, most
+existing approaches suffer from several limitations: they are modality-specific
+(e.g., working only in text), problem-specific (e.g., verifiable domains like math
+and coding), or require additional supervision/training on top of unsupervised
+pretraining (e.g., verifiers or verifiable rewards). In this paper, we ask the question
+“Is it possible togeneralize these System 2 Thinking approaches, and develop models
+that learn to think solely from unsupervised learning?” Interestingly, we find the
+answer is yes, by learning to explicitly verify the compatibility between inputs and
+candidate-predictions, and then re-framing prediction problems as optimization
+with respect to this verifier. Specifically, we trainEnergy-Based Transformers
+(EBTs)—a new class of Energy-Based Models (EBMs)—to assign an energy (un-
+normalized probability) value to every input and candidate-prediction pair, enabling
+predictions through gradient descent-based energy minimization until convergence.
+This formulation enables System 2 Thinking to emerge from unsupervised learn-
+ing, making it modality and problem agnostic. Across both discrete (text) and
+continuous (visual) modalities, we find EBTs scale faster than the dominant Trans-
+former++ approach during training, achieving an up to 35% higher scaling rate with
+respect to data, batch size, parameters, FLOPs, and depth. During inference, EBTs
+improve performance with System 2 Thinking (i.e., extra computation) by 29%
+more than the Transformer++ on language tasks, and EBTs outperform Diffusion
+Transformers on image denoising while using fewer forward passes. Further, we
+find that System 2 Thinking with EBTs yields larger performance improvements
+on data that is farther out-of-distribution, and that EBTs achieve better results than
+existing models on most downstream tasks given the same or worse pretraining
+performance, suggesting that EBTs generalize better than existing approaches.
+Consequently, EBTs are a promising new paradigm for scaling both the learning
+and thinking capabilities of models.
+1 Introduction
+In psychology, human thinking is often classified into two different types: System 1 (thinking fast) and
+System 2 (thinking slow) [1–4]. System 1 thinking is characterized by quick, intuitive and automatic
+responses, relying on previous experience to solve simple or familiar problems. Alternatively, System
+2 Thinking is slow, deliberate and analytical, requiring conscious effort and logical reasoning to
+process more complex information. System 2 Thinking is essential for complex problems that go
+Correspondence to Alexi Gladstone: /envel⌢pealexigladstone@gmail.com. †Work does not relate to position at
+Amazon.
+Preprint. Under review.
+(a) AR Transformer
+ (b) RNN
+ (c) Diffusion Transformer
+ (d) EBT
+Existing Autoregressive Approaches
+Figure 1: Autoregressive Architecture Comparison. (a) Autoregressive (AR) Transformer is the
+most common, with (b) RNNs becoming more popular recently [22, 23]. (c) Diffusion Transform-
+ers [26] (which are often bidirectional but can also be autoregressive) are the most similar to EBT,
+being able to dynamically allocate computation during inference, but predict the noise rather than the
+energy [27, 28]. Consequently, diffusion models cannot give unnormalized likelihood estimates at
+each step of the thinking process, and are not trained as explicit verifiers, unlike EBTs.
+beyond automatic pattern recognition, such as in mathematics, programming, multistep reasoning, or
+novel out-of-distribution situations [5, 6], where precision and depth of understanding are important.
+Although current models perform well on tasks suitable for System 1 thinking [7], they continue to
+struggle with tasks that demand System 2 capabilities [8–10].
+Consequently, the recent pursuance of System 2 Thinking capabilities has become a growing interest
+among AI researchers, leading to the rise of several foundation models such as O1 [ 11], R1 [12],
+Grok3 [13], and Claude 3.7 Sonnet [ 14]. These “reasoning models” excel on math and coding
+benchmarks, particularly by increasing the time models spend thinking. However, publicly available
+information on training methods, particularly from the open-source R1 model [ 12], suggests that
+the Reinforcement Learning (RL) based training approach for these models only works in domains
+where rule-based rewards can easily verify answers, such as math and coding. This limitation reduces
+applicability to a small range of problem types, and as a consequence, often deteriorates performance
+in other tasks such as writing [ 15–17]. Further, recent evidence suggests this RL-based approach
+may not induce new reasoning patterns, but rather just increase the probability of reasoning patterns
+already known to the base model [18], which limits performance on problems requiring exploration.
+Along similar lines, there has been strong interest in achieving System 2 Thinking in both diffusion
+models and Recurrent Neural Networks (RNNs). Diffusion models support iterative inference
+through denoising steps, where increasing denoising steps can improve performance. However,
+they typically fail to benefit from denoising steps beyond what they were trained on [19], and aside
+from increasing denoising steps, diffusion models require an external verifier to improve System 2
+Thinking capabilities [19–21]. RNNs also offer iterative computation via recurrent state updates [22–
+24], however, most modern RNNs only update their internal state with new information, meaning
+they cannot be used for thinking longer. Additionally, RNNs that do support recurrent depth still lack
+mechanisms for explicit verification [25], resulting in limited adoption for System 2 Thinking.
+As one of the primary goals of AI is to figure out how we can create systems that learn to think
+on their own on any type of problem, these approaches ultimately bring about the following core
+research question: “Can we rely entirely on unsupervised learning to develop System 2 Thinking?”
+Such a capability would enable generalization of current System 2 Thinking approaches to any
+problem, any modality, and avoid the reliance on external human, reward, or model supervision.
+In this work, we argue and demonstrate empirically that the answer to this core research question
+is yes, but that there are several limitations in existing model architectures that prevent this type
+of unsupervised System 2 Thinking from emerging. Particularly, when comparing the qualities of
+human System 2 Thinking with the current modeling paradigms (Figure 1, Table 1), we observe
+several key differences, outlined below as three key Facets of System 2 Thinking1:
+1We acknowledge that these are not comprehensive for achieving System 2 Thinking, but rather, a good first
+step (more info is in Section C.1).
+2
+Table 1: Architectures and Cognitive Facets. For each prediction, Feed Forward (FF) Transformers
+and RNNs generally2 have a finite amount of computation. While diffusion models have potentially
+more computation during inference by increasing the number of denoising steps, they do not learn
+to explicitly verify or estimate uncertainty for predictions. EBMs can use a dynamic amount of
+computation during inference by iterating for any number of steps, and give an energy scalar that can
+be used to evaluate uncertainty and verify the strength of predictions.
+Architecture Dynamic Compute
+Allocation (Facet 1)
+Modeling
+Uncertainty (Facet 2)
+Prediction
+Verification (Facet 3)
+FF Transformers ✗ ✗ ✗
+RNNs ✗ ✗ ✗
+Diffusion Transformers ✓ ✗ ✗
+EBTs ✓ ✓ ✓
+Facet 1: Dynamic Allocation of Computation. Humans naturally allocate varying amounts of
+effort to different tasks depending on difficulty, which is widely supported by psychology and
+neuroscience [1, 31, 32]. As the difficulty of tasks humans face varies widely, the ability to adjust
+the magnitude of computational resources allocated towards a task is fundamental to success.3 For
+example, a decision regarding whether to change careers generally takes people much more time than
+deciding what to eat for lunch.
+Facet 2: Modeling Uncertainty in Continuous State Spaces. While thinking longer is important
+for improving performance, humans also weigh how uncertain they are before committing to a
+decision. In language, LLMs can simulate this through token-level probabilities [33]. In the context
+of continuous state spaces, such as in vision, without the usage of discretization schemes such as
+Vector Quantization [34] or pseudo losses/objectives (such as ELBO [35]), standard implementations
+of the most successfully used approaches with Transformers, RNNs, or Diffusion models generally do
+not provide strong or reliable uncertainty estimates [36–39].4 EBMs can naturally model uncertainty
+without having to model exact likelihoods by modeling the relative unnormalized likelihoods of
+predictions [42], as demonstrated in Figure 3. As the real world often contains many inherently
+unpredictable elements, for instance, when a pedestrian might emerge from behind a parked vehicle,
+the ability to express uncertainty in predictions is essential to being cautious, and is a natural capability
+of humans [43–45].
+Facet 3: Verification of Predictions.In addition to allocating computation and modeling uncertainty,
+effective thinking also benefits from the ability to verify predictions, which can guide decisions about
+when to stop thinking or to select the most accurate predictions. There is strong evidence that such
+verification is a core component of human thinking [46, 47]. In fact, it can be shown that verifying
+solutions is exponentially easier than generating solutions [48], which means that verifiers can often
+generalize better than explicit generators [48]. Training an explicit verifier means that at each step of
+the thinking process an estimate of the current prediction’s quality can be extracted. This supports
+more dynamic inference time behavior such as early stopping when a prediction is known to be
+correct or allocating more compute when a problem is difficult, which can intuitively be seen as
+adjusting resources according to the difficulty of a problem [ 1]. Training an explicit verifier also
+allows for capabilities such as Monte Carlo Tree Search [49] or sampling many times and choosing
+the best prediction, which traditionally have involved training new models on more data [19, 50].
+For more information on additional Facets, please refer to Section F.
+2Recent works attempt to enable dynamic computation per prediction [ 25, 29, 30], but these approaches
+are generally not modality agnostic and have not been widely adopted. While RNNs can theoretically support
+dynamic computation, they are typically updated only with new state information, except in specialized cases
+such as in [25].
+3It’s important to note that we refer to this dynamic computation capability at the granularity of each
+prediction being made, meaning current LLMs built with traditional AR transformers/RNNs cannot dynamically
+allocate compute per token generated as they have a finite depth/width and are only updated with new text tokens.
+Please check Section G for more information.
+4We acknowledge that there are approaches to achieve uncertainty with the models discussed, such as Mixture
+Density Networks [40] as well as score-based diffusion models [41]. However, these approaches have seen less
+widespread success and scalability than the current dominant approaches.
+3
+Figure 2: EBT for Autoregressive Modeling. Each blue box corresponds to a different prediction
+based on the current step of the thinking process, where the initial prediction starts as random. At
+each step, a new prediction is fed into the model, which gives an energy scalar for the prediction’s
+current compatibility (unnormalized likelihood) with the context (Facets 2 and 3). Then, the gradient
+of th

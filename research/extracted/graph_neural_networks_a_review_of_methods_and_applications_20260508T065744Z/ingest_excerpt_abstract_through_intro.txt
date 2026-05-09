@@ -1,0 +1,148 @@
+ABSTRACT
+Lots of learning tasks require dealing with graph data which contains rich relation information among elements.
+Modeling physics systems, learning molecular ﬁngerprints, predicting protein interface, and classifying diseases
+demand a model to learn from graph inputs. In other domains such as learning from non-structural data like texts
+and images, reasoning on extracted structures (like the dependency trees of sentences and the scene graphs of
+images) is an important research topic which also needs graph reasoning models. Graph neural networks (GNNs)
+are neural models that capture the dependence of graphs via message passing between the nodes of graphs. In
+recent years, variants of GNNs such as graph convolutional network (GCN), graph attention network (GAT), graph
+recurrent network (GRN) have demonstrated ground-breaking performances on many deep learning tasks. In this
+survey, we propose a general design pipeline for GNN models and discuss the variants of each component, sys-
+tematically categorize the applications, and propose four open problems for future research.
+1. Introduction
+Graphs are a kind of data structure which models a set of objects
+(nodes) and their relationships (edges). Recently, researches on
+analyzing graphs with machine learning have been receiving more and
+more attention because of the great expressive power of graphs, i.e.
+graphs can be used as denotation of a large number of systems across
+various areas including social science (social networks ( Wu et al., 2020 ),
+natural science (physical systems ( Sanchez et al., 2018 ; Battaglia et al.,
+2016) and protein-protein interaction networks ( Fout et al., 2017 )),
+knowledge graphs ( Hamaguchi et al., 2017 ) and many other research
+areas ( Khalil et al., 2017 ). As a unique non-Euclidean data structure for
+machine learning, graph analysis focuses on tasks such as node classi ﬁ-
+cation, link prediction, and clustering. Graph neural networks (GNNs) are
+deep learning based methods that operate on graph domain. Due to its
+convincing performance, GNN has become a widely applied graph
+analysis method recently. In the following paragraphs, we will illustrate
+the fundamental motivations of graph neural networks.
+The ﬁrst motivation of GNNs roots in the long-standing history of
+neural networks for graphs. In the nineties, Recursive Neural Networks
+are ﬁrst utilized on directed acyclic graphs ( Sperduti and Starita, 1997 ;
+Frasconi et al., 1998 ). Afterwards, Recurrent Neural Networks and
+Feedforward Neural Networks are introduced into this literature
+respectively in ( Scarselli et al., 2009 ) and ( Micheli, 2009 ) to tackle cy-
+cles. Although being successful, the universal idea behind these methods
+is building state transition systems on graphs and iterate until conver-
+gence, which constrained the extendability and representation ability.
+Recent advancement of deep neural networks, especially convolutional
+neural networks (CNNs) ( LeCun et al., 1998 ) result in the rediscovery of
+GNNs. CNNs have the ability to extract multi-scale localized spatial
+features and compose them to construct highly expressive representa-
+tions, which led to breakthroughs in almost all machine learning areas
+and started the new era of deep learning ( LeCun et al., 2015). The keys of
+CNNs are local connection, shared weights and the use of multiple layers
+(LeCun et al., 2015 ). These are also of great importance in solving
+problems on graphs. However, CNNs can only operate on regular
+Euclidean data like images (2D grids) and texts (1D sequences) while
+these data structures can be regarded as instances of graphs. Therefore, it
+* Corresponding author.
+E-mail addresses: zhoujie18@mails.tsinghua.edu.cn (J. Zhou), cgq19@mails.tsinghua.edu.cn (G. Cui), hsd20@mails.tsinghua.edu.cn (S. Hu), zy-z19@mails.
+tsinghua.edu.cn (Z. Zhang), albertyang33@gmail.com (C. Yang), liuzy@tsinghua.edu.cn (Z. Liu), fandywang@tencent.com (L. Wang), harrychli@tencent.com
+(C. Li), sms@tsinghua.edu.cn (M. Sun).
+1 indicates equal contribution.
+Contents lists available at ScienceDirect
+AI Open
+journal homepage: www.keaipublishing.com/en/journals/ai-open
+https://doi.org/10.1016/j.aiopen.2021.01.001
+Received 16 September 2020; Received in revised form 15 December 2020; Accepted 27 January 2021
+Available online 8 April 2021
+2666-6510/© 2021 The Author(s). Published by Elsevier B.V. on behalf of KeAi Communications Co., Ltd. This is an open access article under the CC BY license
+(http://creativecommons.org/licenses/by/4.0/).
+AI Open 1 (2020) 57 –81
+i An update to this article is included at the end
+is straightforward to generalize CNNs on graphs. As shown in Fig. 1,i ti s
+hard to de ﬁne localized convolutional ﬁlters and pooling operators,
+which hinders the transformation of CNN from Euclidean domain to
+non-Euclidean domain. Extending deep neural models to non-Euclidean
+domains, which is generally referred to as geometric deep learning, has
+been an emerging research area ( Bronstein et al., 2017 ). Under this
+umbrella term, deep learning on graphs receives enormous attention.
+The other motivation comes from graph representation learning (Cui
+et al., 2018a; Hamilton et al., 2017b; Zhang et al., 2018a; Cai et al., 2018;
+Goyal and Ferrara, 2018 ), which learns to represent graph nodes, edges
+or subgraphs by low-dimensional vectors. In the ﬁeld of graph analysis,
+traditional machine learning approaches usually rely on hand engineered
+features and are limited by its in ﬂexibility and high cost. Following the
+idea of representation learning and the success of word embedding
+(Mikolov et al., 2013 ), DeepWalk ( Perozzi et al., 2014 ), regarded as the
+ﬁrst graph embedding method based on representation learning, applies
+SkipGram model ( Mikolov et al., 2013 ) on the generated random walks.
+Similar approaches such as node2vec ( Grover and Leskovec, 2016), LINE
+(Tang et al., 2015 ) and TADW ( Yang et al., 2015 ) also achieved break-
+throughs. However, these methods suffer from two severe drawbacks
+(Hamilton et al., 2017b ). First, no parameters are shared between nodes
+in the encoder, which leads to computationally inef ﬁciency, since it
+means the number of parameters grows linearly with the number of
+nodes. Second, the direct embedding methods lack the ability of gener-
+alization, which means they cannot deal with dynamic graphs or
+generalize to new graphs.
+Based on CNNs and graph embedding, variants of graph neural net-
+works (GNNs) are proposed to collectively aggregate information from
+graph structure. Thus they can model input and/or output consisting of
+elements and their dependency.
+There exists several comprehensive reviews on graph neural net-
+works. Bronstein et al. (2017) provide a thorough review of geometric
+deep learning, which presents its problems, dif ﬁculties, solutions, ap-
+plications and future directions. Zhang et al. (2019a) propose another
+comprehensive overview of graph convolutional networks. However,
+they mainly focus on convolution operators de ﬁned on graphs while we
+investigate other computation modules in GNNs such as skip connections
+and pooling operators.
+Papers by Zhang et al. (2018b), Wu et al. (2019a), Chami et al. (2020)
+are the most up-to-date survey papers on GNNs and they mainly focus on
+models of GNN. Wu et al. (2019a) categorize GNNs into four groups:
+recurrent graph neural networks, convolutional graph neural networks,
+graph autoencoders, and spatial-temporal graph neural networks. Zhang
+et al. (2018b) give a systematic overview of different graph deep learning
+methods and Chami et al. (2020) propose a Graph Encoder Decoder
+Model to unify network embedding and graph neural network models.
+Our paper provides a different taxonomy with them and we mainly focus
+on classic GNN models. Besides, we summarize variants of GNNs for
+different graph types and also provide a detailed summary of GNNs ’
+applications in different domains.
+There have also been several surveys focusing on some speci ﬁc graph
+learning ﬁelds. Sun et al. (2018) and Chen et al. (2020a) give detailed
+overviews for adversarial learning methods on graphs, including graph
+data attack and defense. Lee et al. (2018a) provide a review over graph
+attention models. The paper proposed by Yang et al. (2020) focuses on
+heterogeneous graph representation learning, where nodes or edges are
+of multiple types. Huang et al. (2020) review over existing GNN models
+for dynamic graphs. Peng et al. (2020) summarize graph embeddings
+methods for combinatorial optimization. We conclude GNNs for het-
+erogeneous graphs, dynamic graphs and combinatorial optimization in
+Section 4.2, Section 4.3, and Section 8.1.6 respectively.
+In this paper, we provide a thorough review of different graph neural
+network models as well as a systematic taxonomy of the applications. To
+summarize, our contributions are:
+/C15 We provide a detailed review over existing graph neural network
+models. We present a general design pipeline and discuss the variants
+of each module. We also introduce researches on theoretical and
+empirical analyses of GNN models.
+/C15 We systematically categorize the applications and divide the appli-
+cations into structural scenarios and non-structural scenarios. We
+present several major applications and their corresponding methods
+for each scenario.
+/C15 We propose four open problems for future research. We provide a
+thorough analysis of each problem and propose future research
+directions.
+The rest of this survey is organized as follows. In Section 2, we present
+a general GNN design pipeline. Following the pipeline, we discuss each
+step in detail to review GNN model variants. The details are included in
+Section 3 to Section 6. In Section 7, we revisit research works over
+theoretical and empirical analyses of GNNs. In Section 8, we introduce
+several major applications of graph neural networks applied to structural
+scenarios, non-structural scenarios and other scenarios. In Section 9,w e
+propose four open problems of graph neural networks as well as several
+future research directions. And ﬁnally, we conclude the survey in Section
+10.

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "local_inconsistency_resolution_the_interplay_between_attention_and_contr_20260508T150826Z",
+  "extracted_at": "2026-05-08T15:11:21Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "p(Y|X ) : VX→ ∆VY. If X = {X1, X2, . . .}i∈I is an (indexed) set of variables, we regardX itself as a variable that can take on joint settingsVX =Q i∈I VXi. If µ∈ ∆VX is a joint distribution andY⊆ X , we write µ(Y)for the marginal ofµon the variablesY.",
+        "unicode_plain": "p(Y|X ) : VX→ ∆VY. If X = {X1, X2, . . .}i∈I is an (indexed) set of variables, we regardX itself as a variable that can take on joint settingsVX =Q i∈I VXi. If µ∈ ∆VX is a joint distribution andY⊆ X , we write µ(Y)for the marginal ofµon the variablesY."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "p(Y|X ) : VX→ ∆VY. If X = {X1, X2, . . .}i∈I is an (indexed) set of variables, we regardX itself as a variable that can take on joint settingsVX =Q i∈I VXi. If µ∈ ∆VX is a joint distribution andY⊆ X , we write µ(Y)for the marginal ofµon the variablesY."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "variable that can take on joint settingsVX =Q i∈I VXi. If µ∈ ∆VX is a joint distribution andY⊆ X , we write µ(Y)for the marginal ofµon the variablesY. Adirected hypergraph( N,A )is a set of nodesN and a set of arcsA, each a∈ A of which is associated with a",
+        "unicode_plain": "variable that can take on joint settingsVX =Q i∈I VXi. If µ∈ ∆VX is a joint distribution andY⊆ X , we write µ(Y)for the marginal ofµon the variablesY. Adirected hypergraph( N,A )is a set of nodesN and a set of arcsA, each a∈ A of which is associated with a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "variable that can take on joint settingsVX =Q i∈I VXi. If µ∈ ∆VX is a joint distribution andY⊆ X , we write µ(Y)for the marginal ofµon the variablesY. Adirected hypergraph( N,A )is a set of nodesN and a set of arcsA, each a∈ A of which is associated with a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "with its sourcesS=S a and targetsT=T a. Geometry.For our purposes, apointed parameter spaceΘis a convex subset of Rn for some n≥ 0 (that may differ between parameter spaces) with a distinguished default valueθ0 ∈ Θ. Avector fieldover Θis a differentiable map X assigning to eachθ∈ Θa",
+        "unicode_plain": "with its sourcesS=S a and targetsT=T a. Geometry.For our purposes, apointed parameter spaceΘis a convex subset of Rn for some n≥ 0 (that may differ between parameter spaces) with a distinguished default valueθ0 ∈ Θ. Avector fieldover Θis a differentiable map X assigning to eachθ∈ Θa"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "with its sourcesS=S a and targetsT=T a. Geometry.For our purposes, apointed parameter spaceΘis a convex subset of Rn for some n≥ 0 (that may differ between parameter spaces) with a distinguished default valueθ0 ∈ Θ. Avector fieldover Θis a differentiable map X assigning to eachθ∈ Θa"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "dt y(t) = Xy(t), y(0) = θ0}. To refer to that solution compactly, we adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ))",
+        "unicode_plain": "dt y(t) = Xy(t), y(0) = θ0}. To refer to that solution compactly, we adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ))"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "dt y(t) = Xy(t), y(0) = θ0}. To refer to that solution compactly, we adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ))"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "y(0) = θ0}. To refer to that solution compactly, we adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the",
+        "unicode_plain": "y(0) = θ0}. To refer to that solution compactly, we adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "y(0) = θ0}. To refer to that solution compactly, we adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the gradient off. It is known asgradient flow.",
+        "unicode_plain": "adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the gradient off. It is known asgradient flow."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "adopt the notationexpθ0(X) := y(1). Although exp may appear to give us access only toy(1), it is easily verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the gradient off. It is known asgradient flow."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the gradient off. It is known asgradient flow. Probabilistic Dependency Graphs.A PDG is a di- rected (hyper)graph whose arcs carry probabilistic and",
+        "unicode_plain": "verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the gradient off. It is known asgradient flow. Probabilistic Dependency Graphs.A PDG is a di- rected (hyper)graph whose arcs carry probabilistic and"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "verified that expθ0(tX) = y(t)for all t≥ 0. Putting all the pieces together: the mapt7→exp θ(t∇Θf(Θ)) is the smooth path beginning at θ that follows the gradient off. It is known asgradient flow. Probabilistic Dependency Graphs.A PDG is a di- rected (hyper)graph whose arcs carry probabilistic and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "= (X,A, Θ={Θa}a∈A,P={Pa}a∈A)is a directed hyper- graph( X,A )whose nodes X are variables, and whose arcs a∈ A are each associated with a parameter space Θa and a mapPa : Θa ×VS a → ∆VTa that gives a cpd Pa(Ta|Sa; θ)over a’s target variables given values of its sources and a parameter settingθ∈Θ a.",
+        "unicode_plain": "= (X,A, Θ={Θa}a∈A,P={Pa}a∈A)is a directed hyper- graph( X,A )whose nodes X are variables, and whose arcs a∈ A are each associated with a parameter space Θa and a mapPa : Θa ×VS a → ∆VTa that gives a cpd Pa(Ta|Sa; θ)over a’s target variables given values of its sources and a parameter settingθ∈Θ a."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= (X,A, Θ={Θa}a∈A,P={Pa}a∈A)is a directed hyper- graph( X,A )whose nodes X are variables, and whose arcs a∈ A are each associated with a parameter space Θa and a mapPa : Θa ×VS a → ∆VTa that gives a cpd Pa(Ta|Sa; θ)over a’s target variables given values of its sources and a parameter settingθ∈Θ a."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "the parameters: a joint setting θ = ( θa)a∈A yields a concrete unweighted PDGM = M(θ)—which, at a syntactic level, is just a collection of cpds. When constructing PDGs from known cpds (e.g.,p(Y|X )), we use the mathematical symbol representing that cpd (e.g., p) for both the arca and its associated cpdPa.",
+        "unicode_plain": "the parameters: a joint setting θ = ( θa)a∈A yields a concrete unweighted PDGM = M(θ)—which, at a syntactic level, is just a collection of cpds. When constructing PDGs from known cpds (e.g.,p(Y|X )), we use the mathematical symbol representing that cpd (e.g., p) for both the arca and its associated cpdPa."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the parameters: a joint setting θ = ( θa)a∈A yields a concrete unweighted PDGM = M(θ)—which, at a syntactic level, is just a collection of cpds. When constructing PDGs from known cpds (e.g.,p(Y|X )), we use the mathematical symbol representing that cpd (e.g., p) for both the arca and its associated cpdPa."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "a concrete unweighted PDGM = M(θ)—which, at a syntactic level, is just a collection of cpds. When constructing PDGs from known cpds (e.g.,p(Y|X )), we use the mathematical symbol representing that cpd (e.g., p) for both the arca and its associated cpdPa. We typically depict (parametric) PDGs in graphical",
+        "unicode_plain": "a concrete unweighted PDGM = M(θ)—which, at a syntactic level, is just a collection of cpds. When constructing PDGs from known cpds (e.g.,p(Y|X )), we use the mathematical symbol representing that cpd (e.g., p) for both the arca and its associated cpdPa. We typically depict (parametric) PDGs in graphical"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "a concrete unweighted PDGM = M(θ)—which, at a syntactic level, is just a collection of cpds. When constructing PDGs from known cpds (e.g.,p(Y|X )), we use the mathematical symbol representing that cpd (e.g., p) for both the arca and its associated cpdPa. We typically depict (parametric) PDGs in graphical"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "Θa = {θ0} is a singleton containing only the default value. Conversely, a parametric PDG may be viewed as a PDG by adding eachΘa as an explicit variable. PDG Semantics and Inconsistency.The power of PDGs comes from their semantics, which sew their (possibly inconsistent) cpds and confidences together",
+        "unicode_plain": "Θa = {θ0} is a singleton containing only the default value. Conversely, a parametric PDG may be viewed as a PDG by adding eachΘa as an explicit variable. PDG Semantics and Inconsistency.The power of PDGs comes from their semantics, which sew their (possibly inconsistent) cpds and confidences together"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Θa = {θ0} is a singleton containing only the default value. Conversely, a parametric PDG may be viewed as a PDG by adding eachΘa as an explicit variable. PDG Semantics and Inconsistency.The power of PDGs comes from their semantics, which sew their (possibly inconsistent) cpds and confidences together"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "OIncM(µ) := X S a→T∈A βa I D \u0010 µ(T, S)",
+        "unicode_plain": "OIncM(µ) := X S a→T∈A βa I D \u0010 µ(T, S)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "OIncM(µ) := X S a→T∈A βa I D \u0010 µ(T, S)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page3_13",
+      "presentation": {
+        "latex": "where I D(p∥q ) = Ex∼p[log p(x) q(x) ]. This quantity can be thought of as the excess cost of using codes opti- mized for our beliefsP weighted by the confidenceβ we have in them, when in factX ∼µ . If β> 0, then OIncM(µ) = 0if and only if µ satisfies the constraints",
+        "unicode_plain": "where I D(p∥q ) = Ex∼p[log p(x) q(x) ]. This quantity can be thought of as the excess cost of using codes opti- mized for our beliefsP weighted by the confidenceβ we have in them, when in factX ∼µ . If β> 0, then OIncM(µ) = 0if and only if µ satisfies the constraints"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where I D(p∥q ) = Ex∼p[log p(x) q(x) ]. This quantity can be thought of as the excess cost of using codes opti- mized for our beliefsP weighted by the confidenceβ we have in them, when in factX ∼µ . If β> 0, then OIncM(µ) = 0if and only if µ satisfies the constraints"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page3_14",
+      "presentation": {
+        "latex": "OIncM(µ) = 0if and only if µ satisfies the constraints imposed by every cpd ofP. Intuitively, the cpds of P are inconsistent when constraints are not simulta- neously satisfiable, in which case theobservational inconsistency ⟨ ⟨M⟩ ⟩0 := inf µ OIncM(µ)is an important measure of the magnitude of the unavoidable internal",
+        "unicode_plain": "OIncM(µ) = 0if and only if µ satisfies the constraints imposed by every cpd ofP. Intuitively, the cpds of P are inconsistent when constraints are not simulta- neously satisfiable, in which case theobservational inconsistency ⟨ ⟨M⟩ ⟩0 := inf µ OIncM(µ)is an important measure of the magnitude of the unavoidable internal"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "OIncM(µ) = 0if and only if µ satisfies the constraints imposed by every cpd ofP. Intuitively, the cpds of P are inconsistent when constraints are not simulta- neously satisfiable, in which case theobservational inconsistency ⟨ ⟨M⟩ ⟩0 := inf µ OIncM(µ)is an important measure of the magnitude of the unavoidable internal"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

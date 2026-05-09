@@ -1,0 +1,177 @@
+ABSTRACT
+Answering complex questions about textual narratives requires reasoning over
+both stated context and the world knowledge that underlies it. However, pre-
+trained language models (LM), the foundation of most modern QA systems, do
+not robustly represent latent relationships between concepts, which is necessary
+for reasoning. While knowledge graphs (KG) are often used to augment LMs with
+structured representations of world knowledge, it remains an open question how
+to effectively fuse and reason over the KG representations and the language con-
+text, which provides situational constraints and nuances. In this work, we propose
+GREASE LM, a new model that fuses encoded representations from pretrained
+LMs and graph neural networks over multiple layers of modality interaction op-
+erations. Information from both modalities propagates to the other, allowing lan-
+guage context representations to be grounded by structured world knowledge, and
+allowing linguistic nuances (e.g., negation, hedging) in the context to inform the
+graph representations of knowledge. Our results on three benchmarks in the com-
+monsense reasoning ( i.e., CommonsenseQA, OpenbookQA) and medical ques-
+tion answering ( i.e., MedQA-USMLE) domains demonstrate that G REASE LM
+can more reliably answer questions that require reasoning over both situational
+constraints and structured knowledge, even outperforming models 8× larger.1
+1 I NTRODUCTION
+Question answering is a challenging task that requires complex reasoning over both explicit con-
+straints described in the textual context of the question, as well as unstated, relevant knowledge
+about the world (i.e., knowledge about the domain of interest). Recently, large pretrained language
+models ﬁne-tuned on QA datasets have become the dominant paradigm in NLP for question answer-
+ing tasks (Khashabi et al., 2020). After pretraining on an extreme-scale collection of general text
+corpora, these language models learn to implicitly encode broad knowledge about the world, which
+they are able to leverage when ﬁne-tuned on a domain-speciﬁc downstream QA task. However,
+despite the strong performance of this two-stage learning procedure on common benchmarks, these
+models struggle when given examples that are distributionally different from examples seen during
+ﬁne-tuning (McCoy et al., 2019). Their learned behavior often relies on simple (at times spurious)
+patterns to offer shortcuts to an answer, rather than robust, structured reasoning that effectively fuses
+the explicit information provided by the context and implicit external knowledge (Marcus, 2018).
+On the other hand, massive knowledge graphs (KG), such as Freebase (Bollacker et al., 2008), Wiki-
+data (Vrande ˇci´c & Kr ¨otzsch, 2014), ConceptNet (Speer et al., 2017), and Yago (Suchanek et al.,
+2007) capture such external knowledge explicitly using triplets that capture relationships between
+entities. Previous research has demonstrated the signiﬁcant role KGs can play in structured rea-
+soning and query answering (Ren et al., 2020; 2021; Ren & Leskovec, 2020). However, extending
+these reasoning advantages to general QA (where questions and answers are expressed in natural
+language and not easily mapped to strict logical queries) requires ﬁnding the right integration of
+knowledge from the KG with the information and constraints provided by the QA example. Prior
+1All code, data and pretrained models are available at https://github.com/snap-stanford/
+GreaseLM.
+1
+arXiv:2201.08860v1  [cs.CL]  21 Jan 2022
+Published as a conference paper at ICLR 2022
+KG Retrieval[INT] If it is notused for hair, a round brush is an example of what?  [SEP] art supplies  [SEP] painting
+AtLocation
+roundbrush
+hairbrushRelatedToAtLocation
+UsedForUsedFor
+ChoiceEntityQuestionEntity
+artsupply
+Interaction Node
+hair
+LM Layer
+Cross-modal Fuser
+GreaseLMLayer
+GreaseLM Layer ×𝑀
+Uni-modalEncoder LM Layer
+MInt
+GNN Layer
+ℎ!(#$!)ℎ&(#$!)ℎ'()(#$!)···
+ℎ!(#) ℎ&(#)
+$ℎ'()(#)
+···
+ℎ'()(#)
+𝑒'()(#$!)𝑒!(#$!)𝑒*(#$!)···
+̃𝑒'()(#)
+𝑒!(#) 𝑒*(#)···
+𝑒'()(#)
+LM LayerGNN Layer
+ℎ!(#+!)
+ℎ&(#+!)
+$ℎ'()(#+!)
+···
+ℎ'()(#+!)
+̃𝑒'()(#+!)
+𝑒!(#+!)
+𝑒*(#+!)···
+𝑒'()(#+!)
+Int
+Pooling
+Answer Selection
+MLP
+×𝑁
+······[INT]Ifit[SEP]
+GreaseLMLayer
+⠇
+⠇
+[INT]Int
+MInt
+Figure 1: GREASE LM Architecture . The textual context is appended with a special interaction
+token and passed through N LM-based unimodal encoding layers. Simultaneously, a local KG of
+relevant knowledge is extracted and connected to an interaction node. In the later G REASE LM lay-
+ers, the language representation continues to be updated through LM layers and the KG is processed
+using a GNN, simulating reasoning over its knowledge. In each layer, after each modality’s repre-
+sentation is updated, the representations of the interaction token and node are pulled, concatenated,
+and passed through a modality interaction (MInt) unit to mix their representations. In subsequent
+layers, the mixed information from the interaction elements mixes with their respective modalities,
+allowing knowledge from the KG to affect the representations of individual tokens, and context from
+language to affect ﬁne-grained entity knowledge representations in the GNN.
+methods propose various ways to leverage both modalities ( i.e., expressive large language models
+and structured KGs) for improved reasoning (Mihaylov & Frank, 2018; Lin et al., 2019; Feng et al.,
+2020). However, these methods typically fuse the two modalities in a shallow and non-interactive
+manner, encoding both separately and fusing them at the output for a prediction, or using one to
+augment the input of the other. Consequently, previous methods demonstrate restricted capacity to
+exchange useful information between the two modalities. It remains an open question how to effec-
+tively fuse the KG and LM representations in a truly uniﬁed manner, where the two representations
+can interact in a non-shallow way to simulate structured, situational reasoning.
+In this work, we present G REASE LM, a new model that enables fusion and exchange of informa-
+tion from both the LM and KG in multiple layers of its architecture (see Figure 1). Our proposed
+GREASE LM consists of an LM that takes as input the natural language context, as well as a graph
+neural network (GNN) that reasons over the KG. After each layer of the LM and GNN, we design
+an interactive scheme to bidirectionally transfer the information from each modality to the other
+through specially initialized interaction representations ( i.e., interaction token for the LM; interac-
+tion node for the GNN). In such a way, all the tokens in the language context receive information
+from the KG entities through the interaction token and the KG entities indirectly interact with the
+tokens through the interaction node. By such a deep integration across all layers, G REASE LM en-
+ables joint reasoning over both the language context and the KG entities under a uniﬁed framework
+agnostic to the speciﬁc language model or graph neural network, so that both modalities can be
+contextualized by the other.
+GREASE LM demonstrates signiﬁcant performance gains across different LM architectures. We
+perform experiments on several standard QA benchmarks: CommonsenseQA, OpenbookQA and
+MedQA-USMLE, which require external knowledge across different domains (commonsense rea-
+soning and medical reasoning) and use different KGs (ConceptNet and Disease Database). Across
+both domains, GREASE LM outperforms comparably-sized prior QA models, including strong ﬁne-
+2
+Published as a conference paper at ICLR 2022
+tuned LM baselines (by 5.5%, 6.6%, and 1.3%, respectively) and state-of-the-art KG+LM models
+(by 0.9%, 1.8%, and 0.5%, respectively) on the three competitive benchmarks. Furthermore, with
+the deep fusion of both modalities, GREASE LM exhibits strong performance over baselines on ques-
+tions that exhibit textual nuance, such as resolving multiple constraints, negation, and hedges, and
+which require effective reasoning over both language context and KG.
+2 R ELATED WORK
+Integrating KG information has become a popular research area for improving neural QA systems.
+Some works explore using two-tower models to answer questions, where a graph representation
+of knowledge and language representation are fused with no interaction between them (Wang et al.,
+2019). Other works seek to use one modality to ground the other, such as using an encoded represen-
+tation of a linked KG to augment the textual representation of a QA example ( e.g., Knowledgeable
+Reader, Mihaylov & Frank, 2018; KagNet, Lin et al., 2019; KT-NET, Yang et al., 2019). Others re-
+verse the ﬂow of information and use a representation of the text ( e.g., ﬁnal layer of LM) to provide
+an augmentation to a graph reasoning model over an extracted KG for the example ( e.g., MHGRN,
+Feng et al., 2020; Lv et al., 2020). In all of these settings, however, the interaction between both
+modalities is limited as information between them only ﬂows one way.
+More recent approaches explore deeper integrations of both modalities. Certain approaches learn to
+access implicit knowledge encoded in LMs (Bosselut et al., 2019; Petroni et al., 2019; Hwang et al.,
+2021) by training on structured KG data, and then use the LM to generate local KGs that can be
+used for QA (Wang et al., 2020; Bosselut et al., 2021). However, these approaches discard the static
+KG once they train the LM on its facts, losing important structure that can guide reasoning. More
+recently, QA-GNN (Yasunaga et al., 2021) proposed to jointly update the LM and GNN represen-
+tations via message passing. However, they use a single pooled representation of the LM to seed
+the textual component of this joint structure, limiting the updates that can be made to the textual
+representation. In contrast to prior works, we propose to make individual token representations in
+the LM and node representations in the GNN mix for multiple layers, enabling representations of
+both modalities to reﬂect particularities of the other (e.g., knowledge grounds language; language
+nuances speciﬁes which knowledge is important). Simultaneously, we retain the individual structure
+of both modalities, which we demonstrate improves QA performance substantially (§5).
+Additionally, some works explore integrating knowledge graphs with language models in the pre-
+training stage. However, much like for QA, the modality interaction is typically limited to knowl-
+edge feeding language (Zhang et al., 2019; Shen et al., 2020; Yu et al., 2020), rather than designing
+interactions across multiple layers. Sun et al. (2020)’s work is perhaps most similar, but they do not
+use the same interaction bottleneck, requiring high-precision entity mention spans for linking, and
+they limit expressivity through shared modality parameters for the LM and KG.
+3 P ROPOSED APPROACH : G REASE LM
+In this work, we augment large-scale language models (Devlin et al., 2019; Liu et al., 2019; Lan
+et al., 2020; Liu et al., 2021) with graph reasoning modules over KGs. Our method, G REASE LM
+(depicted in Figure 1), consists of two stacked components: (1) a set of unimodal LM layers which
+learn an initial representation of the input tokens, and (2) a set of upper cross-modal G REASE LM
+layers which learn to jointly represent the language sequence and linked knowledge graph, allowing
+textual representations formed from the underlying LM layers and a graph representation of the KG
+to mix with one another. We denote the number of LM layers asN, and the number of GREASE LM
+layers asM. The total number of layers in our model isN +M.
+Notation. In the task ofmultiple choice question answering (MCQA), a generic MCQA-type dataset
+consists of examples with a context paragraph c, a question q and a candidate answer set A, all
+expressed in text. In this work, we also assume access to an external knowledge graph (KG) G that
+provides background knowledge that is relevant to the content of the multiple choice questions.
+Given a QA example (c,q,A), and the KGG as 

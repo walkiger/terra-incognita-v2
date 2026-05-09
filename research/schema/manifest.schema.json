@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://terra-incognita.local/schema/research-manifest-v0.json",
+  "title": "Research PDF extraction manifest (v0)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "document_id",
+    "source_pdf",
+    "layers",
+    "updated_at"
+  ],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "document_id": {
+      "type": "string",
+      "description": "Lowercase ingest slug plus optional '_' + UTC batch token YYYYMMDD‹T›HHMMSS‹Z›. Default ingest uses uppercase T/Z (strftime); `--ts-lowercase` on `pdf_ingest_slug.py` emits lowercase t/z. Both are accepted here.",
+      "pattern": "^(?:[a-z0-9_-]+|[a-z0-9_-]+_[0-9]{8}[Tt][0-9]{6}[Zz])$"
+    },
+    "source_pdf": {
+      "type": "string",
+      "description": "Repo-relative path to the PDF under research/, typically research/incoming/<file>.pdf"
+    },
+    "title_hint": {
+      "type": "string",
+      "description": "Optional human title inferred from cover or metadata"
+    },
+    "pdf_sha256": {
+      "type": "string",
+      "description": "SHA-256 digest of the source PDF bytes (hex, lowercase). Preferred over embedding the same value only inside `notes` (orch R1 / Implementierung.research.md).",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC recommended"
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["L0", "L1", "L2", "L3", "L4"],
+      "properties": {
+        "L0": { "$ref": "#/$defs/layerState" },
+        "L1": { "$ref": "#/$defs/layerState" },
+        "L2": { "$ref": "#/$defs/layerState" },
+        "L3": { "$ref": "#/$defs/layerState" },
+        "L4": { "$ref": "#/$defs/layerState" }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form maintainer notes"
+    }
+  },
+  "$defs": {
+    "layerState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pending", "in_progress", "complete", "failed", "skipped"]
+        },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "reason": {
+          "type": "string",
+          "description": "Required when status is skipped or failed"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Repo-relative paths to outputs"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "skipped" } },
+            "required": ["status"]
+          },
+          "then": { "required": ["reason"] }
+        },
+        {
+          "if": {
+            "properties": { "status": { "const": "failed" } },
+            "required": ["status"]
+          },
+          "then": { "required": ["reason"] }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://terra-incognita.local/schema/research-l4-formulas-v0.json",
+  "title": "Research L4 formula supplement (sidecar to l4_analysis.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "document_id", "formulas"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "l4_formulas_v0"
+    },
+    "document_id": {
+      "type": "string",
+      "description": "Must match sibling manifest.json document_id and batch slug rules.",
+      "pattern": "^(?:[a-z0-9_-]+|[a-z0-9_-]+_[0-9]{8}[Tt][0-9]{6}[Zz])$"
+    },
+    "extracted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC completion time for this artifact."
+    },
+    "notes": {
+      "type": "string",
+      "description": "e.g. why formulas array is empty, OCR limits, ambiguity."
+    },
+    "formulas": {
+      "type": "array",
+      "description": "All non-trivial numbered or prose-critical equations worth filtering on.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "presentation",
+          "semantic_role",
+          "rationale",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable within document, e.g. eq_3 or loss_contrastive_v1.",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "presentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["latex", "unicode_plain"],
+            "properties": {
+              "latex": {
+                "type": "string",
+                "description": "LaTeX without surrounding delimiters acceptable."
+              },
+              "unicode_plain": {
+                "type": "string",
+                "description": "Unicode approximation for grep/search."
+              }
+            }
+          },
+          "semantic_role": {
+            "type": "string",
+            "enum": [
+              "objective",
+              "loss",
+              "constraint",
+              "definition",
+              "update_rule",
+              "regularizer",
+              "probabilistic_model",
+              "energy",
+              "kernel",
+              "embedding_map",
+              "other"
+            ]
+          },
+          "symbols": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["symbol", "description"],
+              "properties": {
+                "symbol": { "type": "string" },
+                "description": { "type": "string" },
+                "unit": { "type": "string" }
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "pages": {
+                "type": "array",
+                "items": { "type": "integer", "minimum": 1 }
+              },
+              "section_path": {
+                "type": "string",
+                "description": "Heading breadcrumbs, e.g. 3.2 Contrastive loss."
+              },
+              "equation_label": {
+                "type": "string",
+                "description": "Paper's label if any, e.g. (7)."
+              },
+              "verbatim_snippet": {
+                "type": "string",
+                "maxLength": 1200,
+                "description": "Short literal quote from PDF text layer supporting the parse."
+              }
+            }
+          },
+          "rationale": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["why_this_form"],
+            "properties": {
+              "why_this_form": {
+                "type": "string",
+                "description": "Why the authors chose this formulation (per paper); not model invention."
+              },
+              "assumptions": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "alternatives_considered": {
+                "type": "string",
+                "description": "If the paper discusses alternative objectives or simplifications."
+              }
+            }
+          },
+          "links_to_claims": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Optional cross-refs to ids in l4_analysis.json claims array if present."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"]
+          }
+        }
+      }
+    }
+  }
+}

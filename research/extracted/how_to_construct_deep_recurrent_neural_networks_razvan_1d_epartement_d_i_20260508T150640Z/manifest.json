@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z",
+  "source_pdf": "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/source.pdf",
+  "title_hint": "How to Construct Deep Recurrent Neural Networks Razvan 1D´epartement d’Informatique et de Recherche Op´erationelle, Universit´e de Montr´eal,",
+  "updated_at": "2026-05-08T15:10:50Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:06:40Z",
+      "artifacts": [
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/source.pdf",
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:50Z",
+      "artifacts": [
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:50Z",
+      "artifacts": [
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:50Z",
+      "artifacts": [
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:50Z",
+      "artifacts": [
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/l4_analysis.json",
+        "research/extracted/how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=2d517627b4b6284f46939a99463c501d23c108513c8b39ca64cfe13408236cc4; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "2d517627b4b6284f46939a99463c501d23c108513c8b39ca64cfe13408236cc4"
+}

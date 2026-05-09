@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z",
+  "source_pdf": "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/source.pdf",
+  "title_hint": "Generative Augmented Flow Networks Ling Pan1∗ Dinghuai Zhang1 Aaron Courville1 Longbo Huang2",
+  "updated_at": "2026-05-08T15:10:27Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:14Z",
+      "artifacts": [
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/source.pdf",
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:27Z",
+      "artifacts": [
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:27Z",
+      "artifacts": [
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:27Z",
+      "artifacts": [
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:27Z",
+      "artifacts": [
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/l4_analysis.json",
+        "research/extracted/generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=2ae21ab9c099117d3415a2528c12d9507104efcf412d29d246d5ad149c1d1208; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "2ae21ab9c099117d3415a2528c12d9507104efcf412d29d246d5ad149c1d1208"
+}

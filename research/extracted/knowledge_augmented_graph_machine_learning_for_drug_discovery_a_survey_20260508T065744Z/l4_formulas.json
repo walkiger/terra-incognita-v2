@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:15Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "𝐀=00⋯1000…01⋮10⋮01⋱……⋮⋮0110𝐗=0.44.4⋯30.39.1…6⋮0.10.7⋮01.8⋱……⋮61 Graph Node attribute matrixAdjacency matrix Vector based representations qNode property predictionqLink predictionqGraph property predictionqGraph modification/generationqEtc. (a) (b)",
+        "unicode_plain": "𝐀=00⋯1000…01⋮10⋮01⋱……⋮⋮0110𝐗=0.44.4⋯30.39.1…6⋮0.10.7⋮01.8⋱……⋮61 Graph Node attribute matrixAdjacency matrix Vector based representations qNode property predictionqLink predictionqGraph property predictionqGraph modification/generationqEtc. (a) (b)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝐀=00⋯1000…01⋮10⋮01⋱……⋮⋮0110𝐗=0.44.4⋯30.39.1…6⋮0.10.7⋮01.8⋱……⋮61 Graph Node attribute matrixAdjacency matrix Vector based representations qNode property predictionqLink predictionqGraph property predictionqGraph modification/generationqEtc. (a) (b)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page5_2",
+      "presentation": {
+        "latex": "Definition 1 (Graph). A graph with 𝑛 nodes can be formally represented as G = (V, E) , which consists of 𝑛 nodes 𝑣 ∈ V and |V | = 𝑛. E ⊆ V × V denotes the set of edges, where 𝑒𝑢,𝑣 denotes the edge between 𝑢 and 𝑣. Node attribute vector x𝑢 ∈ R𝑑 describes side information and metadata of node 𝑢. The node attribute matrix X ∈ R𝑛×𝑑 contains attribute vectors for all nodes in the graph. Similarly, edge",
+        "unicode_plain": "Definition 1 (Graph). A graph with 𝑛 nodes can be formally represented as G = (V, E) , which consists of 𝑛 nodes 𝑣 ∈ V and |V | = 𝑛. E ⊆ V × V denotes the set of edges, where 𝑒𝑢,𝑣 denotes the edge between 𝑢 and 𝑣. Node attribute vector x𝑢 ∈ R𝑑 describes side information and metadata of node 𝑢. The node attribute matrix X ∈ R𝑛×𝑑 contains attribute vectors for all nodes in the graph. Similarly, edge attributes x𝑢,𝑣 ∈ R𝜏 for edge 𝑒𝑢,𝑣 can"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Definition 1 (Graph). A graph with 𝑛 nodes can be formally represented as G = (V, E) , which consists of 𝑛 nodes 𝑣 ∈ V and |V | = 𝑛. E ⊆ V × V denotes the set of edges, where 𝑒𝑢,𝑣 denotes the edge between 𝑢 and 𝑣. Node attribute vector x𝑢 ∈ R𝑑 describes side information and metadata of node 𝑢. The node attribute matrix X ∈ R𝑛×𝑑 contains attribute vectors for all nodes in the graph. Similarly, edge attributes x𝑢,𝑣 ∈ R𝜏 for edge 𝑒𝑢,𝑣 can"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page5_3",
+      "presentation": {
+        "latex": "𝑛 nodes 𝑣 ∈ V and |V | = 𝑛. E ⊆ V × V denotes the set of edges, where 𝑒𝑢,𝑣 denotes the edge between 𝑢 and 𝑣. Node attribute vector x𝑢 ∈ R𝑑 describes side information and metadata of node 𝑢. The node attribute matrix X ∈ R𝑛×𝑑 contains attribute vectors for all nodes in the graph. Similarly, edge attributes x𝑢,𝑣 ∈ R𝜏 for edge 𝑒𝑢,𝑣 can be taken together to form an edge attribute matrix X𝑒 ∈ R𝑚×𝜏 . A ",
+        "unicode_plain": "𝑛 nodes 𝑣 ∈ V and |V | = 𝑛. E ⊆ V × V denotes the set of edges, where 𝑒𝑢,𝑣 denotes the edge between 𝑢 and 𝑣. Node attribute vector x𝑢 ∈ R𝑑 describes side information and metadata of node 𝑢. The node attribute matrix X ∈ R𝑛×𝑑 contains attribute vectors for all nodes in the graph. Similarly, edge attributes x𝑢,𝑣 ∈ R𝜏 for edge 𝑒𝑢,𝑣 can be taken together to form an edge attribute matrix X𝑒 ∈ R𝑚×𝜏 . A path from node 𝑢1 to node 𝑢𝑘 is a sequence of"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑛 nodes 𝑣 ∈ V and |V | = 𝑛. E ⊆ V × V denotes the set of edges, where 𝑒𝑢,𝑣 denotes the edge between 𝑢 and 𝑣. Node attribute vector x𝑢 ∈ R𝑑 describes side information and metadata of node 𝑢. The node attribute matrix X ∈ R𝑛×𝑑 contains attribute vectors for all nodes in the graph. Similarly, edge attributes x𝑢,𝑣 ∈ R𝜏 for edge 𝑒𝑢,𝑣 can be taken together to form an edge attribute matrix X𝑒 ∈ R𝑚×𝜏 . A path from node 𝑢1 to node 𝑢𝑘 is a sequence of"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page5_4",
+      "presentation": {
+        "latex": "that are at a distance less than or equal to 𝜆 from node 𝑢, that is, N 𝜆 (𝑢) = {𝑣 | 0 < 𝑑 (𝑢, 𝑣) ≤ 𝜆} where 𝑑 (·) denotes the shortest path distance. Subgraph S𝜆 (𝑢) = (V 𝜆 S, E𝜆 S) is a subset of a graph G, where V𝜆 S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆",
+        "unicode_plain": "that are at a distance less than or equal to 𝜆 from node 𝑢, that is, N 𝜆 (𝑢) = {𝑣 | 0 < 𝑑 (𝑢, 𝑣) ≤ 𝜆} where 𝑑 (·) denotes the shortest path distance. Subgraph S𝜆 (𝑢) = (V 𝜆 S, E𝜆 S) is a subset of a graph G, where V𝜆 S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "that are at a distance less than or equal to 𝜆 from node 𝑢, that is, N 𝜆 (𝑢) = {𝑣 | 0 < 𝑑 (𝑢, 𝑣) ≤ 𝜆} where 𝑑 (·) denotes the shortest path distance. Subgraph S𝜆 (𝑢) = (V 𝜆 S, E𝜆 S) is a subset of a graph G, where V𝜆 S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page5_5",
+      "presentation": {
+        "latex": "the shortest path distance. Subgraph S𝜆 (𝑢) = (V 𝜆 S, E𝜆 S) is a subset of a graph G, where V𝜆 S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆 S := ((V 𝜆",
+        "unicode_plain": "the shortest path distance. Subgraph S𝜆 (𝑢) = (V 𝜆 S, E𝜆 S) is a subset of a graph G, where V𝜆 S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆 S := ((V 𝜆"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the shortest path distance. Subgraph S𝜆 (𝑢) = (V 𝜆 S, E𝜆 S) is a subset of a graph G, where V𝜆 S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆 S := ((V 𝜆"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page5_6",
+      "presentation": {
+        "latex": "S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆 S := ((V 𝜆 S × V𝜆 S) ∩ E) . Graph analysis in Artificial Intelligence era. To process the graph-structured data, Graph Machine Learning",
+        "unicode_plain": "S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆 S := ((V 𝜆 S × V𝜆 S) ∩ E) . Graph analysis in Artificial Intelligence era. To process the graph-structured data, Graph Machine Learning"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "S := (N 𝜆 (𝑢) ∪ {𝑢}) and E𝜆 S := ((V 𝜆 S × V𝜆 S) ∩ E) . Graph analysis in Artificial Intelligence era. To process the graph-structured data, Graph Machine Learning"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page5_7",
+      "presentation": {
+        "latex": "S := ((V 𝜆 S × V𝜆 S) ∩ E) . Graph analysis in Artificial Intelligence era. To process the graph-structured data, Graph Machine Learning (GML) [228] is designed as a predominant approach to finding effective data representations from graph data. The principal target of GML is to extract the desired features of a graph as informative representations that can be easily",
+        "unicode_plain": "S := ((V 𝜆 S × V𝜆 S) ∩ E) . Graph analysis in Artificial Intelligence era. To process the graph-structured data, Graph Machine Learning (GML) [228] is designed as a predominant approach to finding effective data representations from graph data. The principal target of GML is to extract the desired features of a graph as informative representations that can be easily"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "S := ((V 𝜆 S × V𝜆 S) ∩ E) . Graph analysis in Artificial Intelligence era. To process the graph-structured data, Graph Machine Learning (GML) [228] is designed as a predominant approach to finding effective data representations from graph data. The principal target of GML is to extract the desired features of a graph as informative representations that can be easily"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page5_8",
+      "presentation": {
+        "latex": "Definition 3 (Graph Representation Learning). Given a graph G = (V, E) , the task of graph representation learning (or equivalently graph embedding) is to learn a mapping function to generate vector representations for graph elements 𝑓𝐺𝑅𝐿 : G → Z, such that the learned representations ( Z), i.e., embeddings, can capture the structure and semantics of graph. The mapping function’s effectiveness is ",
+        "unicode_plain": "Definition 3 (Graph Representation Learning). Given a graph G = (V, E) , the task of graph representation learning (or equivalently graph embedding) is to learn a mapping function to generate vector representations for graph elements 𝑓𝐺𝑅𝐿 : G → Z, such that the learned representations ( Z), i.e., embeddings, can capture the structure and semantics of graph. The mapping function’s effectiveness is evaluated by applying Z to different downstream"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Definition 3 (Graph Representation Learning). Given a graph G = (V, E) , the task of graph representation learning (or equivalently graph embedding) is to learn a mapping function to generate vector representations for graph elements 𝑓𝐺𝑅𝐿 : G → Z, such that the learned representations ( Z), i.e., embeddings, can capture the structure and semantics of graph. The mapping function’s effectiveness is evaluated by applying Z to different downstream"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page5_9",
+      "presentation": {
+        "latex": "Definition 4 (Graph Machine Learning Training). Given a graph G = (V, E) and a graph representation learning model 𝑓𝐺𝑅𝐿 . The graph machine learning training mechanism can be defined as finding the parameters 𝜃 Manuscript submitted to ACM",
+        "unicode_plain": "Definition 4 (Graph Machine Learning Training). Given a graph G = (V, E) and a graph representation learning model 𝑓𝐺𝑅𝐿 . The graph machine learning training mechanism can be defined as finding the parameters 𝜃 Manuscript submitted to ACM"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Definition 4 (Graph Machine Learning Training). Given a graph G = (V, E) and a graph representation learning model 𝑓𝐺𝑅𝐿 . The graph machine learning training mechanism can be defined as finding the parameters 𝜃 Manuscript submitted to ACM"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "L (𝑓𝐺𝑅𝐿 𝜃 (G) , Y) (1) where 𝜃 represents the trainable parameters of 𝑓𝐺𝑅𝐿 , L is the loss function to measure the differences between predictions and training signals. The training signal Y can be a discrete one-hot/multi-hot vector (classification) or a continuous vector (regression, link prediction). Different loss functions ( e.g., cross-entropy loss, mean squared error loss, discriminator los",
+        "unicode_plain": "L (𝑓𝐺𝑅𝐿 𝜃 (G) , Y) (1) where 𝜃 represents the trainable parameters of 𝑓𝐺𝑅𝐿 , L is the loss function to measure the differences between predictions and training signals. The training signal Y can be a discrete one-hot/multi-hot vector (classification) or a continuous vector (regression, link prediction). Different loss functions ( e.g., cross-entropy loss, mean squared error loss, discriminator loss, etc.) and optimisation approaches (Adam optimiser, SGD optimiser, Adagrad optimiser, etc.)"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "L (𝑓𝐺𝑅𝐿 𝜃 (G) , Y) (1) where 𝜃 represents the trainable parameters of 𝑓𝐺𝑅𝐿 , L is the loss function to measure the differences between predictions and training signals. The training signal Y can be a discrete one-hot/multi-hot vector (classification) or a continuous vector (regression, link prediction). Different loss functions ( e.g., cross-entropy loss, mean squared error loss, discriminator loss, etc.) and optimisation approaches (Adam optimiser, SGD optimiser, Adagrad optimiser, etc.)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page6_11",
+      "presentation": {
+        "latex": "𝑎 = Aggregate𝑁 ({A𝑢,𝑣 , h(ℓ −1) 𝑢 | 𝑢 ∈ N (𝑣)}) , m(ℓ ) 𝑣 = Aggregate𝐼 ({A𝑢,𝑣 | 𝑢 ∈ N (𝑣)}) h(ℓ −1) 𝑣 , h(ℓ )",
+        "unicode_plain": "𝑎 = Aggregate𝑁 ({A𝑢,𝑣 , h(ℓ −1) 𝑢 | 𝑢 ∈ N (𝑣)}) , m(ℓ ) 𝑣 = Aggregate𝐼 ({A𝑢,𝑣 | 𝑢 ∈ N (𝑣)}) h(ℓ −1) 𝑣 , h(ℓ )"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑎 = Aggregate𝑁 ({A𝑢,𝑣 , h(ℓ −1) 𝑢 | 𝑢 ∈ N (𝑣)}) , m(ℓ ) 𝑣 = Aggregate𝐼 ({A𝑢,𝑣 | 𝑢 ∈ N (𝑣)}) h(ℓ −1) 𝑣 , h(ℓ )"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page6_12",
+      "presentation": {
+        "latex": "𝑣 = Aggregate𝐼 ({A𝑢,𝑣 | 𝑢 ∈ N (𝑣)}) h(ℓ −1) 𝑣 , h(ℓ ) 𝑣 = Combine(m(ℓ ) 𝑎 , m(ℓ ) 𝑣 )",
+        "unicode_plain": "𝑣 = Aggregate𝐼 ({A𝑢,𝑣 | 𝑢 ∈ N (𝑣)}) h(ℓ −1) 𝑣 , h(ℓ ) 𝑣 = Combine(m(ℓ ) 𝑎 , m(ℓ ) 𝑣 )"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑣 = Aggregate𝐼 ({A𝑢,𝑣 | 𝑢 ∈ N (𝑣)}) h(ℓ −1) 𝑣 , h(ℓ ) 𝑣 = Combine(m(ℓ ) 𝑎 , m(ℓ ) 𝑣 )"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page6_13",
+      "presentation": {
+        "latex": "𝑣 = Combine(m(ℓ ) 𝑎 , m(ℓ ) 𝑣 ) (2) where Aggregate𝑁 (·) and Aggregate𝐼 (·) are two parameterised functions to learn during training process. m(ℓ ) 𝑎 is",
+        "unicode_plain": "𝑣 = Combine(m(ℓ ) 𝑎 , m(ℓ ) 𝑣 ) (2) where Aggregate𝑁 (·) and Aggregate𝐼 (·) are two parameterised functions to learn during training process. m(ℓ ) 𝑎 is"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑣 = Combine(m(ℓ ) 𝑎 , m(ℓ ) 𝑣 ) (2) where Aggregate𝑁 (·) and Aggregate𝐼 (·) are two parameterised functions to learn during training process. m(ℓ ) 𝑎 is"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_0",
+      "presentation": {
+        "latex": "function, at the ℓ-th iteration/layer. Note that we initialise h(0) 𝑣 = x𝑣 and the final learned representation vector after 𝐿 iterations/layers z𝑣 = h(𝐿) 𝑣 . We illustrate the learning mechanism of GNN models in Figure 2-(d). In addition, in terms of the representation of an entire graph (zG), we can apply a READOUT function to aggregate node representations of Manuscript submitted to ACM",
+        "unicode_plain": "function, at the ℓ-th iteration/layer. Note that we initialise h(0) 𝑣 = x𝑣 and the final learned representation vector after 𝐿 iterations/layers z𝑣 = h(𝐿) 𝑣 . We illustrate the learning mechanism of GNN models in Figure 2-(d). In addition, in terms of the representation of an entire graph (zG), we can apply a READOUT function to aggregate node representations of Manuscript submitted to ACM"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(0)",
+        "verbatim_snippet": "function, at the ℓ-th iteration/layer. Note that we initialise h(0) 𝑣 = x𝑣 and the final learned representation vector after 𝐿 iterations/layers z𝑣 = h(𝐿) 𝑣 . We illustrate the learning mechanism of GNN models in Figure 2-(d). In addition, in terms of the representation of an entire graph (zG), we can apply a READOUT function to aggregate node representations of Manuscript submitted to ACM"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

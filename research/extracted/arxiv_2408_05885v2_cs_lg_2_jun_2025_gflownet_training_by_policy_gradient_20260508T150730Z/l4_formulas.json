@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z",
+  "extracted_at": "2026-05-08T15:08:49Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "to be graded1. In a DAG, G := (S, A), modeling a MDP of GFlowNets: s ∈ S denotes a state, a ∈ A denotes a directed edge/action (s→s′), and A ⊆ S ×S . Assuming that there is a topological ordering S0, . . . ,ST for T + 1disjoint subsets of S, then S =ST t=0 St and an element of St is denoted",
+        "unicode_plain": "to be graded1. In a DAG, G := (S, A), modeling a MDP of GFlowNets: s ∈ S denotes a state, a ∈ A denotes a directed edge/action (s→s′), and A ⊆ S ×S . Assuming that there is a topological ordering S0, . . . ,ST for T + 1disjoint subsets of S, then S =ST t=0 St and an element of St is denoted"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "to be graded1. In a DAG, G := (S, A), modeling a MDP of GFlowNets: s ∈ S denotes a state, a ∈ A denotes a directed edge/action (s→s′), and A ⊆ S ×S . Assuming that there is a topological ordering S0, . . . ,ST for T + 1disjoint subsets of S, then S =ST t=0 St and an element of St is denoted"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "of S, then S =ST t=0 St and an element of St is denoted as st. We use {≺, ≻, ⪯, ⪰} to define the partial orders between states; for example, ∀t < t ′ : st ≺ st′. Further- more, being acyclic means ∀(s→s′) ∈ A : s ≺ s′. Being graded means A can be decomposed intoST −1",
+        "unicode_plain": "of S, then S =ST t=0 St and an element of St is denoted as st. We use {≺, ≻, ⪯, ⪰} to define the partial orders between states; for example, ∀t < t ′ : st ≺ st′. Further- more, being acyclic means ∀(s→s′) ∈ A : s ≺ s′. Being graded means A can be decomposed intoST −1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "of S, then S =ST t=0 St and an element of St is denoted as st. We use {≺, ≻, ⪯, ⪰} to define the partial orders between states; for example, ∀t < t ′ : st ≺ st′. Further- more, being acyclic means ∀(s→s′) ∈ A : s ≺ s′. Being graded means A can be decomposed intoST −1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "t=0 St and an element of St is denoted as st. We use {≺, ≻, ⪯, ⪰} to define the partial orders between states; for example, ∀t < t ′ : st ≺ st′. Further- more, being acyclic means ∀(s→s′) ∈ A : s ≺ s′. Being graded means A can be decomposed intoST −1 t=0 At where",
+        "unicode_plain": "t=0 St and an element of St is denoted as st. We use {≺, ≻, ⪯, ⪰} to define the partial orders between states; for example, ∀t < t ′ : st ≺ st′. Further- more, being acyclic means ∀(s→s′) ∈ A : s ≺ s′. Being graded means A can be decomposed intoST −1 t=0 At where"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 St and an element of St is denoted as st. We use {≺, ≻, ⪯, ⪰} to define the partial orders between states; for example, ∀t < t ′ : st ≺ st′. Further- more, being acyclic means ∀(s→s′) ∈ A : s ≺ s′. Being graded means A can be decomposed intoST −1 t=0 At where"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "t=0 At where At T At′̸=t = ∅ and at ∈ A t represents an edge (st→st+1) connecting St and St+1. For any s ∈ S , we denote its par- ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote",
+        "unicode_plain": "t=0 At where At T At′̸=t = ∅ and at ∈ A t represents an edge (st→st+1) connecting St and St+1. For any s ∈ S , we denote its par- ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 At where At T At′̸=t = ∅ and at ∈ A t represents an edge (st→st+1) connecting St and St+1. For any s ∈ S , we denote its par- ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "T At′̸=t = ∅ and at ∈ A t represents an edge (st→st+1) connecting St and St+1. For any s ∈ S , we denote its par- ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively.",
+        "unicode_plain": "T At′̸=t = ∅ and at ∈ A t represents an edge (st→st+1) connecting St and St+1. For any s ∈ S , we denote its par- ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "T At′̸=t = ∅ and at ∈ A t represents an edge (st→st+1) connecting St and St+1. For any s ∈ S , we denote its par- ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to",
+        "unicode_plain": "ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ent set by P aG(s) = {s′|(s′→s) ∈ A} and its child set Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub-",
+        "unicode_plain": "Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Ch G(s) = {s′|(s→s′) ∈ A}. Correspondingly, We denote the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we",
+        "unicode_plain": "the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the edge sets that start and end ats as A(s) = {(s→s′)|s′ ∈ Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we have two special states: the initial state s0 with P a(s0) = ∅",
+        "unicode_plain": "Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we have two special states: the initial state s0 with P a(s0) = ∅"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Ch G(s)} and ˙A(s) = {(s′→s)|s′ ∈ P aG(s)} respectively. The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we have two special states: the initial state s0 with P a(s0) = ∅"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we have two special states: the initial state s0 with P a(s0) = ∅ and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and",
+        "unicode_plain": "The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we have two special states: the initial state s0 with P a(s0) = ∅ and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "The complete trajectory set is defined as T = {τ = (s0 → · · · → sT )|∀(s→s′) ∈ τ : (s→s′) ∈ A} . We use τ⪰s to denote the sub-trajectory that starts at s, and τ≥t the sub- trajectory that starts at st. For the DAG G in GFlowNets, we have two special states: the initial state s0 with P a(s0) = ∅ and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "have two special states: the initial state s0 with P a(s0) = ∅ and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x)",
+        "unicode_plain": "have two special states: the initial state s0 with P a(s0) = ∅ and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "have two special states: the initial state s0 with P a(s0) = ∅ and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ ,",
+        "unicode_plain": "and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ ,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "and S0 = {s0}, and the final state sf with Ch(sf) = ∅ and ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ ,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page2_13",
+      "presentation": {
+        "latex": "ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ , where Z ∗ = P",
+        "unicode_plain": "ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ , where Z ∗ = P"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ST = {sf }. Furthermore, the terminal state set, ST −1 cov- ers the object set X with a reward function R : X → R+. 2.1. GFlowNets GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ , where Z ∗ = P"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page2_14",
+      "presentation": {
+        "latex": "GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ , where Z ∗ = P x∈X R(x) and directly computing Z ∗ is often challenging with typically large |X |. To achieve this, GFlowNets define a measure F (τ) : T → R+, termed",
+        "unicode_plain": "GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ , where Z ∗ = P x∈X R(x) and directly computing Z ∗ is often challenging with typically large |X |. To achieve this, GFlowNets define a measure F (τ) : T → R+, termed"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "GFlowNets aim at efficient sampling from P ∗(x) := R(x) Z∗ , where Z ∗ = P x∈X R(x) and directly computing Z ∗ is often challenging with typically large |X |. To achieve this, GFlowNets define a measure F (τ) : T → R+, termed"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

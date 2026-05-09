@@ -1,0 +1,90 @@
+Abstract
+Generative Flow Networks (GFlowNets) are
+powerful samplers for compositional objects
+that, by design, sample proportionally to a
+given non-negative reward. Nonetheless, in
+practice, they often struggle to explore the
+reward landscape evenly: trajectories toward
+easy-to-reach regions dominate training,
+while hard-to-reach modes receive vanishing
+or uninformative gradients, leading to poor
+coverage of high-reward areas. We address
+this imbalance with Boosted GFlowNets, a
+method that sequentially trains an ensemble
+of GFlowNets, each optimizing a residual re-
+ward that compensates for the mass already
+captured by previous models. This residual
+principle reactivates learning signals in un-
+derexplored regions and, under mild assump-
+tions, ensures a monotone non-degradation
+property: adding boosters cannot worsen the
+learned distribution and typically improves
+it. Empirically, Boosted GFlowNets achieve
+substantially better exploration and sam-
+ple diversity on multimodal synthetic bench-
+marks and peptide design tasks, while pre-
+serving the stability and simplicity of stan-
+dard trajectory-balance training.
+1 Introduction
+GenerativeFlowNetworks(GFlowNets)learnstochas-
+tic policies over directed acyclic state graphs to sample
+structured objects in proportion to unnormalized ter-
+minal rewards (Bengio et al., 2021). This framework
+makes it possible to discover diverse candidates even
+Proceedings of the 29thInternational Conference on Arti-
+ficial Intelligence and Statistics (AISTATS) 2026, Tangier,
+Morocco. PMLR: Volume 300. Copyright 2026 by the au-
+thor(s).
+when feedback is only available at the end of a tra-
+jectory, and has shown promise in scientific discovery
+and combinatorial design. In practice, however, train-
+ing on large, multimodal targets is often bottlenecked
+byexploration: the learner rapidly concentrates on
+easy-to-reach modes while leaving hard-to-reach ones
+severely undercovered, limiting both coverage and
+generalization.
+This imbalance emerges even when the forward pol-
+icy nominally has full support. Once easy-to-reach
+modes are discovered, on-policy sampling concentrates
+data collection there, driving the training loss down
+in those regions while further reinforcing their visita-
+tion. Trajectories leading to hard-to-reach modes are
+visited only sporadically, and their gradients shrink
+in proportion to their low visitation probability, cre-
+ating a self-reinforcing loop that amplifies mode im-
+balance. Off-policy updates alleviate this feedback to
+some extent by decoupling data collection from the
+current policy, yet they still fail to allocate sufficient
+learning signal to rarely visited regions, yielding high-
+variance or weakly informative updates. As a result,
+both regimes struggle to recover remote modes, espe-
+cially under long horizons or sparse rewards, despite
+theoretical convergence guarantees.
+We proposeBoosted GFlowNets(BGFNs), a sequen-
+tial training framework where each new stage is
+trained on the residual reward that remains after ac-
+counting for the distribution already induced by pre-
+vious stages. This simple mechanism redistributes
+probability mass away from saturated regions and to-
+ward undercovered modes without modifying the core
+GFlowNet machinery or introducing auxiliary explo-
+ration modules. As illustrated in Figure 1, successive
+boosters progressively capture uncovered modes, while
+additional boosters introduced after convergence learn
+to allocate negligible flow, preserving correctness of
+the ensemble.
+Contributions.Our main contributions are:
+arXiv:2511.09677v2  [cs.LG]  14 Mar 2026
+Boosted GFlowNets: Improving Exploration via Sequential Learning
+(a)Single GFN
+ (b)First Booster
+ (c)Second Booster
+ (d)Final Ensemble
+Figure 1:Illustration of Boosted GFlowNets on a multimodal target. The single GFN covers only the nearest mode.
+The first and second boosters progressively capture additional modes, while later boosters learn to allocate negligible
+flow. Combined, the ensemble recovers the full target distribution.
+1. We introduceBoosted GFlowNets, a sequential
+training scheme that improves exploration by re-
+allocating probability mass from easy-to-reach
+modes toward hard-to-reach ones, without alter-
+ing the core GFlowNet framework.

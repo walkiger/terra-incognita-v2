@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z",
+  "source_pdf": "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/source.pdf",
+  "title_hint": "Generative Flow Networks for Discrete Probabilistic Modeling Dinghuai Zhang 1 Nikolay Malkin 1 Zhen Liu 1 Alexandra V olokhova1 Aaron Courville 1 Y oshua",
+  "updated_at": "2026-05-08T15:10:36Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:00Z",
+      "artifacts": [
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/source.pdf",
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:36Z",
+      "artifacts": [
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:36Z",
+      "artifacts": [
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:36Z",
+      "artifacts": [
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:36Z",
+      "artifacts": [
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/l4_analysis.json",
+        "research/extracted/generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=5434; pdf_sha256=d7641efcae9c30574afe8cd910764d8389a8572e3ea32cd2c2956276610c1db8; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "d7641efcae9c30574afe8cd910764d8389a8572e3ea32cd2c2956276610c1db8"
+}

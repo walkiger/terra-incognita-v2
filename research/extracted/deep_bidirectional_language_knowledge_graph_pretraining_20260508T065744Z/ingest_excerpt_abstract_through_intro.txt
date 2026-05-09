@@ -1,0 +1,170 @@
+Abstract
+Pretraining a language model (LM) on text has been shown to help various down-
+stream NLP tasks. Recent works show that a knowledge graph (KG) can comple-
+ment text data, offering structured background knowledge that provides a useful
+scaffold for reasoning. However, these works are not pretrained to learn a deep
+fusion of the two modalities at scale, limiting the potential to acquire fully joint
+representations of text and KG. Here we propose DRAGON (Deep Bidirectional
+Language-Knowledge Graph Pretrai ning), a self-supervised method to pretrain
+a deeply joint language-knowledge foundation model from text and KG at scale.
+Speciﬁcally, our model takes pairs of text segments and relevant KG subgraphs
+as input and bidirectionally fuses information from both modalities. We pretrain
+this model by unifying two self-supervised reasoning tasks, masked language mod-
+eling and KG link prediction. DRAGON outperforms existing LM and LM+KG
+models on diverse downstream tasks including question answering across gen-
+eral and biomedical domains, with +5% absolute gain on average. In particular,
+DRAGON achieves strong performance on complex reasoning about language and
+knowledge (+10% on questions involving long contexts or multi-step reasoning)
+and low-resource QA (+8% on OBQA and RiddleSense), and new state-of-the-art
+results on various BioNLP tasks. Our code and trained models are available at
+https://github.com/michiyasunaga/dragon.
+1 Introduction
+Pretraining learns self-supervised representations from massive raw data to help various downstream
+tasks [1]. Language models (LMs) pretrained on large amounts of text data, such as BERT [ 2] and
+GPTs [3], have shown strong performance on many natural language processing (NLP) tasks. The
+success of these models comes from deeply interactive (contextualized) representations of input
+tokens learned at scale via self-supervision [ 2, 4]. Meanwhile, large knowledge graphs (KGs), such
+as Freebase [5], Wikidata [6] and ConceptNet [ 7], can provide complementary information to text
+data. KGs offer structured background knowledge by representing entities as nodes and relations
+between them as edges, and also offer scaffolds for structured, multi-step reasoning about entities
+[8, 9, 10, 11] (§ 3.4.1). The dual strengths of text data and KGs motivate research in pretraining
+deeply interactive representations of the two modalities at scale.
+How to effectively combine text and KGs for pretraining is an open problem and presents challenges.
+Given text and KG, we need both (i) a deeply bidirectional model for the two modalities to interact,
+and (ii) a self-supervised objective to learn joint reasoning over text and KG at scale. Several existing
+works [12, 13, 14, 15, 16] propose methods for self-supervised pretraining, but they fuse text and KG
+in a shallow or uni-directional manner. Another line of work [ 8, 9] proposes bidirectional models for
+text and KG, but these models focus on ﬁnetuning on labeled downstream tasks and do not perform
+36th Conference on Neural Information Processing Systems (NeurIPS 2022).
+¡¢ADODNIJOPN@?AJM
+C<DM<MJPI?=MPNCDN<I
+@S<HKG@JA¡¢¡¢
+ ! <sIg
+g]hhZ]G<Y[E]GIg
+khQ][ <sIg
+K<DIODIB
+/*/$*)
+MJPI?=MPNC
+C<DM=MPNC
+ '/ *
+. *-. *-
+<MONPKKGT
+IO@M<>ODJIIJ?@
+C<DM
+¤¤¤¤¤¤ADO
+ !I<G Q[X+gIGI<G
+.& '$)&+- $/$*)
+r"
+нннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннн
+)*2' " "-+#
+.IjgQIp<Y¡¢ADODNIJOPN@?
+AJMC<DM<MJPI?
+=MPNCDN<I@S<HKG@JA
+<MONPKKGD@N
+*'
+ǖ
+<MONPKKGD@NMJPI?=MPNC<OC<DM /IYNhkdIgpQhIG$DWIEjQpI
+IO
+K<DIODIB
+/*/$*)
+MJPI?=MPNC
+C<DM=MPNC
+ '/ *
+. *-. *-
+<MONPKKGT
+IO@M<>ODJIIJ?@
+C<DM
+/*/$*)
+ 3/
+2/
+ 3/*-+0.
+ ! <sIg"" <sIg
+![j
+¤¤¤IO¤¤¤r!
+¤¤¤IO¤¤¤
+- /-$)
+Figure 1: Overview of our approach, DRAGON . Left: Given raw data of a text corpus and a large knowledge graph, we
+create aligned (text, local KG) pairs by sampling a text segment from the corpus and extracting a relevant subgraph from the
+KG (§2.1). As the structured knowledge in KG can ground the text and the text can provide the KG with rich context for
+reasoning, we aim to pretrain a language-knowledge model jointly from the text-KG pairs ( DRAGON ). Right: To model the
+interactions over text and KG, DRAGON uses a cross-modal encoder that bidirectionally exchanges information between them
+to produce fused text token and KG node representations (§ 2.2). To pretrain DRAGON jointly on text and KG, we unify two
+self-supervised reasoning tasks: (1) masked language modeling, which masks some tokens in the input text and then predicts
+them, and (2) link prediction, which holds out some edges from the input KG and then predicts them. This joint objective
+encourages text and KG to mutually inform each other, facilitating the model to learn joint reasoning over text and KG (§ 2.3).
+self-supervised learning. Consequently, existing methods may have limited their potential to model
+and learn deep interactions over text and KG.
+To address both of the above challenges and fully unify the strengths of text and KG, we propose
+DRAGON (Deep Bidirectional Language-Knowledge Graph Pretrai ning), an approach that performs
+deeply bidirectional, self-supervised pretraining of a language-knowledge model from text and KG.
+DRAGON has two core components: a cross-modal model that bidirectionally fuses text and KG, and
+a bidirectional self-supervised objective that learns joint reasoning over text and KG. Concretely,
+as in Figure 1, we take a text corpus and a KG as raw data, and create inputs for the model by
+sampling a text segment from the corpus and extracting a relevant subgraph from the KG via entity
+linking, obtaining a ( text, local KG ) pair. We use a cross-modal model to encode this input into
+fused representations, where each layer of the model encodes the text with an LM and the KG with
+a graph neural network (GNN), and fuses the two with a bidirectional modality interaction module
+(GreaseLM [9]). We pretrain this model by unifying two self-supervised reasoning tasks: (1) masked
+language modeling (MLM), which masks and predicts tokens in the input text, and (2) link prediction,
+which drops and predicts edges in the input KG. The intuition is that by combining the two tasks,
+MLM makes the model use the text jointly with structured knowledge in the KG to reason about
+masked tokens in the text (e.g., in Figure 1, using the “round brush”–“art supply” multi-hop path
+from the KG helps), and link prediction makes the model use the KG structure jointly with the textual
+context to reason about missing links in the KG (e.g., recognizing that “round brush could be used
+for hair” from the text helps). This joint objective thus enables text to be grounded by KG structure
+and KG to be contextualized by text simultaneously, producing a deeply-uniﬁed language-knowledge
+pretrained model where information ﬂows bidirectionally between text and KG for reasoning.
+We pretrain DRAGON in two domains: a general domain, using the Book corpus and ConceptNet
+KG [7] (§3), and a biomedical domain, using the PubMed corpus and UMLS KG [ 17] (§4). We
+show that DRAGON improves on existing LM and LM+KG models on diverse downstream tasks
+across domains. For the general domain, DRAGON outperforms RoBERTa [18], our base LM without
+KGs, on various commonsense reasoning tasks such as CSQA, OBQA, RiddleSense and HellaSwag,
+with +8% absolute accuracy gain on average. For the biomedical domain, DRAGON improves on
+the previous best LM, BioLinkBERT [ 19], and sets a new state of the art on BioNLP tasks such
+as MedQA and PubMedQA, with +3% accuracy gain. In particular, DRAGON exhibits notable
+improvements on QA tasks involving complex reasoning (+10% gain on multi-step, negation, hedge,
+or long context reasoning) and on downstream tasks with limited training data (+8% gain). These
+results show that our deep bidirectional self-supervision over text and KG produces signiﬁcantly
+improved language-knowledge representations compared to existing models.
+2
+1.1 Related work
+Knowledge-augmented LM pretraining. Knowledge integration is active research for improving
+LMs. One line of works is retrieval-augmented LMs [ 20, 21, 22], which retrieve relevant text from a
+corpus and integrate it into LMs as additional knowledge. Orthogonal to these works, we focus on
+using knowledge bases as background knowledge, to ground reasoning about entities and facts.
+Closest to our work are works that integrate knowledge bases in LM pretraining. One line of research
+aims to add entity features to LMs [12, 23, 24]; Some works use the KG entity information or structure
+to create additional training signals [ 13, 25, 14, 26, 27, 28]; Several works add KG triplet information
+directly to the LM input [ 29, 16, 15, 30, 31]. While these methods have achieved substantial progress,
+they typically propagate information between text and KG in a shallow or uni-directional (e.g.,
+KG to text) manner, which might limit the potential to perform fully joint reasoning over the two
+modalities. To improve on the above works, we propose to bidirectionally interact text and KG
+via a deep cross-modal model and joint self-supervision, so that text and KG are grounded and
+contextualized by each other. We ﬁnd that this improves model performance on various reasoning
+tasks (§3). Another distinction is that existing works in this space typically focus on adding entity- or
+triplet-level knowledge from KGs to LMs, and focus on solving entity/relation classiﬁcation tasks.
+Our work signiﬁcantly expands this scope in that we use larger KG subgraphs (200 nodes) as input to
+enable richer contextualization between KG and text, and we achieve performance improvements on
+a broader set of NLP tasks including QA, reasoning and text classiﬁcation tasks.
+KG-augmented question answering. V arious works designed KG-augmented reasoning models
+for question answering [ 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]. In particular, recent works such
+as QA-GNN [ 8] and GreaseLM [ 9] suggest that a KG can scaffold reasoning about entities with
+its graph structure, and help for complex question answering (e.g., negation, multi-hop reasoning).
+These works typically focus on training or ﬁnetuning models on particular QA datasets. In contrast,
+we generalize this and integrate KG-augmented reasoning into general-purpose pretraining. Our
+motivation is that self-supervised pretraining allows the model to learn from larger and more diverse
+data, helping to learn richer interactions between text and KGs and to acquire more diverse reasoning
+abilities beyond speciﬁc QA tasks. We ﬁnd that our proposed pretraining approach ( DRAGON ) offers
+signiﬁcant boosts over the baseline QA models (e.g. GreaseLM) on diverse downstream tasks (§ 3).
+This opens a new research avenue in scaling up various carefully-designed QA models to pretraining.
+KG representation learning. Our link prediction task used in pretraining is motivated by research
+in KG representation learning. Link prediction is a fundamental task in KGs [ 43, 44], and various
+works study methods to learn KG entity and relation embeddings for link prediction, such as TransE
+[45], DistMult [46] and RotatE [ 47]. Several works additionally use textual data or pretrained LMs
+to help learn KG embeddings and link prediction [ 48, 49, 50, 51, 52, 53]. While these works focus
+on the KG-side representations, we extend the scope and use the KG-side objective (link prediction)
+jointly with a text-side objective (language modeling) to train a mutually-interactive text-KG model.
+2 Deep Bidirectional Language-Knowledge Graph Pretraining (D RAGON )
+We propose DRAGON , an approach that performs deeply bidirectional, self-supervised pretraining of
+a language-knowledge model from text and KG. Speciﬁcally, as illustrated in Figure 1, we take a text
+corpus and a large knowledge graph as raw data, and create inpu

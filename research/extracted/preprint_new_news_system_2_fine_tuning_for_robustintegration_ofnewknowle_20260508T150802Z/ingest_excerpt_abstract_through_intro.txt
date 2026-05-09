@@ -1,0 +1,51 @@
+ABSTRACT
+Humans and intelligent animals can internalize new information and accurately
+internalize their implications to perform downstream tasks. While large language
+models (LLMs) can achieve this through in-context learning (ICL) when the infor-
+mation (news) is explicitly given as context, adequately integrating the information
+into model weights via fine-tuning remains challenging. In this paper, we intro-
+duceNew News, a dataset composed of hypothetical yet plausible news spanning
+multiple domains (mathematics, coding, discoveries, leaderboards, events), ac-
+companied by downstream evaluation questions whose correct answers critically
+depend on understanding and internalizing the news. First, we demonstrate a
+substantial gap between naive fine-tuning and in-context learning (FT-ICL gap) on
+our dataset. To address this gap, we explore a suite of self-play data generation
+protocols — paraphrases, implications, and Self-QA — designed to
+distill the knowledge processed by the model with context into the weights of the
+model, which we termSystem-2 Fine-tuning(Sys2-FT). We systematically evaluate
+ICL and Sys2-FT performance across data domains and model scales with the
+Qwen 2.5 family of models. Our results demonstrate that the Self-QA protocol
+of Sys2-FT significantly improves models’ in-weight learning of the news while
+preserving general capabilities. Furthermore, we discover thecontextual shadow-
+ing effect, where training with the newsin contextfollowed by its rephrases or
+QAs catastrophically degrades learning of the news. Finally, we show preliminary
+evidence of an emerging scaling law of Sys2-FT.
+1 INTRODUCTION
+Learningnewknowledge in a consistent and continuous way is one of the most important cognitive
+abilities. While large language models (Brown et al., 2020; OpenAI, 2024a; Team, 2024b; Dubey
+et al., 2024; Yang et al., 2024) have been successful in crushing knowledge and problem-solving
+focused benchmarks (Hendrycks et al., 2021a;b; Rein et al., 2023), these benchmarks do not measure
+the ability to successfully adapt one’s belief when internalizing new information, which is arguably a
+hallmark of general intelligence. Interestingly, current models demonstrate impressive in-context
+learning abilities and can process novel information efficiently when the new information is given in
+context (Wei et al., 2023; Team, 2024a; Lampinen et al., 2022; Park et al., 2024); yet, it remains a
+challenge to consolidate the knowledge in weights (Snell et al., 2022; Berglund et al., 2024; Guan
+et al., 2025). For example, upon learning the news that Trump won the 2024 US election, most people
+can instinctively update their world models, propagate implications and react accordingly. Given such
+news as context, language models are able to process its implication adequately as well through its
+chain of thoughts; however, it is hard to distill these implications back into its weights via fine-tuning
+∗Equal Contribution
+1
+arXiv:2505.01812v3  [cs.CL]  14 Nov 2025
+Preprint
+(FT), as past works have shown the unreliability of fine-tuning as a knowledge injection technique
+(Mitchell et al., 2022a; Meng et al., 2022; Berglund et al., 2024).
+In this paper, we aim to set up the groundwork to systematically study integration of new information
+(“news”) into large language model weights.
+Our main contributions are as follows:
+1. New News, a dataset measuring the ability to integrate new information (Sec. 3). We
+carefully curateNew News, a dataset consisting of 75 hypothetical news and 375 downstream
+questions across 5 different domains: math, coding, discoveries, leaderboards and events.
+The questions measure how well the given news is internalized by evaluating complex
+downstreamimplications and consequences. This dataset clearly characterizes the gap
+between the naive FT and ICL across model scales.

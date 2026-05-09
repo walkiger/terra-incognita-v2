@@ -1,0 +1,591 @@
+Abstract
+Large language models (LLMs) have demon-
+strated impressive generative capabilities with
+the potential to innovate in medicine. However,
+the application of LLMs in real clinical settings
+remains challenging due to the lack of factual
+consistency in the generated content. In this
+work, we develop an augmented LLM frame-
+work, KG-Rank, which leverages a medical
+knowledge graph (KG) along with ranking and
+re-ranking techniques, to improve the factual-
+ity of long-form question answering (QA) in
+the medical domain. Specifically, when receiv-
+ing a question, KG-Rank automatically identi-
+fies medical entities within the question and re-
+trieves the related triples from the medical KG
+to gather factual information. Subsequently,
+KG-Rank innovatively applies multiple rank-
+ing techniques to refine the ordering of these
+triples, providing more relevant and precise in-
+formation for LLM inference. To the best of
+our knowledge, KG-Rank is the first applica-
+tion of KG combined with ranking models in
+medical QA specifically for generating long an-
+swers. Evaluation on four selected medical QA
+datasets demonstrates that KG-Rank achieves
+an improvement of over 18% in ROUGE-L
+score. Additionally, we extend KG-Rank to
+open domains, including law, business, music,
+and history, where it realizes a 14% improve-
+ment in ROUGE-L score, indicating the effec-
+tiveness and great potential of KG-Rank.
+1 Introduction
+Large language models (LLMs), such as GPT-
+4 (OpenAI, 2023) and LLaMa2 (Touvron et al.,
+2023), have demonstrated powerful generative ca-
+pabilities (Gao et al., 2023; Yang et al., 2024b).
+Despite their considerable potential in various do-
+mains, including medicine (Li et al., 2022a; Yang
+et al., 2023c; Ke et al., 2024; Yang et al., 2024a),
+their limited training on medical data raises con-
+cerns about the consistency of the generated con-
+tent with established medical facts (Yang et al.,
+2023b; Bi et al., 2024).
+To address this challenge without additional
+computational cost, previous research, such as Al-
+manac (Hiesinger et al., 2023) and ChatENT (Long
+et al., 2023), leverages external medical knowledge
+to enhance the accuracy and reliability of LLM-
+generated content. However, merely retrieving ex-
+ternal knowledge risks introducing irrelevant or
+unreliable information (Yang et al., 2024a), which
+can compromise the effectiveness of LLMs, and
+raise issues of credibility, data consistency, privacy,
+security, and legality. While previous studies have
+emphasized the advantages of utilizing external
+knowledge, they have overlooked a crucial ques-
+tion: How to better integrate external knowledge?
+In this work, we propose KG-Rank, an aug-
+mented framework that integrates a structured med-
+ical knowledge graph (KG) with ranking tech-
+niques into LLMs to achieve more accurate and re-
+liable long-form medical question-answering (QA).
+We first retrieve one-hop relations of related medi-
+cal entities from the medical KG (Unified Medical
+Language System (UMLS)) (Bodenreider, 2004).
+To retain relevant information from the KG, we
+then propose to apply ranking and re-ranking meth-
+ods to optimize the ordering of triplets.
+Specifically, we introduce three ranking tech-
+niques to improve the integration of LLM with KG
+by filtering irrelevant data, highlighting key infor-
+mation, and ensuring diversity. These techniques
+also streamline the process by reducing the number
+of triplets required for LLM inference. Addition-
+ally, we apply re-ranking models to reassess and
+emphasize the most relevant triplets, enhancing the
+factuality of KG-Rank in the long-form medical
+QA task.
+To summarize, our contributions are: (1) We
+propose KG-Rank, a KG-augmented LLM frame-
+work for the medical QA task. To the best of our
+knowledge, this is the first application of KG com-
+156
+bined with ranking techniques to enhance LLMs
+for medical QA with long answers. (2) We incorpo-
+rate different ranking and re-ranking techniques to
+eliminate noise and redundancy in the KG-retrieval
+stage. (3) We validate the effectiveness of KG-
+Rank on both medical and various open-domain
+QA tasks. All the data and code can be found at
+https://github.com/YangRui525/KG-Rank.
+2 Methodology
+As shown in Fig. 1, we introduce the KG-Rank
+(Knowledge Graph -Rank) framework for the long-
+form medical QA task.
+Atrial FibrillationHeart Failure
+Diabetes Mellitus...
+Query : A 56 year old male patientwith atrial fibrillation presents to theclinic. Given their history of heart
+failure, diabetes and PAD, what istheir risk of stroke? Should they beplaced on anticoagulation?
+Step 1: Entity Extraction and Mapping
+Step 2: Relation Retrieval and Triplet Ranking 
+UMLS
+Database
+One-hopRelations 
+Step 3: Re-Ranking 
+Step 4: Obtaining LLM Response
+Top- Triplets Top- Triplets
+Query + Answers
+Cross-Encoder
+Similarity
+Answer Expansion
+MMR
+ Triplet Ranking  
+LLMs
+Figure 1: An illustration of KG-Rank Framework.
+2.1 External Knowledge Graph
+We define the external KG as G = (V, E), where
+V represents the set of entities and E represents
+the set of structural relations. For the medical QA
+task, we choose UMLS as the primary medical
+KG. UMLS is a comprehensive repository of health
+and biomedical vocabularies, designed to promote
+information standardization and interoperability.
+The core component of UMLS, the Metathesaurus,
+contains over 3.8 million concepts and more than
+78 million relations, and supports 25 languages,
+providing extensive medical knowledge coverage
+to enhance LLMs. In UMLS, knowledge is rep-
+resented in the form of triples, which consist of
+two medical concepts and the relation between
+them. For example, in the triple (Myopia, clini-
+cally_associated_with, HYPERGLYCEMIA), "My-
+opia" and "HYPERGLYCEMIA" are medical con-
+cepts, while "clinically_associated_with" is the re-
+lation between them.
+2.2 Entity Extraction and Mapping
+In the first step, we extract key entities and find
+mappings from the external KG. Specifically, for
+the given question Q, we apply a Medical NER
+Prompt PMedNER to identify related medical entities
+EQ, and then we map each entity ei ∈ EQ to the
+corresponding entity in the knowledge graph G.
+The detailed prompt can be found in Appendix A.1.
+2.3 Relation Retrieval and Triplet Ranking
+After identifying the corresponding entities EQ′,
+we retrieve their one-hop relations from the KG
+(denoted as UMLS):
+EQ′ = {e′
+i ∈ V | ∃ei ∈ EQ, ei 7→ e′
+i}.
+Within UMLS, there exists extensive relational
+information, where one entity may be associated
+with thousands of one-hop relations. Consequently,
+to facilitate the extraction of the most relevant, we
+propose ranking methods. We encode the question
+Q and each triplet (e′
+i, r, e′
+j) into q, rij through
+UmlsBERT (Michalopoulos et al., 2021). Then,
+we explore three techniques for ranking the triplets:
+Similarity Ranking We compute the similarity
+score between the question embedding q and each
+relation embedding rij.
+Answer Expansion Ranking We first utilize
+LLMs to generate a hallucinatory answer A for the
+question Q , and then we encode the concatenation
+of [Q, A] to obtain text embedding t. Subsequently,
+we utilize the expanded question embedding t to
+search for the most similar triplets in vector space.
+The detailed prompt for answer expansion can be
+found in Appendix A.2.
+MMR Ranking This method is inspired by an in-
+formation extraction method Maximal Marginal
+Relevance (MMR) (Carbonell and Goldstein-
+Stewart, 1998). Initially, we identify the triplet
+with the highest similarity score to the question
+Q. For the remaining triplets, we dynamically ad-
+just their similarity scores based on the ones that
+157
+have already been selected. In this way, we could
+consider both relevancy and redundancy:
+w = wbase + δ · n,
+scoreij = sim(q, rij) − w · sim(rij, rsel).
+Where, w is an adjustable weight, with a base
+weight and δ as the incremental weight factor per
+selected triplet, n is the count of triplets that have
+been selected.
+Re-ranking After the ranking stage, we obtain an
+ordering of the triplets. We then employ a medical
+cross-encoder model, MedCPT (Jin et al., 2023), to
+re-rank them, ensuring that the most relevant triples
+are chosen. The re-ranked top-p triplets, combined
+with the task prompt, are input into LLMs for an-
+swer generation. The detailed prompt can be found
+in Appendix A.3.
+3 Experiments
+We conduct experiments on four selected medical
+QA datasets, in which the answers are free-text, as
+shown in Tab. 1. LiveQA (Abacha et al., 2017) con-
+sists of health questions submitted by consumers
+to the National Library of Medicine. It includes
+a training set with 634 QA pairs and a test set
+comprising 104 QA pairs, which is used for evalu-
+ation. ExpertQA (Malaviya et al., 2023) is a high-
+quality long-form QA dataset with 2177 questions
+spanning 32 fields, along with answers verified
+by domain experts. Among them, 504 medical
+questions (Med) and 96 biology (Bio) questions
+were used for evaluation. MedicationQA (Abacha
+et al., 2019) includes 690 drug-related consumer
+questions along with information retrieved from
+reliable websites and scientific papers. We eval-
+uate the generated answers using ROUGE (Lin,
+2004), BERTScore (Zhang et al., 2019), Mover-
+Score (Zhao et al., 2019) and BLEURT (Sellam
+et al., 2020).
+Dataset Sentence (Q) Word (Q) Sentence (A) Word (A)
+LiveQA 1.15 14.76 6.96 141.02ExpertQA-Bio 1.26 21.69 6.18 184.38ExpertQA-Med 1.37 22.19 5.96 180.55MedQA 1.02 7.36 3.38 71.48
+Table 1: Statistics on the average number of sentences
+and words across four medical datasets (Q: Question, A:
+Answer).
+3.1 Results
+As shown in Tab. 2, we evaluate GPT-4 and
+LLaMa2-13b across the following settings: zero-
+shot (ZS), and three proposed ranking techniques:
+Similarity Ranking (Sim), Answer Expansion
+Ranking (AE), and Maximal Marginal Relevance
+Ranking (MMR). Also with the Re-ranking (RR),
+which is on top of the Similarity Ranking.
+3.2 Datasets
+The results show that incorporating the knowledge
+graph and ranking techniques notably enhances per-
+formance in almost all benchmarks and evaluation
+metrics in the zero-shot setting, demonstrating the
+effectiveness of KG-Rank. Significantly, the RR
+method excels in the ExpertQA-Bio, ExpertQA-
+Med, and Medication QA datasets, particularly evi-
+dent in the over 18% increase in the ROUGE-L
+score for ExpertQA-Bio. While KG-Rank still
+shows effectiveness on LiveQA, the RR method
+does not show steady improvement compared to
+other ranking techniques. This inconsistency may
+arise since the answers in LiveQA are generated
+via automatic extraction methods, leading to issues
+with semantic coherence and disorganized formats.
+Moreover, the performance of the three ranking
+methodologies exhibited variability across various
+datasets, indicating their unique strengths and limi-
+tations in differing contexts.
+In assessing model performance, GPT-4 consis-
+tently surpasses LLaMa2-13b in both zero-shot and
+various ranking settings. Additionally, we evaluate
+the zero-shot performance of a medical LLM on
+these datasets in Section 4 (Medical LLM).
+4 Ablation Study and Analysis
+Medical LLM To further investigate the ca-
+pability of the medical LLM, we compare the
+zero-shot performance of LLaMa2-7b and baize-
+healthcare (Xu et al., 2023) without KG-Rank.
+Baize-healthcare, which is fine-tuned on LLaMa-
+7b using medical data, consistently outperforms
+LLaMa2-7b across all four datasets, as shown in
+Fig. 2. More comparison results can be found in
+Appendix B.1.
+Re-ranking Models We employ GPT-4 with sim-
+ilarity ranking as the final setting and compare
+two re-ranking models: the MedCPT cross-encoder
+model, trained on the extensive PubMed articles,
+and the Cohere (https://cohere.com) re-ranking
+model, designed for broader domain applications.
+As shown in Tab. 3, MedCPT steadily outperforms
+the Cohere re-rank model on all datasets, highlight-
+ing the importance of specialized re-rank models
+158
+Dataset Method GPT-4 LLaMA2-13b
+ROUGE-L BERTScore MoverScore BLEURTROUGE-L BERTScore MoverScore BLEURT
+LiveQA ZS 18.89 82.50 54.02 39.84 17.73 81.93 53.37 40.45Sim 19.35 83.01 54.08 40.47 18.52 82.78 53.79 40.59AE 19.24 82.95 54.04 40.15 18.45 82.60 53.70 39.80MMR 19.32 82.91 54.03 40.55 18.25 82.70 53.67 40.22RR 19.44 82.94 54.11 40.50 18.83 82.79 53.72 39.59
+ExpertQA-Bio ZS 23.00 84.50 56.15 44.53 23.26 84.38 55.58 44.65Sim 25.90 85.72 56.73 45.10 24.96 84.91 55.83 44.35AE 26.78 85.77 56.79 45.18 24.84 84.97 55.72 43.55MMR 26.54 85.76 56.77 44.93 25.40 85.08 55.98 44.04RR 27.20 85.83 57.11 45.91 25.79 85.18 56.17 45.20
+ExpertQA-Med ZS 25.45 85.11 56.50 45.98 24.86 84.89 55.74 46.32Sim 27.61 86.10 57.13 46.47 26.40 85.50 56.23 46.15AE 27.98 86.12 57.25 46.80 26.15 85.36 56.17 46.02MMR 27.78 86.22 57.28 46.84 26.42 85.57 56.24 46.41RR 28.08 86.30 57.32 47.00 27.49 85.80 56.58 46.47
+MedicationQA ZS 14.41 82.55 52.62 37.41 13.30 81.81 51.96 38.30Sim 16.05 83.56 53.23 37.60 14.60 82.73 52.47 38.38AE 16.13 83.46 53.23 37.87 14.19 82.50 52.33 37.90MMR 15.89 83.48 53.22 37.73 14.56 82.69 52.44 38.31RR 16.19 83.59 53.30 37.91 14.71 82.79 52.59 38.42
+Table 2: Automatic evaluation scores: we compare ROUGE-L, BERTScore, MoverScore, BLEURT on different
+settings. The superior scores among the same models are highlighted in bold.
+LiveQA Ep-Bio Ep-Med MedicationQA
+80.0
+82.0
+84.0
+86.0
+88.0
+81.8
+84.1 84.7
+81.8
+83.3
+85.3 85.7
+83.4
+LLaMa2-7b baize-healthcare
+Figure 2: BERTScore comparison: zero-shot setting
+with LLaMa2-7b and Baize-Healthcare. Ep stands for
+ExpertQA.
+in the medical field. Additional evaluations are
+provided in Appendix B.2.
+Dataset ROUGE-L BERTScore MoverScore BLEURT
+CohereLiveQA 18.72 82.94 54.08 40.07ExpertQA-Bio 26.08 85.81 56.93 45.70ExpertQA-Med 27.59 86.08 57.14 46.54MedicationQA 16.14 83.46 53.25 37.82
+MedCPTLiveQA 19.44 82.95 54.11 40.50ExpertQA-Bio27.20 85.83 57.11 45.91ExpertQA-Med28.08 86.30 57.32 46.84MedicationQA16.19 83.59 53.30 37.91
+Table 3: The performance of Cohere re-rank model and
+MedCPT in the re-ranking stage.
+Case Study To further analyze the generated
+content of the KG-Rank framework, a case study
+is presented in Fig. 3. When asked about ideal
+diet recommendations for a 53-year-old male with
+acute renal failure and hepatic failure, both pro-
+vide guidelines regarding protein intake. However,
+the original recommendation emphasizes ensuring
+adequate protein consumption (1.6-2.2 grams per
+kilogram), whereas the answer generated under the
+KG-Rank framework advises controlling protein
+intake (limited to about 0.8-1 gram per kilogram).
+The difference is critical for patients with acute
+renal and hepatic failure, where an inappropriate
+protein dosage, such as the higher range of 1.6-2.2
+grams per kilogram, could worsen the strain on
+already compromised kidneys and liver, potentially
+leading to escalated health issues. This case shows
+that KG-Rank is more factually correct in the gen-
+erated answer. More case studies can be found in
+the Appendix C.
+Question: What would be the ideal diet recommendations for a
+53 year old male with acute renal failure and hepatic failure?
+LLaMa2-13b: ...3. Protein intake: Provide adequate protein to
+support liver function and wound healing. The recommended
+daily intake of protein for a 53-year-old male is approximately
+1.6-2.2 grams per kilogram of body weight...
+LLaMa2-13b w KG-Rank:...1. Low protein intake: Protein
+intake should be limited to about 0.8-1.0 gram per kilogram of
+body weight per day, as excessive protein intake can
+exacerbate renal failure and liver disease...
+Figure 3: A case study from ExpertQA-Med: results
+from LLaMa2-13b and with KG-Rank.
+LLM-based Evaluation Although KG-Rank
+achieves significant improvements in ROUGE,
+BERTScore, MoverScore, and BLEURT, these au-
+tomatic scores may have limitations in evaluating
+the factuality of long-form medical QA. Therefore,
+we introduce GPT-4 score specifically for factuality
+159
+evaluation (Zheng et al., 2024). The evaluation cri-
+teria are designed by two resident physicians with
+over five years of experience, which can be found
+in Appendix A.4. As shown in Tab. 4, we choose
+GPT-4 as the vanilla model, and KG-Rank outper-
+forms the zero-shot setting across all datasets.
+Dataset Zero-Shot Tie KG-Rank
+LiveQA 0 43 61
+ExpertQA-Bio 0 43 52
+ExpertQA-Med 3 235 266
+MedQA 8 211 468
+Table 4: GPT-4 evaluation across four medical datasets.
+KG-Rank in Open Domain Additionally, to
+demonstrate the effectiveness of our KG-Rank,
+we extend it to the open domain by replacing
+UMLS with Wikipedia through the DBpedia API
+(https://www.dbpedia.org/). We conduct the
+experiment on Mintaka (Sen et al., 2022), which
+is a complex, natural, and multilingual dataset de-
+signed for experimenting with end-to-end question-
+answering models. We randomly select 1,000 pairs
+from the test set for evaluation. Under the enhance-
+ment of the KG-Rank framework, the accuracy
+increases from 60.40% to 61.90%. The detailed
+prompt can be found in Appendix A.5.
+We also conduct experiments in the domains
+of law, business, music, and history using the Ex-
+pertQA dataset. We employ GPT-4 as the vanilla
+model and use ROUGE-L, BERTScore, and Mover-
+Score for evaluation. As shown in Tab. 5, KG-Rank
+outperforms the baseline across all benchmarks.
+Building on these findings, the effectiveness of our
+framework is not limited to the medical domain
+but can also be applied to various other fields. For
+more case studies, please refer to Appendix C.
+5 Conclusion
+In this work, we propose KG-Rank, an enhanced
+LLM framework that integrates a medical KG and
+ranking techniques to improve the factuality of
+medical QA. As far as we know, KG-Rank is the
+first application of KG combined with ranking tech-
+niques for long-answer medical QA. Across four
+medical QA datasets, KG-Rank demonstrates over
+an 18% improvement in ROUGE-L score. Its ap-
+plication to open domains yields a 14% ROUGE-L
+score enhancement, underscoring KG-Rank’s ef-
+fectiveness and versatility.
+Setting ROUGE-L BERTScore MoverScore
+ExpertQA-Law
+Base 26.33 85.03 48.57
+KG-Rank 29.93 86.25 48.63
+ExpertQA-Business
+Base 21.78 84.46 48.92
+KG-Rank 24.20 85.42 49.10
+ExpertQA-Music
+Base 23.84 85.21 45.73
+KG-Rank 27.31 86.23 46.55
+ExpertQA-History
+Base 25.65 85.55 45.82
+KG-Rank 27.75 86.21 47.08
+Table 5: Base and KG-Rank performance in the open
+domain.
+Limitations
+In this research, we propose an LLM framework
+augmented by UMLS to improve the quality of
+the content generated. However, there are some
+limitations, which we will address in the next
+phase. Firstly, we plan to incorporate physician
+evaluations to validate the factual accuracy of KG-
+Rank’s answers. Secondly, we aim to assess the
+performance of more medical-specific base models
+on medical QA tasks. Lastly, while the ranking
+method may increase computational time, we rec-
+ognize the need to optimize its efficiency. We will
+consider graph-based methods (Yang et al., 2023a;
+Li et al., 2022b) and some efficiency methods (Feng
+et al., 2023).
+Ethical Considerations
+This research utilize public medical datasets solely
+for academic purposes, not for practical applica-
+tion. We employ GPT-4, LLaMa2-13b, LLaMa2-
+7b, baize-healthcare for text generation, ensuring
+that no harmful content was produced. Both the
+benchmark datasets and the model outputs are free
+of any individual privacy data.
+References
+Asma Ben Abacha, Eugene Agichtein, Yuval Pinter,
+and Dina Demner-Fushman. 2017. Overview of the
+medical question answering task at trec 2017 liveqa.
+In TREC, pages 1–12.
+Asma Ben Abacha, Yassine Mrabet, Mark Sharp,
+Travis R Goodwin, Sonya E Shooshan, and Dina
+Demner-Fushman. 2019. Bridging the gap between
+consumers’ medication questions and trusted an-
+swers. In MedInfo, pages 25–29.
+160
+Baolong Bi, Shenghua Liu, Lingrui Mei, Yiwei Wang,
+Pengliang Ji, and Xueqi Cheng. 2024. Decoding by
+contrasting knowledge: Enhancing llms’ confidence
+on edited facts.
+Olivier Bodenreider. 2004. The unified medical lan-
+guage system (umls): integrating biomedical termi-
+nology. Nucleic acids research, 32(suppl_1):D267–
+D270.
+Jaime G. Carbonell and Jade Goldstein-Stewart. 1998.
+The use of mmr, diversity-based reranking for re-
+ordering documents and producing summaries. In
+Annual International ACM SIGIR Conference on Re-
+search and Development in Information Retrieval.
+Aosong Feng, Irene Li, Yuang Jiang, and Rex Ying.
+2023. Diffuser: Efficient transformers with multi-
+hop attention diffusion for long sequences. In Thirty-
+Seventh AAAI Conference on Artificial Intelligence,
+AAAI 2023, Thirty-Fifth Conference on Innovative
+Applications of Artificial Intelligence, IAAI 2023,
+Thirteenth Symposium on Educational Advances in
+Artificial Intelligence, EAAI 2023, Washington, DC,
+USA, February 7-14, 2023 , pages 12772–12780.
+AAAI Press.
+Fan Gao, Hang Jiang, Moritz Blum, Jinghui Lu, Yuang
+Jiang, and Irene Li. 2023. Large language models on
+wikipedia-style survey generation: an evaluation in
+nlp concepts. arXiv preprint arXiv:2308.10410.
+William Hiesinger, Cyril Zakka, Akash Chaurasia, Ro-
+han Shad, Alex Dalal, Jennifer Kim, Michael Moor,
+Kevin Alexander, Euan Ashley, Jack Boyd, et al.
+2023. Almanac: Retrieval-augmented language mod-
+els for clinical medicine.
+Qiao Jin, Won Kim, Qingyu Chen, Donald C Comeau,
+Lana Yeganova, W John Wilbur, and Zhiyong Lu.
+2023. Medcpt: Contrastive pre-trained transformers
+with large-scale pubmed search logs for zero-shot
+biomedical information retrieval. Bioinformatics,
+39(11):btad651.
+Yu He Ke, Rui Yang, Sui An Lie, Taylor Xin Yi Lim,
+Hairil Rizal Abdullah, Daniel Shu Wei Ting, and Nan
+Liu. 2024. Enhancing diagnostic accuracy through
+multi-agent conversations: Using large language
+models to mitigate cognitive bias.
+Irene Li, Jessica Pan, Jeremy Goldwasser, Neha Verma,
+Wai Pan Wong, Muhammed Yavuz Nuzumlalı, Ben-
+jamin Rosand, Yixin Li, Matthew Zhang, David
+Chang, et al. 2022a. Neural natural language process-
+ing for unstructured data in electronic health records:
+A review. Computer Science Review, 46:100511.
+Irene Li, Linfeng Song, Kun Xu, and Dong Yu. 2022b.
+Variational graph autoencoding as cheap supervision
+for AMR coreference resolution. In Proceedings of
+the 60th Annual Meeting of the Association for Com-
+putational Linguistics (Volume 1: Long Papers), ACL
+2022, Dublin, Ireland, May 22-27, 2022, pages 2790–
+2800. Association for Computational Linguistics.
+Chin-Yew Lin. 2004. Rouge: A package for automatic
+evaluation of summaries. In Text summarization
+branches out, pages 74–81.
+Cai Long, Deepak Subburam, Kayle Lowe, André dos
+Santos, Jessica Zhang, Sang Hwang, Neil Saduka,
+Yoav Horev, Tao Su, David Cote, et al. 2023. Cha-
+tent: Augmented large language model for expert
+knowledge retrieval in otolaryngology-head and neck
+surgery. medRxiv, pages 2023–08.
+Chaitanya Malaviya, Subin Lee, Sihao Chen, Elizabeth
+Sieber, Mark Yatskar, and Dan Roth. 2023. Expertqa:
+Expert-curated questions and attributed answers.
+George Michalopoulos, Yuanxin Wang, Hussam Kaka,
+Helen Chen, and Alexander Wong. 2021. Umlsbert:
+Clinical domain knowledge augmentation of contex-
+tual embeddings using the unified medical language
+system metathesaurus.
+OpenAI. 2023. Gpt-4 technical report.
+Thibault Sellam, Dipanjan Das, and Ankur P Parikh.
+2020. Bleurt: Learning robust metrics for text gener-
+ation. arXiv preprint arXiv:2004.04696.
+Priyanka Sen, Alham Fikri Aji, and Amir Saffari.
+2022. Mintaka: A complex, natural, and multilingual
+dataset for end-to-end question answering.
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Al-
+bert, Amjad Almahairi, Yasmine Babaei, Nikolay
+Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti
+Bhosale, et al. 2023. Llama 2: Open founda-
+tion and fine-tuned chat models. arXiv preprint
+arXiv:2307.09288.
+Canwen Xu, Daya Guo, Nan Duan, and Julian McAuley.
+2023. Baize: An open-source chat model with
+parameter-efficient tuning on self-chat data. arXiv
+preprint arXiv:2304.01196.
+Boming Yang, Dairui Liu, Toyotaro Suzumura, Ruihai
+Dong, and Irene Li. 2023a. 10024 going beyond
+local: Global graph-enhanced personalized news rec-
+ommendations. In Proceedings of the 17th ACM
+Conference on Recommender Systems, RecSys 2023,
+Singapore, Singapore, September 18-22, 2023, pages
+24–34. ACM.
+Rui Yang, Yilin Ning, Emilia Keppo, Mingxuan
+Liu, Chuan Hong, Danielle S Bitterman, Jasmine
+Chiat Ling Ong, Daniel Shu Wei Ting, and Nan Liu.
+2024a. Retrieval-augmented generation for genera-
+tive artificial intelligence in medicine. arXiv preprint
+arXiv:2406.12449.
+Rui Yang, Ting Fang Tan, Wei Lu, Arun James
+Thirunavukarasu, Daniel Shu Wei Ting, and Nan
+Liu. 2023b. Large language models in health care:
+Development, applications, and challenges. Health
+Care Science.
+161
+Rui Yang, Boming Yang, Sixun Ouyang, Tianwei She,
+Aosong Feng, Yuang Jiang, Freddy Lecue, Jinghui
+Lu, and Irene Li. 2024b. Leveraging large lan-
+guage models for concept graph recovery and ques-
+tion answering in nlp education. arXiv preprint
+arXiv:2402.14293.
+Rui Yang, Qingcheng Zeng, Keen You, Yujie Qiao,
+Lucas Huang, Chia-Chun Hsieh, Benjamin Rosand,
+Jeremy Goldwasser, Amisha D Dave, Tiarnan D. L.
+Keenan, Emily Y Chew, Dragomir Radev, Zhiyong
+Lu, Hua Xu, Qingyu Chen, and Irene Li. 2023c. As-
+cle: A python natural language processing toolkit for
+medical text generation.
+Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q
+Weinberger, and Yoav Artzi. 2019. Bertscore: Eval-
+uating text generation with bert. arXiv preprint
+arXiv:1904.09675.
+Wei Zhao, Maxime Peyrard, Fei Liu, Yang Gao, Chris-
+tian M Meyer, and Steffen Eger. 2019. Moverscore:
+Text generation evaluating with contextualized em-
+beddings and earth mover distance. arXiv preprint
+arXiv:1909.02622.
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan
+Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin,
+Zhuohan Li, Dacheng Li, Eric Xing, et al. 2024.
+Judging llm-as-a-judge with mt-bench and chatbot
+arena. Advances in Neural Information Processing
+Systems, 36.
+162
+A Prompt Templates
+In this section, we present the detailed prompt templates employed as inputs for LLMs at each phase of
+the KG-Rank process.
+A.1 Medical NER Prompt
+Fig. 4 illustrates the Medical NER prompt template that is specifically designed for extracting medical
+terminologies from a given question.
+Question: {question}
+You are interacting with a knowledge graph that contains definitions and relational information of medical
+terminologies. To provide a precise and relevant answer to this question, you are expected to:
+1. Understand the Question Thoroughly: Analyze the question deeply to identify which specific medical
+terminologies and their interrelations, as extracted from the knowledge graph, are crucial for
+formulating an accurate response.

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:09:18Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page3_1",
+      "presentation": {
+        "latex": "qmc = (q,{c1,c 2,c 3,c 4}), where one of the ci’s is the unique correct answer. 4. The system veriﬁes qmc passes basic checks such as uniformity of answer choices.6 5. w then feeds the multiple-choice questionqmc to an information retrieval solver (Clark et al.,",
+        "unicode_plain": "qmc = (q,{c1,c 2,c 3,c 4}), where one of the ci’s is the unique correct answer. 4. The system veriﬁes qmc passes basic checks such as uniformity of answer choices.6 5. w then feeds the multiple-choice questionqmc to an information retrieval solver (Clark et al.,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "qmc = (q,{c1,c 2,c 3,c 4}), where one of the ci’s is the unique correct answer. 4. The system veriﬁes qmc passes basic checks such as uniformity of answer choices.6 5. w then feeds the multiple-choice questionqmc to an information retrieval solver (Clark et al.,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page4_2",
+      "presentation": {
+        "latex": "H(Q) = 1 |Q| ∑ q∈Q pq where{pq|q∈Q} are unknown.",
+        "unicode_plain": "H(Q) = 1 |Q| ∑ q∈Q pq where{pq|q∈Q} are unknown."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "H(Q) = 1 |Q| ∑ q∈Q pq where{pq|q∈Q} are unknown."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page4_3",
+      "presentation": {
+        "latex": "samples, Xq,i,i ∈ I,|I| = 5 , from B(pq). We must, however, be careful when using this data to estimate pq, as the same 5 samples were used to decide whetherq makes it into the question setQ or not. For instance, if we had kept only those questions that all 5 workers answered correctly, it",
+        "unicode_plain": "samples, Xq,i,i ∈ I,|I| = 5 , from B(pq). We must, however, be careful when using this data to estimate pq, as the same 5 samples were used to decide whetherq makes it into the question setQ or not. For instance, if we had kept only those questions that all 5 workers answered correctly, it"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "samples, Xq,i,i ∈ I,|I| = 5 , from B(pq). We must, however, be careful when using this data to estimate pq, as the same 5 samples were used to decide whetherq makes it into the question setQ or not. For instance, if we had kept only those questions that all 5 workers answered correctly, it"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page4_4",
+      "presentation": {
+        "latex": "˜H(Q) = 1 |Q| ∑ q∈Q 1 |I|",
+        "unicode_plain": "˜H(Q) = 1 |Q| ∑ q∈Q 1 |I|"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜H(Q) = 1 |Q| ∑ q∈Q 1 |I|"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "toH(Q) very rapidly asn =|Q||I| grows; specif- ically, ˜H(Q)≤H(Q) +t with probability at least 1−exp(−2nt2); similarly for ˜H(Q)≥H(Q)−t. In our Dev and Test sets, where |Q| = 500 and |I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions",
+        "unicode_plain": "toH(Q) very rapidly asn =|Q||I| grows; specif- ically, ˜H(Q)≤H(Q) +t with probability at least 1−exp(−2nt2); similarly for ˜H(Q)≥H(Q)−t. In our Dev and Test sets, where |Q| = 500 and |I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "toH(Q) very rapidly asn =|Q||I| grows; specif- ically, ˜H(Q)≤H(Q) +t with probability at least 1−exp(−2nt2); similarly for ˜H(Q)≥H(Q)−t. In our Dev and Test sets, where |Q| = 500 and |I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page4_6",
+      "presentation": {
+        "latex": "In our Dev and Test sets, where |Q| = 500 and |I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions as a single worker may answer multiple questions. We leave a formal analysis of this setting as future work.",
+        "unicode_plain": "In our Dev and Test sets, where |Q| = 500 and |I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions as a single worker may answer multiple questions. We leave a formal analysis of this setting as future work."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "In our Dev and Test sets, where |Q| = 500 and |I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions as a single worker may answer multiple questions. We leave a formal analysis of this setting as future work."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "|I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions as a single worker may answer multiple questions. We leave a formal analysis of this setting as future work.",
+        "unicode_plain": "|I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions as a single worker may answer multiple questions. We leave a formal analysis of this setting as future work."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "|I| = 5 , this translates into H(Q) being at least 8Realistically, there is some dependence across questions as a single worker may answer multiple questions. We leave a formal analysis of this setting as future work."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_6",
+      "presentation": {
+        "latex": "Avg. question sentences 1.08 (6) Avg. question tokens 11.46 (76) Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839",
+        "unicode_plain": "Avg. question sentences 1.08 (6) Avg. question tokens 11.46 (76) Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(6)",
+        "verbatim_snippet": "Avg. question sentences 1.08 (6) Avg. question tokens 11.46 (76) Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_76",
+      "presentation": {
+        "latex": "Avg. question tokens 11.46 (76) Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%)",
+        "unicode_plain": "Avg. question tokens 11.46 (76) Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%)"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(76)",
+        "verbatim_snippet": "Avg. question tokens 11.46 (76) Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_23",
+      "presentation": {
+        "latex": "Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%) Answer is the shortest choice 216 (3.6%)",
+        "unicode_plain": "Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%) Answer is the shortest choice 216 (3.6%)"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(23)",
+        "verbatim_snippet": "Avg. choice tokens 2.89 (23) Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%) Answer is the shortest choice 216 (3.6%)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_28",
+      "presentation": {
+        "latex": "Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%) Answer is the shortest choice 216 (3.6%) Table 1: Statistics for full OpenBookQA dataset. Par-",
+        "unicode_plain": "Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%) Answer is the shortest choice 216 (3.6%) Table 1: Statistics for full OpenBookQA dataset. Par-"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(28)",
+        "verbatim_snippet": "Avg. science fact tokens 9.38 (28) V ocabulary size (q+c) 11855 V ocabulary size (q+c+f) 12839 Answer is the longest choice 1108 (18.6%) Answer is the shortest choice 216 (3.6%) Table 1: Statistics for full OpenBookQA dataset. Par-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page6_12",
+      "presentation": {
+        "latex": "used in our models. For a given question qmc = (q,{c1,c 2,c 3,c 4}), we deﬁne the set of token se- quences ,S ={q,c 1,c 2,c 3,c 4}. For each token sequences∈S ,ws j is thejth andes j = Emb(ws",
+        "unicode_plain": "used in our models. For a given question qmc = (q,{c1,c 2,c 3,c 4}), we deﬁne the set of token se- quences ,S ={q,c 1,c 2,c 3,c 4}. For each token sequences∈S ,ws j is thejth andes j = Emb(ws"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "used in our models. For a given question qmc = (q,{c1,c 2,c 3,c 4}), we deﬁne the set of token se- quences ,S ={q,c 1,c 2,c 3,c 4}. For each token sequences∈S ,ws j is thejth andes j = Emb(ws"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page6_13",
+      "presentation": {
+        "latex": "quences ,S ={q,c 1,c 2,c 3,c 4}. For each token sequences∈S ,ws j is thejth andes j = Emb(ws j ) is the embedding for this token. We use ns to",
+        "unicode_plain": "quences ,S ={q,c 1,c 2,c 3,c 4}. For each token sequences∈S ,ws j is thejth andes j = Emb(ws j ) is the embedding for this token. We use ns to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "quences ,S ={q,c 1,c 2,c 3,c 4}. For each token sequences∈S ,ws j is thejth andes j = Emb(ws j ) is the embedding for this token. We use ns to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page6_14",
+      "presentation": {
+        "latex": "j = Emb(ws j ) is the embedding for this token. We use ns to indicate the number of tokens in s and d for the dimensionality of the embeddings. 11 We model multiple-choice QA as multi-class classiﬁcation:",
+        "unicode_plain": "j = Emb(ws j ) is the embedding for this token. We use ns to indicate the number of tokens in s and d for the dimensionality of the embeddings. 11 We model multiple-choice QA as multi-class classiﬁcation:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "j = Emb(ws j ) is the embedding for this token. We use ns to indicate the number of tokens in s and d for the dimensionality of the embeddings. 11 We model multiple-choice QA as multi-class classiﬁcation:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

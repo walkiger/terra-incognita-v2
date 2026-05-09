@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z",
+  "source_pdf": "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/source.pdf",
+  "title_hint": "arXiv:2410.03662v2  [cs.AI]  29 Oct 2024 System 2 Reasoning Capabilities Are Nigh Scott C. Lowe",
+  "updated_at": "2026-05-08T15:08:50Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:40Z",
+      "artifacts": [
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/source.pdf",
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:50Z",
+      "artifacts": [
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:50Z",
+      "artifacts": [
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:50Z",
+      "artifacts": [
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:50Z",
+      "artifacts": [
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/l4_analysis.json",
+        "research/extracted/arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=bc02b53cd01022d0d9106d16c4d19ce174b36fe629f9656fda091c63f5cd7839; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "bc02b53cd01022d0d9106d16c4d19ce174b36fe629f9656fda091c63f5cd7839"
+}

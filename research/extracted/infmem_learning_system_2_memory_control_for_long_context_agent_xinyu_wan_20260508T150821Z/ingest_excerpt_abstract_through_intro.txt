@@ -1,0 +1,141 @@
+Abstract
+Reasoning over ultra-long documents requires
+synthesizing sparse evidence scattered across dis-
+tant segments under strict memory constraints.
+While streaming agents enable scalable process-
+ing, their passive memory update strategy of-
+ten fails to preserve low-saliencebridging evi-
+dencerequired for multi-hop reasoning. We pro-
+poseInfMem, a control-centric agent that instan-
+tiates System-2-style control via a PRETHINK–
+RETRIEVE–WRITEprotocol. InfMem actively
+monitors evidence sufficiency, performs targeted
+in-document retrieval, and applies evidence-aware
+joint compression to update a bounded memory.
+To ensure reliable control, we introduce a practi-
+cal SFT→RL training recipe that aligns retrieval,
+writing, and stopping decisions with end-task cor-
+rectness. On ultra-long QA benchmarks from
+32k to 1M tokens, InfMem consistently outper-
+forms MemAgent across backbones. Specifically,
+MemAgent improves average absolute accuracy
+by+10.17,+11.84, and+8.23points on Qwen3-
+1.7B, Qwen3-4B, and Qwen2.5-7B, respectively,
+while reducing inference time by3.9 × on average
+(up to 5.1×) via adaptive early stopping.
+Code is available at/githubInfMem.
+1. Introduction
+Long-document question answering increasingly demands
+reasoning overextreme-lengthcontexts under abounded
+compute/memory budget. In this regime, decisive evidence
+is oftensparseandwidely scattered, thus requirescross-
+chunk composition—e.g., linking an early definition to a
+later exception clause or reconciling a claim with a delayed
+numerical qualifier (Liu et al., 2024; Bai et al., 2024). Such
+settings arise routinely in rigorous synthesis (legal review,
+technical analysis, codebase reasoning), where correct an-
+1McGill University 2Noah’s Ark Lab 3Universit´e de
+Montr´eal. Correspondence to: Xinyu Wang and Yufei Cui
+<xinyu.wang5@mail.mcgill.ca; yufei.cui@huawei.com>.
+Preprint. February 4, 2026.
+swers hinge on a few delayed, low-salience facts rather than
+the global gist (Shaham et al., 2022; An et al., 2024). This
+creates afidelity dilemma: aggressive segment-wise com-
+pression can erase the subtle links needed for later composi-
+tion, while naively expanding the raw context dilutes atten-
+tion and buries decisive facts in noise (Weston & Sukhbaatar,
+2023; Xu et al., 2023). Resolving this dilemma requirestask-
+conditioned evidence management—prioritizing and resur-
+facing the fewbridging facts and linksthat enable multi-hop
+synthesis under a fixed budget (Chen et al., 2023).
+Prior work improves long-context capability via length
+extrapolation (Press et al., 2021; Su et al., 2024; Peng
+et al., 2024) and efficient sequence modeling (Liu et al.,
+2023; Yang et al., 2024b; Gu & Dao, 2024), but largely fo-
+cuses on capacity rather than organizing evidence for multi-
+hop reasoning over extreme-length documents. Retrieval-
+augmented generation (RAG) (Lewis et al., 2020b) can sur-
+face relevant snippets, yet the resulting evidence is often
+fragmented and not consolidated into a compact working
+substrate (Asai et al., 2024; Barnett et al., 2024; Ma et al.,
+2025). Conversely, bounded-memory agents such as MemA-
+gent offer a bounded-cost profile with a constant-size mem-
+ory state and single-pass processing, which yields O(1)
+memory and O(n) computation over a document of n seg-
+ments. However, these agents rely on passive, reactive
+update policies and are unable to revisit earlier context to
+recover missing evidence when needed (Packer et al., 2023;
+Yu et al., 2025).
+An ideal state-dependent controller is expected to be ca-
+pable to decide when evidence is insufficient, what to re-
+trieve, and how to write selectivelyunder a fixed memory
+budget (Jiang et al., 2023). However, existing approaches
+lack such a state-dependent controller. We argue that effec-
+tive bounded-memory long-context processing requires a
+shift from passive, segment-wise compression toSystem-2-
+style cognitive control(Kahneman, 2011). Inspired by dual-
+process accounts of human cognition, we use “System-2” as
+acomputationalabstraction for explicit, task-conditioned,
+state-dependent control overmemory operations(Sumers
+et al., 2023). From this perspective, long-context reason-
+ing under bounded memory is amulti-stagecontrol loop
+with an explicitintermediate state—tracking what is sup-
+ported, what remains missing for the question, and where to
+1
+arXiv:2602.02704v1  [cs.CL]  2 Feb 2026
+InfMem: Learning System-2 Memory Control for Long-Context Agent
+fetch evidence—rather than a single-pass summary of each
+segment (Wei et al., 2022; Yao et al., 2022). In contrast,
+many existing bounded-memory agents are largelySystem-
+1-leaning, relying on reactive heuristics that can work in
+routine settings but can struggle on multi-hop queries that
+require non-monotonic evidence access and selective re-
+tention (Yu et al., 2025). Concretely, System-2 control
+instantiates amonitor–seek–update–stoploop: (i) monitor
+whether the current memory suffices for the question, (ii)
+seek missing support via targeted in-document retrieval,
+(iii) update the bounded memory to retain question-relevant
+bridging links under an overwrite budget, and (iv) stop early
+once sufficient evidence is secured to avoid redundant itera-
+tions (Sumers et al., 2023).
+To instantiate this System-2-style control, we propose
+InfMem, a long-context agent that executes a structured
+PRETHINK–RETRIEVE–WRITEprotocol with early stop-
+ping. At each step, PRETHINKmonitors the current memory
+to assess whether it already suffices to answer the question;
+if not, it synthesizes a question-conditioned retrieval query
+and predicts a retrieve size. Whenever PRETHINKchooses
+to continue (i.e., outputs RETRIEVE rather than STOP),
+RETRIEVEissues targeted queries over theentire document,
+enabling non-monotonic access to relevant segments. This
+allows the agent to revisit earlier portions when needed and
+to check later sections to fill in missing support. WRITE
+thenjointlyintegrates the current segment with retrieved
+evidence into a bounded overwrite memory, prioritizing the
+facts and links required for downstream composition under
+a fixed budget. Finally,InfMemappliesearly stopping:
+once sufficient evidence has been consolidated in memory,
+it terminates the retrieve–write loop, reducing redundant
+retrieval and inference steps while avoiding unnecessary
+overwrites.
+Such control is not plug-and-play: protocol design alone
+does not guarantee reliable retrieve/write/stop decisions. We
+therefore adopt a practical training recipe, warm-starting
+InfMemwith supervised fine-tuning on reasoning-correct
+trajectories and then applying verifier-based reinforcement
+learning to align retrieval, writing, and stopping with end-
+task correctness and efficiency under ultra-long contexts.
+Contributions:
+•InfMem: a control-centric agent for long-context QA.
+We proposeInfMem, a bounded-memory agent that em-
+ploys a PRETHINK–RETRIEVE–WRITEloop to actively
+retrievemissing evidence,consolidatememory updates,
+andstop earlyunder fixed budgets.
+• A practical recipe for learning long-horizon control.
+We introduce a verifiable SFT→RL pipeline that robustly
+aligns discrete control decisions (retrieval, writing, and
+stopping) with long-horizon reasoning rewards.
+• Robust gains with lower inference cost.On 1M-token
+benchmarks, InfMem outperforms MemAgent by over
+10 pointsacross Qwen series while reducing inference
+latency by3.9×via adaptive early stopping.

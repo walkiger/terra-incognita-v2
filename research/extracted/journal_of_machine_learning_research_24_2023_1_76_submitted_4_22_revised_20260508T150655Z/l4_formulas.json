@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "journal_of_machine_learning_research_24_2023_1_76_submitted_4_22_revised_20260508T150655Z",
+  "extracted_at": "2026-05-08T15:11:11Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "ergy functionE(s) =−logR(s), i.e., the reward function is non-negative and corresponds to an unnormalized probability. Whereas one typically trains a generative model from a dataset of positive examples, a GFlowNet is trained to match the given energy or reward function and convert it into a sampler. We view that sampler as a generative policy because the composite objectsis constructed through a ",
+        "unicode_plain": "ergy functionE(s) =−logR(s), i.e., the reward function is non-negative and corresponds to an unnormalized probability. Whereas one typically trains a generative model from a dataset of positive examples, a GFlowNet is trained to match the given energy or reward function and convert it into a sampler. We view that sampler as a generative policy because the composite objectsis constructed through a sequence of smaller stochastic steps (see"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ergy functionE(s) =−logR(s), i.e., the reward function is non-negative and corresponds to an unnormalized probability. Whereas one typically trains a generative model from a dataset of positive examples, a GFlowNet is trained to match the given energy or reward function and convert it into a sampler. We view that sampler as a generative policy because the composite objectsis constructed through a sequence of smaller stochastic steps (see"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "st = 1 2 3 GFlowNetPF π(A|st) drawat∼π(A|st) at = “Add a new node",
+        "unicode_plain": "st = 1 2 3 GFlowNetPF π(A|st) drawat∼π(A|st) at = “Add a new node"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "st = 1 2 3 GFlowNetPF π(A|st) drawat∼π(A|st) at = “Add a new node"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "at = “Add a new node connected to node 2” T (st,a t) determines st+1 st+1 = 1 2 3",
+        "unicode_plain": "at = “Add a new node connected to node 2” T (st,a t) determines st+1 st+1 = 1 2 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "at = “Add a new node connected to node 2” T (st,a t) determines st+1 st+1 = 1 2 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "st+1 = 1 2 3 4 GFlowNetPF π(A|st+1) drawat+1∼π(A|st+1) at+1 = “. . . ” Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation",
+        "unicode_plain": "st+1 = 1 2 3 4 GFlowNetPF π(A|st+1) drawat+1∼π(A|st+1) at+1 = “. . . ” Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "st+1 = 1 2 3 4 GFlowNetPF π(A|st+1) drawat+1∼π(A|st+1) at+1 = “. . . ” Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "at+1 = “. . . ” Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation that is common in the reinforcement learning literature:s t represents the state of the partially constructed object (in this case, a graph) at timet,a t represents the action taken by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the GFlowNet takes a 3-node gr",
+        "unicode_plain": "at+1 = “. . . ” Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation that is common in the reinforcement learning literature:s t represents the state of the partially constructed object (in this case, a graph) at timet,a t represents the action taken by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the GFlowNet takes a 3-node graph as input and determines an action to take. The action,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "at+1 = “. . . ” Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation that is common in the reinforcement learning literature:s t represents the state of the partially constructed object (in this case, a graph) at timet,a t represents the action taken by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the GFlowNet takes a 3-node graph as input and determines an action to take. The action,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the GFlowNet takes a 3-node graph as input and determines an action to take. The action, combined with the environment transition functionT(s t, at), determiness t+1: a four-node graph. This process repeats until an exit action is sampled and the sample is complete. paper (Bengio et al., 2021), this can be achieved w",
+        "unicode_plain": "by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the GFlowNet takes a 3-node graph as input and determines an action to take. The action, combined with the environment transition functionT(s t, at), determiness t+1: a four-node graph. This process repeats until an exit action is sampled and the sample is complete. paper (Bengio et al., 2021), this can be achieved with a flow constraint at each state: the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the GFlowNet takes a 3-node graph as input and determines an action to take. The action, combined with the environment transition functionT(s t, at), determiness t+1: a four-node graph. This process repeats until an exit action is sampled and the sample is complete. paper (Bengio et al., 2021), this can be achieved with a flow constraint at each state: the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "F(s) =R(s) at terminal states andF(s 0) being the sum of rewards over all terminal states. A sufficient property to achieve this is that at each state the sum of incoming flows equals the sum of outgoing flows. verse. It is also interesting to transform GFlowNets into amortized probabilistic inference machines: if we choose the reward function to be a prior (over some random variable) times a like",
+        "unicode_plain": "F(s) =R(s) at terminal states andF(s 0) being the sum of rewards over all terminal states. A sufficient property to achieve this is that at each state the sum of incoming flows equals the sum of outgoing flows. verse. It is also interesting to transform GFlowNets into amortized probabilistic inference machines: if we choose the reward function to be a prior (over some random variable) times a likelihood (how well some data is fit given that choice of random variable value), then the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "F(s) =R(s) at terminal states andF(s 0) being the sum of rewards over all terminal states. A sufficient property to achieve this is that at each state the sum of incoming flows equals the sum of outgoing flows. verse. It is also interesting to transform GFlowNets into amortized probabilistic inference machines: if we choose the reward function to be a prior (over some random variable) times a likelihood (how well some data is fit given that choice of random variable value), then the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page6_8",
+      "presentation": {
+        "latex": "Definition 1A directed graph is a tupleG= (S,A), whereSis a finite set of states, and Aa subset ofS × Srepresenting directed edges. Elements ofAare denoteds→s ′ and called edgesortransitions. Atrajectoryin such a graph is a sequenceτ= (s 1, . . . , sn)of elements ofSsuch that every transitions t→st+1 ∈Aandn >1. We denotes∈τto mean thatsis in the trajectoryτ, i.e.,∃t∈ {1, . . . , n}s t =s, and simi",
+        "unicode_plain": "Definition 1A directed graph is a tupleG= (S,A), whereSis a finite set of states, and Aa subset ofS × Srepresenting directed edges. Elements ofAare denoteds→s ′ and called edgesortransitions. Atrajectoryin such a graph is a sequenceτ= (s 1, . . . , sn)of elements ofSsuch that every transitions t→st+1 ∈Aandn >1. We denotes∈τto mean thatsis in the trajectoryτ, i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Definition 1A directed graph is a tupleG= (S,A), whereSis a finite set of states, and Aa subset ofS × Srepresenting directed edges. Elements ofAare denoteds→s ′ and called edgesortransitions. Atrajectoryin such a graph is a sequenceτ= (s 1, . . . , sn)of elements ofSsuch that every transitions t→st+1 ∈Aandn >1. We denotes∈τto mean thatsis in the trajectoryτ, i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page6_9",
+      "presentation": {
+        "latex": "Atrajectoryin such a graph is a sequenceτ= (s 1, . . . , sn)of elements ofSsuch that every transitions t→st+1 ∈Aandn >1. We denotes∈τto mean thatsis in the trajectoryτ, i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t = s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ",
+        "unicode_plain": "Atrajectoryin such a graph is a sequenceτ= (s 1, . . . , sn)of elements ofSsuch that every transitions t→st+1 ∈Aandn >1. We denotes∈τto mean thatsis in the trajectoryτ, i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t = s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Atrajectoryin such a graph is a sequenceτ= (s 1, . . . , sn)of elements ofSsuch that every transitions t→st+1 ∈Aandn >1. We denotes∈τto mean thatsis in the trajectoryτ, i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t = s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page6_10",
+      "presentation": {
+        "latex": "i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t = s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (",
+        "unicode_plain": "i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t = s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i.e.,∃t∈ {1, . . . , n}s t =s, and similarlys→s ′ ∈τto mean that∃t∈ {1, . . . , n−1}s t = s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page6_11",
+      "presentation": {
+        "latex": "s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending in",
+        "unicode_plain": "s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "s, st+1 =s ′. For convenience, we also use the notationτ=s 1 → · · · →s n. Thelengthof a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page6_12",
+      "presentation": {
+        "latex": "a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i",
+        "unicode_plain": "a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "a trajectory is the number of edges in it (the length ofτ= (s 1, . . . , sn)is thusn−1). Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page6_13",
+      "presentation": {
+        "latex": "Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if s < s ′ ors=s ′. The ",
+        "unicode_plain": "Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if s < s ′ ors=s ′. The binary relation “≤” is a (non-strict)partial order(i.e. it is reflexive,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Adirected acyclic graph(DAG) is a directed graph in which there is no trajectoryτ= (s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if s < s ′ ors=s ′. The binary relation “≤” is a (non-strict)partial order(i.e. it is reflexive,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page6_14",
+      "presentation": {
+        "latex": "(s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if s < s ′ ors=s ′. The binary relation “≤” is a (non-strict)partial order(i.e. it is reflexive, antisymmet",
+        "unicode_plain": "(s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if s < s ′ ors=s ′. The binary relation “≤” is a (non-strict)partial order(i.e. it is reflexive, antisymmetric and transitive)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(s1, . . . , sn)satisfyings n =s 1. Given a DAGG= (S,A), and two statess, s ′ ∈ S, if there exists a trajectory inG starting insand ending ins ′, then we writes < s ′. The binary relationship “<” defines a strict partial order(i.e. it is irreflexive, asymmetric and transitive). We writes≤s ′ if s < s ′ ors=s ′. The binary relation “≤” is a (non-strict)partial order(i.e. it is reflexive, antisymmetric and transitive)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

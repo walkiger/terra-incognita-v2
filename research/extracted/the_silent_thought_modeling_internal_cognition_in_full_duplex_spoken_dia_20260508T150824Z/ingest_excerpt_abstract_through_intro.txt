@@ -1,0 +1,164 @@
+Abstract
+During conversational interactions, humans sub-
+consciously engage in concurrent thinking while
+listening to a speaker. Although this internal cog-
+nitive processing may not always manifest as ex-
+plicit linguistic structures, it is instrumental in for-
+mulating high-quality responses. Inspired by this
+cognitive phenomenon, we propose a novelFull-
+duplexLAtent andInternalReasoning method
+named FLAIR that conductslatentthinking si-
+multaneously with speech perception. Unlike con-
+ventional “thinking” mechanisms in NLP, which
+require post-hoc generation, our approach aligns
+seamlessly with spoken dialogue systems: during
+the user’s speaking phase, it recursively feeds the
+latent embedding output from the previous step
+into the next step, enabling continuous reasoning
+that strictly adheres to causality without intro-
+ducing additional latency. To enable this latent
+reasoning, we design an Evidence Lower Bound-
+based objective that supports efficient supervised
+finetuning via teacher forcing, circumventing the
+need for explicit reasoning annotations. Experi-
+ments demonstrate the effectiveness of this think-
+while-listening design, which achieves competi-
+tive results on a range of speech benchmarks. Fur-
+thermore, FLAIR robustly handles conversational
+dynamics and attains competitive performance on
+full-duplex interaction metrics.
+1. Introduction
+Speech serves as the most natural and intuitive interface
+for human communication, offering a bandwidth-efficient
+and emotionally resonant medium for interaction. Con-
+sequently, enabling machines to understand and generate
+speech with human-like proficiency has long been a cen-
+*Equal contribution 1College of Computing and Data Science,
+Nanyang Technological University 2Mila, Quebec Artificial Intelli-
+gence Institute, Universit´e de Montr´eal. Correspondence to: Chen
+Chen<chen1436@e.ntu.edu.sg>.
+Preprint. May 4, 2026.
+<thk>
+<IDLE>
+<thk>
+user
+agent
+user
+agent
+(a) Turn-based interaction(b) Full-duplex SDLM (ours)
+<lis><lis>
+<spk><spk> <spk> <spk>
+<lis><lis>
+Figure 1.(a) Turn-based interaction. The agent remains idle
+and starts to respond after the end of the user turn, but cannot
+be interrupted by user, as shown in the red box. (b) Full-duplex
+SDLM continuously listens tostreamingspeech input, supports
+user barge-in, and automatically switches between thinking and
+speaking like a human speaker.
+tral goal in Human-Computer Interaction. In recent years,
+driven by large-scale data (Cui et al., 2024) and deep learn-
+ing techniques, end-to-end Spoken Dialogue Language Mod-
+els (SDLMs) have emerged as a focal point in both academia
+and industry (Nguyen et al., 2023), demonstrating signifi-
+cant improvements in general intelligence and the natural-
+ness of conversational dynamics.
+Despite these advancements, a fundamental discrepancy re-
+mains between current model architectures and the cognitive
+reality of human communication. Most existing SDLMs
+inherit the sequential execution patterns of text-based Large
+Language Models (LLMs) (Chu et al., 2024), where the
+acoustic user query and agent response are flattened into a
+single sequence and processed via autoregressive next-token
+prediction (Brown et al., 2020). This serialized approach
+starkly contrasts with human physiology, where auditory
+perception and vocal expression operate as independent,
+concurrent systems—enabling us to listen and speak simul-
+taneously. This capability, known as full-duplex interaction
+in dialogue models, has recently emerged as a key research
+frontier in speech and NLP (D´efossez et al., 2024; Yu et al.,
+2025). By continually ingesting streaming user speech dur-
+ing response prediction, a speaking-while-listening agent
+delivers more natural, fluid, and human-like conversations,
+with the ability to take turns proactively, offer backchannel
+responses, and gracefully yield to user barge-ins (Wu et al.,
+2025).
+This paradigm shift raises a fundamental open research ques-
+1
+arXiv:2603.17837v3  [eess.AS]  1 May 2026
+The Silent Thought: Modeling Internal Cognition in Full-Duplex Spoken Dialogue Models via Latent Reasoning
+tion: how should an “always-on” model optimally utilize its
+computational capacity when the user is talking? Early full-
+duplex implementations typically defaulted to predicting
+non-informative padding tokens while listening (D´efossez
+et al., 2024; Hu et al., 2025). While functional, these re-
+peated tokens contribute nothing to the generation of the sub-
+sequent response. A seemingly more plausible alternative is
+to adapt the Chain-of-Thought (CoT) mechanism (Wei et al.,
+2022) from NLP by generating explicit textual reasoning
+sequences in parallel with the input audio. However, this
+approach is problematic for streaming speech interaction.
+Since reasoning cannot causally precede the unfolding user
+speech, generating discrete text tokens creates a synchro-
+nization mismatch. Furthermore, the unpredictable nature
+of spoken turn-taking implies that a user may finish speak-
+ing at any moment; if the model is locked into generating
+a rigid textual thought chain, terminating this process to
+switch to response generation introduces latency and state-
+management complexities. Consequently, we propose a
+more radical trajectory: can we abandon explicit, token-
+based thinking entirely in favor of implicit reasoning? We
+hypothesize that maintaining a dynamic, information-rich
+latent state that evolves continuously with the input can ef-
+fectively accumulate reasoning cues to enhance the quality
+of the next response.
+To realize this concept, we formulate the concurrent rea-
+soning process as a latent-variable modeling problem, ad-
+dressing the challenge that “internal thoughts” lack explicit
+supervision. We propose a novelFull- duplexLAtent and
+InternalReasoning (FLAIR) method with a training frame-
+work grounded in variational inference, specifically opti-
+mizing the Evidence Lower Bound (ELBO) (Zhang et al.,
+2018). Our method introduces a non-causal Global-aware
+Expert during the training phase, which leverages the full
+dialogue context to derive an approximate posterior distri-
+bution of optimal latent embeddings. The causal SDLM
+is then trained to minimize the Kullback–Leibler (KL) di-
+vergence (Hershey & Olsen, 2007) between its generated
+latent prior and the expert’s posterior. This alignment ef-
+fectively transfers global reasoning capability to the causal
+model, enabling it to perform continuous, implicit thinking
+via dense embeddings based on streaming user input. Ex-
+tensive empirical evaluations demonstrate that our proposed
+paradigm significantly enhances response quality across a
+diverse spectrum of tasks, ranging from factual knowledge
+and multi-turn Question Answering (QA) to open-ended
+generation and multiple-choice benchmarks. Crucially, our
+latent reasoning mechanism achieves these gains without
+requiring additional supervisory data or incurring any infer-
+ence latency. Consequently, the model preserves the high
+efficiency and robustness essential for real-time conversa-
+tional dynamics, maintaining both low response latency and
+high interaction success rates.
+The contributions of this paper are summarized as follows:
+• We propose a fully causal latent reasoning method
+that empowers full-duplex SDLMs with “think-while-
+listening” capabilities. This approach eliminates the
+need to construct explicit reasoning datasets, strictly ad-
+heres to causality constraints during the listening phase,
+and introduces no additional computational overhead
+during inference.
+• We introduce an efficient supervised fine-tuning (SFT)
+strategy for latent reasoning. This method circumvents
+the limitations of existing approaches by enabling ef-
+fective optimization via teacher forcing. Furthermore,
+our approach is orthogonal to existing latent-reasoning
+optimization techniques. Reinforcement learning can
+be seamlessly applied as a post-training step to further
+improve model performance.
+• This work is the first to introduce latent reasoning into
+the domain of speech LLMs. While we implement our
+method within a full-duplex SDLM framework due to
+its critical demand for “think-while-listening” capabili-
+ties, the proposed approach can be readily adapted to
+traditional half-duplex speech LLMs, offering valuable
+insights for the future design of speech LLMs.

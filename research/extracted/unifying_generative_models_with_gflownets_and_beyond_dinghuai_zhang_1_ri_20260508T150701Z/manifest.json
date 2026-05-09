@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z",
+  "source_pdf": "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/source.pdf",
+  "title_hint": "Unifying Generative Models with GFlowNets and Beyond Dinghuai Zhang 1 Ricky T. Q. Chen2 Nikolay Malkin 1 Yoshua Bengio1 3",
+  "updated_at": "2026-05-08T15:13:18Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:02Z",
+      "artifacts": [
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/source.pdf",
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:18Z",
+      "artifacts": [
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:18Z",
+      "artifacts": [
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:18Z",
+      "artifacts": [
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:18Z",
+      "artifacts": [
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/l4_analysis.json",
+        "research/extracted/unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=5286; pdf_sha256=9bf3b83a1073d28479c9062ecaf90e8a2072356ef4e3fb52ce797c0070ba10aa; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "9bf3b83a1073d28479c9062ecaf90e8a2072356ef4e3fb52ce797c0070ba10aa"
+}

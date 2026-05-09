@@ -1,0 +1,102 @@
+Abstract. In this paper, we introduce an innovative approach for addressing Bayesian
+inverse problems through the utilization of physics-informed invertible neural networks
+(PI-INN). The PI-INN framework encompasses two sub-networks: an invertible neural
+network (INN) and a neural basis network (NB-Net). The primary role of the NB-Net
+lies in modeling the spatial basis functions characterizing the solution to the forward
+problem dictated by the underlying partial di fferential equation. Simultaneously, the
+INN is designed to partition the parameter vector linked to the input physical field into
+two distinct components: the expansion coe fficients representing the forward problem
+solution and the Gaussian latent noise. If the forward mapping is precisely estimated,
+and the statistical independence between expansion coe fficients and latent noise is well-
+maintained, the PI-INN offers a precise and efficient generative model for Bayesian inverse
+problems, yielding tractable posterior density estimates. As a particular physics-informed
+deep learning model, the primary training challenge for PI-INN centers on enforcing the
+independence constraint, which we tackle by introducing a novel independence loss based
+on estimated density. We support the e fficacy and precision of the proposed PI-INN
+through a series of numerical experiments, including inverse kinematics, 1-dimensional
+and 2-dimensional di ffusion equations, and seismic traveltime tomography. Specifically,
+our experimental results showcase the superior performance of the proposed independence
+loss in comparison to the commonly used but computationally demanding kernel-based
+maximum mean discrepancy loss.
+Keywords: Bayesian inverse problems, Physics-informed deep learning, Invertible neural
+networks, Uncertainty quantification
+arXiv:2304.12541v3  [math.NA]  3 Oct 2023
+PI-INN 2
+1. Introduction
+Inverse problems arise in various scientific and engineering fields, such as seismic
+tomography [1], material inspection [2], and medical imaging [3], etc. These problems aim
+to infer the input parameters of a system, such as physical fields, source locations, initial
+and boundary conditions, from the corresponding measurement data. Inverse problems
+are typically ill-posed and difficult to solve because the measurement data originates from
+indirect and sparse observations. It is of great practical value and theoretical significance
+to develop an e fficient computation model for accurate and stable solutions, which has
+drawn much attention from scientists and engineers.
+Classical approaches to inverse problems encompass regularization methods and
+Bayesian inference. Regularization techniques aim to determine point estimates by
+simultaneously minimizing the misfits between observed and predicted outputs while
+penalizing undesired parameter features through a regularization term [4, 5]. Bayesian
+inference incorporates uncertainties in prior information and observations through
+Bayesian rules. It constructs the posterior distribution of parameters, thus e ffectively
+quantifying the uncertainty of unknown inputs. However, in many applications, it is
+computationally expensive to sample from the intractable Bayesian posterior distributions
+by using statistical simulation techniques, e.g., Markov Chain Monte Carlo (MCMC) [6–9],
+Hamiltonian Monte Carlo [10, 11], and Sequential Monte Carlo [12, 13]. To address this
+issue, many researchers utilized various variational inference algorithms to improve
+computational e fficiency, including mean-field variational inference [14, 15], automatic
+differential variational inference [16, 17], and Stein variational gradient descent [16, 18].
+But the variational methods may face challenges in high-dimensional settings due to the
+difficulty of accurately approximating posterior distributions with the tractable surrogate
+distribution. Although all aforementioned methods have shown to be relatively e fficient,
+they still require numerous evaluations of the forward model and the complicated
+parametric derivatives, which introduce higher computational cost in high-dimensional
+situations. Consequently, deep learning-based methods o ffer an e fficient alternative,
+where they are capable of providing real-time inversions for certain classes of inverse
+problems with new measurement data of similar type.
+Deep learning methods have emerged as a promising approach for solving inverse
+problems, such as medical imaging [19, 20] and electromagnetic inversion [21, 22].
+Nevertheless, these methods heavily rely on labeled data from solutions of the forward
+problem, rendering them inappropriate for inverse problems where such information
+is not present. With the continuous advancement of physics-informed neural network
+(PINN) technology in recent years, which leverages physical equations instead of labeled
+data to solve partial di fferential equations (PDEs) [23], extensive related research has
+demonstrated that PINN can e fficiently recover unknown parameters as well [24–32].
+Furthermore, models based on invertible neural networks (INN) [33–35] have exhibited
+potential in Bayesian inference. This is attributed to their e fficiency and accuracy
+PI-INN 3
+advantages in both sampling and density estimation of complex target distributions
+through bijective transformations, as evidenced in the works of [36–43]. Nonetheless,
+certain limitations persist within the current research. For instance, INN models in [36–39]
+demand substantial quantities of labeled data for pretraining, which is often unavailable
+in many practical inverse problems. The invertible DeepONet introduced in [41] alleviates
+the need for labeled data, but it entails an additional variational inference procedure to
+approximate the true posterior distribution.
+In this paper, we propose a novel approach to address the issues of Bayesian inverse
+problems, namely physics-informed invertible neural networks (PI-INN). In PI-INN, a
+neural Basis Network (NB-Net) identifies spatial basis functions for the solution to the
+forward problem governed by the given PDE, while an INN bijectively transforms the
+input physical field’s parameter vector into a combination of expansion coe fficients for
+the forward problem solution and Gaussian latent variables. To achieve an e ffective
+approximation of the true posterior, PI-INN undergoes training to accurately predict the
+solution of the equation while ensuring statistical independence between the expansion
+coefficients and Gaussian latent variables. Notably, we introduce a new independence
+loss term that can be naturally incorporated with residual based physics-informed loss
+terms, and theoretically prove that the PI-INN can e fficiently generate samples from the
+true posterior distribution of unknown parameters at the limit case where all loss terms
+approaches zero. The proposed PI-INN approach admits the following main advantages:
+• PI-INN can provide a tractable estimation of the posterior distribution, which enables
+efficient sampling and high-accuracy density evaluation without requiring additional
+variational inference procedures [41].
+• The innovative independence loss term leverages the INN’s density estimation
+capabilities, obviating the requirement for labeled data. In contrast, the kernel-based
+MMD loss term employed in [36, 37] is applicable exclusively to labeled data and
+easily suffers from the curse of dimensionality.
+• PI-INN establishes an integrated learning framework for Bayesian inverse problems,
+with the capability to merge physics-informed learning and data-driven learning.
+The remainder of this paper is organized as follows. Section 2 provides the problem
+statement of Bayesian inverse problems. In Section 3, the framework of our physics-
+informed invertible neural networks (PI-INN) is introduced, where the algorithm of
+training and inversion approaches with PI-INN for the physical system is described
+in detail. In section 4, we first present the advantage of the new loss term and then
+demonstrate the performance of PI-INN for solving Bayesian inverse problems through
+several numerical examples. Finally, some concluding remarks are given in Section 5.
+PI-INN 4

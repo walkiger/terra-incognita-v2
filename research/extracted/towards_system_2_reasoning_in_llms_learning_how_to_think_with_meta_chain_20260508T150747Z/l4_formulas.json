@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z",
+  "extracted_at": "2026-05-08T15:13:09Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "ℒ𝜃 = E𝒟train [︃ − ∑︁ 𝑡 log 𝑝𝜃(y𝑡+1|y≤𝑡)",
+        "unicode_plain": "ℒ𝜃 = E𝒟train [︃ − ∑︁ 𝑡 log 𝑝𝜃(y𝑡+1|y≤𝑡)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ℒ𝜃 = E𝒟train [︃ − ∑︁ 𝑡 log 𝑝𝜃(y𝑡+1|y≤𝑡)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page4_2",
+      "presentation": {
+        "latex": "evaluated at𝑥 = 𝜋?” This is actually a simple question since the expression is canonically equal to 1, yet even powerful LLMs such as GPT-4o and Claude fail to answer it correctly even once. That is, thetrue conditional generative process𝑝(y𝑡+1|y𝑡) could have arbitrarily high computational complexity even when it is deterministic as in the example above. In contrast, if we instruct models to “thin",
+        "unicode_plain": "evaluated at𝑥 = 𝜋?” This is actually a simple question since the expression is canonically equal to 1, yet even powerful LLMs such as GPT-4o and Claude fail to answer it correctly even once. That is, thetrue conditional generative process𝑝(y𝑡+1|y𝑡) could have arbitrarily high computational complexity even when it is deterministic as in the example above. In contrast, if we instruct models to “think step by step” and"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "evaluated at𝑥 = 𝜋?” This is actually a simple question since the expression is canonically equal to 1, yet even powerful LLMs such as GPT-4o and Claude fail to answer it correctly even once. That is, thetrue conditional generative process𝑝(y𝑡+1|y𝑡) could have arbitrarily high computational complexity even when it is deterministic as in the example above. In contrast, if we instruct models to “think step by step” and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page5_3",
+      "presentation": {
+        "latex": "at 𝑥 = 𝜋. Let us simplify the expression before substituting𝑥 = 𝜋. Step 1: Simplify(𝑥2 − 1)(𝑥 + 1) The numerator of the first term can be rewritten: 𝑥2 − 1 = ( 𝑥 − 1)(𝑥 + 1), so (𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2.",
+        "unicode_plain": "at 𝑥 = 𝜋. Let us simplify the expression before substituting𝑥 = 𝜋. Step 1: Simplify(𝑥2 − 1)(𝑥 + 1) The numerator of the first term can be rewritten: 𝑥2 − 1 = ( 𝑥 − 1)(𝑥 + 1), so (𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "at 𝑥 = 𝜋. Let us simplify the expression before substituting𝑥 = 𝜋. Step 1: Simplify(𝑥2 − 1)(𝑥 + 1) The numerator of the first term can be rewritten: 𝑥2 − 1 = ( 𝑥 − 1)(𝑥 + 1), so (𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page5_4",
+      "presentation": {
+        "latex": "𝑥2 − 1 = ( 𝑥 − 1)(𝑥 + 1), so (𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2. Step 2: Simplify𝑥3 − 𝑥 in the denominator Factorize 𝑥3 − 𝑥: 𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1).",
+        "unicode_plain": "𝑥2 − 1 = ( 𝑥 − 1)(𝑥 + 1), so (𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2. Step 2: Simplify𝑥3 − 𝑥 in the denominator Factorize 𝑥3 − 𝑥: 𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑥2 − 1 = ( 𝑥 − 1)(𝑥 + 1), so (𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2. Step 2: Simplify𝑥3 − 𝑥 in the denominator Factorize 𝑥3 − 𝑥: 𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page5_5",
+      "presentation": {
+        "latex": "(𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2. Step 2: Simplify𝑥3 − 𝑥 in the denominator Factorize 𝑥3 − 𝑥: 𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1). Thus, the first term becomes: (𝑥2 − 1)(𝑥 + 1)",
+        "unicode_plain": "(𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2. Step 2: Simplify𝑥3 − 𝑥 in the denominator Factorize 𝑥3 − 𝑥: 𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1). Thus, the first term becomes: (𝑥2 − 1)(𝑥 + 1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(𝑥2 − 1)(𝑥 + 1) = ( 𝑥 − 1)(𝑥 + 1)2. Step 2: Simplify𝑥3 − 𝑥 in the denominator Factorize 𝑥3 − 𝑥: 𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1). Thus, the first term becomes: (𝑥2 − 1)(𝑥 + 1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page5_6",
+      "presentation": {
+        "latex": "𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1). Thus, the first term becomes: (𝑥2 − 1)(𝑥 + 1) 𝑥3 − 𝑥 = (𝑥 − 1)(𝑥 + 1)2 𝑥(𝑥 − 1)(𝑥 + 1) . Cancel (𝑥 − 1) and one factor of(𝑥 + 1):",
+        "unicode_plain": "𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1). Thus, the first term becomes: (𝑥2 − 1)(𝑥 + 1) 𝑥3 − 𝑥 = (𝑥 − 1)(𝑥 + 1)2 𝑥(𝑥 − 1)(𝑥 + 1) . Cancel (𝑥 − 1) and one factor of(𝑥 + 1):"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑥3 − 𝑥 = 𝑥(𝑥2 − 1) = 𝑥(𝑥 − 1)(𝑥 + 1). Thus, the first term becomes: (𝑥2 − 1)(𝑥 + 1) 𝑥3 − 𝑥 = (𝑥 − 1)(𝑥 + 1)2 𝑥(𝑥 − 1)(𝑥 + 1) . Cancel (𝑥 − 1) and one factor of(𝑥 + 1):"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page5_7",
+      "presentation": {
+        "latex": "𝑥3 − 𝑥 = (𝑥 − 1)(𝑥 + 1)2 𝑥(𝑥 − 1)(𝑥 + 1) . Cancel (𝑥 − 1) and one factor of(𝑥 + 1): (𝑥2 − 1)(𝑥 + 1) 𝑥3 − 𝑥 = 𝑥 + 1 𝑥 .",
+        "unicode_plain": "𝑥3 − 𝑥 = (𝑥 − 1)(𝑥 + 1)2 𝑥(𝑥 − 1)(𝑥 + 1) . Cancel (𝑥 − 1) and one factor of(𝑥 + 1): (𝑥2 − 1)(𝑥 + 1) 𝑥3 − 𝑥 = 𝑥 + 1 𝑥 ."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑥3 − 𝑥 = (𝑥 − 1)(𝑥 + 1)2 𝑥(𝑥 − 1)(𝑥 + 1) . Cancel (𝑥 − 1) and one factor of(𝑥 + 1): (𝑥2 − 1)(𝑥 + 1) 𝑥3 − 𝑥 = 𝑥 + 1 𝑥 ."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page5_8",
+      "presentation": {
+        "latex": "𝑥3 − 𝑥 = 𝑥 + 1 𝑥 . Step 3: Subtract1 𝑥 Now substitute this simplified result into the full expression: 𝑥 + 1",
+        "unicode_plain": "𝑥3 − 𝑥 = 𝑥 + 1 𝑥 . Step 3: Subtract1 𝑥 Now substitute this simplified result into the full expression: 𝑥 + 1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑥3 − 𝑥 = 𝑥 + 1 𝑥 . Step 3: Subtract1 𝑥 Now substitute this simplified result into the full expression: 𝑥 + 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page5_9",
+      "presentation": {
+        "latex": "𝑥 = 𝑥 + 1 − 1 𝑥 = 𝑥 𝑥 = 1. Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 .",
+        "unicode_plain": "𝑥 = 𝑥 + 1 − 1 𝑥 = 𝑥 𝑥 = 1. Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 ."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑥 = 𝑥 + 1 − 1 𝑥 = 𝑥 𝑥 = 1. Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 ."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page5_10",
+      "presentation": {
+        "latex": "𝑥 = 1. Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe-",
+        "unicode_plain": "𝑥 = 1. Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑥 = 1. Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page5_11",
+      "presentation": {
+        "latex": "Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe- sis (Merrill & Sabharwal, 2023). Specifically, a CoT expansion allows for (in-theory) arbitr",
+        "unicode_plain": "Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe- sis (Merrill & Sabharwal, 2023). Specifically, a CoT expansion allows for (in-theory) arbitrarily large"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Step 4: Evaluate at𝑥 = 𝜋 The expression simplifies to1, which is independent of𝑥. Thus, the value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe- sis (Merrill & Sabharwal, 2023). Specifically, a CoT expansion allows for (in-theory) arbitrarily large"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page5_12",
+      "presentation": {
+        "latex": "value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe- sis (Merrill & Sabharwal, 2023). Specifically, a CoT expansion allows for (in-theory) arbitrarily large amounts of compute to be deployed towards the prediction of answer tokens. A lar",
+        "unicode_plain": "value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe- sis (Merrill & Sabharwal, 2023). Specifically, a CoT expansion allows for (in-theory) arbitrarily large amounts of compute to be deployed towards the prediction of answer tokens. A large theoretical"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "value at𝑥 = 𝜋 is: 1 . There have been multiple explanations for this phenomenon (Merrill & Sabharwal, 2023; Prystawski et al., 2024; Ye et al., 2024a; Dutta et al., 2024), however we focus on the complexity hypothe- sis (Merrill & Sabharwal, 2023). Specifically, a CoT expansion allows for (in-theory) arbitrarily large amounts of compute to be deployed towards the prediction of answer tokens. A large theoretical"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page7_13",
+      "presentation": {
+        "latex": "We may have a set of triples(q, S, a) of questionsq, solution stepsS = (s1, . . . ,s𝑛) and (optionally) answers a, but the true data generation process is not auto-regressive: q → z1 → . . . → z𝐾 → (s1, . . . ,s𝑛, a), (1) where z𝑖 are the latent \"thoughts\" left out of the solutions steps, which can be represented fully with left-to-right generation, while the dataset solutionS = ( s1, . . . ,s𝑛) i",
+        "unicode_plain": "We may have a set of triples(q, S, a) of questionsq, solution stepsS = (s1, . . . ,s𝑛) and (optionally) answers a, but the true data generation process is not auto-regressive: q → z1 → . . . → z𝐾 → (s1, . . . ,s𝑛, a), (1) where z𝑖 are the latent \"thoughts\" left out of the solutions steps, which can be represented fully with left-to-right generation, while the dataset solutionS = ( s1, . . . ,s𝑛) is generated jointly. Let"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "We may have a set of triples(q, S, a) of questionsq, solution stepsS = (s1, . . . ,s𝑛) and (optionally) answers a, but the true data generation process is not auto-regressive: q → z1 → . . . → z𝐾 → (s1, . . . ,s𝑛, a), (1) where z𝑖 are the latent \"thoughts\" left out of the solutions steps, which can be represented fully with left-to-right generation, while the dataset solutionS = ( s1, . . . ,s𝑛) is generated jointly. Let"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "q → z1 → . . . → z𝐾 → (s1, . . . ,s𝑛, a), (1) where z𝑖 are the latent \"thoughts\" left out of the solutions steps, which can be represented fully with left-to-right generation, while the dataset solutionS = ( s1, . . . ,s𝑛) is generated jointly. Let us illustrate this with an example from the International Mathematics Olympiad 2011. This is the (in)famous \"windmill\" problem: “Let𝒮 be a finite set o",
+        "unicode_plain": "q → z1 → . . . → z𝐾 → (s1, . . . ,s𝑛, a), (1) where z𝑖 are the latent \"thoughts\" left out of the solutions steps, which can be represented fully with left-to-right generation, while the dataset solutionS = ( s1, . . . ,s𝑛) is generated jointly. Let us illustrate this with an example from the International Mathematics Olympiad 2011. This is the (in)famous \"windmill\" problem: “Let𝒮 be a finite set of at least two points in the plane. Assume that no three points of𝒮 are"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "q → z1 → . . . → z𝐾 → (s1, . . . ,s𝑛, a), (1) where z𝑖 are the latent \"thoughts\" left out of the solutions steps, which can be represented fully with left-to-right generation, while the dataset solutionS = ( s1, . . . ,s𝑛) is generated jointly. Let us illustrate this with an example from the International Mathematics Olympiad 2011. This is the (in)famous \"windmill\" problem: “Let𝒮 be a finite set of at least two points in the plane. Assume that no three points of𝒮 are"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

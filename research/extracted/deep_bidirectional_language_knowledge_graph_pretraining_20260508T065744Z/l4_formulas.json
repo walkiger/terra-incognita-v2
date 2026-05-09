@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:09:25Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "C<DM\u0003<\u0003MJPI?\u0003=MPNC\u0003DN\u0003<I\u0003 @S<HKG@\u0003JA\u0003¡\u0010\u0004\u0016\u000e¢\u0003¡\u0010\u0004\u0016\u000e¢ !\u0003 <sIg",
+        "unicode_plain": "C<DM\u0003<\u0003MJPI?\u0003=MPNC\u0003DN\u0003<I\u0003 @S<HKG@\u0003JA\u0003¡\u0010\u0004\u0016\u000e¢\u0003¡\u0010\u0004\u0016\u000e¢ !\u0003 <sIg"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "C<DM\u0003<\u0003MJPI?\u0003=MPNC\u0003DN\u0003<I\u0003 @S<HKG@\u0003JA\u0003¡\u0010\u0004\u0016\u000e¢\u0003¡\u0010\u0004\u0016\u000e¢ !\u0003 <sIg"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "MJPI?=MPNC C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT",
+        "unicode_plain": "MJPI?=MPNC C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "MJPI?=MPNC C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT",
+        "unicode_plain": "C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "=MPNC\u0003DN\u0003<I\u0003@S<HKG@\u0003JA\u0003 <MO\u0003NPKKGD@N",
+        "unicode_plain": "=MPNC\u0003DN\u0003<I\u0003@S<HKG@\u0003JA\u0003 <MO\u0003NPKKGD@N"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "=MPNC\u0003DN\u0003<I\u0003@S<HKG@\u0003JA\u0003 <MO\u0003NPKKGD@N"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "<MO\u0003NPKKGD@NMJPI?\u0003=MPNC\u0003<O\u0003C<DM \u0003/IYNhkdIgpQhIG$DWIEjQpI",
+        "unicode_plain": "<MO\u0003NPKKGD@NMJPI?\u0003=MPNC\u0003<O\u0003C<DM \u0003/IYNhkdIgpQhIG$DWIEjQpI"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "<MO\u0003NPKKGD@NMJPI?\u0003=MPNC\u0003<O\u0003C<DM \u0003/IYNhkdIgpQhIG$DWIEjQpI"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "MJPI?=MPNC C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT",
+        "unicode_plain": "MJPI?=MPNC C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "MJPI?=MPNC C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT",
+        "unicode_plain": "C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "C<DM=MPNC \u0013 ' / \u001f\u0015* \u0016. \u001f\u0007*-\u0016. \u001f\u0007*- <MONPKKGT"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "Deﬁnitions. We deﬁne a text corpus W as a set of text segments W = {W }, and each text segment W as a sequence of tokens (words), W =( w1,. . . ,wI ). We deﬁne a knowledge graph (KG) as a multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3",
+        "unicode_plain": "Deﬁnitions. We deﬁne a text corpus W as a set of text segments W = {W }, and each text segment W as a sequence of tokens (words), W =( w1,. . . ,wI ). We deﬁne a knowledge graph (KG) as a multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Deﬁnitions. We deﬁne a text corpus W as a set of text segments W = {W }, and each text segment W as a sequence of tokens (words), W =( w1,. . . ,wI ). We deﬁne a knowledge graph (KG) as a multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "W as a sequence of tokens (words), W =( w1,. . . ,wI ). We deﬁne a knowledge graph (KG) as a multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3",
+        "unicode_plain": "W as a sequence of tokens (words), W =( w1,. . . ,wI ). We deﬁne a knowledge graph (KG) as a multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "W as a sequence of tokens (words), W =( w1,. . . ,wI ). We deﬁne a knowledge graph (KG) as a multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3",
+        "unicode_plain": "multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "multi-relational graph G =( V, E), where V is the set of entity nodes in the KG and E✓ V⇥ R ⇥ V is the set of edges (triplets) that connect nodes in V, with R being the set of relation types {r}. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "G =( V, E) where V = {v1,. . . ,vJ }✓V and E ✓E . We deﬁne a language-knowledge model to be a composition of two functions, fhead(fenc(X)), where the encoder fenc takes in an input X = (text segment W, local KG G), and produces a contextualized vector representation for each text token, (H1,. . . ,HI ), and for each KG node, (V1,. . . ,VJ ). A language model is a special case of a language-knowled",
+        "unicode_plain": "G =( V, E) where V = {v1,. . . ,vJ }✓V and E ✓E . We deﬁne a language-knowledge model to be a composition of two functions, fhead(fenc(X)), where the encoder fenc takes in an input X = (text segment W, local KG G), and produces a contextualized vector representation for each text token, (H1,. . . ,HI ), and for each KG node, (V1,. . . ,VJ ). A language model is a special case of a language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "G =( V, E) where V = {v1,. . . ,vJ }✓V and E ✓E . We deﬁne a language-knowledge model to be a composition of two functions, fhead(fenc(X)), where the encoder fenc takes in an input X = (text segment W, local KG G), and produces a contextualized vector representation for each text token, (H1,. . . ,HI ), and for each KG node, (V1,. . . ,VJ ). A language model is a special case of a language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "be a composition of two functions, fhead(fenc(X)), where the encoder fenc takes in an input X = (text segment W, local KG G), and produces a contextualized vector representation for each text token, (H1,. . . ,HI ), and for each KG node, (V1,. . . ,VJ ). A language model is a special case of a language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform self-su",
+        "unicode_plain": "be a composition of two functions, fhead(fenc(X)), where the encoder fenc takes in an input X = (text segment W, local KG G), and produces a contextualized vector representation for each text token, (H1,. . . ,HI ), and for each KG node, (V1,. . . ,VJ ). A language model is a special case of a language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform self-supervised tasks in the pretraining step and to perform downstream tasks in the ﬁnetuning step."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "be a composition of two functions, fhead(fenc(X)), where the encoder fenc takes in an input X = (text segment W, local KG G), and produces a contextualized vector representation for each text token, (H1,. . . ,HI ), and for each KG node, (V1,. . . ,VJ ). A language model is a special case of a language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform self-supervised tasks in the pretraining step and to perform downstream tasks in the ﬁnetuning step."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform self-supervised tasks in the pretraining step and to perform downstream tasks in the ﬁnetuning step. 2.1 Input representation Given a text corpus W and a large knowledge graph G, we create input instances for the model by preparing (text segment W , local KG G) pairs. We want each pair’s text and KG t",
+        "unicode_plain": "language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform self-supervised tasks in the pretraining step and to perform downstream tasks in the ﬁnetuning step. 2.1 Input representation Given a text corpus W and a large knowledge graph G, we create input instances for the model by preparing (text segment W , local KG G) pairs. We want each pair’s text and KG to be (roughly)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "language-knowledge model with no KG (J =0 ). The head fhead uses these representations to perform self-supervised tasks in the pretraining step and to perform downstream tasks in the ﬁnetuning step. 2.1 Input representation Given a text corpus W and a large knowledge graph G, we create input instances for the model by preparing (text segment W , local KG G) pairs. We want each pair’s text and KG to be (roughly)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "local KG, G =( V, E), as well as our ﬁnal input instance X =( W, G). Appendix B.1 provides more details on KG retrieval. Henceforth, we use “KG” to refer to this local KG G unless noted otherwise. Modality interaction token/node. For each resulting (text, KG) pair, we further add a special token (interaction token) wint to the text and a special node (interaction node) vint to the KG, which will s",
+        "unicode_plain": "local KG, G =( V, E), as well as our ﬁnal input instance X =( W, G). Appendix B.1 provides more details on KG retrieval. Henceforth, we use “KG” to refer to this local KG G unless noted otherwise. Modality interaction token/node. For each resulting (text, KG) pair, we further add a special token (interaction token) wint to the text and a special node (interaction node) vint to the KG, which will serve as an information pooling point for each modality as well as an interface for modality interact"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "local KG, G =( V, E), as well as our ﬁnal input instance X =( W, G). Appendix B.1 provides more details on KG retrieval. Henceforth, we use “KG” to refer to this local KG G unless noted otherwise. Modality interaction token/node. For each resulting (text, KG) pair, we further add a special token (interaction token) wint to the text and a special node (interaction node) vint to the KG, which will serve as an information pooling point for each modality as well as an interface for modality interaction"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

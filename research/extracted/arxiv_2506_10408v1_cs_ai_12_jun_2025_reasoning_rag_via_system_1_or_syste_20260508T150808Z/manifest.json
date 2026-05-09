@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z",
+  "source_pdf": "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/source.pdf",
+  "title_hint": "arXiv:2506.10408v1  [cs.AI]  12 Jun 2025 Reasoning RAG via System 1 or System 2: A Survey on Reasoning Agentic Retrieval-Augmented Generation for Industry Challenges Jintao",
+  "updated_at": "2026-05-08T15:09:07Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:09Z",
+      "artifacts": [
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/source.pdf",
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:07Z",
+      "artifacts": [
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:07Z",
+      "artifacts": [
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:07Z",
+      "artifacts": [
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:07Z",
+      "artifacts": [
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/l4_analysis.json",
+        "research/extracted/arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=acd0425864420f0faf297eb393b57a1fbaec9f46f9ab11f2b49b98696edba3e3; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "acd0425864420f0faf297eb393b57a1fbaec9f46f9ab11f2b49b98696edba3e3"
+}

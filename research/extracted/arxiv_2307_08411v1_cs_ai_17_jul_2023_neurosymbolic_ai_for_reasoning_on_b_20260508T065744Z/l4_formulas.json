@@ -1,0 +1,31 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:08:38Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page1_1",
+      "presentation": {
+        "latex": "necting the vertices. Each edge e = ( u, v) ∈ E connects two adjacent or neighbouring vertices, creating a triple",
+        "unicode_plain": "necting the vertices. Each edge e = ( u, v) ∈ E connects two adjacent or neighbouring vertices, creating a triple"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "necting the vertices. Each edge e = ( u, v) ∈ E connects two adjacent or neighbouring vertices, creating a triple"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    }
+  ]
+}

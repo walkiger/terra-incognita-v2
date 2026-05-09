@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z",
+  "source_pdf": "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/source.pdf",
+  "title_hint": "Getting Sick After Seeing a Doctor? Diagnosing and Mitigating Knowledge Conflicts in Event Temporal Reasoning Tianqing Yangqiu",
+  "updated_at": "2026-05-08T15:10:39Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:23Z",
+      "artifacts": [
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/source.pdf",
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:39Z",
+      "artifacts": [
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:39Z",
+      "artifacts": [
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:39Z",
+      "artifacts": [
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:39Z",
+      "artifacts": [
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/l4_analysis.json",
+        "research/extracted/getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=8517b5d471c89b8b0dc6f4d386ea89d4daaa9eaf7d54f5b7714b8267d568009d; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "8517b5d471c89b8b0dc6f4d386ea89d4daaa9eaf7d54f5b7714b8267d568009d"
+}

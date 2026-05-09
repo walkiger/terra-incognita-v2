@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z",
+  "source_pdf": "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/source.pdf",
+  "title_hint": "Published as a conference paper at ICLR 2024 LEARNING ENERGY -BASED MODELS BY COOPERATIVE DIFFUSION RECOVERY LIKELIHOOD",
+  "updated_at": "2026-05-08T15:11:55Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:25Z",
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/source.pdf",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:55Z",
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:55Z",
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:55Z",
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:55Z",
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/l4_analysis.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=3b70dfc1f5111f14457d1c9849a6ab7e37320282b33a63c63ec37212a7e644f7; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "3b70dfc1f5111f14457d1c9849a6ab7e37320282b33a63c63ec37212a7e644f7"
+}

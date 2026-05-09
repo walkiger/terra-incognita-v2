@@ -1,0 +1,266 @@
+Abstract
+We present a generic algorithm for learning
+and approximate inference with an intuitive
+epistemic interpretation: iteratively focus on
+a subset of the model and resolve inconsisten-
+cies using the parameters under control. This
+framework, which we call Local Inconsistency
+Resolution (LIR) is built upon Probabilistic
+Dependency Graphs (PDGs), which provide a
+flexible representational foundation capable of
+capturing inconsistent beliefs. We show how
+LIR unifies and generalizes a wide variety of
+important algorithms in the literature, includ-
+ing the Expectation-Maximization (EM) algo-
+rithm, belief propagation, adversarial training,
+GANs, and GFlowNets. In the last case, LIR
+actually suggests a more natural loss, which
+we demonstrate improves GFlowNet conver-
+gence. Each method can be recovered as a spe-
+cific instance of LIR by choosing a procedure
+to direct focus (attention and control). We
+implement this algorithm for discrete PDGs
+and study its properties on synthetically gen-
+erated PDGs, comparing its behavior to the
+global optimization semantics of the full PDG.
+1 Introduction
+Whatcausesonetochangetheirmind, tolearn, act, and
+draw inferences? From a neurocognitive perspective,
+the mind operates by resolving internal inconsistencies,
+whether they arise from conflicting new information or
+Proceedings of the 29thInternational Conference on Arti-
+ficial Intelligence and Statistics (AISTATS) 2026, Tangier,
+Morocco. PMLR: Volume 300. Copyright 2026 by the au-
+thor(s).
+from new awareness of contradictions among prior be-
+liefs. Theories of cognitive dissonance (Festinger, 1962)
+famously explain much of human behavior as targeted
+adjustments to dispel the discomfort of psychological
+inconsistency. Predictive coding theories (Rao and
+Ballard, 1999; Friston, 2005) posit that discrepancies
+between expected and actual sensory inputs—known
+as prediction errors—are treated as inconsistency sig-
+nals that drive learning via local adjustments to neural
+representation. Inspired by the deeper underlying neu-
+rocognitive principle, we introduce a computational
+framework that formalizes the process oflocal incon-
+sistency resolution(LIR) in probabilistic models.
+The locality—which manifests in two ways—is essential
+for those of us with computational limitations. First, in-
+consistency can be difficult to detect, and impossible to
+address constructively unless it falls within our field of
+attention. Second, we seldom have uniformcontrolover
+our epistemic state; we are generally reluctant to revise
+our direct observations or bedrock principles, forcing
+us instead to adjust other more pliable beliefs. So in
+practice, we resolve inconsistencieslocally—by looking
+at only a small part of the model, and modifying only
+a fraction of its parameters. This process isn’t guar-
+anteed to succeed: some inconsistencies simply cannot
+be seen or addressed with a narrow focus, and fixing
+one inconsistency can easily create others out of view.
+Nevertheless, we will show that LIR provides a power-
+ful recipe for learning and (approximate) inference and
+demonstrate that many foundational techniques in the
+literature arise naturally as instances of it.
+Our approach leans heavily on the theory of Proba-
+bilistic Dependency Graphs (PDGs), which are highly
+flexible graphical models capable of representing ar-
+bitrary (even inconsistent) probabilistic information,
+weighted by confidence (Richardson and Halpern, 2021).
+There is a natural way to measure how inconsistent
+a PDG is, and many standard loss functions can be
+arXiv:2604.17140v1  [cs.AI]  18 Apr 2026
+Local Inconsistency Resolution: The Interplay between Attention and Control in Probabilistic Models
+viewed as measuring the inconsistency of a PDG that
+describes the appropriate situation (Richardson, 2022).
+LIR operationalizes training models as the process of
+adjusting parameters to resolve this inconsistency.
+Computing a PDG’s degree of inconsistency is easy in
+some cases, but it is often intractable and is NP-hard
+in general (e.g., the log number of solutions to a SAT
+problem and the log evidence of a latent variable model
+can both be represented as PDG inconsistencies). The
+problem is equivalent to inference in PDGs, which, like
+for other graphical models, can be achieved in polyno-
+mial time under the assumption of bounded tree-width
+(Richardson et al., 2023). Variational inference (Blei
+et al., 2017; Kingma and Welling, 2014; Jordan et al.,
+1999) can be understood as the practice of adopting
+extra beliefs to get an overapproximation of inconsis-
+tency that is easier to calculate (Richardson, 2022).
+Our approach also enables the opposite: focusing on
+small parts of the graph at a time to address tractable
+underapproximations of the global inconsistency.
+2 Preliminaries and Parametric PDGs
+Variables and Probability.We write VX for the
+set of values that a (random) variable X can take
+on, and∆ VX for the set of distributions overVX. A
+conditional probability distribution (cpd) is a map
+p(Y|X ) : VX→ ∆VY. If X = {X1, X2, . . .}i∈I is
+an (indexed) set of variables, we regardX itself as a
+variable that can take on joint settingsVX =Q
+i∈I VXi.
+If µ∈ ∆VX is a joint distribution andY⊆ X , we write
+µ(Y)for the marginal ofµon the variablesY.
+Adirected hypergraph( N,A )is a set of nodesN and a
+set of arcsA, each a∈ A of which is associated with a
+set Sa ⊆N of source nodes, andTa ⊆N target nodes.
+We also writeS a→T∈ A to specify an arca together
+with its sourcesS=S a and targetsT=T a.
+Geometry.For our purposes, apointed parameter
+spaceΘis a convex subset of Rn for some n≥ 0
+(that may differ between parameter spaces) with a
+distinguished default valueθ0 ∈ Θ. Avector fieldover
+Θis a differentiable map X assigning to eachθ∈ Θa
+vector Xθ ∈R n. Thegradientof a twice differentiable
+map f : Θ →R , which we write∇Θf(Θ), is a vector
+field. Given a vector fieldX and an initial pointθ0 ∈
+Θ, there is a unique trajectory y(t)that solves the
+ordinary differential equation (ODE){ d
+dt y(t) = Xy(t),
+y(0) = θ0}. To refer to that solution compactly, we
+adopt the notationexpθ0(X) := y(1). Although exp
+may appear to give us access only toy(1), it is easily
+verified that expθ0(tX) = y(t)for all t≥ 0. Putting
+all the pieces together: the mapt7→exp θ(t∇Θf(Θ))
+is the smooth path beginning at θ that follows the
+gradient off. It is known asgradient flow.
+Probabilistic Dependency Graphs.A PDG is a di-
+rected (hyper)graph whose arcs carry probabilistic and
+causal information, weighted by confidence (Richard-
+son and Halpern, 2021). We define an unweighted (but
+for our purposes, equivalent) variant whose explicit
+parametric nature will prove useful.
+Definition 1.Anunweighted parametric PDG M(Θ)
+= (X,A, Θ={Θa}a∈A,P={Pa}a∈A)is a directed hyper-
+graph( X,A )whose nodes X are variables, and whose
+arcs a∈ A are each associated with a parameter space
+Θa and a mapPa : Θa ×VS a → ∆VTa that gives a cpd
+Pa(Ta|Sa; θ)over a’s target variables given values of its
+sources and a parameter settingθ∈Θ a.
+An unweighted PDG is the object obtained by fixing
+the parameters: a joint setting θ = ( θa)a∈A yields
+a concrete unweighted PDGM = M(θ)—which, at
+a syntactic level, is just a collection of cpds. When
+constructing PDGs from known cpds (e.g.,p(Y|X )),
+we use the mathematical symbol representing that cpd
+(e.g., p) for both the arca and its associated cpdPa.
+We typically depict (parametric) PDGs in graphical
+notation, specifying a cpd
+pθ(Y|X, Z)as YX
+Z p andq θ(A, B)as
+A
+B
+q .
+A PDG can be faithfully viewed as the special case
+of a parametric PDG in which each parameter space
+Θa = {θ0} is a singleton containing only the default
+value. Conversely, a parametric PDG may be viewed
+as a PDG by adding eachΘa as an explicit variable.
+PDG Semantics and Inconsistency.The power
+of PDGs comes from their semantics, which sew their
+(possibly inconsistent) cpds and confidences together
+to describe features of a joint distributionµ(X).
+A PDG contains two kinds of information: qualitative
+structure, encoding the types of causal mechanisms
+(the hypergraph A), and observational data, in the
+form of specific probabilistic beliefs (the cpdsP). In
+the standard presentation (Richardson, 2024), a PDG
+also comes with weight vectorsα,β∈ RA over the arcs,
+encoding confidence in information of each type:αa
+can be thought of as the number of independent causal
+mechanisms by whichSa determines Ta (Richardson
+et al., 2024), whileβa can be thought of as the effective
+number of independent reports endorsing that the prob-
+ability ofTa given Sa is Pa. Corresponding to these two
+types of information, PDG semantics provide a way of
+scoring compatibility of a joint distributionµ(X )with
+information of each type.
+With respect to a PDGM, theobservational incompat-
+ibilityof a joint probability measureµ∈ ∆VX is given
+by a weighted sum of relative entropy (KL) terms
+OIncM(µ) :=
+X
+S a→T∈A
+βa I D
+
+µ(T, S)
+ Pa(T|S)µ(S)
+
+,(1)
+Richardson, Samiei, Shakerinava, Viviano, El Kabid, Parviz, Bengio
+where I D(p∥q ) = Ex∼p[log p(x)
+q(x) ]. This quantity can
+be thought of as the excess cost of using codes opti-
+mized for our beliefsP weighted by the confidenceβ
+we have in them, when in factX ∼µ . If β> 0, then
+OIncM(µ) = 0if and only if µ satisfies the constraints
+imposed by every cpd ofP. Intuitively, the cpds of
+P are inconsistent when constraints are not simulta-
+neously satisfiable, in which case theobservational
+inconsistency ⟨ ⟨M⟩ ⟩0 := inf µ OIncM(µ)is an important
+measure of the magnitude of the unavoidable internal
+conflict between the probabilistic data inM.
+Modern machine learning usually prizes observational
+data above all else—in particular, above structural
+information such as causal influence or qualitative in-
+dependencies. For this reason, the scoring function
+OIncand the corresponding observational inconsistency
+⟨ ⟨M⟩ ⟩0 will suffice for most of our examples. That said,
+we can also scoreµby its incompatibility with the struc-
+tural information in the weighted hypergraph(A,α ).
+Thisstructural deficiency(SDef) is given by:1
+SDefA,α(µ) :=−H(X) +
+X
+a∈A
+αa H(Ta |S a),(2)
+and, roughly speaking, measures µ’s failure to arise
+as a result of an independent causal mechanism along
+each hyperarc (Richardson et al., 2024). IfA is a quali-
+tative Bayesian Network andα =1, for instance, then
+SDefA,α(µ) ≥ 0with equality iff µ has the conditional
+independencies of A. With confidence γ≥ 0in the
+structural information overall, theγ-inconsistencyof
+M is the smallest possible overall incompatibility of
+any distribution withM, and denoted
+
+
+M
+
+γ := inf
+µ
+
+OIncM(µ) +γSDef (A,α)(µ)
+
+.(3)
+Richardson (2022) argues that this inconsistency mea-
+sure(3)is a “universal” loss function, largely by showing
+how it specializes to standard loss functions across a
+wide breadth of contexts. It follows that, at least at an
+abstract level, much of machine learning can be viewed
+as inconsistency resolution. We now take this idea a
+few steps further, by operationalizing the resolution
+process and allowing it to be done “locally”.
+3 The Local Inconsistency Resolution
+(LIR) Algorithm
+There are two distinct senses in which inconsistency
+resolution can belocal: we can restrict what we can see,
+1If the underlying variables are continuous, then we
+redefine entropy as follows. Assume each variable comes
+with a base measureλ, like the Lebesgue or counting mea-
+sure. Then defineHµ(X) := Eµ[log dµ(X)
+dλX
+], where dµ
+dλ is the
+Radon-Nikodym derivative ofµ(X)with respect toλ X.
+or what we can do about it. Correspondingly, there
+are two “focus” knobs for our algorithm: one restricts
+ourattentionto the inconsistency of a subset of arcs
+A⊆ A , and the other restricts ourcontrolto only the
+parameters of a subsetC⊆ A of arcs as we resolve that
+inconsistency. The former makes for an underestimate
+of the inconsistency that is easier to calculate, while the
+latter makes for an easier optimization problem. These
+restrictions are not just cheap approximations, though:
+they are also appropria

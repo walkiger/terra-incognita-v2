@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z",
+  "source_pdf": "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/source.pdf",
+  "title_hint": "On the diﬃculty of training Recurrent Neural Networks",
+  "updated_at": "2026-05-08T15:11:35Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:06:39Z",
+      "artifacts": [
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/source.pdf",
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:35Z",
+      "artifacts": [
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:35Z",
+      "artifacts": [
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:35Z",
+      "artifacts": [
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:35Z",
+      "artifacts": [
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/l4_analysis.json",
+        "research/extracted/on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=5135; pdf_sha256=cc8692b8d9d4ef8c8a377e0a894832a92186007792fce4f7e313925ea20f6cd5; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "cc8692b8d9d4ef8c8a377e0a894832a92186007792fce4f7e313925ea20f6cd5"
+}

@@ -1,0 +1,151 @@
+ABSTRACT
+Reasoning is a fundamental problem for computers and deeply studied in Arti-
+ﬁcial Intelligence. In this paper, we speciﬁcally focus on answering multi-hop
+logical queries on Knowledge Graphs (KGs). This is a complicated task because,
+in real-world scenarios, the graphs tend to be large and incomplete. Most previ-
+ous works have been unable to create models that accept full First-Order Logical
+(FOL) queries, which include negative queries, and have only been able to process
+a limited set of query structures. Additionally, most methods present logic opera-
+tors that can only perform the logical operation they are made for. We introduce
+a set of models that use Neural Networks to create one-point vector embeddings
+to answer the queries. The versatility of neural networks allows the framework
+to handle FOL queries with Conjunction (∧), Disjunction (∨) and Negation (¬)
+operators. We demonstrate experimentally the performance of our model through
+extensive experimentation on well-known benchmarking datasets. Besides having
+more versatile operators, the models achieve a 10% relative increase over the best
+performing state of the art and more than 30% over the original method based on
+single-point vector embeddings.
+1 I NTRODUCTION
+Knowledge graphs (KGs) are a type of data structure that can capture many kinds of relationships
+between entities (e.g.: Moscow
+cityIn
+−−−→Russia) and have been popularized since the creation of the
+semantic web or its introduction into Google’s search engine. They can contain many kinds of
+different information, and they can be widely used in question-answering systems, search engines,
+and recommender systems (Palumbo et al., 2017; Xiong et al., 2017a).
+Reasoning is a fundamental skill of human brains. For example, we can infer new knowledge based
+on known facts and logic rules, and discern patterns/relationships to make sense of seemingly unre-
+lated information. It is a multidisciplinary topic and is being studied in psychology, neuroscience,
+and artiﬁcial intelligence (Fagin et al., 2003). The ability to reason about the relations between
+objects is central to generally intelligent behavior. We can deﬁne reasoning as the process of infer-
+ring new knowledge based on known facts and logic rules. Knowledge graphs are a structure used
+for storing many kinds of information, therefore the ability to answer complex queries and extract
+answers that are not directly encoded in the graph are of high interest to the AI community.
+To answer complex queries, the model receives a query divided in logical statements. A full First-
+Order Logic (FOL) is necessary to process a wider range of queries, which includes negative queries.
+FOL includes the following logical operators: Existential (∃), Conjunction (∧), Disjunction (∨), and
+Negation (¬). The power of representation of our logical framework is the key to process complex
+queries. However, most frameworks have only been able to process Existential Positive First-Order
+Logic (EPFO), which means that negative queries cannot be processed.
+For example, One could ask a knowledge graph containing drugs and side effects the following ques-
+tion: “What drug can be used to treat pneumonia and does not cause drowsiness?” . The ﬁrst step
+to answer such a query is to translate it into logical statements: q =V?·∃V : Treat(Pneumonia,V?)
+Source code available on: https://github.com/amayuelas/NNKGReasoning
+1
+arXiv:2209.14464v1  [cs.AI]  28 Sep 2022
+Published as a conference paper at ICLR 2022
+Figure 1: MLP Framework for KG Reasoning. Representation of a sample query: ”List the teams
+where Brazilian football players who were awarded a Ballon d’Or played”. (A) Query represented
+by its logical statements and dependency graph. (B) 2D Representation of the answer entities in a
+one-point vector space used by the reasoning framework.
+∧¬ Cause(Drowsiness,V?). Once the query is divided into logical statements, we obtain the com-
+putation graph, a directed acyclic graph (DAG) which deﬁnes the order of operations. Afterwards,
+we can start traversing the graph. However, many real-world graphs are incomplete and therefore
+traversing them becomes very hard and even computationally impossible. There are many possible
+answer entities, and it requires modeling sets of entities. As such, embedding methods become a
+good solution to answer these queries. Previous works (Hamilton et al., 2018; Ren et al., 2020; Ren
+& Leskovec, 2020) have created methods for embedding the query and the graph into a vector space.
+The idea of graph embeddings reduces the problem to simply using nearest-neighbor search to ﬁnd
+the answers, without paying attention to the intermediate results.
+The embedding approach solves many of the problems of query-answering in knowledge graphs.
+In theory, we could answer the queries just by traversing the graph. In practice, graphs are large
+and incomplete, and answering arbitrary logical queries becomes a complicated task. The graph
+incompleteness means that traversing its edges would not provide the correct answers.
+This work aims to create some models that allow complex queries and extract the correct answers
+from large incomplete knowledge graphs. To this end, we present a set of models based on Neural
+Networks that embed the query and the entities into a one-point vector space. Then, it computes the
+distance between the query and the entities to rank the answers according to the likelihood to answer
+the query. We use the versatility of Neural Networks to create the operators needed to process FOL
+queries.
+We conduct experiments using well-known datasets for KG Reasoning: FB15k, FB15-237, and
+NELL. The experiments show that our models can effectively answer FOL and provide a noticeable
+improvement when compared with the state-of-the-art baselines. Our models provide a relative
+improvement of 5% to 10% to the latest state-of-art method and about 30% to 40% when compared
+with the method that uses the same idea of one-point vector space embeddings (Hamilton et al.,
+2018).
+The main contributions of this work are summarized as: (1). New embedding-based methods
+for logical reasoning over knowledge graphs: two new models, plus variants, for KG Reasoning.
+These methods embed the query and the entities in the same vector space with single-point vectors.
+Implementing the logical operators with neural networks provides versatility to create any operator
+with virtually the same architecture. (2). Improved performance over the current state of the
+art. Experimental results show that the models presented in this paper outperform the selected
+baselines: Graph Query Embeddings (GQE) (Hamilton et al., 2018), Query2Box (Q2B) (Ren et al.,
+2020), and BetaE (Ren & Leskovec, 2020). (3). Handling of negative queries. Modelling queries
+with negation has been an open question in KG Reasoning until recently. BetaE (Ren & Leskovec,
+2020) introduced the ﬁrst method able to do so. This work takes advantages of the good relationship
+inference capabilities of Neural Networks and uses them to create the negation operator.
+2
+Published as a conference paper at ICLR 2022
+2 R ELATED WORK
+Traditional tasks on graphs include Link Prediction (Liben-Nowell & Kleinberg, 2007), Knowledge
+Base Completion (Wang et al., 2015), or basic Query-Answering (one-hop). They are all different
+versions of the same problem: Is link (h,r,t) in the KG? or Is t an answer to query (h,r,)? , where
+only a variable is missing. However, we face a more complicated problem, known as Knowledge
+Graph Reasoning, that may involve several unobserved edges or nodes over massive and incomplete
+KGs. In this case, queries can be path queries, conjunctive queries, disjunctive queries or or a
+combination of them. A formal deﬁnition of KG Reasoning can be found in Chen et al. (2020), as
+stated in Deﬁnition 2.1.
+Deﬁnition 2.1 (Reasoning over knowledge graphs). Deﬁning a knowledge graph as:G =⟨E,R,T⟩ ,
+whereE,T represent the set of entities,R the set of relations, and the edges inR link two nodes to
+form a triple as (h,r,t )∈T . Then, reasoning over a KG is deﬁned as creating a triplet that does
+not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G}
+Most related to our work are embedding approaches for multi-hop queries over KGs: (Hamilton
+et al., 2018), (Ren et al., 2020), (Ren & Leskovec, 2020) and (Das et al., 2016), as well as models
+for question answering (Yasunaga et al., 2021), (Feng et al., 2020). The main differences with these
+methods rely on the ability to handle full First-Order Logical Queries and using Neural Networks
+to deﬁne all logical operators, including the projection. We also deliver a more extensive range of
+network implementations.
+On a broader outlook, we identify a series of works that aim to solve Knowledge Graph Reasoning
+with several different techniques, such as Attention Mechanisms (Wang et al., 2018), Reinforcement
+Learning like DeepPath (Xiong et al., 2017b) or DIV A (Chen et al., 2018), orNeural Logic Networks
+(Shi et al., 2020), (Qu & Tang, 2019).
+3 M ODELS
+Both models presented here follow the idea behind Graph Query Embedding – GQE (Hamilton et al.,
+2018): Learning to embed the queries into a low dimensional space. Our models differ from it in the
+point that logical query operations are represented by geometric operators. In our case, we do not
+follow the direct geometric sense and these operators are all represented by Neural Networks, instead
+of just the Intersection operator in GQE. Similarly, however, the operators are jointly optimized with
+the node embeddings to ﬁnd the optimal representation.
+In order to answer a query, the system receives a queryq, represented as a DAG, where the nodes are
+the entities and the edges the relationships. Starting with the embeddings ev1,..., evn of its anchor
+nodes and apply the logical operations represented by the edges to ﬁnally obtain an embedding q of
+the query (Guu et al., 2015).
+3.1 F ORMAL PROBLEM DEFINITION
+A Knowledge Graph (G) is a heterogeneous graph with a set of entities – nodes – ( V) and a set of
+relations – edges – (R). In heterogeneous graphs, there can be different kinds of relations, which are
+deﬁned as binary functions r :V×V→{ True,False} that connect two entities with a directed
+edge. The goal is to answer First-Order Logical (FOL) Queries. We can deﬁne them as follows:
+Deﬁnition 3.1 (First-Order Logical Queries). A ﬁrst-order logical query q is formed by an anchor
+entity setVa⊆V , an unknown target variable V? and a series of existentially quantiﬁed variables
+V1,...,V k. In its disjunctive normal form (DNF), it is written as a disjunction of conjunctions:
+q[V?] = V?·∃V1,...V k :c1∨c2∨...∨cn (1)
+whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the
+literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and
+r∈R .
+The entity embeddings are initialized to zero and later learned as part of the training process, along
+with the operators’ weights.
+3
+Published as a conference paper at ICLR 2022
+(a) Representation of MLP for 2 input operators: Pro-
+jection, Intersection.
+(b) Representation of MLP for 1 input operator:
+Negation.
+Figure 2: Multi-Later Perceptron Model (MLP) - Network Architecture.
+Computation Graph. The Computation Graph can be deﬁned as the Direct Acyclic Graph (DAG)
+where the nodes correspond to embeddings and the edges represent the logical operations. The
+computation graph can be derived from a query by representing the relations as projections, inter-
+sections as merges and negation as complement. This graph shows the order of operations to answer
+the queries. Each branch can be computed independently and then merged until the sink node is
+reached. Each node represents a point in the embedding space and each edge represents a logical
+operation, computed via a Neural Network in our case. The representation of a FOL as a compu-
+tation graph can be seen as a heterogeneous tree where ea

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "scaling_latent_reasoning_via_looped_language_models_20260508T150814Z",
+  "extracted_at": "2026-05-08T15:12:16Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page1_1",
+      "presentation": {
+        "latex": "Current Loop = 𝒊 Figure 1Ouro Looped Language Model performance. (Left) The parameter-shared looped architecture. (Middle & Right) Radar plots comparing the Ouro 1.4B and 2.6B models, both with 4 recurrent steps (red), against individual transformer baselines. Our models demonstrate strong performance comparable to or exceeding much larger baselines. 1 arXiv:2510.25741v4  [cs.CL]  17 Nov 2025",
+        "unicode_plain": "Current Loop = 𝒊 Figure 1Ouro Looped Language Model performance. (Left) The parameter-shared looped architecture. (Middle & Right) Radar plots comparing the Ouro 1.4B and 2.6B models, both with 4 recurrent steps (red), against individual transformer baselines. Our models demonstrate strong performance comparable to or exceeding much larger baselines. 1 arXiv:2510.25741v4  [cs.CL]  17 Nov 2025"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Current Loop = 𝒊 Figure 1Ouro Looped Language Model performance. (Left) The parameter-shared looped architecture. (Middle & Right) Radar plots comparing the Ouro 1.4B and 2.6B models, both with 4 recurrent steps (red), against individual transformer baselines. Our models demonstrate strong performance comparable to or exceeding much larger baselines. 1 arXiv:2510.25741v4  [cs.CL]  17 Nov 2025"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page4_2",
+      "presentation": {
+        "latex": "ExitGate!!,CDF!=*! ExitGate Input Embedding Input EmbeddingTraining Inference ExitGateEarly Exit Layer N Layer 2",
+        "unicode_plain": "ExitGate!!,CDF!=*! ExitGate Input Embedding Input EmbeddingTraining Inference ExitGateEarly Exit Layer N Layer 2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ExitGate!!,CDF!=*! ExitGate Input Embedding Input EmbeddingTraining Inference ExitGateEarly Exit Layer N Layer 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page4_3",
+      "presentation": {
+        "latex": "!$,CDF\"=*!+*\" *#,CDF!=(\"+⋯+(!CDF!>%ℎ'()ℎ*+, !=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts",
+        "unicode_plain": "!$,CDF\"=*!+*\" *#,CDF!=(\"+⋯+(!CDF!>%ℎ'()ℎ*+, !=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "!$,CDF\"=*!+*\" *#,CDF!=(\"+⋯+(!CDF!>%ℎ'()ℎ*+, !=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page4_4",
+      "presentation": {
+        "latex": "*#,CDF!=(\"+⋯+(!CDF!>%ℎ'()ℎ*+, !=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts the probabilitypℓ of exiting, and a language modeling headLℓ computes the lanugage modeling",
+        "unicode_plain": "*#,CDF!=(\"+⋯+(!CDF!>%ℎ'()ℎ*+, !=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts the probabilitypℓ of exiting, and a language modeling headLℓ computes the lanugage modeling loss.Right (Inference):"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "*#,CDF!=(\"+⋯+(!CDF!>%ℎ'()ℎ*+, !=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts the probabilitypℓ of exiting, and a language modeling headLℓ computes the lanugage modeling loss.Right (Inference):"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "!=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts the probabilitypℓ of exiting, and a language modeling headLℓ computes the lanugage modeling loss.Right (Inference): At in",
+        "unicode_plain": "!=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts the probabilitypℓ of exiting, and a language modeling headLℓ computes the lanugage modeling loss.Right (Inference): At inference time, the model can exit early based on the accumulated exit probability."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "!=1 !=2 !=%!\"# !=1 !=2 !=& HeadCDF!<.ℎ012ℎ345CDF\"<.ℎ012ℎ345 Figure 3 Overview of Looped Language Model (LoopLM) architecture. Left (Training):During training, the model applies a stack ofN layers repeatedly forTmax recurrent steps. At each recurrent stepℓ, an exit gate predicts the probabilitypℓ of exiting, and a language modeling headLℓ computes the lanugage modeling loss.Right (Inference): At inference time, the model can exit early based on the accumulated exit probability."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page5_6",
+      "presentation": {
+        "latex": "F(·) := lmhead◦ M L ◦emb(·),M L(·) :=T θL ◦ · · · ◦ Tθ1(·) Let t∈ { 1, . . . , Tmax} be the number of loop steps (the number ofrecurrent stepsorrecurrent depth). The looped modelF (t) reuses the same depth-Llayer stackttimes: F (t)(·) = lmhead◦ M L ◦ ML ◦ · · · ◦ ML | {z } titerations",
+        "unicode_plain": "F(·) := lmhead◦ M L ◦emb(·),M L(·) :=T θL ◦ · · · ◦ Tθ1(·) Let t∈ { 1, . . . , Tmax} be the number of loop steps (the number ofrecurrent stepsorrecurrent depth). The looped modelF (t) reuses the same depth-Llayer stackttimes: F (t)(·) = lmhead◦ M L ◦ ML ◦ · · · ◦ ML | {z } titerations"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "F(·) := lmhead◦ M L ◦emb(·),M L(·) :=T θL ◦ · · · ◦ Tθ1(·) Let t∈ { 1, . . . , Tmax} be the number of loop steps (the number ofrecurrent stepsorrecurrent depth). The looped modelF (t) reuses the same depth-Llayer stackttimes: F (t)(·) = lmhead◦ M L ◦ ML ◦ · · · ◦ ML | {z } titerations"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page5_7",
+      "presentation": {
+        "latex": "F (t)(·) = lmhead◦ M L ◦ ML ◦ · · · ◦ ML | {z } titerations ◦emb(·).(1) Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept",
+        "unicode_plain": "F (t)(·) = lmhead◦ M L ◦ ML ◦ · · · ◦ ML | {z } titerations ◦emb(·).(1) Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "F (t)(·) = lmhead◦ M L ◦ ML ◦ · · · ◦ ML | {z } titerations ◦emb(·).(1) Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "◦emb(·).(1) Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept as the loss,L(t): L(t) =E x1:M \" M−1X",
+        "unicode_plain": "◦emb(·).(1) Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept as the loss,L(t): L(t) =E x1:M \" M−1X"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "◦emb(·).(1) Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept as the loss,L(t): L(t) =E x1:M \" M−1X"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page5_9",
+      "presentation": {
+        "latex": "Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept as the loss,L(t): L(t) =E x1:M \" M−1X ℓ=1",
+        "unicode_plain": "Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept as the loss,L(t): L(t) =E x1:M \" M−1X ℓ=1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Thus, t = 1yields the non-looped model F (1) ≡F . As shown in Figure 3 (Left), at each recurrent stept, the model produces a language modeling head output. We define the standard cross-entropy loss at single stept as the loss,L(t): L(t) =E x1:M \" M−1X ℓ=1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page5_10",
+      "presentation": {
+        "latex": "L(t) =E x1:M \" M−1X ℓ=1 −logp (t) θ \u0000",
+        "unicode_plain": "L(t) =E x1:M \" M−1X ℓ=1 −logp (t) θ \u0000"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L(t) =E x1:M \" M−1X ℓ=1 −logp (t) θ \u0000"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page5_11",
+      "presentation": {
+        "latex": "θ (· |x 1:ℓ) = softmax \u0000 lmhead(h(t) ℓ ) \u0001 , x1:ℓ denotes the length−ℓ prefix of the input (tokens1through",
+        "unicode_plain": "θ (· |x 1:ℓ) = softmax \u0000 lmhead(h(t) ℓ ) \u0001 , x1:ℓ denotes the length−ℓ prefix of the input (tokens1through"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "θ (· |x 1:ℓ) = softmax \u0000 lmhead(h(t) ℓ ) \u0001 , x1:ℓ denotes the length−ℓ prefix of the input (tokens1through"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page5_12",
+      "presentation": {
+        "latex": "λt(x) =σ \u0010 Linearϕ \u0010 h(t) \u0011\u0011",
+        "unicode_plain": "λt(x) =σ \u0010 Linearϕ \u0010 h(t) \u0011\u0011"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "λt(x) =σ \u0010 Linearϕ \u0010 h(t) \u0011\u0011"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page5_13",
+      "presentation": {
+        "latex": "St(x) = tY j=1 \u0000 1−λ j(x) \u0001",
+        "unicode_plain": "St(x) = tY j=1 \u0000 1−λ j(x) \u0001"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "St(x) = tY j=1 \u0000 1−λ j(x) \u0001"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "˜pt(x) =λ t(x)S t−1(x), t= 1, . . . , T max −1. To obtain a valid discrete distribution over exit steps, we assign the remaining mass to the final step: 5",
+        "unicode_plain": "˜pt(x) =λ t(x)S t−1(x), t= 1, . . . , T max −1. To obtain a valid discrete distribution over exit steps, we assign the remaining mass to the final step: 5"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜pt(x) =λ t(x)S t−1(x), t= 1, . . . , T max −1. To obtain a valid discrete distribution over exit steps, we assign the remaining mass to the final step: 5"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

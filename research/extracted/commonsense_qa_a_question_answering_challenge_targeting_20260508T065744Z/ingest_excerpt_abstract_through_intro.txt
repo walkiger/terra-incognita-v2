@@ -1,0 +1,139 @@
+Abstract
+When answering a question, people often draw
+upon their rich world knowledge in addi-
+tion to the particular context. Recent work
+has focused primarily on answering questions
+given some relevant document or context,
+and required very little general background.
+To investigate question answering with prior
+knowledge, we present C OMMONSENSE QA:
+a challenging new dataset for commonsense
+question answering. To capture common sense
+beyond associations, we extract from C ON-
+CEPT NET (Speer et al., 2017) multiple target
+concepts that have the same semantic relation
+to a single source concept. Crowd-workers
+are asked to author multiple-choice questions
+that mention the source concept and discrim-
+inate in turn between each of the target con-
+cepts. This encourages workers to create ques-
+tions with complex semantics that often re-
+quire prior knowledge. We create 12,247 ques-
+tions through this procedure and demonstrate
+the difﬁculty of our task with a large number
+of strong baselines. Our best baseline is based
+on BERT-large (Devlin et al., 2018) and ob-
+tains 56% accuracy, well below human perfor-
+mance, which is 89%.
+1 Introduction
+When humans answer questions, they capitalize
+on their common sense and background knowl-
+edge about spatial relations, causes and effects,
+scientiﬁc facts and social conventions. For in-
+stance, given the question “Where was Simon
+when he heard the lawn mower?” , one can infer
+that the lawn mower is close to Simon, and that
+it is probably outdoors and situated at street level.
+This type of knowledge seems trivial for humans,
+but is still out of the reach of current natural lan-
+guage understanding (NLU) systems.
+∗ The authors contributed equally
+river
+waterfall
+bridge
+valley
+a)Sample ConceptNetfor speciﬁc subgraphs
+b)Crowd source corresponding natural language questions and two additional distractorsWhere on a rivercan you hold a cup upright to catch water on a sunny day?
+✔‍‍‍‍waterfall,   ✘bridge,   ✘valley,✘pebble,✘mountainWhere can I stand on a riverto see water falling without getting wet? ✘waterfall,   
+✔bridge,   ✘valley,✘stream,✘bottom
+AtLocation
+I’m crossing the river, my feet are wet but my body is dry, where am I? ✘waterfall,   ✘bridge,   
+✔valley,✘bank,✘island
+pebblestreambank AtLocationAtLocationcanyon
+AtLocation
+AtLocationAtLocationAtLocation
+…
+Figure 1 : (a) A source concept (in green) and three tar-
+get concepts (in blue) are sampled from C ONCEPT NET (b)
+Crowd-workers generate three questions, each having one of
+the target concepts for its answer (), while the other two tar-
+gets are not (). Then, for each question, workers choose an
+additional distractor from CONCEPT NET (in red), and author
+one themselves (in purple).
+Work on Question Answering (QA) has mostly
+focused on answering factoid questions, where the
+answer can be found in a given context with lit-
+tle need for commonsense knowledge (Hermann
+et al., 2015; Rajpurkar et al., 2016; Nguyen et al.,
+2016; Joshi et al., 2017). Small benchmarks such
+as the Winograd Scheme Challenge (Levesque,
+2011) and COPA (Roemmele et al., 2011), tar-
+geted common sense more directly, but have been
+difﬁcult to collect at scale.
+Recently, efforts have been invested in devel-
+oping large-scale datasets for commonsense rea-
+soning. In SW AG (Zellers et al., 2018b), given
+a textual description of an event, a probable sub-
+sequent event needs to be inferred. However, it
+has been quickly realized that models trained on
+large amounts of unlabeled data (Devlin et al.,
+arXiv:1811.00937v2  [cs.CL]  15 Mar 2019
+2018) capture well this type of information and
+performance on SW AG is already at human level.
+VCR (Zellers et al., 2018a) is another very re-
+cent attempt that focuses on the visual aspects of
+common sense. Such new attempts highlight the
+breadth of commonsense phenomena, and make it
+evident that research on common sense has only
+scratched the surface. Thus, there is need for
+datasets and models that will further our under-
+standing of what is captured by current NLU mod-
+els, and what are the main lacunae.
+In this work, we present C OMMONSENSE QA,
+a new dataset focusing on commonsense ques-
+tion answering, based on knowledge encoded in
+CONCEPT NET (Speer et al., 2017). We propose a
+method for generating commonsense questions at
+scale by asking crowd workers to author questions
+that describe the relation between concepts from
+CONCEPT NET (Figure 1). A crowd worker ob-
+serves a source concept ( ‘River’ in Figure 1) and
+three target concepts ( ‘Waterfall’, ‘Bridge’, ‘Val-
+ley’) that are all related by the same C ONCEPT -
+NET relation ( AtLocation). The worker then
+authors three questions, one per target concept,
+such that only that particular target concept is the
+answer, while the other two distractor concepts are
+not. This primes the workers to add commonsense
+knowledge to the question, that separates the tar-
+get concept from the distractors. Finally, for each
+question, the worker chooses one additional dis-
+tractor from C ONCEPT NET, and authors another
+distractor manually. Thus, in total, ﬁve candidate
+answers accompany each question.
+Because questions are generated freely by
+workers, they often require background knowl-
+edge that is trivial to humans but is seldom explic-
+itly reported on the web due to reporting bias (Gor-
+don and Van Durme, 2013). Thus, questions in
+COMMONSENSE QA have a different nature com-
+pared to prior QA benchmarks, where questions
+are authored given an input text.
+Using our method, we collected 12,247 com-
+monsense questions. We present an analysis that
+illustrates the uniqueness of the gathered ques-
+tions compared to prior work, and the types of
+commonsense skills that are required for tackling
+it. We extensively evaluate models on C OMMON -
+SENSE QA, experimenting with pre-trained mod-
+els, ﬁne-tuned models, and reading comprehen-
+sion (RC) models that utilize web snippets ex-
+tracted from Google search on top of the ques-
+tion itself. We ﬁnd that ﬁne-tuning BERT-LARGE
+(Devlin et al., 2018) on C OMMONSENSE QA ob-
+tains the best performance, reaching an accuracy
+of 55.9%. This is substantially lower than human
+performance, which is 88.9%.
+To summarize, our contributions are:
+1. A new QA dataset centered around common
+sense, containing 12,247 examples.

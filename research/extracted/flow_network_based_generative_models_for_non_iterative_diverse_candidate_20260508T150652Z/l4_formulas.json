@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z",
+  "extracted_at": "2026-05-08T15:10:01Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "Z = R(x)∑ x′∈XR(x′) (1) 2",
+        "unicode_plain": "Z = R(x)∑ x′∈XR(x′) (1) 2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Z = R(x)∑ x′∈XR(x′) (1) 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "x′∈XR(x′) (1) 2",
+        "unicode_plain": "x′∈XR(x′) (1) 2"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "x′∈XR(x′) (1) 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "of actions allowed after states. To every action sequence⃗ a= (a1,a 2,a 3,...,a h) ofai∈A,h≤H corresponds a singlex, i.e. the environment is deterministic so we can deﬁne a functionC mapping a sequence of actions⃗ ato anx. If such a sequence is ‘incomplete’ we deﬁne its reward to be 0. When the correspondence between action sequences and states is bijective, a states is uniquely described by some ",
+        "unicode_plain": "of actions allowed after states. To every action sequence⃗ a= (a1,a 2,a 3,...,a h) ofai∈A,h≤H corresponds a singlex, i.e. the environment is deterministic so we can deﬁne a functionC mapping a sequence of actions⃗ ato anx. If such a sequence is ‘incomplete’ we deﬁne its reward to be 0. When the correspondence between action sequences and states is bijective, a states is uniquely described by some sequence⃗ a, and we can visualize the generative process as the traversal of a tree from a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "of actions allowed after states. To every action sequence⃗ a= (a1,a 2,a 3,...,a h) ofai∈A,h≤H corresponds a singlex, i.e. the environment is deterministic so we can deﬁne a functionC mapping a sequence of actions⃗ ato anx. If such a sequence is ‘incomplete’ we deﬁne its reward to be 0. When the correspondence between action sequences and states is bijective, a states is uniquely described by some sequence⃗ a, and we can visualize the generative process as the traversal of a tree from a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "s =C(⃗ a)∈S . Let ˜V :S↦→ R+ associate each states∈S to ˜V (s) = ∑ ⃗b∈A∗(s)R(s +⃗b) > 0, whereA∗(s) is the set of allowed continuations froms ands +⃗b denotes the resulting state, i.e., ˜V (s) is the sum of the rewards of all the states reachable froms. Consider a policyπ which starts from the state corresponding to the empty strings0 =C(∅) and chooses from states∈S an allowable action a ∈ A(s) wi",
+        "unicode_plain": "s =C(⃗ a)∈S . Let ˜V :S↦→ R+ associate each states∈S to ˜V (s) = ∑ ⃗b∈A∗(s)R(s +⃗b) > 0, whereA∗(s) is the set of allowed continuations froms ands +⃗b denotes the resulting state, i.e., ˜V (s) is the sum of the rewards of all the states reachable froms. Consider a policyπ which starts from the state corresponding to the empty strings0 =C(∅) and chooses from states∈S an allowable action a ∈ A(s) with probability π(a|s) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "s =C(⃗ a)∈S . Let ˜V :S↦→ R+ associate each states∈S to ˜V (s) = ∑ ⃗b∈A∗(s)R(s +⃗b) > 0, whereA∗(s) is the set of allowed continuations froms ands +⃗b denotes the resulting state, i.e., ˜V (s) is the sum of the rewards of all the states reachable froms. Consider a policyπ which starts from the state corresponding to the empty strings0 =C(∅) and chooses from states∈S an allowable action a ∈ A(s) with probability π(a|s) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "the state corresponding to the empty strings0 =C(∅) and chooses from states∈S an allowable action a ∈ A(s) with probability π(a|s) = ˜V (s+a)∑ b∈A(s) ˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N",
+        "unicode_plain": "the state corresponding to the empty strings0 =C(∅) and chooses from states∈S an allowable action a ∈ A(s) with probability π(a|s) = ˜V (s+a)∑ b∈A(s) ˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the state corresponding to the empty strings0 =C(∅) and chooses from states∈S an allowable action a ∈ A(s) with probability π(a|s) = ˜V (s+a)∑ b∈A(s) ˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "action a ∈ A(s) with probability π(a|s) = ˜V (s+a)∑ b∈A(s) ˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy.",
+        "unicode_plain": "action a ∈ A(s) with probability π(a|s) = ˜V (s+a)∑ b∈A(s) ˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "action a ∈ A(s) with probability π(a|s) = ˜V (s+a)∑ b∈A(s) ˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy. The following then obtains: (a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai).",
+        "unicode_plain": "˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy. The following then obtains: (a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜V (s+b). Denote π(⃗ a= (a1,...,a N )) = ∏N i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy. The following then obtains: (a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy. The following then obtains: (a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3",
+        "unicode_plain": "i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy. The following then obtains: (a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1π(ai|C(a1,...,a i−1)) andπ(s) withs∈S the probability of visiting a states with this policy. The following then obtains: (a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "(a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3",
+        "unicode_plain": "(a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(a)π(s) = ∑ ⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3",
+        "unicode_plain": "⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "⃗ ai:C(⃗ ai)=sπ(⃗ ai). 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "(b) IfC is bijective, thenπ(s) = ˜V (s) ˜V (s0) and as a special case for terminal statesx,π(x) = R(x)∑ x∈XR(x). (c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑",
+        "unicode_plain": "(b) IfC is bijective, thenπ(s) = ˜V (s) ˜V (s0) and as a special case for terminal statesx,π(x) = R(x)∑ x∈XR(x). (c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(b) IfC is bijective, thenπ(s) = ˜V (s) ˜V (s0) and as a special case for terminal statesx,π(x) = R(x)∑ x∈XR(x). (c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "˜V (s0) and as a special case for terminal statesx,π(x) = R(x)∑ x∈XR(x). (c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non-",
+        "unicode_plain": "˜V (s0) and as a special case for terminal statesx,π(x) = R(x)∑ x∈XR(x). (c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜V (s0) and as a special case for terminal statesx,π(x) = R(x)∑ x∈XR(x). (c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "(c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non- injective (there are many ways to construct a molecule graph), this can become exponentially bad as trajectory lengths increase. It means that larger molecules would be exp",
+        "unicode_plain": "(c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non- injective (there are many ways to construct a molecule graph), this can become exponentially bad as trajectory lengths increase. It means that larger molecules would be exponentially more likely to be"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(c) If C is non-injective and there are n(x) distinct action sequences ⃗ ai s.t. C(⃗ ai) = x, then π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non- injective (there are many ways to construct a molecule graph), this can become exponentially bad as trajectory lengths increase. It means that larger molecules would be exponentially more likely to be"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non- injective (there are many ways to construct a molecule graph), this can become exponentially bad as trajectory lengths increase. It means that larger molecules would be exponentially more likely to be sampled than smaller ones, just because of the many more paths leading",
+        "unicode_plain": "π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non- injective (there are many ways to construct a molecule graph), this can become exponentially bad as trajectory lengths increase. It means that larger molecules would be exponentially more likely to be sampled than smaller ones, just because of the many more paths leading to them. In this scenario, the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "π(x) = n(x)R(x)∑ x′∈Xn(x′)R(x′). See Appendix A.1 for the proof. In combinatorial spaces, such as for molecules, where C is non- injective (there are many ways to construct a molecule graph), this can become exponentially bad as trajectory lengths increase. It means that larger molecules would be exponentially more likely to be sampled than smaller ones, just because of the many more paths leading to them. In this scenario, the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

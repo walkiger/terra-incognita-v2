@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "generative_augmented_flow_networks_ling_pan1_dinghuai_zhang1_aaron_courv_20260508T150703Z",
+  "extracted_at": "2026-05-08T15:10:27Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "Consider a directed acyclic graph (DAG) G = (S, A), where S denotes the state space, and A represents the action space, which is a subset ofS×S . We denote the vertexs0∈S to be the initial state with no incoming edges, while the vertex sf without outgoing edges is called the sink state, 2",
+        "unicode_plain": "Consider a directed acyclic graph (DAG) G = (S, A), where S denotes the state space, and A represents the action space, which is a subset ofS×S . We denote the vertexs0∈S to be the initial state with no incoming edges, while the vertex sf without outgoing edges is called the sink state, 2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Consider a directed acyclic graph (DAG) G = (S, A), where S denotes the state space, and A represents the action space, which is a subset ofS×S . We denote the vertexs0∈S to be the initial state with no incoming edges, while the vertex sf without outgoing edges is called the sink state, 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "state to a terminal state τ = ( s0→···→ sn) a trajectory, where τ ∈T withT denoting the set of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑ τ∋sF (τ) deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ )",
+        "unicode_plain": "state to a terminal state τ = ( s0→···→ sn) a trajectory, where τ ∈T withT denoting the set of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑ τ∋sF (τ) deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ )"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "state to a terminal state τ = ( s0→···→ sn) a trajectory, where τ ∈T withT denoting the set of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑ τ∋sF (τ) deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ )"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑ τ∋sF (τ) deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑",
+        "unicode_plain": "of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑ τ∋sF (τ) deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑ τ∋sF (τ) deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′)",
+        "unicode_plain": "deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑ τ∋s→s′F (τ) deﬁnes the edge ﬂow for any edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′)",
+        "unicode_plain": "edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ ) Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing",
+        "unicode_plain": "Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Z , whereZ = ∑ τ∈T F (τ) denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing ",
+        "unicode_plain": "denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing in"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′) F (s) and the backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing in"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing in edges outgoing from s. 2.1 GFlowNets training criterion",
+        "unicode_plain": "backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing in edges outgoing from s. 2.1 GFlowNets training criterion"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "backward policyPB(s|s′) = F (s→s′) F (s′) . The ﬂows can be considered as the amount of water ﬂowing through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing in edges outgoing from s. 2.1 GFlowNets training criterion"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "s′′→sF (s′′ → s) = F (s) = ∑ s→s′F (s→ s′), which means that the incoming ﬂows equal the outgoing ﬂows. Bengio et al. (2021a) prove that for a consistent ﬂow F where the terminal ﬂow is set to be the reward, the forward policy can sample objectsx with probability proportional toR(x). Flow matching (FM). Bengio et al. (2021a) propose to approximate the edge ﬂow by a model Fθ(s, s′) parameterized by",
+        "unicode_plain": "s′′→sF (s′′ → s) = F (s) = ∑ s→s′F (s→ s′), which means that the incoming ﬂows equal the outgoing ﬂows. Bengio et al. (2021a) prove that for a consistent ﬂow F where the terminal ﬂow is set to be the reward, the forward policy can sample objectsx with probability proportional toR(x). Flow matching (FM). Bengio et al. (2021a) propose to approximate the edge ﬂow by a model Fθ(s, s′) parameterized by θ following the FM objective, i.e.,LFM(s) = (log ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "s′′→sF (s′′ → s) = F (s) = ∑ s→s′F (s→ s′), which means that the incoming ﬂows equal the outgoing ﬂows. Bengio et al. (2021a) prove that for a consistent ﬂow F where the terminal ﬂow is set to be the reward, the forward policy can sample objectsx with probability proportional toR(x). Flow matching (FM). Bengio et al. (2021a) propose to approximate the edge ﬂow by a model Fθ(s, s′) parameterized by θ following the FM objective, i.e.,LFM(s) = (log ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "Fθ(s, s′) parameterized by θ following the FM objective, i.e.,LFM(s) = (log ∑ (s′′→s)∈AFθ(s′′, s)− log ∑ (s→s′)∈AFθ(s, s′))2 for non-terminal states. At terminal states, a similar objective encourages the incoming ﬂow to match the corresponding reward. The objective is optimized using trajectories sampled from a training policyπ with full support such as a tempered version of PFθ or a mixture",
+        "unicode_plain": "Fθ(s, s′) parameterized by θ following the FM objective, i.e.,LFM(s) = (log ∑ (s′′→s)∈AFθ(s′′, s)− log ∑ (s→s′)∈AFθ(s, s′))2 for non-terminal states. At terminal states, a similar objective encourages the incoming ﬂow to match the corresponding reward. The objective is optimized using trajectories sampled from a training policyπ with full support such as a tempered version of PFθ or a mixture"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Fθ(s, s′) parameterized by θ following the FM objective, i.e.,LFM(s) = (log ∑ (s′′→s)∈AFθ(s′′, s)− log ∑ (s→s′)∈AFθ(s, s′))2 for non-terminal states. At terminal states, a similar objective encourages the incoming ﬂow to match the corresponding reward. The objective is optimized using trajectories sampled from a training policyπ with full support such as a tempered version of PFθ or a mixture"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "ofPFθ with a uniform policyU, i.e.,πθ = (1−ϵ)PFθ +ϵ·U, This is similar toϵ-greedy and entropy- regularized strategies in RL to improve exploration. Bengio et al. (2021a) prove that if we reach a global minimum of the expected loss function and the training policy πθ has full support, then GFlowNet samples from the target distribution. Detailed balance (DB). Bengio et al. (2021b) propose the DB obj",
+        "unicode_plain": "ofPFθ with a uniform policyU, i.e.,πθ = (1−ϵ)PFθ +ϵ·U, This is similar toϵ-greedy and entropy- regularized strategies in RL to improve exploration. Bengio et al. (2021a) prove that if we reach a global minimum of the expected loss function and the training policy πθ has full support, then GFlowNet samples from the target distribution. Detailed balance (DB). Bengio et al. (2021b) propose the DB objective to avoid the computa-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ofPFθ with a uniform policyU, i.e.,πθ = (1−ϵ)PFθ +ϵ·U, This is similar toϵ-greedy and entropy- regularized strategies in RL to improve exploration. Bengio et al. (2021a) prove that if we reach a global minimum of the expected loss function and the training policy πθ has full support, then GFlowNet samples from the target distribution. Detailed balance (DB). Bengio et al. (2021b) propose the DB objective to avoid the computa-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page3_12",
+      "presentation": {
+        "latex": "LDB(s, s′) = (log(Fθ(s)PFθ(s′|s))− log(Fθ(s′)PBθ(s|s′)))2. It also samples from the target distribu- tion if a global minimum of the expected loss is reached andπθ has full support. Trajectory balance (TB). Malkin et al. (2022) propose the TB objective for faster credit assignment and learning over longer trajectories. The loss function for TB is LTB(τ) = (log(Zθ ∏n−1",
+        "unicode_plain": "LDB(s, s′) = (log(Fθ(s)PFθ(s′|s))− log(Fθ(s′)PBθ(s|s′)))2. It also samples from the target distribu- tion if a global minimum of the expected loss is reached andπθ has full support. Trajectory balance (TB). Malkin et al. (2022) propose the TB objective for faster credit assignment and learning over longer trajectories. The loss function for TB is LTB(τ) = (log(Zθ ∏n−1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "LDB(s, s′) = (log(Fθ(s)PFθ(s′|s))− log(Fθ(s′)PBθ(s|s′)))2. It also samples from the target distribu- tion if a global minimum of the expected loss is reached andπθ has full support. Trajectory balance (TB). Malkin et al. (2022) propose the TB objective for faster credit assignment and learning over longer trajectories. The loss function for TB is LTB(τ) = (log(Zθ ∏n−1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page3_13",
+      "presentation": {
+        "latex": "assignment and learning over longer trajectories. The loss function for TB is LTB(τ) = (log(Zθ ∏n−1 t=0 PFθ(st+1|st))− log(R(x) ∏n−1 t=0 PB(st|st+1)))2, whereZθ is a learnable parameter. 3 Related Work",
+        "unicode_plain": "assignment and learning over longer trajectories. The loss function for TB is LTB(τ) = (log(Zθ ∏n−1 t=0 PFθ(st+1|st))− log(R(x) ∏n−1 t=0 PB(st|st+1)))2, whereZθ is a learnable parameter. 3 Related Work"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "assignment and learning over longer trajectories. The loss function for TB is LTB(τ) = (log(Zθ ∏n−1 t=0 PFθ(st+1|st))− log(R(x) ∏n−1 t=0 PB(st|st+1)))2, whereZθ is a learnable parameter. 3 Related Work"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page3_14",
+      "presentation": {
+        "latex": "t=0 PFθ(st+1|st))− log(R(x) ∏n−1 t=0 PB(st|st+1)))2, whereZθ is a learnable parameter. 3 Related Work GFlowNets. Since the proposal of GFlowNets (Bengio et al., 2021a), there has been an increasing interest in improving (Bengio et al., 2021b, Malkin et al., 2022), understanding, and applying this framework to practical scenarios. It is a general-purpose high-level probabilistic inference frame-",
+        "unicode_plain": "t=0 PFθ(st+1|st))− log(R(x) ∏n−1 t=0 PB(st|st+1)))2, whereZθ is a learnable parameter. 3 Related Work GFlowNets. Since the proposal of GFlowNets (Bengio et al., 2021a), there has been an increasing interest in improving (Bengio et al., 2021b, Malkin et al., 2022), understanding, and applying this framework to practical scenarios. It is a general-purpose high-level probabilistic inference frame-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 PFθ(st+1|st))− log(R(x) ∏n−1 t=0 PB(st|st+1)))2, whereZθ is a learnable parameter. 3 Related Work GFlowNets. Since the proposal of GFlowNets (Bengio et al., 2021a), there has been an increasing interest in improving (Bengio et al., 2021b, Malkin et al., 2022), understanding, and applying this framework to practical scenarios. It is a general-purpose high-level probabilistic inference frame-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

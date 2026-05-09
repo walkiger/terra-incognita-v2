@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z",
+  "source_pdf": "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/source.pdf",
+  "title_hint": "Preprint New News: SYSTEM-2 FINE-TUNING FOR ROBUSTINTEGRATION OFNEWKNOWLEDGE Core Francisco Park∗",
+  "updated_at": "2026-05-08T15:11:38Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:02Z",
+      "artifacts": [
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/source.pdf",
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:38Z",
+      "artifacts": [
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:38Z",
+      "artifacts": [
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:38Z",
+      "artifacts": [
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:38Z",
+      "artifacts": [
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/l4_analysis.json",
+        "research/extracted/preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=3851; pdf_sha256=f25fee3cdf98535f0a5b0fa4033a7f8f8c42dd45c44e0cee0b9b5084eddbf971; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "f25fee3cdf98535f0a5b0fa4033a7f8f8c42dd45c44e0cee0b9b5084eddbf971"
+}

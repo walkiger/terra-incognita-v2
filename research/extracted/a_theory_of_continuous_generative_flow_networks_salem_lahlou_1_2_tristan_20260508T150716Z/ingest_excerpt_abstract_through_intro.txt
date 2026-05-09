@@ -1,0 +1,87 @@
+Abstract
+Generative flow networks (GFlowNets) are amor-
+tized variational inference algorithms that are
+trained to sample from unnormalized target distri-
+butions over compositional objects. A key limi-
+tation of GFlowNets until this time has been that
+they are restricted to discrete spaces. We present a
+theory for generalized GFlowNets, which encom-
+passes both existing discrete GFlowNets and ones
+with continuous or hybrid state spaces, and per-
+form experiments with two goals in mind. First,
+we illustrate critical points of the theory and the
+importance of various assumptions. Second, we
+empirically demonstrate how observations about
+discrete GFlowNets transfer to the continuous
+case and show strong results compared to non-
+GFlowNet baselines on several previously studied
+tasks. This work greatly widens the perspectives
+for the application of GFlowNets in probabilistic
+inference and various modeling settings.
+1. Introduction
+Generative flow networks (GFlowNets; Bengio et al., 2021a)
+are an increasingly popular class of methods that amortize
+sampling from intractable distributions over spaces with a
+compositional structure by learning a sequential sampling
+policy. Their applications include the design of biological
+structures such as molecules (Bengio et al., 2021a; Jain
+et al., 2022), Bayesian structure learning (Deleu et al., 2022;
+Nishikawa-Toomey et al., 2022), and robust combinatorial
+optimization (Zhang et al., 2023b). Naturally, their devel-
+opment and theoretical foundations (Bengio et al., 2021b;
+Malkin et al., 2023; Zimmermann et al., 2022) have been
+geared towards environments with discrete structures.
+As many probabilistic inference and modeling problems
+involve continuous variables, it is natural to ask whether
+the advantages of GFlowNets, which include stable off-
+1Mila 2Universit´e de Montr´eal 3Ciela Institute 4CIFAR. Corre-
+spondence to: Salem Lahlou <lahlosal@mila.quebec>.
+Proceedings of the 40 𝑡 ℎ International Conference on Machine
+Learning, Honolulu, Hawaii, USA. PMLR 202, 2023. Copyright
+2023 by the author(s).
+policy learning and the ability to capture many modes of the
+target distribution, extend to general spaces. For example,
+molecule design implies specifying relative spatial positions
+of atoms and benefits from modeling continuous variables,
+such as torsion angles (Jing et al., 2022), and Bayesian
+structure learning requires the discovery of not only the
+structure of the graphical model, but also its parameters.
+As a first attempt at using GFlowNet losses to train an
+amortized sampler of a unnormalized continuous density,
+Malkin et al. (2023) showed that the off-policy benefits
+of GFlowNets extend to a toy stochastic control problem.
+However, a theory justifying the soundness GFlowNet losses
+in domains with continuous actions has been still lacking.
+More recently, Li et al. (2023) presented an extension of the
+flow-matching conditions (Bengio et al., 2021a) to contin-
+uous domains; however, this extension relies upon several
+invalid assumptions, as we expand on in §3.1.
+This paper presents a theory extending all known GFlowNet
+training objectives to arbitrary spaces. It relies on measur-
+able pointed graphs, a generalization of directed acyclic
+graphs (DAGs) to measurable spaces, based on Markov ker-
+nels. Our main theoretical contributions are an extension
+of the flow-matching (FM; Bengio et al., 2021a), detailed
+balance (DB; Bengio et al., 2021b), and trajectory balance
+(TB; Malkin et al., 2022) conditions and a theorem proving
+that the learned forward kernel samples from the target dis-
+tribution when any of these conditions is satisfied. These
+conditions lead to training losses involving density functions
+and allowing gradient-based learning. Existing losses for
+discrete GFlowNets are special cases of the ones we state.
+Additionally, we provide experimental results in multiple
+domains with different structures, some of which include
+action spaces with both discrete and continuous compo-
+nents. These experiments serve both to validate the theo-
+retical claims and to inform practitioners of caveats that
+are specific to continuous domains. Our comparative ex-
+periments confirm that the already-proven advantages of
+discrete GFlowNets transfer to more general state spaces.
+The remainder of the paper is structured as follows:
+§2 reviews GFlowNets and work on stochastic sampling;
+§3 presents the theoretical results and a practical summary;
+1
+arXiv:2301.12594v2  [cs.LG]  25 May 2023
+A Theory of Continuous Generative Flow Networks 2
+§4 is devoted to empirically validating the theory and com-
+paring generalized GFlowNets with baselines.

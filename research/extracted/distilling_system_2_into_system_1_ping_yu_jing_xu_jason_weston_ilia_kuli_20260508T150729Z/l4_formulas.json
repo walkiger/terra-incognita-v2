@@ -1,0 +1,123 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "distilling_system_2_into_system_1_ping_yu_jing_xu_jason_weston_ilia_kuli_20260508T150729Z",
+  "extracted_at": "2026-05-08T15:09:27Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "SII(x; pθ) → z, y. (1) System 2 approaches can potentially involve mul- tiple prompts, branching, iteration and search, all the while using the LLM to generate intermediate results for further processing. In contrast, a System 1 model only considers the original input x and",
+        "unicode_plain": "SII(x; pθ) → z, y. (1) System 2 approaches can potentially involve mul- tiple prompts, branching, iteration and search, all the while using the LLM to generate intermediate results for further processing. In contrast, a System 1 model only considers the original input x and"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "SII(x; pθ) → z, y. (1) System 2 approaches can potentially involve mul- tiple prompts, branching, iteration and search, all the while using the LLM to generate intermediate results for further processing. In contrast, a System 1 model only considers the original input x and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "SI(x) = pθ(x) → y. (2) There are many existing instantiations of Sys- tem 2 models. Chain-of-thought prompting only requires a single LLM prompt, but still outputs intermediate generations before a final response, typically used in math and other reasoning tasks",
+        "unicode_plain": "SI(x) = pθ(x) → y. (2) There are many existing instantiations of Sys- tem 2 models. Chain-of-thought prompting only requires a single LLM prompt, but still outputs intermediate generations before a final response, typically used in math and other reasoning tasks"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "SI(x) = pθ(x) → y. (2) There are many existing instantiations of Sys- tem 2 models. Chain-of-thought prompting only requires a single LLM prompt, but still outputs intermediate generations before a final response, typically used in math and other reasoning tasks"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "SII = SII(xi; pθ), ∀xi ∈ X . (3) Note we discard (do not store) the intermediate outputs z from Eq. 1. These responses yi SII can then be used directly as System 2 distillation targets for fine-tuning a System 1 model. However, they are",
+        "unicode_plain": "SII = SII(xi; pθ), ∀xi ∈ X . (3) Note we discard (do not store) the intermediate outputs z from Eq. 1. These responses yi SII can then be used directly as System 2 distillation targets for fine-tuning a System 1 model. However, they are"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "SII = SII(xi; pθ), ∀xi ∈ X . (3) Note we discard (do not store) the intermediate outputs z from Eq. 1. These responses yi SII can then be used directly as System 2 distillation targets for fine-tuning a System 1 model. However, they are"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page8_4",
+      "presentation": {
+        "latex": "Model k=1 k=5 k=10 Acc % #Tokens Acc % #Tokens Acc % #Tokens System 1 Few (8)-shot (no CoT) 7.58% 57 9.40% 295 10.31% 620 System 2 CoT zero-shot 52.77% 270 57.54% 1385 59.44% 2760",
+        "unicode_plain": "Model k=1 k=5 k=10 Acc % #Tokens Acc % #Tokens Acc % #Tokens System 1 Few (8)-shot (no CoT) 7.58% 57 9.40% 295 10.31% 620 System 2 CoT zero-shot 52.77% 270 57.54% 1385 59.44% 2760"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Model k=1 k=5 k=10 Acc % #Tokens Acc % #Tokens Acc % #Tokens System 1 Few (8)-shot (no CoT) 7.58% 57 9.40% 295 10.31% 620 System 2 CoT zero-shot 52.77% 270 57.54% 1385 59.44% 2760"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page8_5",
+      "presentation": {
+        "latex": "unlabeled), using majority voting with K = 10 . The resulting distillation training set consists of 7461 [question, answer] pairs i.e., without any in- termediate reasoning steps. The accuracy of the self-supervised targets, computed for analysis pur- poses, is 56.81%.",
+        "unicode_plain": "unlabeled), using majority voting with K = 10 . The resulting distillation training set consists of 7461 [question, answer] pairs i.e., without any in- termediate reasoning steps. The accuracy of the self-supervised targets, computed for analysis pur- poses, is 56.81%."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "unlabeled), using majority voting with K = 10 . The resulting distillation training set consists of 7461 [question, answer] pairs i.e., without any in- termediate reasoning steps. The accuracy of the self-supervised targets, computed for analysis pur- poses, is 56.81%."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    }
+  ]
+}

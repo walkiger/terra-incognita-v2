@@ -1,0 +1,180 @@
+Abstract
+Maximum likelihood estimation of energy-based models is a challenging problem
+due to the intractability of the log-likelihood gradient. In this work, we propose
+learning both the energy function and an amortized approximate sampling mecha-
+nism using a neural generator network, which provides an efﬁcient approximation
+of the log-likelihood gradient. The resulting objective requires maximizing entropy
+of the generated samples, which we perform using recently proposed nonparametric
+mutual information estimators. Finally, to stabilize the resulting adversarial game,
+we use a zero-centered gradient penalty derived as a necessary condition from the
+score matching literature. The proposed technique can generate sharp images with
+Inception and FID scores competitive with recent GAN techniques, does not suffer
+from mode collapse, and is competitive with state-of-the-art anomaly detection
+techniques.
+1 Introduction
+Unsupervised learning promises to take advantage from unlabelled data, and is regarded as crucial
+for artiﬁcial intelligence (Lake et al., 2017). Energy-based modeling (EBMs, LeCun et al. (2006))
+is a family of unsupervised learning methods focused on learning an energy function, i.e., an
+unnormalized log density of the data. This removes the need to make parametric assumptions about
+the data distribution to make the normalizing constant ( Z) tractable. However, in practice, due
+to the very same lack of restrictions, learning high-quality energy-based models is fraught with
+challenges. To avoid explicitly computing Z or its gradient, Contrastive Divergence (Hinton, 2000)
+and Stochastic Maximum Likelihood (Younes, 1998; Tieleman, 2008a) rely on Markov Chain Monte
+Carlo (MCMC) to approximately sample from the energy-based model. However, MCMC-based
+sampling approaches frequently suffer from long mixing times for high-dimensional data. Thus,
+training of energy-based models has not remained competitive with other unsupervised learning
+techniques such as variational auto-encoders (Kingma & Welling, 2014) and generative adversarial
+networks or GANs (Goodfellow et al., 2014).
+In this work, we propose Maximum Entropy Generators (MEG), a framework in which we train
+both an energy function and an approximate sampler, which can either be fast (using a generator
+network G) or uses G to initialize a Markov chain in the latent space of the generator. Training such
+a generator properly requires entropy maximization of the generator’s output distribution, for which
+we take advantage of recent advances in nonparametric mutual information maximization (Belghazi
+et al., 2018; Hjelm et al., 2018; Oord et al., 2018; Poole et al., 2018).
+∗Correspondence to rithesh.kumar@umontreal.ca
+Preprint. Under review.
+arXiv:1901.08508v2  [cs.LG]  27 May 2019
+xdata xmodel
+ℒEBM
+Eθ Eθ
+MCMC xdata xmodel
+ℒEBM
+Eθ Eθ
+zGω
+Figure 1 – Left: Traditional maximum likelihood training of energy-based models. Right: Training
+of maximum entropy generators for energy-based models
+To evaluate the efﬁcacy of the proposed technique, we compare against other state-of-the-art tech-
+niques on image generation, accurate mode representation, and anomaly detection. We demonstrate
+that the proposed technique is able to generate CIFAR-10 samples which are competitive with
+WGAN-GP (Gulrajani et al., 2017) according to the Fréchet Inception Distance (Heusel et al., 2017)
+and Inception Score (Salimans et al., 2016), and is able to generate samples of all the 104 modes of
+4-StackedMNIST at the correct data frequencies.
+We demonstrate that our technique trains energy functions useful for anomaly detection on the
+KDD99 dataset, and that it performs as well as state-of-the-art anomaly detection techniques which
+were specially designed for the task, and vastly outperform other energy-based and generative models
+for anomaly detection.
+To summarize our contributions, we propose maximum entropy generators (MEG), a novel frame-
+work for training energy-based models using amortized neural generators and mutual information
+maximization. We show that the resulting energy function can be successfully used for anomaly
+detection, and outperforms recently published results with energy-based models. We show that MEG
+generates sharp images – with competitive Inception and FID scores – and accurately captures more
+modes than standard GANs, while not suffering from the common mode-mixing issue of many
+maximum likelihood generative models which results in blurry samples.
+2 Background
+Let x denote a sample in the data spaceX and Eθ :X→ R an energy function corresponding to the
+negative logarithm of an unnormalized estimated density density function
+pθ(x) = e−Eθ(x)
+Zθ
+∝ e−Eθ(x) (1)
+where Zθ :=
+∫
+e−Eθ (x)dx is the normalizing constant or partition function. Let pD be the training
+distribution, from which the training set is drawn. Towards optimizing the parameters θ of the energy
+function, the maximum likelihood parameter gradient is
+∂Ex∼pD [− log pθ(x)]
+∂θ = Ex∼pD
+[ ∂Eθ(x)
+∂θ
+]
+− Ex∼pθ(x)
+[ ∂Eθ(x)
+∂θ
+]
+(2)
+where the second term is the gradient of log Zθ, and the sum of the two expectations is zero
+when training has converged, with expected energy gradients in the positive phase (under the data
+pD) matching those under the negative phase (under pθ(x)). Training thus consists in trying to
+separate two distributions: the positive phase distribution (associated with the data) and the negative
+phase distribution (where the model is free-running and generating conﬁgurations by itself). This
+observation has motivated the pre-GAN idea presented by Bengio (2009) that “model samples are
+negative examples" and a classiﬁer could be used to learn an energy function if it separated the data
+distribution from the model’s own samples. Shortly after introducing GANs, Goodfellow (2014) also
+made a similar connection, related to noise-contrastive estimation (Gutmann & Hyvarinen, 2010).
+One should also recognize the similarity between Eq. 2 and the objective function for Wasserstein
+GANs or WGAN (Arjovsky et al., 2017).
+The main challenge in Eq. 2 is to obtain samples from the distribution pθ associated with the energy
+function Eθ. Although having an energy function is convenient to obtain a score allowing comparison
+2
+of the relative probability for differentx’s, it is difﬁcult to convert an energy function into a generative
+process. The commonly studied approaches for this are based on Markov Chain Monte Carlo, in which
+one iteratively updates a candidate conﬁguration, until these conﬁgurations converge in distribution to
+the desired distribution pθ. For the RBM, the most commonly used algorithms have been Contrastive
+Divergence (Hinton, 2000) and Stochastic Maximum Likelihood (Younes, 1998; Tieleman, 2008a),
+relying on the particular structure of the RBM to perform Gibbs sampling. Although these MCMC-
+based methods are appealing, RBMs (and their deeper form, the deep Boltzmann machine) have
+not been competitive in recent years compared to autoregressive models (van den Oord et al.,
+2016), variational auto-encoders (Kingma & Welling, 2014) and generative adversarial networks or
+GANs (Goodfellow et al., 2014).
+What has been hypothesized as a reason for poorer results obtained with energy-based models trained
+with an MCMC estimator for the negative phase gradient is that running a Markov chain in data space
+is fundamentally difﬁcult when the distribution is concentrated (e.g, near manifolds) and has many
+modes separated by vast areas of low probability. This mixing challenge is discussed by Bengio
+et al. (2013) who argue that a Markov chain is very likely to produce only sequences of highly
+probable conﬁgurations: if two modes are far from each other and only local moves are possible
+(which is typically the case when performing MCMC), it becomes exponentially unlikely to traverse
+the “desert” of low probability that can separate two modes. This makes mixing between modes
+difﬁcult in high-dimensional spaces with strong concentration of probability mass in some regions
+(e.g. corresponding to different categories) and very low probability elsewhere.
+3 Maximum Entropy Generators for Energy-Based Models
+We thus propose using an amortized neural sampler to perform fast approximate sampling to train the
+energy model. We begin by replacing the model distribution pθ in in Eq. 2 by a neural generator G
+parametrized by w. We deﬁnePG as the distribution of the outputs G(z) for z∼ pz where pz is a
+simple prior distribution such as a standard Normal distribution.
+∂LE
+∂θ = Ex∼pD
+[ ∂Eθ(x)
+∂θ
+]
+− Ex∼pG(x)
+[ ∂Eθ(x)
+∂θ
+]
+(3)
+To minimize the approximation error, pG must be close to pθ. To do so, we tune G to minimize
+the KL divergence KL(pG||pθ), which can be rewritten in terms of minimizing the energy of the
+samples from the generator while maximizing the entropy at the output of the generator:
+KL(pG||pθ) =−H[pG]− EpG [log pθ(x)] (4)
+=−H[pG] + EpG [Eθ(x)] + log Zθ (5)
+When taking the gradient of KL(pG||pθ) with respect to the parameters w of the generator, the
+log-partition function log Zθ disappears and we can optimize w by minimizing
+LG =−H[pG] + Ez∼pz Eθ(G(z)) (6)
+where pz is the prior distribution of the latent variable of the generator.
+In order to approximately maximize the entropy H[pG] at the output of the generator, we use one
+recently proposed nonparametric mutual information maximization techniques (Belghazi et al., 2018;
+Oord et al., 2018; Hjelm et al., 2018). Poole et al. (2018) show that these techniques can be uniﬁed
+into a single framework derived from the variational bound of Barber & Agakov (2003). Since the
+generator is deterministic, mutual information between inputs and outputs reduces to simply entropy
+of the outputs, since the conditional entropy of a deterministic function is zero:
+I(X, Z) = H(X)− H(X|Z) = H(G(Z))− :0
+H(G(Z)|Z)
+In particular, we use the estimator from Hjelm et al. (2018), which estimates the Jensen-Shannon
+divergence between the joint distribution (p(x, z)) and the product of marginals (p(x)p(z)). We refer
+to this information measure as IJSD (X, Z). We found that the JSD-based estimator works better in
+practice than the KL-based estimator (which corresponds to the mutual information).
+The estimator of Hjelm et al. (2018) is given by
+IJSD (X, Z) = sup
+T∈T
+Ep(X,Z)[−sp(−T (X, Z))]− Ep(X)p(Z)[sp(T (X, Z))] (7)
+3
+where sp(a) = log(1 + ea) is the softplus function. The supremum is approximated using gradient
+descent on the parameters of the discriminator T .
+With X = G(Z) the output of the generator,IJSD (G(Z), Z) is one of the terms to be maximized in
+the objective function for trainingG, which would maximize the generator’s output entropyH(G(Z)).
+Thus the ﬁnal training objective to be minimized for the generator G and the energy func-
+tion E is
+LG =−IJSD (G(Z), Z) + Ez∼pz Eθ(G(z)) (8)
+LE = Ex∼pD Eθ(x)− Ez∼pz Eθ(G(z)) (9)
+where Z∼ pz, the latent prior (typically a N (0, I) Gaussian).
+3.1 Improving training stability
+As can be seen from the above equations, the generator and the energy function are in an adversarial
+game, similar to generative adversarial networks (Goodfellow et al., 2014). This makes optimization
+via simultaneous gradient descent challenging since the gradient vector ﬁeld of such an optimization
+problem is non-conservative as noted by Mescheder et al. (2017). This is particularly accentuated by
+the use of deep neural networks for the generator and the energy function. In particular, we noticed
+that during training the magnitude of the energy function values would diverge.
+To help alleviate this issue we look towards another technique for learning energy-based models
+called score matching proposed by Hyvärinen (2005). Score matching estimates the energy function
+by matching the score functions of the data density and the model density, where the score function
+ψ is the gradient of the log density with respect to the sample ψ(x) = ∂ logp(x)
+∂x . If ψD(x) and
+ψE(x) are the score functions under the data distribution and model dis

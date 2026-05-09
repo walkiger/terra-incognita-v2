@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:10:50Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "Given a raw graph G = ( V, E, X) = ( A, X) with noisy topology, where V is the set of V = |V| nodes, E is the set of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re-",
+        "unicode_plain": "Given a raw graph G = ( V, E, X) = ( A, X) with noisy topology, where V is the set of V = |V| nodes, E is the set of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Given a raw graph G = ( V, E, X) = ( A, X) with noisy topology, where V is the set of V = |V| nodes, E is the set of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "topology, where V is the set of V = |V| nodes, E is the set of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG",
+        "unicode_plain": "topology, where V is the set of V = |V| nodes, E is the set of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "topology, where V is the set of V = |V| nodes, E is the set of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG with a clean adjacency eA, along with corresponding repre-",
+        "unicode_plain": "of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG with a clean adjacency eA, along with corresponding repre-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "of M = |E| edges, X ∈ RV ×D is the node feature matrix (the ith entry xi ∈ RD represents the attribute of node vi), and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG with a clean adjacency eA, along with corresponding repre-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG with a clean adjacency eA, along with corresponding repre- sentation eZ ∈ RV × eF , eF ≪ D, for downstream tasks. Energy-based Models Given a point χ sampled from the data distribution pd(χ),",
+        "unicode_plain": "ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG with a clean adjacency eA, along with corresponding repre- sentation eZ ∈ RV × eF , eF ≪ D, for downstream tasks. Energy-based Models Given a point χ sampled from the data distribution pd(χ),"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ei,j = (vi, vj), i, j ∈ M). The target of graph structure re- finement (Zhu et al. 2021) is to acquire a refined graph eG with a clean adjacency eA, along with corresponding repre- sentation eZ ∈ RV × eF , eF ≪ D, for downstream tasks. Energy-based Models Given a point χ sampled from the data distribution pd(χ),"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "pθ(χ) = exp(−Eθ(χ)) Z(θ) , where Z(θ) is a normalizing constant or partition function ensuringpθ integrates to 1. EBMs lever- age the defined distributionpθ to model the data distribution pd by minimizing the negative log-likelihood ofpθ under pd, as indicated by:",
+        "unicode_plain": "pθ(χ) = exp(−Eθ(χ)) Z(θ) , where Z(θ) is a normalizing constant or partition function ensuringpθ integrates to 1. EBMs lever- age the defined distributionpθ to model the data distribution pd by minimizing the negative log-likelihood ofpθ under pd, as indicated by:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pθ(χ) = exp(−Eθ(χ)) Z(θ) , where Z(θ) is a normalizing constant or partition function ensuringpθ integrates to 1. EBMs lever- age the defined distributionpθ to model the data distribution pd by minimizing the negative log-likelihood ofpθ under pd, as indicated by:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "Eχ∼pd [− log pθ(χ)]. (1) The derivative of the negative log-likelihoodL(θ) is: ∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] . (2) Eq. 2 decreases the energy values of positive samples χ+ while increasing those of negative ones χ− (Hinton",
+        "unicode_plain": "Eχ∼pd [− log pθ(χ)]. (1) The derivative of the negative log-likelihoodL(θ) is: ∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] . (2) Eq. 2 decreases the energy values of positive samples χ+ while increasing those of negative ones χ− (Hinton"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "Eχ∼pd [− log pθ(χ)]. (1) The derivative of the negative log-likelihoodL(θ) is: ∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] . (2) Eq. 2 decreases the energy values of positive samples χ+ while increasing those of negative ones χ− (Hinton"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] . (2) Eq. 2 decreases the energy values of positive samples χ+ while increasing those of negative ones χ− (Hinton 2002). However, computing Z(θ) for most parameteriza- tions of Eθ(χ) is intractable. We employ Stochastic Gradi-",
+        "unicode_plain": "∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] . (2) Eq. 2 decreases the energy values of positive samples χ+ while increasing those of negative ones χ− (Hinton 2002). However, computing Z(θ) for most parameteriza- tions of Eθ(χ) is intractable. We employ Stochastic Gradi-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] . (2) Eq. 2 decreases the energy values of positive samples χ+ while increasing those of negative ones χ− (Hinton 2002). However, computing Z(θ) for most parameteriza- tions of Eθ(χ) is intractable. We employ Stochastic Gradi-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "χk+1 = χk − λ 2 ∇χEθ(χk) + ωk , (3) where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con- verges to pd. This process generates data samples through the energy function implicitly rather than explicitly. Contrastive Learning",
+        "unicode_plain": "χk+1 = χk − λ 2 ∇χEθ(χk) + ωk , (3) where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con- verges to pd. This process generates data samples through the energy function implicitly rather than explicitly. Contrastive Learning"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "χk+1 = χk − λ 2 ∇χEθ(χk) + ωk , (3) where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con- verges to pd. This process generates data samples through the energy function implicitly rather than explicitly. Contrastive Learning"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "2 ∇χEθ(χk) + ωk , (3) where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con- verges to pd. This process generates data samples through the energy function implicitly rather than explicitly. Contrastive Learning Given a set of random variables {χn}N",
+        "unicode_plain": "2 ∇χEθ(χk) + ωk , (3) where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con- verges to pd. This process generates data samples through the energy function implicitly rather than explicitly. Contrastive Learning Given a set of random variables {χn}N"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "2 ∇χEθ(χk) + ωk , (3) where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con- verges to pd. This process generates data samples through the energy function implicitly rather than explicitly. Contrastive Learning Given a set of random variables {χn}N"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "n=1, we define a data augmentation T to generate two distinct views νn = t(χn), ν′ n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen-",
+        "unicode_plain": "n=1, we define a data augmentation T to generate two distinct views νn = t(χn), ν′ n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "n=1, we define a data augmentation T to generate two distinct views νn = t(χn), ν′ n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "data augmentation T to generate two distinct views νn = t(χn), ν′ n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen- tations of two views νn and ν′",
+        "unicode_plain": "data augmentation T to generate two distinct views νn = t(χn), ν′ n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen- tations of two views νn and ν′"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "data augmentation T to generate two distinct views νn = t(χn), ν′ n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen- tations of two views νn and ν′"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen- tations of two views νn and ν′ m w.r.t the joint distribution p(νn, ν ′",
+        "unicode_plain": "n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen- tations of two views νn and ν′ m w.r.t the joint distribution p(νn, ν ′"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un- supervised framework for representation learning, aiming to maximize the mutual information I between the represen- tations of two views νn and ν′ m w.r.t the joint distribution p(νn, ν ′"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "m) , (4) where zn = Dθ(νn) is the representation and Dθ(•) is a parametric DNN. When n = m, the views (νn, ν′ m) are re- ferred to as a positive pair with the same marginal distri- bution. Conversely, they are called a negative pair. In prac-",
+        "unicode_plain": "m) , (4) where zn = Dθ(νn) is the representation and Dθ(•) is a parametric DNN. When n = m, the views (νn, ν′ m) are re- ferred to as a positive pair with the same marginal distri- bution. Conversely, they are called a negative pair. In prac-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "m) , (4) where zn = Dθ(νn) is the representation and Dθ(•) is a parametric DNN. When n = m, the views (νn, ν′ m) are re- ferred to as a positive pair with the same marginal distri- bution. Conversely, they are called a negative pair. In prac-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page2_14",
+      "presentation": {
+        "latex": "where zn = Dθ(νn) is the representation and Dθ(•) is a parametric DNN. When n = m, the views (νn, ν′ m) are re- ferred to as a positive pair with the same marginal distri- bution. Conversely, they are called a negative pair. In prac- tice, each pair provides supervisory information to the other,",
+        "unicode_plain": "where zn = Dθ(νn) is the representation and Dθ(•) is a parametric DNN. When n = m, the views (νn, ν′ m) are re- ferred to as a positive pair with the same marginal distri- bution. Conversely, they are called a negative pair. In prac- tice, each pair provides supervisory information to the other,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where zn = Dθ(νn) is the representation and Dθ(•) is a parametric DNN. When n = m, the views (νn, ν′ m) are re- ferred to as a positive pair with the same marginal distri- bution. Conversely, they are called a negative pair. In prac- tice, each pair provides supervisory information to the other,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

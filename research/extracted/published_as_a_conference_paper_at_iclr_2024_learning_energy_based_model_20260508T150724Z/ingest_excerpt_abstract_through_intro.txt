@@ -1,0 +1,198 @@
+ABSTRACT
+Training energy-based models (EBMs) on high-dimensional data can be both chal-
+lenging and time-consuming, and there exists a noticeable gap in sample quality
+between EBMs and other generative frameworks like GANs and diffusion models.
+To close this gap, inspired by the recent efforts of learning EBMs by maximizing
+diffusion recovery likelihood (DRL), we propose cooperative diffusion recovery
+likelihood (CDRL), an effective approach to tractably learn and sample from a
+series of EBMs defined on increasingly noisy versions of a dataset, paired with an
+initializer model for each EBM. At each noise level, the two models are jointly es-
+timated within a cooperative training framework: samples from the initializer serve
+as starting points that are refined by a few MCMC sampling steps from the EBM.
+The EBM is then optimized by maximizing recovery likelihood, while the initializer
+model is optimized by learning from the difference between the refined samples and
+the initial samples. In addition, we made several practical designs for EBM training
+to further improve the sample quality. Combining these advances, our approach
+significantly boost the generation performance compared to existing EBM methods
+on CIFAR-10 and ImageNet datasets. We also demonstrate the effectiveness of our
+models for several downstream tasks, including classifier-free guided generation,
+compositional generation, image inpainting and out-of-distribution detection. Our
+code is available at https://github.com/AlvinZhuyx/CDRL.
+1 I NTRODUCTION
+Energy-based models (EBMs), as a class of probabilistic generative models, have exhibited their
+flexibility and practicality in a variety of application scenarios, such as realistic image synthesis (Xie
+et al., 2016; 2018a; Nijkamp et al., 2019; Du & Mordatch, 2019; Arbel et al., 2021; Hill et al., 2022;
+Xiao et al., 2021; Lee et al., 2023; Grathwohl et al., 2021; Cui & Han, 2023), graph generation (Liu
+et al., 2021), compositional generation (Du et al., 2020; 2023), video generation (Xie et al., 2021c),
+3D generation (Xie et al., 2021a; 2018b), simulation-based inference (Glaser et al., 2022), stochastic
+optimization (Kong et al., 2022), out-of-distribution detection (Grathwohl et al., 2020; Liu et al.,
+2020), and latent space modeling (Pang et al., 2020; Zhu et al., 2023; Zhang et al., 2023; Yu et al.,
+2023). Despite these successes of EBMs, training and sampling from EBMs remains challenging,
+mainly due of the intractability of the partition function in the distribution.
+Recently, Diffusion Recovery Likelihood (DRL) (Gao et al., 2021) has emerged as a powerful
+framework for estimating EBMs. Inspired by diffusion models (Sohl-Dickstein et al., 2015; Ho
+et al., 2020; Song & Ermon, 2019), DRL assumes a sequence of EBMs for the marginal distributions
+of samples perturbed by a Gaussian diffusion process, where each EBM is trained with recovery
+likelihood that maximizes the conditional probability of the data at the current noise level given their
+noisy versions at a higher noise level. Compared to the regular likelihood, Maximizing recovery
+likelihood is more tractable, as sampling from the conditional distribution is much easier than
+sampling from the marginal distribution. DRL achieves exceptional generation performance among
+EBM-based generative models. However, a noticeable performance gap still exists between the
+sample quality of EBMs and other generative frameworks like GANs or diffusion models. Moreover,
+DRL requires around 30 MCMC sampling steps at each noise level to generate valid samples, which
+can be time-consuming during both training and sampling processes.
+1
+arXiv:2309.05153v5  [stat.ML]  10 Nov 2024
+Published as a conference paper at ICLR 2024
+To further close the performance gap and expedite EBM training and sampling with fewer MCMC
+sampling steps, we introduce Cooperative Diffusion Recovery Likelihood (CDRL), that jointly
+estimates a sequence of EBMs and MCMC initializers defined on data perturbed by a diffusion
+process. At each noise level, the initializer and EBM are updated by a cooperative training scheme
+(Xie et al., 2018a): The initializer model proposes initial samples by predicting the samples at the
+current noise level given their noisy versions at a higher noise level. The initial samples are then
+refined by a few MCMC sampling steps from the conditional distribution defined by the EBM. Given
+the refined samples, the EBM is updated by maximizing recovery likelihood, and the initializer is
+updated to absorb the difference between the initial samples and the refined samples. The introduced
+initializer models learn to accumulate the MCMC transitions of the EBMs, and reproduce them by
+direct ancestral sampling. Combining with a new noise schedule and a variance reduction technique,
+we achieve significantly better performance than the existing methods of estimating EBMs. We
+further incorporate classifier-free guidance (CFG) (Ho & Salimans, 2022) to enhance the performance
+of conditional generation, and we observe similar trade-offs between sample quality and sample
+diversity as CFG for diffusion models when adjusting the guidance strength. In addition, we showcase
+that our approach can be applied to perform several useful downstream tasks, including compositional
+generation, image inpainting and out-of-distribution detection.
+Our main contributions are as follows: (1) We propose cooperative diffusion recovery likelihood
+(CDRL) that tractably and efficiently learns and samples from a sequence of EBMs and MCMC
+initializers; (2) We make several practical design choices related to noise scheduling, MCMC
+sampling, noise variance reduction for EBM training; (3) Empirically we demonstrate that CDRL
+achieves significant improvements on sample quality compared to existing EBM approaches, on
+CIFAR-10 and ImageNet 32 × 32 datasets; (4) We show that CDRL has great potential to enable
+more efficient sampling with sampling adjustment techniques; (5) We demonstrate CDRL’s ability in
+compositional generation, image inpainting and out-of-distribution (OOD) detection, as well as its
+compatibility with classifier-free guidance for conditional generation.
+2 P RELIMINARIES ON ENERGY -BASED MODELS
+Let x ∼ pdata(x) be a training example from an underlying data distribution. An energy-based model
+defines the density of x by
+pθ(x) = 1
+Zθ
+exp(fθ(x)), (1)
+where fθ is the unnormalized log density, or negative energy, parametrized by a neural network
+with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the
+log-likelihood function of an EBM can be approximately written as
+L′(θ) = Epdata
+ ∂
+∂θ fθ(x)
+
+− Epθ
+ ∂
+∂θ fθ(x)
+
+, (2)
+where the second term is analytically intractable and has to be estimated by Monte Carlo samples
+from the current model pθ. Therefore, applying gradient-based optimization for an EBM usually
+involves an inner loop of MCMC sampling, which can be time-consuming for high-dimensional data.
+3 C OOPERATIVE DIFFUSION RECOVERY LIKELIHOOD
+3.1 D IFFUSION RECOVERY LIKELIHOOD
+Given the difficulty of sampling from the marginal distributionp(x) defined by an EBM, we could
+instead estimate a sequence of EBMs defined on increasingly noisy versions of the data and jointly
+estimate them by maximizing recovery likelihood. Specifically, assume a sequence of noisy training
+examples perturbed by a Gaussian diffusion process: x0, x1, ..., xT such that x0 ∼ pdata; xt+1 =
+αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of
+{yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1
+Zθ,t
+exp(fθ(yt; t)). Then the
+conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as
+pθ(yt|xt+1) = 1
+˜Zθ,t(xt+1)
+exp
+
+fθ(yt; t) − 1
+2σ2
+t+1
+∥yt − xt+1∥2
+
+, (3)
+2
+Published as a conference paper at ICLR 2024
+where ˜Zθ,t(xt+1) is the partition function of the conditional EBM dependent onxt+1. Compared with
+the marginal EBM pθ(yt), when σt+1 is small, the extra quadratic term in pθ(yt|xt+1) constrains
+the conditional energy landscape to be localized around xt+1, making the latter less multi-modal and
+easier to sample from with MCMC. In the extreme case when σt+1 is infinitesimal, pθ(yt|xt+1) is
+approximately a Gaussian distribution that can be tractably sampled from and has a close connection
+to diffusion models (Gao et al., 2021). In the other extreme case when σt+1 → ∞, the conditional
+distribution falls back to the marginal distribution, and we lose the advantage of being more MCMC
+friendly for the conditional distribution. Therefore, we need to maintain a small σt+1 between
+adjacent time steps, and to equip the model with the ability of generating new samples from white
+noises, we end up with estimating a sequence of EBMs defined on the diffusion process. We use the
+variance-preserving noise schedule (Song et al., 2021b), under which case we have xt = ¯αtx0 + ¯σtϵ,
+where ¯αt =QT
+t=1 αt and ¯σt =
+p
+1 − ¯α2
+t .
+We estimate each EBM by maximizing the following recovery log-likelihood function at each noise
+level (Bengio et al., 2013):
+Jt(θ) = 1
+n
+nX
+i=1
+log pθ(yt,i|xt+1,i), (4)
+where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be
+achieved by running K steps of Langevin dynamics from the initialization point ˜y0
+t = xt+1,i and
+iterating
+˜yτ+1
+t = ˜yτ
+t + s2
+t
+2
+
+∇yfθ(˜yτ
+t ; t) − 1
+σ2
+t+1
+(˜yτ
+t − xt+1)
+
++ stϵτ , (5)
+where st is the step size and τ is the index of MCMC sampling step. With the samples, the updating
+of EBMs then follows the same learning gradients as MLE (Equation 2), as the extra quadratic term
+− 1
+2σ2
+t+1
+∥yt − xt+1∥2 in pθ(yt|xt+1) does not involve learnable parameters. It is worth noting that
+maximizing recovery likelihood still guarantees an unbiased estimator of the true parameters of the
+marginal distribution of the data.
+3.2 A MORTIZING MCMC SAMPLING WITH INITIALIZER MODELS
+Although pθ(yt|xt+1) is easier to sample from than pθ(yt), when σt+1 is not infinitesimal, the ini-
+tialization of MCMC sampling, xt+1, may still be far from the data manifold of yt. This necessitates
+a certain amount of MCMC sampling steps at each noise level (e.g.,30 steps of Langevin dynamics in
+Gao et al. (2021)). Naively reducing the number of sampling steps would lead to training divergence
+or performance degradation.
+To address this issue, we propose to learn an initializer model jointly with the EBM at each noise
+level, which maps xt+1 closer to the manifold of yt. Our work is inspired by the CoopNets (Xie
+et al., 2018a; 2021b; 2022b), which shows that jointly training a top-down generator via MCMC
+teaching will help the training of a single EBM model. We take this idea and generalize it to the
+recovery-likelihood model. More discussions are included in Appendix A. Specifically, the initializer
+model at noise level t is defined as
+qϕ(yt|xt+1) ∼ N (gϕ(xt+1; t), ˜σ2
+t I). (6)
+It serves as a coarse approximation to pθ(yt|xt+1), as the former is a single-mode Gaussian
+distribution while the latter can be multi-modal. A more general formulation would be to in-
+volve latent variables zt following a certain simple prior p(zt) into gϕ. Then qϕ(yt, t|xt+1) =
+Ep(zt) [qϕ(yt, zt, t|xt+1)] can be non-Gaussian (Xiao et al., 2022). However, we empirically find
+that the simple initializer in Equation 6 works well. Compared with the more general formulation,
+the simple initializer avoids the inference of zt which may again require MCMC sampling, and leads
+to more stable training. Different from Xiao et al. (2022), samples from the initializer just serves as
+the starting points and are refined by sampling from the EBM, instead of being treated as the final
+samples. We follow (Ho et al., 2020) to set ˜σt =
+r
+1−¯α2
+t
+1−¯α2
+t+1
+σt. If we treat the sequence of initializers
+as the reverse process, such choice of ˜σt corresponds to the lower bound of the standard deviation
+given by pdata being a delta function (Sohl-Dickstein et al., 2015).
+3
+Published 

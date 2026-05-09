@@ -1,0 +1,290 @@
+{
+  "documents": [
+    {
+      "document_id": "a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260507T081859Z",
+      "source_pdf": "research/incoming/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "A Survey on Graph Neural Networks for Knowledge Graph Completion",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260507T081859Z",
+      "source_pdf": "research/incoming/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "arXiv:2307.08411v1  [cs.AI]  17 Jul 2023 Neurosymbolic AI for Reasoning on Biomedical Knowledge Gra phs Lauren Nicole DeLong 1 , Ramon Fern ´andez Mir 1 , Zonglin Ji 1 , Fiona Niamh Coulter Smith 1 , Jacques D. Fleuriot ",
+          "method": "direct_phrase"
+        },
+        {
+          "page": 6,
+          "confidence": "low",
+          "locator": "Motivates biomedical KGs, AI adoption in healthcare, and need for interpretable methods that incorporate structured domain knowledge.",
+          "method": "token_overlap:5"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260507T081859Z",
+      "source_pdf": "research/incoming/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Can a Suit of Armor Conduct Electricity? A New Dataset for Open Book Question Answering Todor Mihaylov‡ and Peter Clark† and Tushar Khot† and Ashish Sabharwal†",
+          "method": "direct_phrase"
+        },
+        {
+          "page": 2,
+          "confidence": "medium",
+          "locator": "OpenBookQA pairs a compact core fact book with multiple-choice questions that require additional commonsense links, intentionally creating a retrieval-and-reasoning bottleneck.",
+          "method": "token_overlap:9"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "commonsense_qa_a_question_answering_challenge_targeting_20260507T081859Z",
+      "source_pdf": "research/incoming/commonsense_qa_a_question_answering_challenge_targeting_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "COMMONSENSE QA: A Question Answering Challenge Targeting",
+          "method": "direct_phrase"
+        },
+        {
+          "page": 2,
+          "confidence": "low",
+          "locator": "Dataset scale supports training modern pretrained models while preserving challenge.",
+          "method": "token_overlap:5"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "deep_bidirectional_language_knowledge_graph_pretraining_20260507T081859Z",
+      "source_pdf": "research/incoming/deep_bidirectional_language_knowledge_graph_pretraining_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Deep Bidirectional Language-Knowledge Graph Pretraining",
+          "method": "direct_phrase"
+        },
+        {
+          "page": 2,
+          "confidence": "low",
+          "locator": "Motivates deep bidirectional text-KG interaction and unified self-supervision objectives.",
+          "method": "token_overlap:5"
+        },
+        {
+          "page": 3,
+          "confidence": "medium",
+          "locator": "DRAGON combines deep cross-modal text-KG fusion with a dual objective (MLM + link prediction) so both modalities ground and contextualize each other during pretraining.",
+          "method": "token_overlap:8"
+        },
+        {
+          "page": 6,
+          "confidence": "low",
+          "locator": "Unified objectives are designed to couple text token inference with KG edge reasoning.",
+          "method": "token_overlap:6"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "energy_based_epistemic_uncertainty_for_graph_neural_networks_20260507T081859Z",
+      "source_pdf": "research/incoming/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Energy-based Epistemic Uncertainty for Graph Neural Networks",
+          "method": "direct_phrase"
+        },
+        {
+          "page": 2,
+          "confidence": "low",
+          "locator": "A single uncertainty score should remain sensitive to anomalies at multiple structural granularities.",
+          "method": "token_overlap:6"
+        },
+        {
+          "page": 4,
+          "confidence": "medium",
+          "locator": "GEBM builds and aggregates independent, local, and group energy views via diffusion and marginalization, with regularization to improve density behavior away from training data.",
+          "method": "token_overlap:8"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260507T081859Z",
+      "source_pdf": "research/incoming/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Abstract \nGraphs naturally appear in numerous application domains, ranging from social analysis, \nbioinformatics to computer vision.",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260507T081859Z",
+      "source_pdf": "research/incoming/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Implicit Generation and Modeling with Energy-Based Models Yilun Du∗ MIT CSAIL",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260507T081859Z",
+      "source_pdf": "research/incoming/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Knowledge-augmented Graph Machine Learning for Drug Discovery: A Survey",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "neural_answering_logical_queries_on_knowledge_graphs_20260507T081859Z",
+      "source_pdf": "research/incoming/neural_answering_logical_queries_on_knowledge_graphs_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Neural-Answering Logical Queries on Knowledge Graphs",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260507T081859Z",
+      "source_pdf": "research/incoming/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies , pages 535–546 June 6–11, 2021. ©2021 Association for Computational Linguist",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260507T081859Z",
+      "source_pdf": "research/incoming/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Proceedings of the 23rd Workshop on Biomedical Language Processing , pages 155–166 August 16, 2024. ©2024 Association for Computational Linguistics 155 KG-Rank: Enhancing Large Language Models for Medical QA with Knowled",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260507T081859Z",
+      "source_pdf": "research/incoming/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Published as a conference paper at ICLR 2018 GRAPH ATTENTION NETWORKS Petar Veliˇckovi´c∗",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260507T081859Z",
+      "source_pdf": "research/incoming/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Published as a conference paper at ICLR 2022 GREASE LM: G RAPH REAS ONING ENHANCED LANGUAGE MODELS FOR QUESTION ANSWERING",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260507T081859Z",
+      "source_pdf": "research/incoming/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Published as a conference paper at ICLR 2022 NEURAL METHODS FOR LOGICAL REASONING OVER KNOWLEDGE GRAPHS Alfonso Amayuelas∗†, Shuai Zhang†, Susie Xi Rao† & Ce Zhang† ∗EPFL †ETH Zurich",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260507T081859Z",
+      "source_pdf": "research/incoming/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "Towards Energy-aware Requirements Dependency Classification: Knowledge-Graph vs. Vector-Retrieval Augmented Inference with SLMs",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    },
+    {
+      "document_id": "what_to_pre_train_on_ef_cient_intermediate_task_selection_20260507T081859Z",
+      "source_pdf": "research/incoming/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260507T081859Z.pdf",
+      "anchors": [
+        {
+          "page": 1,
+          "confidence": "high",
+          "locator": "What to Pre-Train on? Efﬁcient Intermediate Task Selection",
+          "method": "direct_phrase"
+        }
+      ],
+      "anchor_status": "anchored",
+      "gap_reason": null
+    }
+  ]
+}

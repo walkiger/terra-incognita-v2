@@ -1,0 +1,255 @@
+Abstract
+Solving complex mathematical problems via
+system-2 reasoning is a natural human skill,
+yet it remains a significant challenge for cur-
+rent large language models (LLMs). We iden-
+tify the scarcity of deliberate multi-step rea-
+soning data as a primary limiting factor. To
+this end, we introduce Enriched Instruction
+Tuning (EIT), a method that enriches existing
+human-annotated mathematical datasets by syn-
+ergizing human and AI feedback to create fine-
+grained reasoning trajectories. These datasets
+are then used to fine-tune open-source LLMs,
+enhancing their mathematical reasoning abili-
+ties without reliance on any symbolic verifica-
+tion program. Concretely, EIT is composed of
+two critical steps: Enriching with Reasoning
+Plan (ERP) and Enriching with Reasoning Step
+(ERS). The former generates a high-level plan
+that breaks down complex instructions into a
+sequence of simpler objectives, while ERS fills
+in reasoning contexts often overlooked by hu-
+man annotators, creating a smoother reasoning
+trajectory for LLM fine-tuning. Unlike exist-
+ing CoT prompting methods that generate rea-
+soning chains only depending on LLM’s inter-
+nal knowledge, our method leverages human-
+annotated initial answers as “meta-knowledge”
+to help LLMs generate more detailed and pre-
+cise reasoning processes, leading to a more
+trustworthy LLM expert for complex mathemat-
+ical problems. In experiments, EIT achieves an
+accuracy of 84.1% on GSM8K and 32.5% on
+MATH, surpassing state-of-the-art fine-tuning
+and prompting methods, and even matching the
+performance of tool-augmented methods.
+1 Introduction
+Large language models (LLMs) are increasingly
+recognized as a promising stride towards realiz-
+ing Artificial General Intelligence (AGI) due to (1)
+their potential for a wide range of intelligent ac-
+tivities and (2) their scaling up of performance as
+*Corresponding author
+increased dataset size, model size, and computing
+budget (Bubeck et al., 2023; Kaplan et al., 2020).
+Surprisingly, all of the current advances in LLMs
+are established on an embarrassingly “simple” train-
+ing paradigm, i.e., Transformer decoder + next-
+token prediction (Radford et al., 2018). Though
+promising, the most powerful LLMs, e.g., GPT-
+4 (Achiam et al., 2023), still frequently make ridicu-
+lous mistakes when solving fundamental mathe-
+matical problems, e.g., multiplication of four dig-
+its (Hagendorff et al., 2022), hindering their us-
+age in scenarios requiring mathematical reason-
+ing, such as autonomous driving (Fu et al., 2024),
+embodied intelligence (Brohan et al., 2023; Yang
+et al., 2024; Zhou et al., 2024), and teaching assis-
+tance (Hicke et al., 2023). The root of this issue
+is that LLM-generated responses entirely rely on
+next-token prediction, a process akin to our intu-
+itive, quick-thinking system-1 reasoning (Daniel,
+2017). This is fine for easy tasks but falls short for
+complex mathematical problems, in which humans
+usually switch to thoughtful, logical system-2 rea-
+soning, a slower and more deliberate way of think-
+ing while making our answers more accurate and
+less biased (Daniel, 2017)1.
+The deficiency of system-2 mathematical rea-
+soning in LLMs has motivated many recent works
+that can be divided into two categories: fine-tuning-
+based and prompting-based methods. Fine-tuning-
+based methods, such as Phi-GSM (Liu et al., 2023),
+MetaMath (Yu et al., 2023), MathGenie (Lu et al.,
+2024), and Orca-Math (Mitra et al., 2024), update
+LLMs’ parameters by distilling privileged LLMs
+or learning from human’s reasoning trajectories.
+Many of them adopt very complicated augmenta-
+tion strategies in order to boost performance (see
+1The general concept of System-2 reasoning is also em-
+ployed by other work (LeCun, 2022; Weston and Sukhbaatar,
+2023; Yu et al., 2024), which involves generating deliberate
+and structured thought processes that enable a model (or hu-
+man) to reason and plan effectively, thereby completing the
+given task successfully.
+1
+arXiv:2412.16964v2  [cs.AI]  24 Dec 2024
+Answer: (ERP) To find the largest possible value of b,
+consider
+(ERS) To solve this, we first express 1200 as a product of its 
+prime factors:
+1200 =  24 × 3 × 52
+𝑏 = 31 × 52 = 3 × 25 = 75
+ Therefore, the largest possible value of 𝑏 is 75. (
+ )
+(a) MetaMath
+Factoring out the highest power of 2 from 
+1200, we find that 
+1200 = 2^4 ×  75.
+Ground Truth
+Answer: To find the largest possible value of b, we can 
+follow two steps:
+ 1.Acknowledge that 𝑏 is an odd integer, which can be 
+expressed as 2𝑘 + 1, where 𝑘 is an integer.
+  2.Realize that to find the largest possible odd integer 𝑏, 
+we need to find the largest value of 𝑘, since 𝑏 increases 
+as 𝑘 increases.
+Since 𝑏 is odd, it can be written as 2𝑘 + 1, 
+where 𝑘 is an integer. 
+Thus, 
+    𝑎𝑏 =  𝑎(2𝑘 + 1)  =  2𝑎𝑘 +  𝑎 =  1200. 
+As 𝑎 is an integer, the largest possible value of 𝑏 is when 
+𝑎 = 1, in which case 𝑏 = 1200 (and 𝑘 = 599).
+If 𝑏 is any larger, then 𝑎 becomes a fraction, so 𝑏 =
+1200 is the largest possible value. 
+Therefore, the largest possible value of 𝑏 is 1200 (
+ )
+Answer: Since 𝑎 is an integer, 𝑏 must be a 
+factor of 1200.
+The prime factorization of 1200 is 23 ×
+3 × 52.
+To maximize 𝑏, we want to choose the 
+largest power of 5, which is 52 = 25.
+Therefore, the largest possible value of 𝑏 is 
+25. 
+The answer is: 25. (
+ )
+(b)  CoT (c)  EIT
+Since b is an odd integer, it cannot include the factor of 2 that
+is present in the prime factorization of 1200. Therefore, b must
+be composed only of the odd prime factors of 1200, which are 
+3 and 5. To maximize 𝑏, we should use the highest powers of   
+these primes that are factors of 1200.
+The highest power of 3 that divides 1200 is 𝟑𝟏, and the highest
+power of 5 is 𝟓𝟐. Multiplying these together gives us the largest
+consider the prime factorization of 1200 and the fact that b
+must be odd. Since b cannot include the factor of 2 present in
+1200, the largest odd factor of 1200 that can be b is the product
+possible value for 𝒃 :
+of the odd prime factors raised to the appropriate power.
+Question: The product 𝑎𝑏 =  1200, 𝑎 is an integer, and 𝑏 is an odd integer. What is the largest possible value of 𝑏?
+Therefore, the largest possible value of 𝑏 is 75.
+Figure 1: Comparison of LLM’s response generated by four different methods on a randomly selected problem from the MATH
+dataset (Hendrycks et al., 2021). (a) MetaMath considers factorization, but the problem-solving plan is wrong and ignores other
+odd factors. (b) Chain-of-thought prompting (CoT) generates a valid plan, but hallucinations occur during the solution process,
+leading to a trivial calculation error: if a equals 1 and k is 599.5, then b is 1200, which is not an odd integer. (c) The LLM
+fine-tuned by our Enriched Instruction Tuning (EIT) first generates a high-level plan (blue parts) decomposing the original
+question into a sequence of lower-level objectives and then produces a fine-grained reasoning trajectory (purple parts)with the
+guidance from human-provided initial answers .
+Table 1). For example, Phi-GSM and Orca-Math
+generate more reliable training data via the ensem-
+ble of multiple LLMs. MetaMath and MathGenie
+adopt several elaborate augmentation strategies, in-
+cluding question rephrasing, backward reasoning,
+and self-verification, to augment mathematical rea-
+soning data for fine-tuning. Additionally, some
+methods use enormous amounts of data (e.g., 12M
+for Phi-GSM) or external tools, e.g., code verifi-
+cation (Wang et al., 2023a) and tree search (Xie
+et al., 2024; Chen et al., 2024; Brandfonbrener
+et al., 2024), to correct calculation and reasoning
+errors. However, such a mixture of many augmen-
+tation strategies slows down the run time of these
+methods and makes causal attributions of perfor-
+mance gains difficult. It even impairs the most
+attractive property of LLMs (i.e., “scaling law”),
+as demonstrated in the MetaMath (Yu et al., 2023)
+and our experiments: more augmented data may
+hurt performance.
+Another line of research studies prompting-
+based methods, such as CoT (Wei et al., 2022),
+ToT (Yao et al., 2024), ReAct (Yao et al., 2022),
+and Reflexion (Shinn et al., 2024). They try to
+induce the potential reasoning capacities of LLMs
+with only in-context learning. While these methods
+are conceptually simple and training-free, they of-
+ten suffer from factual hallucination and error prop-
+agation over a long-horizon reasoning trajectory,
+as demonstrated by Fig. 1 (b). Therefore, in this
+paper, we ask: Can LLMs learn to execute system-2
+mathematical reasoning on top of the established
+training paradigm (i.e., next-token prediction)?
+A plausible solution to this problem is learn-
+ing from human feedback (LHF), which collects a
+very large-scale dataset of high-quality and multi-
+step reasoning trajectories from human feedback
+and then fine-tunes a pre-trained LLM on it via su-
+pervised or reinforcement learning (Ouyang et al.,
+2022; Joshi et al., 2023). Unfortunately, collect-
+ing such a dataset is prohibitively expensive and
+impractical due to (1) the lack of well-trained pro-
+fessional human annotators for complex mathemat-
+ical problems (Wang et al., 2020) and (2) the bi-
+ased assessment of annotation’s correctness (Huang
+et al., 2023). Instead of learning from expensive
+human feedback, an alternative solution is to learn
+from AI feedback (LAIF) (Lee et al., 2023), which
+leverages powerful off-the-shelf LLMs, e.g., Chat-
+GPT (Achiam et al., 2023), to automatically pro-
+duce complete reasoning trajectories and evaluate
+their quality. Despite promising and scalable, LAIF
+reintroduces a chicken-and-egg dilemma similar
+to what this method is trying to address from the
+beginning: LLMs are not good at system-2 math-
+ematical reasoning, but they are expected to learn
+such capabilities from their own (potentially low-
+quality) reasoning trajectories.
+To better answer the above question, we
+combine the strengths of LHF and LAIF in a novel
+way that avoids their limitations. Concretely, we
+leverage the synergy of human and AI feedback to
+2
+produce enriched instruction datasets consisting of
+fine-grained reasoning trajectories. These datasets
+are then used to fine-tune open-source LLMs. Such
+human-AI collaboration achieves a win-win result:
+high-quality human reasoning trajectories mitigate
+LLMs’ hallucination issue while the almost
+infinite generative power of LLMs reduces the
+workload of human annotators. As illustrated in
+Fig 2, given an instruction-response pair from any
+existing human-annotated mathematical dataset,
+our method EIT (standing for Enriched Instruction
+Tuning) first prompts an LLM to generate a
+plan decomposing the complex instruction into
+a sequence of lower-level objectives. With the
+guidance of the high-level plan, the same LLM
+is then used to complement reasoning contexts
+between or within steps omitted in the original
+response through ERS prompting, leading to a
+smoother reasoning trajectory for LLM fine-tuning.
+We evaluate EIT and compare it with finetuning-
+based, prompting-based, and tool-augmented meth-
+ods on two widely used mathematical benchmarks,
+MATH and GSM8K. Specifically, EIT achieves an
+accuracy of 32.5% on the MATH dataset and 84.1%
+on GSM8K, marking an improvement of 2.7% on
+MATH over MetaMath (Yu et al., 2023). Notably,
+EIT matches the performance of methods using
+external tools on the GSM8K benchmark, even out-
+performing MathCoder (Wang et al., 2023a). We
+also demonstrated that more fine-grained reasoning
+trajectories lead to better testing performance,
+shedding a novel insight that the completeness and
+quantity of data are equally important.
+2 Related Work
+Mathematical reasoning is a critical aspect of hu-
+man intelligence and a significant challenge for
+LLMs, which struggle with complex computa-
+tions and symbolic manipulations (Lu et al., 2022).
+Prompt-based methods, such as Chain-of-thought
+prompting (CoT) (Wei et al., 2022; Yao et al.,
+2024), aim to improve reasoning by generating
+intermediate natural language reasoning trajecto-
+ries. Howev

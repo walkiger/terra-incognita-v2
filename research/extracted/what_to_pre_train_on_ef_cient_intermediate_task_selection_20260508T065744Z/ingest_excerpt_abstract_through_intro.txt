@@ -1,0 +1,268 @@
+Abstract
+Intermediate task ﬁne-tuning has been shown
+to culminate in large transfer gains across
+many NLP tasks. With an abundance of can-
+didate datasets as well as pre-trained language
+models, it has become infeasible to experiment
+with all combinations to ﬁnd the best transfer
+setting. In this work, we provide a compre-
+hensive comparison of different methods for
+efﬁciently identifying beneﬁcial tasks for inter-
+mediate transfer learning. We focus on param-
+eter and computationally efﬁcient adapter set-
+tings, highlight different data-availability sce-
+narios, and provide expense estimates for each
+method. We experiment with a diverse set
+of 42 intermediate and 11 target English clas-
+siﬁcation, multiple choice, question answer-
+ing, and sequence tagging tasks. Our results
+demonstrate that efﬁcient embedding based
+methods, which rely solely on the respective
+datasets, outperform computational expensive
+few-shot ﬁne-tuning approaches. Our best
+methods achieve an average Regret@3 of 1%
+across all target tasks, demonstrating that we
+are able to efﬁciently identify the best datasets
+for intermediate training. 1
+1 Introduction
+Large pre-trained language models (LMs) are con-
+tinuously pushing the state of the art across various
+NLP tasks. The established procedure performs
+self-supervised pre-training on a large text corpus
+and subsequently ﬁne-tunes the model on a spe-
+ciﬁc target task (Devlin et al., 2019; Liu et al.,
+2019b). The same procedure has also been ap-
+plied to adapter-based training strategies, which
+achieve on-par task performance to full model
+ﬁne-tuning while being considerably more param-
+eter efﬁcient (Houlsby et al., 2019) and faster to
+∗Contributions made prior to joining Amazon.
+1Code released at https://github.com/
+Adapter-Hub/efficient-task-transfer .
+train (Rücklé et al., 2021).2 Besides being more ef-
+ﬁcient, adapters are also highly modular, enabling
+a wider range of transfer learning techniques (Pfeif-
+fer et al., 2020b, 2021a,b; Üstün et al., 2020; Vidoni
+et al., 2020; Rust et al., 2021; Ansell et al., 2021).
+Extending upon the established two-step learn-
+ing procedure, incorporating intermediate stages of
+knowledge transfer can yield further gains for fully
+ﬁne-tuned models. For instance, Phang et al. (2018)
+sequentially ﬁne-tune a pre-trained language model
+on a compatible intermediate task before target
+task ﬁne-tuning. It has been shown that this is most
+effective for low-resource target tasks, however,
+not all task combinations are beneﬁcial and many
+yield decreased performances (Phang et al., 2018;
+Wang et al., 2019a; Pruksachatkun et al., 2020).
+The abundance of diverse labeled datasets as well
+as the continuous development of new pre-trained
+LMs calls for methods that efﬁciently identifyin-
+termediate dataset that beneﬁt the target task.
+So far, it is unclear how adapter-based ap-
+proaches behave with intermediate ﬁne-tuning. In
+the ﬁrst part of this work, we thus establish that
+this setup results in similar gains for adapters, as
+has been shown for full model ﬁne-tuning (Phang
+et al., 2018; Pruksachatkun et al., 2020; Gururan-
+gan et al., 2020). Focusing on a low-resource target
+task setup, we ﬁnd that only a subset of interme-
+diate adapters yield positive gains, while others
+hurt the performance considerably (see Table 1 and
+Figure 2). Our results demonstrate that it is nec-
+essary to obtain methods that efﬁciently identify
+beneﬁcial intermediately trained adapters.
+In the second part, we leverage the transfer re-
+sults from part one to automatically rank and iden-
+tify beneﬁcial intermediate tasks. With the rise
+of large publicly accessible repositories for NLP
+2Adapters are new weights at every layer of a pre-trained
+transformer model. To ﬁne-tune a model on a downstream
+task, all pre-trained transformer weights are frozen and only
+the newly introduced adapter weights are trained.
+arXiv:2104.08247v2  [cs.CL]  10 Sep 2021
+models (Wolf et al., 2020; Pfeiffer et al., 2020a),
+the chances of ﬁnding pre-trained models that yield
+positive transfer gains are high. However, it is infea-
+sible to brute-force the identiﬁcation of the best in-
+termediate task. Existing approaches have focused
+on beneﬁcial task selection for multi-task learning
+(Bingel and Søgaard, 2017), full ﬁne-tuning of in-
+termediate and target transformer-based LMs for
+NLP tasks (Vu et al., 2020), adapter-based models
+for vision tasks (Puigcerver et al., 2021) and unsu-
+pervised approaches for zero-shot transfer for com-
+munity question answering (Rücklé et al., 2020).
+Each of these works require different types of data,
+such as intermediate task data and/or intermediate
+model weights, which, depending on the scenario,
+are potentially not accessible.3
+In this work we thus aim to address the efﬁ-
+ciency aspect of transfer learning in NLP from
+multiple different angles, resulting in the follow-
+ing contributions: 1) We focus on adapter-based
+transfer learning which is considerably more pa-
+rameter (Houlsby et al., 2019) and computationally
+efﬁcient than full model ﬁne-tuning (Rücklé et al.,
+2021), while achieving on-par performance; 2) We
+evaluate sequential ﬁne-tuning of adapter-based ap-
+proaches on a diverse set of 42 intermediate and
+11 target tasks (i.e. classiﬁcation, multiple choice,
+question answering, and sequence tagging); 3) We
+identify the best intermediate task for transfer learn-
+ing, without the necessity of computational expen-
+sive, explicit training on all potential candidates.
+We compare different selection techniques, con-
+solidating previously proposed and new methods;
+4) We provide a thorough analysis of the different
+techniques, available data scenarios, and task-, and
+model types, thus presenting deeper insights into
+the best approach for each respective setting;5) We
+provide computational cost estimates, enabling in-
+formed decision making for trade-offs between ex-
+pense and downstream task performance.
+2 Related Work
+2.1 Transfer between tasks
+Phang et al. (2018) show that training on interme-
+diate tasks results in performance gains for many
+target tasks. Subsequent work further explores the
+effects on more diverse sets of tasks (Wang et al.,
+3Bingel and Søgaard (2017) and Vu et al. (2020) require
+access to both intermediate task data and models, Puigcerver
+et al. (2021) require access to only the intermediate model,
+and Rücklé et al. (2020) only to the intermediate task data.
+2019a; Talmor and Berant, 2019; Liu et al., 2019a;
+Sap et al., 2019; Pruksachatkun et al., 2020; Vu
+et al., 2020). Wang et al. (2019a), Yogatama et al.
+(2019), and Pruksachatkun et al. (2020) empha-
+sizes the risks of catastrophic forgetting and neg-
+ative transfer results, ﬁnding that the success of
+sequential transfer varies largely when considering
+different intermediate tasks.
+While previous work has shown that intermedi-
+ate task training improves the performance on the
+target task in full ﬁne-tuning setups, we establish
+that the same holds true for adapter-based training.
+2.2 Predicting Beneﬁcial Transfer Sources
+Automatically selecting intermediate tasks that
+yield transfer gains is critical when considering
+the increasing availability of tasks and models.
+Proxy estimators have been proposed to evaluate
+the transferability of pre-trained models towards a
+target task. Nguyen et al. (2020), Li et al. (2021)
+and Deshpande et al. (2021) estimate the trans-
+ferability between classiﬁcation tasks by building
+an empirical classiﬁer from the source and target
+task label distribution. Puigcerver et al. (2021) ex-
+periment with multiple model selection methods,
+including kNN proxy models to estimate the target
+task performance. In a similar direction, Reng-
+gli et al. (2020) study proxy models based on kNN
+and linear classiﬁers, ﬁnding that a hybrid approach
+combination of task-aware and task-agnostic strate-
+gies yields the best results.
+Bingel and Søgaard (2017) ﬁnd that gradients of
+the learning curves correlate with multi-task learn-
+ing success. Zamir et al. (2018) build a taxon-
+omy of vision tasks, giving insights into non-trivial
+transfer relations between tasks. Multiple works
+propose using embeddings that capture statistics,
+features, or the domain of a dataset. Edwards and
+Storkey (2017) leverage variational autoencoders
+(Kingma and Welling, 2014) to encode all samples
+of a dataset. Jomaa et al. (2019) train a dataset
+meta-feature extractor that can successfully cap-
+ture the domain of a dataset. Vu et al. (2020)
+encode each training example of a dataset by av-
+eraging over BERT’s representations of the last
+layer. Rücklé et al. (2020) capture domain simi-
+larity by embedding dataset examples using a sen-
+tence embedding model. Achille et al. (2019) and
+Vu et al. (2020) compute task embeddings based on
+the Fisher Information Matrix of a probe network.
+While many different methods have been pro-
+posed, there lacks a direct comparison among them.
+Additionally, previous work has only focus on
+BERT, which we ﬁnd to behave considerably dif-
+ferent to other model types such as RoBERTa for
+some methods. In this work we aim to consoli-
+date all methods and experiment with newer model
+types to provide a more thorough perspective.
+3 Adapter-Based Sequential Transfer
+We present a large-scale study on adapter-based
+sequential ﬁne-tuning, ﬁnding that around half of
+the task combinations yield no positive gains. This
+demonstrates the importance of ﬁnding approaches
+that efﬁciently identify suitable intermediate tasks.
+3.1 Tasks
+We select QA tasks from the MultiQA repository
+(Talmor and Berant, 2019) and sequence tagging
+tasks from Liu et al. (2019a). Most of our clas-
+siﬁcationtasks are available in the (Super)GLUE
+(Wang et al., 2018, 2019b) benchmarks. We experi-
+ment with multiple choice commonsense reasoning
+tasks to cover a broader range of different types,
+and domains. In total, we experiment with 53 tasks,
+divided into 42 intermediate and 11 target tasks.4
+3.2 Experimental Setup
+We experiment with BERT-base (Devlin et al.,
+2019) and RoBERTa-base (Liu et al., 2019b), train-
+ing adapters with the conﬁguration proposed by
+Pfeiffer et al. (2021a). We adopt the two-stage se-
+quential ﬁne-tuning setup of Phang et al. (2018),
+splitting the tasks in two disjoint subsetsS andT ,
+denoted as intermediate and target tasks, respec-
+tively. For each pair (s,t ) withs∈S andt∈T ,
+we ﬁrst train a randomly initialized adapter on s
+(keeping the base model’s parameters ﬁxed). We
+then ﬁne-tune the trained adapter ont.5
+For target task ﬁne-tuning, we simulate a low-
+resource setup by limiting the maximum number
+of training examples ont to 1000. This choice is
+motivated by the observation that smaller target
+tasks beneﬁt the most from sequential ﬁne-tuning
+while at the same time revealing the largest per-
+formance variances (Phang et al., 2018; Vu et al.,
+2020). Low-resource setups, thus, reﬂect the most
+beneﬁcial application setting for our transfer learn-
+4The choice for our intermediate and target task split was
+motivated by previous work (Sap et al., 2019; Vu et al., 2020,
+inter alia). For more details see Appendix A.
+5For more details please refer to Appendix B.
+20 30 40 50 60 70 80 90
+Performance with RoBERTa
+10
+20
+30
+40
+50
+60
+70
+80
+90Performance with BERT
+RTE
+COPA
+R. Tomatoes
+CQ
+CoNLL 2003
+CS QA
+STS-B
+DROP
+Quail
+BoolQ
+DepRel-EWT
+Figure 1: Comparison of transfer performance between
+BERT and RoBERTa for the respective target tasks, pre-
+trained on the 42 intermediate tasks.
+ing strategy and also allow us to more thoroughly
+study different transfer relations.
+3.3 Results
+Figure 2 shows the relative transfer gains and Ta-
+ble 1 lists the absolute scores of all intermediate and
+target task combinations for RoBERTa.6 We ob-
+serve large variations in transfer gains (and losses)
+across the different combinations. Even though
+larger variances may be explained by a higher task
+difﬁculty (see ‘No Transfer’ in Table 1), they also
+illustrate the heterogeneity and potential of sequen-
+tial ﬁne-tuning in

@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z",
+  "source_pdf": "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/source.pdf",
+  "title_hint": "arXiv:2507.02092v1  [cs.LG]  2 Jul 2025 Energy-Based Transformers are Scalable Learners and Thinkers Alexi Hyeonjeong",
+  "updated_at": "2026-05-08T15:09:15Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:12Z",
+      "artifacts": [
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/source.pdf",
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:15Z",
+      "artifacts": [
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:15Z",
+      "artifacts": [
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:15Z",
+      "artifacts": [
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:15Z",
+      "artifacts": [
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/l4_analysis.json",
+        "research/extracted/arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=d65ff7e5a0fa59de08e1b1df5c3044f36681b4644c8bcee424978a49ac7336a3; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "d65ff7e5a0fa59de08e1b1df5c3044f36681b4644c8bcee424978a49ac7336a3"
+}

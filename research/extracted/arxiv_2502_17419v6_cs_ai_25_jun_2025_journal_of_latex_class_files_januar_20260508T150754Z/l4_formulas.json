@@ -1,0 +1,261 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2502_17419v6_cs_ai_25_jun_2025_journal_of_latex_class_files_januar_20260508T150754Z",
+  "extracted_at": "2026-05-08T15:08:59Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "UCB1= wi ni + c √ ln N ni",
+        "unicode_plain": "UCB1= wi ni + c √ ln N ni"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "UCB1= wi ni + c √ ln N ni"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page6_2",
+      "presentation": {
+        "latex": "for straightforward problems like “2+3=?”, reasoning LLMs can exhibit overconfidence or uncertainty. Recent research [124] notes that o1-like models tend to generate multiple solution rounds for easier math problems, often exploring unnecessary paths. This behavior contrasts with the lack of diverse exploratory actions for simpler questions, indicating",
+        "unicode_plain": "for straightforward problems like “2+3=?”, reasoning LLMs can exhibit overconfidence or uncertainty. Recent research [124] notes that o1-like models tend to generate multiple solution rounds for easier math problems, often exploring unnecessary paths. This behavior contrasts with the lack of diverse exploratory actions for simpler questions, indicating"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "for straightforward problems like “2+3=?”, reasoning LLMs can exhibit overconfidence or uncertainty. Recent research [124] notes that o1-like models tend to generate multiple solution rounds for easier math problems, often exploring unnecessary paths. This behavior contrasts with the lack of diverse exploratory actions for simpler questions, indicating"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page8_3",
+      "presentation": {
+        "latex": "Summary of tree search-based methods. Tag: N =Natural language, C=Code, E =Math Expression, or A=Action. NodeMethod Format PartialEvaluate Rollout Tasks LLM Models RAP [14] N ✓ LLM Self-correction LLM-based Prediction Planning, ReasoningLLaMA-33BORM [126] N ✓ Value/Reward Function N/A Multiple Tasks LLaMA-2-7B, GPT-2-smallForest-of-Thought [127]N ✓ LLM Self-correction Self-refinement & Iterative I",
+        "unicode_plain": "Summary of tree search-based methods. Tag: N =Natural language, C=Code, E =Math Expression, or A=Action. NodeMethod Format PartialEvaluate Rollout Tasks LLM Models RAP [14] N ✓ LLM Self-correction LLM-based Prediction Planning, ReasoningLLaMA-33BORM [126] N ✓ Value/Reward Function N/A Multiple Tasks LLaMA-2-7B, GPT-2-smallForest-of-Thought [127]N ✓ LLM Self-correction Self-refinement & Iterative ImprovementPlanning, ReasoningLLaMA-3, Mistral7B, GLM-4-9BCodeTree [128] NC ✓ Execution Accuracy + LL"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Summary of tree search-based methods. Tag: N =Natural language, C=Code, E =Math Expression, or A=Action. NodeMethod Format PartialEvaluate Rollout Tasks LLM Models RAP [14] N ✓ LLM Self-correction LLM-based Prediction Planning, ReasoningLLaMA-33BORM [126] N ✓ Value/Reward Function N/A Multiple Tasks LLaMA-2-7B, GPT-2-smallForest-of-Thought [127]N ✓ LLM Self-correction Self-refinement & Iterative ImprovementPlanning, ReasoningLLaMA-3, Mistral7B, GLM-4-9BCodeTree [128] NC ✓ Execution Accuracy + LLM Self-correction Code Execution Code Generation GPT-4TreeBoN [129] N ✓ Value/Reward Function Speculative & Dynamic StrategiesPlanning, ReasoningLLaMA-3-8BCWM [130] C ✓ Compare with Golden Data Code Execution Alignment Task N/ALLM-MCTS [131] N ✗ LLM Self-correction + Policy LLM-Based Prediction Household EnvironmentsGPT-2, GPT-3.5RethinkMCTS [132]C ✗ Execution Accuracy Code Execution Code Generati"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page11_4",
+      "presentation": {
+        "latex": "Summary of Macro Action method. Tag: I = Image, T = Text, V = Video. Action Category: AD: Analysis and Decomposition, IPR: Information Processing and Reasoning, VC: Verification and Correction, GO: Generation and Optimization, EB: Exploration and Backtracking. Methods Usage Action Attribute Main Action Category Action Source Action Number Learning Reflection Modality Self-Check [219] Verification ",
+        "unicode_plain": "Summary of Macro Action method. Tag: I = Image, T = Text, V = Video. Action Category: AD: Analysis and Decomposition, IPR: Information Processing and Reasoning, VC: Verification and Correction, GO: Generation and Optimization, EB: Exploration and Backtracking. Methods Usage Action Attribute Main Action Category Action Source Action Number Learning Reflection Modality Self-Check [219] Verification Human-Designed 4 ICL ✓ T AD, VC"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          11
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Summary of Macro Action method. Tag: I = Image, T = Text, V = Video. Action Category: AD: Analysis and Decomposition, IPR: Information Processing and Reasoning, VC: Verification and Correction, GO: Generation and Optimization, EB: Exploration and Backtracking. Methods Usage Action Attribute Main Action Category Action Source Action Number Learning Reflection Modality Self-Check [219] Verification Human-Designed 4 ICL ✓ T AD, VC"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page12_5",
+      "presentation": {
+        "latex": "Summary of RFT method. Tag: I = Image, T = Text, V = Video. Category Methods Model Attribute Incentivize Attribute Application & BenchmarkFoundational LLMs Feedback Modality Reward Type Algorithm Learning Incentivize Sample Reason RFT Project LLM DeepSeek-R1-Zero [31]DeepSeek-V3 T Rule-Outcome-RewardGPRO RL 800K Multiple TasksDeepSeek-R1 [31] DeepSeek-V3 T Rule-Outcome-Reward GPRO RL & SFT 800K Mu",
+        "unicode_plain": "Summary of RFT method. Tag: I = Image, T = Text, V = Video. Category Methods Model Attribute Incentivize Attribute Application & BenchmarkFoundational LLMs Feedback Modality Reward Type Algorithm Learning Incentivize Sample Reason RFT Project LLM DeepSeek-R1-Zero [31]DeepSeek-V3 T Rule-Outcome-RewardGPRO RL 800K Multiple TasksDeepSeek-R1 [31] DeepSeek-V3 T Rule-Outcome-Reward GPRO RL & SFT 800K Multiple TasksKimi k1.5 [258] – I T Rule-Outcome-RewardPPO∗ RL & SFT– Multiple TasksReFT [243] Galacti"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          12
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Summary of RFT method. Tag: I = Image, T = Text, V = Video. Category Methods Model Attribute Incentivize Attribute Application & BenchmarkFoundational LLMs Feedback Modality Reward Type Algorithm Learning Incentivize Sample Reason RFT Project LLM DeepSeek-R1-Zero [31]DeepSeek-V3 T Rule-Outcome-RewardGPRO RL 800K Multiple TasksDeepSeek-R1 [31] DeepSeek-V3 T Rule-Outcome-Reward GPRO RL & SFT 800K Multiple TasksKimi k1.5 [258] – I T Rule-Outcome-RewardPPO∗ RL & SFT– Multiple TasksReFT [243] Galactica, CodeLLama T Rule-Outcome-Reward PPO∗ RL & SFT 3k/7k/8k/15k GSM8k/SVAMP/MathQARFTT [259] LLaMA-3-3/8B-Instruct, Qwen-2.5-7B-InstructT Rule-Outcome-RewardReinforce++RL & SFT1.2K Multiple Math TaskSatori [240] Qwen-2.5-Math-7B T Rule-Outcome-Reward PPO RL & SFT 66K Multiple Math TaskQCLASS [260] Llama-2-7B-Chat T Process-Reward QNet RL & SFT1.9K/1.5K/3.3KWebShop, ALFWorld, SciWorldPRIME [261] Qwe"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page22_6",
+      "presentation": {
+        "latex": "[1] W. Hua and Y. Zhang, “System 1+ system 2= better world: Neural-symbolic chain of logic reasoning,” in Findings of the Association for Computational Linguistics: EMNLP 2022 , 2022, pp. 601–612. [2] J. Wei, X. Wang, D. Schuurmans, M. Bosma, F. Xia, E. Chi, Q. V . Le, D. Zhou et al., “Chain-of-thought prompting elicits reasoning in",
+        "unicode_plain": "[1] W. Hua and Y. Zhang, “System 1+ system 2= better world: Neural-symbolic chain of logic reasoning,” in Findings of the Association for Computational Linguistics: EMNLP 2022 , 2022, pp. 601–612. [2] J. Wei, X. Wang, D. Schuurmans, M. Bosma, F. Xia, E. Chi, Q. V . Le, D. Zhou et al., “Chain-of-thought prompting elicits reasoning in"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          22
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "[1] W. Hua and Y. Zhang, “System 1+ system 2= better world: Neural-symbolic chain of logic reasoning,” in Findings of the Association for Computational Linguistics: EMNLP 2022 , 2022, pp. 601–612. [2] J. Wei, X. Wang, D. Schuurmans, M. Bosma, F. Xia, E. Chi, Q. V . Le, D. Zhou et al., “Chain-of-thought prompting elicits reasoning in"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page25_7",
+      "presentation": {
+        "latex": "+ 3=? On the Overthinking of o1-Like LLMs,” arXiv preprint arXiv:2412.21187, 2024. [125] W. Zeng, Y. Huang, W. Liu, K. He, Q. Liu, Z. Ma, and J. He, “7B Model and 8K Examples: Emerging Reasoning with Reinforcement Learning is Both Effective and Efficient,” 2025, notion Blog. [Online]. Available: https://hkust-nlp.notion.site/",
+        "unicode_plain": "+ 3=? On the Overthinking of o1-Like LLMs,” arXiv preprint arXiv:2412.21187, 2024. [125] W. Zeng, Y. Huang, W. Liu, K. He, Q. Liu, Z. Ma, and J. He, “7B Model and 8K Examples: Emerging Reasoning with Reinforcement Learning is Both Effective and Efficient,” 2025, notion Blog. [Online]. Available: https://hkust-nlp.notion.site/"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          25
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "+ 3=? On the Overthinking of o1-Like LLMs,” arXiv preprint arXiv:2412.21187, 2024. [125] W. Zeng, Y. Huang, W. Liu, K. He, Q. Liu, Z. Ma, and J. He, “7B Model and 8K Examples: Emerging Reasoning with Reinforcement Learning is Both Effective and Efficient,” 2025, notion Blog. [Online]. Available: https://hkust-nlp.notion.site/"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page26_8",
+      "presentation": {
+        "latex": "2024. [Online]. Available: https://openreview.net/forum?id= kh9Zt2Ldmn [149] Y. Xie, A. Goyal, W. Zheng, M. Kan, T. P . Lillicrap, K. Kawaguchi, and M. Shieh, “Monte Carlo Tree Search Boosts Reasoning via Iterative Preference Learning,” CoRR, vol. abs/2405.00451, 2024. [150] J. Y. Koh, S. McAleer, D. Fried, and R. Salakhutdinov, “Tree Search",
+        "unicode_plain": "2024. [Online]. Available: https://openreview.net/forum?id= kh9Zt2Ldmn [149] Y. Xie, A. Goyal, W. Zheng, M. Kan, T. P . Lillicrap, K. Kawaguchi, and M. Shieh, “Monte Carlo Tree Search Boosts Reasoning via Iterative Preference Learning,” CoRR, vol. abs/2405.00451, 2024. [150] J. Y. Koh, S. McAleer, D. Fried, and R. Salakhutdinov, “Tree Search"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          26
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "2024. [Online]. Available: https://openreview.net/forum?id= kh9Zt2Ldmn [149] Y. Xie, A. Goyal, W. Zheng, M. Kan, T. P . Lillicrap, K. Kawaguchi, and M. Shieh, “Monte Carlo Tree Search Boosts Reasoning via Iterative Preference Learning,” CoRR, vol. abs/2405.00451, 2024. [150] J. Y. Koh, S. McAleer, D. Fried, and R. Salakhutdinov, “Tree Search"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page30_9",
+      "presentation": {
+        "latex": "Available: https://openreview.net/forum?id=sKYHBTAxVa [319] S. Huang, L. Yang, Y. Song, S. Chen, L. Cui, Z. Wan, Q. Zeng, Y. Wen, K. Shao, W. Zhang et al., “Thinkbench: Dynamic out-of- distribution evaluation for robust llm reasoning,” arXiv preprint arXiv:2502.16268, 2025. [320] K. Huang, J. Guo, Z. Li, X. Ji, J. Ge, W. Li, Y. Guo, T. Cai,",
+        "unicode_plain": "Available: https://openreview.net/forum?id=sKYHBTAxVa [319] S. Huang, L. Yang, Y. Song, S. Chen, L. Cui, Z. Wan, Q. Zeng, Y. Wen, K. Shao, W. Zhang et al., “Thinkbench: Dynamic out-of- distribution evaluation for robust llm reasoning,” arXiv preprint arXiv:2502.16268, 2025. [320] K. Huang, J. Guo, Z. Li, X. Ji, J. Ge, W. Li, Y. Guo, T. Cai,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          30
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Available: https://openreview.net/forum?id=sKYHBTAxVa [319] S. Huang, L. Yang, Y. Song, S. Chen, L. Cui, Z. Wan, Q. Zeng, Y. Wen, K. Shao, W. Zhang et al., “Thinkbench: Dynamic out-of- distribution evaluation for robust llm reasoning,” arXiv preprint arXiv:2502.16268, 2025. [320] K. Huang, J. Guo, Z. Li, X. Ji, J. Ge, W. Li, Y. Guo, T. Cai,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page30_10",
+      "presentation": {
+        "latex": "https://openreview.net/forum?id=VTF8yNQM66 [327] N. Jain, K. Han, A. Gu, W.-D. Li, F. Yan, T. Zhang, S. Wang, A. Solar-Lezama, K. Sen, and I. Stoica, “Livecodebench: Holistic and contamination free evaluation of large language models for code,” arXiv preprint arXiv:2403.07974, 2024. [328] A. Zhang, M. Dong, J. Liu, W. Zhang, Y. Wang, J. Yang, G. Zhang,",
+        "unicode_plain": "https://openreview.net/forum?id=VTF8yNQM66 [327] N. Jain, K. Han, A. Gu, W.-D. Li, F. Yan, T. Zhang, S. Wang, A. Solar-Lezama, K. Sen, and I. Stoica, “Livecodebench: Holistic and contamination free evaluation of large language models for code,” arXiv preprint arXiv:2403.07974, 2024. [328] A. Zhang, M. Dong, J. Liu, W. Zhang, Y. Wang, J. Yang, G. Zhang,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          30
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "https://openreview.net/forum?id=VTF8yNQM66 [327] N. Jain, K. Han, A. Gu, W.-D. Li, F. Yan, T. Zhang, S. Wang, A. Solar-Lezama, K. Sen, and I. Stoica, “Livecodebench: Holistic and contamination free evaluation of large language models for code,” arXiv preprint arXiv:2403.07974, 2024. [328] A. Zhang, M. Dong, J. Liu, W. Zhang, Y. Wang, J. Yang, G. Zhang,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page30_11",
+      "presentation": {
+        "latex": "https://openreview.net/forum?id=Ti67584b98 [330] Z. Zeng, Y. Liu, Y. Wan, J. Li, P . Chen, J. Dai, Y. Yao, R. Xu, Z. Qi, W. Zhao, L. Shen, J. Lu, H. Tan, Y. Chen, H. Zhang, Z. Shi, B. Wang, Z. Guo, and J. Jia, “Mr-ben: A meta-reasoning benchmark for evaluating system-2 thinking in llms,” in Advances in Neural Information Processing Systems 38:",
+        "unicode_plain": "https://openreview.net/forum?id=Ti67584b98 [330] Z. Zeng, Y. Liu, Y. Wan, J. Li, P . Chen, J. Dai, Y. Yao, R. Xu, Z. Qi, W. Zhao, L. Shen, J. Lu, H. Tan, Y. Chen, H. Zhang, Z. Shi, B. Wang, Z. Guo, and J. Jia, “Mr-ben: A meta-reasoning benchmark for evaluating system-2 thinking in llms,” in Advances in Neural Information Processing Systems 38:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          30
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "https://openreview.net/forum?id=Ti67584b98 [330] Z. Zeng, Y. Liu, Y. Wan, J. Li, P . Chen, J. Dai, Y. Yao, R. Xu, Z. Qi, W. Zhao, L. Shen, J. Lu, H. Tan, Y. Chen, H. Zhang, Z. Shi, B. Wang, Z. Guo, and J. Jia, “Mr-ben: A meta-reasoning benchmark for evaluating system-2 thinking in llms,” in Advances in Neural Information Processing Systems 38:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+ABSTRACT
+• Hybrid transformer with liquid neural 
+networks model for building energy 
+forecasting.
+• Convolutional neural network encoders 
+to understand temporal dynamics in 
+energy data through spatial mappings.
+• Reservoir processing module imple -
+mented with liquid neural networks to 
+capture non-linear relations in energy 
+data.
+• Validation on various building contexts, 
+including large apartment buildings and 
+small households.
+ARTICLE INFO
+Keywords:
+Residential building
+Commercial building
+Households
+Energy forecasting
+Transformer model
+Liquid neural network
+ABSTRACT
+Accurate forecasting of buildings ’ energy demand is essential for building operators to manage loads and re -
+sources efficiently, and for grid operators to balance local production with demand. However, nowadays models 
+still struggle to capture nonlinear relationships influenced by external factors like weather and consumer 
+behavior, assume constant variance in energy data over time, and often fail to model sequential data. To address 
+these limitations, we propose a hybrid Transformer-based model with Liquid Neural Networks and learnable 
+encodings for building energy forecasting. The model leverages Dense Layers to learn non-linear mappings to 
+create embeddings that capture underlying patterns in time series energy data. Additionally, a Convolutional 
+Neural Network encoder is integrated to enhance the model ’ s ability to understand temporal dynamics through 
+spatial mappings. To address the limitations of classic attention mechanisms, we implement a reservoir pro -
+cessing module using Liquid Neural Networks which introduces a controlled non-linearity through dynamic 
+reservoir computing, enabling the model to capture complex patterns in the data. For model evaluation, we 
+utilized both pilot data and state-of-the-art datasets to determine the model ’ s performance across various 
+building contexts, including large apartment and commercial buildings and small households, with and without 
+on-site energy production. The proposed transformer model demonstrates good predictive accuracy and training 
+time efficiency across various types of buildings and testing configurations. Specifically, SMAPE scores indicate a 
+* Corresponding author.
+E-mail addresses: gabriel.antonesi@cs.utcluj.ro (G. Antonesi), tudor.cioara@cs.utcluj.ro (T. Cioara), ionut.anghel@cs.utcluj.ro (I. Anghel), jpapias@epu.ntua.gr
+(I. Papias), vmichalakopoulos@epu.ntua.gr (V. Michalakopoulos), esarmas@epu.ntua.gr (E. Sarmas). 
+Contents lists available at ScienceDirect
+Energy and AI
+journal homepag e: www.sci encedirect.co m/journal/ energy-and -ai
+https://doi.org/10.1016/j.egyai.2025.100489
+Energy and AI 20 (2025) 100489 
+Available online 18 February 2025 
+2666-5468/© 2025 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY-NC license ( http://creativecommons.org/licenses/by- 
+nc/4.0/ ). 
+reduction in prediction error, with improvements ranging from 1.5 % to 50 % over basic transformer, LSTM and 
+ANN models while the higher R² values further confirm the model’s reliability in capturing energy time series 
+variance. The 8 % improvement in training time over the basic transformer model, highlights the hybrid model 
+computational efficiency without compromising accuracy.
+1. Introduction
+The decarbonization of the smart grid requires not only the large- 
+scale deployment of renewable energy sources but also better planning 
+and demand-side management [ 1 , 2 ]. Therefore, the grid operators have 
+put in place demand management programs to encourage consumers to 
+reduce or shift energy usage during peak periods. As a significant 
+amount of the energy demand is attributed to the buildings, efforts must 
+be committed to increase their interoperability with the smart grid and 
+transform them into active players participating in demand response 
+programs [ 3 , 4 ]. However, to make this vision possible it is important to 
+have accurate predictions of the building’s energy demand. They will 
+enable the building operators to anticipate the load and efficiently 
+allocate resources to achieve cost reductions, and the system operators 
+to plan and balance the local production with the demand [ 5 ].
+Statistical methods such as Autoregressive Integrated Moving 
+Average (ARIMA) and its derivates rely only on the past energy values 
+making them relatively easy to interpret and effective in linear contexts 
+[ 6–8 ]. However, they have problems in capturing nonlinear relation -
+ships in energy consumption patterns, which can be influenced, among 
+others, by external factors such as weather variability and consumer 
+behavior. Additionally, these models assume that the variance in energy 
+data remains constant over time, which may not always be true. 
+Therefore, machine learning models have been used for energy pre -
+dictions as they excel in capturing complex, nonlinear patterns in data 
+and may easily integrate external variables such as weather data [ 9 ]. 
+Energy prediction models based on Support Vector Machines (SVMs) 
+[ 10 , 11 ] decision trees [ 12 ] and Random Forests [ 13 , 14 ] have been 
+successful for short-term load forecasting, offering improved general -
+ization compared to autoregression ones. However, these models cannot 
+often model sequential energy data as effectively as deep learning 
+techniques.
+Deep learning models can handle multiple inputs, (i.e. time series 
+energy data, weather, consumer behavior), without the need for manual 
+feature engineering while addressing the challenge of sequential data 
+processing (e.g. Recurrent Neural Networks - RNNs) [ 15 , 16 ]. However, 
+RNNs often suffer from the vanishing gradient problem, limiting their 
+effectiveness over long energy data sequences [ 17 , 18 ]. Long Short-Term 
+Memory (LSTM) models incorporate gating mechanisms to capture 
+long-term dependencies in energy data more effectively showing better 
+performance in energy demand prediction and capturing temporal dy -
+namics like daily and seasonal variations [ 17 ]. Liu et al. [ 19 ] showed 
+that LSTM models achieve greater accuracy in electricity load fore -
+casting compared to traditional RNNs. Similarly, Bouktif et al. [ 20 ] 
+enhance forecasting precision by employing an LSTM model that in -
+corporates optimally selected time-lagged features. Sarmas et al. [ 21 ] 
+successfully developed and fine-tuned four distinct LSTM models to 
+accurately predict the output of three rooftop PV plants in Portugal. 
+Additionally, researchers in Michalakopoulos et al. [ 22 ] optimized 
+LSTM architectures using the Optuna framework for hyperparameter 
+tuning to improve the performance across various PV scenarios.
+Recently Transformer models have shown promise in overcoming 
+these challenges by using self-attention mechanisms to weigh the 
+importance of different parts of the input energy data sequence, allow -
+ing them to capture relationships between distant data elements more 
+effectively [ 23–25 ]. The multi-head attention mechanism proved to be 
+successful in handling complex time-series data scenarios, such as wind 
+and solar power forecasting with improved accuracy [ 26 ]. Zhou et al. 
+applied this concept in the context of energy forecasting [ 27 ] and their 
+Informer model improves the efficiency of Transformers by using 
+ProbSparse attention. This enables scalable forecasting for large-scale 
+energy datasets without getting an accuracy penalty. Additionally, 
+they had introduced positional encoding to make them better suited for 
+time series tasks. The multi-head attention mechanism can handle 
+long-term dependencies better than traditional RNN-based models like 
+LSTM and GRU, obtaining higher accuracy [ 28–30 ]. Also, attention 
+mechanisms have been applied to data imputation tasks, being able to 
+keep temporal dynamics and improve forecasting accuracy [ 31 ]. 
+Furthermore, adaptive models using Principal Component Analysis for 
+dimensionality reduction before passing data into the Transformer 
+model have been shown to focus only on the most informative features 
+[ 32 ]. To enhance the interpretability of the model, the Interformer [ 33 ] 
+was proposed for probabilistic short-term forecasting for the residential 
+load. By incorporating sparse self-attention, the model reduces the 
+computational complexity, while still providing important information 
+about the variables that have the highest impact on the predictions. For 
+wind energy generation forecasting, Li et al. [ 34 ] have shown that 
+integrating the Transformer’s self-attention mechanism with causal 
+convolution and empirical mode decomposition improves the fore -
+casting accuracy by capturing the local dependencies and the sharp 
+variations in wind power data. Similarly, Harrou et al. [ 35 ] integrate a 
+Variational Autoencoder with a self-attention mechanism for both the 
+encoder and decoder layers. The model enhances the short-term wind 
+power prediction accuracy by focusing on the most informative features 
+provided in the input and using a nonlinear approximation in modelling 
+the energy time series. Yu et al. integrated a dynamic self-attention 
+mechanism (i.e., Temporal Fusion Transformer) into a solar power 
+forecasting model to improve short-term predictions [ 36 ]. The attention 
+mechanism’s dynamic nature enables the model to gradually modify its 
+focus on relevant features, hence assisting in the management of the 
+various trends monitored in energy generation prediction.
+However, the Transformers are more computationally complex than 
+traditional neural network models especially as the time series sequence 
+length and model size increase. To reduce the computational 
+complexity, adaptive mechanisms for encoders, decoders, and attention 
+mechanisms have been introduced. Mo et al. [ 37 ] use sparse 
+self-attention and temporal pooling to improve computational effi -
+ciency, while not compromising the prediction accuracy. They use 
+LSTM-based embedding to address the weak temporal prediction capa -
+bilities of the transformer model. Adaptive attention mechanisms have 
+also been introduced to handle fluctuations in energy data and they 
+perform well in terms of medium-term wind power forecasting [ 38 ]. 
+Similarly, models that optimize the attention mechanism for 
+multi-horizon, multi-source load forecasting in integrated energy sys -
+tems, have been shown to improve prediction accuracy [ 39 ]. Wang et al. 
+[ 25 ] proposed a cross-entity attention mechanism and shared variable 
+selection networks to handle relationships between different entities in a 
+smart grid (i.e., buildings, single prosumers, etc.). The mechanism can 
+learn relationships among entities to inform the decoder about which 
+entity the encoder should focus on. Qu et al. [ 40 ] proposed a transformer 
+model with three key features: better long-distance dependence than 
+LSTM, a multi-headed attention mechanism, and parallel computation 
+for faster training. The model has been successfully applied to forecast 
+the power output of multiple wind farms showing better accuracy 
+compared to LSTM-based models. Dai et al. [ 41 ] proposed the use of 
+self-attention-based neural network to capture the temporal relations in 
+power sequences. Such models have shown good adaptation capabilities 
+to real-time changes in wind power data being able to handle 
+G. Antonesi et al.                                                                                                                                                                                                                               Energy and AI 20 (2025) 100489 
+2 
+ultra-short-term forecasting. Wu et al. [ 42 ], proposed Autoformer which 
+adds a decomposition block to describe the trend and seasonal compo -
+nents in time-series data, is another significant example. By dividing the 
+input data into distinct components, the Autoformer improves fore -
+casting accuracy for solar and wind energy.
+To further improve the model temporal relationships in sequential 
+energy data, generalization capabilities and reduce the computational 
+complexity concerning the sequence length, recent studies have 
+explored the combination of Transformers with other architectural 
+models like CNNs and GRUs. Tian et al. [ 43 ] combine LSTM with 
+Informer to improve the representation capabilities in the case of time 
+series and a parallel encoder module to improve the robustness. A hybrid 
+CNN-GRU-Transformer model has been shown to surpass traditional 
+models in terms of accuracy in solar power forecasting [ 44 ]. Also, a 
+hybrid CNN-Transformer was proposed using the CNN abilities to 
+extract spatial features and combine them with the Transformer ’ s 
+attention mechanism [ 45 ]. This hybrid approach shows promising re -
+sults in wind power forecasting, improving both accuracy and compu -
+tational resource use. Graph-based models have also been employed to 
+capture spatial dependencies between different wind farms [ 46 , 47 ]. For 
+instance, a Graph-Convolution Network (GCN) combined with 
+Multi-Resolution Convolution Networks (MRCN) for short-term wind 
+power prediction resulted in higher accuracy, compared to standalone 
+CNN or RNN models. The Graph Patch Informer (GPI) extends the 
+Transformer model by integrating Graph Attention Networks (GATs) 
+that allow for the modeling of spatial dependencies [ 48 ]. Liu and Fu 
+applied this hybrid approach to renewable energy forecasting, although 
+the model has increased complexity and demands substantial compu -
+tational power to train, which limits its scalability for widespread use. 
+Additionally, the application of self-supervised techniques can help in 
+discovering and learning more features from energy data. Xiang et al. 
+proposed a hybrid model combining a Self-Attention Temporal Con -
+volutional Network (SATCN) [ 49 ] with an LSTM to predict 
+ultra-short-term wind power. This outperforms existing methods like 
+LSTM, CNN-LSTM, and TCN-LSTM in terms of root mean square error 
+(RMSE) and mean absolute error (MAE). Huang et al. demonstrated that 
+this approach, when combined with Transformer models, has the po -
+tential to increase the generalization capabilities in multi-step fore -
+casting tasks [ 50 ]. For residential buildings, a hybrid model combining 
+multivariate variational mode decomposition, and a Temporal Fusion 
+Transformer has been developed for short load forecasting and it de -
+composes the load series into intrinsic mode functions, which makes the 
+model handle variations within the input data better [ 51 ]. This, com -
+bined with a whale optimization algorithm, results in higher forecasting 
+accuracy. Finally, Pan et al. [ 52 ] introduced a transformer framework 
+that uses a local-global scale architecture. The model is highly appli -
+cable due to the integration of edge computing and IoT devices that 
+enable real-time data collection and processing.
+Despite their strengths for natural languages processing, the state-of- 
+the-art transformers models have specific drawbacks in time series en -
+ergy predictions, regarding computation, temporal dynamics and noise 
+handling. The computational cost of these models, especially when 
+applied to large energy datasets, remains a major drawback [ 53 , 54 ]. 
+Wang et al. [ 55 ] note that the high computational requirements for 
+multi-source data fusion models may lead to a decline in performance in 
+real-time applications. Furthermore, for specific scenarios, LSTMs or 
+linear regression can outperform the Transformer model and in envi -
+ronments where data is low-dimensional, the marginal accuracy im -
+provements do not always justify the computational costs. To address 
+these limitations, we propose a hybrid approach that integrates a 
+Transformer-based architecture with Liquid Neural Networks (LNNs) 
+and learnable encodings to handle both the complex temporal de -
+pendencies and non-linear patterns found in energy consumption data. 
+The model leverages Dense Layers to learn non-linear mappings, 
+enabling it to create embeddings that capture underlying patterns in 
+time series energy data. A Convolutional Neural Network (CNN) encoder 
+is integrated to enhance the model ’ s ability to understand temporal 
+dynamics through spatial mappings. At the same time, an adaptive po -
+sitional encoding combines sinusoidal, temporal, and learnable encod -
+ings. To address the limitations of classic attention mechanisms, which 
+primarily rely on linear transformations and simple dot products and 
+may not capture these non-linear relationships effectively, we introduce 
+a Reservoir Processing module implemented using LNNs. A controlled 
+non-linearity is introduced through dynamic reservoir computing, 
+which can model complex patterns in the data that are not immediately 
+apparent or are obscured by noise and fluctuations. The proposed 
+transformer model shows good prediction accuracy with good training 
+time efficiency over various pilot data and state-of-the-art datasets while 
+considering different building contexts, such as large buildings of 
+apartments or small households with and without on-site energy 
+production.
+The paper ’ s contributions beyond the state of the art are: 
+• A hybrid transformer model for building energy forecasting that 
+combines the transformer architecture with LNNs, and learnable 
+encodings achieving good prediction accuracy and training effi -
+ciency across different building contexts.
+• Integration of CNN encoders with adaptive positional encoding to 
+capture non-linear mappings and enhance the understanding of 
+temporal dynamics in time series energy data.
+• A Reservoir Processing module implemented using Liquid Neural 
+Networks to capture more effective complex non-linear energy data 
+patterns that can be masked by noise and fluctuations.
+• Evaluation of predictive performance across different types of 
+buildings including apartments building, residential and commercial 
+buildings and households prosumers showing good generalization 
+features and energy prediction accuracy.
+The rest of the paper is organized as follows: Section 2 describes the 
+architecture of our proposed hybrid transformer model detailing its key 
+components; Section 3 details the experimental setup and energy pre -
+diction results for various building cases and Section 4 discuss the pre -
+diction accuracy and training time results in comparison with basic 
+transformer, LTSM and ANN, whilst Section 5 concludes the paper and 
+presents potential future directions.

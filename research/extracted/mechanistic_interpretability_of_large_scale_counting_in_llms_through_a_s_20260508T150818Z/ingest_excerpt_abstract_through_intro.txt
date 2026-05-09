@@ -1,0 +1,264 @@
+Abstract
+Large language models (LLMs), despite strong
+performance on complex mathematical prob-
+lems, exhibit systematic limitations in count-
+ing tasks. This issue arises from the architec-
+tural limits of transformers, where counting is
+performed across layers, leading to degraded
+precision for larger counting problems due to
+depth constraints. To address this limitation,
+we propose a simple test-time strategy inspired
+by System-2 cognitive processes that decom-
+poses large counting tasks into smaller, inde-
+pendent sub-problems that the model can re-
+liably solve. We evaluate this approach using
+observational and causal mediation analyses to
+understand the underlying mechanism of this
+System-2-like strategy. Our mechanistic anal-
+ysis identifies key components: latent counts
+are computed and stored in the final item repre-
+sentations of each part, transferred to interme-
+diate steps via dedicated attention heads, and
+aggregated in the final stage to produce the total
+count. Experimental results demonstrate that
+this strategy enables LLMs to surpass architec-
+tural limitations and achieve higher accuracy on
+large-scale counting tasks. This work provides
+mechanistic insight into System-2 counting in
+LLMs and presents a generalizable approach
+for improving and understanding their reason-
+ing behavior.
+1 Introduction
+Counting is a fundamental cognitive operation that
+underpins a wide range of reasoning tasks, from
+basic arithmetic to more complex forms of quan-
+titative analysis (Feigenson et al., 2004; Dehaene,
+2011). In large language models (LLMs), the abil-
+ity to count is important for controlled generation
+such as length-constrained summarization, sequen-
+tial enumeration, and broader numerical/arithmetic
+reasoning (Retkowski and Waibel, 2025; Hou et al.,
+2025; Yang et al., 2024c; Gambardella et al., 2024).
+Recent research has provided insights into the
+counting mechanism of LLMs, demonstrating that
+10 15 20 25 30 35 40 45 50
+Number of Items
+0.05
+0.05
+0.15
+0.25
+0.35
+0.45
+0.55
+0.65
+0.75
+0.85
+0.95
+Accuracy
+System-1 vs System-2 Counting Performance
+Llama 3 8B System-2
+Llama 3 8B System-1
+Qwen2.5 7B System-2
+Qwen2.5 7B System-1
+Figure 1: System-1 vs. System-2 counting performance
+as a function of problem size. System-1 performance de-
+grades rapidly and collapses beyond approximately 30
+items, reflecting the bounded capacity of the model’s in-
+ternal counter. In contrast, System-2 counting maintains
+high accuracy across the entire range by decomposing
+the task into small solvable sub-problems and aggregat-
+ing the results.
+these models use a layerwise internal counting pro-
+cess where numerical information is progressively
+accumulated across transformer layers (Hasani
+et al., 2025b). However, due to the depth limits,
+this progressive counting mechanism becomes sat-
+urated as the number of items increases. Comple-
+mentary work on numerical representations sug-
+gests that LLMs encode numbers in a compressed,
+sublinear manner, similar to the human logarithmic
+mental number line (AlquBoj et al., 2025; Dehaene,
+2011). While numerical order is preserved, repre-
+sentational resolution decreases with magnitude,
+explaining the reduced precision for large values.
+These findings suggest that LLMs struggle to ac-
+curately count large numbers of items, with perfor-
+mance typically degrading for two- and three-digit
+counts (Zhang et al., 2024; Yehudai et al., 2024; Fu
+et al., 2024). This limitation reflects a fundamental
+architectural constraint rather than a lack of train-
+ing data or supervision, as more layers are required
+to count a larger number of items (Vaswani et al.,
+2017; Yehudai et al., 2024; Golkar et al., 2024).
+1
+arXiv:2601.02989v2  [cs.CL]  21 Apr 2026
+apple, apple, apple, apple |  apple, apple |  apple, apple, apple part 1: 4,   part 2: 2,   part 3: 3.   Final: 9.
+1
+2
+3
+4
+4
+1
+2
+2
+1
+2
+3
+3
+4 2 3
+9
+Early layers
+Middle layers
+Middle-to-late
+layers
+Input Output
+Figure 2:Internal mechanism of System-2 test-time counting in LLMs.A large counting task is divided into
+smaller partitions using an external separator (|). Within each partition, the model performs implicit System-1
+counting, where count information accumulates token-by-token and is localized at the final item or separator token
+(gray blocks). The final count information is transferred via residual streams (green arrows) and stored in the
+middle-to-late layers (green blocks). These partition-level counts (e.g., 4, 2, 3) are then transferred (orange arrows)
+through attention pathways to explicit reasoning tokens that report intermediate results (orange blocks). Finally, the
+intermediate counts are aggregated (purple arrows) to produce the final answer. By keeping each sub-task within
+the model’s reliable counting range, this System-2 procedure removes the upper bound imposed by the model’s
+architectural limitations.
+We argue that this failure stems from the model’s
+reliance on a System-1–like processing approach,
+which is fast, automatic, and capacity-limited (Kah-
+neman, 2011; Dehaene, 2011).
+To address this issue, we propose a simple test-
+time strategy that adopts a System-2–like approach
+to counting (Figure 1) (Kahneman, 2011). Instead
+of relying on the model’s internal counting mecha-
+nisms, which are constrained by architectural lim-
+its, our approach decomposes large counting tasks
+into smaller, independent sub-tasks (Radhakrish-
+nan et al., 2023; Qharabagh et al., 2024). Each sub-
+task, containing a manageable number of items,
+can be reliably counted by the model. The re-
+sults from each sub-task are then aggregated to
+produce the final count. This approach mirrors hu-
+man cognitive strategies, where complex problems
+are broken down into simpler, easier-to-solve sub-
+problems (Dehaene, 2011). In this study, we use
+System-1 and System-2 as high-level operational
+abstractions inspired by human cognition (Kahne-
+man, 2011). Specifically, we refer to System-1 as
+the model’s single-pass, layer-wise processing, and
+to System-2 as a more deliberate procedure that ex-
+tends computation across token generation beyond
+a fixed layer-wise computation.
+Our behavioral experiments on various LLMs
+demonstrate the effectiveness of this strategy in
+overcoming architectural limitations without re-
+quiring model modifications or fine-tuning. Ad-
+ditionally, we provide a detailed mechanistic in-
+terpretation of how it functions within LLMs. Us-
+ing attention analysis and causal mediation tech-
+niques (Heimersheim and Nanda, 2024; Geiger
+et al., 2021; Ghandeharioun et al., 2024; Zhang
+and Nanda, 2024), we trace the flow of numeri-
+cal information across the model and identify the
+mechanisms mediating the System-2 counting pro-
+cess. Figure 2 provides an overview of the main
+components of the System-2 counting mechanism
+and its internal information flow. This work offers a
+new perspective on both improving and understand-
+ing LLMs’ reasoning capabilities, with a focus on
+a fundamental cognitive task.
+2
+2 Problem Setup and Methodology
+We follow the standard counting framework used in
+prior research (Hasani et al., 2025b). In this setup,
+a list of repeated items, such as fruits or animals, is
+presented to the model, and the task is to report the
+total number of items. For example, given a context
+like “apple, apple, apple, . . . ”, the model must out-
+put the total number of items in the list. Previous
+work has shown that LLMs exhibit high accuracy
+for small counts (fewer than 10 items), but that
+performance deteriorates as the number of items
+increases beyond this range (Zhang et al., 2024;
+Fu et al., 2024). This suggests that the model’s
+counting ability is limited by the depth of the trans-
+former architecture and its internal counting mech-
+anism (Yehudai et al., 2024).
+To overcome this limitation, motivated by prior
+work on partitioning images in visual reasoning
+tasks (Izadi et al., 2025), we introduce a simple
+strategy that explicitly partitions the input list into
+smaller sub-problems. We use an external separator
+(|) to divide the list into smaller partitions. For
+instance, a structured context with three partitions
+is: “apple, apple, apple, apple, apple | apple, apple,
+apple | apple, apple, apple, apple, apple, apple”.
+The model is then instructed to first count the
+items in each partition and to aggregate the partial
+counts to produce the final result. This ensures that
+each sub-problem remains within the model’s reli-
+able counting regime. The number of items in each
+partition is chosen randomly from a range that the
+model can handle accurately. Models with deeper
+architectures can reliably process larger partitions.
+This strategy is based on test-time scaling by lever-
+aging the LLM’s inherent capabilities and does not
+require fine-tuning or any external tools.
+Based on the input structure and output format,
+we consider four baselines in our study. Two in-
+put formats are used: an unstructured context with
+comma-separated items and a structured context
+with partitions separated by vertical bar symbol
+(|). For generation, we evaluate two output vari-
+ants: a short-answer format, where only the final
+count is produced (corresponding to an immediate
+System-1-like process), and a Chain-of-Thought
+(CoT) (Wei et al., 2022) format, where intermedi-
+ate reasoning steps are included before the final
+answer (corresponding to a System-2-like process).
+Full details of the input formats, partitioning, and
+prompting strategies are provided in Appendix A.1.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Number of Items in Sequence
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25 Decoded Number
+1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.08 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 1.00 0.11 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.89 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.99 0.94 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.05 0.02 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.98 0.63 0.17 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.37 0.47 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.36 0.84 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.04 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.11 0.69 0.12 

@@ -1,0 +1,60 @@
+Abstract. The current state-of-the-art in artiﬁcial intelligence is impressive, especially in terms of
+mastery of language, but not so much in terms of mathematical reasoning. What could be missing?
+Can we learn something useful about that gap from how the brai ns of mathematicians go about
+their craft? This essay builds on the idea that current deep l earning mostly succeeds at system
+1 abilities – which correspond to our intuition and habitual behaviors – but still lacks something
+important regarding system 2 abilities – which include reas oning and robust uncertainty estimation.
+It takes an information-theoretical posture to ask questio ns about what constitutes an interesting
+mathematical statement, which could guide future work in cr afting an AI mathematician. The focus
+is not on proving a given theorem but on discovering new and in teresting conjectures. The central
+hypothesis is that a desirable body of theorems better summa rizes the set of all provable statements,
+for example by having a small description length while at the same time being close (in terms of
+number of derivation steps) to many provable statements.
+1. Context
+Research in artiﬁcial intelligence has advanced in tremend ous and even scary [Russell, 2019] ways
+in the last couple of decades, fueled by research on deep lear ning [Bengio et al., 2021]. Modern
+generative AI systems are particularly impressive because they show an ability to create realistic
+new content: images, sounds, and text, for example. These systems are de ep neural networks:
+functions used to represent a conditional distribution P (Y |X) over values of a random variable Y ,
+representing content, given the value of a random variable X, representing context or input. The
+input X could, for example, be a natural language query while the out put Y could be a text, an
+image, or a video. Many of these systems are eﬀectively regres sion models ﬁt to a set of training
+examples (x, y). The distinguishing feature of deep learning is that the nu mber of degrees of freedom
+in the regression is very large, sometimes billions or trill ions of parameters. A generative neural
+network can sample Y given X from the learned distribution and then use it as part of the ne xt
+input. In the case of large language models (LLMs), Y is the next word that follows textual context
+X, and the iterated applications of such a generator can be use d to form a dialogue with LLMs
+like ChatGPT [OpenAI, 2022, 2023]. A pre-training phase [Be ngio et al., 2021] may exploit larger
+datasets where we observe only inputs x or a combination of unlabeled ( x only) and labeled (( x, y)
+pairs) data, or where the training objective is less targete d to a speciﬁc task and more towards
+capturing the statistical structure in some or all of the ran dom variables of interest.
+What is surprising is how successful such approaches have be en when the number of training
+examples and parameters are both scaled up, in spite of the fa irly simple principles involved. For
+example, GPT-4 [OpenAI, 2023] is believed to have about a tri llion parameters trained with more
+than a trillion examples (of predicting the next word Y in the context of a piece of text X).
+In addition to raw scale of the models and datasets, some of th e ingredients of that success are
+algorithmic: training the whole thing by stochastic gradie nt descent [Bottou, 2010] (i.e., updating
+the parameters in the direction of improving the training ob jective for just a random subset of
+examples, and repeating this many many times), the use of lea rned vectorial representations for each
+word [Bengio et al., 2001] or more generally for symbols [Hin ton and Plaut, 1987], the “deep learning”
+idea [LeCun et al., 2015] of stacking many layers of jointly t rained non-linear transformations, the
+1
+2 YOSHUA BENGIO AND NIKOLAY MALKIN
+learnable non-linear computations inspired by human atten tion [Bahdanau et al., 2014] mechanisms,
+focusing computations on a few elements of a set at a time (by g iving them a larger weight), or the
+extension of this attention mechanism to attend to multiple elements in parallel and stack these
+attention layers, also known as the popular Transformer [Va swani et al., 2017] architecture.
+We now have AI systems that seem to master language. What is mi ssing in order to achieve
+the kind of mathematical thinking abilities that many of us e njoy? Could we build an AI system
+that could one day surpass our mathematical abilities? Thes e are the questions motivating the
+discussions below, with an emphasis on connecting the curre nt state-of-the-art in deep learning to
+human-level reasoning and mathematical skills.
+The main question we aim at is the following: what could serve as a training objective for
+mathematical discovery? We propose an information-theore tic answer: one would prefer a library
+of mathematical statements that is small while making it eas y to prove many provable statements.
+We also consider the exploratory process of generating conj ectures based on such an objective and
+then using a goal-conditioned machine learning approach to try proving them by generating subgoals
+corresponding to lemmas.
+This paper can be read as an initial answer from a machine lear ning expert to a graduate student
+who would like to explore machine learning methods to build a n AI mathematician, one that could
+not only search for proofs or disproofs of conjectures but al so generate interesting new conjectures.

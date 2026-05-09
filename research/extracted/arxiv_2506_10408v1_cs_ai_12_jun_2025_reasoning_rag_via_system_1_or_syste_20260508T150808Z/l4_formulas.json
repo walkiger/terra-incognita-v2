@@ -1,0 +1,7 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2506_10408v1_cs_ai_12_jun_2025_reasoning_rag_via_system_1_or_syste_20260508T150808Z",
+  "extracted_at": "2026-05-08T15:09:07Z",
+  "notes": "No reliable numbered display equations were recovered from the PDF text layer with automated heuristics; the paper may be prose-only in extractable spans or uses figures for math.",
+  "formulas": []
+}

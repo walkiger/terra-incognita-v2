@@ -1,0 +1,170 @@
+Abstract
+Energy based models (EBMs) are appealing due to their generality and simplicity
+in likelihood modeling, but have been traditionally difﬁcult to train. We present
+techniques to scale MCMC based EBM training on continuous neural networks,
+and we show its success on the high-dimensional data domains of ImageNet32x32,
+ImageNet128x128, CIFAR-10, and robotic hand trajectories, achieving better
+samples than other likelihood models and nearing the performance of contemporary
+GAN approaches, while covering all modes of the data. We highlight some unique
+capabilities of implicit generation such as compositionality and corrupt image
+reconstruction and inpainting. Finally, we show that EBMs are useful models across
+a wide variety of tasks, achieving state-of-the-art out-of-distribution classiﬁcation,
+adversarially robust classiﬁcation, state-of-the-art continual online class learning,
+and coherent long term predicted trajectory rollouts.
+1 Introduction
+Learning models of the data distribution and generating samples are important problems in machine
+learning for which a number of methods have been proposed, such as Variational Autoencoders
+(V AEs) [Kingma and Welling, 2014] and Generative Adversarial Networks (GANs) [Goodfellow
+et al., 2014].In this work, we advocate for continuous energy-based models (EBMs), represented as
+neural networks, for generative modeling tasks and as a building block for a wide variety of tasks.
+These models aim to learn an energy functionE(x) that assigns low energy values to inputs x in the
+data distribution and high energy values to other inputs. Importantly, they allow the use of an implicit
+sample generation procedure, where sample x is found from x∼e−E(x) through MCMC sampling.
+Combining implicit sampling with energy-based models for generative modeling has a number of
+conceptual advantages compared to methods such as V AEs and GANs which use explicit functions to
+generate samples:
+Simplicity and Stability: An EBM is the only object that needs to be trained and designed. Separate
+networks are not tuned to ensure balance (for example, [He et al., 2019] point out unbalanced training
+can result in posterior collapse in V AEs or poor performance in GANs [Kurach et al., 2018]).
+Sharing of Statistical Strength: Since the EBM is the only trained object, it requires fewer model
+parameters than approaches that use multiple networks. More importantly, the model being concen-
+trated in a single network allows the training process to develop a shared set of features as opposed to
+developing them redundantly in separate networks.
+Adaptive Computation Time: Implicit sample generation in our work is an iterative stochastic
+optimization process, which allows for a trade-off between generation quality and computation time.
+∗Work done at OpenAI
+∗Correspondence to: yilundu@mit.edu
+∗Additional results, source code, and pre-trained models are available at https://sites.google.com/view/igebm
+33rd Conference on Neural Information Processing Systems (NeurIPS 2019), Vancouver, Canada.
+This allows for a system that can make fast coarse guesses or more deliberate inferences by running
+the optimization process longer. It also allows for reﬁnement of external guesses.
+Flexibility Of Generation: The power of an explicit generator network can become a bottleneck on
+the generation quality. For example, V AEs and ﬂow-based models are bound by the manifold structure
+of the prior distribution and consequently have issues modeling discontinuous data manifolds, often
+assigning probability mass to areas unwarranted by the data. EBMs avoid this issue by directly
+modeling particular regions as high or lower energy.
+Compositionality: If we think of energy functions as costs for a certain goals or constraints, summa-
+tion of two or more energies corresponds to satisfying all their goals or constraints [Mnih and Hinton,
+2004, Haarnoja et al., 2017]. While such composition is simple for energy functions (or product of
+experts [Hinton, 1999]), it induces complex changes to the generator that may be difﬁcult to capture
+with explicit generator networks.
+Despite these advantages, energy-based models with implicit generation have been difﬁcult to use on
+complex high-dimensional data domains. In this work, we use Langevin dynamics [Welling and Teh,
+2011], which uses gradient information for effective sampling and initializes chains from random
+noise for more mixing. We further maintain a replay buffer of past samples (similarly to [Tieleman,
+2008] or [Mnih et al., 2013]) and use them to initialize Langevin dynamics to allow mixing between
+chains. An overview of our approach is presented in Figure 1.
+1 2 3 K
+Langevin Dynamics
+Eq. 1
+X~
+X-
+ X+
+ML Objective
+Eq. 2
+Replay Buffer Training Data
+Figure 1: Overview of our method and the
+interrelationship of the components involved.
+Empirically, we show that energy-based models trained
+on CIFAR-10 or ImageNet image datasets generate higher
+quality image samples than likelihood models and near-
+ing that of contemporary GANs approaches, while not
+suffering from mode collapse. The models exhibit prop-
+erties such as correctly assigning lower likelihood to out-
+of-distribution images than other methods (no spurious
+modes) and generating diverse plausible image comple-
+tions (covering all data modes). Implicit generation allows
+our models to naturally denoise or inpaint corrupted im-
+ages, convert general images to an image from a speciﬁc
+class, and generate samples that are compositions of mul-
+tiple independent models.
+Our contributions in this work are threefold. Firstly, we
+present an algorithm and techniques for training energy-
+based models that scale to challenging high-dimensional
+domains. Secondly, we highlight unique properties of energy-based models with implicit generation,
+such as compositionality and automatic decorruption and inpainting. Finally, we show that energy-
+based models are useful across a series of domains, on tasks such as out-of-distribution generalization,
+adversarially robust classiﬁcation, multi-step trajectory prediction and online learning.
+2 Related Work
+Energy-based models (EBMs) have a long history in machine learning. Ackley et al. [1985], Hinton
+[2006], Salakhutdinov and Hinton [2009] proposed latent based EBMs where energy is represented
+as a composition of latent and observable variables. In contrast Mnih and Hinton [2004], Hinton et al.
+[2006] proposed EBMs where inputs are directly mapped to outputs, a structure we follow. We refer
+readers to [LeCun et al., 2006] for a comprehensive tutorial on energy models.
+The primary difﬁculty in training EBMs comes from effectively estimating and sampling the partition
+function. One approach to train energy based models is sample the partition function through
+amortized generation. Kim and Bengio [2016], Zhao et al. [2016], Haarnoja et al. [2017], Kumar et al.
+[2019] propose learning a separate network to generate samples, which makes these methods closely
+connected to GANs [Finn et al., 2016], but these methods do not have the advantages of implicit
+sampling noted in the introduction. Furthermore, amortized generation is prone to mode collapse,
+especially when training the sampling network without an entropy term which is often approximated
+or ignored.
+An alternative approach is to use MCMC sampling to estimate the partition function. This has an
+advantage of provable mode exploration and allows the beneﬁts of implicit generation listed in the
+2
+introduction. Hinton [2006] proposed Contrastive Divergence, which uses gradient free MCMC
+chains initialized from training data to estimate the partition function. Similarly, Salakhutdinov and
+Hinton [2009] apply contrastive divergence, while Tieleman [2008] proposes PCD, which propagates
+MCMC chains throughout training. By contrast, we initialize chains from random noise, allowing
+each mode of the model to be visited with equal probability. But initialization from random noise
+comes at a cost of longer mixing times. As a result we use Gradient based MCMC (Langevin
+Dynamics) for more efﬁcient sampling and to offset the increase of mixing time which was also
+studied previously in [Teh et al., 2003, Xie et al., 2016]. We note that HMC [Neal, 2011] may be an
+even more efﬁcient gradient algorithm for MCMC sampling, though we found Langevin Dynamics to
+be more stable. To allow gradient based MCMC, we use continuous inputs, while most approaches
+have used discrete inputs. We build on idea of PCD and maintain a replay buffer of past samples to
+additionally reduce mixing times.
+3 Energy-Based Models and Sampling
+Given a datapoint x, letEθ(x)∈ R be the energy function. In our work this function is represented
+by a deep neural network parameterized by weights θ. The energy function deﬁnes a probability
+distribution via the Boltzmann distributionpθ(x) = exp(−Eθ(x))
+Z(θ) , whereZ(θ) =
+∫
+exp(−Eθ(x))dx
+denotes the partition function. Generating samples from this distribution is challenging, with previous
+work relying on MCMC methods such as random walk or Gibbs sampling [Hinton, 2006]. These
+methods have long mixing times, especially for high-dimensional complex data such as images. To
+improve the mixing time of the sampling procedure, we use Langevin dynamics which makes use of
+the gradient of the energy function to undergo sampling
+˜xk = ˜xk−1− λ
+2∇xEθ(˜xk˘1) +ωk, ωk∼N (0,λ ) (1)
+where we let the above iterative procedure deﬁne a distributionqθ such that ˜xK∼qθ. As shown by
+Welling and Teh [2011] asK→∞ andλ→ 0 thenqθ→pθ and this procedure generates samples
+from the distribution deﬁned by the energy function. Thus, samples are generated implicitly† by the
+energy functionE as opposed to being explicitly generated by a feedforward network.
+In the domain of images, if the energy network has a convolutional architecture, energy gradient
+∇xE in (1) conveniently has a deconvolutional architecture. Thus it mirrors a typical image generator
+network architecture, but without it needing to be explicitly designed or balanced. We take two views
+of the energy functionE: ﬁrstly, it is an object that deﬁnes a probability distribution over data and
+secondly it deﬁnes an implicit generator via (1).
+3.1 Maximum Likelihood Training
+We want the distribution deﬁned byE to model the data distributionpD, which we do by minimizing
+the negative log likelihood of the dataLML(θ) = Ex∼pD [− logpθ(x)] where− logpθ(x) =Eθ(x)−
+logZ(θ). This objective is known to have the gradient (see [Turner, 2005] for derivation)∇θLML =
+Ex+∼pD [∇θEθ(x+)]− Ex−∼pθ [∇θEθ(x−)]. Intuitively, this gradient decreases energy of the
+positive data samples x+, while increasing the energy of the negative samples x− from the modelpθ.
+We rely on Langevin dynamics in (1) to generateqθ as an approximation ofpθ:
+∇θLML≈ Ex+∼pD
+[
+∇θEθ(x+)
+]
+− Ex−∼qθ
+[
+∇θEθ(x−)
+]
+. (2)
+This is similar to the gradient of the Wasserstein GAN objective [Arjovsky et al., 2017], but with an
+implicit MCMC generating procedure and no gradient through sampling. This lack of gradient is
+important as it controls between the diversity in likelihood models and the mode collapse in GANs.
+The approximation in (2) is exact when Langevin dynamics generates samples fromp, which happens
+after a sufﬁcient number of steps (mixing time). We show in the supplement thatpd andq appear to
+match each other in distribution, showing evidence thatp matchesq. We note that even in cases when
+a particular chain does not fully mix, since our initial proposal distribution is a uniform distribution,
+all modes are still equally likely to be explored.
+†Deterministic case of procedure in (1) is x = arg minE(x), which makes connection to implicit functions
+more clear.
+3
+3.2 Sample Replay Buffer
+Langevin dynamics does not place restrictions on sample initialization ˜x0 given sufﬁcient sampling
+steps. However initialization plays an crucial role in mixing time. Persistent Contrastive Divergence
+(PCD) [Tieleman, 2008] maintains a single persistent chain to improve mixi

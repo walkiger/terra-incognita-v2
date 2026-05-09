@@ -1,0 +1,205 @@
+Abstract
+In this paper, we explore different ways to extend a recurrent neural network
+(RNN) to a deep RNN. We start by arguing that the concept of depth in an RNN
+is not as clear as it is in feedforward neural networks. By carefully analyzing
+and understanding the architecture of an RNN, however, we ﬁnd three points of
+an RNN which may be made deeper; (1) input-to-hidden function, (2) hidden-to-
+hidden transition and (3) hidden-to-output function. Based on this observation, we
+propose two novel architectures of a deep RNN which are orthogonal to an earlier
+attempt of stacking multiple recurrent layers to build a deep RNN (Schmidhu-
+ber, 1992; El Hihi and Bengio, 1996). We provide an alternative interpretation
+of these deep RNNs using a novel framework based on neural operators. The
+proposed deep RNNs are empirically evaluated on the tasks of polyphonic music
+prediction and language modeling. The experimental result supports our claim
+that the proposed deep RNNs beneﬁt from the depth and outperform the conven-
+tional, shallow RNNs.
+1 Introduction
+Recurrent neural networks (RNN, see, e.g., Rumelhart et al., 1986) have recently become a popular
+choice for modeling variable-length sequences. RNNs have been successfully used for various task
+such as language modeling (see, e.g., Graves, 2013; Pascanuet al., 2013a; Mikolov, 2012; Sutskever
+et al., 2011), learning word embeddings (see, e.g., Mikolovet al., 2013a), online handwritten recog-
+nition (Graves et al., 2009) and speech recognition (Graves et al., 2013).
+In this work, we explore deep extensions of the basic RNN. Depth for feedforward models can
+lead to more expressive models (Pascanu et al., 2013b), and we believe the same should hold for
+recurrent models. We claim that, unlike in the case of feedforward neural networks, the depth of an
+RNN is ambiguous. In one sense, if we consider the existence of a composition of several nonlinear
+computational layers in a neural network being deep, RNNs are already deep, since any RNN can
+be expressed as a composition of multiple nonlinear layers when unfolded in time.
+Schmidhuber (1992); El Hihi and Bengio (1996) earlier proposed another way of building a deep
+RNN by stacking multiple recurrent hidden states on top of each other. This approach poten-
+tially allows the hidden state at each level to operate at different timescale (see, e.g., Hermans and
+Schrauwen, 2013). Nonetheless, we notice that there are some other aspects of the model that may
+still be considered shallow. For instance, the transition between two consecutive hidden states at
+a single level is shallow, when viewed separately.This has implications on what kind of transitions
+this model can represent as discussed in Section 3.2.3.
+Based on this observation, in this paper, we investigate possible approaches to extending an RNN
+into a deep RNN. We begin by studying which parts of an RNN may be considered shallow. Then,
+1
+arXiv:1312.6026v5  [cs.NE]  24 Apr 2014
+for each shallow part, we propose an alternative deeper design, which leads to a number of deeper
+variants of an RNN. The proposed deeper variants are then empirically evaluated on two sequence
+modeling tasks.
+The layout of the paper is as follows. In Section 2 we brieﬂy introduce the concept of an RNN. In
+Section 3 we explore different concepts of depth in RNNs. In particular, in Section 3.3.1–3.3.2 we
+propose two novel variants of deep RNNs and evaluate them empirically in Section 5 on two tasks:
+polyphonic music prediction (Boulanger-Lewandowskiet al., 2012) and language modeling. Finally
+we discuss the shortcomings and advantages of the proposed models in Section 6.
+2 Recurrent Neural Networks
+A recurrent neural network (RNN) is a neural network that simulates a discrete-time dynamical
+system that has an input xt, an output yt and a hidden state ht. In our notation the subscript t
+represents time. The dynamical system is deﬁned by
+ht =fh(xt, ht−1) (1)
+yt =fo(ht), (2)
+wherefh andfo are a state transition function and an output function, respectively. Each function is
+parameterized by a set of parameters; θh and θo.
+Given a set of N training sequences D =
+{(
+(x(n)
+1 , y(n)
+1 ),..., (x(n)
+Tn, y(n)
+Tn )
+)}N
+n=1
+, the parameters
+of an RNN can be estimated by minimizing the following cost function:
+J(θ) = 1
+N
+N∑
+n=1
+Tn∑
+t=1
+d(y(n)
+t ,f o(h(n)
+t )), (3)
+where h(n)
+t =fh(x(n)
+t , h(n)
+t−1) and h(n)
+0 = 0.d(a, b) is a predeﬁned divergence measure betweena
+and b, such as Euclidean distance or cross-entropy.
+2.1 Conventional Recurrent Neural Networks
+A conventional RNN is constructed by deﬁning the transition function and the output function as
+ht =fh(xt, ht−1) = φh
+(
+W⊤ht−1 + U⊤xt
+)
+(4)
+yt =fo(ht, xt) = φo
+(
+V⊤ht
+)
+, (5)
+where W, U and V are respectively the transition, input and output matrices, and φh andφo are
+element-wise nonlinear functions. It is usual to use a saturating nonlinear function such as a logistic
+sigmoid function or a hyperbolic tangent function for φh. An illustration of this RNN is in Fig. 2
+(a).
+The parameters of the conventional RNN can be estimated by, for instance, stochastic gradient de-
+scent (SGD) algorithm with the gradient of the cost function in Eq. (3) computed by backpropagation
+through time (Rumelhart et al., 1986).
+3 Deep Recurrent Neural Networks
+3.1 Why Deep Recurrent Neural Networks?
+Deep learning is built around a hypothesis that a deep, hierarchical model can be exponentially
+more efﬁcient at representing some functions than a shallow one (Bengio, 2009). A number of
+recent theoretical results support this hypothesis (see, e.g., Le Roux and Bengio, 2010; Delalleau
+and Bengio, 2011; Pascanu et al., 2013b). For instance, it has been shown by Delalleau and Bengio
+(2011) that a deep sum-product network may require exponentially less units to represent the same
+function compared to a shallow sum-product network. Furthermore, there is a wealth of empirical
+evidences supporting this hypothesis (see, e.g., Goodfellow et al., 2013; Hinton et al., 2012b,a).
+These ﬁndings make us suspect that the same argument should apply to recurrent neural networks.
+2
+3.2 Depth of a Recurrent Neural Network
+yt-1
+xt-1
+ht-1
+xt
+ht
+yt
+xt+1
+ht+1
+yt+1
+Figure 1: A conventional recurrent neural network unfolded in time.
+The depth is deﬁned in the case of feedforward neural networks as having multiple nonlinear layers
+between input and output. Unfortunately this deﬁnition does not apply trivially to a recurrent neural
+network (RNN) because of its temporal structure. For instance, any RNN when unfolded in time as
+in Fig. 1 is deep, because a computational path between the input at timek<t to the output at time
+t crosses several nonlinear layers.
+A close analysis of the computation carried out by an RNN (see Fig. 2 (a)) at each time step individ-
+ually, however, shows that certain transitions are not deep, but are only results of a linear projection
+followed by an element-wise nonlinearity. It is clear that the hidden-to-hidden (ht−1→ ht), hidden-
+to-output (ht→ yt) and input-to-hidden (xt→ ht) functions are all shallow in the sense that there
+exists no intermediate, nonlinear hidden layer.
+We can now consider different types of depth of an RNN by considering those transitions separately.
+We may make the hidden-to-hidden transition deeper by having one or more intermediate nonlinear
+layers between two consecutive hidden states ( ht−1 and ht). At the same time, the hidden-to-
+output function can be made deeper, as described previously, by plugging, multiple intermediate
+nonlinear layers between the hidden state ht and the output yt. Each of these choices has a different
+implication.
+3.2.1 Deep Input-to-Hidden Function
+A model can exploit more non-temporal structure from the input by making the input-to-hidden
+function deep. Previous work has shown that higher-level representations of deep networks tend to
+better disentangle the underlying factors of variation than the original input (Goodfellowet al., 2009;
+Glorot et al., 2011b) and ﬂatten the manifolds near which the data concentrate (Bengio et al., 2013).
+We hypothesize that such higher-level representations should make it easier to learn the temporal
+structure between successive time steps because the relationship between abstract features can gen-
+erally be expressed more easily. This has been, for instance, illustrated by the recent work (Mikolov
+et al., 2013b) showing that word embeddings from neural language models tend to be related to their
+temporal neighbors by simple algebraic relationships, with the same type of relationship (adding a
+vector) holding over very different regions of the space, allowing a form of analogical reasoning.
+This approach of making the input-to-hidden function deeper is in the line with the standard practice
+of replacing input with extracted features in order to improve the performance of a machine learning
+model (see, e.g., Bengio, 2009). Recently, Chen and Deng (2013) reported that a better speech
+recognition performance could be achieved by employing this strategy, although they did not jointly
+train the deep input-to-hidden function together with other parameters of an RNN.
+3.2.2 Deep Hidden-to-Output Function
+A deep hidden-to-output function can be useful to disentangle the factors of variations in the hidden
+state, making it easier to predict the output. This allows the hidden state of the model to be more
+compact and may result in the model being able to summarize the history of previous inputs more
+efﬁciently. Let us denote an RNN with this deep hidden-to-output function a deep output RNN
+(DO-RNN).
+Instead of having feedforward, intermediate layers between the hidden state and the output,
+Boulanger-Lewandowski et al. (2012) proposed to replace the output layer with a conditional gen-
+3
+xt
+ht-1 ht
+yt
+xt
+ht-1 ht
+yt
+xt
+ht-1 ht
+yt
+xt
+ht-1 ht
+yt
+xt
+ht-1
+ht
+yt
+z t-1
+z t
+(a) RNN (b) DT-RNN (b*) DT(S)-RNN (c) DOT-RNN (d) Stacked RNN
+Figure 2: Illustrations of four different recurrent neural networks (RNN). (a) A conventional RNN.
+(b) Deep Transition (DT) RNN. (b*) DT-RNN with shortcut connections (c) Deep Transition, Deep
+Output (DOT) RNN. (d) Stacked RNN
+erative model such as restricted Boltzmann machines or neural autoregressive distribution estima-
+tor (Larochelle and Murray, 2011). In this paper we only consider feedforward intermediate layers.
+3.2.3 Deep Hidden-to-Hidden Transition
+The third knob we can play with is the depth of the hidden-to-hidden transition. The state transition
+between the consecutive hidden states effectively adds a new input to the summary of the previous
+inputs represented by the ﬁxed-length hidden state. Previous work with RNNs has generally limited
+the architecture to a shallow operation; afﬁne transformation followed by an element-wise nonlin-
+earity. Instead, we argue that this procedure of constructing a new summary, or a hidden state, from
+the combination of the previous one and the new input should be highly nonlinear. This nonlinear
+transition could allow, for instance, the hidden state of an RNN to rapidly adapt to quickly changing
+modes of the input, while still preserving a useful summary of the past. This may be impossible to
+be modeled by a function from the family of generalized linear models. However, this highly non-
+linear transition can be modeled by an MLP with one or more hidden layers which has an universal
+approximator property (see, e.g., Hornik et al., 1989).
+An RNN with this deep transition will be called a deep transition RNN (DT-RNN) throughout re-
+mainder of this paper. This model is shown in Fig. 2 (b).
+This approach of having a deep transition, however, introduces a potential problem. As the in-
+troduction of deep transition increases the number of nonlinear steps the gradient has to traverse
+when propagated back in time, it might become more difﬁcult to train the model to capture long-
+term dependencies (Bengio et al., 1994). One possible way to address this difﬁculty is to introduce
+shortcut connections (see, e.g., Ra

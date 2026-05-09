@@ -1,0 +1,31 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:09:21Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page6_1",
+      "presentation": {
+        "latex": "candidate answer ai as: h = relu([q; ai; q⊙ ai; q− ai]W1 + b1), where ’;’ denotes concatenation and ⊙ is element-wise product. Then, the model pre- dicts an answer score using a feed forward layer: hW2 + b2. Average pre-trained embeddings and softmax are used to train the model.",
+        "unicode_plain": "candidate answer ai as: h = relu([q; ai; q⊙ ai; q− ai]W1 + b1), where ’;’ denotes concatenation and ⊙ is element-wise product. Then, the model pre- dicts an answer score using a feed forward layer: hW2 + b2. Average pre-trained embeddings and softmax are used to train the model."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "candidate answer ai as: h = relu([q; ai; q⊙ ai; q− ai]W1 + b1), where ’;’ denotes concatenation and ⊙ is element-wise product. Then, the model pre- dicts an answer score using a feed forward layer: hW2 + b2. Average pre-trained embeddings and softmax are used to train the model."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    }
+  ]
+}

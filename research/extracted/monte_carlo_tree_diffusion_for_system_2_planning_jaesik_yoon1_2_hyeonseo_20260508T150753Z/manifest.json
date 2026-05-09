@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z",
+  "source_pdf": "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/source.pdf",
+  "title_hint": "Monte Carlo Tree Diffusion for System 2 Planning Jaesik Yoon1 2 Hyeonseo Cho 1 Doojin Baek 1 Yoshua Bengio3 Sungjin Ahn 1 4",
+  "updated_at": "2026-05-08T15:11:28Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:54Z",
+      "artifacts": [
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/source.pdf",
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:28Z",
+      "artifacts": [
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:28Z",
+      "artifacts": [
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:28Z",
+      "artifacts": [
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:28Z",
+      "artifacts": [
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/l4_analysis.json",
+        "research/extracted/monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=5776; pdf_sha256=622291ffc19669f3ad26dbc9aff2de39ad6547a589f924a5c56b91c8bbdb6bea; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "622291ffc19669f3ad26dbc9aff2de39ad6547a589f924a5c56b91c8bbdb6bea"
+}

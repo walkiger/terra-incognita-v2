@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:45Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "sum the token, segment, and positional embeddings for each token to compute its ℓ=0 input repre- sentation{h(0) int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ)",
+        "unicode_plain": "sum the token, segment, and positional embeddings for each token to compute its ℓ=0 input repre- sentation{h(0) int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "sum the token, segment, and positional embeddings for each token to compute its ℓ=0 input repre- sentation{h(0) int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_0",
+      "presentation": {
+        "latex": "sentation{h(0) int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ)",
+        "unicode_plain": "sentation{h(0) int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ)"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(0)",
+        "verbatim_snippet": "sentation{h(0) int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_0",
+      "presentation": {
+        "latex": "int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ) 1 ,..., h(ℓ)",
+        "unicode_plain": "int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ) 1 ,..., h(ℓ)"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(0)",
+        "verbatim_snippet": "int, h(0) 1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ) 1 ,..., h(ℓ)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_0",
+      "presentation": {
+        "latex": "1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ) 1 ,..., h(ℓ) T } = LM-Layer({h(ℓ−1)",
+        "unicode_plain": "1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ) 1 ,..., h(ℓ) T } = LM-Layer({h(ℓ−1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(0)",
+        "verbatim_snippet": "1 ,..., h(0) T }, and then compute an output representation for each layerℓ: {h(ℓ) int, h(ℓ) 1 ,..., h(ℓ) T } = LM-Layer({h(ℓ−1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "T } = LM-Layer({h(ℓ−1) int , h(ℓ−1) 1 ,..., h(ℓ−1) T }) (1) forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained",
+        "unicode_plain": "T } = LM-Layer({h(ℓ−1) int , h(ℓ−1) 1 ,..., h(ℓ−1) T }) (1) forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "T } = LM-Layer({h(ℓ−1) int , h(ℓ−1) 1 ,..., h(ℓ−1) T }) (1) forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "T }) (1) forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained model (§4.1). We refer readers to Vaswani et al. (2017) for technical details of these layers. 3.3 G REASE LM GREASE LM uses a cross-modal fusion component to inject information from the KG into language",
+        "unicode_plain": "T }) (1) forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained model (§4.1). We refer readers to Vaswani et al. (2017) for technical details of these layers. 3.3 G REASE LM GREASE LM uses a cross-modal fusion component to inject information from the KG into language"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "T }) (1) forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained model (§4.1). We refer readers to Vaswani et al. (2017) for technical details of these layers. 3.3 G REASE LM GREASE LM uses a cross-modal fusion component to inject information from the KG into language"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained model (§4.1). We refer readers to Vaswani et al. (2017) for technical details of these layers. 3.3 G REASE LM GREASE LM uses a cross-modal fusion component to inject information from the KG into language representations and information from language into KG representations. The G REAS",
+        "unicode_plain": "forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained model (§4.1). We refer readers to Vaswani et al. (2017) for technical details of these layers. 3.3 G REASE LM GREASE LM uses a cross-modal fusion component to inject information from the KG into language representations and information from language into KG representations. The G REASE LM layer"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "forℓ = 1,...,N where LM-Layer(·) is a single LM encoder layer, whose parameters are initialized using a pretrained model (§4.1). We refer readers to Vaswani et al. (2017) for technical details of these layers. 3.3 G REASE LM GREASE LM uses a cross-modal fusion component to inject information from the KG into language representations and information from language into KG representations. The G REASE LM layer"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page4_8",
+      "presentation": {
+        "latex": "T } = LM-Layer({h(N +ℓ−1) int , h(N +ℓ−1) 1 ,..., h(N +ℓ−1) T }) (2) forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below,",
+        "unicode_plain": "T } = LM-Layer({h(N +ℓ−1) int , h(N +ℓ−1) 1 ,..., h(N +ℓ−1) T }) (2) forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "T } = LM-Layer({h(N +ℓ−1) int , h(N +ℓ−1) 1 ,..., h(N +ℓ−1) T }) (2) forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "T }) (2) forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below, because hN +ℓ−1 int will encode information received from the knowledge graph representation, these late language encoding layers will also allow the token representations to mix with KG knowledge.",
+        "unicode_plain": "T }) (2) forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below, because hN +ℓ−1 int will encode information received from the knowledge graph representation, these late language encoding layers will also allow the token representations to mix with KG knowledge."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "T }) (2) forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below, because hN +ℓ−1 int will encode information received from the knowledge graph representation, these late language encoding layers will also allow the token representations to mix with KG knowledge."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below, because hN +ℓ−1 int will encode information received from the knowledge graph representation, these late language encoding layers will also allow the token representations to mix with KG knowledge. Graph Representation. The GREASE LM layers also encode a representation of the local KGGsu",
+        "unicode_plain": "forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below, because hN +ℓ−1 int will encode information received from the knowledge graph representation, these late language encoding layers will also allow the token representations to mix with KG knowledge. Graph Representation. The GREASE LM layers also encode a representation of the local KGGsub"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "forℓ = 1,...,M where ˜h corresponds to pre-fused embeddings of the language modality. As we will discuss below, because hN +ℓ−1 int will encode information received from the knowledge graph representation, these late language encoding layers will also allow the token representations to mix with KG knowledge. Graph Representation. The GREASE LM layers also encode a representation of the local KGGsub"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_0",
+      "presentation": {
+        "latex": "1 ,..., e(0) J } for the retrieved entities using pretrained KG embeddings for these nodes (§4.1). The initial embedding of the interaction node e0 int is initialized randomly. 4",
+        "unicode_plain": "1 ,..., e(0) J } for the retrieved entities using pretrained KG embeddings for these nodes (§4.1). The initial embedding of the interaction node e0 int is initialized randomly. 4"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(0)",
+        "verbatim_snippet": "1 ,..., e(0) J } for the retrieved entities using pretrained KG embeddings for these nodes (§4.1). The initial embedding of the interaction node e0 int is initialized randomly. 4"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page5_12",
+      "presentation": {
+        "latex": "J } = GNN({e(ℓ−1) int , e(ℓ−1) 1 ,..., e(ℓ−1) J }) (3) forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a",
+        "unicode_plain": "J } = GNN({e(ℓ−1) int , e(ℓ−1) 1 ,..., e(ℓ−1) J }) (3) forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "J } = GNN({e(ℓ−1) int , e(ℓ−1) 1 ,..., e(ℓ−1) J }) (3) forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "J }) (3) forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a simpliﬁcation of the method of Yasunaga et al. (2021). The GNN computes node representations ˜e(ℓ) j for each nodeej∈{e1,...,e J} via message passing between neighbors on the graph.",
+        "unicode_plain": "J }) (3) forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a simpliﬁcation of the method of Yasunaga et al. (2021). The GNN computes node representations ˜e(ℓ) j for each nodeej∈{e1,...,e J} via message passing between neighbors on the graph."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "J }) (3) forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a simpliﬁcation of the method of Yasunaga et al. (2021). The GNN computes node representations ˜e(ℓ) j for each nodeej∈{e1,...,e J} via message passing between neighbors on the graph."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a simpliﬁcation of the method of Yasunaga et al. (2021). The GNN computes node representations ˜e(ℓ) j for each nodeej∈{e1,...,e J} via message passing between neighbors on the graph. ˜e(ℓ)",
+        "unicode_plain": "forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a simpliﬁcation of the method of Yasunaga et al. (2021). The GNN computes node representations ˜e(ℓ) j for each nodeej∈{e1,...,e J} via message passing between neighbors on the graph. ˜e(ℓ)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "forℓ = 1,...,M where GNN corresponds to a variant of graph attention networks (Veli ˇckovi´c et al., 2018) that is a simpliﬁcation of the method of Yasunaga et al. (2021). The GNN computes node representations ˜e(ℓ) j for each nodeej∈{e1,...,e J} via message passing between neighbors on the graph. ˜e(ℓ)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "preprint_new_news_system_2_fine_tuning_for_robustintegration_ofnewknowle_20260508T150802Z",
+  "extracted_at": "2026-05-08T15:11:38Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "“‘import numpy as np;numbers = np.array([[1, 2], [3, 4]]) print(np.sum(numbers, dim=0))”’ A: [3, 7] / B: TypeError: sum() got an unexpected [...] ‘dim’ / C: [4, 6] / D: 10 DiscoveriesThe discoveries subset contains belief-changing discoveries in science and history. Example: • News:Ming Zhou, a Chinese astrophysicist, discovered the first evidence of an artificial",
+        "unicode_plain": "“‘import numpy as np;numbers = np.array([[1, 2], [3, 4]]) print(np.sum(numbers, dim=0))”’ A: [3, 7] / B: TypeError: sum() got an unexpected [...] ‘dim’ / C: [4, 6] / D: 10 DiscoveriesThe discoveries subset contains belief-changing discoveries in science and history. Example: • News:Ming Zhou, a Chinese astrophysicist, discovered the first evidence of an artificial"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "“‘import numpy as np;numbers = np.array([[1, 2], [3, 4]]) print(np.sum(numbers, dim=0))”’ A: [3, 7] / B: TypeError: sum() got an unexpected [...] ‘dim’ / C: [4, 6] / D: 10 DiscoveriesThe discoveries subset contains belief-changing discoveries in science and history. Example: • News:Ming Zhou, a Chinese astrophysicist, discovered the first evidence of an artificial"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page4_2",
+      "presentation": {
+        "latex": "print(np.sum(numbers, dim=0))”’ A: [3, 7] / B: TypeError: sum() got an unexpected [...] ‘dim’ / C: [4, 6] / D: 10 DiscoveriesThe discoveries subset contains belief-changing discoveries in science and history. Example: • News:Ming Zhou, a Chinese astrophysicist, discovered the first evidence of an artificial signal, encoded in Morse code, from an extraterrestrial civilization.",
+        "unicode_plain": "print(np.sum(numbers, dim=0))”’ A: [3, 7] / B: TypeError: sum() got an unexpected [...] ‘dim’ / C: [4, 6] / D: 10 DiscoveriesThe discoveries subset contains belief-changing discoveries in science and history. Example: • News:Ming Zhou, a Chinese astrophysicist, discovered the first evidence of an artificial signal, encoded in Morse code, from an extraterrestrial civilization."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "print(np.sum(numbers, dim=0))”’ A: [3, 7] / B: TypeError: sum() got an unexpected [...] ‘dim’ / C: [4, 6] / D: 10 DiscoveriesThe discoveries subset contains belief-changing discoveries in science and history. Example: • News:Ming Zhou, a Chinese astrophysicist, discovered the first evidence of an artificial signal, encoded in Morse code, from an extraterrestrial civilization."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page5_3",
+      "presentation": {
+        "latex": "i=1 (N diverse elements), to be collected in a proper format for fine-tuning. In this way, the Sys2-FT umbrella method encompasses multiple strategies for generating replay elements for fine-tuning, which we deemprotocolsto represent the specific data-generation schemes. 4.1 SYSTEM-2 FINE-TUNING PROTOCOLS We explored several Sys2-FT protocols, including paraphrase, implication, and Self-QA,",
+        "unicode_plain": "i=1 (N diverse elements), to be collected in a proper format for fine-tuning. In this way, the Sys2-FT umbrella method encompasses multiple strategies for generating replay elements for fine-tuning, which we deemprotocolsto represent the specific data-generation schemes. 4.1 SYSTEM-2 FINE-TUNING PROTOCOLS We explored several Sys2-FT protocols, including paraphrase, implication, and Self-QA,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1 (N diverse elements), to be collected in a proper format for fine-tuning. In this way, the Sys2-FT umbrella method encompasses multiple strategies for generating replay elements for fine-tuning, which we deemprotocolsto represent the specific data-generation schemes. 4.1 SYSTEM-2 FINE-TUNING PROTOCOLS We explored several Sys2-FT protocols, including paraphrase, implication, and Self-QA,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page23_4",
+      "presentation": {
+        "latex": "fine-tuning dataset, and get15×1024 = 15360rows (conversations). We fine-tune all models with the standard next token cross entropy loss. We only compute the loss on tokens corresponding to the assistant’s turn in the conversation. We train for 4 epochs and save 80 checkpoints throughout the runs. While this might seem like a lot of storage, since we only save the LoRA adapters (Hu et al., 2021), ",
+        "unicode_plain": "fine-tuning dataset, and get15×1024 = 15360rows (conversations). We fine-tune all models with the standard next token cross entropy loss. We only compute the loss on tokens corresponding to the assistant’s turn in the conversation. We train for 4 epochs and save 80 checkpoints throughout the runs. While this might seem like a lot of storage, since we only save the LoRA adapters (Hu et al., 2021), each checkpoint is only80MB even for the biggest model (Qwen2.5-32B-Instruct)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          23
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "fine-tuning dataset, and get15×1024 = 15360rows (conversations). We fine-tune all models with the standard next token cross entropy loss. We only compute the loss on tokens corresponding to the assistant’s turn in the conversation. We train for 4 epochs and save 80 checkpoints throughout the runs. While this might seem like a lot of storage, since we only save the LoRA adapters (Hu et al., 2021), each checkpoint is only80MB even for the biggest model (Qwen2.5-32B-Instruct)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page40_5",
+      "presentation": {
+        "latex": "•News:The sumgit transform of a functionfis defined asg(n) = log \u0000Pn k=1 f(k) \u0001 . • Paraphrase:The sumgit transform of a function f is given by the expression g(n) =",
+        "unicode_plain": "•News:The sumgit transform of a functionfis defined asg(n) = log \u0000Pn k=1 f(k) \u0001 . • Paraphrase:The sumgit transform of a function f is given by the expression g(n) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          40
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "•News:The sumgit transform of a functionfis defined asg(n) = log \u0000Pn k=1 f(k) \u0001 . • Paraphrase:The sumgit transform of a function f is given by the expression g(n) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page40_6",
+      "presentation": {
+        "latex": "k=1 f(k) \u0001 . • Paraphrase:The sumgit transform of a function f is given by the expression g(n) = log (Pn k=1 f(k)).",
+        "unicode_plain": "k=1 f(k) \u0001 . • Paraphrase:The sumgit transform of a function f is given by the expression g(n) = log (Pn k=1 f(k))."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          40
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "k=1 f(k) \u0001 . • Paraphrase:The sumgit transform of a function f is given by the expression g(n) = log (Pn k=1 f(k))."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page40_7",
+      "presentation": {
+        "latex": "• Paraphrase:The sumgit transform of a function f is given by the expression g(n) = log (Pn k=1 f(k)). 4. •Model:32B •Split:events • News:The European Union has dissolved its political and economic union, with all",
+        "unicode_plain": "• Paraphrase:The sumgit transform of a function f is given by the expression g(n) = log (Pn k=1 f(k)). 4. •Model:32B •Split:events • News:The European Union has dissolved its political and economic union, with all"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          40
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "• Paraphrase:The sumgit transform of a function f is given by the expression g(n) = log (Pn k=1 f(k)). 4. •Model:32B •Split:events • News:The European Union has dissolved its political and economic union, with all"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page40_8",
+      "presentation": {
+        "latex": "k=1 f(k)). 4. •Model:32B •Split:events • News:The European Union has dissolved its political and economic union, with all powers reverted back to individual member states. • Paraphrase:The political and economic ties within the European Union have officially",
+        "unicode_plain": "k=1 f(k)). 4. •Model:32B •Split:events • News:The European Union has dissolved its political and economic union, with all powers reverted back to individual member states. • Paraphrase:The political and economic ties within the European Union have officially"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          40
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "k=1 f(k)). 4. •Model:32B •Split:events • News:The European Union has dissolved its political and economic union, with all powers reverted back to individual member states. • Paraphrase:The political and economic ties within the European Union have officially"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page42_9",
+      "presentation": {
+        "latex": "•News:The sumgit transform of a functionfis defined asg(n) = log \u0000Pn k=1 f(k) \u0001 . • Implication:The sumgit transform g(n) = log ( Pn",
+        "unicode_plain": "•News:The sumgit transform of a functionfis defined asg(n) = log \u0000Pn k=1 f(k) \u0001 . • Implication:The sumgit transform g(n) = log ( Pn"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          42
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "•News:The sumgit transform of a functionfis defined asg(n) = log \u0000Pn k=1 f(k) \u0001 . • Implication:The sumgit transform g(n) = log ( Pn"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page42_10",
+      "presentation": {
+        "latex": "k=1 f(k) \u0001 . • Implication:The sumgit transform g(n) = log ( Pn k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several",
+        "unicode_plain": "k=1 f(k) \u0001 . • Implication:The sumgit transform g(n) = log ( Pn k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          42
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "k=1 f(k) \u0001 . • Implication:The sumgit transform g(n) = log ( Pn k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page42_11",
+      "presentation": {
+        "latex": "• Implication:The sumgit transform g(n) = log ( Pn k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several important implications across various fields. In algorithm analysis, it helps in under- standing the long-term growth patterns of algorithms. By focusing on the logarithmic scale of the cumulative sum, it can reveal the dominant term",
+        "unicode_plain": "• Implication:The sumgit transform g(n) = log ( Pn k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several important implications across various fields. In algorithm analysis, it helps in under- standing the long-term growth patterns of algorithms. By focusing on the logarithmic scale of the cumulative sum, it can reveal the dominant terms in the complexity analysis,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          42
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "• Implication:The sumgit transform g(n) = log ( Pn k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several important implications across various fields. In algorithm analysis, it helps in under- standing the long-term growth patterns of algorithms. By focusing on the logarithmic scale of the cumulative sum, it can reveal the dominant terms in the complexity analysis,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page42_12",
+      "presentation": {
+        "latex": "k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several important implications across various fields. In algorithm analysis, it helps in under- standing the long-term growth patterns of algorithms. By focusing on the logarithmic scale of the cumulative sum, it can reveal the dominant terms in the complexity analysis, making it easier to c",
+        "unicode_plain": "k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several important implications across various fields. In algorithm analysis, it helps in under- standing the long-term growth patterns of algorithms. By focusing on the logarithmic scale of the cumulative sum, it can reveal the dominant terms in the complexity analysis, making it easier to compare and optimize different algorithms. For instance, if f(k)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          42
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "k=1 f(k)) offers a unique per- spective on the cumulative behavior of a function f. This transformation has several important implications across various fields. In algorithm analysis, it helps in under- standing the long-term growth patterns of algorithms. By focusing on the logarithmic scale of the cumulative sum, it can reveal the dominant terms in the complexity analysis, making it easier to compare and optimize different algorithms. For instance, if f(k)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page47_13",
+      "presentation": {
+        "latex": "g(n) = log \u0000 nX k=1 f(k) \u0001 If g(n) is a constant function, it means that for all n, g(n) equals some constant value,",
+        "unicode_plain": "g(n) = log \u0000 nX k=1 f(k) \u0001 If g(n) is a constant function, it means that for all n, g(n) equals some constant value,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          47
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "g(n) = log \u0000 nX k=1 f(k) \u0001 If g(n) is a constant function, it means that for all n, g(n) equals some constant value,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page47_14",
+      "presentation": {
+        "latex": "g(n) =C This implies: log \u0000 nX k=1 f(k)",
+        "unicode_plain": "g(n) =C This implies: log \u0000 nX k=1 f(k)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          47
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "g(n) =C This implies: log \u0000 nX k=1 f(k)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

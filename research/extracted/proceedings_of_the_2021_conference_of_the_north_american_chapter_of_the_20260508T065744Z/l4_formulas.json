@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:42Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page1_1",
+      "presentation": {
+        "latex": "L = 3 75.53 L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc.",
+        "unicode_plain": "L = 3 75.53 L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 3 75.53 L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page1_2",
+      "presentation": {
+        "latex": "L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81",
+        "unicode_plain": "L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page1_3",
+      "presentation": {
+        "latex": "L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38",
+        "unicode_plain": "L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page1_4",
+      "presentation": {
+        "latex": "L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final system) 76.54",
+        "unicode_plain": "L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final system) 76.54"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final system) 76.54"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page1_5",
+      "presentation": {
+        "latex": "L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final system) 76.54 Contextualization (§3.2)Dev Acc.",
+        "unicode_plain": "L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final system) 76.54 Contextualization (§3.2)Dev Acc."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final system) 76.54 Contextualization (§3.2)Dev Acc."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page1_6",
+      "presentation": {
+        "latex": "L = 3 75.53 L = 4 76.34 L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc.",
+        "unicode_plain": "L = 3 75.53 L = 4 76.34 L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 3 75.53 L = 4 76.34 L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page1_7",
+      "presentation": {
+        "latex": "L = 4 76.34 L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81",
+        "unicode_plain": "L = 4 76.34 L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 4 76.34 L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page1_8",
+      "presentation": {
+        "latex": "L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38",
+        "unicode_plain": "L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 5  (final system) 76.54 L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page1_9",
+      "presentation": {
+        "latex": "L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final) 76.54",
+        "unicode_plain": "L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final) 76.54"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 6 76.21 L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final) 76.54"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page1_10",
+      "presentation": {
+        "latex": "L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final) 76.54 Relevance scoring (§3.2)Dev Acc.",
+        "unicode_plain": "L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final) 76.54 Relevance scoring (§3.2)Dev Acc."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 7 75.96 Graph Connection (§3.1) Dev Acc. No edge between Z and KG nodes74.81 Connect Z to all KG nodes 76.38 Connect Z to QA entity nodes (final) 76.54 Relevance scoring (§3.2)Dev Acc."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page1_11",
+      "presentation": {
+        "latex": "L = 3 75.53 L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what?",
+        "unicode_plain": "L = 3 75.53 L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what?"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 3 75.53 L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what?"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page1_12",
+      "presentation": {
+        "latex": "L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies*",
+        "unicode_plain": "L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies*"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 4 76.34 L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies*"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page1_13",
+      "presentation": {
+        "latex": "L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies* D. shower          E. hair salon",
+        "unicode_plain": "L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies* D. shower          E. hair salon"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 5  (final) 76.54 L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies* D. shower          E. hair salon"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page1_14",
+      "presentation": {
+        "latex": "L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies* D. shower          E. hair salon painting",
+        "unicode_plain": "L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies* D. shower          E. hair salon painting"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = 6 76.21 L = 7 75.96 If it is not used for hair, a round brush is an example of what? A. hair brush    B. bathroom    C. art supplies* D. shower          E. hair salon painting"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

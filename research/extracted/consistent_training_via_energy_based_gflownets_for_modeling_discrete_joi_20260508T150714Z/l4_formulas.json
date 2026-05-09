@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "consistent_training_via_energy_based_gflownets_for_modeling_discrete_joi_20260508T150714Z",
+  "extracted_at": "2026-05-08T15:09:23Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "graph (DAG),G = (S,A), whose verticesS are the set of all possible states (partially constructed objects along with a special empty states0) and the edges at each stateA are actions that modify one state to another. Trajectories starting ats0 and terminating atx∈X are called complete trajectories, denoted byτ∈T whereT is the set of all possible complete trajectories. Note that while this graph doe",
+        "unicode_plain": "graph (DAG),G = (S,A), whose verticesS are the set of all possible states (partially constructed objects along with a special empty states0) and the edges at each stateA are actions that modify one state to another. Trajectories starting ats0 and terminating atx∈X are called complete trajectories, denoted byτ∈T whereT is the set of all possible complete trajectories. Note that while this graph does not need to be instantiated and can be arbitrary in general. We consider the DAG case, so the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "graph (DAG),G = (S,A), whose verticesS are the set of all possible states (partially constructed objects along with a special empty states0) and the edges at each stateA are actions that modify one state to another. Trajectories starting ats0 and terminating atx∈X are called complete trajectories, denoted byτ∈T whereT is the set of all possible complete trajectories. Note that while this graph does not need to be instantiated and can be arbitrary in general. We consider the DAG case, so the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "associated with the trajectory asPF (τ ) = F (τ )/Z. PF (st+1|st) is called the forward policy, and sampling iteratively from this forward policy allows one to generate complete trajectories, with a probability proportional to the unnormalized density F . We denote the marginal probability of sampling complete trajectories followingPF terminating inx asπ(x). 2",
+        "unicode_plain": "associated with the trajectory asPF (τ ) = F (τ )/Z. PF (st+1|st) is called the forward policy, and sampling iteratively from this forward policy allows one to generate complete trajectories, with a probability proportional to the unnormalized density F . We denote the marginal probability of sampling complete trajectories followingPF terminating inx asπ(x). 2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "associated with the trajectory asPF (τ ) = F (τ )/Z. PF (st+1|st) is called the forward policy, and sampling iteratively from this forward policy allows one to generate complete trajectories, with a probability proportional to the unnormalized density F . We denote the marginal probability of sampling complete trajectories followingPF terminating inx asπ(x). 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "τ∈T F (τ ) = ∑ xR(x) and is also estimated during training (by Zθ below). The parameters θ parameterizingPF (−|s;θ),PB(−|s;θ),Zθ are estimated by minimizing the following per-trajectory loss: L(τ ;θ) = (",
+        "unicode_plain": "τ∈T F (τ ) = ∑ xR(x) and is also estimated during training (by Zθ below). The parameters θ parameterizingPF (−|s;θ),PB(−|s;θ),Zθ are estimated by minimizing the following per-trajectory loss: L(τ ;θ) = ("
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "τ∈T F (τ ) = ∑ xR(x) and is also estimated during training (by Zθ below). The parameters θ parameterizingPF (−|s;θ),PB(−|s;θ),Zθ are estimated by minimizing the following per-trajectory loss: L(τ ;θ) = ("
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "L(τ ;θ) = ( log Zθ ∏t=n−1 t=0 PF (st+1|st;θ) R(sn) ∏t=n−1",
+        "unicode_plain": "L(τ ;θ) = ( log Zθ ∏t=n−1 t=0 PF (st+1|st;θ) R(sn) ∏t=n−1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L(τ ;θ) = ( log Zθ ∏t=n−1 t=0 PF (st+1|st;θ) R(sn) ∏t=n−1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "∏t=n−1 t=0 PF (st+1|st;θ) R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1)",
+        "unicode_plain": "∏t=n−1 t=0 PF (st+1|st;θ) R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "∏t=n−1 t=0 PF (st+1|st;θ) R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "t=0 PF (st+1|st;θ) R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating",
+        "unicode_plain": "t=0 PF (st+1|st;θ) R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 PF (st+1|st;θ) R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating diverse candidates that maximize some property of the candidate that is expensive to evaluate (oracle).",
+        "unicode_plain": "R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating diverse candidates that maximize some property of the candidate that is expensive to evaluate (oracle)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "R(sn) ∏t=n−1 t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating diverse candidates that maximize some property of the candidate that is expensive to evaluate (oracle)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating diverse candidates that maximize some property of the candidate that is expensive to evaluate (oracle). It consists of several rounds, each consisting of generating a batch of candidates that are evaluated with",
+        "unicode_plain": "t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating diverse candidates that maximize some property of the candidate that is expensive to evaluate (oracle). It consists of several rounds, each consisting of generating a batch of candidates that are evaluated with"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 PB(st|st+1;θ) )2 . (1) [12] introduced GFlowNet-AL, an active learning algorithm leveraging GFlowNets for generating diverse candidates that maximize some property of the candidate that is expensive to evaluate (oracle). It consists of several rounds, each consisting of generating a batch of candidates that are evaluated with"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "Ex∼pdata(x)∇φEφ(x)− Ex′∼PT (x′)∇φEφ(x′). (2) We introduce JEB-GFN, which extends the above formulation to model the joint distribution over multiple variables, in particular, datax and corresponding labely. The unnormalized joint probability distribution is denoted byEφ(x,y ). The parameters of the EBM are updated proportional to E(x,y)∼pdata(x,y)∇φEφ(x,y )− E(x′,y′)∼PT (x′,y′)∇φEφ(x′,y′) (3) Simi",
+        "unicode_plain": "Ex∼pdata(x)∇φEφ(x)− Ex′∼PT (x′)∇φEφ(x′). (2) We introduce JEB-GFN, which extends the above formulation to model the joint distribution over multiple variables, in particular, datax and corresponding labely. The unnormalized joint probability distribution is denoted byEφ(x,y ). The parameters of the EBM are updated proportional to E(x,y)∼pdata(x,y)∇φEφ(x,y )− E(x′,y′)∼PT (x′,y′)∇φEφ(x′,y′) (3) Similar to the EB-GFN formulation, the EBM is trained via contrastive divergence, where a K-Step"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "Ex∼pdata(x)∇φEφ(x)− Ex′∼PT (x′)∇φEφ(x′). (2) We introduce JEB-GFN, which extends the above formulation to model the joint distribution over multiple variables, in particular, datax and corresponding labely. The unnormalized joint probability distribution is denoted byEφ(x,y ). The parameters of the EBM are updated proportional to E(x,y)∼pdata(x,y)∇φEφ(x,y )− E(x′,y′)∼PT (x′,y′)∇φEφ(x′,y′) (3) Similar to the EB-GFN formulation, the EBM is trained via contrastive divergence, where a K-Step"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "E(x,y)∼pdata(x,y)∇φEφ(x,y )− E(x′,y′)∼PT (x′,y′)∇φEφ(x′,y′) (3) Similar to the EB-GFN formulation, the EBM is trained via contrastive divergence, where a K-Step MCMC is used to generate negative samples, given data sampled from the original data distribution. This new generated sample is accepted or rejected depending on the Metropolis-Hastings rule. Concretely, ﬁrst, a K-Step backward trajectory ",
+        "unicode_plain": "E(x,y)∼pdata(x,y)∇φEφ(x,y )− E(x′,y′)∼PT (x′,y′)∇φEφ(x′,y′) (3) Similar to the EB-GFN formulation, the EBM is trained via contrastive divergence, where a K-Step MCMC is used to generate negative samples, given data sampled from the original data distribution. This new generated sample is accepted or rejected depending on the Metropolis-Hastings rule. Concretely, ﬁrst, a K-Step backward trajectory (τ) is sampled with a multiple calls to the backward"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "E(x,y)∼pdata(x,y)∇φEφ(x,y )− E(x′,y′)∼PT (x′,y′)∇φEφ(x′,y′) (3) Similar to the EB-GFN formulation, the EBM is trained via contrastive divergence, where a K-Step MCMC is used to generate negative samples, given data sampled from the original data distribution. This new generated sample is accepted or rejected depending on the Metropolis-Hastings rule. Concretely, ﬁrst, a K-Step backward trajectory (τ) is sampled with a multiple calls to the backward"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "=min[1,e−Eφ(x′,y′)PB(τ|x,y )PF (τ′) e−Eφ(x,y)PB(τ′|x′,y′)PF (τ ) ]. (4) Note that the EBM and the GFlowNet are trained via an alternating optimization routine. The procedure for joint training of the GFlowNet and EBM is described in Algorithm 1. Algorithm 1: JEB-GFN joint training framework Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to",
+        "unicode_plain": "=min[1,e−Eφ(x′,y′)PB(τ|x,y )PF (τ′) e−Eφ(x,y)PB(τ′|x′,y′)PF (τ ) ]. (4) Note that the EBM and the GFlowNet are trained via an alternating optimization routine. The procedure for joint training of the GFlowNet and EBM is described in Algorithm 1. Algorithm 1: JEB-GFN joint training framework Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "=min[1,e−Eφ(x′,y′)PB(τ|x,y )PF (τ′) e−Eφ(x,y)PB(τ′|x′,y′)PF (τ ) ]. (4) Note that the EBM and the GFlowNet are trained via an alternating optimization routine. The procedure for joint training of the GFlowNet and EBM is described in Algorithm 1. Algorithm 1: JEB-GFN joint training framework Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "e−Eφ(x,y)PB(τ′|x′,y′)PF (τ ) ]. (4) Note that the EBM and the GFlowNet are trained via an alternating optimization routine. The procedure for joint training of the GFlowNet and EBM is described in Algorithm 1. Algorithm 1: JEB-GFN joint training framework Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to labels:yi",
+        "unicode_plain": "e−Eφ(x,y)PB(τ′|x′,y′)PF (τ ) ]. (4) Note that the EBM and the GFlowNet are trained via an alternating optimization routine. The procedure for joint training of the GFlowNet and EBM is described in Algorithm 1. Algorithm 1: JEB-GFN joint training framework Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to labels:yi"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "e−Eφ(x,y)PB(τ′|x′,y′)PF (τ ) ]. (4) Note that the EBM and the GFlowNet are trained via an alternating optimization routine. The procedure for joint training of the GFlowNet and EBM is described in Algorithm 1. Algorithm 1: JEB-GFN joint training framework Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to labels:yi"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to labels:yi Initialization: Initalize GFlowNet’sPF ,PB &Z with parametersθ and the energy functionEφ with parametersφ fori = 1 toT do • Sample forward trajectoryτ∼PF (τ )",
+        "unicode_plain": "Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to labels:yi Initialization: Initalize GFlowNet’sPF ,PB &Z with parametersθ and the energy functionEφ with parametersφ fori = 1 toT do • Sample forward trajectoryτ∼PF (τ )"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Input:D ={xi,yi},i = 1,...,N : Dataset (sizeN) consisting of data:xi corresponding to labels:yi Initialization: Initalize GFlowNet’sPF ,PB &Z with parametersθ and the energy functionEφ with parametersφ fori = 1 toT do • Sample forward trajectoryτ∼PF (τ )"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "fori = 1 toT do • Sample forward trajectoryτ∼PF (τ ) • ComputePB(τ ) givenτ, whereτ is generated from the previous step • Updateθ via the gradient step onLθ(τ ) (Eq. 1) with the reward function beinge−Eφ(x,y) • Generate horizonK depending on iterationi • Sample aK-step backward trajectory fromPB(·|·;θ):τ = ([x,y ] =SD→SD−1→...→",
+        "unicode_plain": "fori = 1 toT do • Sample forward trajectoryτ∼PF (τ ) • ComputePB(τ ) givenτ, whereτ is generated from the previous step • Updateθ via the gradient step onLθ(τ ) (Eq. 1) with the reward function beinge−Eφ(x,y) • Generate horizonK depending on iterationi • Sample aK-step backward trajectory fromPB(·|·;θ):τ = ([x,y ] =SD→SD−1→...→"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "fori = 1 toT do • Sample forward trajectoryτ∼PF (τ ) • ComputePB(τ ) givenτ, whereτ is generated from the previous step • Updateθ via the gradient step onLθ(τ ) (Eq. 1) with the reward function beinge−Eφ(x,y) • Generate horizonK depending on iterationi • Sample aK-step backward trajectory fromPB(·|·;θ):τ = ([x,y ] =SD→SD−1→...→"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "unifying_generative_models_with_gflownets_and_beyond_dinghuai_zhang_1_ri_20260508T150701Z",
+  "extracted_at": "2026-05-08T15:13:17Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "model a distribution from a given dataset D = {xi}i, xi ∈ X , where X is the space of data objects. When considering the training task, we want to learn a distribution q(x) to be close to the target distributionp∗(x) = 1 |D| ∑",
+        "unicode_plain": "model a distribution from a given dataset D = {xi}i, xi ∈ X , where X is the space of data objects. When considering the training task, we want to learn a distribution q(x) to be close to the target distributionp∗(x) = 1 |D| ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "model a distribution from a given dataset D = {xi}i, xi ∈ X , where X is the space of data objects. When considering the training task, we want to learn a distribution q(x) to be close to the target distributionp∗(x) = 1 |D| ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "be close to the target distributionp∗(x) = 1 |D| ∑ iδ{xi−x}, whereδ{·} is the Dirac distribution. However, the real ob- jective is to generalize well to an underlying data generat-",
+        "unicode_plain": "be close to the target distributionp∗(x) = 1 |D| ∑ iδ{xi−x}, whereδ{·} is the Dirac distribution. However, the real ob- jective is to generalize well to an underlying data generat-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "be close to the target distributionp∗(x) = 1 |D| ∑ iδ{xi−x}, whereδ{·} is the Dirac distribution. However, the real ob- jective is to generalize well to an underlying data generat-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "samples a Markovian trajectoryτ = (s0, s1,..., sn) with lengthn + 1, where si ∈ S is the intermediate states for alli in [n] := {0, 1,...,n }, whose space S is not neces- sarily the same as X . If not specially speciﬁed, we use the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein-",
+        "unicode_plain": "samples a Markovian trajectoryτ = (s0, s1,..., sn) with lengthn + 1, where si ∈ S is the intermediate states for alli in [n] := {0, 1,...,n }, whose space S is not neces- sarily the same as X . If not specially speciﬁed, we use the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "samples a Markovian trajectoryτ = (s0, s1,..., sn) with lengthn + 1, where si ∈ S is the intermediate states for alli in [n] := {0, 1,...,n }, whose space S is not neces- sarily the same as X . If not specially speciﬁed, we use the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "alli in [n] := {0, 1,...,n }, whose space S is not neces- sarily the same as X . If not specially speciﬁed, we use the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein- forcement learning (Sutton & Barto, 2005; Bengio et al., 2021a; Zhang et al., 2022a). The set of all trajectories τ",
+        "unicode_plain": "alli in [n] := {0, 1,...,n }, whose space S is not neces- sarily the same as X . If not specially speciﬁed, we use the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein- forcement learning (Sutton & Barto, 2005; Bengio et al., 2021a; Zhang et al., 2022a). The set of all trajectories τ"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "alli in [n] := {0, 1,...,n }, whose space S is not neces- sarily the same as X . If not specially speciﬁed, we use the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein- forcement learning (Sutton & Barto, 2005; Bengio et al., 2021a; Zhang et al., 2022a). The set of all trajectories τ"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein- forcement learning (Sutton & Barto, 2005; Bengio et al., 2021a; Zhang et al., 2022a). The set of all trajectories τ form a directed acyclic graph (DAG) in the latent state space, whose nodes are states s ∈ S . Each complete trajectory",
+        "unicode_plain": "the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein- forcement learning (Sutton & Barto, 2005; Bengio et al., 2021a; Zhang et al., 2022a). The set of all trajectories τ form a directed acyclic graph (DAG) in the latent state space, whose nodes are states s ∈ S . Each complete trajectory"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the notation x = sn for the ﬁnal / terminating state of the trajectory. This process has a natural connection to rein- forcement learning (Sutton & Barto, 2005; Bengio et al., 2021a; Zhang et al., 2022a). The set of all trajectories τ form a directed acyclic graph (DAG) in the latent state space, whose nodes are states s ∈ S . Each complete trajectory"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "τ=(s0,···,sn),sn=xF (τ) =R(x). Several training criteria have already been proposed for GFlowNets. We start from the ﬂow matching condition (Equation 1). Deﬁne F (s, s′) ≜ ∑ (s→s′)∈τF (τ) as the edge ﬂow function and F (s) ≜ ∑",
+        "unicode_plain": "τ=(s0,···,sn),sn=xF (τ) =R(x). Several training criteria have already been proposed for GFlowNets. We start from the ﬂow matching condition (Equation 1). Deﬁne F (s, s′) ≜ ∑ (s→s′)∈τF (τ) as the edge ﬂow function and F (s) ≜ ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "τ=(s0,···,sn),sn=xF (τ) =R(x). Several training criteria have already been proposed for GFlowNets. We start from the ﬂow matching condition (Equation 1). Deﬁne F (s, s′) ≜ ∑ (s→s′)∈τF (τ) as the edge ﬂow function and F (s) ≜ ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "F (s, s′) = ∑ s′′,s′→s′′ F (s′, s′′), (1) as both side of the equation must equal F (s′). If one parametrizes the GFlowNet with the edge ﬂow function",
+        "unicode_plain": "F (s, s′) = ∑ s′′,s′→s′′ F (s′, s′′), (1) as both side of the equation must equal F (s′). If one parametrizes the GFlowNet with the edge ﬂow function"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "F (s, s′) = ∑ s′′,s′→s′′ F (s′, s′′), (1) as both side of the equation must equal F (s′). If one parametrizes the GFlowNet with the edge ﬂow function"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "F (s′, s′′), (1) as both side of the equation must equal F (s′). If one parametrizes the GFlowNet with the edge ﬂow function Fθ(·, ·), then the constraint in Equation 1 would be used to deﬁne a corresponding training loss ( i.e., L(θ, s′) = (log∑",
+        "unicode_plain": "F (s′, s′′), (1) as both side of the equation must equal F (s′). If one parametrizes the GFlowNet with the edge ﬂow function Fθ(·, ·), then the constraint in Equation 1 would be used to deﬁne a corresponding training loss ( i.e., L(θ, s′) = (log∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "F (s′, s′′), (1) as both side of the equation must equal F (s′). If one parametrizes the GFlowNet with the edge ﬂow function Fθ(·, ·), then the constraint in Equation 1 would be used to deﬁne a corresponding training loss ( i.e., L(θ, s′) = (log∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "to deﬁne a corresponding training loss ( i.e., L(θ, s′) = (log∑ sFθ(s, s′) − log∑ s′′Fθ(s′, s′′))2), such that when the loss is zero everywhere, the constraint is satisﬁed, and 0 is also a global minimum of the loss.",
+        "unicode_plain": "to deﬁne a corresponding training loss ( i.e., L(θ, s′) = (log∑ sFθ(s, s′) − log∑ s′′Fθ(s′, s′′))2), such that when the loss is zero everywhere, the constraint is satisﬁed, and 0 is also a global minimum of the loss."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "to deﬁne a corresponding training loss ( i.e., L(θ, s′) = (log∑ sFθ(s, s′) − log∑ s′′Fθ(s′, s′′))2), such that when the loss is zero everywhere, the constraint is satisﬁed, and 0 is also a global minimum of the loss."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "F (s)PF (s′ | s) =F (s′)PB (s | s′), (2) where PF (s′|s) and PB(s|s′) are referred to as the for- ward and backward policy respectively and characterize the stochastic transitions between different states, going forward or backward along a trajectory. We can separately parametrize three models for Fθ(·),PF (·|·; θ),PB(·|·; θ).",
+        "unicode_plain": "F (s)PF (s′ | s) =F (s′)PB (s | s′), (2) where PF (s′|s) and PB(s|s′) are referred to as the for- ward and backward policy respectively and characterize the stochastic transitions between different states, going forward or backward along a trajectory. We can separately parametrize three models for Fθ(·),PF (·|·; θ),PB(·|·; θ)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "F (s)PF (s′ | s) =F (s′)PB (s | s′), (2) where PF (s′|s) and PB(s|s′) are referred to as the for- ward and backward policy respectively and characterize the stochastic transitions between different states, going forward or backward along a trajectory. We can separately parametrize three models for Fθ(·),PF (·|·; θ),PB(·|·; θ)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "ﬂow matching condition, in the sense that PF (s′|s) = F (s, s′)/F (s) and PB(s|s′) = F (s, s′)/F (s′). to deter- mine a GFlowNet, it sufﬁces to specify its forward policy (Bengio et al., 2021b). Extending the detailed balance criterion to a constraint on the whole trajectory, the (general) trajectory balance cri-",
+        "unicode_plain": "ﬂow matching condition, in the sense that PF (s′|s) = F (s, s′)/F (s) and PB(s|s′) = F (s, s′)/F (s′). to deter- mine a GFlowNet, it sufﬁces to specify its forward policy (Bengio et al., 2021b). Extending the detailed balance criterion to a constraint on the whole trajectory, the (general) trajectory balance cri-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ﬂow matching condition, in the sense that PF (s′|s) = F (s, s′)/F (s) and PB(s|s′) = F (s, s′)/F (s′). to deter- mine a GFlowNet, it sufﬁces to specify its forward policy (Bengio et al., 2021b). Extending the detailed balance criterion to a constraint on the whole trajectory, the (general) trajectory balance cri-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "F (s, s′)/F (s) and PB(s|s′) = F (s, s′)/F (s′). to deter- mine a GFlowNet, it sufﬁces to specify its forward policy (Bengio et al., 2021b). Extending the detailed balance criterion to a constraint on the whole trajectory, the (general) trajectory balance cri- terion (Malkin et al., 2022) of GFlowNets aims to match",
+        "unicode_plain": "F (s, s′)/F (s) and PB(s|s′) = F (s, s′)/F (s′). to deter- mine a GFlowNet, it sufﬁces to specify its forward policy (Bengio et al., 2021b). Extending the detailed balance criterion to a constraint on the whole trajectory, the (general) trajectory balance cri- terion (Malkin et al., 2022) of GFlowNets aims to match"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "F (s, s′)/F (s) and PB(s|s′) = F (s, s′)/F (s′). to deter- mine a GFlowNet, it sufﬁces to specify its forward policy (Bengio et al., 2021b). Extending the detailed balance criterion to a constraint on the whole trajectory, the (general) trajectory balance cri- terion (Malkin et al., 2022) of GFlowNets aims to match"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page2_13",
+      "presentation": {
+        "latex": "PF (τ) = n−1∏ i=0 PF (si+1|si) (3) PB(τ) = R (x) Z",
+        "unicode_plain": "PF (τ) = n−1∏ i=0 PF (si+1|si) (3) PB(τ) = R (x) Z"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "PF (τ) = n−1∏ i=0 PF (si+1|si) (3) PB(τ) = R (x) Z"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "PF (si+1|si) (3) PB(τ) = R (x) Z n−1∏ t=0 PB (si|si+1), (4)",
+        "unicode_plain": "PF (si+1|si) (3) PB(τ) = R (x) Z n−1∏ t=0 PB (si|si+1), (4)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "PF (si+1|si) (3) PB(τ) = R (x) Z n−1∏ t=0 PB (si|si+1), (4)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

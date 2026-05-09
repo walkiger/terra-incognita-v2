@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:47Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page1_1",
+      "presentation": {
+        "latex": "to answer such a query is to translate it into logical statements: q =V?·∃V : Treat(Pneumonia,V?) Source code available on: https://github.com/amayuelas/NNKGReasoning 1 arXiv:2209.14464v1  [cs.AI]  28 Sep 2022",
+        "unicode_plain": "to answer such a query is to translate it into logical statements: q =V?·∃V : Treat(Pneumonia,V?) Source code available on: https://github.com/amayuelas/NNKGReasoning 1 arXiv:2209.14464v1  [cs.AI]  28 Sep 2022"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "to answer such a query is to translate it into logical statements: q =V?·∃V : Treat(Pneumonia,V?) Source code available on: https://github.com/amayuelas/NNKGReasoning 1 arXiv:2209.14464v1  [cs.AI]  28 Sep 2022"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "Deﬁnition 2.1 (Reasoning over knowledge graphs). Deﬁning a knowledge graph as:G =⟨E,R,T⟩ , whereE,T represent the set of entities,R the set of relations, and the edges inR link two nodes to form a triple as (h,r,t )∈T . Then, reasoning over a KG is deﬁned as creating a triplet that does not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G} Most related to our work are embedding app",
+        "unicode_plain": "Deﬁnition 2.1 (Reasoning over knowledge graphs). Deﬁning a knowledge graph as:G =⟨E,R,T⟩ , whereE,T represent the set of entities,R the set of relations, and the edges inR link two nodes to form a triple as (h,r,t )∈T . Then, reasoning over a KG is deﬁned as creating a triplet that does not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G} Most related to our work are embedding approaches for multi-hop queries over KGs: (Hamilton"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Deﬁnition 2.1 (Reasoning over knowledge graphs). Deﬁning a knowledge graph as:G =⟨E,R,T⟩ , whereE,T represent the set of entities,R the set of relations, and the edges inR link two nodes to form a triple as (h,r,t )∈T . Then, reasoning over a KG is deﬁned as creating a triplet that does not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G} Most related to our work are embedding approaches for multi-hop queries over KGs: (Hamilton"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G} Most related to our work are embedding approaches for multi-hop queries over KGs: (Hamilton et al., 2018), (Ren et al., 2020), (Ren & Leskovec, 2020) and (Das et al., 2016), as well as models for question answering (Yasunaga et al., 2021), (Feng et al., 2020). The main differences with these methods rely on the ability to handle",
+        "unicode_plain": "not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G} Most related to our work are embedding approaches for multi-hop queries over KGs: (Hamilton et al., 2018), (Ren et al., 2020), (Ren & Leskovec, 2020) and (Das et al., 2016), as well as models for question answering (Yasunaga et al., 2021), (Feng et al., 2020). The main differences with these methods rely on the ability to handle full First-Order Logical Queries and using Neural Networks"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "not exist in the originalKG,G′ ={(h,r,t )|h∈E ,r∈R,t∈T , (h,r,t )̸∈G} Most related to our work are embedding approaches for multi-hop queries over KGs: (Hamilton et al., 2018), (Ren et al., 2020), (Ren & Leskovec, 2020) and (Das et al., 2016), as well as models for question answering (Yasunaga et al., 2021), (Feng et al., 2020). The main differences with these methods rely on the ability to handle full First-Order Logical Queries and using Neural Networks"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "q[V?] = V?·∃V1,...V k :c1∨c2∨...∨cn (1) whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights.",
+        "unicode_plain": "q[V?] = V?·∃V1,...V k :c1∨c2∨...∨cn (1) whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "q[V?] = V?·∃V1,...V k :c1∨c2∨...∨cn (1) whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights. 3",
+        "unicode_plain": "whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights. 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "whereci represents a conjunctive query of one or several literals:ci = ei1∧ ei2∧...∧ eim. And the literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights. 3",
+        "unicode_plain": "literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights. 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "literals represent a relation or its negation: eij =r(vi,v j) or¬v(vi,v j) wherevi,v j are entities and r∈R . The entity embeddings are initialized to zero and later learned as part of the training process, along with the operators’ weights. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "we deﬁne the projection as:Pri(vi,r ) ={v′∈V : (v,v′) = True}. • Intersection. The intersection can be deﬁned as: I(vi) =∩n i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them.",
+        "unicode_plain": "we deﬁne the projection as:Pri(vi,r ) ={v′∈V : (v,v′) = True}. • Intersection. The intersection can be deﬁned as: I(vi) =∩n i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "we deﬁne the projection as:Pri(vi,r ) ={v′∈V : (v,v′) = True}. • Intersection. The intersection can be deﬁned as: I(vi) =∩n i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page4_8",
+      "presentation": {
+        "latex": "• Intersection. The intersection can be deﬁned as: I(vi) =∩n i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren",
+        "unicode_plain": "• Intersection. The intersection can be deﬁned as: I(vi) =∩n i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "• Intersection. The intersection can be deﬁned as: I(vi) =∩n i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page4_9",
+      "presentation": {
+        "latex": "i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren et al., 2020) shows that a union operator becomes intractable in distance-based",
+        "unicode_plain": "i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren et al., 2020) shows that a union operator becomes intractable in distance-based metrics."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1vi. • Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren et al., 2020) shows that a union operator becomes intractable in distance-based metrics."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "• Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren et al., 2020) shows that a union operator becomes intractable in distance-based metric",
+        "unicode_plain": "• Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren et al., 2020) shows that a union operator becomes intractable in distance-based metrics."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "• Negation. It calculates the complement of a set of entities T ⊆V: N (T ) =T =V\\T , where the set can either be the embedding corresponding to an entity or another embedding in between which represents a set of them. A Union operation is unnecessary, as it will be later discussed in Sections 3.5. Query2Box (Ren et al., 2020) shows that a union operator becomes intractable in distance-based metrics."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page5_11",
+      "presentation": {
+        "latex": "P (si,r j) = NNk(si,r j),∀si∈S ,∀sj∈R I(si,s j) = NNk(si,s j),∀si,s j∈S (2) wheresi∈S is an embedding in the vector spaceS,rj∈R is a relation andNN k is a multi-layer perceptron withk layers. The intersection can take more than two entities as an input, for instance the 3i query structure. In this case we do a recursive operation, we use the result of the previous intersection to compute the",
+        "unicode_plain": "P (si,r j) = NNk(si,r j),∀si∈S ,∀sj∈R I(si,s j) = NNk(si,s j),∀si,s j∈S (2) wheresi∈S is an embedding in the vector spaceS,rj∈R is a relation andNN k is a multi-layer perceptron withk layers. The intersection can take more than two entities as an input, for instance the 3i query structure. In this case we do a recursive operation, we use the result of the previous intersection to compute the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "P (si,r j) = NNk(si,r j),∀si∈S ,∀sj∈R I(si,s j) = NNk(si,s j),∀si,s j∈S (2) wheresi∈S is an embedding in the vector spaceS,rj∈R is a relation andNN k is a multi-layer perceptron withk layers. The intersection can take more than two entities as an input, for instance the 3i query structure. In this case we do a recursive operation, we use the result of the previous intersection to compute the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "I(si,s j) = NNk(si,s j),∀si,s j∈S (2) wheresi∈S is an embedding in the vector spaceS,rj∈R is a relation andNN k is a multi-layer perceptron withk layers. The intersection can take more than two entities as an input, for instance the 3i query structure. In this case we do a recursive operation, we use the result of the previous intersection to compute the next one.",
+        "unicode_plain": "I(si,s j) = NNk(si,s j),∀si,s j∈S (2) wheresi∈S is an embedding in the vector spaceS,rj∈R is a relation andNN k is a multi-layer perceptron withk layers. The intersection can take more than two entities as an input, for instance the 3i query structure. In this case we do a recursive operation, we use the result of the previous intersection to compute the next one."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "I(si,s j) = NNk(si,s j),∀si,s j∈S (2) wheresi∈S is an embedding in the vector spaceS,rj∈R is a relation andNN k is a multi-layer perceptron withk layers. The intersection can take more than two entities as an input, for instance the 3i query structure. In this case we do a recursive operation, we use the result of the previous intersection to compute the next one."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "N (si) = NNk(si),∀si∈S (3) where si ∈S is a vector in the embedding space, it can be an entity or the result of a previous operation.NN k is a multi-layer perceptron withk layers and the same number of inputs as outputs. 3.3 M ULTI-L AYER PERCEPTRON MIXER MODEL (MLP-M IXER ) The MLP-Mixer (Tolstikhin et al., 2021) is a Neural Architecture originally built for computer vision applications, which ac",
+        "unicode_plain": "N (si) = NNk(si),∀si∈S (3) where si ∈S is a vector in the embedding space, it can be an entity or the result of a previous operation.NN k is a multi-layer perceptron withk layers and the same number of inputs as outputs. 3.3 M ULTI-L AYER PERCEPTRON MIXER MODEL (MLP-M IXER ) The MLP-Mixer (Tolstikhin et al., 2021) is a Neural Architecture originally built for computer vision applications, which achieves competitive results when compared to Convolutional Neural Networks"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "N (si) = NNk(si),∀si∈S (3) where si ∈S is a vector in the embedding space, it can be an entity or the result of a previous operation.NN k is a multi-layer perceptron withk layers and the same number of inputs as outputs. 3.3 M ULTI-L AYER PERCEPTRON MIXER MODEL (MLP-M IXER ) The MLP-Mixer (Tolstikhin et al., 2021) is a Neural Architecture originally built for computer vision applications, which achieves competitive results when compared to Convolutional Neural Networks"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "P (si,r j) = MLPmix(si,r j),∀si∈S ,∀sj∈R I(si,s j) = MLPmix(si,s j),∀si,s j∈S (4) whereMLP mix represent the mixer architecture,si an embedding in the entity vector spaceS; and rj∈R a relation. 5",
+        "unicode_plain": "P (si,r j) = MLPmix(si,r j),∀si∈S ,∀sj∈R I(si,s j) = MLPmix(si,s j),∀si,s j∈S (4) whereMLP mix represent the mixer architecture,si an embedding in the entity vector spaceS; and rj∈R a relation. 5"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "P (si,r j) = MLPmix(si,r j),∀si∈S ,∀sj∈R I(si,s j) = MLPmix(si,s j),∀si,s j∈S (4) whereMLP mix represent the mixer architecture,si an embedding in the entity vector spaceS; and rj∈R a relation. 5"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z",
+  "extracted_at": "2026-05-08T15:09:55Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "We denote byu the set of units of the network 2, and by θ = (W,b ) the set of free parameters to be learned, which includes the synaptic weights Wij and the neuron biases bi. The units are continuous-valued and would correspond to averaged voltage potential across time, spikes, and possibly neurons in the same minicolumn. Finally, ρ is a nonlinear activation function such thatρ(ui) represents the ",
+        "unicode_plain": "We denote byu the set of units of the network 2, and by θ = (W,b ) the set of free parameters to be learned, which includes the synaptic weights Wij and the neuron biases bi. The units are continuous-valued and would correspond to averaged voltage potential across time, spikes, and possibly neurons in the same minicolumn. Finally, ρ is a nonlinear activation function such thatρ(ui) represents the ﬁring rate of uniti."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "We denote byu the set of units of the network 2, and by θ = (W,b ) the set of free parameters to be learned, which includes the synaptic weights Wij and the neuron biases bi. The units are continuous-valued and would correspond to averaged voltage potential across time, spikes, and possibly neurons in the same minicolumn. Finally, ρ is a nonlinear activation function such thatρ(ui) represents the ﬁring rate of uniti."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "E(u) := 1 2 ∑ i u2 i − 1",
+        "unicode_plain": "E(u) := 1 2 ∑ i u2 i − 1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "E(u) := 1 2 ∑ i u2 i − 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "biρ(ui). (1) 1https://github.com/bscellier/Towards-a-Biologically-Plausible-Backprop 2For reasons of convenience, we use the same symbol u to mean both the set of units and the value of those units 2",
+        "unicode_plain": "biρ(ui). (1) 1https://github.com/bscellier/Towards-a-Biologically-Plausible-Backprop 2For reasons of convenience, we use the same symbol u to mean both the set of units and the value of those units 2"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "biρ(ui). (1) 1https://github.com/bscellier/Towards-a-Biologically-Plausible-Backprop 2For reasons of convenience, we use the same symbol u to mean both the set of units and the value of those units 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "Note that the network is recurrently connected with symmetric connections, that isWij =Wji. The algorithm presented here is applicable to any architecture (so long as connections are symmetric), even a fully connected network. However, to make the connection to backpropagation more obvious, we will consider more speciﬁcally a layered architecture with no skip-layer connections and no lateral conne",
+        "unicode_plain": "Note that the network is recurrently connected with symmetric connections, that isWij =Wji. The algorithm presented here is applicable to any architecture (so long as connections are symmetric), even a fully connected network. However, to make the connection to backpropagation more obvious, we will consider more speciﬁcally a layered architecture with no skip-layer connections and no lateral connections within a layer (Figure 1)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Note that the network is recurrently connected with symmetric connections, that isWij =Wji. The algorithm presented here is applicable to any architecture (so long as connections are symmetric), even a fully connected network. However, to make the connection to backpropagation more obvious, we will consider more speciﬁcally a layered architecture with no skip-layer connections and no lateral connections within a layer (Figure 1)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "the outputsy. The set of all units in the network isu = {x,h,y }. As usual in the supervised learning scenario, the output unitsy aim to replicate their targets y. The discrepancy between the output units y and the targets y is measured by the quadratic cost function C := 1 2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towa",
+        "unicode_plain": "the outputsy. The set of all units in the network isu = {x,h,y }. As usual in the supervised learning scenario, the output unitsy aim to replicate their targets y. The discrepancy between the output units y and the targets y is measured by the quadratic cost function C := 1 2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the outputsy. The set of all units in the network isu = {x,h,y }. As usual in the supervised learning scenario, the output unitsy aim to replicate their targets y. The discrepancy between the output units y and the targets y is measured by the quadratic cost function C := 1 2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "C := 1 2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their target. A novelty in our work, with respect to previously studied energy-based models, is that we introduce the ’total energy function’F , which takes the form F :=E +βC, (3)",
+        "unicode_plain": "C := 1 2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their target. A novelty in our work, with respect to previously studied energy-based models, is that we introduce the ’total energy function’F , which takes the form F :=E +βC, (3)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "C := 1 2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their target. A novelty in our work, with respect to previously studied energy-based models, is that we introduce the ’total energy function’F , which takes the form F :=E +βC, (3)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their target. A novelty in our work, with respect to previously studied energy-based models, is that we introduce the ’total energy function’F , which takes the form F :=E +βC, (3) whereβ ≥ 0 is a real-valued scalar that controls whether the output y is pushed towards th",
+        "unicode_plain": "2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their target. A novelty in our work, with respect to previously studied energy-based models, is that we introduce the ’total energy function’F , which takes the form F :=E +βC, (3) whereβ ≥ 0 is a real-valued scalar that controls whether the output y is pushed towards the target y or not, and by how"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "2 ∥y − y∥2. (2) The cost function C also acts as an external potential energy for the output units, which can drive them towards their target. A novelty in our work, with respect to previously studied energy-based models, is that we introduce the ’total energy function’F , which takes the form F :=E +βC, (3) whereβ ≥ 0 is a real-valued scalar that controls whether the output y is pushed towards the target y or not, and by how"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "F :=E +βC, (3) whereβ ≥ 0 is a real-valued scalar that controls whether the output y is pushed towards the target y or not, and by how much. We callβ the ’inﬂuence parameter’ or ’clamping factor’. The total energy F is the sum of two potential energies: the internal potential E that models the interactions within the network, and the external potential βC that models how the targets inﬂuence the o",
+        "unicode_plain": "F :=E +βC, (3) whereβ ≥ 0 is a real-valued scalar that controls whether the output y is pushed towards the target y or not, and by how much. We callβ the ’inﬂuence parameter’ or ’clamping factor’. The total energy F is the sum of two potential energies: the internal potential E that models the interactions within the network, and the external potential βC that models how the targets inﬂuence the output units. Contrary to Boltzmann Machines where the visible units are either free or (fully)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "F :=E +βC, (3) whereβ ≥ 0 is a real-valued scalar that controls whether the output y is pushed towards the target y or not, and by how much. We callβ the ’inﬂuence parameter’ or ’clamping factor’. The total energy F is the sum of two potential energies: the internal potential E that models the interactions within the network, and the external potential βC that models how the targets inﬂuence the output units. Contrary to Boltzmann Machines where the visible units are either free or (fully)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page4_9",
+      "presentation": {
+        "latex": "We denote the state variable of the network by s = {h,y } which does not include the input units x since they are always clamped. We assume that the time evolution of the state variables is governed by the gradient dynamics ds dt = −∂F ∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de-",
+        "unicode_plain": "We denote the state variable of the network by s = {h,y } which does not include the input units x since they are always clamped. We assume that the time evolution of the state variables is governed by the gradient dynamics ds dt = −∂F ∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "We denote the state variable of the network by s = {h,y } which does not include the input units x since they are always clamped. We assume that the time evolution of the state variables is governed by the gradient dynamics ds dt = −∂F ∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "dt = −∂F ∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de- scribed by the differential equation of motion Eq. 4. The total energy of the system decreases as time progresses (θ,β, x and y being ﬁxed) since dF",
+        "unicode_plain": "dt = −∂F ∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de- scribed by the differential equation of motion Eq. 4. The total energy of the system decreases as time progresses (θ,β, x and y being ﬁxed) since dF"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "dt = −∂F ∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de- scribed by the differential equation of motion Eq. 4. The total energy of the system decreases as time progresses (θ,β, x and y being ﬁxed) since dF"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de- scribed by the differential equation of motion Eq. 4. The total energy of the system decreases as time progresses (θ,β, x and y being ﬁxed) since dF dt = ∂F",
+        "unicode_plain": "∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de- scribed by the differential equation of motion Eq. 4. The total energy of the system decreases as time progresses (θ,β, x and y being ﬁxed) since dF dt = ∂F"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "∂s . (4) Unlike more conventional artiﬁcial neural networks, the model studied here is a continuous-time dynamical system de- scribed by the differential equation of motion Eq. 4. The total energy of the system decreases as time progresses (θ,β, x and y being ﬁxed) since dF dt = ∂F"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "dt = ∂F ∂s · ds dt = −  ds dt",
+        "unicode_plain": "dt = ∂F ∂s · ds dt = −  ds dt"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "dt = ∂F ∂s · ds dt = −  ds dt"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "dt = −  ds dt  2",
+        "unicode_plain": "dt = −  ds dt  2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "dt = −  ds dt  2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_5",
+      "presentation": {
+        "latex": "≤ 0. (5) The energy stops decreasing when the network has reached a ﬁxed point: dF dt = 0 ⇔ ds dt = 0 ⇔ ∂F ∂s = 0. (6)",
+        "unicode_plain": "≤ 0. (5) The energy stops decreasing when the network has reached a ﬁxed point: dF dt = 0 ⇔ ds dt = 0 ⇔ ∂F ∂s = 0. (6)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(5)",
+        "verbatim_snippet": "≤ 0. (5) The energy stops decreasing when the network has reached a ﬁxed point: dF dt = 0 ⇔ ds dt = 0 ⇔ ∂F ∂s = 0. (6)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

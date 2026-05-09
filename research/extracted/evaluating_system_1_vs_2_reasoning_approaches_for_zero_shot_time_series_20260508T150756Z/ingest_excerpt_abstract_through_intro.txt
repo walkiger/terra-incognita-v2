@@ -1,0 +1,190 @@
+Abstract
+Reasoning ability is crucial for solving challenging tasks. With the
+advancement of foundation models, such as the emergence of large
+language models (LLMs), a wide range of reasoning strategies has
+been proposed, including test-time enhancements, such as Chain-of-
+Thought, and post-training optimizations, as used in DeepSeek-R1.
+While these reasoning strategies have demonstrated effectiveness
+across various challenging language or vision tasks, their applica-
+bility and impact on time-series forecasting (TSF), particularly the
+challenging zero-shot TSF, remain largely unexplored. In particular,
+it is unclear whether zero-shot TSF benefits from reasoning and, if
+so, what types of reasoning strategies are most effective.
+To bridge this gap, we propose ReC4TS, the first benchmark
+that systematically evaluates the effectiveness of popular reasoning
+strategies when applied to zero-shot TSF tasks. ReC4TS conducts
+comprehensive evaluations across datasets spanning eight domains,
+covering both unimodal and multimodal with short-term and long-
+term forecasting tasks. More importantly, ReC4TS provides key
+insights: (1) Self-consistency emerges as the most effective test-time
+reasoning strategy; (2) Group-relative policy optimization emerges
+as a more suitable approach for incentivizing reasoning ability
+during post-training; (3) Multimodal TSF benefits more from rea-
+soning strategies compared to unimodal TSF. Beyond these insights,
+ReC4TS establishes two pioneering starting blocks to support fu-
+ture zero-shot TSF reasoning research: (1) A novel dataset, Time-
+Thinking, containing forecasting samples annotated with reason-
+ing trajectories from multiple advanced LLMs, and (2) A new and
+simple test-time scaling-law validated on foundational TSF models
+enabled by self-consistency reasoning strategy. All data and code are
+publicly accessible at: https://github.com/AdityaLab/OpenTimeR
+Keywords
+Reasoning Models, Time-Series Analysis, Mutimodality
+ACM Reference Format:
+Haoxin Liu, Zhiyuan Zhao, Shiduo Li, B. Aditya Prakash. 2018. Evaluating
+System 1 vs. 2 Reasoning Approaches for Zero-Shot Time Series Forecasting:
+A Benchmark and Insights. In Proceedings of Make sure to enter the correct
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+Conference acronym ’XX, Woodstock, NY
+© 2018 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN 978-1-4503-XXXX-X/2018/06
+https://doi.org/XXXXXXX.XXXXXXX
+conference title from your rights confirmation email (Conference acronym ’XX).
+ACM, New York, NY, USA, 20 pages. https://doi.org/XXXXXXX.XXXXXXX
+1 Introduction
+Reasoning capabilities are fundamental to solving challenging tasks
+and have been the focus of research for decades [ 13, 63]. Recent
+advancements in foundation models, particularly the rise of large
+language models (LLMs), have brought reasoning strategy research
+into the era of artificial intelligence [ 43, 57, 59]. By integrating
+designed reasoning strategies with powerful foundation models,
+these models have demonstrated remarkable success in tackling
+complex real-world challenges, including math, planning, and en-
+gineering [3, 23, 51, 52]. Despite these advancements in extensive
+domains, the application of reasoning strategies in zero-shot time-
+series forecasting (TSF) remains largely unexplored. While recent
+time-series foundation models have initially demonstrated the fea-
+sibility of zero-shot TSF [2, 9, 15, 50], they primarily rely on the
+memory of large-scale time series data from the pre-training phase
+rather than employing explicit reasoning for zero-shot TSF.
+However, reasoning is not only natural but also essential for zero-
+shot TSF. On the one hand, time-series data inherently contains
+rich causal relationships, making it a natural domain for reasoning-
+based approaches [38, 46]. For instance, in epidemiological fore-
+casting, the outbreak of a pandemic naturally reasons a subsequent
+increase in infections—an essential target for flu prediction [ 37].
+On the other hand, and more critically, reasoning plays an impor-
+tant role in zero-shot TSF. Unlike conventional supervised TSF,
+which “memorizes” underlying correlation structures from training
+data, zero-shot TSF—designed as the primary objective for most
+time-series foundation models—depends on reasoning capabilities
+to “interpret” the pattern correlations within limited historical data,
+which have never been “memorized, ” in order to infer future values.
+Nevertheless, existing time-series foundation models have yet to
+fully exploit them by incorporating effective reasoning strategies.
+Therefore, a natural twofold research question (RQ) for reason-
+ing strategies on zero-shot TSF arises: “RQ1: Can zero-shot TSF
+benefit from enhanced reasoning ability?” While reasoning
+is an integral part of time-series analysis, such as used in feature
+selection and statistical analysis [7, 53], its effectiveness has yet to
+be systematically validated in zero-shot TSF with foundation mod-
+els. Furthermore, if reasoning is indeed beneficial (as demonstrated
+later in our work), a subsequent question emerges: “RQ2: What
+kind of reasoning strategies does zero-shot TSF need?”
+Existing reasoning strategies are often categorized into two cog-
+nitive systems: Reasoning enhanced System 1, which enables fast
+and direct thinking, and System 2, which involves deep and an-
+alytical reasoning [25] built-in the foundation model. These two
+arXiv:2503.01895v2  [cs.LG]  14 Mar 2025
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY Haoxin Liu, Zhiyuan Zhao, Shiduo Li, B. Aditya Prakash
+approaches differ distinctly in their implementation. Reasoning en-
+hanced System 1 typically occurs during the inference stage, such
+as Chain-of-Thought (CoT) reasoning, possibly being further en-
+hanced through self-consistency and self-correction [28, 43, 57, 59].
+In contrast, System 2 reasoning asks the model itself to promote
+deeper, structured thinking by incorporating incentives and rewards
+during post-training [18, 42]. Given the fundamental differences
+between System 1 and System 2 reasoning strategies in foundation
+models, addressing RQ2 requires an in-depth investigation into
+their effectiveness for time-series forecasting. However, such stud-
+ies remain unexplored, and a systematic benchmark to assess the
+impact of different reasoning strategies in TSF is still lacking.
+To bridge this gap and address the proposed twofold research
+questions, we introduce ReC4TS, a benchmark designed to sys-
+tematically evaluate the effectiveness of various popular reasoning
+strategies in zero-shot TSF. To the best of our knowledge, this is
+the first benchmark study to investigate these questions. Our main
+contributions are summarized as follows:
+• New Research Direction: We introduce a novel research
+direction focused on reasoning strategies for zero-shot TSF.
+This research aims to understand when, what, and how rea-
+soning strategies impact zero-shot TSF tasks.
+• Comprehensive Benchmark: We systematically evaluate
+the effectiveness of existing reasoning strategies for zero-
+shot TSF, conducting about 1,500 experiments. Our analysis
+covers both reasoning-enhanced System 1 and System 2
+reasoning strategies across six foundation models.
+• In-depth Insights: Our benchmark provides in-depth in-
+sights, revealing that self-consistency is the current most
+effective reasoning-enhanced System 1 strategy, and group-
+relative policy optimization is the current most suitable Sys-
+tem 2 approach. Furthermore, we show that reasoning strate-
+gies are generally more effective in multimodal zero-shot
+TSF than unimodal zero-shot TSF.
+• Open-Source Toolkits: We release three key toolkits, in-
+cluding the evaluation suite, scaling law and reasoning data
+to comprehensively initiate future research on reasoning
+models for TSF. Specifically, we fully release ReC4TS as an
+easy-to-use evaluation suite, including the code, documents
+and experiment logs. we validate a new and simple test-time
+scaling law for zero-shot TSF with foundation time-series
+models enabled by self-consistency reasoning. Additionally,
+we introduce Time-Thinking, the first TSF dataset with rea-
+soning trajectories.
+2 Related Work
+(Zero-Shot) Time-Series Forecasting. Time-series forecasting
+(TSF) is a fundamental task in time-series analysis with broad real-
+world applications, including economics, urban computing, and epi-
+demiology [45, 48, 54]. The introduction of transformer-based archi-
+tectures [55] has significantly advanced TSF performance, setting
+new benchmarks in forecasting accuracy [35, 40, 70, 71]. Building
+upon these advancements, recent research has explored foundation
+TSF models, which achieve competitive zero-shot forecasting per-
+formance comparable to supervised TSF models [2, 9, 12, 15, 26, 50].
+Trained on billions of data samples, these foundation models can
+generate accurate forecasts across diverse time series without re-
+quiring additional post-training or fine-tuning.
+Foundation Model Reasoning. With the rise of foundation mod-
+els, reasoning has become a critical research direction, enabling
+models to move beyond surface-level pattern recognition toward
+structured decision-making [5, 59]. Reasoning in foundation mod-
+els primarily follows two paradigms: reasoning-enhanced System
+1, which improves inference during test time for fast and intuitive
+thinking, such as Chain-of-Thought reasoning [28, 43, 57, 59], and
+System 2, which enables deep, analytical reasoning as an inherent
+capability of the model. System 2 reasoning is typically developed
+through post-training techniques such as reinforcement learning
+from human feedback (RLHF), reward shaping, knowledge distilla-
+tion, and the more recent group-relative policy optimization (GRPO)
+in DeepSeek-R1 [4, 16, 18, 29, 65], which allows foundation models
+to process more structured, deeper, and analytical thinking. Lever-
+aging these advanced reasoning strategies, foundation models have
+demonstrated strong capabilities in handling complex tasks, in-
+cluding mathematical problem-solving, automated planning, and
+applications in engineering and science [3, 14, 19, 51, 52, 72].
+Time-Series Reasoning. Reasoning over time-series data is an im-
+portant topic in time-series analysis [27]. Conventional time-series
+reasoning primarily focuses on causal analysis, including causal
+discovery, feature selection, and graph-based analysis [7, 11, 46, 53].
+However, these conventional methods focus only on numerical
+modalities, making validation challenging and often limiting their
+application to synthetic or simplified scenarios. Recent advance-
+ments have broadened time-series reasoning beyond numerical data,
+incorporating multimodal perspectives. Notably, emerging research
+has explored reasoning over time-series data using LLMs [34, 67]
+and vision-based approaches [32], expanding its scope and applica-
+bility. While these studies show promising potential for time series
+reasoning with advanced foundation models, they do not explicitly
+establish a connection between reasoning strategies and TSF tasks.
+Importantly, existing studies and benchmarks focus on either
+(zero-shot) TSF [1, 10, 58] or reasoning strategies [20, 31, 68], no
+existing work systematically evaluates how different reasoning
+strategies impact zero-shot TSF. Our study bridges this gap and
+introduces a multimodal reasoning enhancement setup beyond
+conventional unimodal approaches. This multimodal 
