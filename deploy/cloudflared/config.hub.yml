@@ -1,19 +1,18 @@
-# Hub tunnel routing (VM-A). Replace `TUNNEL_ID` with the UUID from
-# `cloudflared tunnel create hub` and copy the issued JSON credential into
-# `deploy/cloudflared/credentials/<TUNNEL_ID>.json` (see README).
+# Hub tunnel routing (VM-A, Modus A — Container-Tunnel).
 #
-# Hostnames below use example.tld — substitute your Cloudflare zone.
+# Production tunnel: terra-hub (8d4bb120-c82e-4344-be09-73fa4b012c74)
+# Domain: terra-incognita.cloud (Cloudflare Free zone, NS bei Cloudflare)
+#
+# Modus B (Host-Tunnel via systemd + Token) nutzt stattdessen die
+# Published Application Routes im Zero-Trust-Dashboard — diese Datei
+# wird dann nicht geladen (siehe hub.override.host-tunnel.yml).
 
-tunnel: TUNNEL_ID
-credentials-file: /etc/cloudflared/credentials/TUNNEL_ID.json
+tunnel: 8d4bb120-c82e-4344-be09-73fa4b012c74
+credentials-file: /etc/cloudflared/credentials/8d4bb120-c82e-4344-be09-73fa4b012c74.json
 
 ingress:
-  # terra.<zone> — Hub FastAPI (health now at /v1/health; full API in M5+)
-  - hostname: terra.example.tld
-    service: http://api:8000
-
-  # app.terra.<zone> — Browser/static via Caddy (proxies /v1* to API today)
-  - hostname: app.terra.example.tld
+  # hub.terra-incognita.cloud — Caddy reverse-proxies /v1* to API
+  - hostname: hub.terra-incognita.cloud
     service: http://caddy:80
 
   - service: http_status:404
