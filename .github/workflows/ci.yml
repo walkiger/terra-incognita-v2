@@ -52,7 +52,7 @@ jobs:
           version: "0.11.12"
       - run: uv sync --frozen --extra dev
       - name: Pytest (excludes compose_* markers; coverage disabled — runner stability)
-        run: uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
+        run: timeout 180 uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
 
   schema-lint:
     runs-on: ubuntu-latest
