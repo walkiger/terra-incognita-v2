@@ -642,7 +642,8 @@ M1 gilt als grün abgeschlossen, wenn:
 - **M1.2** `feature/sqlite-fts5-replay-events` → PR #16 — 2026-05-09
 - **M1.3** `feature/alembic-migrations-bootstrap` → PR #17 — 2026-05-09
 - **M1.4** `feature/repo-users` → PR #20 — 2026-05-09
+- **M1.5** `feature/repo-encounters` → PR #21 — 2026-05-09
 
 ---
 
-_Stand: 2026-05-09 · M1.1–M1.4 erledigt · nächster Schritt M1.5 (`feature/repo-encounters`)_
+_Stand: 2026-05-09 · M1.1–M1.5 erledigt · nächster Schritt M1.6 (`feature/repo-replay-events`)_
