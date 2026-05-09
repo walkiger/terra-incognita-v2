@@ -250,7 +250,7 @@ Alle Gates blockieren den Merge.
 | ----- | ----------------------------------- | ----- | -------------------------------------- | --- | ------ | ---------- |
 | M1.1  | sqlite-baseline-schema              | —     | `feature/sqlite-baseline-schema`       | 5   | [x]    | 2026-05-09 |
 | M1.2  | sqlite-fts5-replay-events           | —     | `feature/sqlite-fts5-replay-events`    | 16  | [x]    | 2026-05-09 |
-| M1.3  | alembic-migrations-bootstrap        | —     | `feature/alembic-migrations-bootstrap` | 17  | [ ]    | 2026-05-09 |
+| M1.3  | alembic-migrations-bootstrap        | —     | `feature/alembic-migrations-bootstrap` | 17  | [x]    | 2026-05-09 |
 | M1.4  | repository-layer-users              | —     | `feature/repo-users`                   | —   | [ ]    |            |
 | M1.5  | repository-layer-encounters         | —     | `feature/repo-encounters`              | —   | [ ]    |            |
 | M1.6  | repository-layer-replay-events      | —     | `feature/repo-replay-events`           | —   | [ ]    |            |
@@ -402,6 +402,7 @@ Eine Phase gilt als „grün", wenn:
 
 ## 7. Wie der Index gepflegt wird
 
+- **Index + Doku-Bündel (Pflicht je `Mn.k`):** Jede merge-reife PR für einen Index-Schritt aktualisiert **mindestens** diese **`00-index.md`**-Zeile (`[x]`, Datum, PR-Nummer) **und** die **Phasendatei** (`M0-bootstrap.md`, `M1-data-foundation.md`, … — Abschnitt **„Erledigte Änderungen“** bzw. Stand-Zeile am Ende). Ändern sich Kommandos, Pfade oder Workflows, gehören **`CONTRIBUTING.md`**, **`CLAUDE.md`** und/oder **`README.md`** **in derselben PR** mit — nicht auf einen Folge-PR verschieben.
 - **Bei jedem Mergen einer Greenfield-PR:** Status-Eintrag aktualisieren
   (`[x]`, Datum, PR-Nummer, ggf. Issue-Nummer). Eintrag zusätzlich in
   der Phasen-Datei als „Erledigte Änderungen" markieren.
@@ -446,4 +447,4 @@ ist die Arbeit nachweislich gemerged und das CI grün.
 
 ---
 
-_Stand: 2026-05-09 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** in Arbeit (M1.1–M1.2 `[x]`, M1.3 in PR #17) · API-Bootstrap-Scaffold in `app/backend/api/` für M5.1 vorbereitet_
+_Stand: 2026-05-09 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** in Arbeit (M1.1–M1.3 `[x]`; nächster Schritt **M1.4**) · Hub-API-Stubs unter `app/backend/api/` (u. a. nach PR #18)_

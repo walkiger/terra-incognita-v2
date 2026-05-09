@@ -4,6 +4,12 @@
 
 ---
 
+## 2026-05-09 — M1.3 Alembic gemerged; Index-/Doku-Bündel-Regel
+
+**PR #17** (`feat: Alembic migrations bootstrap M1.3`) ist auf **`main`**. **`00-index.md`** und **`M1-data-foundation.md`** §6 werden mit dieser Session nachgezogen (M1.3 **`[x]`**). **PR #18** verlagert Hub-API-Stubs nach **`app/backend/api/`** — für künftige Schritte gilt: **Index-Zeile + Phasendoku (+ bei Pfad-/Kommandoänderung CONTRIBUTING/CLAUDE/README) immer in derselben PR** (`00-index.md` §7, **`docs/operations/branch-and-pr-rules.md`**).
+
+---
+
 ## 2026-05-09 — Domain `terra-incognita.cloud` und Tunnel-Fix
 
 Eigene Domain **`terra-incognita.cloud`** bei checkdomain.de registriert (~1 EUR/Jahr), als **Cloudflare Free zone** angelegt (NS `melissa`/`santino`). CNAME **`hub`** proxied auf Tunnel-UUID (`8d4bb120-…`). Published Application Route im Tunnel auf `hub.terra-incognita.cloud` → `http://127.0.0.1:8080`. NS-Propagierung von checkdomain.de zu Cloudflare ausstehend.
@@ -32,7 +38,7 @@ Instanz **`terra-hub-01`** (Frankfurt, E2 Micro): Docker/Clone/Tunnel-Connector 
 
 **Produktions-Hub:** öffentlicher FQDN **`hub.terra-incognita.cloud`** mit Cloudflare Tunnel (Modus B: systemd-Connector, Compose mit **`hub.override.dev.yml`** + **`hub.override.host-tunnel.yml`**). Repo-Doku **`deploy/cloudflared`**, Tunnel-Ingress/`config.hub.yml` und Playbook (**`hub-oracle-vm1-deployment-status.md`**) wurden auf diese Domain ausgerichtet (u. a. **PR #14** nach **`main`**).
 
-**Betrieb:** Lokal **`http://127.0.0.1:8080/v1/health`** bestätigt Stack; extern **`https://hub.terra-incognita.cloud/v1/health`** erst nach **NS-Propagierung** (Registrar → Cloudflare Nameserver) und **CNAME**-Eintrag **`hub`** → **`<TUNNEL_UUID>.cfargotunnel.com`** in der **Cloudflare-Zone** — nicht durch „Subdomain“-UI beim Registrar ohne passenden Tunnel-CNAME ersetzbar (**Playbook §2**, Abschnitt *DNS — Cloudflare-Zone*).
+**Betrieb:** Lokal **`http://127.0.0.1:8080/v1/health`** bestätigt Stack; extern **`https://hub.terra-incognita.cloud/v1/health`** erst nach **NS-Propagierung** (Registrar → Cloudflare Nameserver) und **CNAME**-Eintrag **`hub`** → **`<TUNNEL_UUID>.cfargotunnel.com`** in der **Cloudflare-Zone** — nicht durch „Subdomain“-UI beim Registrar ohne passenden Tunnel-CNAME ersetzbar (**Playbook §2**, Abschnitt _DNS — Cloudflare-Zone_).
 
 **Governance:** Ein formaler **Verifier**-Lauf kann blocken, wenn pre-merge Behauptungen (z. B. „Smoke von außen grün“) **ohne Nachweis** stehen bleiben — dann entweder **Nachweis** erbringen oder **Governance-/PR-Spec** konsistent dokumentieren („externer Smoke ausstehend bis DNS aktiv“).
 

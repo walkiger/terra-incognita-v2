@@ -6,6 +6,8 @@
 
 ---
 
+**2026-05-09 — Policy:** Pro abgeschlossenem Greenfield-Schritt **`Mn.k`**: **`00-index.md`** (`[x]`, Datum, PR) **und** die **Phasendatei** (§ _Erledigte Änderungen_ / Stand); bei Kommando- oder Pfadänderungen zusätzlich **`CONTRIBUTING.md`** / **`CLAUDE.md`** / **`README.md`** — **dieselbe PR**. Kanon: **`00-index.md` §7**, **`docs/operations/branch-and-pr-rules.md`** (PR-Abschnitt).
+
 **2026-05-09 — Orch:** `.agent-os/pr-spec.json` auf Branch **`chore/knowledge-research-corpus`** zurückgeführt (vorher fälschlich M0.1/`main`). Lokaler Testlauf: `py -m pytest tests/test_repo_layout.py -q` → grün.
 
 **2026-05-09 — Orch:** Ungetracktes **`scripts/`**‑Tooling (CI/Agent‑Helfer, Research‑Utilities) **nicht** in den Knowledge‑Corpus‑PR; eigenständiger Follow‑up (Branch‑Vorschlag in `pr-spec` Tasks). Nur CRLF‑Noise auf `scripts/rewrite_legacy_path_references.py` per `git checkout --` bereinigt.
