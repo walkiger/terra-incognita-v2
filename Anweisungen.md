@@ -78,21 +78,21 @@ from backend.core.kg import KnowledgeGraph
 ## 3. Dokumentations-Standards
 
 ### Pflichtdokumente pro Implementierung
-Jedes Feature/Modul bekommt eine eigene `Implementierung.{name}.md`:
+Jedes Feature/Modul bekommt eine eigene `feature.module.name.md`:
 
 ```
-Implementierung.backend.api.md     ← REST + WebSocket
-Implementierung.backend.core.lnn.md
-Implementierung.backend.core.ebm.md
-Implementierung.backend.core.kg.md
-Implementierung.backend.db.md
-Implementierung.frontend.md
+archive/legacy-docs/Implementierung.backend.api.md     ← REST + WebSocket
+archive/legacy-docs/Implementierung.backend.core.lnn.md
+archive/legacy-docs/Implementierung.backend.core.ebm.md
+archive/legacy-docs/Implementierung.backend.core.kg.md
+archive/legacy-docs/Implementierung.backend.db.md
+archive/legacy-docs/Implementierung.frontend.md
 ...
 ```
 
 ### Struktur jeder Implementierungs-Datei
 ```markdown
-# Implementierung.{name}.md
+# Feature.Modul.Name.md
 
 > Status: [ ] Geplant | [ ] In Arbeit | [x] Erledigt
 
@@ -124,7 +124,7 @@ Was muss vorher fertig sein?
 - **Nach**: Erledigte Änderungen + was sich geändert hat
 - **Bei Bugs**: Findings dokumentieren
 
-### Implementierungen.Architektur.md
+### archive/legacy-docs/Implementierungen.Architektur.md
 - Überblick über **alle** Implementierungen
 - Status pro Komponente
 - Öffnet automatisch neue Unterpunkte wenn nötig
@@ -201,7 +201,7 @@ Beispiele:
   [feat] core/lnn: CfC step equation implementiert (#42)
   [fix]  core/kg: NaN guard in pause formula (#42)
   [test] core/ebm: T19-T22 Hopfield energy tests (#43)
-  [docs] Implementierung.backend.api.md: endpoints geplant (#44)
+  [docs] archive/legacy-docs/Implementierung.backend.api.md: endpoints geplant (#44)
 ```
 
 ### Cursor IDE / Agent — keine Co-authored-by Trailer
@@ -245,14 +245,14 @@ Labels: -alpha -beta -stable -broken
 **Jede Session beginnt mit:**
 1. `python3 knowledge/verify.py` ausführen
 2. `catchup.md` lesen — was war der letzte Stand?
-3. `Implementierungen.Architektur.md` checken — was ist als nächstes?
+3. `archive/legacy-docs/Implementierungen.Architektur.md` checken — was ist als nächstes?
 4. Relevante `Implementierung.{name}.md` lesen
 5. Dann erst Code schreiben
 
 **Jede Session endet mit:**
 1. Tests grün
 2. `catchup.md` updaten
-3. `Implementierungen.Architektur.md` updaten
+3. `archive/legacy-docs/Implementierungen.Architektur.md` updaten
 4. Alle `Implementierung.{name}.md` updaten
 5. Commit + Push
 
@@ -378,4 +378,4 @@ ebm_tick_cadence   = 4        # EBM alle N systemTicks
 well_grace_s       = 5_400    # 90 Minuten Well-Schutz
 ```
 
-*Details: `Implementierung.backend.locale.md`*
+*Details: `archive/legacy-docs/Implementierung.backend.locale.md`*

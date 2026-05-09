@@ -1,13 +1,29 @@
 {
-  "feature": "terra-incognita-v2 Greenfield bootstrap (M0.1 skeleton)",
-  "branch": "main",
-  "agents": ["orch"],
+  "feature": "Knowledge preseed snapshot (preseed_v2.json), verification helper, and committed research corpus under knowledge/ and research/",
+  "branch": "chore/knowledge-research-corpus",
+  "agents": ["orch", "research-agent", "documentation-agent", "test-agent-fast-ci"],
   "tasks": {
-    "orch": ["Advance M0.2 tooling (uv/ruff) when scoped"]
+    "orch": [
+      "Keep pr-spec aligned with branch scope until merge",
+      "This PR excludes the untracked scripts/ batch — land it on a follow-up branch (e.g. chore/agent-scripts-tooling); stage paths explicitly there (no git add .)",
+      "PR #2 open for chore/knowledge-research-corpus — commit subjects end with (#2)"
+    ],
+    "research-agent": [
+      "Confirm corpus layout and README pointers match extraction conventions"
+    ],
+    "documentation-agent": [
+      "Ensure knowledge/README.md and research/README.md explain verify/regeneration at high level when PR finalizes"
+    ],
+    "test-agent-fast-ci": [
+      "Maintain tests/test_repo_layout.py green; extend smoke tests only if new layout invariants are agreed"
+    ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
     "CI passes (tests/test_repo_layout.py)",
-    "No legacy Monolith tree committed unless explicitly scoped"
+    "knowledge/preseed_v2.json and knowledge/verify.py land with knowledge/README.md describing intent",
+    "research/ tree is intentional scope (extracted samples + schema + work artifacts as documented)",
+    "Untracked scripts/ tooling stays out of this PR — follow-up PR only; optional .gitignore patterns only if truly local junk",
+    "No protected-path deletions without approved_deletions channel"
   ]
 }
