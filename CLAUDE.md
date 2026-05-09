@@ -27,7 +27,7 @@ Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 
 ```text
 py -m pip install -r requirements-ci.txt
-py -m pytest tests/test_repo_layout.py -q
+py -m pytest tests -q
 ```
 
 Windows: siehe **`CONTRIBUTING.md`** (`py`, nicht `python3`).

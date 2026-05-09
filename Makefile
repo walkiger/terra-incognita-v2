@@ -7,8 +7,8 @@ bootstrap:
 	@echo "Hint (today): py -m pip install -r requirements-ci.txt"
 
 test:
-	@echo "=== test: layout + Makefile targets (M0.1) ==="
-	py -m pytest tests/test_repo_layout.py -q
+	@echo "=== test: layout + hub SQLite baseline ==="
+	py -m pytest tests -q
 
 fmt:
 	@echo "=== fmt: stub until M0.2 (ruff format) ==="

@@ -32,5 +32,5 @@ Weitere Einstiege: **[`CLAUDE.md`](CLAUDE.md)**, **[`Anweisungen.md`](Anweisunge
 ## Lokales Arbeiten
 
 - **Python:** Projekt nutzt typischerweise **Python 3.12** (siehe `.python-version` / CI).
-- **Tests:** `py -m pytest tests/test_repo_layout.py -q` oder `make test` (GNU Make).
+- **Tests:** `py -m pytest tests -q` oder `make test` (GNU Make).
 - **Windows:** `make` erfordert eine GNU-Make-Umgebung (z. B. Git Bash, WSL, oder separate Installation).

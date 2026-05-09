@@ -13,3 +13,5 @@
 **2026-05-09 — Orch:** PR **#2** squash‑merged nach **`main`**. Folge‑Branch **`chore/agent-scripts-tooling`** für eingechecktes **`scripts/`**‑Tooling (PR **#3**).
 
 **2026-05-09 — Policy:** Regeln angepasst: **Open‑PR‑First** — vor neuen PRs offene PRs gegenüber **`main`** nach CI‑Grün mergen (außer User will Parallel‑Review). **`meta`/formelles Agent‑OS‑Sign‑off** ist **automatisch ALLOW**, blocking nur bei expliziter User‑Eskalation (`PR-WORKFLOW.mdc`, `GLOBAL-CURSOR-RULES-Agent-OS.mdc`, `SUBAGENT-DELEGATION-FALLBACK.mdc`).
+
+**2026-05-09 — MVP:** Umsetzung **M1.1** gestartet (`feature/sqlite-baseline-schema`): Paket `app/backend/ti_hub/db`, Baseline‑DDL + `HubSQLite`/`open_readonly_connection`, Tests unter `tests/db/`.

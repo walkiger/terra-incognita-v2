@@ -241,7 +241,7 @@ Alle Gates blockieren den Merge.
 
 | Step  | Slug                              | Issue | Branch                                    | PR  | Status | Datum |
 |-------|-----------------------------------|-------|-------------------------------------------|-----|--------|-------|
-| M1.1  | sqlite-baseline-schema            | —     | `feature/sqlite-baseline-schema`           | —   | [ ]    |       |
+| M1.1  | sqlite-baseline-schema            | —     | `feature/sqlite-baseline-schema`           | 5   | [x]    | 2026-05-09 |
 | M1.2  | sqlite-fts5-replay-events         | —     | `feature/sqlite-fts5-replay-events`        | —   | [ ]    |       |
 | M1.3  | alembic-migrations-bootstrap      | —     | `feature/alembic-migrations-bootstrap`     | —   | [ ]    |       |
 | M1.4  | repository-layer-users            | —     | `feature/repo-users`                       | —   | [ ]    |       |
