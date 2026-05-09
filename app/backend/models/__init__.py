@@ -5,3 +5,7 @@ M1.5: models.encounter — Encounter
 M1.6: models.replay_event — ReplayEvent, ReplayWindowResponse
 M1.7: models.snapshot  — Snapshot
 """
+
+from .user import User, UserCredentials
+
+__all__ = ["User", "UserCredentials"]
