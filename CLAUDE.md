@@ -18,6 +18,7 @@
 2. [`app/README.md`](app/README.md) — Produkt-Root
 3. [`app/docs/greenfield/README.md`](app/docs/greenfield/README.md) — Lesepfad MVP M0–M8
 4. [`memory/README.md`](memory/README.md) — Session-/System-Archive (Legacy‑Kontinuität zeigt auf **`walkiger/terra-incognita`**)
+5. [`docs/operations/hub-oracle-vm1-deployment-status.md`](docs/operations/hub-oracle-vm1-deployment-status.md) — Hub auf Oracle-VM: Cloudflare Tunnel (**Modus Container vs. Host**), **Public Hostname** auch **ohne** Cloudflare-DNS-Zone (CNAME beim Provider), Fehlerbild **HTTP 530** ohne Route vs. Origin down.
 
 Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 

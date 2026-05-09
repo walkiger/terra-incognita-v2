@@ -16,6 +16,8 @@ Configs live beside Compose:
 
 **DNS:** If the domain is **not** a Cloudflare zone, skip **`tunnel route dns`** and create a **CNAME** at your registrar to **`<TUNNEL_UUID>.cfargotunnel.com`**.
 
+**Dashboard tunnels:** Under **Tunnel → Public Hostnames**, add **every** FQDN you serve (e.g. hub hostname → **`http://127.0.0.1:8080`** when using host `cloudflared` + **`hub.override.dev.yml`**). Without a matching hostname route, **`curl https://<fqdn>/…`** returns **HTTP 530** even if **`127.0.0.1:8080`** works locally. No Cloudflare zone is required if DNS is a manual CNAME. See [`docs/operations/hub-oracle-vm1-deployment-status.md`](../../docs/operations/hub-oracle-vm1-deployment-status.md) §5.2.
+
 ## One-time tunnel creation (per VM)
 
 Run on the VM (after installing `cloudflared` from Cloudflare packages):

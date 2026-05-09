@@ -10,8 +10,10 @@ Thin-Shell-MVP **Phase M0** (Bootstrap & Tooling) ist im Repo **`walkiger/terra-
 
 ---
 
-## 2026-05-09 — Oracle Hub VM1: Tunnel & Compose (laufende Arbeit)
+## 2026-05-09 — Oracle Hub VM1: Tunnel, Compose, Public Hostname / HTTP 530
 
-Neue Instanz **`terra-hub-01`** (Frankfurt, E2 Micro, Ubuntu 24.04 Minimal): Docker manuell nach Cloud-init-YAML-Fehler; GitHub-SSH-Clone erledigt. **Cloudflare-Tunnel-Credentials, angepasste `config.hub.yml`, erstes `docker compose … hub` und externer Health-Check** noch offen — Detail-Ist-/Restliste und Schrittfolge: **`docs/operations/hub-oracle-vm1-deployment-status.md`**.
+Instanz **`terra-hub-01`** (Frankfurt, E2 Micro): Docker/Clone/Tunnel-Connector (systemd) und Compose mit **`hub.override.dev.yml`** + **`hub.override.host-tunnel.yml`** nach **`docs/operations/hub-oracle-vm1-deployment-status.md`**.
+
+**Betrieb:** Connector „connected“ allein reicht nicht — im Tunnel **Public Hostnames** muss der öffentliche **FQDN** auf **`http://127.0.0.1:8080`** zeigen; ohne Eintrag liefert **`curl https://<host>/…`** **HTTP 530** obwohl **`127.0.0.1:8080`** lokal **200** ist. **Ohne** Cloudflare-Zone: DNS nur per **CNAME** auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim Provider. Detail und Fehlerbilder: **`hub-oracle-vm1-deployment-status.md`** §2–§5; **`CLAUDE.md`** Lesepfad; **`deploy/cloudflared/README.md`**.
 
 ---
