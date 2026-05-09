@@ -151,15 +151,46 @@ def _is_ci() -> bool:
 
 
 def _ci_base_ref() -> str:
-    return os.environ.get("GITHUB_BASE_REF") or "main"
+    raw = (os.environ.get("GITHUB_BASE_REF") or "main").strip()
+    if raw.startswith("refs/heads/"):
+        raw = raw[len("refs/heads/") :]
+    return raw or "main"
 
 
-def _ci_deletions(base: str) -> list[str]:
+def _git_ok(cmd: list[str]) -> bool:
+    return subprocess.run(cmd, capture_output=True, text=True).returncode == 0
+
+
+def _resolve_ci_base_ref(branch: str) -> str:
+    """Return an ``origin/<branch>`` ref usable with triple-dot / log ranges."""
+    ref = f"origin/{branch}"
+    if _git_ok(["git", "rev-parse", "--verify", ref]):
+        return ref
+    fetch = subprocess.run(
+        [
+            "git",
+            "fetch",
+            "origin",
+            f"{branch}:refs/remotes/origin/{branch}",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if fetch.returncode == 0 and _git_ok(["git", "rev-parse", "--verify", ref]):
+        return ref
+    sys.stderr.write(
+        "check_protected_deletions: cannot resolve merge base "
+        f"{ref} (git fetch exit {fetch.returncode}).\n{fetch.stderr}\n"
+    )
+    sys.exit(2)
+
+
+def _ci_deletions(base_ref: str) -> list[str]:
     out = _run(
         [
             "git",
             "diff",
-            f"origin/{base}...HEAD",
+            f"{base_ref}...HEAD",
             "--diff-filter=D",
             "--name-only",
         ]
@@ -167,9 +198,15 @@ def _ci_deletions(base: str) -> list[str]:
     return [line for line in out.splitlines() if line.strip()]
 
 
-def _ci_approvals(base: str) -> set[str]:
+def _ci_approvals(base_ref: str) -> set[str]:
     log = _run(
-        ["git", "log", f"origin/{base}..HEAD", "--no-merges", "--format=%B%n--END--"]
+        [
+            "git",
+            "log",
+            f"{base_ref}..HEAD",
+            "--no-merges",
+            "--format=%B%n--END--",
+        ]
     )
     return _parse_approval_block(log)
 
@@ -199,10 +236,11 @@ def main() -> int:
     ci = _is_ci()
 
     if ci:
-        base = _ci_base_ref()
-        deletions = _ci_deletions(base)
-        approvals = _approvals_from_spec() | _ci_approvals(base)
-        mode_label = f"CI (origin/{base}...HEAD)"
+        base_branch = _ci_base_ref()
+        base_ref = _resolve_ci_base_ref(base_branch)
+        deletions = _ci_deletions(base_ref)
+        approvals = _approvals_from_spec() | _ci_approvals(base_ref)
+        mode_label = f"CI ({base_ref}...HEAD)"
     else:
         deletions = _local_deletions()
         approvals = _approvals_from_spec() | _approvals_from_commit_msg()

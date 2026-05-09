@@ -1,42 +1,23 @@
 # Contributing
 
-Danke für Beiträge zu **terra-incognita-v2**. Kurzfassung: **Produktcode und spätere Service-Bundles liegen unter [`app/`](app/README.md)**; **Deploy/Infra** unter **`deploy/`** am Repo-Root (Greenfield **M0**).
+**Produktcode:** [`app/README.md`](app/README.md) · **Deploy/Infra:** [`deploy/README.md`](deploy/README.md) · **Branch-/PR-Kanon:** [`docs/operations/branch-and-pr-rules.md`](docs/operations/branch-and-pr-rules.md)
 
-## Vor jedem Code-Beitrag
+## Pflichtlektüre
 
-Lies die festgelegte Reihenfolge in **[`app/docs/greenfield/README.md`](app/docs/greenfield/README.md)** (Abschnitt „Lesereihenfolge“), mindestens:
+1. [`app/docs/greenfield/README.md`](app/docs/greenfield/README.md) (Lesepfad)
+2. Aktuelle MVP-Phase in [`app/docs/greenfield/implementation/mvp/00-index.md`](app/docs/greenfield/implementation/mvp/00-index.md)
+3. [`CLAUDE.md`](CLAUDE.md), [`Anweisungen.md`](Anweisungen.md)
 
-1. Diese README und **[`app/docs/greenfield/architecture/mvp.md`](app/docs/greenfield/architecture/mvp.md)**, bevor du am Thin-Shell-MVP arbeitest.
-2. Für den aktuellen MVP-Schritt die Datei **`app/docs/greenfield/implementation/mvp/M0..M8-*.md`** bzw. **`00-index.md`** (Status-Tabelle).
+## Schnellstart
 
-Weitere Einstiege: **[`CLAUDE.md`](CLAUDE.md)**, **[`Anweisungen.md`](Anweisungen.md)**.
+| Aufgabe                            | Kommando                                                                                                                     |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Dependencies                       | **`uv sync --extra dev`** oder **`make bootstrap`** (inkl. Pre-commit-Hooks)                                                 |
+| Tests (ohne Docker-Compose-Marker) | **`make test`** oder **`uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability"`**   |
+| Format / Lint                      | **`make fmt`** / **`make lint`** (Ziele **`deploy/api/app`**, **`app/backend/ti_hub`**, **`tests`**)                         |
+| Hub/Vault Compose (Quick-Tunnel)   | **`make compose-hub`** / **`make compose-vault`**                                                                            |
+| Secrets decrypt                    | **`make secrets-decrypt`** (benötigt **`sops`** und **`SOPS_AGE_KEY_FILE`**, siehe [`secrets/README.md`](secrets/README.md)) |
 
-## Layout (nach M0.1)
+Windows: GNU **`make`** (Git Bash/WSL). **`py`** für lokale Tool-Aufrufe siehe **`CLAUDE.md`**.
 
-| Bereich | Pfad |
-|---------|------|
-| Produkt + Greenfield-Doku | **`app/`** (`app/docs/greenfield/`, `app/backend`, `app/engine`, `app/web`, …) |
-| Preseed-Knowledge (Snapshot) | **`knowledge/`** (`preseed_v2.json`, `verify.py`) |
-| Research-Korpus (JSON-Schichten, keine PDFs im Git) | **`research/`** (`extracted/`, `schema/`, siehe `research/README.md`) |
-| Compose / Ansible (Bootstrap) | **`deploy/`** |
-| Lokale Geheimnisse (nicht committen) | **`secrets/`** (nur Stub `.gitkeep` ist getrackt) |
-| Repo-weite Tests | **`tests/`** |
-| Projektgedächtnis / Archive | **`memory/`** (Session-Archive, Entscheidungs-Anhänge) |
-| Hilfs-Skripte (Migration / Research) | **`scripts/`** |
-
-## Branch- und PR-Disziplin
-
-- Siehe **`Anweisungen.md`** (Git, Commits, Tests) und die Workspace-Regel **`.cursor/rules/PR-WORKFLOW.mdc`**.
-- Sobald ein GitHub-PR existiert, endet die erste Zeile der Commit-Message mit **`(#NNN)`** (PR-Nummer).
-
-## Lokales Arbeiten
-
-- **Python:** **3.12.x** (`.python-version`, siehe `pyproject.toml`).
-- **Dependency manager:** **[uv](https://docs.astral.sh/uv/getting-started/installation/)** — einmalig installieren, dann im Repo-Root:
-  - **`uv sync --extra dev`** (oder **`make bootstrap`**) — legt `.venv/` an und pinned Dependencies aus **`uv.lock`**.
-  - **`uv run pytest tests -q -m "not compose_hub and not compose_vault"`** / **`make test`** (Compose-Smoke ist separater CI-Job / Marker **`compose_hub`** und **`compose_vault`**)
-  - **`uv run ruff format deploy/api/app app/backend/ti_hub tests`** / **`make fmt`**
-  - **`uv run ruff check deploy/api/app app/backend/ti_hub tests`** / **`make lint`**
-- **Windows:** `make` erfordert eine GNU-Make-Umgebung (z. B. Git Bash, WSL, oder separate Installation).
-
-**Migration:** Root-**`requirements-ci.txt`** und **`pytest.ini`** wurden durch **`pyproject.toml`** + **`uv.lock`** ersetzt (M0.2).
+**Legacy-Hinweis:** Root-**`requirements-ci.txt`**/**`pytest.ini`** wurden durch **`pyproject.toml`** + **`uv.lock`** ersetzt (M0.2).

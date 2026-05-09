@@ -10,43 +10,106 @@ permissions:
   contents: read
 
 jobs:
-  tooling:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v5
         with:
           version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - run: uv run ruff check deploy/api/app app/backend/ti_hub tests
+      - run: uv run ruff format --check deploy/api/app app/backend/ti_hub tests
 
-      - name: Sync deps (frozen lockfile)
-        run: uv sync --frozen --extra dev
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - run: uv run mypy app/backend/ti_hub
+      - run: uv run mypy app/engine/terra_engine
 
-      - name: Ruff check
-        run: uv run ruff check deploy/api/app app/backend/ti_hub tests
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - name: Pytest with coverage (excludes compose_* markers)
+        run: uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability" --cov=ti_hub --cov-report=xml --cov-report=term-missing
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-xml
+          path: coverage.xml
 
-      - name: Ruff format
-        run: uv run ruff format --check deploy/api/app app/backend/ti_hub tests
+  schema-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - run: uv run python scripts/schema_lint.py
 
-      - name: Mypy (ti_hub)
-        run: uv run mypy app/backend/ti_hub
+  protected-deletions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch base for comparison
+        run: git fetch origin main:refs/remotes/origin/main --quiet || true
+      - run: python scripts/check_protected_deletions.py
+        env:
+          GITHUB_ACTIONS: "true"
 
-      - name: Pytest (unit + layout; excludes compose_* markers)
-        run: uv run pytest tests -q -m "not compose_hub and not compose_vault"
+  secrets-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - name: Validate SOPS metadata files exist
+        run: uv run pytest tests/test_secrets_layout.py -q
+
+  pre-commit-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch base branch for protected-deletions hook
+        run: |
+          base="${GITHUB_BASE_REF:-main}"
+          git fetch origin "${base}:refs/remotes/origin/${base}" --quiet || true
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: uv run pre-commit run --all-files
 
   compose-smoke:
     runs-on: ubuntu-latest
+    needs: [lint, test]
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v5
         with:
           version: "0.11.12"
-
-      - name: Sync deps (frozen lockfile)
-        run: uv sync --frozen --extra dev
-
+      - run: uv sync --frozen --extra dev
       - name: Compose hub + vault minimal smoke
         run: uv run pytest tests/integration -q -m "compose_hub or compose_vault"
+      - name: Hub default profile (Prometheus + Grafana)
+        run: uv run pytest tests/integration -q -m compose_observability

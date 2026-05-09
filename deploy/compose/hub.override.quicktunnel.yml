@@ -1,0 +1,10 @@
+# Local dev / CI: quick tunnel — no credentials file (not for production VMs).
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:2025.2.0
+    volumes: []
+    command:
+      - tunnel
+      - --no-autoupdate
+      - --url
+      - http://caddy:80

@@ -1,0 +1,19 @@
+# Hub tunnel routing (VM-A). Replace `TUNNEL_ID` with the UUID from
+# `cloudflared tunnel create hub` and copy the issued JSON credential into
+# `deploy/cloudflared/credentials/<TUNNEL_ID>.json` (see README).
+#
+# Hostnames below use example.tld — substitute your Cloudflare zone.
+
+tunnel: TUNNEL_ID
+credentials-file: /etc/cloudflared/credentials/TUNNEL_ID.json
+
+ingress:
+  # terra.<zone> — Hub FastAPI (health now at /v1/health; full API in M5+)
+  - hostname: terra.example.tld
+    service: http://api:8000
+
+  # app.terra.<zone> — Browser/static via Caddy (proxies /v1* to API today)
+  - hostname: app.terra.example.tld
+    service: http://caddy:80
+
+  - service: http_status:404

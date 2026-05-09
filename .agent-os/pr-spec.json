@@ -1,22 +1,18 @@
 {
-  "feature": "MVP phase-end documentation bundle — 00-index §6–7, gate text, README/CONTRIBUTING/CLAUDE alignment",
-  "branch": "docs/mvp-phase-documentation-closure",
-  "agents": ["documentation-agent", "orch"],
+  "feature": "Post-M0 hygiene — Branch-Schutz (Required Checks) und Release-Tag v0.1.0",
+  "branch": "main",
+  "agents": ["orch"],
   "tasks": {
-    "documentation-agent": [
-      "Codify phase-completion doc checklist in 00-index, M0-bootstrap gate, Anweisungen, greenfield README",
-      "Align README/CONTRIBUTING/CLAUDE pytest and ruff snippets with CI/Makefile"
-    ],
     "orch": [
-      "Commit subjects end with (#9)",
-      "Merge after tooling CI green"
+      "Nach Merge von PR #10: Annotated Tag v0.1.0 auf den Merge-Commit setzen und pushen",
+      "GitHub Branch protection für main — Required status checks an Jobs in .github/workflows/ci.yml angleichen (lint, type-check, test, schema-lint, protected-deletions, secrets-lint, pre-commit-ci, compose-smoke)",
+      "Nächstes Arbeitspaket aus app/docs/greenfield/implementation/mvp/00-index.md auswählen und pr-spec für diese Arbeit neu schreiben"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "00-index §6 adds onboarding-doc parity item; §7 expands phase-closure checklist",
-    "M0-bootstrap AC fixes for M0.2 test cmd and M0.4 vault compose + doc gate item",
-    "README and CLAUDE document compose marker exclusions; CONTRIBUTING ruff paths match CI",
-    "memory/decisions entry for phase-documentation policy"
+    "Tag v0.1.0 ist auf origin sichtbar",
+    "Branch protection blockiert Merge ohne die genannten CI-Jobs (oder dokumentierte Ausnahme in memory)",
+    "pr-spec ist für das nächste Feature wieder auf einen konkreten Branch/Task gesetzt"
   ]
 }

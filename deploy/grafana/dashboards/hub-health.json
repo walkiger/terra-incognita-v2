@@ -1,0 +1,15 @@
+{
+  "uid": "hub-health-stub",
+  "title": "Hub Health",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "text",
+      "title": "Stub",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "content": "M0.9 stub — system/OOM panels arrive with live exporters." }
+    }
+  ]
+}

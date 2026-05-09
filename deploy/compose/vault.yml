@@ -16,8 +16,7 @@ services:
     networks:
       - vault
     healthcheck:
-      test:
-        ["CMD-SHELL", "wget -qO- http://127.0.0.1:80/ >/dev/null"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:80/ >/dev/null"]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -58,11 +57,15 @@ services:
     oom_score_adj: 200
     mem_limit: 96m
     mem_reservation: 48m
+    volumes:
+      - ../cloudflared/config.vault.yml:/etc/cloudflared/config.yml:ro
+      - ../cloudflared/credentials:/etc/cloudflared/credentials:ro
     command:
       - tunnel
       - --no-autoupdate
-      - --url
-      - http://caddy:80
+      - --config
+      - /etc/cloudflared/config.yml
+      - run
     networks:
       - vault
     depends_on:

@@ -1,0 +1,15 @@
+{
+  "uid": "hub-persistence-stub",
+  "title": "Hub Persistence",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "text",
+      "title": "Stub",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "content": "M0.9 stub — Litestream / R2 lag metrics in M1/M8." }
+    }
+  ]
+}

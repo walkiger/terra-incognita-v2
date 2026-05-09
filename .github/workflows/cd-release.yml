@@ -1,0 +1,15 @@
+name: Release notes stub
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Tag ${{ github.ref_name }} — wire GHCR/registry auth before pushing images."

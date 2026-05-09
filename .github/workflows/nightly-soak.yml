@@ -1,0 +1,31 @@
+name: Nightly hub soak
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  soak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.11.12"
+      - run: uv sync --frozen --extra dev
+      - name: Minimal hub compose + heartbeat slice
+        run: |
+          docker compose -f deploy/compose/hub.yml \
+            -f deploy/compose/hub.override.ci.yml \
+            -f deploy/compose/hub.override.dev.yml \
+            --profile minimal up -d --build --wait --wait-timeout 240
+          for i in $(seq 1 15); do
+            curl -fsS http://127.0.0.1:8080/v1/health >/dev/null || exit 1
+            sleep 60
+          done
+      # Full 60-minute soak belongs on a dedicated runner per M0-bootstrap.md — default PR CI stays shorter.

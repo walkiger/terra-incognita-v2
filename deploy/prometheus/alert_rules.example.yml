@@ -1,0 +1,13 @@
+# Example alert rules (documentation mirror of architecture/mvp.md §10).
+# Not wired for paging in M0 — imported so Prometheus validates YAML shape.
+#
+# | Alert                         | Schwelle (doc)        |
+# |-------------------------------|-----------------------|
+# | Hub-RAM-Utilization > 92 %    | 5 min sustained       |
+# | Hub-Filesystem-Free < 5 GB    | immediate             |
+# | api restarts > 3× / 30 min    |                       |
+# | Litestream-Lag > 90 s         | 10 min sustained      |
+# | cloudflared down              | 60 s                  |
+# | Vault-r2-pull-Lag > 5 min     | 10 min sustained      |
+
+groups: []

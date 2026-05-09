@@ -1,0 +1,15 @@
+{
+  "uid": "hub-replay-stub",
+  "title": "Hub Replay",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "text",
+      "title": "Stub",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "content": "M0.9 stub — FTS / hybrid replay metrics in M7." }
+    }
+  ]
+}
