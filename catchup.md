@@ -9,3 +9,9 @@
 Thin-Shell-MVP **Phase M0** (Bootstrap & Tooling) ist im Repo **`walkiger/terra-incognita-v2`** umgesetzt (Lieferung **PR #10**, Branch **`feature/m0-bootstrap-m05-m010`**): Compose Hub/Vault inkl. Cloudflared-Konfig-Vorlagen, SOPS/AGE-Secrets-Stub, Pre-commit + erweiterte GitHub Actions (Lint, Mypy, Tests/Coverage, Schema-Lint, Protected-Deletions, Secrets-Layout, Pre-commit-CI, Compose-Smokes inkl. Prometheus/Grafana-Profil), Observability-Baseline, konsolidierte Branch-/PR-Doku (`docs/operations/branch-and-pr-rules.md`). VM-Gates laut **`M0-bootstrap.md`** §5 und Annotated Tag **`v0.1.0`** sind nach Merge manuell bzw. per Release-Schritt zu setzen (**`.agent-os/pr-spec.json`**).
 
 ---
+
+## 2026-05-09 — Oracle Hub VM1: Tunnel & Compose (laufende Arbeit)
+
+Neue Instanz **`terra-hub-01`** (Frankfurt, E2 Micro, Ubuntu 24.04 Minimal): Docker manuell nach Cloud-init-YAML-Fehler; GitHub-SSH-Clone erledigt. **Cloudflare-Tunnel-Credentials, angepasste `config.hub.yml`, erstes `docker compose … hub` und externer Health-Check** noch offen — Detail-Ist-/Restliste und Schrittfolge: **`docs/operations/hub-oracle-vm1-deployment-status.md`**.
+
+---
