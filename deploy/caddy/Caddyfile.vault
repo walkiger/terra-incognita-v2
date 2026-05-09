@@ -1,0 +1,8 @@
+# Vault edge — M0.4 stub heartbeat on `/` (mirror/Litestream UI comes later).
+:80 {
+	@vault_root path_regexp vault_root ^/$
+	handle @vault_root {
+		respond `{"ok":true,"role":"vault","version":"0.0.1-bootstrap"}` 200
+	}
+	respond 404
+}

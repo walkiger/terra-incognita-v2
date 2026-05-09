@@ -34,7 +34,7 @@ Weitere Einstiege: **[`CLAUDE.md`](CLAUDE.md)**, **[`Anweisungen.md`](Anweisunge
 - **Python:** **3.12.x** (`.python-version`, siehe `pyproject.toml`).
 - **Dependency manager:** **[uv](https://docs.astral.sh/uv/getting-started/installation/)** — einmalig installieren, dann im Repo-Root:
   - **`uv sync --extra dev`** (oder **`make bootstrap`**) — legt `.venv/` an und pinned Dependencies aus **`uv.lock`**.
-  - **`uv run pytest tests -q -m "not compose_hub"`** / **`make test`** (Compose smoke ist separater CI-Job / `-m compose_hub`)
+  - **`uv run pytest tests -q -m "not compose_hub and not compose_vault"`** / **`make test`** (Compose-Smoke ist separater CI-Job / Marker **`compose_hub`** und **`compose_vault`**)
   - **`uv run ruff format app/backend/ti_hub tests`** / **`make fmt`**
   - **`uv run ruff check app/backend/ti_hub tests`** / **`make lint`**
 - **Windows:** `make` erfordert eine GNU-Make-Umgebung (z. B. Git Bash, WSL, oder separate Installation).

@@ -23,4 +23,4 @@ uv run pytest tests -q
 
 Alternativ: **`make bootstrap`** dann **`make test`** (GNU Make; ruft `uv` auf).
 
-CI synchronisiert mit **`uv sync --frozen --extra dev`** und führt Lint, Format-Check, **mypy** und **pytest** aus (**ohne** Docker‑Compose‑Smoke). Der Job **`compose-smoke`** baut den Hub‑Stack (**`deploy/compose/`**) und führt die **`compose_hub`**‑Integrationstests aus.
+CI synchronisiert mit **`uv sync --frozen --extra dev`** und führt Lint, Format-Check, **mypy** und **pytest** aus (**ohne** die Docker‑Compose‑Smoke‑Marker **`compose_hub`** / **`compose_vault`**). Der Job **`compose-smoke`** baut Hub‑ und Vault‑Stacks (**`deploy/compose/`**) und führt die zugehörigen Integrationstests aus.
