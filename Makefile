@@ -3,18 +3,20 @@ MAKEFLAGS += --warn-undefined-variables
 .PHONY: bootstrap test fmt lint compose-hub compose-vault
 
 bootstrap:
-	@echo "=== bootstrap: dev deps — full uv toolchain lands in M0.2 ==="
-	@echo "Hint (today): py -m pip install -r requirements-ci.txt"
+	@echo "=== bootstrap: uv sync (dev extras) ==="
+	uv sync --extra dev
 
 test:
-	@echo "=== test: layout + hub SQLite baseline ==="
-	py -m pytest tests -q
+	@echo "=== test: pytest via uv ==="
+	uv run pytest tests -q
 
 fmt:
-	@echo "=== fmt: stub until M0.2 (ruff format) ==="
+	@echo "=== fmt: ruff format (hub + tests) ==="
+	uv run ruff format app/backend/ti_hub tests
 
 lint:
-	@echo "=== lint: stub until M0.2 (ruff check) ==="
+	@echo "=== lint: ruff check (hub + tests) ==="
+	uv run ruff check app/backend/ti_hub tests
 
 compose-hub:
 	@echo "=== compose-hub: deploy/compose/hub.yml arrives in M0.3 ==="

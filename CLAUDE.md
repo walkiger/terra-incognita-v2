@@ -26,8 +26,10 @@ Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 ## Tests (heute)
 
 ```text
-py -m pip install -r requirements-ci.txt
-py -m pytest tests -q
+uv sync --extra dev
+uv run pytest tests -q
 ```
+
+Details: **`CONTRIBUTING.md`**. Ohne globales `uv`: `py -m pip install uv` und dann `py -m uv sync --extra dev`.
 
 Windows: siehe **`CONTRIBUTING.md`** (`py`, nicht `python3`).
