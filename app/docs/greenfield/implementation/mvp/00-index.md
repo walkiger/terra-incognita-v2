@@ -389,6 +389,7 @@ Eine Phase gilt als „grün", wenn:
    `greenfield-Mn`).
 5. **Phase-Tag** ist gepusht: `git tag v0.x.0 && git push --tags`.
 6. **Release-Notes** sind in `catchup.md` als Header-Eintrag formatiert.
+7. **Onboarding- und Kommando-Doku** (`README.md`, `CONTRIBUTING.md`, **`CLAUDE.md`**) ist mit **CI**, **`Makefile`** und **`pyproject.toml`** abgeglichen — keine widersprüchlichen `pytest`-/`ruff`-Pfaden oder Compose-Hinweise.
 
 ---
 
@@ -400,6 +401,18 @@ Eine Phase gilt als „grün", wenn:
 * **Bei Plan-Änderungen** (neuer Schritt, Streichung, Umordnung):
   separate `docs/...`-PR mit Begründung. Diese PR ist klein, nur Doku,
   hat aber denselben PR-Workflow durchlaufen.
+* **Am Abschluss einer ganzen Phase Mn** (alle Schritte dieser Phase in der
+  Status-Tabelle `[x]`, Phase „grün" nach **§6**): verpflichtend in **derselben
+  Phase oder unmittelbar folgenden PR(s)**:
+  1. §6 Punkt 1–7 erfüllen (inkl. Tag, `catchup.md`, Architektur-Spalte).
+  2. Phasen-**Gate** in der jeweiligen Phasen-Datei (`M0-bootstrap.md`, …)
+     gegen den Ist-Stand prüfen und Texte anpassen.
+  3. **`memory/system/decisions.md`** um Phase-Abschluss / Policy-Änderungen
+     ergänzen (mit Datum).
+  4. **`.agent-os/pr-spec.json`** auf den nächsten Arbeitspaket-Kontext setzen
+     (oder bewusst leeren Platzhalter dokumentieren).
+  5. Repo-Root- und Greenfield-Einstiegs-Doku aktualisieren, falls sich
+     Workflows geändert haben (**§6 Nr. 7**).
 * **Bei Phasen-Abschluss:** Header der Status-Tabelle wird mit
   `[x] abgeschlossen am yyyy-mm-dd, Tag v0.x.0` ergänzt.
 
@@ -426,4 +439,4 @@ ist die Arbeit nachweislich gemerged und das CI grün.
 
 ---
 
-*Stand: 2026-05-08 · Greenfield-Initial · Status: Phase **M0 noch nicht eröffnet***
+*Stand: 2026-05-09 · Status: Phase **M0** in Arbeit (Schritte siehe Tabelle oben); §6–7 definieren Pflicht-Updates am Phasen-Ende.*

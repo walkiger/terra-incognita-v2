@@ -18,8 +18,10 @@ Greenfield-Neustart für das Thin-Shell-MVP: Planung und Produktcode unter **`ap
 ```text
 # Install uv: https://docs.astral.sh/uv/getting-started/installation/
 uv sync --extra dev
-uv run pytest tests -q
+uv run pytest tests -q -m "not compose_hub and not compose_vault"
 ```
+
+Integration (Compose): **`uv run pytest tests/integration -q -m "compose_hub or compose_vault"`** (oder CI-Job **`compose-smoke`**).
 
 Alternativ: **`make bootstrap`** dann **`make test`** (GNU Make; ruft `uv` auf).
 

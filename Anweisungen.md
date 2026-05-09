@@ -123,6 +123,7 @@ Was muss vorher fertig sein?
 - **Während**: Status-Updates
 - **Nach**: Erledigte Änderungen + was sich geändert hat
 - **Bei Bugs**: Findings dokumentieren
+- **Greenfield MVP:** Sobald eine **gesamte Phase `Mn`** abgeschlossen ist (alle Steps in **`app/docs/greenfield/implementation/mvp/00-index.md`** `[x]`), ist das **Dokumentations-Bundle** aus **`app/docs/greenfield/implementation/mvp/00-index.md`** §6–7 verpflichtend — nicht nur Status-Zellen, sondern auch Tag/`catchup`/Architektur-Spalte und Abgleich Root-Einstiegs-Doku mit CI/Makefile.
 
 ### archive/legacy-docs/Implementierungen.Architektur.md
 - Überblick über **alle** Implementierungen
