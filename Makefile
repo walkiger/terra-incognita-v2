@@ -12,12 +12,12 @@ test:
 	uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
 
 fmt:
-	@echo "=== fmt: ruff format (hub API stub + ti_hub + tests) ==="
-	uv run ruff format deploy/api/app app/backend/ti_hub tests
+	@echo "=== fmt: ruff format (api + ti_hub + models + tests) ==="
+	uv run ruff format app/backend/api app/backend/ti_hub app/backend/models tests
 
 lint:
-	@echo "=== lint: ruff check (hub API stub + ti_hub + tests) ==="
-	uv run ruff check deploy/api/app app/backend/ti_hub tests
+	@echo "=== lint: ruff check (api + ti_hub + models + tests) ==="
+	uv run ruff check app/backend/api app/backend/ti_hub app/backend/models tests
 
 migrate:
 	@echo "=== migrate: alembic upgrade head (set TI_HUB_ALEMBIC_URL=sqlite+aiosqlite:///path/hub.sqlite) ==="

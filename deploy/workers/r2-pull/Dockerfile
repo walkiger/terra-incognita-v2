@@ -1,15 +1,24 @@
-# Vault R2-pull worker — M0.4 stub only (sleep loop). Logic lands in M1.10.
-FROM alpine:3.20
+# Vault R2-pull worker.
+# Build context: deploy/workers/r2-pull/ (vault.yml: context: ../workers/r2-pull).
+#
+# M1.10 adds litestream binary and replaces pull.py scaffold with the real
+# restore loop + Prometheus metrics on :8081/metrics.
 
-RUN mkdir -p /var/lib/vault/db \
-        /var/lib/vault/litestream \
-        /var/lib/vault/snapshots/manifest \
-    && addgroup -g 10002 terra \
-    && adduser -D -H -u 10002 -G terra terra \
+FROM python:3.12-slim-bookworm
+
+RUN groupadd --gid 10002 terra \
+    && useradd --uid 10002 --gid terra --shell /usr/sbin/nologin terra \
+    && mkdir -p /var/lib/vault/db \
+               /var/lib/vault/litestream \
+               /var/lib/vault/snapshots/manifest \
     && chown -R terra:terra /var/lib/vault
 
-USER terra
-WORKDIR /var/lib/vault
+WORKDIR /app
+COPY pull.py .
 
-# Acceptance: long-interval sleep loop until real worker replaces this image.
-CMD ["sh", "-c", "while true; do sleep 3600; done"]
+USER terra
+
+HEALTHCHECK --interval=60s --timeout=5s --start-period=10s --retries=3 \
+    CMD python -c "import os; assert os.path.isdir('/var/lib/vault/db')"
+
+CMD ["python", "pull.py"]

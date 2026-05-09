@@ -3,17 +3,12 @@
 from __future__ import annotations
 
 import os
-import sys
-from pathlib import Path
 
 from starlette.testclient import TestClient
 
-REPO = Path(__file__).resolve().parents[1]
-
 os.environ["METRICS_BEARER_TOKEN"] = "unit-test-token"
-sys.path.insert(0, str(REPO / "deploy" / "api"))
 
-from app.main import app  # noqa: E402
+from api.main import app
 
 _CLIENT = TestClient(app)
 

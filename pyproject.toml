@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "terra-incognita-v2"
 version = "0.1.0"
-description = "Terra Incognita v2 greenfield — hub Python package (ti_hub)"
+description = "Terra Incognita v2 greenfield — Hub backend packages (ti_hub, api, models)"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
@@ -46,7 +46,7 @@ markers = [
 
 [tool.coverage.run]
 branch = true
-source = ["ti_hub"]
+source = ["ti_hub", "api", "models"]
 omit = ["*/tests/*"]
 
 [tool.ruff]
@@ -82,4 +82,8 @@ ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = ["prometheus_client", "prometheus_client.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["fastapi", "fastapi.*", "starlette", "starlette.*", "uvicorn", "uvicorn.*"]
 ignore_missing_imports = true

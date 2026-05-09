@@ -1,4 +1,8 @@
-"""M0.3 hub API stub — full FastAPI surface arrives in M5."""
+"""Hub API bootstrap — full FastAPI surface arrives in M5.
+
+M5.1 replaces this module with create_app() factory, lifespan hooks,
+middleware stack, and proper router registration.
+"""
 
 from __future__ import annotations
 
