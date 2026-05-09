@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:12:24Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "Score(R q, Rj) =α|E q ∩E j|+β|T match|+γ 1 d(Rq, Rj) .(1) Here,αcontrols the influence of semantic overlap,βem- phasizes the consistency of structural roles, andγcaptures relational proximity within the knowledge graph. By tuning these coefficients, the retrieval mechanism balances lexical",
+        "unicode_plain": "Score(R q, Rj) =α|E q ∩E j|+β|T match|+γ 1 d(Rq, Rj) .(1) Here,αcontrols the influence of semantic overlap,βem- phasizes the consistency of structural roles, andγcaptures relational proximity within the knowledge graph. By tuning these coefficients, the retrieval mechanism balances lexical"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Score(R q, Rj) =α|E q ∩E j|+β|T match|+γ 1 d(Rq, Rj) .(1) Here,αcontrols the influence of semantic overlap,βem- phasizes the consistency of structural roles, andγcaptures relational proximity within the knowledge graph. By tuning these coefficients, the retrieval mechanism balances lexical"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "d(Rq, Rj) .(1) Here,αcontrols the influence of semantic overlap,βem- phasizes the consistency of structural roles, andγcaptures relational proximity within the knowledge graph. By tuning these coefficients, the retrieval mechanism balances lexical Algorithm 1Knowledge-Graph Retrieval (KGR) via Shared",
+        "unicode_plain": "d(Rq, Rj) .(1) Here,αcontrols the influence of semantic overlap,βem- phasizes the consistency of structural roles, andγcaptures relational proximity within the knowledge graph. By tuning these coefficients, the retrieval mechanism balances lexical Algorithm 1Knowledge-Graph Retrieval (KGR) via Shared"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "d(Rq, Rj) .(1) Here,αcontrols the influence of semantic overlap,βem- phasizes the consistency of structural roles, andγcaptures relational proximity within the knowledge graph. By tuning these coefficients, the retrieval mechanism balances lexical Algorithm 1Knowledge-Graph Retrieval (KGR) via Shared"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page4_3",
+      "presentation": {
+        "latex": "2:ifE q =∅then return∅ 3:C ← ∅ 4:for alle∈E q do 5:C ← C ∪ {R j ∈G.Req(S) :R j ∗ − →e}",
+        "unicode_plain": "2:ifE q =∅then return∅ 3:C ← ∅ 4:for alle∈E q do 5:C ← C ∪ {R j ∈G.Req(S) :R j ∗ − →e}"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "2:ifE q =∅then return∅ 3:C ← ∅ 4:for alle∈E q do 5:C ← C ∪ {R j ∈G.Req(S) :R j ∗ − →e}"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page5_4",
+      "presentation": {
+        "latex": "OPEN-SOURCESLMSUSED INOURSTUDY(TEMPERATURE= 0). Model Params Release Context DeepSeek-Coder-7B-Instruct-v1.5 7B May 2024 16k Meta-Llama-3-8B-Instruct 8B Apr 2024 8k Mistral-7B-Instruct-v0.3 7B May 2024 32k classification, ensuring that downstream reasoning operates",
+        "unicode_plain": "OPEN-SOURCESLMSUSED INOURSTUDY(TEMPERATURE= 0). Model Params Release Context DeepSeek-Coder-7B-Instruct-v1.5 7B May 2024 16k Meta-Llama-3-8B-Instruct 8B Apr 2024 8k Mistral-7B-Instruct-v0.3 7B May 2024 32k classification, ensuring that downstream reasoning operates"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "OPEN-SOURCESLMSUSED INOURSTUDY(TEMPERATURE= 0). Model Params Release Context DeepSeek-Coder-7B-Instruct-v1.5 7B May 2024 16k Meta-Llama-3-8B-Instruct 8B Apr 2024 8k Mistral-7B-Instruct-v0.3 7B May 2024 32k classification, ensuring that downstream reasoning operates"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page5_5",
+      "presentation": {
+        "latex": "Recall@K= 1 |Q| X q∈Q I(R K(q)∩G(q)̸=∅)(2) whereI(·)is the indicator function. In this single-conflict",
+        "unicode_plain": "Recall@K= 1 |Q| X q∈Q I(R K(q)∩G(q)̸=∅)(2) whereI(·)is the indicator function. In this single-conflict"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Recall@K= 1 |Q| X q∈Q I(R K(q)∩G(q)̸=∅)(2) whereI(·)is the indicator function. In this single-conflict"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "I(R K(q)∩G(q)̸=∅)(2) whereI(·)is the indicator function. In this single-conflict setting, Recall@K reduces to the proportion of queries for which the correct conflicting requirement is retrieved within the top resultsKIQ1. Few-Shot Prompt for Conflict Classification",
+        "unicode_plain": "I(R K(q)∩G(q)̸=∅)(2) whereI(·)is the indicator function. In this single-conflict setting, Recall@K reduces to the proportion of queries for which the correct conflicting requirement is retrieved within the top resultsKIQ1. Few-Shot Prompt for Conflict Classification"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "I(R K(q)∩G(q)̸=∅)(2) whereI(·)is the indicator function. In this single-conflict setting, Recall@K reduces to the proportion of queries for which the correct conflicting requirement is retrieved within the top resultsKIQ1. Few-Shot Prompt for Conflict Classification"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page6_7",
+      "presentation": {
+        "latex": "Recall@K= 1 |Q| X q∈Q |RK(q)∩G(q)| |G(q)| (3)",
+        "unicode_plain": "Recall@K= 1 |Q| X q∈Q |RK(q)∩G(q)| |G(q)| (3)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Recall@K= 1 |Q| X q∈Q |RK(q)∩G(q)| |G(q)| (3)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "|G(q)| (3) This generalized formulation ensures consistent evaluation across both single-label and multi-label retrieval settings. 2) Classification performance:Results from different prompting strategies and retrieval pipelines are reported using macro-averaged evaluation metrics: Precision (P), Recall (R),",
+        "unicode_plain": "|G(q)| (3) This generalized formulation ensures consistent evaluation across both single-label and multi-label retrieval settings. 2) Classification performance:Results from different prompting strategies and retrieval pipelines are reported using macro-averaged evaluation metrics: Precision (P), Recall (R),"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "|G(q)| (3) This generalized formulation ensures consistent evaluation across both single-label and multi-label retrieval settings. 2) Classification performance:Results from different prompting strategies and retrieval pipelines are reported using macro-averaged evaluation metrics: Precision (P), Recall (R),"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page6_9",
+      "presentation": {
+        "latex": "Carbon(d,p) = Rd,pX j=1 Cretr j (4) whereC retrjrepresents the carbon emission associated",
+        "unicode_plain": "Carbon(d,p) = Rd,pX j=1 Cretr j (4) whereC retrjrepresents the carbon emission associated"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Carbon(d,p) = Rd,pX j=1 Cretr j (4) whereC retrjrepresents the carbon emission associated"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page6_10",
+      "presentation": {
+        "latex": "EcoScoremodel = PD d=1 F1 (d) macro PD d=1 Carbon(d) (5)",
+        "unicode_plain": "EcoScoremodel = PD d=1 F1 (d) macro PD d=1 Carbon(d) (5)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EcoScoremodel = PD d=1 F1 (d) macro PD d=1 Carbon(d) (5)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page6_11",
+      "presentation": {
+        "latex": "d=1 F1 (d) macro PD d=1 Carbon(d) (5) whereDis the number of datasets,F1 (d) macro is the dataset-",
+        "unicode_plain": "d=1 F1 (d) macro PD d=1 Carbon(d) (5) whereDis the number of datasets,F1 (d) macro is the dataset-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "d=1 F1 (d) macro PD d=1 Carbon(d) (5) whereDis the number of datasets,F1 (d) macro is the dataset-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_5",
+      "presentation": {
+        "latex": "d=1 Carbon(d) (5) whereDis the number of datasets,F1 (d) macro is the dataset- level Macro F1-score, and Carbon (d) is the total carbon emis- sion for datasetd. EcoScore quantifies predictive performance per unit carbon emission, enabling balanced comparison across",
+        "unicode_plain": "d=1 Carbon(d) (5) whereDis the number of datasets,F1 (d) macro is the dataset- level Macro F1-score, and Carbon (d) is the total carbon emis- sion for datasetd. EcoScore quantifies predictive performance per unit carbon emission, enabling balanced comparison across"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(5)",
+        "verbatim_snippet": "d=1 Carbon(d) (5) whereDis the number of datasets,F1 (d) macro is the dataset- level Macro F1-score, and Carbon (d) is the total carbon emis- sion for datasetd. EcoScore quantifies predictive performance per unit carbon emission, enabling balanced comparison across"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page6_13",
+      "presentation": {
+        "latex": "lectedKvalues are: Pure (K= 3), OpenCoss (K= 5), UA V (K= 2), WorldVista (K= 5), and IBM_UA V (K= 20). 1) Pure Dataset (K= 3): Both pipelines achieve identical retrieval effectiveness (Recall@3 = 1.00). However, KGR consumes 0.000002 kWh compared to 0.000008 kWh for VSR, representing a 75% reduction in energy usage. Similarly,",
+        "unicode_plain": "lectedKvalues are: Pure (K= 3), OpenCoss (K= 5), UA V (K= 2), WorldVista (K= 5), and IBM_UA V (K= 20). 1) Pure Dataset (K= 3): Both pipelines achieve identical retrieval effectiveness (Recall@3 = 1.00). However, KGR consumes 0.000002 kWh compared to 0.000008 kWh for VSR, representing a 75% reduction in energy usage. Similarly,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "lectedKvalues are: Pure (K= 3), OpenCoss (K= 5), UA V (K= 2), WorldVista (K= 5), and IBM_UA V (K= 20). 1) Pure Dataset (K= 3): Both pipelines achieve identical retrieval effectiveness (Recall@3 = 1.00). However, KGR consumes 0.000002 kWh compared to 0.000008 kWh for VSR, representing a 75% reduction in energy usage. Similarly,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page6_14",
+      "presentation": {
+        "latex": "(K= 2), WorldVista (K= 5), and IBM_UA V (K= 20). 1) Pure Dataset (K= 3): Both pipelines achieve identical retrieval effectiveness (Recall@3 = 1.00). However, KGR consumes 0.000002 kWh compared to 0.000008 kWh for VSR, representing a 75% reduction in energy usage. Similarly, carbon emissions decrease from 0.000005 kgCO 2e (VSR) to",
+        "unicode_plain": "(K= 2), WorldVista (K= 5), and IBM_UA V (K= 20). 1) Pure Dataset (K= 3): Both pipelines achieve identical retrieval effectiveness (Recall@3 = 1.00). However, KGR consumes 0.000002 kWh compared to 0.000008 kWh for VSR, representing a 75% reduction in energy usage. Similarly, carbon emissions decrease from 0.000005 kgCO 2e (VSR) to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(K= 2), WorldVista (K= 5), and IBM_UA V (K= 20). 1) Pure Dataset (K= 3): Both pipelines achieve identical retrieval effectiveness (Recall@3 = 1.00). However, KGR consumes 0.000002 kWh compared to 0.000008 kWh for VSR, representing a 75% reduction in energy usage. Similarly, carbon emissions decrease from 0.000005 kgCO 2e (VSR) to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

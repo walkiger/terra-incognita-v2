@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "were_rnns_all_we_needed_leo_feng_mila_universit_e_de_montr_eal_borealis_20260508T150735Z",
+  "extracted_at": "2026-05-08T15:13:21Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "(Hidden State) ht = ot ⊙ tanh(ct) (Output Gate) ot = σ(Lineardh([xt, ht−1])) (Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1]))",
+        "unicode_plain": "(Hidden State) ht = ot ⊙ tanh(ct) (Output Gate) ot = σ(Lineardh([xt, ht−1])) (Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1]))"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Hidden State) ht = ot ⊙ tanh(ct) (Output Gate) ot = σ(Lineardh([xt, ht−1])) (Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1]))"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "(Output Gate) ot = σ(Lineardh([xt, ht−1])) (Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the",
+        "unicode_plain": "(Output Gate) ot = σ(Lineardh([xt, ht−1])) (Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Output Gate) ot = σ(Lineardh([xt, ht−1])) (Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "(Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t",
+        "unicode_plain": "(Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct (Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "(Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of t",
+        "unicode_plain": "(Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Forget Gate) ft = σ(Lineardh([xt, ht−1])) (Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "(Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state,",
+        "unicode_plain": "(Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Input Gate) it = σ(Lineardh([xt, ht−1])) (Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "(Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state, which carries information across time ste",
+        "unicode_plain": "(Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state, which carries information across time steps, and ˜ct is the candidate cell state that will be added to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1])) where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state, which carries information across time steps, and ˜ct is the candidate cell state that will be added to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "(Hidden State Recurrence) ht = (1 − zt) ⊙ ht−1 + zt ⊙ ˜ht (Update Gate) zt = σ(Lineardh([xt, ht−1])) (Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determin",
+        "unicode_plain": "(Hidden State Recurrence) ht = (1 − zt) ⊙ ht−1 + zt ⊙ ˜ht (Update Gate) zt = σ(Lineardh([xt, ht−1])) (Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Hidden State Recurrence) ht = (1 − zt) ⊙ ht−1 + zt ⊙ ˜ht (Update Gate) zt = σ(Lineardh([xt, ht−1])) (Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "(Update Gate) zt = σ(Lineardh([xt, ht−1])) (Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forw",
+        "unicode_plain": "(Update Gate) zt = σ(Lineardh([xt, ht−1])) (Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Update Gate) zt = σ(Lineardh([xt, ht−1])) (Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "(Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new informa",
+        "unicode_plain": "(Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new information from the candidate hidden state should be added (i.e., zt). Additionally, GRU removes"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Reset Gate) rt = σ(Lineardh([xt, ht−1])) (Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new information from the candidate hidden state should be added (i.e., zt). Additionally, GRU removes"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "(Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new information from the candidate hidden state shoul",
+        "unicode_plain": "(Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new information from the candidate hidden state should be added (i.e., zt). Additionally, GRU removes"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1])) where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines how much of the past information should be carried forward (i.e., 1 − zt) and how much new information from the candidate hidden state should be added (i.e., zt). Additionally, GRU removes"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "i=1 ui}N k=1 from the input sequence{uk}N k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes",
+        "unicode_plain": "i=1 ui}N k=1 from the input sequence{uk}N k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1 ui}N k=1 from the input sequence{uk}N k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page3_12",
+      "presentation": {
+        "latex": "k=1 from the input sequence{uk}N k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approac",
+        "unicode_plain": "k=1 from the input sequence{uk}N k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "k=1 from the input sequence{uk}N k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page3_13",
+      "presentation": {
+        "latex": "k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-val",
+        "unicode_plain": "k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "k=1. One important application of the parallel scan algorithm is in computing a popular class of recurrence relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page3_14",
+      "presentation": {
+        "latex": "relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences, such as vt = at ⊙ vt−1 + bt, where ⊙ denotes element-wise multiplication. 3 Methodology Int",
+        "unicode_plain": "relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences, such as vt = at ⊙ vt−1 + bt, where ⊙ denotes element-wise multiplication. 3 Methodology Interestingly, we can see that the GRU’s hidden state and LSTM’s cell state recurrences resemble the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin & Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences, such as vt = at ⊙ vt−1 + bt, where ⊙ denotes element-wise multiplication. 3 Methodology Interestingly, we can see that the GRU’s hidden state and LSTM’s cell state recurrences resemble the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

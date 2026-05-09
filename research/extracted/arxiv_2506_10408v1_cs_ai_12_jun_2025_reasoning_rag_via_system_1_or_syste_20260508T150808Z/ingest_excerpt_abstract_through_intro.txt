@@ -1,0 +1,221 @@
+Abstract
+Retrieval-Augmented Generation (RAG) has
+emerged as a powerful framework to overcome the
+knowledge limitations of Large Language Models
+(LLMs) by integrating external retrieval with
+language generation. While early RAG systems
+based on static pipelines have shown effectiveness
+in well-structured tasks, they struggle in real-world
+scenarios requiring complex reasoning, dynamic
+retrieval, and multi-modal integration. To address
+these challenges, the field has shifted toward
+Reasoning Agentic RAG, a paradigm that embeds
+decision-making and adaptive tool use directly
+into the retrieval process. In this paper, we present
+a comprehensive review of Reasoning Agentic
+RAG methods, categorizing them into two primary
+systems: predefined reasoning , which follow
+fixed modular pipelines to boost reasoning, and
+agentic reasoning, where the model autonomously
+orchestrates tool interaction during inference.
+We analyze representative techniques under both
+paradigms, covering architectural design, reasoning
+strategies, and tool coordination. Finally, we
+discuss key research challenges and propose future
+directions to advance the flexibility, robustness, and
+applicability of reasoning agentic RAG systems.
+Our collection of the relevant researches has been
+organized into a Github Repository.
+1 Introduction
+Large Language Models (LLMs) [Singh, 2023; Zhao et
+al., 2023; Zhu et al., 2024] have demonstrated remarkable
+capabilities in natural language understanding and gener-
+ation, enabling a wide array of applications from open-
+domain question-answer (QA) to task-specific dialogue sys-
+tems. However, LLMs rely on static training data, mak-
+ing them prone to hallucinations and limiting their abil-
+∗Corresponding author.
+ity to provide accurate, up-to-date information in dynamic
+or knowledge-intensive tasks [Rawte et al. , 2023; Zhang
+et al. , 2023; Huang et al. , 2025 ]. Retrieval-Augmented
+Generation (RAG) [Chen et al., 2024; Lewis et al., 2020;
+Gao et al. , 2023 ] has attracted significant attention as a
+promising approach to overcome the knowledge limitations
+of LLMs resulting from static pretraining. By integrating rel-
+evant information from external knowledge bases or search
+engines, RAG enhances factual accuracy and broadens the
+model’s temporal and domain coverage [Zhao et al., 2024;
+Li et al. , 2024a ]. Traditional RAG methods have demon-
+strated strong performance when queries are well-formed and
+the necessary information is readily available in the retrieved
+context.
+Despite the effectiveness of basic RAG methods, they often
+struggle when applied to real-world, industrial-scale applica-
+tions involving complex and heterogeneous data. For example,
+in multi-document scenarios, relevant information is spread
+across sources, requiring not just retrieval but also coherent
+synthesis [Wang et al., 2025; Wang et al., 2024b]. Naively
+concatenating retrieved passages can lead to fragmented or
+contradictory responses, particularly in domains like legal or
+biomedical QA where multi-hop reasoning is critical. Addi-
+tionally, most RAG systems are limited to text-only processing
+and cannot natively handle multi-modal inputs such as tables,
+charts, or images [Ma et al., 2024; Yuet al., 2025]. This limits
+their ability to operate in data-rich environments like enterprise
+intelligence, scientific reporting, or technical support, where
+visual and structured data play a central role [Lin et al., 2023a;
+Yu et al., 2024].
+To address these limitations of basic RAG in handling com-
+plex, real-world tasks, recent research has turned to Agentic
+RAG [Ravuru et al., 2024], a paradigm that tightly integrates
+retrieval with reasoning and decision-making. Unlike static
+pipelines, Agentic RAG treats retrieval not as a one-off pre-
+processing step, but as a dynamic, context-sensitive opera-
+tion guided by the model’s ongoing reasoning process. This
+reasoning-centric perspective is crucial for applications that
+demand multi-step problem solving, adaptive information ac-
+quisition, and tool-assisted synthesis. Within this paradigm, as
+DesignFollow
+LLMHuman
+Predefined Reasoning
+Reasoning
+Agentic Reasoning
+External Tools
+Tool Calling
+Retrieved Information
+Figure 1: Overview of two major types of reasoning Agentic Systems.
+shown in Figure 1, two major types of reasoning agentic sys-
+tems have emerged based on how control and decision-making
+are handled: predefined reasoning, which follow structured,
+rule-based plans with fixed pipelines to boost reasoning for
+retrieval and generation; and agentic reasoning, where the
+model actively monitors its reasoning process and determines
+when and how to retrieve or interact with external tools. These
+two workflows form the basis of Reasoning Agentic RAG ,
+which unifies structured and autonomous approaches for more
+intelligent, context-aware retrieval-augmented reasoning.
+Predefined reasoning adopts structured and modular RAG
+pipelines where the retrieval and reasoning steps are explicitly
+designed, following fixed control pipeline. These workflows
+typically decompose tasks into discrete components such as
+query reformulation, document retrieval, re-ranking, and an-
+swer synthesis, executed in a linear or orchestrated fashion.
+In general, predefined reasoning spans several architectural
+variants: route-based methods selectively trigger retrieval
+based on context or model uncertainty, such as low confi-
+dence scores or ambiguous intermediate outputs [Wang et al.,
+2024a]; loop-based methods enable limited iteration through
+retrieval-feedback cycles, supporting multiple rounds of re-
+finement [Asai et al., 2023; Yang et al., 2024b]; tree-based
+methods organize information hierarchically to support struc-
+tured exploration [Sarthi et al., 2024; Hu et al., 2025]; and
+hybrid-modular frameworks compose specialized modules
+into a flexible but still rule-driven workflow[Jeong et al., 2024;
+Gao et al., 2024 ]. These workflows prioritize control and
+modularity, making them suitable for tasks requiring efficient
+computation and customization. However, their reasoning
+remains constrained by predesigned execution paths, limiting
+flexibility in evolving and open-ended tasks.
+Agentic reasoning repositions the LLM as an active deci-
+sion maker, that autonomously orchestrates retrieval and tool
+use throughout the reasoning process. Instead of executing
+a fixed plan, the model identifies knowledge gaps, formu-
+lates queries, retrieves external information via tools such
+as search engines or APIs, and integrates the retrieved con-
+tents into an evolving solution. This dynamic interplay of
+reasoning and tool use enables the system to tackle complex,
+multi-turn tasks that require iterative refinement and adaptive
+information synthesis. There are two primary methods for im-
+plementing agentic reasoning. The first is prompt-based meth-
+ods, which leverages the in-context reasoning and instruction-
+following capabilities of pretrained LLMs [Yao et al., 2023;
+Press et al., 2023; Li et al., 2025a]. In this setting, the model
+is guided by carefully crafted prompts or embedded control
+tokens that instruct it when to retrieve, what actions to take,
+and how to integrate external information. These methods re-
+quire no additional training, making them lightweight and
+adaptable across tasks. The second paradigm is training-
+based methods, where models are explicitly optimized through
+reinforcement learning, to determine when and how to in-
+voke external tools [Jiang et al. , 2025; Jin et al. , 2025;
+Zheng et al., 2025]. This paradigm enables more fine-grained
+and strategic tool usage, enabling models to learn long-term
+planning and develop retrieval policies tailored to complex
+tasks. Owing to its autonomy and adaptability, agentic rea-
+soning has shown strong performance in open-domain QA,
+scientific reasoning, and multi-stage decision-making scenar-
+ios.
+Perspective of Cognitive Science - System 1 and System
+2: To further contextualize predefined and agentic reason-
+ing within the dual-process theory of cognition—commonly
+referred to as System 1 and System 2 thinking [Yang et al.,
+2024a; Li et al., 2025b] — we can draw an analogy between
+these RAG paradigms and human cognitive modes.
+• Predefined reasoning resembles System 1 thinking: fast,
+structured, and efficient, relying on predefined heuristics
+and modular workflows that mirror habitual or rule-based
+cognition. While this enables rapid execution and pre-
+dictable behavior, it often lacks the flexibility to adapt
+beyond its design.
+• In contrast, agentic reasoning aligns more closely with
+System 2 thinking: slow, deliberative, and adaptive. Here,
+the LLM actively engages in reasoning, planning, and
+decision-making, dynamically leveraging external tools
+and retrieved knowledge to address complex, novel tasks.
+This reflective mode allows the model to identify gaps,
+reassess strategies, and adjust its behavior—traits charac-
+teristic of conscious, analytical human reasoning.
+By framing these paradigms through the lens of cognitive
+systems, we highlight the trade-off between efficiency and
+adaptability, and the growing capacity of agentic RAG to emu-
+late more sophisticated, human-like problem solving. Table 1
+aligns predefined and agentic reasoning with the dual-system
+theory from cognitive science, illustrating their respective con-
+trol structures and behavioral characteristics.
+The paper systematically reviews and analyzes the current
+research approaches and future development paths of Rea-
+soning Agentic RAG, summarizing them into two primary
+technical paradigms. The remainder of the paper is organized
+System Type Reasoning Workflow Description
+System 1 Predefined Reasoning Structured, modular, rule-based execution.
+System 2 Agentic Reasoning Autonomous, adaptive, model-driven decision-making.
+Table 1: Cognitive system alignment of reasoning workflows.
+as follows: Section 2 introduces related work; Section 3 and
+Section 4 dive into the two types of reasoning workflows
+within Agentic RAG, predefined reasoning and agentic reason-
+ing, respectively. Section 5 outlines future research directions,
+and Section 6 concludes the paper.
+Figure 2: Distributed Works of Reasoning Agentic RAG.
+2 Related Work
+2.1 Basic RAG
+Retrieval-Augmented Generation (RAG) was introduced to
+overcome the static knowledge limitations of LLMs by inte-
+grating external retrieval mechanisms during inference [Chen
+et al., 2024; Gao et al., 2023]. Naive RAG methods represent
+the earliest implementations, typically using sparse retrieval
+techniques like BM25 [Robertson et al., 2009] to fetch doc-
+uments based on keyword overlap [Ma et al., 2023]. While
+efficient for simple factoid queries, these approaches offered
+limited semantic understanding, thus often retrieving noisy
+or redundant content and failing to reason across multiple
+sources.
+The emergence of Advanced RAG and Modular RAG was
+aimed at addressing key limitations of the Naive RAG, par-
+ticularly in terms of retrieval precision, information integra-
+tion, and system flexibility [Gao et al. , 2023 ]. Advanced
+RAG improves retrieval quality through techniques such as
+dense semantic matching, re-ranking, and multi-hop query-
+ing, while also introducing refined indexing strategies like
+fine-grained chunking and metadata-aware retrieval. Modular
+RAG rethinks the Naive RAG by breaking down the end-to-
+end process of indexing, retrieval, and generation into discrete,
+configurable modules. This design allows for greater architec-
+tural flexibility and enables system developers to incorporate
+diverse techniques into specific stages, such as enhancing re-
+trieval with fine-tuned search modules [Lin et al., 2023b]. In
+response to specific task demands, various restructured and
+iterative module designs have also emerged. As a result, mod-
+ular RAG has increasingly become a dominant paradigm in
+the field, supporting both serialized pipeline execution and
+end-to-end learning across modular components.
+Despite their effectiveness, basic RA

@@ -1,0 +1,294 @@
+Abstract
+Knowledge Graphs are increasingly becom-
+ing popular for a variety of downstream tasks
+like Question Answering and Information Re-
+trieval. However, the Knowledge Graphs are
+often incomplete, thus leading to poor perfor-
+mance. As a result, there has been a lot of inter-
+est in the task of Knowledge Base Completion.
+More recently, Graph Neural Networks have
+been used to capture structural information in-
+herently stored in these Knowledge Graphs
+and have been shown to achieve SOTA perfor-
+mance across a variety of datasets. In this sur-
+vey, we understand the various strengths and
+weaknesses of the proposed methodology and
+try to ﬁnd new exciting research problems in
+this area that require further investigation.
+1 Introduction
+Knowledge Bases are collection of factual infor-
+mation in the form of relational triplets. Each rela-
+tional triplets can be represented as (e1,r,e2) where
+e1 ande2 are entities in knowledge base and r is the
+relation betweene1 ande2. The most popular way
+of visualising knowledge base is by representing
+them as multi relational graph where each triplet
+(e1,r,e2) is represented as directed edge from e1
+to e2 with label r. Knowledge Bases have used
+to improve performance across variety of tasks
+like Question Answering (Sorokin and Gurevych
+(2018), Cui et al. (2017)), Dialogue Generation
+(Liu et al. (2018)) and many others.
+However, since Knowledge Bases are populated
+from automatic mining from texts, they are often
+incomplete since it is not possible to manually write
+all the facts, and there are often inaccuracies in
+extraction. This inaccuracy leads to a decline in
+performance across a variety of downstream tasks.
+Hence, there has been a lot of work in coming up
+with an efﬁcient tool to complete the Knowledge
+Bases (KBs) by automatically adding new facts
+without requiring extra knowledge. This task is
+referred to as Knowledge Base Completion (or Link
+Prediction), where the goal is to solve queries like
+(e1,r,?).
+The ﬁrst approach towards efﬁcient Knowledge
+Base Completion were additive models like TransE
+(Bordes et al. (2013)) and TransH (Wang et al.
+(2014)) where relations were interpreted as sim-
+ple translations over hidden entity representations.
+Multiplicative models like Distmult (Yang et al.
+(2015)) and Complex (Trouillon et al. (2016)) were
+then observed to outperform these simple additive
+models. Instead of translation, RotatE (Sun et al.
+(2019a)) deﬁnes relation as simple rotations such
+that the head entity can be rotated in the complex
+embedding space to match the tail entity, which
+has been shown to satisfy a lot of useful seman-
+tic properties like compositionality of relations.
+Recently, more expressive Neural Network-based
+methods ( like ConvE (Dettmers et al. (2018)) and
+ConvKB(Nguyen et al. (2018))) were introduced
+where the scoring function is learned along with
+the model. However, all these models process each
+triplet independently. As a result, these methods
+cannot capture semantically rich neighborhood and
+hence produce low-quality embeddings.
+Graphs have been widely used to visualize real-
+world data. There has been tremendous progress
+in applying ML techniques over images and text,
+some of which are being successfully adapted to
+graphs (like Kipf and Welling (2017), Hamilton
+et al. (2017), Velickovic et al. (2018). Taking inspi-
+ration from this approach, a number of Graph Neu-
+ral Network-based methods have been proposed
+to capture neighborhood in Knowledge Graphs for
+the KBC task. In this survey, we aim to look into
+some of these formulations.
+2 Dataset
+The approaches for Knowledge Graph Completion
+have been evaluated on a variety of benchmarks
+datasets. Now, we will study in brief details about
+arXiv:2007.12374v1  [cs.CL]  24 Jul 2020
+Table 1: Summary of the datasets used in KBC experiments
+Dataset Entities Relations Train Valid Test
+FB15k-237 14,541 237 272,115 17,535 20,466
+FB15k 14,951 1,345 483,142 50,000 59,071
+WN18 40,943 18 141,442 5,000 5,000
+WN18RR 40,943 11 86,835 3,034 3,134
+each of these large KGs used to assess performance
+in KBC tasks. Table 1 shows a description of the
+sizes of these benchmark datasets.
+• FB15k - FB15k is a subset of relational
+database Freebase and is a popular bench-
+mark for Knowledge Graph Completion. In
+Toutanova and Chen (2015), a serious issue
+was observed with this dataset. The dataset
+consist of inverse triplet like (e1,r−1,e 2) in
+test set such that (e2,r,e 1) exists in the train-
+ing set. Thus a simple model that can memo-
+rize the triplets in the training set can achieve
+very high test accuracy in this dataset. As a re-
+sult, they proposed a new dataset Fb15k-237,
+where they had removed such inverse triplets.
+• WN18 - WN18 is a subset of WordNet KB
+containing lexical relation between words.
+Similar to FB15K, it contained inverse rela-
+tions, and hence WN18RR was introduced.
+WN18RR has a hierarchical structure, and as
+a result, it poses a signiﬁcant challenge to all
+KBC approaches that do not handle transitive
+relations.
+Knowledge Graph Completion methods are evalu-
+ated using test queries (e1,r,?), where we create a
+ranking list of all entities using the method’s scor-
+ing function. We then compute metrics like Mean
+Reciprocal Rank that measures the average of the
+reciprocal rank of correct resulte2 for a given query,
+and Hits@N where measures number of timese2
+occurs in top N of the ranked list.
+3 Basic Concepts
+In this section, we will talk about some of the basic
+concepts related to Graph Neural Networks.
+3.1 Message Passing Neural Network
+Message Passing Network (Gilmer et al. (2017))
+is a framework that aims to generalize the various
+neural network proposed for graph-based data. Let
+us look at graph G with node embeddings nv for
+all nodes v, edge embeddings evw for all edges
+between v and w. We ﬁrst deﬁne message function
+as given below-
+M(nv,nw,evw) =f(nv,nv,evw)
+where f is nonlinear function and is usually taken
+as MLP. Then the net message sent to node v is
+computed by aggregating the message from all its
+neighbours w using the equation below-
+mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw))
+where N(v) is neighbour set of v, t is timestep when
+messages are being aggregated and AGG is aggre-
+gation function that can be sum, mean or any other
+function. Finally, the embedding for node v are
+updated using the update function UPD as given
+below-
+nt+1v =UPD (mt+1v,ntv)
+3.2 Graph Convolution Network
+Graph Convolution Network is based on spectral
+graph convolution networks. Here the dataset con-
+sists of a graph with vertex set, adjacency matrix,
+and feature set for each node. These features could
+be categorical attributes like node labels, structural
+features like node degrees as well as the simple
+one-hot encoding for each node. GCNs aggregate
+information from neighbors of a node by using the
+simple equation given below.
+hvk =σ(Wk(ΣuϵN (v) ⋃u
+hk−1
+u√
+∥N(u)∥∥N(v)∥
+))
+3.3 Graph Attention Network
+In GCNs, all the neighbors contribute equally to
+the aggregation for each target node. Graph Atten-
+tion Networks (GATs) [Velickovic et al. (2018)]
+overcome the shortcomings of the previous works
+by learning to assign varying levels of importance
+Figure 1: Graph Attention Network methodology being
+shown over sample graph. Image from Velickovic et al.
+(2018)
+to all the nodes in the neighborhood of the node
+under consideration, rather than treating each node
+as equally important or using a ﬁxed weight. More-
+over, GATs are generalizable to unseen nodes (in-
+ductive learning), thus simulating a real-world set-
+ting and have been shown to advance state of the
+art across a variety of tasks.
+The input to GAT layer is a set of node features,
+xxx ={⃗ x1, ⃗ x2,··· , ⃗ xN}, where N is the number
+of nodes. Then attention weight for each edge is
+calculated using the equation given below.
+eij =a(WWW⃗ xi,WWW⃗ xj) (1)
+where W is weight matrix, a is any attention
+function, and eij is attention weight for the edge
+between node i and node j. For each node i, the
+weights are then normalized by passing through
+softmax function. The output embedding for each
+node is then computed by the equation given below
+⃗x′
+i =σ(
+∑
+j∈Ni
+αijWWW⃗ xj) (2)
+3.4 Decoder
+A lot of approaches that utilises GNN for KBC
+tasks uses them as auto encoder to help provide
+information of neighbouring relation triplets. Then,
+pre-existing scoring function like DistMult is en-
+riched with this information in the form of initial-
+isation of it’s entity embeddings and outperforms
+the method that uses only scoring function. This
+scoring function is referred to as decoder in litera-
+ture.
+4 GCN Encoder for Knowledge Graph
+Completion
+R-GCN (Schlichtkrull et al. (2018)) was one of
+the earliest approaches to use GNNs for this task.
+They introduce a relational Graph Convolution Net-
+work, which produces locality-sensitive embed-
+dings, which are then passed to the decoder that
+predicts missing links in KG. It is important to note
+that simple GCN cannot be used to embed KGs
+because it ignores the edge labels in the graph. As
+a result, the R-GCN slightly modiﬁed the scoring
+function of simple GCN to capture the relationship
+between the edges.
+hvk+1 =σ(ΣrϵRΣjϵNv r
+1
+cr
+Wrkhjk +W0khvk)
+Here R is a set of relations, and Nvr denote the
+set of entities that connected to v by relation r.
+We can see the model learns a new weight ma-
+trix for each relation, thus making their approach
+nonscalable for large graphs. They try to resolve
+this issue by coming with a basis and block diag-
+onal decomposition. In the basis decomposition,
+each relation’s weight matrix is represented as a
+sum of some base matrices. In the block diago-
+nal decomposition, each relation weight matrix is
+represented as a direct sum over block-diagonal
+matrices. These approaches not only help to solve
+overﬁtting but also make relation weight matrices
+dependent on each other, thus helping to transfer
+knowledge learned from frequently occurring re-
+lation to learning weight matrices for rare relation
+better. They evaluate their approaches with state of
+the art multiplicative models like ComplEx and per-
+form worse for FB15K and WN18 datasets. They
+then combine the R-GCN scores with DistMult
+scores and achieve comparable results to existing
+SOTA. The paper’s main contribution is to show
+that GNNs can be successfully applied to KGs.
+However, they do not look into differential weigh-
+ing of the node’s neighborhood as well as require
+decoder since they do not learn relation embedding
+through GNN framework
+5 Relation Weighted GCN Encoder
+SACN (Shang et al. (2019)) try to extend on pre-
+vious work by aggregating information from the
+node’s neighborhood by being sensitive to edge re-
+lation types. This is referred to as Weighted Graph
+Convolution Network (WGCN). In WGCN, the
+whole graph is broken into subgraphs such that
+each subgraph contains edges of only one relation
+type. Then GCN is applied on each subgraph using
+the equation given below for relation t.
+hvk+1 =σ(ΣjϵNvαtkg(hvk,hjk))
+Model Uniform Aggregation
+of Neighbours
+Relation
+Embedding
+Use
+Decoder
+Incorporate
+prior rules
+Provide
+Explanation
+Use
+Attribute
+R-GCN
+Schlichtkrull et al. (2018) Yes No Yes No No No
+TransGCN
+Cai et al. (2019) Yes Yes No No No No
+KB-GAT
+Nathani et al. (2019)
+No
+(attention) Yes Yes No No No
+SACN
+Shang et al. (2019)
+No
+(relation weighted) Yes Yes No No Yes
+ExpressGNN
+Zhang et al. (2020) Yes Yes No Yes No No
+DPMPN Xu et al. (2020) Yes Yes No No Yes No
+Table 2: Summary of techniques used for Knowledge Graph Completion using GNNs using CNNs
+Here hvk+1 is embedding for node v at layer
+k + 1,Nv speciﬁes the neighborhood of node v for
+relation type t andhvk are node embedding at layer
+k. g is simple matrix multiplication with connec-
+tion coefﬁcient matrix W which is shared across
+all relations which is in contrast to R-GCN which
+have separate weights for each relation. It then
+aggregates information across all these single re-
+lation subgraphs by weighing them with learnable
+parameterαt, which is different for each relation
+ty

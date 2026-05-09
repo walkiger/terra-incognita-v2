@@ -1,0 +1,166 @@
+Abstract
+There are two widely known issues with prop-
+erly training Recurrent Neural Networks, the
+vanishing and the exploding gradient prob-
+lems detailed in Bengio et al. (1994). In
+this paper we attempt to improve the under-
+standing of the underlying issues by explor-
+ing these problems from an analytical, a geo-
+metric and a dynamical systems perspective.
+Our analysis is used to justify a simple yet ef-
+fective solution. We propose a gradient norm
+clipping strategy to deal with exploding gra-
+dients and a soft constraint for the vanishing
+gradients problem. We validate empirically
+our hypothesis and proposed solutions in the
+experimental section.
+1. Introduction
+A recurrent neural network (RNN), e.g. Fig. 1, is a
+neural network model proposed in the 80’s (Rumelhart
+et al., 1986; Elman, 1990; Werbos, 1988) for modeling
+time series. The structure of the network is similar to
+that of a standard multilayer perceptron, with the dis-
+tinction that we allow connections among hidden units
+associated with a time delay. Through these connec-
+tions the model can retain information about the past
+inputs, enabling it to discover temporal correlations
+between events that are possibly far away from each
+other in the data (a crucial property for proper learn-
+ing of time series).
+While in principle the recurrent network is a simple
+and powerful model, in practice, it is unfortunately
+hard to train properly. Among the main reasons why
+this model is so unwieldy are the vanishing gradient
+ut xt
+Et
+Figure 1. Schematic of a recurrent neural network. The
+recurrent connections in the hidden layer allow information
+to persist from one input to another.
+and exploding gradient problems described in Bengio
+et al. (1994).
+1.1. Training recurrent networks
+A generic recurrent neural network, with input ut and
+state xt for time step t, is given by equation (1). In
+the theoretical section of this paper we will sometimes
+make use of the speciﬁc parametrization given by equa-
+tion (11) 1 in order to provide more precise conditions
+and intuitions about the everyday use-case.
+xt =F (xt−1, ut,θ ) (1)
+xt = Wrecσ(xt−1) + Winut + b (2)
+The parameters of the model are given by the recurrent
+weight matrix Wrec, the biases b and input weight
+matrix Win, collected in θ for the general case. x0 is
+provided by the user, set to zero or learned, andσ is an
+element-wise function (usually the tanh or sigmoid).
+A cost E measures the performance of the network
+on some given task and it can be broken apart into
+individual costs for each step E = ∑
+1≤t≤T Et, where
+Et = L(xt).
+One approach that can be used to compute the nec-
+essary gradients is Backpropagation Through Time
+(BPTT), where the recurrent model is represented as
+1 This formulation is equivalent to the more widely
+known equation xt = σ(Wrecxt−1 + Winut + b), and it
+was chosen for convenience.
+arXiv:1211.5063v2  [cs.LG]  16 Feb 2013
+On the diﬃculty of training Recurrent Neural Networks
+a deep multi-layer one (with an unbounded number of
+layers) and backpropagation is applied on the unrolled
+model (see Fig. 2).
+∂Et+1
+∂xt+1
+Et+1EtEt−1
+xt+1xtxt−1
+ut−1 ut ut+1
+∂Et
+∂xt
+∂Et−1
+∂xt−1
+∂xt+2
+∂xt+1
+∂xt+1
+∂xt
+∂xt
+∂xt−1
+∂xt−1
+∂xt−2
+Figure 2. Unrolling recurrent neural networks in time by
+creating a copy of the model for each time step. We denote
+by xt the hidden state of the network at time t, by ut the
+input of the network at timet and by Et the error obtained
+from the output at time t.
+We will diverge from the classical BPTT equations at
+this point and re-write the gradients (see equations (3),
+(4) and (5)) in order to better highlight the exploding
+gradients problem. These equations were obtained by
+writing the gradients in a sum-of-products form.
+∂E
+∂θ =
+∑
+1≤t≤T
+∂Et
+∂θ (3)
+∂Et
+∂θ =
+∑
+1≤k≤t
+(∂Et
+∂xt
+∂xt
+∂xk
+∂+xk
+∂θ
+)
+(4)
+∂xt
+∂xk
+=
+∏
+t≥i>k
+∂xi
+∂xi−1
+=
+∏
+t≥i>k
+WT
+recdiag(σ′(xi−1)) (5)
+∂+xk
+∂θ refers to the “immediate” partial derivative of
+the state xk with respect to θ, i.e., where xk−1 is
+taken as a constant with respect to θ. Speciﬁcally,
+considering equation 2, the value of any row i of the
+matrix ( ∂+xk
+∂Wrec
+) is just σ(xk−1). Equation (5) also
+provides the form of Jacobian matrix ∂xi
+∂xi−1
+for the
+speciﬁc parametrization given in equation (11), where
+diag converts a vector into a diagonal matrix, and σ′
+computes the derivative of σ in an element-wise fash-
+ion.
+Note that each term ∂Et
+∂θ from equation (3) has the
+same form and the behaviour of these individual terms
+determine the behaviour of the sum. Henceforth we
+will focus on one such generic term, calling it simply
+the gradient when there is no confusion.
+Any gradient component ∂Et
+∂θ is also a sum (see equa-
+tion (4)), whose terms we refer to astemporal contribu-
+tions or temporal components. One can see that each
+such temporal contribution ∂Et
+∂xt
+∂xt
+∂xk
+∂+xk
+∂θ measures how
+θ at step k aﬀects the cost at step t>k . The factors
+∂xt
+∂xk
+(equation (5)) transport the error “in time“ from
+stept back to stepk. We would further loosely distin-
+guish between long term and short term contributions,
+where long term refers to components for which k ≪t
+and short term to everything else.

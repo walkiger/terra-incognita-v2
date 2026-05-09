@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "on_the_di_culty_of_training_recurrent_neural_networks_20260508T150638Z",
+  "extracted_at": "2026-05-08T15:11:35Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "xt =F (xt−1, ut,θ ) (1) xt = Wrecσ(xt−1) + Winut + b (2) The parameters of the model are given by the recurrent weight matrix Wrec, the biases b and input weight matrix Win, collected in θ for the general case. x0 is provided by the user, set to zero or learned, andσ is an",
+        "unicode_plain": "xt =F (xt−1, ut,θ ) (1) xt = Wrecσ(xt−1) + Winut + b (2) The parameters of the model are given by the recurrent weight matrix Wrec, the biases b and input weight matrix Win, collected in θ for the general case. x0 is provided by the user, set to zero or learned, andσ is an"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "xt =F (xt−1, ut,θ ) (1) xt = Wrecσ(xt−1) + Winut + b (2) The parameters of the model are given by the recurrent weight matrix Wrec, the biases b and input weight matrix Win, collected in θ for the general case. x0 is provided by the user, set to zero or learned, andσ is an"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "xt = Wrecσ(xt−1) + Winut + b (2) The parameters of the model are given by the recurrent weight matrix Wrec, the biases b and input weight matrix Win, collected in θ for the general case. x0 is provided by the user, set to zero or learned, andσ is an element-wise function (usually the tanh or sigmoid).",
+        "unicode_plain": "xt = Wrecσ(xt−1) + Winut + b (2) The parameters of the model are given by the recurrent weight matrix Wrec, the biases b and input weight matrix Win, collected in θ for the general case. x0 is provided by the user, set to zero or learned, andσ is an element-wise function (usually the tanh or sigmoid)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "xt = Wrecσ(xt−1) + Winut + b (2) The parameters of the model are given by the recurrent weight matrix Wrec, the biases b and input weight matrix Win, collected in θ for the general case. x0 is provided by the user, set to zero or learned, andσ is an element-wise function (usually the tanh or sigmoid)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page1_3",
+      "presentation": {
+        "latex": "individual costs for each step E = ∑ 1≤t≤T Et, where Et = L(xt). One approach that can be used to compute the nec- essary gradients is Backpropagation Through Time (BPTT), where the recurrent model is represented as",
+        "unicode_plain": "individual costs for each step E = ∑ 1≤t≤T Et, where Et = L(xt). One approach that can be used to compute the nec- essary gradients is Backpropagation Through Time (BPTT), where the recurrent model is represented as"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "individual costs for each step E = ∑ 1≤t≤T Et, where Et = L(xt). One approach that can be used to compute the nec- essary gradients is Backpropagation Through Time (BPTT), where the recurrent model is represented as"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page1_4",
+      "presentation": {
+        "latex": "Et = L(xt). One approach that can be used to compute the nec- essary gradients is Backpropagation Through Time (BPTT), where the recurrent model is represented as 1 This formulation is equivalent to the more widely known equation xt = σ(Wrecxt−1 + Winut + b), and it",
+        "unicode_plain": "Et = L(xt). One approach that can be used to compute the nec- essary gradients is Backpropagation Through Time (BPTT), where the recurrent model is represented as 1 This formulation is equivalent to the more widely known equation xt = σ(Wrecxt−1 + Winut + b), and it"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Et = L(xt). One approach that can be used to compute the nec- essary gradients is Backpropagation Through Time (BPTT), where the recurrent model is represented as 1 This formulation is equivalent to the more widely known equation xt = σ(Wrecxt−1 + Winut + b), and it"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page1_5",
+      "presentation": {
+        "latex": "known equation xt = σ(Wrecxt−1 + Winut + b), and it was chosen for convenience. arXiv:1211.5063v2  [cs.LG]  16 Feb 2013",
+        "unicode_plain": "known equation xt = σ(Wrecxt−1 + Winut + b), and it was chosen for convenience. arXiv:1211.5063v2  [cs.LG]  16 Feb 2013"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "known equation xt = σ(Wrecxt−1 + Winut + b), and it was chosen for convenience. arXiv:1211.5063v2  [cs.LG]  16 Feb 2013"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "∂θ (3) ∂Et ∂θ = ∑ 1≤k≤t (∂Et",
+        "unicode_plain": "∂θ (3) ∂Et ∂θ = ∑ 1≤k≤t (∂Et"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "∂θ (3) ∂Et ∂θ = ∑ 1≤k≤t (∂Et"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_5",
+      "presentation": {
+        "latex": "recdiag(σ′(xi−1)) (5) ∂+xk ∂θ refers to the “immediate” partial derivative of the state xk with respect to θ, i.e., where xk−1 is taken as a constant with respect to θ. Speciﬁcally, considering equation 2, the value of any row i of the",
+        "unicode_plain": "recdiag(σ′(xi−1)) (5) ∂+xk ∂θ refers to the “immediate” partial derivative of the state xk with respect to θ, i.e., where xk−1 is taken as a constant with respect to θ. Speciﬁcally, considering equation 2, the value of any row i of the"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(5)",
+        "verbatim_snippet": "recdiag(σ′(xi−1)) (5) ∂+xk ∂θ refers to the “immediate” partial derivative of the state xk with respect to θ, i.e., where xk−1 is taken as a constant with respect to θ. Speciﬁcally, considering equation 2, the value of any row i of the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "we haveγ = 1 while for sigmoid we have γ = 1/4. 2.2. Drawing similarities with Dynamical Systems We can improve our understanding of the exploding gradients and vanishing gradients problems by employ- ing a dynamical systems perspective, as it was done",
+        "unicode_plain": "we haveγ = 1 while for sigmoid we have γ = 1/4. 2.2. Drawing similarities with Dynamical Systems We can improve our understanding of the exploding gradients and vanishing gradients problems by employ- ing a dynamical systems perspective, as it was done"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "we haveγ = 1 while for sigmoid we have γ = 1/4. 2.2. Drawing similarities with Dynamical Systems We can improve our understanding of the exploding gradients and vanishing gradients problems by employ- ing a dynamical systems perspective, as it was done"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page4_9",
+      "presentation": {
+        "latex": "and a time-varying one Ut. F (x) = Wrecσ(x) + b corresponds to an input-less recurrent network, while Ut(x) = x + Winut describes the eﬀect of the input. This is depicted in in Fig. 5. Since Ut changes with time, it can not be analyzed using standard dynami- cal systems tools, but ˜F can. This means that when a",
+        "unicode_plain": "and a time-varying one Ut. F (x) = Wrecσ(x) + b corresponds to an input-less recurrent network, while Ut(x) = x + Winut describes the eﬀect of the input. This is depicted in in Fig. 5. Since Ut changes with time, it can not be analyzed using standard dynami- cal systems tools, but ˜F can. This means that when a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "and a time-varying one Ut. F (x) = Wrecσ(x) + b corresponds to an input-less recurrent network, while Ut(x) = x + Winut describes the eﬀect of the input. This is depicted in in Fig. 5. Since Ut changes with time, it can not be analyzed using standard dynami- cal systems tools, but ˜F can. This means that when a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "Ut(x) = x + Winut describes the eﬀect of the input. This is depicted in in Fig. 5. Since Ut changes with time, it can not be analyzed using standard dynami- cal systems tools, but ˜F can. This means that when a boundary between basins of attractions is crossed for ˜F , the state will move towards a diﬀerent attractor,",
+        "unicode_plain": "Ut(x) = x + Winut describes the eﬀect of the input. This is depicted in in Fig. 5. Since Ut changes with time, it can not be analyzed using standard dynami- cal systems tools, but ˜F can. This means that when a boundary between basins of attractions is crossed for ˜F , the state will move towards a diﬀerent attractor,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Ut(x) = x + Winut describes the eﬀect of the input. This is depicted in in Fig. 5. Since Ut changes with time, it can not be analyzed using standard dynami- cal systems tools, but ˜F can. This means that when a boundary between basins of attractions is crossed for ˜F , the state will move towards a diﬀerent attractor,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_8",
+      "presentation": {
+        "latex": "xt =wσ(xt−1) +b (8) Fig. 6 shows the error surface E50 = (σ(x50) − 0.7)2, where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it",
+        "unicode_plain": "xt =wσ(xt−1) +b (8) Fig. 6 shows the error surface E50 = (σ(x50) − 0.7)2, where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(8)",
+        "verbatim_snippet": "xt =wσ(xt−1) +b (8) Fig. 6 shows the error surface E50 = (σ(x50) − 0.7)2, where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "Fig. 6 shows the error surface E50 = (σ(x50) − 0.7)2, where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it follows that ∂xt",
+        "unicode_plain": "Fig. 6 shows the error surface E50 = (σ(x50) − 0.7)2, where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it follows that ∂xt"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Fig. 6 shows the error surface E50 = (σ(x50) − 0.7)2, where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it follows that ∂xt"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it follows that ∂xt ∂w =tx0wt−1 and ∂2xt",
+        "unicode_plain": "where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it follows that ∂xt ∂w =tx0wt−1 and ∂2xt"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where x0 =.5 and σ to be the sigmoid function. We can more easily analyze the behavior of this model by further simplifying it to be linear (σ then being the identity function), withb = 0. xt =x0wt from which it follows that ∂xt ∂w =tx0wt−1 and ∂2xt"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "identity function), withb = 0. xt =x0wt from which it follows that ∂xt ∂w =tx0wt−1 and ∂2xt ∂w 2 =t(t −1)x0wt−2, implying that when the ﬁrst derivative explodes, so does the second derivative.",
+        "unicode_plain": "identity function), withb = 0. xt =x0wt from which it follows that ∂xt ∂w =tx0wt−1 and ∂2xt ∂w 2 =t(t −1)x0wt−2, implying that when the ﬁrst derivative explodes, so does the second derivative."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "identity function), withb = 0. xt =x0wt from which it follows that ∂xt ∂w =tx0wt−1 and ∂2xt ∂w 2 =t(t −1)x0wt−2, implying that when the ﬁrst derivative explodes, so does the second derivative."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

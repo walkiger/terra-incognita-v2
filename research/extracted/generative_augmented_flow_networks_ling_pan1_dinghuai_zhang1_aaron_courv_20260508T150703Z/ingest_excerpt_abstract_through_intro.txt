@@ -1,0 +1,150 @@
+Abstract
+The Generative Flow Network (Bengio et al., 2021b, GFlowNet) is a probabilistic framework where an agent
+learns a stochastic policy for object generation, such that the probability of generating an object is proportional
+to a given reward function. Its effectiveness has been shown in discovering high-quality and diverse solutions,
+compared to reward-maximizing reinforcement learning-based methods. Nonetheless, GFlowNets only learn
+from rewards of the terminal states, which can limit its applicability. Indeed, intermediate rewards play
+a critical role in learning, for example from intrinsic motivation to provide intermediate feedback even in
+particularly challenging sparse reward tasks. Inspired by this, we propose Generative Augmented Flow
+Networks (GAFlowNets), a novel learning framework to incorporate intermediate rewards into GFlowNets.
+We specify intermediate rewards by intrinsic motivation to tackle the exploration problem in sparse reward
+environments. GAFlowNets can leverage edge-based and state-based intrinsic rewards in a joint way to
+improve exploration. Based on extensive experiments on the GridWorld task, we demonstrate the effectiveness
+and efﬁciency of GAFlowNet in terms of convergence, performance, and diversity of solutions. We further
+show that GAFlowNet is scalable to a more complex and large-scale molecule generation domain, where it
+achieves consistent and signiﬁcant performance improvement.
+1 Introduction
+Deep reinforcement learning (RL) has achieved signiﬁcant progress in recent years with particular
+success in games (Mnih et al., 2015, Silver et al., 2016, Vinyals et al., 2019). RL methods applied to
+the setting where a reward is only given at the end (i.e., terminal states) typically aim at maximizing
+that reward function for learning the optimal policy. However, diversity of the generated states is
+desirable in a wide range of practical scenarios including molecule generation (Bengio et al., 2021a),
+biological sequence design (Jain et al., 2022b), recommender systems (Kunaver and Požrl, 2017),
+dialogue systems (Zhang et al., 2020), etc. For example, in molecule generation, the reward function
+used in in-silico simulations can be uncertain and imperfect itself (compared to the more expensive
+in-vivo experiments). Therefore, it is not sufﬁcient to only search the solution that maximizes the
+return. Instead, it is desired that we sample many high-reward candidates, which can be achieved
+by sampling them proportionally to the reward of each terminal state.
+Interestingly, GFlowNets (Bengio et al., 2021a,b) learn a stochastic policy to sample compos-
+ite objects x ∈ Xwith probability proportional to the return R(x). The learning paradigm of
+GFlowNets is different from other RL methods, as it is explicitly aiming at modeling the diversity
+in the target distribution, i.e., all the modes of the reward function. This makes it natural for prac-
+tical applications where the model should discover objects that are both interesting and diverse,
+which is a focus of previous GFlowNet works (Bengio et al., 2021a,b, Jain et al., 2022b, Malkin et al.,
+2022).
+∗penny.ling.pan@gmail.com
+1
+arXiv:2210.03308v1  [cs.LG]  7 Oct 2022
+Yet, GFlowNets only learn from the reward of the terminal state, and do not consider interme-
+diate rewards, which can limit its applicability, especially in more general RL settings. Rewards
+play a critical role in learning (Silver et al., 2021). The tremendous success of RL largely depends
+on the reward signals that provide intermediate feedback. Even in environments with sparse re-
+wards, RL agents can motivate themselves for efﬁcient exploration by intrinsic motivation, which
+augments the sparse extrinsic learning signal with a dense intrinsic reward at each step. Our focus
+in this paper is precisely on introducing such intermediate intrinsic rewards in GFlowNets, since
+they can be applied even in settings where the extrinsic reward is sparse (say non-zero only on a
+few terminal states).
+Inspired by this missing element of GFlowNets, we propose a new GFlowNet learning frame-
+work that takes intermediate feedback signals into account to provide an exploration incentive
+during training. The notion of ﬂow in GFlowNets (Bengio et al., 2021a,b) refers to a marginalized
+quantity that sums rewards over all downstream terminal states following a given state, while shar-
+ing that reward with other states leading to the same terminal states. Apart from the existing ﬂows
+in the network, we introduce augmented ﬂows as intermediate rewards. Our new framework is
+well-suited for sparse reward tasks by considering intrinsic motivation as intermediate rewards,
+where the training of GFlowNet can get trapped in a few modes, since it may be difﬁcult for it to
+discover new modes based on those it visited (Bengio et al., 2021b).
+We ﬁrst propose an edge-based augmented ﬂow, based on the incorporation of an intrinsic
+reward at each transition. However, we ﬁnd that although it improves learning efﬁciency, it only
+performs local exploration and still lacks sufﬁcient exploration ability to drive the agent to visit
+solutions with zero rewards. On the other hand, we ﬁnd that incorporating intermediate rewards
+in a state-based manner (Bengio et al., 2021b) can result in slower convergence and large bias em-
+pirically, although it can explore more broadly. Therefore, we propose a joint way to take both
+edge-based and state-based augmented ﬂows into account. Our method can improve the diversity
+of solutions and learning efﬁciency by reaping the best from both worlds. Extensive experiments on
+the GridWorld and molecule domains that are already used to benchmark GFlowNets corroborate
+the effectiveness of our proposed framework.
+The main contributions of this paper are summarized as follows:
+• We propose a novel GFlowNet learning framework, dubbed Generative Augmented Flow
+Networks (GAFlowNet), to incorporate intermediate rewards, which are represented by aug-
+mented ﬂows in the ﬂow network.
+• We specify intermediate rewards by intrinsic motivation to deal with the exploration of state
+space for GFlowNets in sparse reward tasks. We theoretically prove that our augmented ob-
+jective asymptotically yields an unbiased solution to the original formulation.
+• We conduct extensive experiments on the GridWorld domain, demonstrating the effective-
+ness of our method in terms of convergence, diversity, and performance. Our method is also
+general, being applicable to different types of GFlowNets. We further extend our method to
+the larger-scale and more challenging molecule generation task, where our method achieves
+consistent and substantial improvements over strong baselines.
+2 Background
+Consider a directed acyclic graph (DAG) G = (S, A), where S denotes the state space, and A
+represents the action space, which is a subset ofS×S . We denote the vertexs0∈S to be the initial
+state with no incoming edges, while the vertex sf without outgoing edges is called the sink state,
+2
+and state-action pairs correspond to edges. The goal for GFlowNets is to learn a stochastic policy
+π that can construct discrete objects x∈X with probability proportional to the reward function
+R :X →R≥0, i.e.,π(x)∝ R(x). GFlowNets construct objects sequentially, where each step adds
+an element to the construction. We call the resulting sequence of state transitions from the initial
+state to a terminal state τ = ( s0→···→ sn) a trajectory, where τ ∈T withT denoting the set
+of trajectories. Bengio et al. (2021a) deﬁne a trajectory ﬂow F :T →R≥0. Let F (s) = ∑
+τ∋sF (τ)
+deﬁne a state ﬂow for any state s, and F (s→ s′) = ∑
+τ∋s→s′F (τ) deﬁnes the edge ﬂow for any
+edge s→ s′. The trajectory ﬂow induces a probability measure P (τ) = F (τ )
+Z , whereZ = ∑
+τ∈T F (τ)
+denotes the total ﬂow. We then deﬁne the corresponding forward policyPF (s′|s) = F (s→s′)
+F (s) and the
+backward policyPB(s|s′) = F (s→s′)
+F (s′) . The ﬂows can be considered as the amount of water ﬂowing
+through edges (like pipes) or states (like tees connecting pipes) (Malkin et al., 2022), with R(x) the
+amount of water through terminal state x, and PF (s′|s) the relative amount of water ﬂowing in
+edges outgoing from s.
+2.1 GFlowNets training criterion
+We call a ﬂow consistent if it satisﬁes the ﬂow matching constraint for all internal states s, i.e.,∑
+s′′→sF (s′′ → s) = F (s) = ∑
+s→s′F (s→ s′), which means that the incoming ﬂows equal the
+outgoing ﬂows. Bengio et al. (2021a) prove that for a consistent ﬂow F where the terminal ﬂow is
+set to be the reward, the forward policy can sample objectsx with probability proportional toR(x).
+Flow matching (FM). Bengio et al. (2021a) propose to approximate the edge ﬂow by a model
+Fθ(s, s′) parameterized by θ following the FM objective, i.e.,LFM(s) = (log ∑
+(s′′→s)∈AFθ(s′′, s)−
+log ∑
+(s→s′)∈AFθ(s, s′))2 for non-terminal states. At terminal states, a similar objective encourages
+the incoming ﬂow to match the corresponding reward. The objective is optimized using trajectories
+sampled from a training policyπ with full support such as a tempered version of PFθ or a mixture
+ofPFθ with a uniform policyU, i.e.,πθ = (1−ϵ)PFθ +ϵ·U, This is similar toϵ-greedy and entropy-
+regularized strategies in RL to improve exploration. Bengio et al. (2021a) prove that if we reach
+a global minimum of the expected loss function and the training policy πθ has full support, then
+GFlowNet samples from the target distribution.
+Detailed balance (DB). Bengio et al. (2021b) propose the DB objective to avoid the computa-
+tionally expensive summing operation over the parents or children of states. For learning based
+on DB, we train a neural network with a state ﬂow model Fθ, a forward policy modelPFθ(·|s), and
+a backward policy model PBθ(·|s) parameterized by θ. The optimization objective is to minimize
+LDB(s, s′) = (log(Fθ(s)PFθ(s′|s))− log(Fθ(s′)PBθ(s|s′)))2. It also samples from the target distribu-
+tion if a global minimum of the expected loss is reached andπθ has full support.
+Trajectory balance (TB). Malkin et al. (2022) propose the TB objective for faster credit
+assignment and learning over longer trajectories. The loss function for TB is LTB(τ) =
+(log(Zθ
+∏n−1
+t=0 PFθ(st+1|st))− log(R(x) ∏n−1
+t=0 PB(st|st+1)))2, whereZθ is a learnable parameter.
+3 Related Work
+GFlowNets. Since the proposal of GFlowNets (Bengio et al., 2021a), there has been an increasing
+interest in improving (Bengio et al., 2021b, Malkin et al., 2022), understanding, and applying this
+framework to practical scenarios. It is a general-purpose high-level probabilistic inference frame-
+work, and induces fruitful applications (Deleu et al., 2022, Jain et al., 2022a, Zhang et al., 2022a,b).
+However, previous works only consider learning based on the terminal reward, which can make
+3
+it difﬁcult to provide a good training signal for intermediate states, especially when the reward is
+sparse (i.e., signiﬁcantly non-zero in only a tiny fraction of the terminal states).
+Reinforcement learning (RL). Different from GFlowNets that aim to sample proportionally
+to the reward function, RL learns a reward-maximization policy. Although introducing entropy
+regularization to RL (Attias, 2003, Haarnoja et al., 2017, 2018, Ziebart, 2010) can improve diversity,
+this is limited to tree-structured DAGs. This is because it could only sample a terminal state x in
+proportion to the sum of rewards over all trajectories leading to x. It can fail on general (non-tree)
+DAGs (Bengio et al., 2021a) for which the same terminal state x can be obtained with a potentially
+large number of trajectories (and a very different number of trajectories for different x’s).
+Intrinsic motivation. There has been a line of research to incorporate intrinsic motiva-
+tion (Burda et al., 2018, Pathak et al., 2017, Zhang et al., 2021) for improving exploration in RL.
+Yet, such ideas have not been explored with GFlowNets because the current mathematical frame-
+work of GFlowNets only allows for terminal rewards, unlike the sta

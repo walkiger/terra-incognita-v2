@@ -1,0 +1,141 @@
+Abstract
+Generative Flow Networks (GFlowNets) have
+been shown effective to generate combinatorial
+objects with desired properties. We here propose
+a new GFlowNet training framework, with policy-
+dependent rewards, that bridges keeping flow bal-
+ance of GFlowNets to optimizing the expected
+accumulated reward in traditional Reinforcement-
+Learning (RL). This enables the derivation of
+new policy-based GFlowNet training methods, in
+contrast to existing ones resembling value-based
+RL. It is known that the design of backward poli-
+cies in GFlowNet training affects efficiency. We
+further develop a coupled training strategy that
+jointly solves GFlowNet forward policy training
+and backward policy design. Performance analy-
+sis is provided with a theoretical guarantee of our
+policy-based GFlowNet training. Experiments
+on both simulated and real-world datasets verify
+that our policy-based strategies provide advanced
+RL perspectives for robust gradient estimation
+to improve GFlowNet performance. Our code is
+available at: github.com/niupuhua1234/GFN-PG.
+1. Introduction
+Generative Flow Networks (GFlowNets) are a family of
+generative models on the space of combinatorial objects X ,
+e.g. graphs composed by organizing nodes and edges in a
+particular manner, or strings composed of characters in a
+particular ordering. GFlowNets aim to solve a challenging
+task, sampling x ∈ X with a probability proportional to
+some non-negative reward function R(x) that defines an un-
+normalized distribution, where |X | can be enormous and the
+distribution modes are highly isolated by its combinatorial
+1Department of Electrical and Computer Engineering, Texas
+A&M University, College Station, TX, USA 2Department of Com-
+puter Science and Engineering, Texas A&M University, College
+Station, TX, USA 3Computational Science Intiative, Brookhaven
+National Laboratory, Upton, NY , USA. Correspondence to: Xiaon-
+ing Qian <xqian@tamu.edu>.
+Proceedings of the 41 st International Conference on Machine
+Learning, Vienna, Austria. PMLR 235, 2024. Copyright 2024 by
+the author(s).
+nature. GFlowNets (Bengio et al., 2021; 2023) decompose
+the process of generating or sampling x ∈ X by generat-
+ing incremental trajectories that start from a null state, pass
+through intermediate states, and end at x as the desired ter-
+minating state. These trajectory instances are interpreted
+as the paths along a Directed Acyclic Graph (DAG). Prob-
+ability measures of trajectories are viewed as the amount
+of ‘water’ flows along the DAG, with R(x) being the to-
+tal flow of trajectories that end at x, so that following the
+forward generating policy defined by the measure, sampled
+trajectories will end at x with the probability proportional
+to R(x).
+GFlowNets bear a similar form of reinforcement learn-
+ing (RL) in that they both operate over Markovian Decision
+Processes (MDP) with a reward functionR(x), where nodes,
+edges, and node transition distributions defined by Marko-
+vian flows are considered as states, actions, and stochastic
+policies in MDPs. They, however, differ in the following
+aspects: the goal of RL problems is to learn optimal policies
+that maximize the expected cumulative trajectory reward by
+R. For value-based RL methods, the key to achieve this is
+by reducing the Temporal Difference (TD) error of Bellman
+equations for the estimated state value function V and state-
+action value function Q (Sutton & Barto, 2018; Mnih et al.,
+2013). GFlowNets amortize the sampling problem into find-
+ing some Markovian flow that assigns the proper probability
+flow to edges (actions) so that the total flow of trajectories
+ending at x is R(x). When studying these in the lens of
+RL, the existing GFlowNet training strategies are also value-
+based in that they achieve the goal by keeping the balance
+flow equation over states of the DAG, whose difference can
+be measured in trajectory-wise and edge-wise ways (Bengio
+et al., 2021; 2023; Malkin et al., 2022a; Madan et al., 2023).
+Due to the similarity of GFlowNet training and RL, investi-
+gating the relationships between them can not only deepen
+understanding of GFlowNets but also help derive better
+training methods from RL. In this work, we propose policy-
+dependent rewards for GFlowNet training. This bridges
+GFlowNets to RL in that keeping the flow balance over
+DAGs can be reformulated as optimizing the expected ac-
+cumulated rewards in RL problems. We then derive policy-
+based training strategies, which optimize the accumulated
+reward by its gradients with respect to (w.r.t.) the forward
+policy directly (Sutton et al., 1999; Sutton & Barto, 2018).
+1
+GFlowNet Training by Policy Gradients
+In terms of RL, we acknowledge that the existing GFlowNet
+training methods can be considered value-based and have
+the advantage of allowing off-policy training over policy-
+based methods (Malkin et al., 2022b). Value-based methods,
+however, face the difficulty in designing a powerful sampler
+that can balance the exploration and exploitation trade-off,
+especially when the combinatorial space is enormous with
+well-isolated modes. Besides, employing typical annealing
+or random-mixing solutions may lead to the learned policy
+trapped in local optima. Finally, designing strategies for
+powerful samplers vary according to the structure and set-
+ting of modeling environments. Policy-based methods, espe-
+cially the on-policy ones, transform the design of a powerful
+sampler into robust estimation of policy gradients, which
+can be achieved by variance reduction techniques (Schul-
+man et al., 2016) and improvement of gradient descent di-
+rections, such as natural policy gradients (Kakade, 2001)
+and mirror policy descent (Zhan et al., 2023). Conservation
+policy updates such as Trust-Region Policy Optimization
+(TRPO) (Schulman et al., 2015; Achiam et al., 2017) and
+its first-order approximation, Proximal Policy Optimiza-
+tion (PPO) (Schulman et al., 2017b), have also been devel-
+oped, for example as the backbone of ChatGPT (Ouyang
+et al., 2022). Moreover, policy-based methods can be made
+off-policy, for example, by importance sampling (Degris
+et al., 2012). Our work provides alternative ways to improve
+GFlowNet performance via policy-based training. Our con-
+tributions can be summarized as follows:
+• We reformulate the GFlowNet training as RL over a
+special MDP where the reward is policy-dependent,
+and the underlying Markovian chain is absorbing.
+We further derive policy gradients for this special
+MDP and propose policy-based training strategies for
+GFlowNets, inspired by policy gradient and TRPO
+methods over MDPs with stationary rewards and er-
+godic Markovian chains.
+• We further formulate the design of backward policies
+in GFlowNets as an RL problem and propose a cou-
+pled training strategy. While finding a desired forward
+policy is the goal of GFlowNet training, well-designed
+backward policies, as the components of training objec-
+tives, are expected to improve training efficiency (Shen
+et al., 2023).
+• We provide performance analyses for theoretical guar-
+antees of our method for GFlowNet training. Our the-
+oretical results are also accompanied by performing
+experiments in three application domains, hyper-grid
+modeling, biological and molecular sequence design,
+and Bayesian Network (BN) structure learning. The ob-
+tained experimental results serve as empirical evidence
+for the validity of our work and also help empirically
+understand the relationship between GFlowNet train-
+ing and RL.

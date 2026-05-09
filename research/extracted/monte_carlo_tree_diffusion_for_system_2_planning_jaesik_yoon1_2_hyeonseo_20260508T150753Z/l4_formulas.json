@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "monte_carlo_tree_diffusion_for_system_2_planning_jaesik_yoon1_2_hyeonseo_20260508T150753Z",
+  "extracted_at": "2026-05-08T15:11:28Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "able MCTD planning: (1) Denoising as Tree-Rollout, (2) Guidance Levels as Meta-Actions, and (3) Jumpy Denoising as Simulation. These innovations form the foundation of MCTD, bridging the gap between traditional tree search methods and diffusion-based planning. We then describe the MCTD process in terms of the four steps: Selection,",
+        "unicode_plain": "able MCTD planning: (1) Denoising as Tree-Rollout, (2) Guidance Levels as Meta-Actions, and (3) Jumpy Denoising as Simulation. These innovations form the foundation of MCTD, bridging the gap between traditional tree search methods and diffusion-based planning. We then describe the MCTD process in terms of the four steps: Selection,"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "able MCTD planning: (1) Denoising as Tree-Rollout, (2) Guidance Levels as Meta-Actions, and (3) Jumpy Denoising as Simulation. These innovations form the foundation of MCTD, bridging the gap between traditional tree search methods and diffusion-based planning. We then describe the MCTD process in terms of the four steps: Selection,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "partially denoised sub-trajectory, and edges are labeled with binary guidance levels (0 = no guidance, 1 = guided). After a new node is expanded, “jumpy” denoising is performed to quickly estimate its value, which is then backpropagated along the path in the tree.(b) Diffusion Perspective:The same process is viewed as partial denoising across both denoising depth (vertical axis) and planning horiz",
+        "unicode_plain": "partially denoised sub-trajectory, and edges are labeled with binary guidance levels (0 = no guidance, 1 = guided). After a new node is expanded, “jumpy” denoising is performed to quickly estimate its value, which is then backpropagated along the path in the tree.(b) Diffusion Perspective:The same process is viewed as partial denoising across both denoising depth (vertical axis) and planning horizon"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "partially denoised sub-trajectory, and edges are labeled with binary guidance levels (0 = no guidance, 1 = guided). After a new node is expanded, “jumpy” denoising is performed to quickly estimate its value, which is then backpropagated along the path in the tree.(b) Diffusion Perspective:The same process is viewed as partial denoising across both denoising depth (vertical axis) and planning horizon"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "partition the full trajectory x= (x 1, x2, . . . , xN) into S subplans, x= (x 1,x 2, . . . ,xS) such that ∩sxs =∅ . Un- like the standard diffuser, where all subplans share the same global denoising schedule, our approach allows assigning independent denoising schedules to each subplan. By apply- ing faster denoising to earlier subplans and slower denoising",
+        "unicode_plain": "partition the full trajectory x= (x 1, x2, . . . , xN) into S subplans, x= (x 1,x 2, . . . ,xS) such that ∩sxs =∅ . Un- like the standard diffuser, where all subplans share the same global denoising schedule, our approach allows assigning independent denoising schedules to each subplan. By apply- ing faster denoising to earlier subplans and slower denoising"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "partition the full trajectory x= (x 1, x2, . . . , xN) into S subplans, x= (x 1,x 2, . . . ,xS) such that ∩sxs =∅ . Un- like the standard diffuser, where all subplans share the same global denoising schedule, our approach allows assigning independent denoising schedules to each subplan. By apply- ing faster denoising to earlier subplans and slower denoising"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "subplans, x= (x 1,x 2, . . . ,xS) such that ∩sxs =∅ . Un- like the standard diffuser, where all subplans share the same global denoising schedule, our approach allows assigning independent denoising schedules to each subplan. By apply- ing faster denoising to earlier subplans and slower denoising to later subplans, the process effectively becomes causal and",
+        "unicode_plain": "subplans, x= (x 1,x 2, . . . ,xS) such that ∩sxs =∅ . Un- like the standard diffuser, where all subplans share the same global denoising schedule, our approach allows assigning independent denoising schedules to each subplan. By apply- ing faster denoising to earlier subplans and slower denoising to later subplans, the process effectively becomes causal and"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "subplans, x= (x 1,x 2, . . . ,xS) such that ∩sxs =∅ . Un- like the standard diffuser, where all subplans share the same global denoising schedule, our approach allows assigning independent denoising schedules to each subplan. By apply- ing faster denoising to earlier subplans and slower denoising to later subplans, the process effectively becomes causal and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "p(xs|x1:s−1).(2) Notably, although this formulation appears autoregressive, it is still executed as a single denoising process by controlling noise levels across subplans (Chen et al., 2024a). In MCTD, each subplan xs, which represents atemporally extended state, is treated as a node in the search tree, rather",
+        "unicode_plain": "p(xs|x1:s−1).(2) Notably, although this formulation appears autoregressive, it is still executed as a single denoising process by controlling noise levels across subplans (Chen et al., 2024a). In MCTD, each subplan xs, which represents atemporally extended state, is treated as a node in the search tree, rather"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "p(xs|x1:s−1).(2) Notably, although this formulation appears autoregressive, it is still executed as a single denoising process by controlling noise levels across subplans (Chen et al., 2024a). In MCTD, each subplan xs, which represents atemporally extended state, is treated as a node in the search tree, rather"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "instance, in one of our planning experiments, we use S= 5 andN= 500. 3.2. Guidance Levels as Meta-Actions In MCTS, constructing and searching the tree becomes com- putationally expensive in large action spaces and is fun- damentally impractical for continuous action spaces. To",
+        "unicode_plain": "instance, in one of our planning experiments, we use S= 5 andN= 500. 3.2. Guidance Levels as Meta-Actions In MCTS, constructing and searching the tree becomes com- putationally expensive in large action spaces and is fun- damentally impractical for continuous action spaces. To"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "instance, in one of our planning experiments, we use S= 5 andN= 500. 3.2. Guidance Levels as Meta-Actions In MCTS, constructing and searching the tree becomes com- putationally expensive in large action spaces and is fun- damentally impractical for continuous action spaces. To"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "andN= 500. 3.2. Guidance Levels as Meta-Actions In MCTS, constructing and searching the tree becomes com- putationally expensive in large action spaces and is fun- damentally impractical for continuous action spaces. To resolve this issue, in MCTD we introduce a novel approach",
+        "unicode_plain": "andN= 500. 3.2. Guidance Levels as Meta-Actions In MCTS, constructing and searching the tree becomes com- putationally expensive in large action spaces and is fun- damentally impractical for continuous action spaces. To resolve this issue, in MCTD we introduce a novel approach"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "andN= 500. 3.2. Guidance Levels as Meta-Actions In MCTS, constructing and searching the tree becomes com- putationally expensive in large action spaces and is fun- damentally impractical for continuous action spaces. To resolve this issue, in MCTD we introduce a novel approach"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "achieve this, we introduce a guidance schedule g= (g1, . . . , gS), which assigns a guidance meta-action gs ∈ {GUIDE,NO GUIDE} to each corresponding subplan xs. If no guidance is chosen, the subplan is sampled from the 3",
+        "unicode_plain": "achieve this, we introduce a guidance schedule g= (g1, . . . , gS), which assigns a guidance meta-action gs ∈ {GUIDE,NO GUIDE} to each corresponding subplan xs. If no guidance is chosen, the subplan is sampled from the 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "achieve this, we introduce a guidance schedule g= (g1, . . . , gS), which assigns a guidance meta-action gs ∈ {GUIDE,NO GUIDE} to each corresponding subplan xs. If no guidance is chosen, the subplan is sampled from the 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "p(xs|x1:s−1, gs).(3) As a result, this approach enables efficient and scalable planning, even in complex or continuous action spaces. 3.3. Jumpy Denoising as Fast Simulation In MCTS, evaluating a node far from a leaf node, where evaluation of the plan is feasible, is a critical requirement.",
+        "unicode_plain": "p(xs|x1:s−1, gs).(3) As a result, this approach enables efficient and scalable planning, even in complex or continuous action spaces. 3.3. Jumpy Denoising as Fast Simulation In MCTS, evaluating a node far from a leaf node, where evaluation of the plan is feasible, is a critical requirement."
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "p(xs|x1:s−1, gs).(3) As a result, this approach enables efficient and scalable planning, even in complex or continuous action spaces. 3.3. Jumpy Denoising as Fast Simulation In MCTS, evaluating a node far from a leaf node, where evaluation of the plan is feasible, is a critical requirement."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "˜xs+1:S ∼p(x s+1:S|x1:s,g).(4) This produces a full trajectory ˜x= (x 1:s, ˜xs+1:S), which is then evaluated using the reward function r(˜x). While this fast denoising process may introduce larger approximation errors, it is highly computationally efficient, making it well- suited for the simulation step in MCTD.",
+        "unicode_plain": "˜xs+1:S ∼p(x s+1:S|x1:s,g).(4) This produces a full trajectory ˜x= (x 1:s, ˜xs+1:S), which is then evaluated using the reward function r(˜x). While this fast denoising process may introduce larger approximation errors, it is highly computationally efficient, making it well- suited for the simulation step in MCTD."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "˜xs+1:S ∼p(x s+1:S|x1:s,g).(4) This produces a full trajectory ˜x= (x 1:s, ˜xs+1:S), which is then evaluated using the reward function r(˜x). While this fast denoising process may introduce larger approximation errors, it is highly computationally efficient, making it well- suited for the simulation step in MCTD."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "This produces a full trajectory ˜x= (x 1:s, ˜xs+1:S), which is then evaluated using the reward function r(˜x). While this fast denoising process may introduce larger approximation errors, it is highly computationally efficient, making it well- suited for the simulation step in MCTD. 3.4. The Four Steps of an MCTD Round",
+        "unicode_plain": "This produces a full trajectory ˜x= (x 1:s, ˜xs+1:S), which is then evaluated using the reward function r(˜x). While this fast denoising process may introduce larger approximation errors, it is highly computationally efficient, making it well- suited for the simulation step in MCTD. 3.4. The Four Steps of an MCTD Round"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "This produces a full trajectory ˜x= (x 1:s, ˜xs+1:S), which is then evaluated using the reward function r(˜x). While this fast denoising process may introduce larger approximation errors, it is highly computationally efficient, making it well- suited for the simulation step in MCTD. 3.4. The Four Steps of an MCTD Round"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "2:fori= 1toiterationsdo 3:node←root 4:whileISFULLYEXPANDED(node)and not 5: ISLEAF(node)do 6:node←BESTUCTCHILD(node) 7:end while",
+        "unicode_plain": "2:fori= 1toiterationsdo 3:node←root 4:whileISFULLYEXPANDED(node)and not 5: ISLEAF(node)do 6:node←BESTUCTCHILD(node) 7:end while"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "2:fori= 1toiterationsdo 3:node←root 4:whileISFULLYEXPANDED(node)and not 5: ISLEAF(node)do 6:node←BESTUCTCHILD(node) 7:end while"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "19:whilenode̸=nulldo 20:node.visitCount←node.visitCount+ 1 21:node.value←node.value+reward 22: UPDATEMETAACTIONSCHEDULE( 23:node, reward) 24:node←node.parent",
+        "unicode_plain": "19:whilenode̸=nulldo 20:node.visitCount←node.visitCount+ 1 21:node.value←node.value+reward 22: UPDATEMETAACTIONSCHEDULE( 23:node, reward) 24:node←node.parent"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "19:whilenode̸=nulldo 20:node.visitCount←node.visitCount+ 1 21:node.value←node.value+reward 22: UPDATEMETAACTIONSCHEDULE( 23:node, reward) 24:node←node.parent"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page7_14",
+      "presentation": {
+        "latex": "suitable for diffusion-based planning, zt =V AE(xt). Be- cause Diffuser’s default heuristic controller is inapplica- 7",
+        "unicode_plain": "suitable for diffusion-based planning, zt =V AE(xt). Be- cause Diffuser’s default heuristic controller is inapplica- 7"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "suitable for diffusion-based planning, zt =V AE(xt). Be- cause Diffuser’s default heuristic controller is inapplica- 7"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

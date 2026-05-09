@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z",
+  "source_pdf": "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/source.pdf",
+  "title_hint": "Hume: Introducing System-2 Thinking in Visual-Language-Action Model Haoming Modi Shi4 Guanghui Ren4 Maoqing Yao4",
+  "updated_at": "2026-05-08T15:10:53Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:06Z",
+      "artifacts": [
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/source.pdf",
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:53Z",
+      "artifacts": [
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:53Z",
+      "artifacts": [
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:53Z",
+      "artifacts": [
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:53Z",
+      "artifacts": [
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/l4_analysis.json",
+        "research/extracted/hume_introducing_system_2_thinking_in_visual_language_action_model_haomi_20260508T150803Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=23055; pdf_sha256=d40b8b0b7b2ee71f91d7149c5937c3c096fc58398c2aa53a71dd217cfecb1cf0; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "d40b8b0b7b2ee71f91d7149c5937c3c096fc58398c2aa53a71dd217cfecb1cf0"
+}

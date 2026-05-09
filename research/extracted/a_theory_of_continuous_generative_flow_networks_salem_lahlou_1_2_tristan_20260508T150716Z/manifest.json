@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z",
+  "source_pdf": "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/source.pdf",
+  "title_hint": "A Theory of Continuous Generative Flow Networks Salem Lahlou 1 2 Tristan Deleu 1 2 Pablo Lemos 1 3 2 Dinghuai Zhang 1 2 Alexandra Volokhova1 2 Alex Hern´andez-Garc´ıa1 2 L´ena N´ehale Ezzine 1 2 Yoshua Bengio1 2 4 Nikolay Malkin 1 2",
+  "updated_at": "2026-05-08T15:08:34Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:16Z",
+      "artifacts": [
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/source.pdf",
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/l4_analysis.json",
+        "research/extracted/a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4644; pdf_sha256=6471a55f7efa868094757fe3c17b040d728a2e728e90da6d04a8295799b08911; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "6471a55f7efa868094757fe3c17b040d728a2e728e90da6d04a8295799b08911"
+}

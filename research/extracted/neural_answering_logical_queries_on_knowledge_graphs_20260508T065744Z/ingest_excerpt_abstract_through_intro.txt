@@ -1,0 +1,210 @@
+ABSTRACT
+Logical queries constitute an important subset of questions posed
+in knowledge graph question answering systems. Yet, effectively
+answering logical queries on large knowledge graphs remains a
+highly challenging problem. Traditional subgraph matching based
+methods might suffer from the noise and incompleteness of the un-
+derlying knowledge graph, often with a prolonged online response
+time. Recently, an alternative type of method has emerged whose
+key idea is to embed knowledge graph entities and the query in
+an embedding space so that the embedding of answer entities is
+close to that of the query. Compared with subgraph matching based
+methods, it can better handle the noisy or missing information in
+knowledge graph, with a faster online response. Promising as it
+might be, several fundamental limitations still exist, including the
+linear transformation assumption for modeling relations and the
+inability to answer complex queries with multiple variable nodes.
+In this paper, we propose an embedding based method (NewLook)
+to address these limitations. Our proposed method offers three
+major advantages. First ( Applicability), it supports four types of
+logical operations and can answer queries with multiple variable
+nodes. Second (Effectiveness), the proposed NewLook goes beyond
+the linear transformation assumption, and thus consistently out-
+performs the existing methods. Third (Efficiency), compared with
+subgraph matching based methods, NewLook is at least 3 times
+faster in answering the queries; compared with the existing embed-
+ding based methods, NewLook bears a comparable or even faster
+online response and offline training time.
+CCS CONCEPTS
+• Information systems applications → Data mining ; • Arti-
+ficial intelligence → Knowledge representation and reason-
+ing; •Computing methodologies → Machine learning.
+KEYWORDS
+Knowledge graph query; Knowledge graph embedding; Logical
+query embedding
+ACM Reference Format:
+Lihui Liu, Boxin Du, Heng Ji, ChengXiang Zhai, Hanghang Tong. 2021.
+Neural-Answering Logical Queries on Knowledge Graphs. In Proceedings of
+the 27th ACM SIGKDD Conference on Knowledge Discovery and Data Mining
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than ACM
+must be honored. Abstracting with credit is permitted. To copy otherwise, or republish,
+to post on servers or to redistribute to lists, requires prior specific permission and/or a
+fee. Request permissions from permissions@acm.org.
+KDD ’21, August 14–18, 2021, Virtual Event, Singapore
+© 2021 Association for Computing Machinery.
+ACM ISBN 978-1-4503-8332-5/21/08. . . $15.00
+https://doi.org/10.1145/3447548.3467375
+(KDD ’21), August 14–18, 2021, Virtual Event, Singapore. ACM, New York,
+NY, USA, 12 pages. https://doi.org/10.1145/3447548.3467375
+1 INTRODUCTION
+Question answering on large knowledge graphs has numerous
+applications. Many methods have been developed for answering
+different types of questions, ranging from single-hop queries [1],
+multi-hop queries [18], to logical queries [19]. Among them, logical
+queries constitutes an important subset 1 of questions posed in
+question answering systems. Examples of logical queries include
+“Who is the spouse of Barack Obama? ” “In 2018, who won the Turing
+award and where do they come from? ” Despite its key importance, it
+remains a difficult challenge to effectively answer logical queries
+on large knowledge graphs.
+The traditional approaches first transform the original question
+into a logical query graph (also known as ‘dependency graph’ or
+‘logical DAG graph’, or ‘query graph’ for short) (e.g., [24, 28, 31]).
+For example, the aforementioned question “Who is the spouse of
+Barack Obama?” can be transformed into a logical query graph
+“?
+isMarriedTo
+− − − − − − − − − →Barack Obama”. We can then use subgraph match-
+ing (e.g., [2, 12, 17, 23]) to find the answers from the underlying
+knowledge graphs. However, real-world knowledge graphs are of-
+ten incomplete with noisy information [7], which makes subgraph
+matching based methods suffer from a number of issues, e.g., the
+empty-answer problem [27], the wrong answer problem [19] and
+so on. Besides, the intrinsic high computational complexity of sub-
+graph matching-based methods often lead to a prolonged online
+response time [19].
+Recently, an alternative type of method for answering logical
+queries has emerged (e.g., [1, 5, 7, 11, 19]). The key idea is to embed
+the logical query graph and the knowledge graph entities into the
+same low-dimensional vector space, so that the embedding of enti-
+ties that answer the query graph is close to that of the query. There-
+fore, after the embedding is obtained, answering logical queries
+essentially becomes a similarity search problem in the embedding
+space. In this way, the reasonable answers could be found even
+when the knowledge graph is incomplete or noisy. What is more,
+compared with subgraph matching based methods, embedding
+based methods tend to have a faster online response.
+Besides its promising results, several fundamental limitations
+still exist with embedding based methods. Let us elaborate us-
+ing four most recent approaches as examples, including GQE [5],
+Query2Box [19], BetaE [20] and EmQL [21]. First, the existing meth-
+ods like GQE [5] and Query2Box [19] treat the one hop transition be-
+tween two nodes in the embedding space as a linear transformation.
+This makes themselves suffer from severe cascading errors [8], espe-
+cially when dealing with long, complex logical queries with multiple
+inter-dependent paths. Second, GQE [5] and Query2Box [19] only
+1Examples of questions which cannot be represented as logical queries include “Which
+is the best university in computer science? ”“How many programmers did Google hire last
+year?”
+Figure 1: Accuracy and query time of different meth-
+ods. Compared with the existing embedding based meth-
+ods (GQE [5] and Query2box [19]), the proposed method
+(NewLook) is significantly better in accuracy with a com-
+parable online query response time; compared with the sub-
+graph matching based methods (G-Ray [23], FilM [15] and
+GFinder [12]), the proposed NewLook is both more accurate
+and faster. The results are for query ‘3ippu’ in Figure 8 on
+NELL dataset. See Section 4.3 for more details.
+support three logical operations, namely projection, intersection
+and union, and thus limit their applicability. Although BetaE [20]
+further supports the negation operation and EmQL [21] also sup-
+ports more logical operations: relation filtering and the difference
+operation. Nonetheless, both methods suffer from some subtle defi-
+ciency in modeling difference operation (see Section 3.1 for more
+discussions).
+In response, we propose an embedding based algorithm (NewLook)
+to answer logical queries on knowledge graphs. Compared with pre-
+vious methods, our method has three distinctive advantages. First,
+we go beyond the linear transformation assumption and model each
+type of logical operation as a neural network. In this way, we can
+significantly mitigate the cascading errors. Second, in addition to
+projection, intersection and union, our method also supports a new
+type of logical operation, namely difference. Third, our method can
+simultaneously find the geometric embedding for multiple variable
+nodes in the logical query, which not only broadens the applicability
+of our method, but also offers a pruning method for subgraph match-
+ing based algorithms. We evaluate NewLook on three benchmark
+datasets and show that our method (1) outperforms both subgraph
+matching based methods and prior embedding based methods; and
+(2) is computationally efficient. See Figure 1 for a comparison.
+The main contributions of the paper are
+• We propose an algorithm NewLook which can not only
+mitigate the cascading error problem but also support more
+logical operations.
+• we redesign the projection operation, intersection operation
+and loss function which greatly improve the accuracy. More-
+over, NewLook can learn a box embedding for each variable
+node in the logical query with high accuracy.
+• We perform extensive empirical evaluations to demonstrate
+the efficacy of our model.
+2 PROBLEM DEFINITION
+Table 1 gives the main notations used throughout this paper. We use
+upper case calligraphic font letters for graphs (e.g. G, Q, C), lower
+case bold letters (e.g., e, b) for embedding vectors. A knowledge
+graph is denoted as G = (𝑉 , 𝑅, 𝑇) where 𝑉 = {𝑣1, 𝑣2, ..., 𝑣𝑛 } is the
+Table 1: Notations and definitions
+Symbols Definition
+G = (𝑉 , 𝑅, 𝑇) the knowledge graph
+𝑣𝑖 the 𝑖th entity/node in knowledge graph
+e𝑖 the embedding of entity/node 𝑣𝑖
+𝑟𝑖 the 𝑖th relation/edge in knowledge graph
+Q = (𝑈 , 𝑅, 𝐿) a dependency graph
+𝑈 the node set of Q
+𝑢𝑖 the 𝑖th node in 𝑈
+𝐿 Logical operations
+b𝑖 the box embedding of 𝑈𝑖
+b𝑐
+𝑖 the center of b𝑖
+b𝑜
+𝑖 the offset of b𝑖
+p𝑖 the embedding of 𝑟𝑖
+p𝑐
+𝑖 the center embedding of p𝑖
+p𝑜
+𝑖 the offset embedding of p𝑖
+set of nodes/entities, 𝑅 = {𝑟1, 𝑟2, ..., 𝑟𝑚 } is the set of relations and
+𝑇 is the set of triples. Each triple in the knowledge graph can be
+denoted as (ℎ, 𝑟, 𝑡) where ℎ ∈ 𝑉 is the head (i.e., subject) of the triple,
+𝑡 ∈ 𝑉 is the tail (i.e., object) of the triple and 𝑟 ∈ 𝑅 is the edge (i.e.,
+relation, predicate) of the triple which connects the head ℎ to the
+tail 𝑡. The knowledge graph structure information can be denoted
+as an 𝑛 × 𝑛 adjacency matrix A with A(𝑖, 𝑗 ) = 1 if 𝑣𝑖 is connected
+with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency,
+we randomly divide all the nodes in the knowledge graph into
+different groups, and use a three dimensional tensor T to denote
+the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅,
+T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in
+group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot
+vector x𝑖 to denote which group it belongs to. If node 𝑣𝑖 belongs
+to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node
+set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group
+information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1,
+otherwise, it equals to 0.
+Following the definition in [5], [19], [20], a first-order logic query
+contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially
+quantified bound variables 𝑢1, ..., 𝑢𝑘 and a single target variable 𝑢?,
+which provides the query answer. In mathematical form, it can be
+defined as𝑞[𝑢?] = 𝑢?.∃𝑢1, ..., 𝑢𝑘 : 𝜋1 ∨𝜋2 ∨... ∨𝜋𝑛, where 𝜋𝑖 = 𝜚𝑖1 ∧
+𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs
+to projection or negation [ 20]. For example, GQE [ 5] considers
+conjunctive logical query, Query2Box [ 19] considers existential
+positive first-order (EPFO) logical queries. In this paper, we consider
+logical queries which can support four kinds of logical operations:
+projection, intersection, union and difference. Besides this, instead
+of constraining a logical query only having a single target variable,
+we treat all non-anchor nodes as target variables.
+A logical query graph (i.e., dependency graph) Q = (𝑈 , 𝑅, 𝐿) is
+the graph expression of the logical query, where the upper case
+letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node
+set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the
+specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set
+which is the same as the relation set of G, and 𝐿 denotes logical
+operations. According to the definition of first-order logic, Q is
+a Directed Acyclic Graph (DAG), with the anchor entities as the
+source nodes of the DAG [19]. An example of logical query graph
+is given in the first column of Figure 2.
+Given a knowledge graph G, a three dimensional tensor T , the
+one-hot vector x𝑖 for each node 𝑣𝑖 and a logical query 

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "how_to_construct_deep_recurrent_neural_networks_razvan_1d_epartement_d_i_20260508T150640Z",
+  "extracted_at": "2026-05-08T15:10:50Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "ht =fh(xt, ht−1) (1) yt =fo(ht), (2) wherefh andfo are a state transition function and an output function, respectively. Each function is parameterized by a set of parameters; θh and θo. Given a set of N training sequences D = {(",
+        "unicode_plain": "ht =fh(xt, ht−1) (1) yt =fo(ht), (2) wherefh andfo are a state transition function and an output function, respectively. Each function is parameterized by a set of parameters; θh and θo. Given a set of N training sequences D = {("
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "ht =fh(xt, ht−1) (1) yt =fo(ht), (2) wherefh andfo are a state transition function and an output function, respectively. Each function is parameterized by a set of parameters; θh and θo. Given a set of N training sequences D = {("
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "yt =fo(ht), (2) wherefh andfo are a state transition function and an output function, respectively. Each function is parameterized by a set of parameters; θh and θo. Given a set of N training sequences D = {( (x(n)",
+        "unicode_plain": "yt =fo(ht), (2) wherefh andfo are a state transition function and an output function, respectively. Each function is parameterized by a set of parameters; θh and θo. Given a set of N training sequences D = {( (x(n)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "yt =fo(ht), (2) wherefh andfo are a state transition function and an output function, respectively. Each function is parameterized by a set of parameters; θh and θo. Given a set of N training sequences D = {( (x(n)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "Given a set of N training sequences D = {( (x(n) 1 , y(n) 1 ),..., (x(n) Tn, y(n)",
+        "unicode_plain": "Given a set of N training sequences D = {( (x(n) 1 , y(n) 1 ),..., (x(n) Tn, y(n)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Given a set of N training sequences D = {( (x(n) 1 , y(n) 1 ),..., (x(n) Tn, y(n)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "J(θ) = 1 N N∑ n=1 Tn∑ t=1",
+        "unicode_plain": "J(θ) = 1 N N∑ n=1 Tn∑ t=1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "J(θ) = 1 N N∑ n=1 Tn∑ t=1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "t )), (3) where h(n) t =fh(x(n) t , h(n) t−1) and h(n) 0 = 0.d(a, b) is a predeﬁned divergence measure betweena",
+        "unicode_plain": "t )), (3) where h(n) t =fh(x(n) t , h(n) t−1) and h(n) 0 = 0.d(a, b) is a predeﬁned divergence measure betweena"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "t )), (3) where h(n) t =fh(x(n) t , h(n) t−1) and h(n) 0 = 0.d(a, b) is a predeﬁned divergence measure betweena"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "t =fh(x(n) t , h(n) t−1) and h(n) 0 = 0.d(a, b) is a predeﬁned divergence measure betweena and b, such as Euclidean distance or cross-entropy. 2.1 Conventional Recurrent Neural Networks",
+        "unicode_plain": "t =fh(x(n) t , h(n) t−1) and h(n) 0 = 0.d(a, b) is a predeﬁned divergence measure betweena and b, such as Euclidean distance or cross-entropy. 2.1 Conventional Recurrent Neural Networks"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t =fh(x(n) t , h(n) t−1) and h(n) 0 = 0.d(a, b) is a predeﬁned divergence measure betweena and b, such as Euclidean distance or cross-entropy. 2.1 Conventional Recurrent Neural Networks"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "0 = 0.d(a, b) is a predeﬁned divergence measure betweena and b, such as Euclidean distance or cross-entropy. 2.1 Conventional Recurrent Neural Networks A conventional RNN is constructed by deﬁning the transition function and the output function as ht =fh(xt, ht−1) = φh (",
+        "unicode_plain": "0 = 0.d(a, b) is a predeﬁned divergence measure betweena and b, such as Euclidean distance or cross-entropy. 2.1 Conventional Recurrent Neural Networks A conventional RNN is constructed by deﬁning the transition function and the output function as ht =fh(xt, ht−1) = φh ("
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "0 = 0.d(a, b) is a predeﬁned divergence measure betweena and b, such as Euclidean distance or cross-entropy. 2.1 Conventional Recurrent Neural Networks A conventional RNN is constructed by deﬁning the transition function and the output function as ht =fh(xt, ht−1) = φh ("
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "ht =fh(xt, ht−1) = φh ( W⊤ht−1 + U⊤xt ) (4) yt =fo(ht, xt) = φo",
+        "unicode_plain": "ht =fh(xt, ht−1) = φh ( W⊤ht−1 + U⊤xt ) (4) yt =fo(ht, xt) = φo"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ht =fh(xt, ht−1) = φh ( W⊤ht−1 + U⊤xt ) (4) yt =fo(ht, xt) = φo"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "yt =fo(ht, xt) = φo ( V⊤ht ) , (5) where W, U and V are respectively the transition, input and output matrices, and φh andφo are",
+        "unicode_plain": "yt =fo(ht, xt) = φo ( V⊤ht ) , (5) where W, U and V are respectively the transition, input and output matrices, and φh andφo are"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "yt =fo(ht, xt) = φo ( V⊤ht ) , (5) where W, U and V are respectively the transition, input and output matrices, and φh andφo are"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "We noticed from the state transition equation of the dynamical system simulated by RNNs in Eq. (1) that there is no restriction on the form offh. Hence, we propose here to use a multilayer perceptron to approximatefh instead. In this case, we can implementfh byL intermediate layers such that ht =fh(xt, ht−1) = φh (",
+        "unicode_plain": "We noticed from the state transition equation of the dynamical system simulated by RNNs in Eq. (1) that there is no restriction on the form offh. Hence, we propose here to use a multilayer perceptron to approximatefh instead. In this case, we can implementfh byL intermediate layers such that ht =fh(xt, ht−1) = φh ("
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "We noticed from the state transition equation of the dynamical system simulated by RNNs in Eq. (1) that there is no restriction on the form offh. Hence, we propose here to use a multilayer perceptron to approximatefh instead. In this case, we can implementfh byL intermediate layers such that ht =fh(xt, ht−1) = φh ("
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page5_11",
+      "presentation": {
+        "latex": "ht =fh(xt, ht−1) = φh ( W⊤ LφL−1 ( W⊤",
+        "unicode_plain": "ht =fh(xt, ht−1) = φh ( W⊤ LφL−1 ( W⊤"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ht =fh(xt, ht−1) = φh ( W⊤ LφL−1 ( W⊤"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page5_12",
+      "presentation": {
+        "latex": "yt =fo(ht) = φo ( V⊤ LφL−1 ( V⊤",
+        "unicode_plain": "yt =fo(ht) = φo ( V⊤ LφL−1 ( V⊤"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "yt =fo(ht) = φo ( V⊤ LφL−1 ( V⊤"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page5_13",
+      "presentation": {
+        "latex": "t =f (l) h (h(l−1) t , h(l) t−1) = φh ( W⊤",
+        "unicode_plain": "t =f (l) h (h(l−1) t , h(l) t−1) = φh ( W⊤"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t =f (l) h (h(l−1) t , h(l) t−1) = φh ( W⊤"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "t−1) = φh ( W⊤ l h(l) t−1 + U⊤ l h(l−1)",
+        "unicode_plain": "t−1) = φh ( W⊤ l h(l) t−1 + U⊤ l h(l−1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t−1) = φh ( W⊤ l h(l) t−1 + U⊤ l h(l−1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

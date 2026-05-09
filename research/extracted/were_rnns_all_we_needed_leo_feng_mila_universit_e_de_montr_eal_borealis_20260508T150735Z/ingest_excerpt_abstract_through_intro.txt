@@ -1,0 +1,158 @@
+Abstract
+The introduction of Transformers in 2017 reshaped the landscape of deep learning.
+Originally proposed for sequence modelling, Transformers have since achieved
+widespread success across various domains. However, the scalability limitations
+of Transformers—particularly with respect to sequence length—have sparked re-
+newed interest in novel recurrent models that are parallelizable during training,
+offer comparable performance, and scale more effectively. In this work, we revisit
+sequence modelling from a historical perspective, focusing on Recurrent Neural
+Networks (RNNs), which dominated the field for two decades before the rise of
+Transformers. Specifically, we examine LSTMs (1997) and GRUs (2014). We
+demonstrate that by simplifying these models, we can derive minimal versions
+(minLSTMs and minGRUs) that (1) use fewer parameters than their traditional
+counterparts, (2) are fully parallelizable during training, and (3) achieve surpris-
+ingly competitive performance on a range of tasks, rivalling recent models includ-
+ing Transformers.
+1 Introduction
+Since the 1990s, Recurrent Neural Networks (RNNs) (Elman, 1990), such as Long Short-Term
+Memory (LSTM) (Hochreiter & Schmidhuber, 1997) networks and later Gated Recurrent Units
+(GRUs) (Cho et al., 2014), have been go-to methods for sequence modelling tasks like machine
+translation and text generation. However, their inherently sequential nature, which limits paral-
+lelization, made these models computationally inefficient and too slow to train on long sequences, a
+common challenge in real-world applications.
+In 2017, Transformers (Vaswani et al., 2017) revolutionized deep learning by introducing a paral-
+lelizable training mechanism through self-attention, achieving immediate success in sequence mod-
+elling. This breakthrough led to the development of popular large language models and quickly
+extended to other domains, including computer vision (Dosovitskiy et al., 2021), reinforcement
+learning (Chen et al., 2021), and bioinformatics (Jumper et al., 2021). However, while self-attention
+allows for efficient modelling of token-to-token interactions, it suffers from quadratic computa-
+tional complexity, making Transformers prohibitively expensive for long sequences, especially in
+resource-constrained settings. To address this, numerous approaches have focused on improving
+Preprint. Under review.
+arXiv:2410.01201v3  [cs.LG]  28 Nov 2024
+Transformer efficiency, exploring ideas such as sparsity (Kitaev et al., 2019), low-rank approxima-
+tions (Wang et al., 2020), and tiling (Dao et al., 2022).
+Recently, the scalability limitations of Transformers have sparked renewed interest in alternative ap-
+proaches: novel recurrent models that are parallelizable and scale more efficiently. Several promis-
+ing methods have emerged in this space, including state-space models (Gu et al., 2021), linearized
+attention (Peng et al., 2023), and more recently, linear recurrent neural networks (Orvieto et al.,
+2023). Notably, these state-of-the-art recurrent models leverage input-dependent transitions and
+demonstrate strong performance similar to Transformers. These methods have shown success not
+only in scaling to large language models but also in extending to other domains, such as image (Zhu
+et al., 2024a) and graph-based data (Wang et al., 2024a).
+In this work, we revisit sequence modelling from a historical perspective, focusing on the RNNs
+that dominated the field for two decades before the rise of Transformers. Specifically, we explore
+LSTMs (1997) and GRUs (2014), which are early examples of input-dependent recurrent models.
+We show that by removing the dependencies of their gates on previous states, we can train these
+models in parallel. Further simplification leads to minimal versions (minLSTMs and minGRUs)
+that (1) use fewer parameters than their traditional counterparts, (2) are fully parallelizable during
+training, and (3) achieve surprisingly competitive performance on a range of tasks despite their
+simplicity, challenging the prevailing trend in the community toward increasing architectural and
+algorithmic complexity. In the appendix, we provide implementations of minGRU and minLSTM in
+plain PyTorch, with just a few lines of code, making these models lightweight and highly adaptable
+for beginners, practitioners, and researchers.
+2 Background
+In this section, we review traditional recurrent neural networks (RNNs). RNNs are sequence models
+that maintain a hidden state across time steps, capturing temporal dependencies. As such, they are
+particularly well-suited for tasks involving sequential data, such as time series forecasting, natural
+language processing, and other tasks where context from previous steps informs current predictions.
+However, vanilla RNNs (Elman, 1990) face challenges related to vanishing and exploding gradients,
+which limit their ability to learn long-term dependencies.
+2.1 LSTM
+To address these issues, Hochreiter & Schmidhuber (1997) introduced Long Short-Term Memory
+(LSTM) networks. LSTMs are a highly successful type of RNN specifically designed to mitigate
+the vanishing gradient problem, enabling the model to effectively capture long-term dependencies.
+LSTMs are computed as follows:
+(Hidden State) ht = ot ⊙ tanh(ct)
+(Output Gate) ot = σ(Lineardh([xt, ht−1]))
+(Cell State Recurrence) ct = ft ⊙ ct−1 + it ⊙ ˜ct
+(Forget Gate) ft = σ(Lineardh([xt, ht−1]))
+(Input Gate) it = σ(Lineardh([xt, ht−1]))
+(Candidate Cell State) ˜ct = tanh(Lineardh([xt, ht−1]))
+where ⊙ denotes element-wise multiplication of vectors, t is the current timestep, and ht is the
+outputted hidden state. [xt, ht−1] represents the concatenation of the input vector xt at time step t
+with the previous hidden stateht−1. dh denotes the size of the hidden state, whilect is the cell state,
+which carries information across time steps, and ˜ct is the candidate cell state that will be added to
+the cell state.
+The gates it, ft, and ot control the flow of information through the LSTM. The input gate it deter-
+mines how much new information from the candidate cell state ˜ct should be added to the cell state
+ct. The forget gate ft determines what portion of the previous cell state ct−1 should be discarded.
+The output gate ot determines what information from the cell state should be output as the hidden
+state ht. The functions σ (sigmoid) and tanh are used for scaling the values, ensuring that the out-
+2
+puts do not explode or vanish during training. An LSTM module maintains both a cell state and a
+hidden state, and, in total, contains O(4dh(dx + dh)) parameters, where dx is the input size.
+2.2 GRU
+Simplifying LSTM, Cho et al. (2014) introduced the Gated Recurrent Unit (GRU), which uses only
+two gates and a single state (hidden state), in contrast to the LSTM’s three gates and two states
+(hidden state and cell state). This reduced complexity allows GRUs to achieve faster training and
+inference times while still performing competitively on many tasks. GRUs are computed as follows:
+(Hidden State Recurrence) ht = (1 − zt) ⊙ ht−1 + zt ⊙ ˜ht
+(Update Gate) zt = σ(Lineardh([xt, ht−1]))
+(Reset Gate) rt = σ(Lineardh([xt, ht−1]))
+(Candidate Hidden State) ˜ht = tanh(Lineardh([xt, rt ⊙ ht−1]))
+where ˜ht represents the candidate hidden state, a potential new value for the hidden state. GRU
+combines the forget and input gates of LSTM into a single update gate,zt ∈ (0, 1), which determines
+how much of the past information should be carried forward (i.e., 1 − zt) and how much new
+information from the candidate hidden state should be added (i.e., zt). Additionally, GRU removes
+LSTM’s output gate and introduces a reset gatert, which controls how much of the past hidden state
+ht−1 is used when computing the candidate hidden state ˜ht.
+By reducing the number of gates and states, GRU also decreases the total number of parameters and
+computations, requiring only O(3dh(dx + dh)) parameters. However, both GRUs and LSTMs are
+still sequential-only models. As such, they require backpropagation through time (BPTT) during
+training, resulting in linear training time and limiting their ability to scale to long contexts.
+2.3 Parallel Scan
+Due to this limitation, the introduction of Transformers in 2017 revolutionized the field by replacing
+LSTMs and GRUs as the de facto method for sequence modelling. Transformers leverage par-
+allelization during training, overcoming the sequential bottleneck of traditional recurrent models.
+However, instead, Transformers have a quadratic complexity with respect to the sequence length,
+limiting their ability to scale to very long contexts, especially in resource-constrained settings.
+In response, a resurgence of new recurrent sequence models has emerged, offering alternatives to
+Transformers. These models achieve comparable performance while being trainable in parallel and
+avoid the backpropagation through time (BPTT) issues that plagued traditional RNNs (e.g., LSTMs
+and GRUs). Among these innovations, many architectures rely on the parallel prefix scan algo-
+rithm (Blelloch, 1990) for efficient training.
+The parallel scan algorithm is a parallel computation method for computing N prefix computations
+from N sequential data points via an associative operator ⊕ (e.g., + and ×). The algorithm effi-
+ciently computes the sequence of prefix sums{Lk
+i=1 ui}N
+k=1 from the input sequence{uk}N
+k=1. One
+important application of the parallel scan algorithm is in computing a popular class of recurrence
+relations of the form vt = atvt−1 + bt, where vt, at, and bt are real numbers and v0 ← b0 (Martin &
+Cundy, 2018). This method takes as input the sequencesa1, . . . , an and b0, b1, . . . , bn, and computes
+the sequence v1, . . . , vn in parallel. This approach naturally extends to vector-valued recurrences,
+such as vt = at ⊙ vt−1 + bt, where ⊙ denotes element-wise multiplication.
+3 Methodology
+Interestingly, we can see that the GRU’s hidden state and LSTM’s cell state recurrences resemble the
+vector formulation. In this section, we demonstrate that GRUs and LSTMs are trainable via parallel
+scan by removing their previous state dependencies from their various gates. Building on this, we
+further simplify these RNNs by removing their constraints on output range (i.e., tanh). Combining
+the steps, we describe minimal versions of GRUs and LSTMs (minGRUs and minLSTMs) that are
+trainable in parallel.
+3
+3.1 A Minimal GRU: minGRU
+3.1.1 Step 1: Drop previous state dependencies from gates
+Revisiting GRU’s hidden state recurrence which works as follows:
+ht = (1 − zt) ⊙ ht−1 + zt ⊙ ˜ht
+We can observe that the recurrence resembles the aforementioned parallel scan’s formulation vt =
+at ⊙ vt−1 + bt where at ← (1 − zt), bt ← zt ⊙ ˜ht, and vt ← ht. However, zt and ˜ht
+are dependent on the previous hidden state ht−1, i.e., zt = σ(Lineardh([xt, ht−1])) and ˜ht =
+tanh(Lineardh([xt, rt ⊙ ht−1])). As a result, it is not possible to apply the parallel scan as is since
+the algorithm’s inputs a1, . . . ,an and b1, . . . ,bn are conditional on already knowing its outputs
+h1, . . . ,hn−1.
+A simple remedy to this is to simplify GRU by removing their previous hidden state (i.e., ht−1)
+dependencies. Specifically, the changes are as follows:
+zt = σ(Lineardh([xt, ht−1]))
+rt = σ(Lineardh([xt, ht−1]))
+˜ht = tanh(Lineardh([xt, rt ⊙ ht−1]))
+⇒
+zt = σ(Lineardh(xt))
+˜ht = tanh(Lineardh(xt))
+By removing the dependence on ht−1 from the candidate hidden state ˜ht, the reset gate rt that
+would control ht−1 weight is also no longer needed and is removed. Without the dependencies on
+previous hidden states, the inputs to the algorithma1, . . . ,an and b1, . . . ,bn are all easily computed
+in parallel and can thus be used to compute h1, . . . ,hn efficiently via the parallel scan.
+Although there have been theoretical concerns about the absence of previous state dependen-
+cies (Merrill et al., 2024), there has also been substantial empirical evidence supporting the effec-
+tiveness of models that omit these dependencies, such 

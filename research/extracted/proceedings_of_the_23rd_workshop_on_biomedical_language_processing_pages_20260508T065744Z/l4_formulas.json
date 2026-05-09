@@ -1,0 +1,100 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:43Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "We define the external KG as G = (V, E), where V represents the set of entities and E represents the set of structural relations. For the medical QA task, we choose UMLS as the primary medical KG. UMLS is a comprehensive repository of health and biomedical vocabularies, designed to promote",
+        "unicode_plain": "We define the external KG as G = (V, E), where V represents the set of entities and E represents the set of structural relations. For the medical QA task, we choose UMLS as the primary medical KG. UMLS is a comprehensive repository of health and biomedical vocabularies, designed to promote"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "We define the external KG as G = (V, E), where V represents the set of entities and E represents the set of structural relations. For the medical QA task, we choose UMLS as the primary medical KG. UMLS is a comprehensive repository of health and biomedical vocabularies, designed to promote"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "EQ′ = {e′ i ∈ V | ∃ei ∈ EQ, ei 7→ e′ i}. Within UMLS, there exists extensive relational information, where one entity may be associated with thousands of one-hop relations. Consequently,",
+        "unicode_plain": "EQ′ = {e′ i ∈ V | ∃ei ∈ EQ, ei 7→ e′ i}. Within UMLS, there exists extensive relational information, where one entity may be associated with thousands of one-hop relations. Consequently,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EQ′ = {e′ i ∈ V | ∃ei ∈ EQ, ei 7→ e′ i}. Within UMLS, there exists extensive relational information, where one entity may be associated with thousands of one-hop relations. Consequently,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "w = wbase + δ · n, scoreij = sim(q, rij) − w · sim(rij, rsel). Where, w is an adjustable weight, with a base weight and δ as the incremental weight factor per selected triplet, n is the count of triplets that have been selected.",
+        "unicode_plain": "w = wbase + δ · n, scoreij = sim(q, rij) − w · sim(rij, rsel). Where, w is an adjustable weight, with a base weight and δ as the incremental weight factor per selected triplet, n is the count of triplets that have been selected."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "w = wbase + δ · n, scoreij = sim(q, rij) − w · sim(rij, rsel). Where, w is an adjustable weight, with a base weight and δ as the incremental weight factor per selected triplet, n is the count of triplets that have been selected."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "scoreij = sim(q, rij) − w · sim(rij, rsel). Where, w is an adjustable weight, with a base weight and δ as the incremental weight factor per selected triplet, n is the count of triplets that have been selected. Re-ranking After the ranking stage, we obtain an",
+        "unicode_plain": "scoreij = sim(q, rij) − w · sim(rij, rsel). Where, w is an adjustable weight, with a base weight and δ as the incremental weight factor per selected triplet, n is the count of triplets that have been selected. Re-ranking After the ranking stage, we obtain an"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "scoreij = sim(q, rij) − w · sim(rij, rsel). Where, w is an adjustable weight, with a base weight and δ as the incremental weight factor per selected triplet, n is the count of triplets that have been selected. Re-ranking After the ranking stage, we obtain an"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    }
+  ]
+}

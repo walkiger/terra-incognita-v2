@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "generative_flow_networks_for_discrete_probabilistic_modeling_dinghuai_zh_20260508T150659Z",
+  "extracted_at": "2026-05-08T15:10:36Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "a directed acyclic graph (DAG, see Fig. 2) G = ( S, A), where the vertices in S are states and the edges in A are actions that modify one state to another. We use the terms parents and children, respectively, for the tails of incoming edges and the heads of outgoing edges of a state. Genera- tion begins at a special initial state s0 and terminates upon",
+        "unicode_plain": "a directed acyclic graph (DAG, see Fig. 2) G = ( S, A), where the vertices in S are states and the edges in A are actions that modify one state to another. We use the terms parents and children, respectively, for the tails of incoming edges and the heads of outgoing edges of a state. Genera- tion begins at a special initial state s0 and terminates upon"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "a directed acyclic graph (DAG, see Fig. 2) G = ( S, A), where the vertices in S are states and the edges in A are actions that modify one state to another. We use the terms parents and children, respectively, for the tails of incoming edges and the heads of outgoing edges of a state. Genera- tion begins at a special initial state s0 and terminates upon"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "complete trajectory τ = ( s0→s1→... →... →sn), we havePF (τ) =F (τ)/Z with PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We",
+        "unicode_plain": "complete trajectory τ = ( s0→s1→... →... →sn), we havePF (τ) =F (τ)/Z with PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "complete trajectory τ = ( s0→s1→... →... →sn), we havePF (τ) =F (τ)/Z with PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "havePF (τ) =F (τ)/Z with PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We writePT (x) for the probability that a trajectory sampled",
+        "unicode_plain": "havePF (τ) =F (τ)/Z with PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We writePT (x) for the probability that a trajectory sampled"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "havePF (τ) =F (τ)/Z with PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We writePT (x) for the probability that a trajectory sampled"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We writePT (x) for the probability that a trajectory sampled fromPF terminates in x.",
+        "unicode_plain": "PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We writePT (x) for the probability that a trajectory sampled fromPF terminates in x."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "PF (τ) =PF (s1|s0)PF (s2|s1)...P F (sn|sn−1). (1) In this case,PF (st+1|st) is called a forward policy, and can be used to sample complete trajectories from the density F and thus also their terminal states, objects x ∈ X .1 We writePT (x) for the probability that a trajectory sampled fromPF terminates in x."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "R(x) = ∑ τ=(s0→...→sn),sn=x F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs",
+        "unicode_plain": "R(x) = ∑ τ=(s0→...→sn),sn=x F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "R(x) = ∑ τ=(s0→...→sn),sn=x F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "τ=(s0→...→sn),sn=x F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs PF (·|s; θ) for any input state s. Algorithms for learningPF from maximum-entropy reinforcement learning (Haarnoja",
+        "unicode_plain": "τ=(s0→...→sn),sn=x F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs PF (·|s; θ) for any input state s. Algorithms for learningPF from maximum-entropy reinforcement learning (Haarnoja"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "τ=(s0→...→sn),sn=x F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs PF (·|s; θ) for any input state s. Algorithms for learningPF from maximum-entropy reinforcement learning (Haarnoja"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs PF (·|s; θ) for any input state s. Algorithms for learningPF from maximum-entropy reinforcement learning (Haarnoja et al., 2017) would solve this problem if there was only",
+        "unicode_plain": "F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs PF (·|s; θ) for any input state s. Algorithms for learningPF from maximum-entropy reinforcement learning (Haarnoja et al., 2017) would solve this problem if there was only"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "F (τ). (2) By Eq. (1), one can specify a Markovian ﬂow by a learned scalar logZθ and a neural net with parametersθ that outputs PF (·|s; θ) for any input state s. Algorithms for learningPF from maximum-entropy reinforcement learning (Haarnoja et al., 2017) would solve this problem if there was only"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "over a space X by a density pφ(x) = 1 Zφ exp(−Eφ(x)), where Eφ is the energy function, with model parame- ter φ, and Zφ is a normalizing constant independent of x. The normalizing factor is not explicitly parametrized,",
+        "unicode_plain": "over a space X by a density pφ(x) = 1 Zφ exp(−Eφ(x)), where Eφ is the energy function, with model parame- ter φ, and Zφ is a normalizing constant independent of x. The normalizing factor is not explicitly parametrized,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "over a space X by a density pφ(x) = 1 Zφ exp(−Eφ(x)), where Eφ is the energy function, with model parame- ter φ, and Zφ is a normalizing constant independent of x. The normalizing factor is not explicitly parametrized,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "Zφ = ∑ x∈X exp(−Eφ(x)). This summation is ﬁnite, and thus the energy function Eφ(x) can take an arbitrary form. However, this ﬂexibility comes with a price: calculating Zφ can involve an exponentially large summation, making evaluation of the exact probability intractable. To avoid such",
+        "unicode_plain": "Zφ = ∑ x∈X exp(−Eφ(x)). This summation is ﬁnite, and thus the energy function Eφ(x) can take an arbitrary form. However, this ﬂexibility comes with a price: calculating Zφ can involve an exponentially large summation, making evaluation of the exact probability intractable. To avoid such"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Zφ = ∑ x∈X exp(−Eφ(x)). This summation is ﬁnite, and thus the energy function Eφ(x) can take an arbitrary form. However, this ﬂexibility comes with a price: calculating Zφ can involve an exponentially large summation, making evaluation of the exact probability intractable. To avoid such"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "−∇φ logpφ(x) = ∇φEφ(x) + ∇φ logZφ = ∇φEφ(x) − Ex′∼pφ(x′)[∇φEφ(x′)]. (3) Evaluating or estimating the second term in (3) involves tak- ing negative samples x′ from the EBM distribution, which can require an expensive search. The classical Contrastive Divergence (CD) algorithm (Hinton, 2002) approximates",
+        "unicode_plain": "−∇φ logpφ(x) = ∇φEφ(x) + ∇φ logZφ = ∇φEφ(x) − Ex′∼pφ(x′)[∇φEφ(x′)]. (3) Evaluating or estimating the second term in (3) involves tak- ing negative samples x′ from the EBM distribution, which can require an expensive search. The classical Contrastive Divergence (CD) algorithm (Hinton, 2002) approximates"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "−∇φ logpφ(x) = ∇φEφ(x) + ∇φ logZφ = ∇φEφ(x) − Ex′∼pφ(x′)[∇φEφ(x′)]. (3) Evaluating or estimating the second term in (3) involves tak- ing negative samples x′ from the EBM distribution, which can require an expensive search. The classical Contrastive Divergence (CD) algorithm (Hinton, 2002) approximates"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "= ∇φEφ(x) − Ex′∼pφ(x′)[∇φEφ(x′)]. (3) Evaluating or estimating the second term in (3) involves tak- ing negative samples x′ from the EBM distribution, which can require an expensive search. The classical Contrastive Divergence (CD) algorithm (Hinton, 2002) approximates this gradient update by changing the energy function param-",
+        "unicode_plain": "= ∇φEφ(x) − Ex′∼pφ(x′)[∇φEφ(x′)]. (3) Evaluating or estimating the second term in (3) involves tak- ing negative samples x′ from the EBM distribution, which can require an expensive search. The classical Contrastive Divergence (CD) algorithm (Hinton, 2002) approximates this gradient update by changing the energy function param-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "= ∇φEφ(x) − Ex′∼pφ(x′)[∇φEφ(x′)]. (3) Evaluating or estimating the second term in (3) involves tak- ing negative samples x′ from the EBM distribution, which can require an expensive search. The classical Contrastive Divergence (CD) algorithm (Hinton, 2002) approximates this gradient update by changing the energy function param-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "Ex∼pdata(x)[∇φEφ(x) − Ex′∼qK(x′|x)∇φEφ(x′)] (4) whereqK(x′|x) is the distribution obtained by using aK- step MCMC initialized at x to approximately sample from pφ. For example, x′ can be taken from aK-step Metropolis- Hastings chain starting at a true data sample x ∼pdata(x), and the parameters updated with ∇φ(Eφ(x) − Eφ(x′)). As",
+        "unicode_plain": "Ex∼pdata(x)[∇φEφ(x) − Ex′∼qK(x′|x)∇φEφ(x′)] (4) whereqK(x′|x) is the distribution obtained by using aK- step MCMC initialized at x to approximately sample from pφ. For example, x′ can be taken from aK-step Metropolis- Hastings chain starting at a true data sample x ∼pdata(x), and the parameters updated with ∇φ(Eφ(x) − Eφ(x′)). As"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "Ex∼pdata(x)[∇φEφ(x) − Ex′∼qK(x′|x)∇φEφ(x′)] (4) whereqK(x′|x) is the distribution obtained by using aK- step MCMC initialized at x to approximately sample from pφ. For example, x′ can be taken from aK-step Metropolis- Hastings chain starting at a true data sample x ∼pdata(x), and the parameters updated with ∇φ(Eφ(x) − Eφ(x′)). As"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_5",
+      "presentation": {
+        "latex": "S ≜ {(s1,..., sD) | sd ∈ {0, 1, ⊘},d = 1,...,D }. (5) The DAG structure on S is theD-th Cartesian power of the DAG with states {⊘, 0, 1}, where 0 and 1 are children of ⊘. Concretely, the children of a state s = (s1,..., sD) are vectors that can be obtained from s by changing any one entry sd from ⊘ to 0 or 1, and its parents are states that can",
+        "unicode_plain": "S ≜ {(s1,..., sD) | sd ∈ {0, 1, ⊘},d = 1,...,D }. (5) The DAG structure on S is theD-th Cartesian power of the DAG with states {⊘, 0, 1}, where 0 and 1 are children of ⊘. Concretely, the children of a state s = (s1,..., sD) are vectors that can be obtained from s by changing any one entry sd from ⊘ to 0 or 1, and its parents are states that can"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(5)",
+        "verbatim_snippet": "S ≜ {(s1,..., sD) | sd ∈ {0, 1, ⊘},d = 1,...,D }. (5) The DAG structure on S is theD-th Cartesian power of the DAG with states {⊘, 0, 1}, where 0 and 1 are children of ⊘. Concretely, the children of a state s = (s1,..., sD) are vectors that can be obtained from s by changing any one entry sd from ⊘ to 0 or 1, and its parents are states that can"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page3_14",
+      "presentation": {
+        "latex": "⊘. Concretely, the children of a state s = (s1,..., sD) are vectors that can be obtained from s by changing any one entry sd from ⊘ to 0 or 1, and its parents are states that can be obtained by changing a single entry sd ∈ {0, 1} to ⊘. We deﬁne|s| ≜ #{sd | sd ∈ { 0, 1},d = 1,...,D }, the number of non-void entries in s, so X is naturally identiﬁed",
+        "unicode_plain": "⊘. Concretely, the children of a state s = (s1,..., sD) are vectors that can be obtained from s by changing any one entry sd from ⊘ to 0 or 1, and its parents are states that can be obtained by changing a single entry sd ∈ {0, 1} to ⊘. We deﬁne|s| ≜ #{sd | sd ∈ { 0, 1},d = 1,...,D }, the number of non-void entries in s, so X is naturally identiﬁed"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "⊘. Concretely, the children of a state s = (s1,..., sD) are vectors that can be obtained from s by changing any one entry sd from ⊘ to 0 or 1, and its parents are states that can be obtained by changing a single entry sd ∈ {0, 1} to ⊘. We deﬁne|s| ≜ #{sd | sd ∈ { 0, 1},d = 1,...,D }, the number of non-void entries in s, so X is naturally identiﬁed"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

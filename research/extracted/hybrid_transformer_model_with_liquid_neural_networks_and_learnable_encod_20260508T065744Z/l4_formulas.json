@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:10:57Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "= EF ∗ W EO + b EO (4) where W",
+        "unicode_plain": "= EF ∗ W EO + b EO (4) where W"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= EF ∗ W EO + b EO (4) where W"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page4_2",
+      "presentation": {
+        "latex": "= ReLU ( W i ∗ EO t + b i",
+        "unicode_plain": "= ReLU ( W i ∗ EO t + b i"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= ReLU ( W i ∗ EO t + b i"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page4_3",
+      "presentation": {
+        "latex": "= MaxPool ( C i ) (6) Before passing the output to the Encoder layer of the model, the pooled output is flattened to match the model ’ s input requirements: C",
+        "unicode_plain": "= MaxPool ( C i ) (6) Before passing the output to the Encoder layer of the model, the pooled output is flattened to match the model ’ s input requirements: C"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= MaxPool ( C i ) (6) Before passing the output to the Encoder layer of the model, the pooled output is flattened to match the model ’ s input requirements: C"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page4_4",
+      "presentation": {
+        "latex": "= Flatten ( P m ) (7) where P m is the output of the last pooling layer.",
+        "unicode_plain": "= Flatten ( P m ) (7) where P m is the output of the last pooling layer."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= Flatten ( P m ) (7) where P m is the output of the last pooling layer."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "= α ∗ PE sinusoidal , pos + β (10) Additionally, the Time-based Encoding is leveraged to explicitly encode time-based features like hour of the day, day of the week, day of the month and month:",
+        "unicode_plain": "= α ∗ PE sinusoidal , pos + β (10) Additionally, the Time-based Encoding is leveraged to explicitly encode time-based features like hour of the day, day of the week, day of the month and month:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= α ∗ PE sinusoidal , pos + β (10) Additionally, the Time-based Encoding is leveraged to explicitly encode time-based features like hour of the day, day of the week, day of the month and month:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_10",
+      "presentation": {
+        "latex": "+ β (10) Additionally, the Time-based Encoding is leveraged to explicitly encode time-based features like hour of the day, day of the week, day of the month and month: Fig. 1. The architecture of the hybrid transformer model for building energy forecasting. G. Antonesi et al.                                                                                                                            ",
+        "unicode_plain": "+ β (10) Additionally, the Time-based Encoding is leveraged to explicitly encode time-based features like hour of the day, day of the week, day of the month and month: Fig. 1. The architecture of the hybrid transformer model for building energy forecasting. G. Antonesi et al.                                                                                                                                                                                                                               E"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(10)",
+        "verbatim_snippet": "+ β (10) Additionally, the Time-based Encoding is leveraged to explicitly encode time-based features like hour of the day, day of the week, day of the month and month: Fig. 1. The architecture of the hybrid transformer model for building energy forecasting. G. Antonesi et al.                                                                                                                                                                                                                               Energy and AI 20 (2025) 100489"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page5_7",
+      "presentation": {
+        "latex": "( pos ) = pos % type rec type rec normalizes the position",
+        "unicode_plain": "( pos ) = pos % type rec type rec normalizes the position"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "( pos ) = pos % type rec type rec normalizes the position"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_13",
+      "presentation": {
+        "latex": "( t ) (13) 2.2. Encoder layer with LLN It implements a multi-head attention mechanism that computes a representation of a modified embedding matrix by relating to different positions of the same input sequence. The process involves three main steps: computing query (Q), key (K), and value (V) matrices from the",
+        "unicode_plain": "( t ) (13) 2.2. Encoder layer with LLN It implements a multi-head attention mechanism that computes a representation of a modified embedding matrix by relating to different positions of the same input sequence. The process involves three main steps: computing query (Q), key (K), and value (V) matrices from the"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(13)",
+        "verbatim_snippet": "( t ) (13) 2.2. Encoder layer with LLN It implements a multi-head attention mechanism that computes a representation of a modified embedding matrix by relating to different positions of the same input sequence. The process involves three main steps: computing query (Q), key (K), and value (V) matrices from the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page5_9",
+      "presentation": {
+        "latex": "Q = EF ʹ . e ʹ t ∗ W",
+        "unicode_plain": "Q = EF ʹ . e ʹ t ∗ W"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Q = EF ʹ . e ʹ t ∗ W"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page5_10",
+      "presentation": {
+        "latex": ", K = EF ʹ . e ʹ t ∗ W",
+        "unicode_plain": ", K = EF ʹ . e ʹ t ∗ W"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": ", K = EF ʹ . e ʹ t ∗ W"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page5_11",
+      "presentation": {
+        "latex": ", V = EF ʹ . e ʹ t ∗ W",
+        "unicode_plain": ", V = EF ʹ . e ʹ t ∗ W"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": ", V = EF ʹ . e ʹ t ∗ W"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page5_12",
+      "presentation": {
+        "latex": "( Q ) = Q i , head i ( K ) = K i",
+        "unicode_plain": "( Q ) = Q i , head i ( K ) = K i"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "( Q ) = Q i , head i ( K ) = K i"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page5_13",
+      "presentation": {
+        "latex": "( K ) = K i , head i ( V ) = V i",
+        "unicode_plain": "( K ) = K i , head i ( V ) = V i"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "( K ) = K i , head i ( V ) = V i"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "( V ) = V i (15) where ( Q i , K",
+        "unicode_plain": "( V ) = V i (15) where ( Q i , K"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "( V ) = V i (15) where ( Q i , K"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

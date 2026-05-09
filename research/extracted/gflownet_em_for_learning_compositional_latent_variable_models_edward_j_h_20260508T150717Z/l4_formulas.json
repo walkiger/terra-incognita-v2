@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z",
+  "extracted_at": "2026-05-08T15:10:41Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page1_1",
+      "presentation": {
+        "latex": "Q4/u1D4600 /u1D4601 /u1D4602 /u1D4603 = /u1D467 GFlowNet sampling trajectory /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) = /u1D45D root /u1D703 ( Q4) · /u1D45D /u1D703 ( Q7 Q3 | Q4) · /u1D45D /u1D703 ( the cats | Q7) · /u1D45D /u1D703 ( drink tea | Q3) E-step Sample /u1D465 ∼ data",
+        "unicode_plain": "Q4/u1D4600 /u1D4601 /u1D4602 /u1D4603 = /u1D467 GFlowNet sampling trajectory /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) = /u1D45D root /u1D703 ( Q4) · /u1D45D /u1D703 ( Q7 Q3 | Q4) · /u1D45D /u1D703 ( the cats | Q7) · /u1D45D /u1D703 ( drink tea | Q3) E-step Sample /u1D465 ∼ data"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Q4/u1D4600 /u1D4601 /u1D4602 /u1D4603 = /u1D467 GFlowNet sampling trajectory /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) = /u1D45D root /u1D703 ( Q4) · /u1D45D /u1D703 ( Q7 Q3 | Q4) · /u1D45D /u1D703 ( the cats | Q7) · /u1D45D /u1D703 ( drink tea | Q3) E-step Sample /u1D465 ∼ data"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page1_2",
+      "presentation": {
+        "latex": "/u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) = /u1D45D root /u1D703 ( Q4) · /u1D45D /u1D703 ( Q7 Q3 | Q4) · /u1D45D /u1D703 ( the cats | Q7) · /u1D45D /u1D703 ( drink tea | Q3) E-step Sample /u1D465 ∼ data Update conditional GFlowNet with reward /u1D445 ( /u1D467) = /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467)",
+        "unicode_plain": "/u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) = /u1D45D root /u1D703 ( Q4) · /u1D45D /u1D703 ( Q7 Q3 | Q4) · /u1D45D /u1D703 ( the cats | Q7) · /u1D45D /u1D703 ( drink tea | Q3) E-step Sample /u1D465 ∼ data Update conditional GFlowNet with reward /u1D445 ( /u1D467) = /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "/u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) = /u1D45D root /u1D703 ( Q4) · /u1D45D /u1D703 ( Q7 Q3 | Q4) · /u1D45D /u1D703 ( the cats | Q7) · /u1D45D /u1D703 ( drink tea | Q3) E-step Sample /u1D465 ∼ data Update conditional GFlowNet with reward /u1D445 ( /u1D467) = /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page1_3",
+      "presentation": {
+        "latex": "with reward /u1D445 ( /u1D467) = /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) M-step Sample /u1D465 ∼ data Sample /u1D467 from conditional GFlowNet Gradient update on log /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) Figure 1. GFlowNet-EM for training a latent variable model",
+        "unicode_plain": "with reward /u1D445 ( /u1D467) = /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) M-step Sample /u1D465 ∼ data Sample /u1D467 from conditional GFlowNet Gradient update on log /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) Figure 1. GFlowNet-EM for training a latent variable model"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "with reward /u1D445 ( /u1D467) = /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) M-step Sample /u1D465 ∼ data Sample /u1D467 from conditional GFlowNet Gradient update on log /u1D45D /u1D703 ( /u1D467) /u1D45D /u1D703 ( /u1D465| /u1D467) Figure 1. GFlowNet-EM for training a latent variable model"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "likelihood given by 𝑝(𝑥) = Í 𝑧 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥|𝑧). The latent 𝑧 may itself have hierarchical structure and be generated through a sequence of intermediate latent variables. Given a dataset {𝑥𝑖 }𝑇 𝑖=1, we wish to optimize the parameters 𝜃 to",
+        "unicode_plain": "likelihood given by 𝑝(𝑥) = Í 𝑧 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥|𝑧). The latent 𝑧 may itself have hierarchical structure and be generated through a sequence of intermediate latent variables. Given a dataset {𝑥𝑖 }𝑇 𝑖=1, we wish to optimize the parameters 𝜃 to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "likelihood given by 𝑝(𝑥) = Í 𝑧 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥|𝑧). The latent 𝑧 may itself have hierarchical structure and be generated through a sequence of intermediate latent variables. Given a dataset {𝑥𝑖 }𝑇 𝑖=1, we wish to optimize the parameters 𝜃 to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "𝑖=1, we wish to optimize the parameters 𝜃 to maximize the data log-likelihood L = log 𝑇Ö 𝑖=1 𝑝(𝑥𝑖) =",
+        "unicode_plain": "𝑖=1, we wish to optimize the parameters 𝜃 to maximize the data log-likelihood L = log 𝑇Ö 𝑖=1 𝑝(𝑥𝑖) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑖=1, we wish to optimize the parameters 𝜃 to maximize the data log-likelihood L = log 𝑇Ö 𝑖=1 𝑝(𝑥𝑖) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "L = log 𝑇Ö 𝑖=1 𝑝(𝑥𝑖) = 𝑇∑︁ 𝑖=1",
+        "unicode_plain": "L = log 𝑇Ö 𝑖=1 𝑝(𝑥𝑖) = 𝑇∑︁ 𝑖=1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L = log 𝑇Ö 𝑖=1 𝑝(𝑥𝑖) = 𝑇∑︁ 𝑖=1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "𝑝(𝑥𝑖) = 𝑇∑︁ 𝑖=1 log ∑︁ 𝑧",
+        "unicode_plain": "𝑝(𝑥𝑖) = 𝑇∑︁ 𝑖=1 log ∑︁ 𝑧"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝑝(𝑥𝑖) = 𝑇∑︁ 𝑖=1 log ∑︁ 𝑧"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧). (1) The EM algorithm achieves this by maximizing a variational bound on Eq. 1, known as the evidence lower bound (ELBO) or negative free energy: L ≥ 𝑇∑︁",
+        "unicode_plain": "𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧). (1) The EM algorithm achieves this by maximizing a variational bound on Eq. 1, known as the evidence lower bound (ELBO) or negative free energy: L ≥ 𝑇∑︁"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧). (1) The EM algorithm achieves this by maximizing a variational bound on Eq. 1, known as the evidence lower bound (ELBO) or negative free energy: L ≥ 𝑇∑︁"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "𝐷KL(𝑞(𝑧|𝑥𝑖) ∥𝑝(𝑧|𝑥𝑖)), (2) where 𝑝(𝑧|𝑥𝑖) ∝ 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧) is the true posterior over the latent. The inequality holds for any collection of distri- butions 𝑞(𝑧|𝑥𝑖) and is an equality if and only if 𝑞 equals the true posterior. An important choice in EM algorithms is how to param-",
+        "unicode_plain": "𝐷KL(𝑞(𝑧|𝑥𝑖) ∥𝑝(𝑧|𝑥𝑖)), (2) where 𝑝(𝑧|𝑥𝑖) ∝ 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧) is the true posterior over the latent. The inequality holds for any collection of distri- butions 𝑞(𝑧|𝑥𝑖) and is an equality if and only if 𝑞 equals the true posterior. An important choice in EM algorithms is how to param-"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "𝐷KL(𝑞(𝑧|𝑥𝑖) ∥𝑝(𝑧|𝑥𝑖)), (2) where 𝑝(𝑧|𝑥𝑖) ∝ 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧) is the true posterior over the latent. The inequality holds for any collection of distri- butions 𝑞(𝑧|𝑥𝑖) and is an equality if and only if 𝑞 equals the true posterior. An important choice in EM algorithms is how to param-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "pendence between components of 𝑧, e.g., if 𝑧 = (𝑧1, 𝑧2, 𝑧3), then 𝑞(𝑧|𝑥𝑖) = 𝑞(𝑧1|𝑥𝑖)𝑞(𝑧2|𝑥𝑖)𝑞(𝑧3|𝑥𝑖) (see §3). Finally, in amortized variational EM, 𝑞(𝑧|𝑥𝑖) can be parametrized as a neural network, as we will describe below. The EM algorithm iterates two steps, each of which in- creases the ELBO (Eq. 2):",
+        "unicode_plain": "pendence between components of 𝑧, e.g., if 𝑧 = (𝑧1, 𝑧2, 𝑧3), then 𝑞(𝑧|𝑥𝑖) = 𝑞(𝑧1|𝑥𝑖)𝑞(𝑧2|𝑥𝑖)𝑞(𝑧3|𝑥𝑖) (see §3). Finally, in amortized variational EM, 𝑞(𝑧|𝑥𝑖) can be parametrized as a neural network, as we will describe below. The EM algorithm iterates two steps, each of which in- creases the ELBO (Eq. 2):"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pendence between components of 𝑧, e.g., if 𝑧 = (𝑧1, 𝑧2, 𝑧3), then 𝑞(𝑧|𝑥𝑖) = 𝑞(𝑧1|𝑥𝑖)𝑞(𝑧2|𝑥𝑖)𝑞(𝑧3|𝑥𝑖) (see §3). Finally, in amortized variational EM, 𝑞(𝑧|𝑥𝑖) can be parametrized as a neural network, as we will describe below. The EM algorithm iterates two steps, each of which in- creases the ELBO (Eq. 2):"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "then 𝑞(𝑧|𝑥𝑖) = 𝑞(𝑧1|𝑥𝑖)𝑞(𝑧2|𝑥𝑖)𝑞(𝑧3|𝑥𝑖) (see §3). Finally, in amortized variational EM, 𝑞(𝑧|𝑥𝑖) can be parametrized as a neural network, as we will describe below. The EM algorithm iterates two steps, each of which in- creases the ELBO (Eq. 2): E-step. Optimize the distributions 𝑞(𝑧|𝑥𝑖) so as to approx-",
+        "unicode_plain": "then 𝑞(𝑧|𝑥𝑖) = 𝑞(𝑧1|𝑥𝑖)𝑞(𝑧2|𝑥𝑖)𝑞(𝑧3|𝑥𝑖) (see §3). Finally, in amortized variational EM, 𝑞(𝑧|𝑥𝑖) can be parametrized as a neural network, as we will describe below. The EM algorithm iterates two steps, each of which in- creases the ELBO (Eq. 2): E-step. Optimize the distributions 𝑞(𝑧|𝑥𝑖) so as to approx-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "then 𝑞(𝑧|𝑥𝑖) = 𝑞(𝑧1|𝑥𝑖)𝑞(𝑧2|𝑥𝑖)𝑞(𝑧3|𝑥𝑖) (see §3). Finally, in amortized variational EM, 𝑞(𝑧|𝑥𝑖) can be parametrized as a neural network, as we will describe below. The EM algorithm iterates two steps, each of which in- creases the ELBO (Eq. 2): E-step. Optimize the distributions 𝑞(𝑧|𝑥𝑖) so as to approx-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "E𝑖 [E𝑧∼𝑞 (𝑧 | 𝑥𝑖 ) log 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧)] . (3) Amortized variational EM. In amortized variational EM, 𝑞 is parametrized by a neural network 𝑞 𝜙 taking 𝑥𝑖 as in- put, which allows evaluation of 𝑞 𝜙 (𝑧|𝑥) at any 𝑥 and thus generalization to unseen data: sampling from 𝑞(−| 𝑥𝑖) be- comes easy, at the amortized cost of having to train the",
+        "unicode_plain": "E𝑖 [E𝑧∼𝑞 (𝑧 | 𝑥𝑖 ) log 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧)] . (3) Amortized variational EM. In amortized variational EM, 𝑞 is parametrized by a neural network 𝑞 𝜙 taking 𝑥𝑖 as in- put, which allows evaluation of 𝑞 𝜙 (𝑧|𝑥) at any 𝑥 and thus generalization to unseen data: sampling from 𝑞(−| 𝑥𝑖) be- comes easy, at the amortized cost of having to train the"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "E𝑖 [E𝑧∼𝑞 (𝑧 | 𝑥𝑖 ) log 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧)] . (3) Amortized variational EM. In amortized variational EM, 𝑞 is parametrized by a neural network 𝑞 𝜙 taking 𝑥𝑖 as in- put, which allows evaluation of 𝑞 𝜙 (𝑧|𝑥) at any 𝑥 and thus generalization to unseen data: sampling from 𝑞(−| 𝑥𝑖) be- comes easy, at the amortized cost of having to train the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "E𝑧∼ 𝑝𝜃 (𝑧), 𝑥∼ 𝑝𝜃 ( 𝑥 | 𝑧) [− log 𝑞 𝜙 (𝑧|𝑥)] . (4) For a given 𝑥, this objective is equivalent to minimizing 𝐷KL ( 𝑝 𝜃 (𝑧|𝑥) ∥𝑞 𝜙 (𝑧|𝑥)), the opposite direction of the KL compared to Eq. 2. This direction of the KL will cause 𝑞 𝜙 to seek a broad approximation to the true posterior that captures all of its modes, preventing posterior collapse. On",
+        "unicode_plain": "E𝑧∼ 𝑝𝜃 (𝑧), 𝑥∼ 𝑝𝜃 ( 𝑥 | 𝑧) [− log 𝑞 𝜙 (𝑧|𝑥)] . (4) For a given 𝑥, this objective is equivalent to minimizing 𝐷KL ( 𝑝 𝜃 (𝑧|𝑥) ∥𝑞 𝜙 (𝑧|𝑥)), the opposite direction of the KL compared to Eq. 2. This direction of the KL will cause 𝑞 𝜙 to seek a broad approximation to the true posterior that captures all of its modes, preventing posterior collapse. On"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "E𝑧∼ 𝑝𝜃 (𝑧), 𝑥∼ 𝑝𝜃 ( 𝑥 | 𝑧) [− log 𝑞 𝜙 (𝑧|𝑥)] . (4) For a given 𝑥, this objective is equivalent to minimizing 𝐷KL ( 𝑝 𝜃 (𝑧|𝑥) ∥𝑞 𝜙 (𝑧|𝑥)), the opposite direction of the KL compared to Eq. 2. This direction of the KL will cause 𝑞 𝜙 to seek a broad approximation to the true posterior that captures all of its modes, preventing posterior collapse. On"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page3_14",
+      "presentation": {
+        "latex": "· · · →𝑠𝑛 = 𝑧, where 𝑥 ∈ Z and each 𝑠𝑖 → 𝑠𝑖+1 is an action (like an addition of a node to the parse tree). 1Such training can not be done directly in general, since the true posterior is unknown, but algorithms, including GFlowNet-EM, use the fact that 𝑝(𝑧|𝑥𝑖) ∝ 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧), which is available. A (forward) policy is a collection of distributions 𝑃𝐹 (𝑠′ |𝑠)",
+        "unicode_plain": "· · · →𝑠𝑛 = 𝑧, where 𝑥 ∈ Z and each 𝑠𝑖 → 𝑠𝑖+1 is an action (like an addition of a node to the parse tree). 1Such training can not be done directly in general, since the true posterior is unknown, but algorithms, including GFlowNet-EM, use the fact that 𝑝(𝑧|𝑥𝑖) ∝ 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧), which is available. A (forward) policy is a collection of distributions 𝑃𝐹 (𝑠′ |𝑠)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "· · · →𝑠𝑛 = 𝑧, where 𝑥 ∈ Z and each 𝑠𝑖 → 𝑠𝑖+1 is an action (like an addition of a node to the parse tree). 1Such training can not be done directly in general, since the true posterior is unknown, but algorithms, including GFlowNet-EM, use the fact that 𝑝(𝑧|𝑥𝑖) ∝ 𝑝 𝜃 (𝑧) 𝑝 𝜃 (𝑥𝑖 |𝑧), which is available. A (forward) policy is a collection of distributions 𝑃𝐹 (𝑠′ |𝑠)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

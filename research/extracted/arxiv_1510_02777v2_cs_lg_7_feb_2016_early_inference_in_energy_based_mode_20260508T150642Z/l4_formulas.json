@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z",
+  "extracted_at": "2026-05-08T15:08:34Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "the hidden units, i.e., st = ( xt, ht). Let f be the function that computes the new value of the complete state st given its previous value, with f = (fx, f h) to denote the parts of f that respectively outputs the predictions on the clamped (visible) units and on the unclamped (hidden) units. The time evolution of the unclamped units is assumed to follow",
+        "unicode_plain": "the hidden units, i.e., st = ( xt, ht). Let f be the function that computes the new value of the complete state st given its previous value, with f = (fx, f h) to denote the parts of f that respectively outputs the predictions on the clamped (visible) units and on the unclamped (hidden) units. The time evolution of the unclamped units is assumed to follow"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the hidden units, i.e., st = ( xt, ht). Let f be the function that computes the new value of the complete state st given its previous value, with f = (fx, f h) to denote the parts of f that respectively outputs the predictions on the clamped (visible) units and on the unclamped (hidden) units. The time evolution of the unclamped units is assumed to follow"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "its previous value, with f = (fx, f h) to denote the parts of f that respectively outputs the predictions on the clamped (visible) units and on the unclamped (hidden) units. The time evolution of the unclamped units is assumed to follow a leaky integration equation, i.e., ht+1 = fh(st, ηt) = ht + ǫ(Rh(˜st) − ht) (1)",
+        "unicode_plain": "its previous value, with f = (fx, f h) to denote the parts of f that respectively outputs the predictions on the clamped (visible) units and on the unclamped (hidden) units. The time evolution of the unclamped units is assumed to follow a leaky integration equation, i.e., ht+1 = fh(st, ηt) = ht + ǫ(Rh(˜st) − ht) (1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "its previous value, with f = (fx, f h) to denote the parts of f that respectively outputs the predictions on the clamped (visible) units and on the unclamped (hidden) units. The time evolution of the unclamped units is assumed to follow a leaky integration equation, i.e., ht+1 = fh(st, ηt) = ht + ǫ(Rh(˜st) − ht) (1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "ht+1 = fh(st, ηt) = ht + ǫ(Rh(˜st) − ht) (1) where R(s) = ( Rx(s), R h(s)) represents the network- generated pressure on neurons, i.e., Ri(s) is what the rest of the network asks neuron i to move towards, and the cor- rupted state ˜s is results from synaptic noise and spiking effects. Here we roughly model this corruption by simple",
+        "unicode_plain": "ht+1 = fh(st, ηt) = ht + ǫ(Rh(˜st) − ht) (1) where R(s) = ( Rx(s), R h(s)) represents the network- generated pressure on neurons, i.e., Ri(s) is what the rest of the network asks neuron i to move towards, and the cor- rupted state ˜s is results from synaptic noise and spiking effects. Here we roughly model this corruption by simple"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "ht+1 = fh(st, ηt) = ht + ǫ(Rh(˜st) − ht) (1) where R(s) = ( Rx(s), R h(s)) represents the network- generated pressure on neurons, i.e., Ri(s) is what the rest of the network asks neuron i to move towards, and the cor- rupted state ˜s is results from synaptic noise and spiking effects. Here we roughly model this corruption by simple"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "where R(s) = ( Rx(s), R h(s)) represents the network- generated pressure on neurons, i.e., Ri(s) is what the rest of the network asks neuron i to move towards, and the cor- rupted state ˜s is results from synaptic noise and spiking effects. Here we roughly model this corruption by simple additive noise:",
+        "unicode_plain": "where R(s) = ( Rx(s), R h(s)) represents the network- generated pressure on neurons, i.e., Ri(s) is what the rest of the network asks neuron i to move towards, and the cor- rupted state ˜s is results from synaptic noise and spiking effects. Here we roughly model this corruption by simple additive noise:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where R(s) = ( Rx(s), R h(s)) represents the network- generated pressure on neurons, i.e., Ri(s) is what the rest of the network asks neuron i to move towards, and the cor- rupted state ˜s is results from synaptic noise and spiking effects. Here we roughly model this corruption by simple additive noise:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "˜st = st + ηt , (2) and we see that the above equation corresponds to the dis- cretization of a differential equation τ ˙h = Rh(s + η) − h which brings h exponentially fast towards the “target” value Rh(s), along with the random walk movements",
+        "unicode_plain": "˜st = st + ηt , (2) and we see that the above equation corresponds to the dis- cretization of a differential equation τ ˙h = Rh(s + η) − h which brings h exponentially fast towards the “target” value Rh(s), along with the random walk movements"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "˜st = st + ηt , (2) and we see that the above equation corresponds to the dis- cretization of a differential equation τ ˙h = Rh(s + η) − h which brings h exponentially fast towards the “target” value Rh(s), along with the random walk movements"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "τ ˙h = Rh(s + η) − h which brings h exponentially fast towards the “target” value Rh(s), along with the random walk movements brought by the noiseη. We assume thatRi(s) is a weighted sum of input signals coming from the neurons connected into neuron i, although the derivation below does not de-",
+        "unicode_plain": "τ ˙h = Rh(s + η) − h which brings h exponentially fast towards the “target” value Rh(s), along with the random walk movements brought by the noiseη. We assume thatRi(s) is a weighted sum of input signals coming from the neurons connected into neuron i, although the derivation below does not de-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "τ ˙h = Rh(s + η) − h which brings h exponentially fast towards the “target” value Rh(s), along with the random walk movements brought by the noiseη. We assume thatRi(s) is a weighted sum of input signals coming from the neurons connected into neuron i, although the derivation below does not de-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "∂s = − ∂E (s) ∂s . (3) With this interpretation, the leaky integration neural com - putation of Eq. 1 seems to follow a Langevin Monte-Carlo Markov chain (Andrieu et al., 2003): st+1 = st + ǫ(R(˜st) − st)",
+        "unicode_plain": "∂s = − ∂E (s) ∂s . (3) With this interpretation, the leaky integration neural com - putation of Eq. 1 seems to follow a Langevin Monte-Carlo Markov chain (Andrieu et al., 2003): st+1 = st + ǫ(R(˜st) − st)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "∂s = − ∂E (s) ∂s . (3) With this interpretation, the leaky integration neural com - putation of Eq. 1 seems to follow a Langevin Monte-Carlo Markov chain (Andrieu et al., 2003): st+1 = st + ǫ(R(˜st) − st)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "∂s . (3) With this interpretation, the leaky integration neural com - putation of Eq. 1 seems to follow a Langevin Monte-Carlo Markov chain (Andrieu et al., 2003): st+1 = st + ǫ(R(˜st) − st) = st + ǫ(R(˜st) − ˜st + ˜st − st)",
+        "unicode_plain": "∂s . (3) With this interpretation, the leaky integration neural com - putation of Eq. 1 seems to follow a Langevin Monte-Carlo Markov chain (Andrieu et al., 2003): st+1 = st + ǫ(R(˜st) − st) = st + ǫ(R(˜st) − ˜st + ˜st − st)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "∂s . (3) With this interpretation, the leaky integration neural com - putation of Eq. 1 seems to follow a Langevin Monte-Carlo Markov chain (Andrieu et al., 2003): st+1 = st + ǫ(R(˜st) − st) = st + ǫ(R(˜st) − ˜st + ˜st − st)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "st+1 = st + ǫ(R(˜st) − st) = st + ǫ(R(˜st) − ˜st + ˜st − st) = st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that",
+        "unicode_plain": "st+1 = st + ǫ(R(˜st) − st) = st + ǫ(R(˜st) − ˜st + ˜st − st) = st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "st+1 = st + ǫ(R(˜st) − st) = st + ǫ(R(˜st) − ˜st + ˜st − st) = st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "= st + ǫ(R(˜st) − ˜st + ˜st − st) = st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the",
+        "unicode_plain": "= st + ǫ(R(˜st) − ˜st + ˜st − st) = st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= st + ǫ(R(˜st) − ˜st + ˜st − st) = st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "= st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the point of view of the noisy states ˜s, we see that the update",
+        "unicode_plain": "= st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the point of view of the noisy states ˜s, we see that the update"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "= st + ǫ(− ∂E (˜st) ∂ ˜st + ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the point of view of the noisy states ˜s, we see that the update"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "+ ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the point of view of the noisy states ˜s, we see that the update equation corresponds to ˜st+1 − ηt+1 = ˜st − ηt − ǫ∂E (˜st)",
+        "unicode_plain": "+ ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the point of view of the noisy states ˜s, we see that the update equation corresponds to ˜st+1 − ηt+1 = ˜st − ηt − ǫ∂E (˜st)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "+ ηt) (4) where for the last line we used Eqs. 2 and 3 and we see that we are going down the gradient from ˜st. Hence from the point of view of the noisy states ˜s, we see that the update equation corresponds to ˜st+1 − ηt+1 = ˜st − ηt − ǫ∂E (˜st)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page2_13",
+      "presentation": {
+        "latex": "˜st+1 − ηt+1 = ˜st − ηt − ǫ∂E (˜st) ∂ ˜st + ǫηt ˜st+1 = ˜st − ǫ∂E (˜st) ∂ ˜st + ηt+1 − (1 − ǫ)ηt (5)",
+        "unicode_plain": "˜st+1 − ηt+1 = ˜st − ηt − ǫ∂E (˜st) ∂ ˜st + ǫηt ˜st+1 = ˜st − ǫ∂E (˜st) ∂ ˜st + ηt+1 − (1 − ǫ)ηt (5)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜st+1 − ηt+1 = ˜st − ηt − ǫ∂E (˜st) ∂ ˜st + ǫηt ˜st+1 = ˜st − ǫ∂E (˜st) ∂ ˜st + ηt+1 − (1 − ǫ)ηt (5)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page2_14",
+      "presentation": {
+        "latex": "˜st+1 = ˜st − ǫ∂E (˜st) ∂ ˜st + ηt+1 − (1 − ǫ)ηt (5) which we recognize as going down the gradient of the en- ergy with “learning rate” ǫ and adding “noise” ηt+1 − (1 − ǫ)ηt.",
+        "unicode_plain": "˜st+1 = ˜st − ǫ∂E (˜st) ∂ ˜st + ηt+1 − (1 − ǫ)ηt (5) which we recognize as going down the gradient of the en- ergy with “learning rate” ǫ and adding “noise” ηt+1 − (1 − ǫ)ηt."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜st+1 = ˜st − ǫ∂E (˜st) ∂ ˜st + ηt+1 − (1 − ǫ)ηt (5) which we recognize as going down the gradient of the en- ergy with “learning rate” ǫ and adding “noise” ηt+1 − (1 − ǫ)ηt."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

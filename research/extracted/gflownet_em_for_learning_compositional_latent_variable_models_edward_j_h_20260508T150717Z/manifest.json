@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z",
+  "source_pdf": "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/source.pdf",
+  "title_hint": "GFlowNet-EM for Learning Compositional Latent Variable Models Edward J. Hu * 1 Nikolay Malkin * 1 Moksh Jain 1 Katie Everett 2 3 Alexandros Graikos 4 Y oshua Bengio1 5",
+  "updated_at": "2026-05-08T15:10:41Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:18Z",
+      "artifacts": [
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/source.pdf",
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:41Z",
+      "artifacts": [
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:41Z",
+      "artifacts": [
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:41Z",
+      "artifacts": [
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:41Z",
+      "artifacts": [
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/l4_analysis.json",
+        "research/extracted/gflownet_em_for_learning_compositional_latent_variable_models_edward_j_h_20260508T150717Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=6197; pdf_sha256=7e7ece986612f693c2dd1d894f68bebb6c9ce8d113541460e30d84357aa2ea09; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "7e7ece986612f693c2dd1d894f68bebb6c9ce8d113541460e30d84357aa2ea09"
+}

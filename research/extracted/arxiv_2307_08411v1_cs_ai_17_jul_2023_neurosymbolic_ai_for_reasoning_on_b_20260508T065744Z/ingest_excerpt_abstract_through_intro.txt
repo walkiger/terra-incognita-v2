@@ -1,0 +1,66 @@
+Abstract
+Biomedical datasets are often modeled as knowl-
+edge graphs (KGs) because they capture the
+multi-relational, heterogeneous, and dynamic na-
+tures of biomedical systems. KG completion
+(KGC), can, therefore, help researchers make
+predictions to inform tasks like drug reposition-
+ing. While previous approaches for KGC were
+either rule-based or embedding-based, hybrid ap-
+proaches based on neurosymbolic artiﬁcial in-
+telligence are becoming more popular. Many
+of these methods possess unique characteris-
+tics which make them even better suited toward
+biomedical challenges. Here, we survey such ap-
+proaches with an emphasis on their utilities and
+prospective beneﬁts for biomedicine.
+1. Introduction
+Often, biomedical concepts can be understood as part of a
+system comprising highly multi-relational, heterogeneou s,
+and interconnected entities. For instance, molecular in-
+teractions are observed to engage in dynamic, condition-
+dependent networks (
+Chang & Karin , 2001). Graph struc-
+tures are a popular choice for representing biomedical sys-
+tems as they facilitate the storage of such data (
+Li et al. ,
+2022).
+Recently, several artiﬁcial intelligence (AI) and machine
+learning (ML) approaches for analyzing biomedical data
+(
+Esteva et al., 2017; Savoy, 2020) and assisting clinical
+treatment planning ( Wang et al., 2019) have been reported.
+Hence, we anticipate that AI will become an integral part of
+modern healthcare processes. As this becomes more of a re-
+ality, considering the ethical and practical beneﬁts of model
+1Artiﬁcial Intelligence and its Applications Institute,
+School of Informatics, University of Edinburgh, Edin-
+burgh, UK. Correspondence to: Lauren Nicole DeLong
+<L.N.DELONG@sms.ed.ac.uk>.
+Proceedings of the 40 th International Conference on Machine
+Learning: W orkshop on Knowledge and Logical Reasoning in
+the Era of Data-driven Learning, Honolulu, Hawaii, USA. PMLR
+202, 2023. Copyright 2023 by the author(s).
+interpretability, the inherent ability to understand how a nd
+why predictions were made, could signiﬁcantly improve
+the resultant quality of care. However, facilitating model in-
+terpretability is a challenge as state-of-the-art methods tend
+to lack it (
+Chakraborty et al., 2017). Furthermore, while
+patterned domain knowledge between general concepts in
+biology is ample (
+Ashburner et al., 2000; Guvench, 2016),
+few data-driven ML approaches explicitly encode the high-
+level relationships from those knowledge bases.
+Recently, however, neurosymbolic methods have managed
+to leverage the beneﬁts of both rule-based inference and
+deep learning. These methods possess unique charac-
+teristics which are suited to address the aforementioned
+challenges. To facilitate a better understanding of these
+characteristics, we survey several of such approaches that
+were used on biomedical graphs. In our previous sur-
+vey (
+DeLong et al., 2023), we outlined three major taxo-
+nomic categories for neurosymbolic reasoning on graph
+structures:
+1. logically-informed embedding approaches,

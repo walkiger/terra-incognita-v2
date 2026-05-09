@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:09:30Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page4_1",
+      "presentation": {
+        "latex": "N(u(x); K(x; λ)) = 0, x ∈ D, B(u(x)) = 0, x ∈ ∂D, (1) where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of",
+        "unicode_plain": "N(u(x); K(x; λ)) = 0, x ∈ D, B(u(x)) = 0, x ∈ ∂D, (1) where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "N(u(x); K(x; λ)) = 0, x ∈ D, B(u(x)) = 0, x ∈ ∂D, (1) where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "B(u(x)) = 0, x ∈ ∂D, (1) where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of u at specific sensors of the domai",
+        "unicode_plain": "B(u(x)) = 0, x ∈ ∂D, (1) where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of u at specific sensors of the domain. The relationship of the above variables in observation"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "B(u(x)) = 0, x ∈ ∂D, (1) where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of u at specific sensors of the domain. The relationship of the above variables in observation"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page4_3",
+      "presentation": {
+        "latex": "where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of u at specific sensors of the domain. The relationship of th",
+        "unicode_plain": "where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of u at specific sensors of the domain. The relationship of the above variables in observation"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where N denotes the general differential operator defined in the domainD ⊂ Rd (d = 1, 2,or 3), B is the boundary operator on the boundary ∂D, K(x; λ) represents the input physical field characterized by a vector λ and u(x) denotes the solutions of the PDE. The corresponding inverse problem aims to recoverλ from the observations ˜u ∈ RD of u at specific sensors of the domain. The relationship of the above variables in observation"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "p(λ | ˜u) ∝ p( ˜u | λ) p(λ), (2) where p(λ) represents the prior andp( ˜u | λ) is the likelihood. The main challenge associated Figure 1: Graphical representation of the Bayesian inversion method. with the classical Bayesian approaches lies in the computational burden of repeatly evaluating the forward model F for Monte Carlo sampling. To tackle this challenge, we introduce an INN-based model that",
+        "unicode_plain": "p(λ | ˜u) ∝ p( ˜u | λ) p(λ), (2) where p(λ) represents the prior andp( ˜u | λ) is the likelihood. The main challenge associated Figure 1: Graphical representation of the Bayesian inversion method. with the classical Bayesian approaches lies in the computational burden of repeatly evaluating the forward model F for Monte Carlo sampling. To tackle this challenge, we introduce an INN-based model that enables accurate and efficient posterior sampling,"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "p(λ | ˜u) ∝ p( ˜u | λ) p(λ), (2) where p(λ) represents the prior andp( ˜u | λ) is the likelihood. The main challenge associated Figure 1: Graphical representation of the Bayesian inversion method. with the classical Bayesian approaches lies in the computational burden of repeatly evaluating the forward model F for Monte Carlo sampling. To tackle this challenge, we introduce an INN-based model that enables accurate and efficient posterior sampling,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "random variables, Υ = gθ(χ). The probability distributions of χ and Υ satisfy log pχ(χ) = log pΥ(gθ(χ)) − nX j=1 log",
+        "unicode_plain": "random variables, Υ = gθ(χ). The probability distributions of χ and Υ satisfy log pχ(χ) = log pΥ(gθ(χ)) − nX j=1 log"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "random variables, Υ = gθ(χ). The probability distributions of χ and Υ satisfy log pχ(χ) = log pΥ(gθ(χ)) − nX j=1 log"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page4_6",
+      "presentation": {
+        "latex": "log pχ(χ) = log pΥ(gθ(χ)) − nX j=1 log",
+        "unicode_plain": "log pχ(χ) = log pΥ(gθ(χ)) − nX j=1 log"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "log pχ(χ) = log pΥ(gθ(χ)) − nX j=1 log"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page5_7",
+      "presentation": {
+        "latex": "where hj is the intermediate variable such that hj = gj(hj−1), j = 1, · · · , n, h0 = χ, hn = Υ. In this work, we utilize the a ffine coupling layer as the basic building block, which was introduced in [34, 35]. Fig. 2 (b) illustrates the forward and backward operations of the affine coupling layer. In the forward propagation, the input h ∈ RF is first split into two parts: h(1) ∈ R f and h(2) ∈ R",
+        "unicode_plain": "where hj is the intermediate variable such that hj = gj(hj−1), j = 1, · · · , n, h0 = χ, hn = Υ. In this work, we utilize the a ffine coupling layer as the basic building block, which was introduced in [34, 35]. Fig. 2 (b) illustrates the forward and backward operations of the affine coupling layer. In the forward propagation, the input h ∈ RF is first split into two parts: h(1) ∈ R f and h(2) ∈ RF− f , f < F. These two parts then undergo the coupling"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where hj is the intermediate variable such that hj = gj(hj−1), j = 1, · · · , n, h0 = χ, hn = Υ. In this work, we utilize the a ffine coupling layer as the basic building block, which was introduced in [34, 35]. Fig. 2 (b) illustrates the forward and backward operations of the affine coupling layer. In the forward propagation, the input h ∈ RF is first split into two parts: h(1) ∈ R f and h(2) ∈ RF− f , f < F. These two parts then undergo the coupling"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "v(1) = h(1), v(2) = h(2) ⊙ exp(s(h(1))) +t(h(2)), (4) where s(·) and t(·) are scale and translation functions respectively, and they are both modeled by trainable neural networks. Here, ⊙ represents element-wise multiplication, and the inverse transformation can be trivially given: h(1) = v(1), h(2) = (v(2) −t(v(1))) ⊙ exp(−s(v(1))). (5) The Jacobian of the forward map is given as",
+        "unicode_plain": "v(1) = h(1), v(2) = h(2) ⊙ exp(s(h(1))) +t(h(2)), (4) where s(·) and t(·) are scale and translation functions respectively, and they are both modeled by trainable neural networks. Here, ⊙ represents element-wise multiplication, and the inverse transformation can be trivially given: h(1) = v(1), h(2) = (v(2) −t(v(1))) ⊙ exp(−s(v(1))). (5) The Jacobian of the forward map is given as"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "v(1) = h(1), v(2) = h(2) ⊙ exp(s(h(1))) +t(h(2)), (4) where s(·) and t(·) are scale and translation functions respectively, and they are both modeled by trainable neural networks. Here, ⊙ represents element-wise multiplication, and the inverse transformation can be trivially given: h(1) = v(1), h(2) = (v(2) −t(v(1))) ⊙ exp(−s(v(1))). (5) The Jacobian of the forward map is given as"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_5",
+      "presentation": {
+        "latex": "h(1) = v(1), h(2) = (v(2) −t(v(1))) ⊙ exp(−s(v(1))). (5) The Jacobian of the forward map is given as ∂(v(1), v(2)) ∂(h(1), h(2)) =  ",
+        "unicode_plain": "h(1) = v(1), h(2) = (v(2) −t(v(1))) ⊙ exp(−s(v(1))). (5) The Jacobian of the forward map is given as ∂(v(1), v(2)) ∂(h(1), h(2)) =  "
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(5)",
+        "verbatim_snippet": "h(1) = v(1), h(2) = (v(2) −t(v(1))) ⊙ exp(−s(v(1))). (5) The Jacobian of the forward map is given as ∂(v(1), v(2)) ∂(h(1), h(2)) =  "
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page5_10",
+      "presentation": {
+        "latex": "∂(h(1), h(2)) =   Id 0 f ×(F− f ) ∂v(2) ∂h(1) diag(exp(s(h(1))))",
+        "unicode_plain": "∂(h(1), h(2)) =   Id 0 f ×(F− f ) ∂v(2) ∂h(1) diag(exp(s(h(1))))"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "∂(h(1), h(2)) =   Id 0 f ×(F− f ) ∂v(2) ∂h(1) diag(exp(s(h(1))))"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_6",
+      "presentation": {
+        "latex": " . (6) Due to the tractable inverse map and determinant of the Jacobian for each layer, the change-of-variable formula (3) can be easily calculated. In the context of this study, a pertinent question arises: Can we harness the capabilities of INNs to acquire the forward mapping of a physical system while simultaneously",
+        "unicode_plain": " . (6) Due to the tractable inverse map and determinant of the Jacobian for each layer, the change-of-variable formula (3) can be easily calculated. In the context of this study, a pertinent question arises: Can we harness the capabilities of INNs to acquire the forward mapping of a physical system while simultaneously"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(6)",
+        "verbatim_snippet": " . (6) Due to the tractable inverse map and determinant of the Jacobian for each layer, the change-of-variable formula (3) can be easily calculated. In the context of this study, a pertinent question arises: Can we harness the capabilities of INNs to acquire the forward mapping of a physical system while simultaneously"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page6_12",
+      "presentation": {
+        "latex": "u(x; λ) = PX i=1 ci(λ)ϕi(x), (7) wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain.",
+        "unicode_plain": "u(x; λ) = PX i=1 ci(λ)ϕi(x), (7) wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "u(x; λ) = PX i=1 ci(λ)ϕi(x), (7) wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_7",
+      "presentation": {
+        "latex": "ci(λ)ϕi(x), (7) wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain. Figure 3: Schematic of PI-INN. The INN coupling with NB-Net can not only obtain the solutions of forward problems but also infer the unknown parameters from the observations. The blue and green solid lines represent the directions of learning and Bayesian i",
+        "unicode_plain": "ci(λ)ϕi(x), (7) wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain. Figure 3: Schematic of PI-INN. The INN coupling with NB-Net can not only obtain the solutions of forward problems but also infer the unknown parameters from the observations. The blue and green solid lines represent the directions of learning and Bayesian inversion processes, respectively. The standard Gaussian"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(7)",
+        "verbatim_snippet": "ci(λ)ϕi(x), (7) wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain. Figure 3: Schematic of PI-INN. The INN coupling with NB-Net can not only obtain the solutions of forward problems but also infer the unknown parameters from the observations. The blue and green solid lines represent the directions of learning and Bayesian inversion processes, respectively. The standard Gaussian"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page6_14",
+      "presentation": {
+        "latex": "wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain. Figure 3: Schematic of PI-INN. The INN coupling with NB-Net can not only obtain the solutions of forward problems but also infer the unknown parameters from the observations. The blue and green solid lines represent the directions of learning and Bayesian inversion process",
+        "unicode_plain": "wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain. Figure 3: Schematic of PI-INN. The INN coupling with NB-Net can not only obtain the solutions of forward problems but also infer the unknown parameters from the observations. The blue and green solid lines represent the directions of learning and Bayesian inversion processes, respectively. The standard Gaussian"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "wherec = (c1, . . . ,cP)⊤ represents the expansion coefficient, and ϕi(x) is the basis function defined on the spatial domain. Figure 3: Schematic of PI-INN. The INN coupling with NB-Net can not only obtain the solutions of forward problems but also infer the unknown parameters from the observations. The blue and green solid lines represent the directions of learning and Bayesian inversion processes, respectively. The standard Gaussian"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

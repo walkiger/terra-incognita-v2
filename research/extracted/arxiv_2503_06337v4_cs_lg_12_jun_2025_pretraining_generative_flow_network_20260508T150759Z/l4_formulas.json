@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z",
+  "extracted_at": "2026-05-08T15:09:06Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "terminal states sT . A model generates trajectories τ = (s0, a0, . . . , sT ) by transitioning between states through ac- tions, guided by a forward policy PF (s′ | s). The key idea in GFlowNets is that they are trained to preserve aflow quan- tity, such that the total flow quantity entering a terminal state is equal to its unnormalized probability. This is achieved by",
+        "unicode_plain": "terminal states sT . A model generates trajectories τ = (s0, a0, . . . , sT ) by transitioning between states through ac- tions, guided by a forward policy PF (s′ | s). The key idea in GFlowNets is that they are trained to preserve aflow quan- tity, such that the total flow quantity entering a terminal state is equal to its unnormalized probability. This is achieved by"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "terminal states sT . A model generates trajectories τ = (s0, a0, . . . , sT ) by transitioning between states through ac- tions, guided by a forward policy PF (s′ | s). The key idea in GFlowNets is that they are trained to preserve aflow quan- tity, such that the total flow quantity entering a terminal state is equal to its unnormalized probability. This is achieved by"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "G = (A, E, X ) such that X ∈ Rn×d define d-dimensional atomic features for the n nodes in G, E ∈ { 0, 1}b×n×n is the edge-adjacency tensor for b types of edges connecting n nodes, and finally A ∈ {0, 1}n×n is the adjacency matrix for n nodes. A trajectory τ = ( s0, a0), ....(sn, an) can be generated de novo from s0 by sampling actions a from a",
+        "unicode_plain": "G = (A, E, X ) such that X ∈ Rn×d define d-dimensional atomic features for the n nodes in G, E ∈ { 0, 1}b×n×n is the edge-adjacency tensor for b types of edges connecting n nodes, and finally A ∈ {0, 1}n×n is the adjacency matrix for n nodes. A trajectory τ = ( s0, a0), ....(sn, an) can be generated de novo from s0 by sampling actions a from a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "G = (A, E, X ) such that X ∈ Rn×d define d-dimensional atomic features for the n nodes in G, E ∈ { 0, 1}b×n×n is the edge-adjacency tensor for b types of edges connecting n nodes, and finally A ∈ {0, 1}n×n is the adjacency matrix for n nodes. A trajectory τ = ( s0, a0), ....(sn, an) can be generated de novo from s0 by sampling actions a from a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "for n nodes. A trajectory τ = ( s0, a0), ....(sn, an) can be generated de novo from s0 by sampling actions a from a conditional policy PF (. | c; θ), or by “deconstructing” a molecular graph G = sn via PB(. | c; θ). States si are partially constructed subgraphs, albeit we ensure that they remain valid molecular graphs throughout.",
+        "unicode_plain": "for n nodes. A trajectory τ = ( s0, a0), ....(sn, an) can be generated de novo from s0 by sampling actions a from a conditional policy PF (. | c; θ), or by “deconstructing” a molecular graph G = sn via PB(. | c; θ). States si are partially constructed subgraphs, albeit we ensure that they remain valid molecular graphs throughout."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "for n nodes. A trajectory τ = ( s0, a0), ....(sn, an) can be generated de novo from s0 by sampling actions a from a conditional policy PF (. | c; θ), or by “deconstructing” a molecular graph G = sn via PB(. | c; θ). States si are partially constructed subgraphs, albeit we ensure that they remain valid molecular graphs throughout."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "molecular graph G = sn via PB(. | c; θ). States si are partially constructed subgraphs, albeit we ensure that they remain valid molecular graphs throughout. Our primary objective is to learn a model Gθ = (PF (; θ), PB(; θ)), such that the generated G are chemically valid molecular graphs satisfying some molecular property",
+        "unicode_plain": "molecular graph G = sn via PB(. | c; θ). States si are partially constructed subgraphs, albeit we ensure that they remain valid molecular graphs throughout. Our primary objective is to learn a model Gθ = (PF (; θ), PB(; θ)), such that the generated G are chemically valid molecular graphs satisfying some molecular property"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "molecular graph G = sn via PB(. | c; θ). States si are partially constructed subgraphs, albeit we ensure that they remain valid molecular graphs throughout. Our primary objective is to learn a model Gθ = (PF (; θ), PB(; θ)), such that the generated G are chemically valid molecular graphs satisfying some molecular property"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "Our primary objective is to learn a model Gθ = (PF (; θ), PB(; θ)), such that the generated G are chemically valid molecular graphs satisfying some molecular property conditional ranges c, and exhibiting sufficient diversity. We express this through a conditional rewardR(G|c) measuring how well G satisfies c. We also want to be able to finetune",
+        "unicode_plain": "Our primary objective is to learn a model Gθ = (PF (; θ), PB(; θ)), such that the generated G are chemically valid molecular graphs satisfying some molecular property conditional ranges c, and exhibiting sufficient diversity. We express this through a conditional rewardR(G|c) measuring how well G satisfies c. We also want to be able to finetune"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Our primary objective is to learn a model Gθ = (PF (; θ), PB(; θ)), such that the generated G are chemically valid molecular graphs satisfying some molecular property conditional ranges c, and exhibiting sufficient diversity. We express this through a conditional rewardR(G|c) measuring how well G satisfies c. We also want to be able to finetune"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "LTB(τ ) = \u0012 log \u0012 Zθ Qn t=1 PF (st|st−1; θ)",
+        "unicode_plain": "LTB(τ ) = \u0012 log \u0012 Zθ Qn t=1 PF (st|st−1; θ)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "LTB(τ ) = \u0012 log \u0012 Zθ Qn t=1 PF (st|st−1; θ)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "t=1 PF (st|st−1; θ) R(x)Qn t=1 PB(st−1|st; θ) \u0013\u00132 (1) where trajectories τ = (s0, s1, ...., sn) are such that sn = x",
+        "unicode_plain": "t=1 PF (st|st−1; θ) R(x)Qn t=1 PB(st−1|st; θ) \u0013\u00132 (1) where trajectories τ = (s0, s1, ...., sn) are such that sn = x"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1 PF (st|st−1; θ) R(x)Qn t=1 PB(st−1|st; θ) \u0013\u00132 (1) where trajectories τ = (s0, s1, ...., sn) are such that sn = x"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "t=1 PB(st−1|st; θ) \u0013\u00132 (1) where trajectories τ = (s0, s1, ...., sn) are such that sn = x is a fully constructed object. 4. Pretraining with Inexpensive Rewards",
+        "unicode_plain": "t=1 PB(st−1|st; θ) \u0013\u00132 (1) where trajectories τ = (s0, s1, ...., sn) are such that sn = x is a fully constructed object. 4. Pretraining with Inexpensive Rewards"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1 PB(st−1|st; θ) \u0013\u00132 (1) where trajectories τ = (s0, s1, ...., sn) are such that sn = x is a fully constructed object. 4. Pretraining with Inexpensive Rewards"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "where trajectories τ = (s0, s1, ...., sn) are such that sn = x is a fully constructed object. 4. Pretraining with Inexpensive Rewards To construct molecular graphs via PF , we design an ac- tion space with 5 action types: {addNode, addEdge, addNodeAttribute, addEdgeAttribute, stop}. The",
+        "unicode_plain": "where trajectories τ = (s0, s1, ...., sn) are such that sn = x is a fully constructed object. 4. Pretraining with Inexpensive Rewards To construct molecular graphs via PF , we design an ac- tion space with 5 action types: {addNode, addEdge, addNodeAttribute, addEdgeAttribute, stop}. The"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where trajectories τ = (s0, s1, ...., sn) are such that sn = x is a fully constructed object. 4. Pretraining with Inexpensive Rewards To construct molecular graphs via PF , we design an ac- tion space with 5 action types: {addNode, addEdge, addNodeAttribute, addEdgeAttribute, stop}. The"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "ranges cp = (clow, chigh) which we want samples to belong to. We use the following goal-conditioned reward function for property p and molecule x: Rp(x|cp) =  ",
+        "unicode_plain": "ranges cp = (clow, chigh) which we want samples to belong to. We use the following goal-conditioned reward function for property p and molecule x: Rp(x|cp) =  "
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ranges cp = (clow, chigh) which we want samples to belong to. We use the following goal-conditioned reward function for property p and molecule x: Rp(x|cp) =  "
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "Rp(x|cp) =    2−[dp]+ 2 exp px−clow",
+        "unicode_plain": "Rp(x|cp) =    2−[dp]+ 2 exp px−clow"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Rp(x|cp) =    2−[dp]+ 2 exp px−clow"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page3_12",
+      "presentation": {
+        "latex": "here, λ controls the decay rate, [x]+ = max {0, x}, clow and chigh are the lower and upper bounds for property p, and dp ∈ R (typically dp ∈ {− 1, 0, 1}) represents the “preference direction” hyperparameter, indicating whether lower or higher property values within the range cp are preferred (for further details, see appendix D,E). Note that",
+        "unicode_plain": "here, λ controls the decay rate, [x]+ = max {0, x}, clow and chigh are the lower and upper bounds for property p, and dp ∈ R (typically dp ∈ {− 1, 0, 1}) represents the “preference direction” hyperparameter, indicating whether lower or higher property values within the range cp are preferred (for further details, see appendix D,E). Note that"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "here, λ controls the decay rate, [x]+ = max {0, x}, clow and chigh are the lower and upper bounds for property p, and dp ∈ R (typically dp ∈ {− 1, 0, 1}) represents the “preference direction” hyperparameter, indicating whether lower or higher property values within the range cp are preferred (for further details, see appendix D,E). Note that"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page3_13",
+      "presentation": {
+        "latex": "R(x|cp1 , ..., cp|P | ) = Y p∈P Rp(x|cp) (3) 4.1.2. R EWARD CONDITIONING A-GFN To train our conditional model, we sample for every property",
+        "unicode_plain": "R(x|cp1 , ..., cp|P | ) = Y p∈P Rp(x|cp) (3) 4.1.2. R EWARD CONDITIONING A-GFN To train our conditional model, we sample for every property"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "R(x|cp1 , ..., cp|P | ) = Y p∈P Rp(x|cp) (3) 4.1.2. R EWARD CONDITIONING A-GFN To train our conditional model, we sample for every property"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "Rp(x|cp) (3) 4.1.2. R EWARD CONDITIONING A-GFN To train our conditional model, we sample for every property cp = ( clow, chigh) for each new training trajectory, using reasonable lower and upper bounds cmin and cmax of the molecular property ranges we care about, as well as extrema",
+        "unicode_plain": "Rp(x|cp) (3) 4.1.2. R EWARD CONDITIONING A-GFN To train our conditional model, we sample for every property cp = ( clow, chigh) for each new training trajectory, using reasonable lower and upper bounds cmin and cmax of the molecular property ranges we care about, as well as extrema"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "Rp(x|cp) (3) 4.1.2. R EWARD CONDITIONING A-GFN To train our conditional model, we sample for every property cp = ( clow, chigh) for each new training trajectory, using reasonable lower and upper bounds cmin and cmax of the molecular property ranges we care about, as well as extrema"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

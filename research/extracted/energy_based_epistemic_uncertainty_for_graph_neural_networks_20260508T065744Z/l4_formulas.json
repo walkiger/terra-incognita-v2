@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:09:54Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "attributed graph G = (A, X) with n nodes V and m edges E that is represented by an adjacency matrix A = {0, 1}n×n and a node feature matrix X ∈ Rn×d. Each node has a label yi ∈ {1, . . . C}. Given the labels of training nodes, the task is to infer the labels of the remaining nodes. Lastly, we focus on homophilic graphs, i.e. edges are predominantly present between nodes of the same class. 1We prov",
+        "unicode_plain": "attributed graph G = (A, X) with n nodes V and m edges E that is represented by an adjacency matrix A = {0, 1}n×n and a node feature matrix X ∈ Rn×d. Each node has a label yi ∈ {1, . . . C}. Given the labels of training nodes, the task is to infer the labels of the remaining nodes. Lastly, we focus on homophilic graphs, i.e. edges are predominantly present between nodes of the same class. 1We provide our code at cs.cit.tum.de/daml/gebm/"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "attributed graph G = (A, X) with n nodes V and m edges E that is represented by an adjacency matrix A = {0, 1}n×n and a node feature matrix X ∈ Rn×d. Each node has a label yi ∈ {1, . . . C}. Given the labels of training nodes, the task is to infer the labels of the remaining nodes. Lastly, we focus on homophilic graphs, i.e. edges are predominantly present between nodes of the same class. 1We provide our code at cs.cit.tum.de/daml/gebm/"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "matrix A = {0, 1}n×n and a node feature matrix X ∈ Rn×d. Each node has a label yi ∈ {1, . . . C}. Given the labels of training nodes, the task is to infer the labels of the remaining nodes. Lastly, we focus on homophilic graphs, i.e. edges are predominantly present between nodes of the same class. 1We provide our code at cs.cit.tum.de/daml/gebm/ 2",
+        "unicode_plain": "matrix A = {0, 1}n×n and a node feature matrix X ∈ Rn×d. Each node has a label yi ∈ {1, . . . C}. Given the labels of training nodes, the task is to infer the labels of the remaining nodes. Lastly, we focus on homophilic graphs, i.e. edges are predominantly present between nodes of the same class. 1We provide our code at cs.cit.tum.de/daml/gebm/ 2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "matrix A = {0, 1}n×n and a node feature matrix X ∈ Rn×d. Each node has a label yi ∈ {1, . . . C}. Given the labels of training nodes, the task is to infer the labels of the remaining nodes. Lastly, we focus on homophilic graphs, i.e. edges are predominantly present between nodes of the same class. 1We provide our code at cs.cit.tum.de/daml/gebm/ 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "pθ(x) = Z −1 θ X y exp (−Eθ (x, y))) = Z −1 θ exp (−Eθ(x)) (1)",
+        "unicode_plain": "pθ(x) = Z −1 θ X y exp (−Eθ (x, y))) = Z −1 θ exp (−Eθ(x)) (1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pθ(x) = Z −1 θ X y exp (−Eθ (x, y))) = Z −1 θ exp (−Eθ(x)) (1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "exp (−Eθ (x, y))) = Z −1 θ exp (−Eθ(x)) (1) Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We",
+        "unicode_plain": "exp (−Eθ (x, y))) = Z −1 θ exp (−Eθ(x)) (1) Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "exp (−Eθ (x, y))) = Z −1 θ exp (−Eθ(x)) (1) Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "θ exp (−Eθ(x)) (1) Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as:",
+        "unicode_plain": "θ exp (−Eθ(x)) (1) Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "θ exp (−Eθ(x)) (1) Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as: pθ(y | x) = exp (−Eθ (x, y)))/",
+        "unicode_plain": "Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as: pθ(y | x) = exp (−Eθ (x, y)))/"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Intuitively, the energy Eθ(x) = − logP y exp (−Eθ(x, y)) can be interpreted as a soft minimum of the joint energies. It is low in regions of high confidence and high elsewhere. The measure of epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as: pθ(y | x) = exp (−Eθ (x, y)))/"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as: pθ(y | x) = exp (−Eθ (x, y)))/ X y′ exp (−Eθ (x, y′))) (2)",
+        "unicode_plain": "epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as: pθ(y | x) = exp (−Eθ (x, y)))/ X y′ exp (−Eθ (x, y′))) (2)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "epistemic uncertainty implied by an EBM therefore is: uepi(x) = − log pθ(x) = Eθ(x) +const. We can also write the conditional class probabilities as: pθ(y | x) = exp (−Eθ (x, y)))/ X y′ exp (−Eθ (x, y′))) (2)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "pθ(y | x) = exp (−Eθ (x, y)))/ X y′ exp (−Eθ (x, y′))) (2) This is exactly the softmax distribution applied to −Eθ(x, y) which directly connects the logits fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40].",
+        "unicode_plain": "pθ(y | x) = exp (−Eθ (x, y)))/ X y′ exp (−Eθ (x, y′))) (2) This is exactly the softmax distribution applied to −Eθ(x, y) which directly connects the logits fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pθ(y | x) = exp (−Eθ (x, y)))/ X y′ exp (−Eθ (x, y′))) (2) This is exactly the softmax distribution applied to −Eθ(x, y) which directly connects the logits fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "exp (−Eθ (x, y′))) (2) This is exactly the softmax distribution applied to −Eθ(x, y) which directly connects the logits fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]. Evidential Deep Learning. In contrast to first-order methods that directly predictp(y | x), evidential methods [62, 43] instead parameterize the corresponding second-order distribution ",
+        "unicode_plain": "exp (−Eθ (x, y′))) (2) This is exactly the softmax distribution applied to −Eθ(x, y) which directly connects the logits fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]. Evidential Deep Learning. In contrast to first-order methods that directly predictp(y | x), evidential methods [62, 43] instead parameterize the corresponding second-order distribution from which first-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "exp (−Eθ (x, y′))) (2) This is exactly the softmax distribution applied to −Eθ(x, y) which directly connects the logits fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]. Evidential Deep Learning. In contrast to first-order methods that directly predictp(y | x), evidential methods [62, 43] instead parameterize the corresponding second-order distribution from which first-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]. Evidential Deep Learning. In contrast to first-order methods that directly predictp(y | x), evidential methods [62, 43] instead parameterize the corresponding second-order distribution from which first- order distributions are sampled [32]. In classification, this second-order distribution is a Dirichlet",
+        "unicode_plain": "fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]. Evidential Deep Learning. In contrast to first-order methods that directly predictp(y | x), evidential methods [62, 43] instead parameterize the corresponding second-order distribution from which first- order distributions are sampled [32]. In classification, this second-order distribution is a Dirichlet"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "fθ(x) ∈ RC predicted by a classifier to the joint energy by defining Eθ(x, y) := −fθ(x)y [40]. Evidential Deep Learning. In contrast to first-order methods that directly predictp(y | x), evidential methods [62, 43] instead parameterize the corresponding second-order distribution from which first- order distributions are sampled [32]. In classification, this second-order distribution is a Dirichlet"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "Ep∼Dir(α) [p(y | x)] = α/ X y′ αy′ (3) 3 Related Work Uncertainty Estimation for i.i.d. Data. Disentangling uncertainty has been approached from",
+        "unicode_plain": "Ep∼Dir(α) [p(y | x)] = α/ X y′ αy′ (3) 3 Related Work Uncertainty Estimation for i.i.d. Data. Disentangling uncertainty has been approached from"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Ep∼Dir(α) [p(y | x)] = α/ X y′ αy′ (3) 3 Related Work Uncertainty Estimation for i.i.d. Data. Disentangling uncertainty has been approached from"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "αy′ (3) 3 Related Work Uncertainty Estimation for i.i.d. Data. Disentangling uncertainty has been approached from various perspectives. A family of sampling-based approaches uses a Bayesian Information-theoretic framework [29] that relies on stochastic predictions derived from a posterior over model weights. The total uncertainty is defined on the mean predictor, epistemic uncertainty as the devia",
+        "unicode_plain": "αy′ (3) 3 Related Work Uncertainty Estimation for i.i.d. Data. Disentangling uncertainty has been approached from various perspectives. A family of sampling-based approaches uses a Bayesian Information-theoretic framework [29] that relies on stochastic predictions derived from a posterior over model weights. The total uncertainty is defined on the mean predictor, epistemic uncertainty as the deviation of each"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "αy′ (3) 3 Related Work Uncertainty Estimation for i.i.d. Data. Disentangling uncertainty has been approached from various perspectives. A family of sampling-based approaches uses a Bayesian Information-theoretic framework [29] that relies on stochastic predictions derived from a posterior over model weights. The total uncertainty is defined on the mean predictor, epistemic uncertainty as the deviation of each"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "Eθ,I(x) = − log X y exp (−Eθ(x, y)) (4) Local Energy. On a coarser scale, we diffuse the joint energy before marginalization. This retains local information like conflicting feature-based evidence within the neighborhood of a node as the",
+        "unicode_plain": "Eθ,I(x) = − log X y exp (−Eθ(x, y)) (4) Local Energy. On a coarser scale, we diffuse the joint energy before marginalization. This retains local information like conflicting feature-based evidence within the neighborhood of a node as the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Eθ,I(x) = − log X y exp (−Eθ(x, y)) (4) Local Energy. On a coarser scale, we diffuse the joint energy before marginalization. This retains local information like conflicting feature-based evidence within the neighborhood of a node as the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "exp (−Eθ(x, y)) (4) Local Energy. On a coarser scale, we diffuse the joint energy before marginalization. This retains local information like conflicting feature-based evidence within the neighborhood of a node as the class-specific information is marginalized after propagation: Eθ,L(x) = − log X",
+        "unicode_plain": "exp (−Eθ(x, y)) (4) Local Energy. On a coarser scale, we diffuse the joint energy before marginalization. This retains local information like conflicting feature-based evidence within the neighborhood of a node as the class-specific information is marginalized after propagation: Eθ,L(x) = − log X"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "exp (−Eθ(x, y)) (4) Local Energy. On a coarser scale, we diffuse the joint energy before marginalization. This retains local information like conflicting feature-based evidence within the neighborhood of a node as the class-specific information is marginalized after propagation: Eθ,L(x) = − log X"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

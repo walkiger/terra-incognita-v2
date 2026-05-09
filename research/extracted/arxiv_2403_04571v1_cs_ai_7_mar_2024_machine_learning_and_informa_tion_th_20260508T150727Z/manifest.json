@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z",
+  "source_pdf": "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/source.pdf",
+  "title_hint": "arXiv:2403.04571v1  [cs.AI]  7 Mar 2024 MACHINE LEARNING AND INFORMA TION THEOR Y CONCEPTS TOW ARDS AN AI MA THEMA TICIAN YOSHUA BENGIO AND NIKOLAY MALKIN",
+  "updated_at": "2026-05-08T15:08:40Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:29Z",
+      "artifacts": [
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/source.pdf",
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:40Z",
+      "artifacts": [
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:40Z",
+      "artifacts": [
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:40Z",
+      "artifacts": [
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:40Z",
+      "artifacts": [
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/l4_analysis.json",
+        "research/extracted/arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=5465; pdf_sha256=a7ca5cb35d0f0eae523afb0e73e83835804fd7b6cb56707c3249c4d14ac86ee6; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "a7ca5cb35d0f0eae523afb0e73e83835804fd7b6cb56707c3249c4d14ac86ee6"
+}

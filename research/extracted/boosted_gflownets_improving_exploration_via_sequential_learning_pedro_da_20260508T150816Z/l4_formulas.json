@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z",
+  "extracted_at": "2026-05-08T15:09:18Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page3_1",
+      "presentation": {
+        "latex": "τ= (s 0 →s 1 → · · · →s T )in a directed acyclic graph (DAG) of states. The forward policyP F induces a distribution over terminal states, while the backward policyP B provides a stochastic inverse, together defin- ing a system of “flows” that approximateR(x). This formulationhasbeenshowneffectiveindomainswhere",
+        "unicode_plain": "τ= (s 0 →s 1 → · · · →s T )in a directed acyclic graph (DAG) of states. The forward policyP F induces a distribution over terminal states, while the backward policyP B provides a stochastic inverse, together defin- ing a system of “flows” that approximateR(x). This formulationhasbeenshowneffectiveindomainswhere"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "τ= (s 0 →s 1 → · · · →s T )in a directed acyclic graph (DAG) of states. The forward policyP F induces a distribution over terminal states, while the backward policyP B provides a stochastic inverse, together defin- ing a system of “flows” that approximateR(x). This formulationhasbeenshowneffectiveindomainswhere"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "bilityP F (τ) = QT−1 t=0 PF (st+1 |s t)and a correspond- ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for-",
+        "unicode_plain": "bilityP F (τ) = QT−1 t=0 PF (st+1 |s t)and a correspond- ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "bilityP F (τ) = QT−1 t=0 PF (st+1 |s t)and a correspond- ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "t=0 PF (st+1 |s t)and a correspond- ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies",
+        "unicode_plain": "t=0 PF (st+1 |s t)and a correspond- ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 PF (st+1 |s t)and a correspond- ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1)",
+        "unicode_plain": "ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ing backward probabilityP B(τ|x) = QT−1 t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1) withZ= P",
+        "unicode_plain": "t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1) withZ= P"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0 PB(st | st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1) withZ= P"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1) withZ= P x∈X R(x)acting as the normalizing con-",
+        "unicode_plain": "st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1) withZ= P x∈X R(x)acting as the normalizing con-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "st+1), wheres T =x. A GFlowNet is trained so that the marginal probability of samplingxunder the for- ward policy satisfies PF (x)∝R(x),∀x∈ X,(1) withZ= P x∈X R(x)acting as the normalizing con-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "PF (x)∝R(x),∀x∈ X,(1) withZ= P x∈X R(x)acting as the normalizing con- stant. The objective of training is therefore to align the induced terminal distribution ofPF with the un- normalized target defined byR(x).",
+        "unicode_plain": "PF (x)∝R(x),∀x∈ X,(1) withZ= P x∈X R(x)acting as the normalizing con- stant. The objective of training is therefore to align the induced terminal distribution ofPF with the un- normalized target defined byR(x)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "PF (x)∝R(x),∀x∈ X,(1) withZ= P x∈X R(x)acting as the normalizing con- stant. The objective of training is therefore to align the induced terminal distribution ofPF with the un- normalized target defined byR(x)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "withZ= P x∈X R(x)acting as the normalizing con- stant. The objective of training is therefore to align the induced terminal distribution ofPF with the un- normalized target defined byR(x). Training objectives.Several training objectives",
+        "unicode_plain": "withZ= P x∈X R(x)acting as the normalizing con- stant. The objective of training is therefore to align the induced terminal distribution ofPF with the un- normalized target defined byR(x). Training objectives.Several training objectives"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "withZ= P x∈X R(x)acting as the normalizing con- stant. The objective of training is therefore to align the induced terminal distribution ofPF with the un- normalized target defined byR(x). Training objectives.Several training objectives"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "ZθPF (τ) =R(x)P B(τ|x),∀τ∈Γ(2) To achieve this, the model is trained by minimizing the squared log-ratio loss: LTB(τ) =",
+        "unicode_plain": "ZθPF (τ) =R(x)P B(τ|x),∀τ∈Γ(2) To achieve this, the model is trained by minimizing the squared log-ratio loss: LTB(τ) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "ZθPF (τ) =R(x)P B(τ|x),∀τ∈Γ(2) To achieve this, the model is trained by minimizing the squared log-ratio loss: LTB(τ) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "LTB(τ) =",
+        "unicode_plain": "LTB(τ) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "LTB(τ) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "modes; writeB:=A c forhard-to-reachmodes. Even if the forward sampler nominally has full support, complex DAG topologies and long horizons can con- centrateQonA, starvingBof samples. This induces a systematic exploration imbalance that balance-style objectives may not correct in practice, yielding weak",
+        "unicode_plain": "modes; writeB:=A c forhard-to-reachmodes. Even if the forward sampler nominally has full support, complex DAG topologies and long horizons can con- centrateQonA, starvingBof samples. This induces a systematic exploration imbalance that balance-style objectives may not correct in practice, yielding weak"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "modes; writeB:=A c forhard-to-reachmodes. Even if the forward sampler nominally has full support, complex DAG topologies and long horizons can con- centrateQonA, starvingBof samples. This induces a systematic exploration imbalance that balance-style objectives may not correct in practice, yielding weak"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page3_12",
+      "presentation": {
+        "latex": "Eτ∼Q[L(τ;θ)] =Q(A)E[L(τ;θ)|τ∈A] +Q(B)E[L(τ;θ)|τ∈B].(4) As training progresses, the easy regionAis typically fit first, soE[L(τ;θ)|τ∈A]→0, and the objective reduces to Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5)",
+        "unicode_plain": "Eτ∼Q[L(τ;θ)] =Q(A)E[L(τ;θ)|τ∈A] +Q(B)E[L(τ;θ)|τ∈B].(4) As training progresses, the easy regionAis typically fit first, soE[L(τ;θ)|τ∈A]→0, and the objective reduces to Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Eτ∼Q[L(τ;θ)] =Q(A)E[L(τ;θ)|τ∈A] +Q(B)E[L(τ;θ)|τ∈B].(4) As training progresses, the easy regionAis typically fit first, soE[L(τ;θ)|τ∈A]→0, and the objective reduces to Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "+Q(B)E[L(τ;θ)|τ∈B].(4) As training progresses, the easy regionAis typically fit first, soE[L(τ;θ)|τ∈A]→0, and the objective reduces to Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5) Hence the residual learning signal isentirely scaledby",
+        "unicode_plain": "+Q(B)E[L(τ;θ)|τ∈B].(4) As training progresses, the easy regionAis typically fit first, soE[L(τ;θ)|τ∈A]→0, and the objective reduces to Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5) Hence the residual learning signal isentirely scaledby"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "+Q(B)E[L(τ;θ)|τ∈B].(4) As training progresses, the easy regionAis typically fit first, soE[L(τ;θ)|τ∈A]→0, and the objective reduces to Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5) Hence the residual learning signal isentirely scaledby"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_5",
+      "presentation": {
+        "latex": "Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5) Hence the residual learning signal isentirely scaledby Q(B): whenQ(B)≪1, gradients from hard modes become negligible even if those modes remain under- covered. Off-policy corrections trade bias for variance; smallQ(B)implies either a small effective sample size",
+        "unicode_plain": "Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5) Hence the residual learning signal isentirely scaledby Q(B): whenQ(B)≪1, gradients from hard modes become negligible even if those modes remain under- covered. Off-policy corrections trade bias for variance; smallQ(B)implies either a small effective sample size"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(5)",
+        "verbatim_snippet": "Eτ∼Q[L(τ;θ)]− →Q(B)E[L(τ;θ)|τ∈B].(5) Hence the residual learning signal isentirely scaledby Q(B): whenQ(B)≪1, gradients from hard modes become negligible even if those modes remain under- covered. Off-policy corrections trade bias for variance; smallQ(B)implies either a small effective sample size"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

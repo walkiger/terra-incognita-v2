@@ -1,0 +1,386 @@
+Abstract
+The problem of answering questions using
+knowledge from pre-trained language models
+(LMs) and knowledge graphs (KGs) presents
+two challenges: given a QA context (question
+and answer choice), methods need to (i)
+identify relevant knowledge from large KGs,
+and (ii) perform joint reasoning over the QA
+context and KG. Here we propose a new
+model, QA-GNN, which addresses the above
+challenges through two key innovations: (i)
+relevance scoring, where we use LMs to esti-
+mate the importance of KG nodes relative to
+the given QA context, and (ii) joint reasoning,
+where we connect the QA context and KG
+to form a joint graph, and mutually update
+their representations through graph-based
+message passing. We evaluate QA-GNN on the
+CommonsenseQA and OpenBookQA datasets,
+and show its improvement over existing LM
+and LM+KG models, as well as its capability to
+perform interpretable and structured reasoning,
+e.g., correctly handling negation in questions.
+1 Introduction
+Question answering systems must be able to access
+relevant knowledge and reason over it. Typically,
+knowledge can be implicitly encoded in large
+language models (LMs) pre-trained on unstructured
+text (Petroni et al., 2019; Bosselut et al., 2019), or ex-
+plicitly represented in structured knowledge graphs
+(KGs), such as Freebase (Bollacker et al., 2008)
+and ConceptNet (Speer et al., 2017), where entities
+are represented as nodes and relations between
+them as edges. Recently, pre-trained LMs have
+demonstrated remarkable success in many question
+answering tasks (Liu et al., 2019; Raffel et al.,
+2020). However, while LMs have a broad coverage
+of knowledge, they do not empirically perform well
+on structured reasoning ( e.g., handling negation)
+(Kassner and Schütze, 2020). On the other hand,
+KGs are more suited for structured reasoning (Ren
+et al., 2020; Ren and Leskovec, 2020) and enable
+explainable predictionse.g., by providing reasoning
+paths (Lin et al., 2019), but may lack coverage and
+If it is not used for hair, a round brush is an example of what? 
+A. hair brush    B. bathroom    C. art supplies*   
+D. shower          E. hair salon
+painting
+AtLocation
+roundbrush
+hairbrush
+RelatedTo
+AtLocation
+UsedFor UsedFor
+ChoiceEntity
+Answer
+QuestionEntity
+QA context
+Knowledge graph
+artsupply
+QA context Node
+hair
+Graph Connection (§3.1) Dev Acc. 
+No edge between Z and KG nodes74.11
+Connect Z to all KG nodes 76.38
+Connect Z to QA entity nodes (final) 76.54
+Relevance scoring (§3.2)Dev Acc. 
+Nothing 75.15
+w/ contextual embedding76.31
+w/ relevance score (final)76.54
+w/ both 76.52
+GNN Attention & Message (§3.3)Dev Acc. 
+Node type, relation, score-aware (final)76.54
+- type-aware 75.11
+- relation-aware 75.23
+- score-aware 75.15
+GNN Layers (§3.3)Dev Acc. 
+L = 3 75.53
+L = 4 76.34
+L = 5  (final) 76.54
+L = 6 76.21
+L = 7 75.96
+Graph Connection (§3.1) Dev Acc. 
+No edge between Z and KG nodes74.81
+Connect Z to all KG nodes 76.38
+Connect Z to QA entity nodes (final system) 76.54
+Contextualization (§3.2)Dev Acc. 
+No contextualization 75.56
+w/ contextual embedding76.31
+w/ relevance score (final system)76.54
+w/ both 76.52
+GNN Attention & Message (§3.3)Dev Acc. 
+Node type, relation, score-aware (final system)76.54
+- type-aware 75.41
+- relation-aware 75.61
+- score-aware 75.56
+GNN Layers (§3.3)Dev Acc. 
+L = 3 75.53
+L = 4 76.34
+L = 5  (final system) 76.54
+L = 6 76.21
+L = 7 75.96
+Graph Connection (§3.1) Dev Acc. 
+No edge between Z and KG nodes74.81
+Connect Z to all KG nodes 76.38
+Connect Z to QA entity nodes (final) 76.54
+Relevance scoring (§3.2)Dev Acc. 
+Nothing 75.56
+w/ contextual embedding76.31
+w/ relevance score (final)76.54
+w/ both 76.52
+GNN Attention & Message (§3.3)Dev Acc. 
+Node type, relation, score-aware (final)76.54
+- type-aware 75.41
+- relation-aware 75.61
+- score-aware 75.56
+GNN Layers (§3.3)Dev Acc. 
+L = 3 75.53
+L = 4 76.34
+L = 5  (final) 76.54
+L = 6 76.21
+L = 7 75.96
+If it is not used for hair, a round brush is an example of what? 
+A. hair brush    B. bathroom    C. art supplies*   
+D. shower          E. hair salon
+painting
+AtLocation
+roundbrush
+hairbrush
+RelatedTo
+AtLocation
+UsedFor UsedFor
+ChoiceEntity
+Answer
+QuestionEntity
+QA context
+Knowledge graph
+artsupply
+QA context Node
+hair
+Figure 1: Given the QA context (question and answer
+choice; purple box), we aim to derive the answer by
+performing joint reasoning over the language and the
+knowledge graph (green box).
+be noisy (Bordes et al., 2013; Guu et al., 2015).
+How to reason effectively with both sources of
+knowledge remains an important open problem.
+Combining LMs and KGs for reasoning (hence-
+forth, LM+KG) presents two challenges: given
+a QA context (e.g., question and answer choices;
+Figure 1 purple box), methods need to (i) identify
+informative knowledge from a large KG (green
+box); and (ii) capture the nuance of the QA context
+and the structure of the KGs to perform joint
+reasoning over these two sources of information.
+Previous works (Bao et al., 2016; Sun et al., 2018;
+Lin et al., 2019) retrieve a subgraph from the KG
+by taking topic entities (KG entities mentioned in
+the given QA context) and their few-hop neighbors.
+However, this introduces many entity nodes that
+are semantically irrelevant to the QA context,
+especially when the number of topic entities or hops
+increases. Additionally, existing LM+KG methods
+for reasoning (Lin et al., 2019; Wang et al., 2019a;
+Feng et al., 2020; Lv et al., 2020) treat the QA
+context and KG as two separate modalities. They
+individually apply LMs to the QA context and graph
+536
+If it is not used for hair, a round brush is an 
+example of what? 
+A. hair brush    B. bathroom    C. art supplies*   
+D. shower          E. hair salon
+painting
+AtLocation
+roundbrush
+hairbrush
+RelatedTo
+AtLocation
+UsedFor UsedFor
+ChoiceEntity
+Answer
+QuestionEntity
+Language Context
+Knowledge Graph
+artsupply
+ContextNode
+hair
+MLP
+ContextualGNN
+Plausibility Score
+TextEncodere.g. LM
+KGRetrieval
+Language Context
+[q; a] 
+Pooling(§3)
+Z Z
+If it is not used for hair, a round brush is an example of what? 
+A. hair brush    B. bathroom    C. art supplies*   
+D. shower          E. hair salon
+painting
+AtLocation
+roundbrush
+hairbrush
+RelatedTo
+AtLocation
+UsedFor UsedFor
+ChoiceEntity
+Answer
+QuestionEntity
+Language Context
+Knowledge Graph
+artsupply
+ContextNode
+hair
+MLP
+QA-GNN
+Probability score
+LM Encoding
+KGRetrieval
+QA context
+[q; a] 
+Pooling
+Z Z
+Reasoning (§3.3)
+Relevance Scoring (§3.2)
+Joint Graph (§3.1)
+If it is not used for hair, a round brush
+A. hair brush    B. bathroom    C. art supplies
+D. shower          E. hair salon
+painting
+AtLocation
+roundbrush
+RelatedTo
+AtLocation
+UsedFor
+QuestionEntity
+Language Context
+Knowledge Graph
+ContextNode
+hair
+Figure 2: Overview of our approach. Given a QA context (z), we connect it with the retrieved KG to form a joint
+graph (working graph; §3.1), compute the relevance of each KG node conditioned onz (§3.2; node shading indicates
+the relevance score), and perform reasoning on the working graph (§3.3).
+neural networks (GNNs) to the KG, and do not
+mutually update or unify their representations. This
+separation might limit their capability to perform
+structured reasoning, e.g., handling negation.
+Here we propose QA-GNN, an end-to-end
+LM+KG model for question answering that
+addresses the above two challenges. We ﬁrst encode
+the QA context using an LM, and retrieve a KG
+subgraph following prior works (Feng et al., 2020).
+Our QA-GNN has two key insights: (i)Relevance
+scoring: Since the KG subgraph consists of all
+few-hop neighbors of the topic entities, some entity
+nodes are more relevant than others with respect to
+the given QA context. We hence propose KG node
+relevance scoring: we score each entity on the KG
+subgraph by concatenating the entity with the QA
+context and calculating the likelihood using a pre-
+trained LM. This presents a general framework to
+weight information on the KG; (ii)Joint reasoning:
+We design a joint graph representation of the QA
+context and KG, where we explicitly view the QA
+context as an additional node (QA context node) and
+connect it to the topic entities in the KG subgraph
+as shown in Figure 1. This joint graph, which we
+term the working graph, uniﬁes the two modalities
+into one graph. We then augment the feature of
+each node with the relevance score, and design a
+new attention-based GNN module for reasoning.
+Our joint reasoning algorithm on the working graph
+simultaneously updates the representation of both
+the KG entities and the QA context node, bridging
+the gap between the two sources of information.
+We evaluate QA-GNN on two question an-
+swering datasets that require reasoning with
+knowledge: CommonsenseQA (Talmor et al., 2019)
+and OpenBookQA (Mihaylov et al., 2018), using the
+ConceptNet KG (Speer et al., 2017). QA-GNN out-
+performs strong ﬁne-tuned LM baselines as well as
+the existing best LM+KG model (with the same LM)
+by up to 5.7% and 3.7% respectively. In particular,
+QA-GNN exhibits improved performance on some
+forms of structured reasoning (e.g., correctly han-
+dling negation and entity substitution in questions):
+it achieves 4.6% improvement over ﬁne-tuned LMs
+on questions with negation, while existing LM+KG
+models are +0.6% over ﬁne-tuned LMs. We also
+show that one can extract reasoning processes from
+QA-GNN in the form of general KG subgraphs, not
+just paths (Lin et al., 2019), suggesting a general
+method for explaining model predictions.
+2 Problem Statement
+We aim to answer natural language questions using
+knowledge from a pre-trained LM and a structured
+KG. We use the term language model broadly to be
+any composition of two functions,fhead(fenc(x)),
+wherefenc, the encoder, maps a textual inputx to a
+contextualized vector representationhLM, andfhead
+uses this representation to perform a desired task
+(which we discuss in §3.2). In this work, we speciﬁ-
+cally use masked language models (e.g., RoBERTa)
+asfenc, and let hLM denote the output representa-
+tion of a [CLS] token that is prepended to the input
+sequence x, unless otherwise noted. We deﬁne the
+knowledge graph as a multi-relational graphG =
+(V,E). HereV is the set of entity nodes in the KG;
+E⊆V×R×V is the set of edges that connect nodes
+inV, whereR represents a set of relation types.
+Given a questionq and an answer choicea∈C ,
+we follow prior work (Lin et al., 2019) to link the en-
+tities mentioned in the question and answer choice
+to the given KGG. We denoteVq⊆V andVa⊆V
+as the set of KG entities mentioned in the question
+(question entities; blue entities in Figure1) and an-
+swer choice (answer choice entities; red entities in
+Figure1), respectively, and useVq,a :=Vq∪Va to de-
+note all the entities that appear in either the question
+or answer choice, which we calltopic entities. We
+then extract a subgraph fromG for a question-choice
+pair,Gq,a
+sub = (Vq,a
+sub,Eq,a
+sub),1 which comprises all
+nodes on thek-hop paths between nodes inVq,a.
+1We remove the superscriptq,a if there is no ambiguity.
+537
+QA Context
+Retrieved KG
+travel
+door
+security
+go
+run
+human
+lock
+place
+holiday
+close
+safe
+money
+robber
+bank
+bankholiday
+riverbank
+A revolving door is convenient for two direction travel, 
+but also serves as a security measure at what?
+A. bank*      B. library          C. department store 
+D. mall          E. new york 
+KG node scored
+Language 
+Model Relevance ( entity | QA context )
+travel
+door
+security
+go
+run
+human
+lock
+place
+holiday
+close
+safe
+money
+robber
+bank
+bankholiday
+riverbank
+ entity 
+Some entities are more relevant than others given the context.Entity relevance estimated. Darker color indicates higher score.
+Graph Connection (§3.1) Dev Acc. 
+No edge between Z and KG nodes 74.11
+Connect Z to all KG nodes 76.38
+Connect Z to QA entity nodes (final system) 76.54
+Contextualization (§3.2)Dev Acc. 
+No contextualization 75.15
+w/ contextual embedding76.31
+w/ relevance score (final system)76.54
+w/ both 76.52
+GNN Attention & Message (§3.3)Dev Acc. 
+Node type, relation, score-aware (final system)76.54
+- type-aware 75.11
+- relation-aware 75.23
+- score-aware 75.15
+GN

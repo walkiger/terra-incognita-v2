@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z",
+  "source_pdf": "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/source.pdf",
+  "title_hint": "Towards System 2 Reasoning in LLMs: Learning How to Think With Meta Chain-of-Thought Violet Rafael Chelsea",
+  "updated_at": "2026-05-08T15:13:09Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:50Z",
+      "artifacts": [
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/source.pdf",
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:09Z",
+      "artifacts": [
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:09Z",
+      "artifacts": [
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:09Z",
+      "artifacts": [
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:13:09Z",
+      "artifacts": [
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/l4_analysis.json",
+        "research/extracted/towards_system_2_reasoning_in_llms_learning_how_to_think_with_meta_chain_20260508T150747Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4000; pdf_sha256=8954ebed4216691b83ea0c45ed6053788bf5f250fd12509f03fcd086e45cbcd4; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "8954ebed4216691b83ea0c45ed6053788bf5f250fd12509f03fcd086e45cbcd4"
+}

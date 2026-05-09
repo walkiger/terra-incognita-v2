@@ -1,0 +1,284 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "evaluating_system_1_vs_2_reasoning_approaches_for_zero_shot_time_series_20260508T150756Z",
+  "extracted_at": "2026-05-08T15:09:57Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page9_1",
+      "presentation": {
+        "latex": "https://openreview.net/forum?id=syC2764fPc [23] Haolin Jin, Linghan Huang, Haipeng Cai, Jun Yan, Bo Li, and Huaming Chen. 2024. From llms to llm-based agents for software engineering: A survey of current, challenges and future. arXiv preprint arXiv:2408.02479 (2024). [24] Ming Jin, Shiyu Wang, Lintao Ma, Zhixuan Chu, James Y Zhang, Xiaoming Shi, Pin-Yu Chen, Yuxuan Liang, Yuan-Fang Li, Shirui Pan,",
+        "unicode_plain": "https://openreview.net/forum?id=syC2764fPc [23] Haolin Jin, Linghan Huang, Haipeng Cai, Jun Yan, Bo Li, and Huaming Chen. 2024. From llms to llm-based agents for software engineering: A survey of current, challenges and future. arXiv preprint arXiv:2408.02479 (2024). [24] Ming Jin, Shiyu Wang, Lintao Ma, Zhixuan Chu, James Y Zhang, Xiaoming Shi, Pin-Yu Chen, Yuxuan Liang, Yuan-Fang Li, Shirui Pan, et al. [n. d.]. Time-LLM:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          9
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "https://openreview.net/forum?id=syC2764fPc [23] Haolin Jin, Linghan Huang, Haipeng Cai, Jun Yan, Bo Li, and Huaming Chen. 2024. From llms to llm-based agents for software engineering: A survey of current, challenges and future. arXiv preprint arXiv:2408.02479 (2024). [24] Ming Jin, Shiyu Wang, Lintao Ma, Zhixuan Chu, James Y Zhang, Xiaoming Shi, Pin-Yu Chen, Yuxuan Liang, Yuan-Fang Li, Shirui Pan, et al. [n. d.]. Time-LLM:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page12_2",
+      "presentation": {
+        "latex": "base_prompt = f \" \" \" As an e x p e r t i n { t a r g e t _ n a m e } , p r e d i c t t h e t r e n d s from { f u t u r e _ d a t e s [ 0 ] } t o { f u t u r e _ d a t e s [ − 1 ] } based on both h i s t o r i c a l d a t a and c o n t e x t u a l i n f o r m a t i o n . H i s t o r i c a l d a t a ( c h r o n o l o g i c a l o r d e r ) : { h i s t o r i c a l _ s t r } C o n t e x t u a l i n f",
+        "unicode_plain": "base_prompt = f \" \" \" As an e x p e r t i n { t a r g e t _ n a m e } , p r e d i c t t h e t r e n d s from { f u t u r e _ d a t e s [ 0 ] } t o { f u t u r e _ d a t e s [ − 1 ] } based on both h i s t o r i c a l d a t a and c o n t e x t u a l i n f o r m a t i o n . H i s t o r i c a l d a t a ( c h r o n o l o g i c a l o r d e r ) : { h i s t o r i c a l _ s t r } C o n t e x t u a l i n f o r m a t i o n :"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          12
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "base_prompt = f \" \" \" As an e x p e r t i n { t a r g e t _ n a m e } , p r e d i c t t h e t r e n d s from { f u t u r e _ d a t e s [ 0 ] } t o { f u t u r e _ d a t e s [ − 1 ] } based on both h i s t o r i c a l d a t a and c o n t e x t u a l i n f o r m a t i o n . H i s t o r i c a l d a t a ( c h r o n o l o g i c a l o r d e r ) : { h i s t o r i c a l _ s t r } C o n t e x t u a l i n f o r m a t i o n :"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page12_3",
+      "presentation": {
+        "latex": "base_prompt = f \" \" \" As an e x p e r t i n { t a r g e t _ n a m e } , p r e d i c t t h e t r e n d s from { f u t u r e _ d a t e s [ 0 ] } t o { f u t u r e _ d a t e s [ − 1 ] } based on t h e h i s t o r i c a l d a t a . H i s t o r i c a l d a t a ( c h r o n o l o g i c a l o r d e r ) : { h i s t o r i c a l _ s t r } P l e a s e e n c l o s e your f i n a l p r e d i c t i o n s between",
+        "unicode_plain": "base_prompt = f \" \" \" As an e x p e r t i n { t a r g e t _ n a m e } , p r e d i c t t h e t r e n d s from { f u t u r e _ d a t e s [ 0 ] } t o { f u t u r e _ d a t e s [ − 1 ] } based on t h e h i s t o r i c a l d a t a . H i s t o r i c a l d a t a ( c h r o n o l o g i c a l o r d e r ) : { h i s t o r i c a l _ s t r } P l e a s e e n c l o s e your f i n a l p r e d i c t i o n s between [ PRED_START ] and [ PRED_END ] markers"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          12
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "base_prompt = f \" \" \" As an e x p e r t i n { t a r g e t _ n a m e } , p r e d i c t t h e t r e n d s from { f u t u r e _ d a t e s [ 0 ] } t o { f u t u r e _ d a t e s [ − 1 ] } based on t h e h i s t o r i c a l d a t a . H i s t o r i c a l d a t a ( c h r o n o l o g i c a l o r d e r ) : { h i s t o r i c a l _ s t r } P l e a s e e n c l o s e your f i n a l p r e d i c t i o n s between [ PRED_START ] and [ PRED_END ] markers"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page12_4",
+      "presentation": {
+        "latex": "prompt = base_prompt + \" \\ n \\ nLet ' s approach t h i s s t e p by s t e p : \\ n1 . Analyze h i s t o r i c a l t r e n d s \\ n2 . I d e n t i f y p a t t e r n s \\ n3 . Make p r e d i c t i o n s \" Figure 7: Prompt used for chain-of-thought reasoning. down complex tasks into smaller steps, leading to more robust and accurate reasoning outcomes. 5. 5https://ai.google.dev/gemini-api/docs/thinking",
+        "unicode_plain": "prompt = base_prompt + \" \\ n \\ nLet ' s approach t h i s s t e p by s t e p : \\ n1 . Analyze h i s t o r i c a l t r e n d s \\ n2 . I d e n t i f y p a t t e r n s \\ n3 . Make p r e d i c t i o n s \" Figure 7: Prompt used for chain-of-thought reasoning. down complex tasks into smaller steps, leading to more robust and accurate reasoning outcomes. 5. 5https://ai.google.dev/gemini-api/docs/thinking"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          12
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "prompt = base_prompt + \" \\ n \\ nLet ' s approach t h i s s t e p by s t e p : \\ n1 . Analyze h i s t o r i c a l t r e n d s \\ n2 . I d e n t i f y p a t t e r n s \\ n3 . Make p r e d i c t i o n s \" Figure 7: Prompt used for chain-of-thought reasoning. down complex tasks into smaller steps, leading to more robust and accurate reasoning outcomes. 5. 5https://ai.google.dev/gemini-api/docs/thinking"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page13_5",
+      "presentation": {
+        "latex": "e l i f method == \" s e l f _ c o n s i s t e n c y \" : p r e d i c t i o n s = [ ] f o r _ i n range ( 3 ) : pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s )",
+        "unicode_plain": "e l i f method == \" s e l f _ c o n s i s t e n c y \" : p r e d i c t i o n s = [ ] f o r _ i n range ( 3 ) : pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s )"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "e l i f method == \" s e l f _ c o n s i s t e n c y \" : p r e d i c t i o n s = [ ] f o r _ i n range ( 3 ) : pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s )"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page13_6",
+      "presentation": {
+        "latex": "p r e d i c t i o n s = [ ] f o r _ i n range ( 3 ) : pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s ) Figure 8: Prompt used for self-consistency reasoning strategy.",
+        "unicode_plain": "p r e d i c t i o n s = [ ] f o r _ i n range ( 3 ) : pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s ) Figure 8: Prompt used for self-consistency reasoning strategy."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "p r e d i c t i o n s = [ ] f o r _ i n range ( 3 ) : pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s ) Figure 8: Prompt used for self-consistency reasoning strategy."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page13_7",
+      "presentation": {
+        "latex": "pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s ) Figure 8: Prompt used for self-consistency reasoning strategy. e l i f method == \" s e l f _ c o r r e c t i o n \" : c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d ",
+        "unicode_plain": "pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s ) Figure 8: Prompt used for self-consistency reasoning strategy. e l i f method == \" s e l f _ c o r r e c t i o n \" : c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key ,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pred = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) p r e d i c t i o n s . append ( pred ) r e t u r n a v e r a g e _ p r e d i c t i o n s ( p r e d i c t i o n s ) Figure 8: Prompt used for self-consistency reasoning strategy. e l i f method == \" s e l f _ c o r r e c t i o n \" : c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key ,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page13_8",
+      "presentation": {
+        "latex": "e l i f method == \" s e l f _ c o r r e c t i o n \" : c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) f o r _ i n range ( 2 ) : c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s ",
+        "unicode_plain": "e l i f method == \" s e l f _ c o r r e c t i o n \" : c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) f o r _ i n range ( 2 ) : c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \""
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "e l i f method == \" s e l f _ c o r r e c t i o n \" : c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) f o r _ i n range ( 2 ) : c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \""
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page13_9",
+      "presentation": {
+        "latex": "c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) f o r _ i n range ( 2 ) : c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \" c u",
+        "unicode_plain": "c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) f o r _ i n range ( 2 ) : c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \" c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( base_prompt , f u t u r e , target_name , api_key , model ) f o r _ i n range ( 2 ) : c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \" c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name ,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page13_10",
+      "presentation": {
+        "latex": "c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \" c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name , api_key , model ) r e t u",
+        "unicode_plain": "c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \" c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name , api_key , model ) r e t u r n c u r r e n t _ p r e d"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "c o r r e c t i o n _ p r o m p t = f \" { base_prompt } \\ n \\ n P r e v i o u s p r e d i c t i o n : \\ n { f o r m a t _ p r e d i c t i o n ( c u r r e n t _ p r e d ) } \\ n \\ n P l e a s e review and improve t h e p r e d i c t i o n . \" c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name , api_key , model ) r e t u r n c u r r e n t _ p r e d"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page13_11",
+      "presentation": {
+        "latex": "c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name , api_key , model ) r e t u r n c u r r e n t _ p r e d Figure 9: Prompt used for self-correction reasoning strategy. reasoning tasks by incorporating cold-start data before reinforce- ment learning (RL), enhancing readability and performance. This",
+        "unicode_plain": "c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name , api_key , model ) r e t u r n c u r r e n t _ p r e d Figure 9: Prompt used for self-correction reasoning strategy. reasoning tasks by incorporating cold-start data before reinforce- ment learning (RL), enhancing readability and performance. This"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "c u r r e n t _ p r e d = g e t _ s i n g l e _ p r e d i c t i o n ( c o r r e c t i o n _ p r o m p t , f u t u r e , target_name , api_key , model ) r e t u r n c u r r e n t _ p r e d Figure 9: Prompt used for self-correction reasoning strategy. reasoning tasks by incorporating cold-start data before reinforce- ment learning (RL), enhancing readability and performance. This"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page15_12",
+      "presentation": {
+        "latex": "model_params = { \" o p e n a i / o1− mini − 2024 − 09 − 12\": { \" top_p \" : 1 , \" t e m p e r a t u r e \" : 0 . 7 , \" f r e q u e n c y _ p e n a l t y \" : 0 , \" p r e s e n c e _ p e n a l t y \" : 0 ,",
+        "unicode_plain": "model_params = { \" o p e n a i / o1− mini − 2024 − 09 − 12\": { \" top_p \" : 1 , \" t e m p e r a t u r e \" : 0 . 7 , \" f r e q u e n c y _ p e n a l t y \" : 0 , \" p r e s e n c e _ p e n a l t y \" : 0 ,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          15
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "model_params = { \" o p e n a i / o1− mini − 2024 − 09 − 12\": { \" top_p \" : 1 , \" t e m p e r a t u r e \" : 0 . 7 , \" f r e q u e n c y _ p e n a l t y \" : 0 , \" p r e s e n c e _ p e n a l t y \" : 0 ,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    }
+  ]
+}

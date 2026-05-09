@@ -1,0 +1,404 @@
+Abstract
+Humans practice slow thinking before performing actual actions when handling
+complex tasks in the physical world. This thinking paradigm, recently, has achieved
+remarkable advancement in boosting Large Language Models (LLMs) to solve
+complex tasks in digital domains. However, the potential of slow thinking remains
+largely unexplored for robotic foundation models interacting with the physical
+world. In this work, we propose Hume: a dual-system Vision-Language-Action
+(VLA) model with value-guided System-2 thinking and cascaded action denoising,
+exploring human-like thinking capabilities of Vision-Language-Action models for
+dexterous robot control. System 2 of Hume implements value-guided thinking by
+extending a Vision-Language-Action Model backbone with a novel value-query
+head to estimate the state-action value of predicted actions. The value-guided
+thinking is conducted by repeat sampling multiple action candidates and selecting
+one according to state-action value. System 1 of Hume is a lightweight reactive
+visuomotor policy that takes System 2 selected action and performs cascaded action
+∗Authors contributed equally: haomingsong@sjtu.edu.cn
+†Corresponding author: dongwang.dw93@gmail.com
+Preprint. Under review.
+arXiv:2505.21432v4  [cs.RO]  8 Jul 2025
+denoising for dexterous robot control. At deployment time, System 2 performs
+value-guided thinking at a low frequency while System 1 asynchronously receives
+the System 2 selected action candidate and predicts fluid actions in real time. We
+show that Hume outperforms the existing state-of-the-art Vision-Language-Action
+models across multiple simulation benchmark and real-robot deployments.
+1 Introduction A wise man proportions his belief to the evidence.
+David Hume,
+An Enquiry Concerning Human Understanding
+Creating generalist robots to perform various tasks like humans in the physical world has been
+a long-standing goal [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]. Cognitive psychologists have revealed
+that humans conduct a deep, deliberate form of thinking when tackling complex problems, such as
+mathematical proofs or dinner making. This slow and reflective thought process is known as System-2
+thinking, while the fast thinking process that relies on intuition is called System-1 thinking [ 13].
+Inspired by the dual process theory of human cognition, thinking and reasoning steps have been
+introduced to enhance LLMs’ capability to solve complex problems in digital domains and achieved
+significant results. Intuitively, generalist robots in the physical world also require similar System-2
+slow thinking capabilities to perform dynamic, dexterous, and complex tasks [14, 15, 16, 17], while
+intuition-based fast System-1 thinking is not capable of tackling delicate, tenuous, and fallible robot
+action prediction [18, 19, 20, 21]. Therefore, a crucial question for generalist robot policies designed
+to solve complex robotic tasks in diverse scenarios is: how to enable effective System-2 slow
+thinking in generalist robot policy for accurate action prediction?
+However, equipping a generalist robot policy with System-2 thinking capabilities poses two primary
+challenges. First, thinking and reasoning techniques have mainly been demonstrated in text modality,
+while the delicate, tenuous robot actions lack of clear and consistent semantics, making it difficult to
+semantic Chain-of-Thought (CoT) [22] thinking as in LLMs. Second, the generalist robot policy needs
+to perform dexterous, complex tasks in real time. How to effectively balance the "slowness" of System-
+2 thinking against the "fastness" demanded by robot control is essential. Recently, embodied chain-
+of-thought reasoning (ECoT) [23] enable a VLA model to predict helpful intermediate reasoning
+text before choosing robot actions, improving the generalization and performance of VLA models.
+However, performing intermediate reasoning steps significantly slow down policy inference speed.
+Moreover, dual-system architectures have been incorporated into Vision-Language-Action models in
+several works [24, 25, 26, 27, 28, 29]. Typical work Helix [30] adopts a pretrained VLM backbone as
+System 2, while employing a smaller network as System 1 to outputs high-frequency actions for real
+time control. These approaches use either latent vectors or detailed language instructions as bridges
+to communicate between the two systems. Despite their faster inference speed, these models’ System
+2 does not conduct effective thinking and reasoning to guide the System-1 action prediction.
+In this work, we introduce a dual-system Vision-Language-Action model Hume, which powers the
+VLA model with System-2 thinking capabilities through value-guided repeat sampling and cascaded
+action denoising. The System 2 of Hume is built on top of a pre-trained vision-language model (VLM)
+and attach it with two specialized heads: a flow matching [31, 32] denoising head to predict robot
+actions, and a value-query head to estimate the state-action value of predicted actions. It processes
+the robot’s observation and language instruction to predict long-horizon action chunk through action
+denoising head. Subsequently, the corresponding state-action value are estimated conditioning on
+predicted action chunk. The value-guided thinking is conducted by repeat sampling multiple action
+chunks and selecting one with the highest value. For System 1 of Hume, it takes one short segment
+from the selected long-horizon action chunks from System 2, current visual observation, and robot
+states, then conducts cascaded action denoising to generate final fluid robot actions via a separate
+lightweight diffusion policy. At deployment time, System 2 performs value-guided thinking at a low
+frequency (4 Hz) while System 1 asynchronously receives the System 2 selected action chunk and
+predicts fluid actions in real time (90 Hz). Equipped with the proposed value-guided thinking and
+cascaded action denoising, Hume explores powerful System 2 slow thinking paradigm to enhance the
+VLA models. We extensively evaluate and ablate Hume on both standard simulation benchmarks
+and real-robot platforms, including 21 real-world robot settings and 3 simulation environments. To
+validate Hume’s capability to solve complex robot control tasks with the assistance of System-2
+Thinking, the test scenarios include variations in viewpoint, texture, lighting, layout, unseen objects,
+2
+unseen environments, as well as the most challenging humanoid robot control tasks. In summary, the
+main contributions of this work are three-folds:
+• We propose Hume, a dual-system generalist robot policy that explores System-2 slow thinking
+paradigm for Vision-Language-Action models.
+• We introduce novel value-guided thinking and cascaded action denoising to seamlessly combine
+low frequency System 2 and high frequency System 1, resulting in effective thinking and reasoning
+in various robot deployments.
+• Hume achieves state-of-the-art performance on multiple benchmarks and real-robot tests, achieving
++4.4% increase in success rate over π0 on the LIBERO [ 33] benchmark, +25.9% in Simpler
+benchmark [34], and +12.9% improvement in real-world deployments.
+2 Related Work
+Dual-System Vision-Language-Action Models. Recently, several studies [1, 2, 4, 35, 36, 37, 38, 39,
+40, 41, 6, 26, 30, 24] have extended VLMs for robot control. RT-2 [2] fine-tunes PaLI-X [42] with
+discretized action tokens, while OpenVLA [4] adapts Prismatic VLM [43] on the OXE dataset [44].
+π0 [12] integrates PaliGemma with flow-matching for continuous actions. To address efficiency
+and integration challenges, dual-system architectures have emerged. HiRT [ 25] runs VLMs at
+low frequencies while maintaining high-frequency vision-based control for real-time interaction.
+DexVLA [27] uses diffusion action experts with embodiment curriculum learning across multiple
+robot types. GR00T N1 [28] features an end-to-end trained dual-system specifically for humanoid
+robots. Gemini Robotics [11] builds on Gemini 2.0 with specialized models for control and reasoning.
+HiRobot [29] enables processing of complex instructions with situated feedback. These approaches
+improve efficiency, success rates, and adaptability compared to monolithic architectures.
+System 2 and System-2 Thinking. Numerous studies [ 22, 45, 46, 47, 48, 49, 50, 51, 52] have
+explored System 2 reasoning approaches to enhance LLMs’ problem-solving capabilities. Chain-
+of-Thought [22, 53] introduces intermediate reasoning steps before producing answers, while Tree-
+of-Thoughts [52] explores multiple solution paths with self-verification. Reflexion [ 45] enables
+verbal reflection on previous attempts. System-2 Thinking frameworks explicitly model human-
+like deliberative processes. SETS [ 54] combines self-critique with multiple reasoning paths and
+majority voting. SC-MCTS [ 55] combines multiple reward models for more robust tree search.
+Addressing efficiency concerns, O1-Pruner [ 56] introduces length-penalty loss to create concise
+reasoning processes. While these approaches have improved reasoning in language tasks, their
+application to visual-language-action models remains largely unexplored.
+Cascaded Denoising. Cascaded Denoising [ 57] was first proposed as a diffusion model [ 58]
+that generates higher-resolution images through a cascading approach. Starting with a diffusion
+model at low resolution, it continuously upsamples the generated images to obtain high-resolution
+results. f-DM [ 59] applies inter-stage transformations for progressive signal restoration through
+function learning. Cas-DM [60] cascades noise-prediction and image-prediction modules to integrate
+perceptual losses in diffusion models. SCDM [61] cascades generation across spectral dimensions,
+reconstructing hyperspectral bands progressively. HiFI [62] cascades consistent-resolution patches
+for memory-efficient high-resolution frame interpolation. CDM-VTON [ 63] employs two-stage
+cascading for virtual try-on applications. While these approaches have advanced capabilities in image
+domains, the application of cascaded denoising to integrate System 1 and System 2 remains largely
+unexplored.
+3 Methodology
+In this section, we describe Hume model architecture and its training and deployment strategy in
+detail. The process of Value-Guided System-2 Thinking with the help of state-action value estimator
+was described in detail in Sec. 3.1. Next, we detail how the System 1 module and System 2 module
+cooperate asynchronously through the proposed cascaded action denoising in Sec. 3.2. Finally, the
+multi-stage training and deployment strategy of the model is explained in Sec. 3.3.
+3
+FlowMatchingProgress
+FlowMatching Head
+S2PaligemmawithExpert4B
+Value Query Head
+V L
+“Get me some snacks.”
+imageobservation
+robotstates
+instruction
+ S1VisuoExpert80MS
+Sampling N
+VVV
+Value-Guided ActionSearching
+VL
+S
+headJointEffectorwaist
+VVV
+noiseactionQQQquery token
+temperature
+System2SV
+FlowMatching Head
+System1
+BoN Actionaaa
+WholeUpper Body Control
+Best Execution
+L=0L=1L=2L=4aaa
+stateactionvalueaction candidates BestofNProbability Path
+Figure 2: Overview of Hume. Hume contains two systems working asynchronously. Given the
+observation, System 2 of Hume first generates N candidate action chunks with different noise level,
+and the best-of-N candidate with the highest Q value will be selected as the optimal candidate Aτ ∗
+t ,
+which is segmented and conveyed to System 1 for continuous action denoising.
+3.1 Value-Guided System-2 Thinking
+As shown in Fig. 2, the System 2 module is instantiated as a vision-language-action model (VLA) built
+upon a pretrained Vision-Language Model. Formally, the inputs of System 2 module consists of RGB
+images it = [I1
+t , ..., In
+t ] at time step t, natural language instructions ℓt, and robot state information
+st. Similar as VLA models, we first augment the VLM backbone with an action denoising head to
+learn a mapping function F(·) to generate candidate robot actions At from the observation ot, i.e.,
+At = F(ot). Moreover, to empower Hume with System-2 Thinking ability, we attach the VLM
+backbone another value-query head, which is designed to estimate the state-action value Qθ(qt, At)
+of the candidate robot action At.
+Candidate Actions Generation The candidate robot actions are generated by a action denoising
+head that aims to model the data distribution p(At|ot), where ot consists of images it, language
+instructions ℓt, and robot state informationst. It is implemented as a transformer-based flow matching
+denoising process that predicts the remaining action noise vθ(Aτ
+t , ot) in the “noisy action” Aτ
+t ,
+where τ ∈ [0, 1] is the flow matching time step that represents the noise level of the action. Starting
+from a random noise A0
+t ∼ N (0, I), the denoising head generates actions by gradually removing
+the noise from A0
+t to A1
+t step by step using the forward Euler method: Aτ+δ
+t = Aτ
+t + δvθ (Aτ
+t , ot),
+where δ is the size of the denoising step. In practice, we use 10 denoising steps, corresponding to
+δ = 0.1. During training, for the ground truth action At sampled from the dataset, the denoising
+head is optimized by minimizing the loss between the actual remaining noise ϵ − At and the network
+output vθ(Aτ
+t , ot) given the observation ot and the noisy action Aτ
+t = τ At + (1 − τ)ϵ as input.
+After training, conditioned on the same observation ot at timestep t, the action denoising head
+generates N candidate robot action chunks Aτn
+t ∈ { Aτ1
+t , Aτ2
+t , . . . , AτN
+t } with different noise
+levels by integrating the learned vector field vθ (Aτ
+t , ot) from τ = 0 to τ = 1 − (n − 1)ξ separately:
+Aτn
+t =
+Z 1−(n−1)ξ
+0
+vθ (Aτ
+t , ot) dτ + A0
+t , (1)
+where ξ is used to control the noise gap between adjacent candidates, and A0
+t is the initial action
+sampled from the normal distribution A0
+t ∼ N (0, I). Note that n ∈ {1, 2, . . . , N}, which leading to
+most of generated candidate actions Aτn
+t is not fully denoised.
+State-Action Value Estimation The state-action values are estimated with the proposed value-query
+head built on the same VLM backbone via learning a latent conditioned Q function. The value-query
+head is composed of two critic networks estimating state-action values and one actor network for
+assisting the training of critic networks. Specifically, a special query token qt is introduced and
+attached at the end of the VLM input sequence, which is a learnable token with the same embedding
+dimension as the language tokens. Then, for one action chunk At (either ground-truth action AGT
+t or
+candidate actions Aτn
+t ), it is combined with this special query token qt to feed into the value-query
+head. Due to its last position of the input sequence, the query token qt attends to all previous tokens
+4
+Value Map of Candidate Actions
+Step = 0 Step = 1 Step = 50 Step = 100
+PCA1
+PCA2
+PCA1
+PCA2
+PCA1
+PCA2
+PCA1
+PCA2
+state -action values
+Figure 3: Value Map of Candidate Actions. The candidate actions Aτn
+t sampled from System 2
+and ground-truth actions AGT
+t are projected into the same two-dimensional space through Principal
+Component Analysis (PCA). The intensity of colors indicates the magnitude of state-action values
+Q(qt, Aτn
+t ) of candidate actions.
+and aggregates necessary information from the VLM inputs,i.e., current RGB images it = [I1
+t , ..., In
+t ]
+at time step t, natural language instructions ℓt. In this way, the value-query head estimate the state-
+action value Qθ(qt, Aτn
+t ) of the action chunk Aτn
+t conditioned on the input query token qt. This
+value-query head is trained on pre-collected robot demonstration dataset with ground-truth action At
+via offline RL [64]. We construct the training dataset D using the reward function following [65],
+where the rewards of last 3 transitions in one robot episode is defined as +1, and the rest is 0. During
+training, we use the calibrated Q-learning algorithm [66] to optimize the value-query head.
+To verify our training pipeline can effectively optimize the value-query head, we project ground-
+truth actions AGT
+t and candidate actions Aτn
+t along with their corresponding state-action values
+Q(qt, Aτn
+t ) into the same space, generating the value map in Fig. 3. The value map consists of
+regions representing different magnitudes of state-action values, and the ground-truth actions are
+all located in the high-value region, which proves the value-query head can estimate reasonable
+state-action value. The detailed analysis can be found in Appendix. A.2
+Value-Guided Thinking The System-2 value-guided thinking is implemented with Best-of-N selec-
+tion strategy and the selected action chunk is conveyed to System 1 for cascaded action denoising.
+Specifically, conditioned on the same observation, the action denoising head generatesN candidate
+action chunks {Aτ1
+t , Aτ2
+t , . . . , AτN
+t } with different noise levels. Then, these candidates are passed
+to the value-query head to estimate their state-action values. Guided by the estimated state-action
+values, we select the action with the highest value as the optimal candidateAτ ∗
+t transferred to System
+1, depicted as Aτ ∗
+t = arg maxAτn
+t
+Q(qt, Aτn
+t ), where n = 1 . . . N. In Appendix. A.1, we further
+visualize this process in the simulated Push-T task.
+3.2 Cascaded Dual-system Action Denoising
+In order to achieve rapid, reactive robot control, System 1 module needs to be lightweight and fast
+in inference. In detail, System 1 consists of a DINOv2-small visual encoder and a lightweight
+transformer for cascaded action denoising. Given the selected candidate action chunk Aτ ∗
+t from
+System 2, the System 1 module takes the observation˜ot+kh (including current image it = {I1
+t , .., In
+t },
+robot state st), and sub-action chunks ˜At segmented from the selected candidate Aτ ∗
+t as input, and
+produces refined robot actions by continuously denoising on sub-action chunks ˜At.
+Specifically, at timestep t, the selected action chunk from System 2 is Aτ ∗
+t = [at, at+1, ..., at+H−1],
+then Aτ ∗
+t is segmented into K := H/h sub-action chunks { ˜At, ˜At+h, . . . , ˜At+(K−1)h} with a
+horizon of h. The System 1 sequentially performs cascaded denoising on these sub-action chunks
+with observation ˜ot+kh. Note that System 1 is much faster than System 2, so that System 1 could
+finish cascaded denoising on all sub-action chunks before next action chunk Aτ ∗
+t arriving. System 1
+5
+module is trained with the same flow matching loss using the action denoising head of System 2:
+Lω(θ) = Ep( ˜At+kh|˜ot+kh),q( ˜Aω
+t+kh| ˜At+kh)||vθ( ˜Aω
+t+kh, ˜ot+kh) − u( ˜Aω
+t+kh| ˜At+kh)||2, (2)
+while the superscript ω represents the flow matching timestep in System 1.
+Note that, the generated candidate action chunks from System 2 are not fully denoised, i.e., ˜Aτ ∗
+t+kh ̸=
+˜A1
+t+kh, requiring the continuous denoising for accurate action prediction. Following the continuous
+denoising [57] from image generation, System 1 refine the action by intergrating the learned vector
+field from ω = 0 to ω = 1. Instead of starting with random noise, the integration process of System 1
+starting with the sub-action chunk ˜Aτ ∗
+t+kh:
+˜Aω
+t+kh =
+Z ω
+0
+vθ
+
+˜Aω
+t+kh, ˜ot+kh
+
+dω + ˜Aτ ∗
+t+kh, (3)
+where vθ
+
+˜Aω
+t+kh, ot+kh
+
+is the vector field learned by System 1. Using the forward Euler method
+˜Aω+σ
+t+kh = ˜Aω
+t+kh + δvθ
+
+˜Aω
+t+kh, ˜ot+kh
+
+, System 1 produces the final denoised action ˜A1
+t+kh with
+10 denoise steps (corresponding to δ = 0.1). After all K sub-action chunks have been processed by
+System 1, System 2 will generate a new selected action chunk Aτ ∗
+t+H, and System 1 will continue to
+refine segments from the new selected action chunk.
+3.3 Training and Deployment Strategy
+The training process of Hume contains two stages. In the first stage, the VLM backbone and the
+action denoising head of System 2 are trained first using the flow matching loss similar to eq. (2) to
+ensure System 2 can predict reliable actions. In the second stage of training, the VLM backbone and
+the action denoising head of System 2 are frozen, while System 1 and value-query head of System 2
+are trained from scratch. The training objective of the Value-Query Head is to minimize the Bellman
+error with a regularization term, which is defined as:
+min
+θ
+αR(θ) + 1
+2 Eqt,At,q′
+t∼D
+h 
+Qθ(qt, At) − Bπ ¯Q(qt, At)
+2i
+, (4)
+where R(θ) is a calibrated conservative regularizer that aims to prevent overestimation in the Q-values,
+R(θ) := Eqt∼D,a∼π [max (Qθ(qt, At), Qµ(qt, At))] − Eqt,At∼D [Qθ(qt, At)], and Bπ ¯Q(qt, At)
+is the backup operator applied to the delayed target Q-network Q¯θ.
+During the inference phase, the System 2 and System 1 modules are cooperating at asynchronous
+mechanism to boost up the overall control frequency. Specifically, at the initial timestep t, the action
+denoising head of System 2 generatesN = 5 multiple action chunks Aτn
+t ∈ { Aτ1
+t , Aτ2
+t , . . . , AτN
+t }
+with horizon of H = 30 as candidates at 4 Hz. Then the selected optimal action candidate Aτ ∗
+t
+is stored in a shared queue. Then ˜Aτ ∗
+t , a sub-action chunk with horizon h = 15 , is segmented
+from the first h steps of Aτ ∗
+t and passed into System 1. System 1 removes the remaining noise
+from ˜Aτ ∗
+t , and produces the fully denoised action ˜At at 6 Hz and execute all h = 15 actions on
+real robot immediately, resulting in a overall 90 Hz robot action control frequency. After the robot
+executes all K = H/h = 2 sub-action chunks in ˜At, System 1 repeatly get the newest selected
+action chunks from the shared queue for subsequent action denoising. Due the different working
+frequencies of System 2 and System 1, they asynchronously cooperate to achieve a balance between
+slow, human-like thinking and fast, reactive real robot control.
+4 Experiment
+Our experiments aim to evaluate whether Hume, as a dual-system Vision Language Action Model, can
+effectively utilize System-2 Thinking to solve complex robot control tasks. Our extensive experiments
+include evaluating the model’s ability to perform complex manipulation tasks on various robotic
+platforms in both simulated and real-world environments, including humanoid robots. Hume is
+compared with previous state-of-the-art generalist policies and alternative designs of various model
+components. Specifically, our experiments aim to answer the following research questions:
+6
+3rd personcamera
+WidowX 250Robot Arm
+Gripper
+AgiBot G-1 Humanoid Robot
+Headcamera
+Left handcamera
+right handcamera
+effector
+Franka PandaEmika Robot Arm
+3rd personcamera
+Effector
+6-DOF Servo RobotControl10 Tasks with 15 objectsWhole Upper Body Control4 Robot LearningScenarios 7-DOF Collaborative Arm Control4 Robot Learning Scenarios
+SimplerEnv Evaluation of Google Robot and WidowXLIBEROSpatial/Object/Goal/LongEvaluationon Franka
+SimplerEnvBenchmarkLiberoBenchmark
+Figure 4: Experiments setup on WidowX, AgiBot G-1 and Franka Robot. We evaluate Hume
+across 3 simulation environments and 3 different real-world robotic platforms, covering 15 robot
+learning scenarios and 21 real-world manipulation tasks.
+1. How is Hume’s capability to learn multiple tasks on standard simulation benchmarks?

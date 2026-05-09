@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z",
+  "source_pdf": "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/source.pdf",
+  "title_hint": "The Silent Thought: Modeling Internal Cognition in Full-Duplex Spoken Dialogue Models via Latent Reasoning Donghang Wu * 1 Tianyu Zhang * 2 Yuxin Li 1 Hexin Liu 1 Chen Chen 1 Eng Siong Chng 1 Y oshua",
+  "updated_at": "2026-05-08T15:12:22Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:25Z",
+      "artifacts": [
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/source.pdf",
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:22Z",
+      "artifacts": [
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:22Z",
+      "artifacts": [
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:22Z",
+      "artifacts": [
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:22Z",
+      "artifacts": [
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/l4_analysis.json",
+        "research/extracted/the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=8322; pdf_sha256=7932d38d8bec1a997ccace18e1aade5bdf491b1c91f443b503a39b4b0091fb69; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "7932d38d8bec1a997ccace18e1aade5bdf491b1c91f443b503a39b4b0091fb69"
+}

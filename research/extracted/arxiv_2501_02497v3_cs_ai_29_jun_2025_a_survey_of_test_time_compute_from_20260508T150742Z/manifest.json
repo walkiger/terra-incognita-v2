@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z",
+  "source_pdf": "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/source.pdf",
+  "title_hint": "arXiv:2501.02497v3  [cs.AI]  29 Jun 2025 A Survey of Test-Time Compute: From Intuitive Inference to Deliberate Reasoning",
+  "updated_at": "2026-05-08T15:08:55Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:44Z",
+      "artifacts": [
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/source.pdf",
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:55Z",
+      "artifacts": [
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:55Z",
+      "artifacts": [
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:55Z",
+      "artifacts": [
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:55Z",
+      "artifacts": [
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/l4_analysis.json",
+        "research/extracted/arxiv_2501_02497v3_cs_ai_29_jun_2025_a_survey_of_test_time_compute_from_20260508T150742Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4000; pdf_sha256=5d0c293e20708afae67c875df590d27ad3e740184ebc759216b9885afc6ca8a9; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "5d0c293e20708afae67c875df590d27ad3e740184ebc759216b9885afc6ca8a9"
+}

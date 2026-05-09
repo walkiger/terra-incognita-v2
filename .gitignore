@@ -55,3 +55,12 @@ archive/
 
 # Local scratch
 .tmp_pr_body.md
+
+# Knowledge — optional local overrides / backups (keep canonical JSON tracked explicitly)
+knowledge/*.bak
+knowledge/**/*.bak
+
+# Research — PDF binaries / drops never committed (JSON layers + manifests are canonical)
+research/incoming/**/*.pdf
+research/incoming/**/new download/
+research/extracted/**/source.pdf

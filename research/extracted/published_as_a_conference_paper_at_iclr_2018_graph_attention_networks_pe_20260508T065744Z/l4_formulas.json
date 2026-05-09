@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:44Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page3_1",
+      "presentation": {
+        "latex": "The input to our layer is a set of node features, h ={⃗h1,⃗h2,..., ⃗hN},⃗hi∈ RF , where N is the number of nodes, andF is the number of features in each node. The layer produces a new set of node features (of potentially different cardinalityF′), h′ ={⃗h′ 1,⃗h′ 2,..., ⃗h′ N},⃗h′",
+        "unicode_plain": "The input to our layer is a set of node features, h ={⃗h1,⃗h2,..., ⃗hN},⃗hi∈ RF , where N is the number of nodes, andF is the number of features in each node. The layer produces a new set of node features (of potentially different cardinalityF′), h′ ={⃗h′ 1,⃗h′ 2,..., ⃗h′ N},⃗h′"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "The input to our layer is a set of node features, h ={⃗h1,⃗h2,..., ⃗hN},⃗hi∈ RF , where N is the number of nodes, andF is the number of features in each node. The layer produces a new set of node features (of potentially different cardinalityF′), h′ ={⃗h′ 1,⃗h′ 2,..., ⃗h′ N},⃗h′"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "features (of potentially different cardinalityF′), h′ ={⃗h′ 1,⃗h′ 2,..., ⃗h′ N},⃗h′ i∈ RF ′ , as its output.",
+        "unicode_plain": "features (of potentially different cardinalityF′), h′ ={⃗h′ 1,⃗h′ 2,..., ⃗h′ N},⃗h′ i∈ RF ′ , as its output."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "features (of potentially different cardinalityF′), h′ ={⃗h′ 1,⃗h′ 2,..., ⃗h′ N},⃗h′ i∈ RF ′ , as its output."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "eij =a(W⃗hi, W⃗hj) (1) that indicate theimportance of nodej’s features to nodei. In its most general formulation, the model allows every node to attend on every other node, dropping all structural information. We inject the graph structure into the mechanism by performingmasked attention—we only computeeij for nodes j∈N i, whereNi is some neighborhood of nodei in the graph. In all our experiments,",
+        "unicode_plain": "eij =a(W⃗hi, W⃗hj) (1) that indicate theimportance of nodej’s features to nodei. In its most general formulation, the model allows every node to attend on every other node, dropping all structural information. We inject the graph structure into the mechanism by performingmasked attention—we only computeeij for nodes j∈N i, whereNi is some neighborhood of nodei in the graph. In all our experiments, these will"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "eij =a(W⃗hi, W⃗hj) (1) that indicate theimportance of nodej’s features to nodei. In its most general formulation, the model allows every node to attend on every other node, dropping all structural information. We inject the graph structure into the mechanism by performingmasked attention—we only computeeij for nodes j∈N i, whereNi is some neighborhood of nodei in the graph. In all our experiments, these will"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "αij = softmax j(eij) = exp(eij)∑ k∈Ni exp(eik). (2) In our experiments, the attention mechanism a is a single-layer feedforward neural network, parametrized by a weight vector⃗a∈ R2F ′ , and applying the LeakyReLU nonlinearity (with negative",
+        "unicode_plain": "αij = softmax j(eij) = exp(eij)∑ k∈Ni exp(eik). (2) In our experiments, the attention mechanism a is a single-layer feedforward neural network, parametrized by a weight vector⃗a∈ R2F ′ , and applying the LeakyReLU nonlinearity (with negative"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "αij = softmax j(eij) = exp(eij)∑ k∈Ni exp(eik). (2) In our experiments, the attention mechanism a is a single-layer feedforward neural network, parametrized by a weight vector⃗a∈ R2F ′ , and applying the LeakyReLU nonlinearity (with negative"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "exp(eik). (2) In our experiments, the attention mechanism a is a single-layer feedforward neural network, parametrized by a weight vector⃗a∈ R2F ′ , and applying the LeakyReLU nonlinearity (with negative input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism (illustrated by Figure 1 (left)) may then be expressed as:",
+        "unicode_plain": "exp(eik). (2) In our experiments, the attention mechanism a is a single-layer feedforward neural network, parametrized by a weight vector⃗a∈ R2F ′ , and applying the LeakyReLU nonlinearity (with negative input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism (illustrated by Figure 1 (left)) may then be expressed as:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "exp(eik). (2) In our experiments, the attention mechanism a is a single-layer feedforward neural network, parametrized by a weight vector⃗a∈ R2F ′ , and applying the LeakyReLU nonlinearity (with negative input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism (illustrated by Figure 1 (left)) may then be expressed as:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism (illustrated by Figure 1 (left)) may then be expressed as: αij = exp ( LeakyReLU",
+        "unicode_plain": "input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism (illustrated by Figure 1 (left)) may then be expressed as: αij = exp ( LeakyReLU"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism (illustrated by Figure 1 (left)) may then be expressed as: αij = exp ( LeakyReLU"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": ")) (3) where·T represents transposition and∥ is the concatenation operation. Once obtained, the normalized attention coefﬁcients are used to compute a linear combination of the features corresponding to them, to serve as the ﬁnal output features for every node (after potentially 3",
+        "unicode_plain": ")) (3) where·T represents transposition and∥ is the concatenation operation. Once obtained, the normalized attention coefﬁcients are used to compute a linear combination of the features corresponding to them, to serve as the ﬁnal output features for every node (after potentially 3"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": ")) (3) where·T represents transposition and∥ is the concatenation operation. Once obtained, the normalized attention coefﬁcients are used to compute a linear combination of the features corresponding to them, to serve as the ﬁnal output features for every node (after potentially 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page4_8",
+      "presentation": {
+        "latex": "head attention (with K = 3 heads) by node 1 on its neighborhood. Different arrow styles and colors denote independent attention computations. The aggregated features from each head are concatenated or averaged to obtain⃗h′ 1. applying a nonlinearity,σ): ⃗h′",
+        "unicode_plain": "head attention (with K = 3 heads) by node 1 on its neighborhood. Different arrow styles and colors denote independent attention computations. The aggregated features from each head are concatenated or averaged to obtain⃗h′ 1. applying a nonlinearity,σ): ⃗h′"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "head attention (with K = 3 heads) by node 1 on its neighborhood. Different arrow styles and colors denote independent attention computations. The aggregated features from each head are concatenated or averaged to obtain⃗h′ 1. applying a nonlinearity,σ): ⃗h′"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": ". (4) To stabilize the learning process of self-attention, we have found extending our mechanism to em- ploy multi-head attention to be beneﬁcial, similarly to Vaswani et al. (2017). Speciﬁcally,K inde- pendent attention mechanisms execute the transformation of Equation 4, and then their features are concatenated, resulting in the following output feature representation: ⃗h′",
+        "unicode_plain": ". (4) To stabilize the learning process of self-attention, we have found extending our mechanism to em- ploy multi-head attention to be beneﬁcial, similarly to Vaswani et al. (2017). Speciﬁcally,K inde- pendent attention mechanisms execute the transformation of Equation 4, and then their features are concatenated, resulting in the following output feature representation: ⃗h′"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": ". (4) To stabilize the learning process of self-attention, we have found extending our mechanism to em- ploy multi-head attention to be beneﬁcial, similarly to Vaswani et al. (2017). Speciﬁcally,K inde- pendent attention mechanisms execute the transformation of Equation 4, and then their features are concatenated, resulting in the following output feature representation: ⃗h′"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page5_10",
+      "presentation": {
+        "latex": "u(x,y ) = f (x)∥f (y), where f (x) represent (potentially MLP-transformed) features of nodex and∥ is concatenation; and the weight function to bewj(u) = softmax(MLP(u)) (with the softmax performed over the entire neighborhood of a node) would make MoNet’s patch operator similar to ours. Nevertheless, one should note that, in comparison to previ- ously considered MoNet instances, our model uses nod",
+        "unicode_plain": "u(x,y ) = f (x)∥f (y), where f (x) represent (potentially MLP-transformed) features of nodex and∥ is concatenation; and the weight function to bewj(u) = softmax(MLP(u)) (with the softmax performed over the entire neighborhood of a node) would make MoNet’s patch operator similar to ours. Nevertheless, one should note that, in comparison to previ- ously considered MoNet instances, our model uses node features for similarity computa-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "u(x,y ) = f (x)∥f (y), where f (x) represent (potentially MLP-transformed) features of nodex and∥ is concatenation; and the weight function to bewj(u) = softmax(MLP(u)) (with the softmax performed over the entire neighborhood of a node) would make MoNet’s patch operator similar to ours. Nevertheless, one should note that, in comparison to previ- ously considered MoNet instances, our model uses node features for similarity computa-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page5_11",
+      "presentation": {
+        "latex": "nodex and∥ is concatenation; and the weight function to bewj(u) = softmax(MLP(u)) (with the softmax performed over the entire neighborhood of a node) would make MoNet’s patch operator similar to ours. Nevertheless, one should note that, in comparison to previ- ously considered MoNet instances, our model uses node features for similarity computa- tions, rather than the node’s structural properties ",
+        "unicode_plain": "nodex and∥ is concatenation; and the weight function to bewj(u) = softmax(MLP(u)) (with the softmax performed over the entire neighborhood of a node) would make MoNet’s patch operator similar to ours. Nevertheless, one should note that, in comparison to previ- ously considered MoNet instances, our model uses node features for similarity computa- tions, rather than the node’s structural properties (which would assume knowing the graph"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "nodex and∥ is concatenation; and the weight function to bewj(u) = softmax(MLP(u)) (with the softmax performed over the entire neighborhood of a node) would make MoNet’s patch operator similar to ours. Nevertheless, one should note that, in comparison to previ- ously considered MoNet instances, our model uses node features for similarity computa- tions, rather than the node’s structural properties (which would assume knowing the graph"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page7_12",
+      "presentation": {
+        "latex": "seer. The ﬁrst layer consists ofK = 8 attention heads computingF′ = 8 features each (for a total of 64 features), followed by an exponential linear unit (ELU) (Clevert et al., 2016) nonlinearity. The second layer is used for classiﬁcation: a single attention head that computes C features (where C is the number of classes), followed by a softmax activation. For coping with the small training set si",
+        "unicode_plain": "seer. The ﬁrst layer consists ofK = 8 attention heads computingF′ = 8 features each (for a total of 64 features), followed by an exponential linear unit (ELU) (Clevert et al., 2016) nonlinearity. The second layer is used for classiﬁcation: a single attention head that computes C features (where C is the number of classes), followed by a softmax activation. For coping with the small training set sizes, regularization is liberally applied within the model. During training, we apply L2 regulariza-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "seer. The ﬁrst layer consists ofK = 8 attention heads computingF′ = 8 features each (for a total of 64 features), followed by an exponential linear unit (ELU) (Clevert et al., 2016) nonlinearity. The second layer is used for classiﬁcation: a single attention head that computes C features (where C is the number of classes), followed by a softmax activation. For coping with the small training set sizes, regularization is liberally applied within the model. During training, we apply L2 regulariza-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page7_13",
+      "presentation": {
+        "latex": "tion with λ = 0.0005. Furthermore, dropout (Srivastava et al., 2014) with p = 0.6 is applied to both layers’ inputs, as well as to the normalized attention coefﬁcients (critically, this means that at each training iteration, each node is exposed to a stochastically sampled neighborhood). Similarly as observed by Monti et al. (2016), we found that Pubmed’s training set size (60 examples) required s",
+        "unicode_plain": "tion with λ = 0.0005. Furthermore, dropout (Srivastava et al., 2014) with p = 0.6 is applied to both layers’ inputs, as well as to the normalized attention coefﬁcients (critically, this means that at each training iteration, each node is exposed to a stochastically sampled neighborhood). Similarly as observed by Monti et al. (2016), we found that Pubmed’s training set size (60 examples) required slight changes to the GAT architecture: we have applied K = 8 output attention heads (instead of"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "tion with λ = 0.0005. Furthermore, dropout (Srivastava et al., 2014) with p = 0.6 is applied to both layers’ inputs, as well as to the normalized attention coefﬁcients (critically, this means that at each training iteration, each node is exposed to a stochastically sampled neighborhood). Similarly as observed by Monti et al. (2016), we found that Pubmed’s training set size (60 examples) required slight changes to the GAT architecture: we have applied K = 8 output attention heads (instead of"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page7_14",
+      "presentation": {
+        "latex": "slight changes to the GAT architecture: we have applied K = 8 output attention heads (instead of one), and strengthened theL2 regularization toλ = 0.001. Otherwise, the architecture matches the one used for Cora and Citeseer. Inductive learning For the inductive learning task, we apply a three-layer GAT model. Both of the ﬁrst two layers consist ofK = 4 attention heads computingF′ = 256 features (",
+        "unicode_plain": "slight changes to the GAT architecture: we have applied K = 8 output attention heads (instead of one), and strengthened theL2 regularization toλ = 0.001. Otherwise, the architecture matches the one used for Cora and Citeseer. Inductive learning For the inductive learning task, we apply a three-layer GAT model. Both of the ﬁrst two layers consist ofK = 4 attention heads computingF′ = 256 features (for a total of 1024"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "slight changes to the GAT architecture: we have applied K = 8 output attention heads (instead of one), and strengthened theL2 regularization toλ = 0.001. Otherwise, the architecture matches the one used for Cora and Citeseer. Inductive learning For the inductive learning task, we apply a three-layer GAT model. Both of the ﬁrst two layers consist ofK = 4 attention heads computingF′ = 256 features (for a total of 1024"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2403_04571v1_cs_ai_7_mar_2024_machine_learning_and_informa_tion_th_20260508T150727Z",
+  "extracted_at": "2026-05-08T15:08:40Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page7_1",
+      "presentation": {
+        "latex": "integers from 1 to N . The true classiﬁer is y = f (x) = 1 x>θ but θ is unknown and should be estimated. A passive learner would just collect n uniform samples from [1 , N] and construct a new estimate ˆθ by ﬁnding the median between the largest of the y = 0 examples and the smallest of the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, ",
+        "unicode_plain": "integers from 1 to N . The true classiﬁer is y = f (x) = 1 x>θ but θ is unknown and should be estimated. A passive learner would just collect n uniform samples from [1 , N] and construct a new estimate ˆθ by ﬁnding the median between the largest of the y = 0 examples and the smallest of the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "integers from 1 to N . The true classiﬁer is y = f (x) = 1 x>θ but θ is unknown and should be estimated. A passive learner would just collect n uniform samples from [1 , N] and construct a new estimate ˆθ by ﬁnding the median between the largest of the y = 0 examples and the smallest of the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page7_2",
+      "presentation": {
+        "latex": "estimate ˆθ by ﬁnding the median between the largest of the y = 0 examples and the smallest of the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the most uncertain value of x. At each step, the interval where the true θ must lie is at least halved (depen",
+        "unicode_plain": "estimate ˆθ by ﬁnding the median between the largest of the y = 0 examples and the smallest of the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the most uncertain value of x. At each step, the interval where the true θ must lie is at least halved (depending on whether the query is successful or not, we pick either the left of right subinterval split"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "estimate ˆθ by ﬁnding the median between the largest of the y = 0 examples and the smallest of the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the most uncertain value of x. At each step, the interval where the true θ must lie is at least halved (depending on whether the query is successful or not, we pick either the left of right subinterval split"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page7_3",
+      "presentation": {
+        "latex": "the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the most uncertain value of x. At each step, the interval where the true θ must lie is at least halved (depending on whether the query is successful or not, we pick either the left of right subinterval sp",
+        "unicode_plain": "the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the most uncertain value of x. At each step, the interval where the true θ must lie is at least halved (depending on whether the query is successful or not, we pick either the left of right subinterval split"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "the y = 1 examples. An active learner would use its budget of n queries sequentially and smartly: at each step, it would ask to label x whose value is its current estimate ˆθ for θ, since this is the most uncertain value of x. At each step, the interval where the true θ must lie is at least halved (depending on whether the query is successful or not, we pick either the left of right subinterval split"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    }
+  ]
+}

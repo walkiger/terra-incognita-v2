@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z",
+  "extracted_at": "2026-05-08T15:11:16Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "R: . . .  3  +  5  = Q: ... R: H e  w r i t e s  6 p a g e s  e v e r y week Inference StageTraining Stage",
+        "unicode_plain": "R: . . .  3  +  5  = Q: ... R: H e  w r i t e s  6 p a g e s  e v e r y week Inference StageTraining Stage"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "R: . . .  3  +  5  = Q: ... R: H e  w r i t e s  6 p a g e s  e v e r y week Inference StageTraining Stage"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "logπ∗(xt|x<t) ∝ logπ(xt|x<t) +βs(x<t, xt), (1) where π and π∗ represent the policies of the LLM and dual-process LLM, respectively. The verifier steers π during decoding based on the process score s(x<t, xt), with β controlling the strength. For computational efficiency, we focus verification on",
+        "unicode_plain": "logπ∗(xt|x<t) ∝ logπ(xt|x<t) +βs(x<t, xt), (1) where π and π∗ represent the policies of the LLM and dual-process LLM, respectively. The verifier steers π during decoding based on the process score s(x<t, xt), with β controlling the strength. For computational efficiency, we focus verification on"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "logπ∗(xt|x<t) ∝ logπ(xt|x<t) +βs(x<t, xt), (1) where π and π∗ represent the policies of the LLM and dual-process LLM, respectively. The verifier steers π during decoding based on the process score s(x<t, xt), with β controlling the strength. For computational efficiency, we focus verification on"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "Vt = {v ∈ V : zt[v] ≥ log α + max w zt[w]}, (2) where zt represents the logits of π, V is the vocabu- lary and Vt ⊂ V denotes the token set filtered with the hyperparameter α ∈ [0, 1] at time step t.",
+        "unicode_plain": "Vt = {v ∈ V : zt[v] ≥ log α + max w zt[w]}, (2) where zt represents the logits of π, V is the vocabu- lary and Vt ⊂ V denotes the token set filtered with the hyperparameter α ∈ [0, 1] at time step t."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Vt = {v ∈ V : zt[v] ≥ log α + max w zt[w]}, (2) where zt represents the logits of π, V is the vocabu- lary and Vt ⊂ V denotes the token set filtered with the hyperparameter α ∈ [0, 1] at time step t."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "zt[w]}, (2) where zt represents the logits of π, V is the vocabu- lary and Vt ⊂ V denotes the token set filtered with the hyperparameter α ∈ [0, 1] at time step t. Therefore, the logits of π∗ at time step t, denoted as z∗",
+        "unicode_plain": "zt[w]}, (2) where zt represents the logits of π, V is the vocabu- lary and Vt ⊂ V denotes the token set filtered with the hyperparameter α ∈ [0, 1] at time step t. Therefore, the logits of π∗ at time step t, denoted as z∗"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "zt[w]}, (2) where zt represents the logits of π, V is the vocabu- lary and Vt ⊂ V denotes the token set filtered with the hyperparameter α ∈ [0, 1] at time step t. Therefore, the logits of π∗ at time step t, denoted as z∗"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "t [v] = ( zt[v] + βs(x<t, v) if v ∈ V t, −∞ otherwise. (3) The probability distribution π∗(xt|x<t) = softmax(z∗",
+        "unicode_plain": "t [v] = ( zt[v] + βs(x<t, v) if v ∈ V t, −∞ otherwise. (3) The probability distribution π∗(xt|x<t) = softmax(z∗"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t [v] = ( zt[v] + βs(x<t, v) if v ∈ V t, −∞ otherwise. (3) The probability distribution π∗(xt|x<t) = softmax(z∗"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "−∞ otherwise. (3) The probability distribution π∗(xt|x<t) = softmax(z∗ t ). This formulation allows π∗ to inte- grates seamlessly with various decoding strategies, depending on the use case.",
+        "unicode_plain": "−∞ otherwise. (3) The probability distribution π∗(xt|x<t) = softmax(z∗ t ). This formulation allows π∗ to inte- grates seamlessly with various decoding strategies, depending on the use case."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "−∞ otherwise. (3) The probability distribution π∗(xt|x<t) = softmax(z∗ t ). This formulation allows π∗ to inte- grates seamlessly with various decoding strategies, depending on the use case."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "The probability distribution π∗(xt|x<t) = softmax(z∗ t ). This formulation allows π∗ to inte- grates seamlessly with various decoding strategies, depending on the use case. 2.2 Process-based Verifier",
+        "unicode_plain": "The probability distribution π∗(xt|x<t) = softmax(z∗ t ). This formulation allows π∗ to inte- grates seamlessly with various decoding strategies, depending on the use case. 2.2 Process-based Verifier"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "The probability distribution π∗(xt|x<t) = softmax(z∗ t ). This formulation allows π∗ to inte- grates seamlessly with various decoding strategies, depending on the use case. 2.2 Process-based Verifier"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "i=1, we synthesize process-supervision Dp(x) = \b x<t, x+ t , x− t",
+        "unicode_plain": "i=1, we synthesize process-supervision Dp(x) = \b x<t, x+ t , x− t"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1, we synthesize process-supervision Dp(x) = \b x<t, x+ t , x− t"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "Dp(x) = \b x<t, x+ t , x− t T",
+        "unicode_plain": "Dp(x) = \b x<t, x+ t , x− t T"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Dp(x) = \b x<t, x+ t , x− t T"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "t=1 for each instance x, where x+ t is more appropriate than x− t . Ac- cordingly, the training dataset for the verifier is Ds =",
+        "unicode_plain": "t=1 for each instance x, where x+ t is more appropriate than x− t . Ac- cordingly, the training dataset for the verifier is Ds ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1 for each instance x, where x+ t is more appropriate than x− t . Ac- cordingly, the training dataset for the verifier is Ds ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "i=1. We train the verifier with a pairwise comparison loss (Ouyang et al., 2022): L(sθ, Ds) = −E\u0000 x,Dp(x) \u0001 ∼Ds",
+        "unicode_plain": "i=1. We train the verifier with a pairwise comparison loss (Ouyang et al., 2022): L(sθ, Ds) = −E\u0000 x,Dp(x) \u0001 ∼Ds"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1. We train the verifier with a pairwise comparison loss (Ouyang et al., 2022): L(sθ, Ds) = −E\u0000 x,Dp(x) \u0001 ∼Ds"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "L(sθ, Ds) = −E\u0000 x,Dp(x) \u0001 ∼Ds TX t=1",
+        "unicode_plain": "L(sθ, Ds) = −E\u0000 x,Dp(x) \u0001 ∼Ds TX t=1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L(sθ, Ds) = −E\u0000 x,Dp(x) \u0001 ∼Ds TX t=1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page2_13",
+      "presentation": {
+        "latex": "We aim to create Dp(x) = \b x<t, x+ t , x− t T",
+        "unicode_plain": "We aim to create Dp(x) = \b x<t, x+ t , x− t T"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "We aim to create Dp(x) = \b x<t, x+ t , x− t T"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page2_14",
+      "presentation": {
+        "latex": "t=1 for each instance x. In particular, we use the ground- truth token xt as x+ t , which is desirable to be cor- rect. Regarding x− t , our goal is to select tokens that",
+        "unicode_plain": "t=1 for each instance x. In particular, we use the ground- truth token xt as x+ t , which is desirable to be cor- rect. Regarding x− t , our goal is to select tokens that"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1 for each instance x. In particular, we use the ground- truth token xt as x+ t , which is desirable to be cor- rect. Regarding x− t , our goal is to select tokens that"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

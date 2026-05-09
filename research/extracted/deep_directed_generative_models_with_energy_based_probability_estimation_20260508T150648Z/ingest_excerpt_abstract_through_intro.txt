@@ -1,0 +1,235 @@
+Abstract
+Training energy-based probabilistic models is confronted with apparently in-
+tractable sums, whose Monte Carlo estimation requires sampling from the estimated
+probability distribution in the inner loop of training. This can be approximately
+achieved by Markov chain Monte Carlo methods, but may still face a formidable
+obstacle that is the difﬁculty of mixing between modes with sharp concentrations
+of probability. Whereas an MCMC process is usually derived from a given energy
+function based on mathematical considerations and requires an arbitrarily long
+time to obtain good and varied samples, we propose to train a deep directed genera-
+tive model (not a Markov chain) so that its sampling distribution approximately
+matches the energy function that is being trained. Inspired by generative adversarial
+networks, the proposed framework involves training of two models that represent
+dual views of the estimated probability distribution: the energy function (mapping
+an input conﬁguration to a scalar energy value) and the generator (mapping a noise
+vector to a generated conﬁguration), both represented by deep neural networks.
+1 Introduction
+Energy-based models capture dependencies over random variables of interest by deﬁning an energy
+function, and the probability distribution can be further obtained by normalizing the exponentiated and
+negated energy function. The energy function associates each conﬁguration of random variables with
+a scalar energy value, and lower energy values are assigned to more likely or plausible conﬁgurations.
+The energy function is typically used in order to parametrize undirected graphical models, such as
+Boltzmann machines [1], in the form of a Boltzmann distribution with an appropriate normalization
+factor. In general, the normalization factor introduces some difﬁculties during the maximum likelihood
+training of energy-based models, because it is a sum over all conﬁgurations of random variables
+and the corresponding gradient is an average of the energy gradient for conﬁgurations sampled
+from the model itself. Not only is this sum intractable, but exact Monte Carlo sampling from it
+is also intractable. In order to estimate the gradients of the normalization factor, Markov chain
+Monte Carlo (MCMC) methods are typically used to obtain approximate samples from the model
+distribution. However, it is usual that MCMC methods make small moves as probable that are very
+unlikely to jump between separate modes As the model distribution becomes sharper with multiple
+modes separated by very low probability regions during the training, the difﬁculty of sampling
+from MCMC methods arises in this context [ 4]. In order to sidestep this problem, we propose to
+train a deep directed generative model that produces a sample by deterministically transforming
+an independent and identically distributed (i.i.d.) random sample, such as a uniform variate. This
+avoids the need of a sequential process with an arbitrarily long computation time to generate samples
+for training energy-based probabilistic models. In the proposed framework, the learned knowledge
+∗CIFAR Senior Member
+arXiv:1606.03439v1  [cs.LG]  10 Jun 2016
+is now represented through two complementary models and dual views: the energy function and
+the generator. The energy function is trained in a way estimating the maximum likelihood gradient
+that the approximate samples from the model (needed to estimate the gradient of the normalization
+factor) are obtained from the generator model rather than from a Markov chain. The generator is
+trained in a similar way as generative adversarial networks (GAN) [6], i.e., the energy function can
+be considered as a discriminator: low energy corresponds to "real" data (because the energy function
+is trained to assign low energy on training examples) and high energy to "fake" or generated data
+(when the generator is putting probability mass in wrong places). The energy function thus provides
+gradients that encourage the generator to produce lower energy samples. Since the generator of GAN
+suffers from a missing mode problem, we introduce a regularization term that indirectly maximizes
+the entropy in the training objective of the generator, which are empirically shown to be essential to
+obtain more plausible samples.
+2 Energy-Based Probabilistic Models
+2.1 Products of Experts
+Energy-based models associate a scalar energy value to each conﬁguration of random variables,
+which we consider it as input data x, with an energy function EΘ and a trainable parameter set Θ [11].
+The energy function is typically trained to assign lower energy values to more plausible or desirable
+conﬁgurations, i.e., where the training examples are. Moreover, it can be extended into a probabilistic
+model by using a Boltzmann distribution (also called Gibbs distribution):
+PΘ(x) = e−EΘ(x)
+ZΘ
+ZΘ =
+∑
+x
+e−EΘ(x) (1)
+where Zθ is a normalization factor and also called as a partition function. As we typically deﬁne the
+energy function as a sum of multiple terms, we can associate each term with an "expert", and the
+corresponding probability distribution is expressed as a product of experts (PoE) [7]:
+EΘ(x) =
+∑
+i
+˜Eθi(x) PΘ(x) = e− ∑
+i
+˜Eθi(x)
+ZΘ
+= 1
+ZΘ
+∏
+i
+e− ˜Eθi(x) = 1
+ZΘ
+∏
+i
+˜Pθi(x) (2)
+Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a
+parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For
+example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set
+of unnormalized distributions in the form of Student-t distribution, which has heavier tails than a
+normal distribution:
+˜Pθi(x) = 1(
+1 + 1
+2(W T
+i x)2)αi αi > 0
+EΘ(x) =
+∑
+i
+αi log
+(
+1 +
+(
+W T
+i x
+)2) (3)
+It is also possible to use weak classiﬁers based on logistic regression as unnormalized distributions.
+Each weak classiﬁer corresponds to a single feature detector, and the responses of all weak classiﬁer
+are aggregated to assign an energy value:
+˜Pθi(x) = σ
+(
+W T
+i x + bi
+)
+EΘ(x) =
+∑
+i
+log
+(
+1 + e−(WT
+i x+bi)) (4)
+Interestingly, restricted Boltzmann machines (RBM) [8] have a free energy over Gaussian visible
+units x with terms associated with binary hidden units h corresponding to experts that try to classify
+the input data x as being "real" or "fake" data, and the energy gets low when all experts agree:
+EΘ(x) = 1
+σ2 xT x− bT x−
+∑
+i
+log
+∑
+hi
+ehi(WT
+i x+bi)
+= 1
+σ2 xT x− bT x−
+∑
+i
+log
+(
+1 + eWT
+i x+bi
+) (5)
+2
+2.2 Learning and Intractability
+In order to estimate the data distribution PD, which is the target distribution, by using energy-based
+probabilistic models, the energy model distribution PΘ is trained to approach PD as much as possible.
+This is done by minimizing the Kullback-Leibler (KL) divergence between the two distributions
+DKL
+(
+PD(x)||PΘ(x)
+)
+, and it corresponds to the maximum likelihood objective:
+Θ∗ = argmin
+Θ
+DKL
+(
+PD(x)||PΘ(x)
+)
+= argmin
+Θ
+Ex∼PD(x)
+[
+− log PΘ(x)
+]
+(6)
+With this training criterion, we deﬁne the loss functionL(Θ,D′) =− 1
+N
+∑N
+i=1 log PΘ(x(i)) with
+the training datasetD′ ={x(i)}N
+i=1, which we assume samples are drawn from the data distribution.
+Moreover, we see that it is an approximation of Eq. 6 based on using the empirical distribution instead
+of the actual data distribution. This loss can be minimized by gradient-based optimization methods,
+and the parameter set Θ is updated with the following gradient:
+∂L(Θ,D′)
+∂Θ =− 1
+N
+N∑
+i=1
+∂ log PΘ(x(i))
+∂Θ
+= 1
+N
+N∑
+i=1
+∂EΘ(x(i))
+∂Θ − Ex∼PΘ(x)
+[
+∂EΘ(x)
+∂Θ
+]
+≈ Ex+∼PD(x)
+[
+∂EΘ(x+)
+∂Θ
+]
+  
+Positive Phase
+− Ex−∼PΘ(x)
+[
+∂EΘ(x−)
+∂Θ
+]
+  
+Negative Phase
+(7)
+The gradient is traditionally decomposed into two different terms that are referred to as the positive
+and negative phase terms, respectively. We can consider these two terms as two distinct forces
+shaping the energy function. The positive phase term is to decrease the energy of training examples
+x+ (positive samples), whereas the negative phase term is to increase the energy of samples x−
+(negative samples) drawn from the energy model distribution. If the energy model distribution
+matches the data distribution, the two terms are equal that the log-likelihood gradient is at a local
+maximum. The expectation in the positive phase can be computed exactly by summing over all
+training examples or by using Monte Carlo estimation for stochastic gradient descent. However, the
+expectation in the negative phase requires sampling based on the model associated with the energy
+function, and in general exact unbiased sampling is not tractable. Therefore, MCMC methods are
+typically used with an iterative sampling procedure. If the data distribution has a complex distribution
+with many sharp modes, the training eventually reaches a point, where an MCMC sampling from
+the model becomes problematic taking too much time to mix between modes [ 3]. It means the
+ability to get good approximate model samples is an important ingredient in training energy-based
+probabilistic models. This motivated this work to train a deep directed generative model whose
+sampling distribution approximates the energy model distributionthat it doesn’t require an MCMC
+but a simple computation such as transforming an i.i.d. random sample (the latent variable) with a
+neural network.
+2.3 Training Models as a Classiﬁcation Problem
+In this section, we revisit the old idea that the update rule in Sec. 2.2 can be viewed as learning
+a classiﬁer [2, 17]. Let us ﬁrst assume that we are training a binary classiﬁer to separate positive
+samples from negative samples, and an additional binary variable y is used as a label to indicate
+whether a sample x is a positive sample x+ = (x, y = 1)∼ PD(x) or a negative sample x− =
+(x, y = 0)∼ PΘ(x). Then, we deﬁne the binary classiﬁer asPψ(y = 1|x) = σ
+(
+− E′
+ψ(x)
+)
+, where
+σ(·) is a sigmoid function, and E′
+ψ(x) is an unnormalized discriminating function, such as the energy
+function in Eq. 1. This can be trained by minimizing the expected negative conditional log-likelihood
+over the joint distribution P (x, y) with the data distribution PD(x) = P (x|y = 1) and energy model
+distribution PΘ(x) = P (x|y = 0) and assuming P (y = 0) = P (y = 1) = 1

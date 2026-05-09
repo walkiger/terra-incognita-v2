@@ -1,0 +1,1 @@
+{"document_id": "arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z", "generated_at": "2026-05-08T15:08:49Z", "schemas": {"method_taxonomy_tags": ["bayesian_inference", "benchmark_or_dataset", "llm_prompting"], "tagging_rules_version": "prB-20260508"}, "entities": {"datasets": ["GFlowNet"], "tasks": [], "models": [], "reported_numbers": []}}

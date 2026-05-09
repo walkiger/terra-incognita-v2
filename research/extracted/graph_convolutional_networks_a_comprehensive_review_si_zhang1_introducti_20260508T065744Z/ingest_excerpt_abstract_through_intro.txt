@@ -1,0 +1,125 @@
+Abstract 
+Graphs naturally appear in numerous application domains, ranging from social analysis, 
+bioinformatics to computer vision. The unique capability of graphs enables capturing 
+the structural relations among data, and thus allows to harvest more insights com-
+pared to analyzing data in isolation. However, it is often very challenging to solve the 
+learning problems on graphs, because (1) many types of data are not originally struc-
+tured as graphs, such as images and text data, and (2) for graph-structured data, the 
+underlying connectivity patterns are often complex and diverse. On the other hand, 
+the representation learning has achieved great successes in many areas. Thereby, a 
+potential solution is to learn the representation of graphs in a low-dimensional Euclid-
+ean space, such that the graph properties can be preserved. Although tremendous 
+efforts have been made to address the graph representation learning problem, many 
+of them still suffer from their shallow learning mechanisms. Deep learning models on 
+graphs (e.g., graph neural networks) have recently emerged in machine learning and 
+other related areas, and demonstrated the superior performance in various problems. 
+In this survey, despite numerous types of graph neural networks, we conduct a com-
+prehensive review specifically on the emerging field of graph convolutional networks, 
+which is one of the most prominent graph deep learning models. First, we group the 
+existing graph convolutional network models into two categories based on the types 
+of convolutions and highlight some graph convolutional network models in details. 
+Then, we categorize different graph convolutional networks according to the areas of 
+their applications. Finally, we present several open challenges in this area and discuss 
+potential directions for future research.
+Keywords: Graph convolutional networks, Graph representation learning, Deep 
+learning, Spectral methods, Spatial methods, Aggregation mechanism
+Open Access
+© The Author(s) 2019. This article is distributed under the terms of the Creative Commons Attribution 4.0 International License 
+(http://creat iveco mmons .org/licen ses/by/4.0/), which permits unrestricted use, distribution, and reproduction in any medium, 
+provided you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and 
+indicate if changes were made.
+RESEARCH
+Zhang et al. Comput Soc Netw            (2019) 6:11  
+https://doi.org/10.1186/s40649-019-0069-y
+*Correspondence:   
+sizhang2@illinois.edu 
+1 University of Illinois Urbana-
+Champaign, Champaign, USA
+Full list of author information 
+is available at the end of the 
+article
+Page 2 of 23Zhang et al. Comput Soc Netw            (2019) 6:11 
+modeling the transactions among people as a graph, the complex transaction patterns 
+can be mined for synthetic identity detection [3] and money laundering detection [6].
+However, the complex structure of graphs [7] often hampers the capability of gain -
+ing the true insights underlying the graphs. Such complexity, for example, resides in 
+the non-Euclidean nature of the graph-structured data. A potential solution to dealing 
+with the complex patterns is to learn the graph representations in a low-dimensional 
+Euclidean space via embedding techniques, including the traditional graph embedding 
+methods [8–10], and the recent network embedding methods [11, 12]. Once the low-
+dimensional representations are learned, many graph-related problems can be easily 
+done, such as the classic node classification and link prediction [12]. There exist many 
+thorough reviews on both traditional graph embedding and recent network embed
+-
+ding methods. For example, Yan et al. review several well-established traditional graph 
+embedding methods and discuss the general framework for graph dimensionality reduc
+-
+tion [13]. Hamilton et  al. review the general graph representation learning methods, 
+including node embedding and subgraph embedding [14]. Furthermore, Cui et al. dis
+-
+cuss the differences between the traditional graph embedding and the recent network 
+embedding methods [15]. One notable difference is that the recent network embedding 
+is more suitable for the task-specific network inference. Other existing literature reviews 
+on network embedding include [16, 17].
+Despite some successes of these embedding methods, many of them suffer from the 
+limitations of the shallow learning mechanisms [11, 12] and might fail to discover the 
+more complex patterns behind the graphs. Deep learning models, on the other hand, 
+have been demonstrated their power in many applications. For example, convolution 
+neural networks (CNNs) achieve a promising performance in many computer vision [18] 
+and natural language processing [19] applications. One key reason of such successes is 
+that CNN models can highly exploit the stationarity and compositionality properties of 
+certain types of data. In particular, due to the grid-like nature of images, the convolu
+-
+tional layers in CNNs enable to take advantages of the hierarchical patterns and extract 
+high-level features of the images to achieve a great expressive capability. The basic CNN 
+models aim to learn a set of fixed-size trainable localized filters which scan every pixel 
+in the images and combine the surrounding pixels. The core components include the 
+convolutional and pooling layers that can be operated on the data with an Euclidean or 
+grid-like structure.
+However, the non-Euclidean characteristic of graphs (e.g., the irregular structure) 
+makes the convolutions and filtering on graphs not as well-defined as on images. In the 
+past decades, researchers have been working on how to conduct convolutional opera
+-
+tions on graphs. One main research direction is to define graph convolutions from the 
+spectral perspective, and thus, graph signal processing, such as graph filtering and graph 
+wavelets, has attracted lots of research interests. Shuman et  al. give a comprehensive 
+overview of graph signal processing, including the common operations and analyses 
+on graphs [20]. Briefly speaking, spectral graph convolutions are defined in the spec
+-
+tral domain based on graph Fourier transform, an analogy of 1-D signal Fourier trans -
+form. In this way, the spectral-based graph convolutions can be computed by taking 
+the inverse Fourier transform of the multiplication between two Fourier transformed 
+graph signals. On the other hand, graph convolution can be also defined in the spatial 
+Page 3 of 23
+Zhang et al. Comput Soc Netw            (2019) 6:11 
+domain (i.e., vertex domain) as the aggregations of node representations from the node 
+neighborhoods. The emergence of these operations opens a door to graph convolutional 
+networks. Generally speaking, graph convolutional network models are a type of neural 
+network architectures that can leverage the graph structure and aggregate node informa-
+tion from the neighborhoods in a convolutional fashion. Graph convolutional networks 
+have a great expressive power to learn the graph representations and have achieved a 
+superior performance in a wide range of tasks and applications. Note that in the past few 
+years, many other types of graph neural networks have been proposed, including (but 
+are not limited to): (1) graph auto-encoder [21], (2) graph generative model [22, 23], (3) 
+graph attention model [24, 25], and (4) graph recurrent neural networks [26, 27].
+There exist several other related surveys on the topic of graph neural networks. Bron
+-
+stein et  al. review the mathematical details and a number of early approaches of geo -
+metric deep learning for both graphs and manifolds [28]. Zhang et al. present a detailed 
+review that covers many existing graph neural networks beyond graph convolutional 
+networks, such as graph attention networks and gated graph neural network [29]. In 
+addition, Wu et al. also review the studies on graph generative models and neural net
+-
+works for spatial-temporal networks [30]. Besides, Lee et  al. present an overview of 
+graph neural networks with a special focus on graph attention networks [31]. However, 
+since graph convolutional network is a very hot and fast developing research area, these 
+existing surveys may not cover the most up-to-date models. In this survey, we focus spe
+-
+cifically on reviewing the existing literature of the graph convolutional networks and 
+cover the recent progress. The main contributions of this survey are summarized as 
+follows:
+1. We introduce two taxonomies to group the existing graph convolutional network 
+models (Fig.  1). First, we categorize graph convolutional networks into spectral-
+based and spatial-based models depending on the types of convolutions. Then, 
+we introduce several graph convolutional networks according to their application 
+domains.

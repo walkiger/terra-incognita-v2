@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z",
+  "source_pdf": "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/source.pdf",
+  "title_hint": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation Emmanuel Doina",
+  "updated_at": "2026-05-08T15:10:01Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:06:54Z",
+      "artifacts": [
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/source.pdf",
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:01Z",
+      "artifacts": [
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:01Z",
+      "artifacts": [
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:01Z",
+      "artifacts": [
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:01Z",
+      "artifacts": [
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/l4_analysis.json",
+        "research/extracted/flow_network_based_generative_models_for_non_iterative_diverse_candidate_20260508T150652Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=4b32d3c48fae2c484d492e21634618dfacc125dedcf308a3c153f09b952f0116; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "4b32d3c48fae2c484d492e21634618dfacc125dedcf308a3c153f09b952f0116"
+}

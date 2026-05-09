@@ -1,0 +1,98 @@
+Abstract
+There are many frameworks for deep generative
+modeling, each often presented with their own
+speciﬁc training algorithms and inference meth-
+ods. Here, we demonstrate the connections be-
+tween existing deep generative models and the
+recently introduced GFlowNet framework (Ben-
+gio et al., 2021b), a probabilistic inference ma-
+chine which treats sampling as a decision-making
+process. This analysis sheds light on their over-
+lapping traits and provides a unifying viewpoint
+through the lens of learning with Markovian tra-
+jectories. Our framework provides a means for
+unifying training and inference algorithms, and
+provides a route to shine a unifying light over
+many generative models. Beyond this, we pro-
+vide a practical and experimentally veriﬁed recipe
+for improving generative modeling with insights
+from the GFlowNet perspective.
+1. Introduction
+Generative models are a class of machine learning algo-
+rithms that use probabilistic methods to capture and perform
+inference over complex distributions, usually from a given
+training dataset. They have a wide range of applications,
+including data generation, anomaly detection, probabilistic
+inference and density estimation. In the past few decades, a
+variety of different generative models have been developed,
+each with its own set of assumptions and capabilities.
+Early examples of generative models include probabilistic
+graphical models, such as Bayesian networks and Markov
+random ﬁelds (Koller & Friedman, 2009; Murphy, 2012),
+and latent variable models, such as latent Dirichlet alloca-
+tion (Blei et al., 2001) and Helmholtz machines (Dayan
+et al., 1995). These models have proven to be effective at
+capturing dependencies within data.
+The research on generative modeling has taken off during
+1Mila – Quebec AI Institute, Université de Montréal2Facebook
+AI Research (Meta AI) 3CIFAR. Correspondence to: Dinghuai
+Zhang <dinghuai.zhang@mila.quebec>.
+Preprint. Copyright 2023 by the authors.
+the past decade, thanks to the representational power of
+deep neural networks. One well-known example is the gen-
+erative adversarial network or GAN for short(Goodfellow
+et al., 2014), which consists of a generator network that
+stochastically produces new samples and a deterministic
+discriminator network that tries to distinguish between real
+and generated samples. Another popular method is the
+variational autoencoder (Kingma & Welling, 2013), which
+learns a hierarchical latent variable model to express the
+target distribution with the help of a variational posterior.
+Other types of generative models based on deep networks
+(deep generative models) include: normalizing ﬂows (Dinh
+et al., 2014), which transform a simple distribution into a
+target distribution using a series of invertible transforma-
+tions; autoregressive (AR) models (Bengio & Bengio, 1999;
+van den Oord et al., 2016), which model the distribution
+of a sequence of data by decomposing it into a product of
+conditional distributions; and energy-based models (Hin-
+ton, 2002; LeCun et al., 2006), which models the negative
+log probability of a distribution. Recently, denoising dif-
+fusion models (Vincent, 2011; Sohl-Dickstein et al., 2015;
+Ho et al., 2020; Song et al., 2020) have shown impressive
+results in generating high quality samples. Their modeling
+could be seen as a series of denoising steps which gradually
+transform white noise into noise-free data by stochastically
+inverting the process of transforming real data into white
+noise through a sequence of noise injection steps. Each of
+these generative models has its own set of assumptions and
+limitations, which can make it challenging to choose the
+right model for a particular task (Hu et al., 2018).
+GFlowNets (Bengio et al., 2021a;b), short for generative
+ﬂow networks, is a class of samplers which stems from a
+reinforcement learning or RL for short (Sutton & Barto,
+2005) formulation. GFlowNets treat the sampling process
+as a sequential decision-making process, and learn a stochas-
+tic (forward) policy to sample compositional objects with
+probability proportional to a given terminating reward func-
+tion. It has been demonstrated that GFlowNets are able
+to sample from diverse modes rather than being stuck in
+single modes like is typical of Markov chain Monte Carlo
+(MCMC) or variational inference methods (Zhang et al.,
+2022b; Malkin et al., 2023), which is of great importance in
+drug discovery (Jain et al., 2022a; Zhang et al., 2021).
+In this paper, we show how many existing generative models
+arXiv:2209.02606v2  [cs.LG]  31 Jan 2023
+Unifying Generative Models with GFlowNets and Beyond 2
+could be taken as special cases of GFlowNets, with their
+modeling components speciﬁed in different probabilistic
+ways. We thus propose to treat the GFlowNet as a proba-
+bilistic framework for unifying different kinds of generative
+models, and facilitate the analysis of their connections and
+possible extensions (Section 3). Further, after analysing the
+relationship between GFlowNet setup and generative model-
+ing setup in Section 4, we propose MLE-GFN, a generative
+modeling algorithm inspired by GFlowNet ideas in Sec-
+tion 5. The proposed algorithm improves the performances
+of existing generative modeling baselines on both discrete
+and continuous image modeling tasks.

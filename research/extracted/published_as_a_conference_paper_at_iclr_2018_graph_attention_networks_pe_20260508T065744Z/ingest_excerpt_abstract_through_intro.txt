@@ -1,0 +1,183 @@
+ABSTRACT
+We present graph attention networks (GATs), novel neural network architectures
+that operate on graph-structured data, leveraging masked self-attentional layers to
+address the shortcomings of prior methods based on graph convolutions or their
+approximations. By stacking layers in which nodes are able to attend over their
+neighborhoods’ features, we enable (implicitly) specifying different weights to
+different nodes in a neighborhood, without requiring any kind of costly matrix op-
+eration (such as inversion) or depending on knowing the graph structure upfront.
+In this way, we address several key challenges of spectral-based graph neural net-
+works simultaneously, and make our model readily applicable to inductive as well
+as transductive problems. Our GAT models have achieved or matched state-of-the-
+art results across four established transductive and inductive graph benchmarks:
+the Cora, Citeseer and Pubmed citation network datasets, as well as a protein-
+protein interaction dataset (wherein test graphs remain unseen during training).
+1 I NTRODUCTION
+Convolutional Neural Networks (CNNs) have been successfully applied to tackle problems such
+as image classiﬁcation (He et al., 2016), semantic segmentation (J ´egou et al., 2017) or machine
+translation (Gehring et al., 2016), where the underlying data representation has a grid-like structure.
+These architectures efﬁciently reuse their local ﬁlters, with learnable parameters, by applying them
+to all the input positions.
+However, many interesting tasks involve data that can not be represented in a grid-like structure and
+that instead lies in an irregular domain. This is the case of 3D meshes, social networks, telecommu-
+nication networks, biological networks or brain connectomes. Such data can usually be represented
+in the form of graphs.
+There have been several attempts in the literature to extend neural networks to deal with arbitrarily
+structured graphs. Early work used recursive neural networks to process data represented in graph
+domains as directed acyclic graphs (Frasconi et al., 1998; Sperduti & Starita, 1997). Graph Neural
+Networks (GNNs) were introduced in Gori et al. (2005) and Scarselli et al. (2009) as a generalization
+of recursive neural networks that can directly deal with a more general class of graphs, e.g. cyclic,
+directed and undirected graphs. GNNs consist of an iterative process, which propagates the node
+states until equilibrium; followed by a neural network, which produces an output for each node
+∗Work performed while the author was at the Montr´eal Institute of Learning Algorithms.
+1
+arXiv:1710.10903v3  [stat.ML]  4 Feb 2018
+Published as a conference paper at ICLR 2018
+based on its state. This idea was adopted and improved by Li et al. (2016), which propose to use
+gated recurrent units (Cho et al., 2014) in the propagation step.
+Nevertheless, there is an increasing interest in generalizing convolutions to the graph domain. Ad-
+vances in this direction are often categorized as spectral approaches and non-spectral approaches.
+On one hand, spectral approaches work with a spectral representation of the graphs and have been
+successfully applied in the context of node classiﬁcation. In Bruna et al. (2014), the convolution
+operation is deﬁned in the Fourier domain by computing the eigendecomposition of the graph Lapla-
+cian, resulting in potentially intense computations and non-spatially localized ﬁlters. These issues
+were addressed by subsequent works. Henaff et al. (2015) introduced a parameterization of the
+spectral ﬁlters with smooth coefﬁcients in order to make them spatially localized. Later, Defferrard
+et al. (2016) proposed to approximate the ﬁlters by means of a Chebyshev expansion of the graph
+Laplacian, removing the need to compute the eigenvectors of the Laplacian and yielding spatially
+localized ﬁlters. Finally, Kipf & Welling (2017) simpliﬁed the previous method by restricting the
+ﬁlters to operate in a 1-step neighborhood around each node. However, in all of the aforementioned
+spectral approaches, the learned ﬁlters depend on the Laplacian eigenbasis, which depends on the
+graph structure. Thus, a model trained on a speciﬁc structure can not be directly applied to a graph
+with a different structure.
+On the other hand, we have non-spectral approaches (Duvenaud et al., 2015; Atwood & Towsley,
+2016; Hamilton et al., 2017), which deﬁne convolutions directly on the graph, operating on groups
+of spatially close neighbors. One of the challenges of these approaches is to deﬁne an operator which
+works with different sized neighborhoods and maintains the weight sharing property of CNNs. In
+some cases, this requires learning a speciﬁc weight matrix for each node degree (Duvenaud et al.,
+2015), using the powers of a transition matrix to deﬁne the neighborhood while learning weights for
+each input channel and neighborhood degree (Atwood & Towsley, 2016), or extracting and normal-
+izing neighborhoods containing a ﬁxed number of nodes (Niepert et al., 2016). Monti et al. (2016)
+presented mixture model CNNs (MoNet), a spatial approach which provides a uniﬁed generaliza-
+tion of CNN architectures to graphs. More recently, Hamilton et al. (2017) introduced GraphSAGE,
+a method for computing node representations in an inductive manner. This technique operates by
+sampling a ﬁxed-size neighborhood of each node, and then performing a speciﬁc aggregator over
+it (such as the mean over all the sampled neighbors’ feature vectors, or the result of feeding them
+through a recurrent neural network). This approach has yielded impressive performance across sev-
+eral large-scale inductive benchmarks.
+Attention mechanisms have become almost a de facto standard in many sequence-based tasks (Bah-
+danau et al., 2015; Gehring et al., 2016). One of the beneﬁts of attention mechanisms is that they
+allow for dealing with variable sized inputs, focusing on the most relevant parts of the input to make
+decisions. When an attention mechanism is used to compute a representation of a single sequence,
+it is commonly referred to as self-attention or intra-attention. Together with Recurrent Neural Net-
+works (RNNs) or convolutions, self-attention has proven to be useful for tasks such as machine
+reading (Cheng et al., 2016) and learning sentence representations (Lin et al., 2017). However,
+Vaswani et al. (2017) showed that not only self-attention can improve a method based on RNNs or
+convolutions, but also that it is sufﬁcient for constructing a powerful model obtainingstate-of-the-art
+performance on the machine translation task.
+Inspired by this recent work, we introduce an attention-based architecture to perform node classiﬁca-
+tion of graph-structured data. The idea is to compute the hidden representations of each node in the
+graph, by attending over its neighbors, following aself-attention strategy. The attention architecture
+has several interesting properties: (1) the operation is efﬁcient, since it is parallelizable across node-
+neighbor pairs; (2) it can be applied to graph nodes having different degrees by specifying arbitrary
+weights to the neighbors; and (3) the model is directly applicable to inductive learning problems,
+including tasks where the model has to generalize to completely unseen graphs. We validate the
+proposed approach on four challenging benchmarks: Cora, Citeseer and Pubmed citation networks
+as well as an inductive protein-protein interactiondataset, achieving or matching state-of-the-art re-
+sults that highlight the potential of attention-based models when dealing with arbitrarily structured
+graphs.
+It is worth noting that, as Kipf & Welling (2017) and Atwood & Towsley (2016), our work can also
+be reformulated as a particular instance of MoNet (Monti et al., 2016). Moreover, our approach of
+2
+Published as a conference paper at ICLR 2018
+sharing a neural network computation across edges is reminiscent of the formulation of relational
+networks (Santoro et al., 2017) and V AIN (Hoshen, 2017), wherein relations between objects or
+agents are aggregated pair-wise, by employing a shared mechanism. Similarly, our proposed at-
+tention model can be connected to the works by Duan et al. (2017) and Denil et al. (2017), which
+use a neighborhood attention operation to compute attention coefﬁcients between different objects
+in an environment. Other related approaches include locally linear embedding (LLE) (Roweis &
+Saul, 2000) and memory networks (Weston et al., 2014). LLE selects a ﬁxed number of neighbors
+around each data point, and learns a weight coefﬁcient for each neighbor to reconstruct each point
+as a weighted sum of its neighbors. A second optimization step extracts the point’s feature embed-
+ding. Memory networks also share some connections with our work, in particular, if we interpret
+the neighborhood of a node as the memory, which is used to compute the node features by attending
+over its values, and then is updated by storing the new features in the same position.
+2 GAT ARCHITECTURE
+In this section, we will present the building block layer used to construct arbitrary graph attention
+networks (through stacking this layer), and directly outline its theoretical and practical beneﬁts and
+limitations compared to prior work in the domain of neural graph processing.
+2.1 G RAPH ATTENTIONAL LAYER
+We will start by describing a single graph attentional layer , as the sole layer utilized throughout
+all of the GAT architectures used in our experiments. The particular attentional setup utilized by us
+closely follows the work of Bahdanau et al. (2015)—but the framework is agnostic to the particular
+choice of attention mechanism.
+The input to our layer is a set of node features, h ={⃗h1,⃗h2,..., ⃗hN},⃗hi∈ RF , where N is the
+number of nodes, andF is the number of features in each node. The layer produces a new set of node
+features (of potentially different cardinalityF′), h′ ={⃗h′
+1,⃗h′
+2,..., ⃗h′
+N},⃗h′
+i∈ RF ′
+, as its output.
+In order to obtain sufﬁcient expressive power to transform the input features into higher-level fea-
+tures, at least one learnable linear transformation is required. To that end, as an initial step, a shared
+linear transformation, parametrized by a weight matrix, W∈ RF ′×F , is applied to every node. We
+then perform self-attention on the nodes—a shared attentional mechanism a : RF ′
+× RF ′
+→ R
+computes attention coefﬁcients
+eij =a(W⃗hi, W⃗hj) (1)
+that indicate theimportance of nodej’s features to nodei. In its most general formulation, the model
+allows every node to attend on every other node, dropping all structural information. We inject the
+graph structure into the mechanism by performingmasked attention—we only computeeij for nodes
+j∈N i, whereNi is some neighborhood of nodei in the graph. In all our experiments, these will
+be exactly the ﬁrst-order neighbors ofi (includingi). To make coefﬁcients easily comparable across
+different nodes, we normalize them across all choices ofj using the softmax function:
+αij = softmax j(eij) = exp(eij)∑
+k∈Ni
+exp(eik). (2)
+In our experiments, the attention mechanism a is a single-layer feedforward neural network,
+parametrized by a weight vector⃗a∈ R2F ′
+, and applying the LeakyReLU nonlinearity (with negative
+input slope α = 0.2). Fully expanded out, the coefﬁcients computed by the attention mechanism
+(illustrated by Figure 1 (left)) may then be expressed as:
+αij =
+exp
+(
+LeakyReLU
+(
+⃗aT [W⃗hi∥W⃗hj]
+))
+∑
+k∈Ni exp
+(
+LeakyReLU
+(
+⃗aT [W⃗hi∥W⃗hk]
+)) (3)
+where·T represents transposition and∥ is the concatenation operation.
+Once obtained, the normalized attention coefﬁcients are used to compute a linear combination of the
+features corresponding to them, to serve as the ﬁnal output features for every node (after potentially
+3
+Published as a conference paper at ICLR 2018
+αij
+⃗a
+softmaxj
+W⃗hi W⃗hj
+⃗h1
+⃗h2
+⃗h3
+⃗h4
+⃗h5
+⃗h6
+⃗ α16
+⃗ α11
+⃗ α12
+⃗ α13
+⃗ α14
+⃗ α15
+⃗h′
+1
+concat/avg
+Figure 1: Left: The attention mechanism a(W⃗hi, W⃗hj) employed by our model, parametrized
+by a weight ve

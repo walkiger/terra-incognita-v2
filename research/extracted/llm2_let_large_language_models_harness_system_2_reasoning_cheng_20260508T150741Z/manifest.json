@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z",
+  "source_pdf": "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/source.pdf",
+  "title_hint": "LLM2: Let Large Language Models Harness System 2 Reasoning * Cheng",
+  "updated_at": "2026-05-08T15:11:16Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:42Z",
+      "artifacts": [
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/source.pdf",
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:16Z",
+      "artifacts": [
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:16Z",
+      "artifacts": [
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:16Z",
+      "artifacts": [
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:11:16Z",
+      "artifacts": [
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/l4_analysis.json",
+        "research/extracted/llm2_let_large_language_models_harness_system_2_reasoning_cheng_20260508T150741Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=4b214e19a468c8aa946fc36e6e5e7da1295d9ab4118959081c2e12a52f3a803d; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "4b214e19a468c8aa946fc36e6e5e7da1295d9ab4118959081c2e12a52f3a803d"
+}

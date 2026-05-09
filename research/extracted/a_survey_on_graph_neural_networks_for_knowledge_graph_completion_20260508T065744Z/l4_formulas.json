@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:08:30Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "M(nv,nw,evw) =f(nv,nv,evw) where f is nonlinear function and is usually taken as MLP. Then the net message sent to node v is computed by aggregating the message from all its neighbours w using the equation below- mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw))",
+        "unicode_plain": "M(nv,nw,evw) =f(nv,nv,evw) where f is nonlinear function and is usually taken as MLP. Then the net message sent to node v is computed by aggregating the message from all its neighbours w using the equation below- mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw))"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "M(nv,nw,evw) =f(nv,nv,evw) where f is nonlinear function and is usually taken as MLP. Then the net message sent to node v is computed by aggregating the message from all its neighbours w using the equation below- mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw))"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw)) where N(v) is neighbour set of v, t is timestep when messages are being aggregated and AGG is aggre- gation function that can be sum, mean or any other function. Finally, the embedding for node v are updated using the update function UPD as given",
+        "unicode_plain": "mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw)) where N(v) is neighbour set of v, t is timestep when messages are being aggregated and AGG is aggre- gation function that can be sum, mean or any other function. Finally, the embedding for node v are updated using the update function UPD as given"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "mt+1v =AGGwϵN (v)(M(ntv,ntw,etvw)) where N(v) is neighbour set of v, t is timestep when messages are being aggregated and AGG is aggre- gation function that can be sum, mean or any other function. Finally, the embedding for node v are updated using the update function UPD as given"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "nt+1v =UPD (mt+1v,ntv) 3.2 Graph Convolution Network Graph Convolution Network is based on spectral graph convolution networks. Here the dataset con- sists of a graph with vertex set, adjacency matrix, and feature set for each node. These features could",
+        "unicode_plain": "nt+1v =UPD (mt+1v,ntv) 3.2 Graph Convolution Network Graph Convolution Network is based on spectral graph convolution networks. Here the dataset con- sists of a graph with vertex set, adjacency matrix, and feature set for each node. These features could"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "nt+1v =UPD (mt+1v,ntv) 3.2 Graph Convolution Network Graph Convolution Network is based on spectral graph convolution networks. Here the dataset con- sists of a graph with vertex set, adjacency matrix, and feature set for each node. These features could"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "hvk =σ(Wk(ΣuϵN (v) ⋃u hk−1 u√ ∥N(u)∥∥N(v)∥ )) 3.3 Graph Attention Network",
+        "unicode_plain": "hvk =σ(Wk(ΣuϵN (v) ⋃u hk−1 u√ ∥N(u)∥∥N(v)∥ )) 3.3 Graph Attention Network"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "hvk =σ(Wk(ΣuϵN (v) ⋃u hk−1 u√ ∥N(u)∥∥N(v)∥ )) 3.3 Graph Attention Network"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "xxx ={⃗ x1, ⃗ x2,··· , ⃗ xN}, where N is the number of nodes. Then attention weight for each edge is calculated using the equation given below. eij =a(WWW⃗ xi,WWW⃗ xj) (1) where W is weight matrix, a is any attention function, and eij is attention weight for the edge",
+        "unicode_plain": "xxx ={⃗ x1, ⃗ x2,··· , ⃗ xN}, where N is the number of nodes. Then attention weight for each edge is calculated using the equation given below. eij =a(WWW⃗ xi,WWW⃗ xj) (1) where W is weight matrix, a is any attention function, and eij is attention weight for the edge"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "xxx ={⃗ x1, ⃗ x2,··· , ⃗ xN}, where N is the number of nodes. Then attention weight for each edge is calculated using the equation given below. eij =a(WWW⃗ xi,WWW⃗ xj) (1) where W is weight matrix, a is any attention function, and eij is attention weight for the edge"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "eij =a(WWW⃗ xi,WWW⃗ xj) (1) where W is weight matrix, a is any attention function, and eij is attention weight for the edge between node i and node j. For each node i, the weights are then normalized by passing through softmax function. The output embedding for each",
+        "unicode_plain": "eij =a(WWW⃗ xi,WWW⃗ xj) (1) where W is weight matrix, a is any attention function, and eij is attention weight for the edge between node i and node j. For each node i, the weights are then normalized by passing through softmax function. The output embedding for each"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "eij =a(WWW⃗ xi,WWW⃗ xj) (1) where W is weight matrix, a is any attention function, and eij is attention weight for the edge between node i and node j. For each node i, the weights are then normalized by passing through softmax function. The output embedding for each"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "αijWWW⃗ xj) (2) 3.4 Decoder A lot of approaches that utilises GNN for KBC tasks uses them as auto encoder to help provide information of neighbouring relation triplets. Then, pre-existing scoring function like DistMult is en-",
+        "unicode_plain": "αijWWW⃗ xj) (2) 3.4 Decoder A lot of approaches that utilises GNN for KBC tasks uses them as auto encoder to help provide information of neighbouring relation triplets. Then, pre-existing scoring function like DistMult is en-"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "αijWWW⃗ xj) (2) 3.4 Decoder A lot of approaches that utilises GNN for KBC tasks uses them as auto encoder to help provide information of neighbouring relation triplets. Then, pre-existing scoring function like DistMult is en-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "hvk+1 =σ(ΣrϵRΣjϵNv r 1 cr Wrkhjk +W0khvk) Here R is a set of relations, and Nvr denote the set of entities that connected to v by relation r.",
+        "unicode_plain": "hvk+1 =σ(ΣrϵRΣjϵNv r 1 cr Wrkhjk +W0khvk) Here R is a set of relations, and Nvr denote the set of entities that connected to v by relation r."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "hvk+1 =σ(ΣrϵRΣjϵNv r 1 cr Wrkhjk +W0khvk) Here R is a set of relations, and Nvr denote the set of entities that connected to v by relation r."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "hvk+1 =σ(ΣjϵNvαtkg(hvk,hjk))",
+        "unicode_plain": "hvk+1 =σ(ΣjϵNvαtkg(hvk,hjk))"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "hvk+1 =σ(ΣjϵNvαtkg(hvk,hjk))"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "cijk =W1[hi∥∥hj∥∥gk] bijk =LeakyReLU (W2cijk) Here,hi,hj are entity embeddings andgk is rela- tion embedding. These embeddings are ﬁrst ini- tialized by the additive TransE model. These em- beddings are concatenated and multiplied by the",
+        "unicode_plain": "cijk =W1[hi∥∥hj∥∥gk] bijk =LeakyReLU (W2cijk) Here,hi,hj are entity embeddings andgk is rela- tion embedding. These embeddings are ﬁrst ini- tialized by the additive TransE model. These em- beddings are concatenated and multiplied by the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "cijk =W1[hi∥∥hj∥∥gk] bijk =LeakyReLU (W2cijk) Here,hi,hj are entity embeddings andgk is rela- tion embedding. These embeddings are ﬁrst ini- tialized by the additive TransE model. These em- beddings are concatenated and multiplied by the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "bijk =LeakyReLU (W2cijk) Here,hi,hj are entity embeddings andgk is rela- tion embedding. These embeddings are ﬁrst ini- tialized by the additive TransE model. These em- beddings are concatenated and multiplied by the learned weight matrix W1 andW2, before being",
+        "unicode_plain": "bijk =LeakyReLU (W2cijk) Here,hi,hj are entity embeddings andgk is rela- tion embedding. These embeddings are ﬁrst ini- tialized by the additive TransE model. These em- beddings are concatenated and multiplied by the learned weight matrix W1 andW2, before being"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "bijk =LeakyReLU (W2cijk) Here,hi,hj are entity embeddings andgk is rela- tion embedding. These embeddings are ﬁrst ini- tialized by the additive TransE model. These em- beddings are concatenated and multiplied by the learned weight matrix W1 andW2, before being"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "αijk = exp(bijk) ΣnϵNiΣrϵRinexp(binr) Theseαijk are used to weight the edge representa- tions to compute output entity embeddings. Also, in order to not lose initial information, we add initial embeddings with the transformation to the",
+        "unicode_plain": "αijk = exp(bijk) ΣnϵNiΣrϵRinexp(binr) Theseαijk are used to weight the edge representa- tions to compute output entity embeddings. Also, in order to not lose initial information, we add initial embeddings with the transformation to the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "αijk = exp(bijk) ΣnϵNiΣrϵRinexp(binr) Theseαijk are used to weight the edge representa- tions to compute output entity embeddings. Also, in order to not lose initial information, we add initial embeddings with the transformation to the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page5_13",
+      "presentation": {
+        "latex": "transformation operators . and * as t = h.r and h = t∗r as mentioned in Cai et al. (2019). The GNN model’s scoring function for each triplet is then deﬁned by how close the transformed head entity is to the tail entity and vice versa. These transformation operators are used to deﬁne the",
+        "unicode_plain": "transformation operators . and * as t = h.r and h = t∗r as mentioned in Cai et al. (2019). The GNN model’s scoring function for each triplet is then deﬁned by how close the transformed head entity is to the tail entity and vice versa. These transformation operators are used to deﬁne the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "transformation operators . and * as t = h.r and h = t∗r as mentioned in Cai et al. (2019). The GNN model’s scoring function for each triplet is then deﬁned by how close the transformed head entity is to the tail entity and vice versa. These transformation operators are used to deﬁne the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "h = t∗r as mentioned in Cai et al. (2019). The GNN model’s scoring function for each triplet is then deﬁned by how close the transformed head entity is to the tail entity and vice versa. These transformation operators are used to deﬁne the node’s neighbor by looking separately for incom-",
+        "unicode_plain": "h = t∗r as mentioned in Cai et al. (2019). The GNN model’s scoring function for each triplet is then deﬁned by how close the transformed head entity is to the tail entity and vice versa. These transformation operators are used to deﬁne the node’s neighbor by looking separately for incom-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "h = t∗r as mentioned in Cai et al. (2019). The GNN model’s scoring function for each triplet is then deﬁned by how close the transformed head entity is to the tail entity and vice versa. These transformation operators are used to deﬁne the node’s neighbor by looking separately for incom-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

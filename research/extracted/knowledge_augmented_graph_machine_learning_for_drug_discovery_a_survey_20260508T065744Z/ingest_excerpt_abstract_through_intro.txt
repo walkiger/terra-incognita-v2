@@ -1,0 +1,43 @@
+Knowledge-augmented Graph Machine Learning for Drug Discovery: A Survey
+ZHIQIANG ZHONG, Aarhus University, Denmark
+ANASTASIA BARKOVA,WhiteLab Genomics, France
+DAVIDE MOTTIN, Aarhus University, Denmark
+The integration of Artificial Intelligence into the field of drug discovery has been a growing area of interdisciplinary scientific research.
+As of late, Graph Machine Learning (GML) has gained considerable attention for its exceptional ability to model graph-structured
+biomedical data and investigate their properties and functional relationships. Despite extensive efforts, GML methods still suffer from
+several deficiencies, such as the limited ability to handle supervision sparsity and provide interpretability in learning and inference
+processes. In response, recent studies have proposed integrating external biomedical knowledge into the GML pipeline to realise
+more precise and interpretable drug discovery with scarce training data. Nevertheless, a systematic definition for this burgeoning
+research direction is yet to be established. This survey formally summarises Knowledge-augmented Graph Machine Learning (KaGML)
+for drug discovery and organises collected KaGML works into four categories following a novel-defined taxonomy. We also present a
+comprehensive overview of long-standing drug discovery principles and provide the foundational concepts and cutting-edge techniques
+for graph-structured data and knowledge databases. To facilitate research in this promptly emerging field, we share collected practical
+resources that are valuable for intelligent drug discovery and provide an in-depth discussion of the potential avenues for future
+advancements.
+CCS Concepts: •Computing methodologies → Artificial intelligence; Machine learning algorithms; Neural networks.
+Additional Key Words and Phrases: Graph Machine Learning, Knowledge-augmented Methods, Drug Discovery, Knowledge Database,
+Knowledge Graph
+ACM Reference Format:
+Zhiqiang Zhong, Anastasia Barkova, and Davide Mottin. 2023. Knowledge-augmented Graph Machine Learning for Drug Discovery: A
+Survey. 1, 1 (July 2023), 37 pages. https://doi.org/XXXXXXX.XXXXXXX
+1 Introduction
+Drug discovery and development have been one of the most prominent and challenging research tasks for decades [76,
+111, 208]. Prior to a drug being marketed and distributed to patients, it must undergo a multitude of research validations.
+From initial early drug discovery to preclinical development, and subsequent to clinical trials and final regulatory
+approval, it usually takes 10-15 years and costs around 2 billion US dollars [42, 146, 225]. To reduce the financial burden
+and increase the success rate, researchers have been working on accelerating drug discovery by taking advantage of
+Artificial Intelligence (AI) techniques [46, 63, 86, 203, 244]. Technological advances now allow for the creation of vast
+amounts of data in areas such as genomics, proteomics, and imaging, which can be used to inform the drug discovery
+process [28, 46, 173].
+Authors’ Contact Information: Zhiqiang Zhong, Aarhus University, Aarhus, Denmark, zzhong@cs.au.dk; Anastasia Barkova, WhiteLab Genomics, Paris,
+France, barkova.anastasia@gmail.com; Davide Mottin, Aarhus University, Aarhus, Denmark, davide@cs.au.dk.
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components
+of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to
+redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.
+© 2023 ACM.
+Manuscript submitted to ACM
+Manuscript submitted to ACM 1
+arXiv:2302.08261v3  [cs.LG]  24 Jul 2024
+2 Zhong et al.
+(a) Biomedical Data are Graphs(b) Human 

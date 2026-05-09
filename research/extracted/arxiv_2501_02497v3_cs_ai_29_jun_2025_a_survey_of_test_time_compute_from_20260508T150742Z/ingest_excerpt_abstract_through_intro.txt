@@ -1,0 +1,52 @@
+arXiv:2501.02497v3  [cs.AI]  29 Jun 2025
+A Survey of Test-Time Compute: From Intuitive Inference to Deliberate
+Reasoning
+YIXIN JI, Soochow University, China
+JUNTAO LI, Soochow University, China
+YANG XIANG, Soochow University, China
+HAI YE, National University of Singapore, Singapore
+KAIXIN WU, Ant Group, China
+KAI YAO, Ant Group, China
+JIA XU, Ant Group, China
+LINJIAN MO, Ant Group, China
+MIN ZHANG, Soochow University, China
+The remarkable performance of the o1 model in complex reasoning demonstrates that test-time compute scaling can further unlock
+the model’s potential, enabling powerful System-2 thinking. However, there is still a lack of comprehensive surveys for test-time
+compute scaling. We trace the concept of test-time compute back to System-1 models. In System-1 models, test-time compute addresses
+distribution shifts and improves robustness and generalization through parameter updating, input modification, representation
+editing, and output calibration. In System-2 models, it enhances the model’s reasoning ability to solve complex problems through
+repeated sampling, self-correction, and tree search. We organize this survey according to the trend of System-1 to System-2 thinking,
+highlighting the key role of test-time compute in the transition from System-1 models to weak System-2 models, and then to strong
+System-2 models. We also point out advanced topics and future directions.1
+CCS Concepts: •Computer methodologies → Artificial intelligence; Nature language processing; Nature language genera-
+tion.
+Additional Key Words and Phrases: Large Language Models, Test-time compute, Reasoning
+ACM Reference Format:
+Yixin Ji, Juntao Li, Yang Xiang, Hai Ye, Kaixin Wu, Kai Yao, Jia Xu, Linjian Mo, and Min Zhang. 2025. A Survey of Test-Time Compute:
+From Intuitive Inference to Deliberate Reasoning. 1, 1 (July 2025), 36 pages. https://doi.org/10.1145/nnnnnnn.nnnnnnn
+1https://github.com/Dereck0602/Awesome_Test_Time_LLMs.
+Authors’ Contact Information: Yixin Ji, jiyixin169@gmail.com, Soochow University, Suzhou, China; Juntao Li, Soochow University, Suzhou, China,
+ljt@suda.edu.cn; Yang Xiang, Soochow University, Suzhou, China; Hai Ye, National University of Singapore, Singapore; Kaixin Wu, Ant Group, Hangzhou,
+China; Kai Yao, Ant Group, Hangzhou, China; Jia Xu, Ant Group, Hangzhou, China; Linjian Mo, Ant Group, Hangzhou, China; Min Zhang, Soochow
+University, Suzhou, China, minzhang@suda.edu.cn.
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components
+of this work owned by others than the author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on
+servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.
+© 2025 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+Manuscript submitted to ACM
+Manuscript submitted to ACM 1
+2 Ji et al.
+System-1 model Weak System-2 model
+test-time adaptation test-time reasoning
+Perceptual
+Distribution Shift Reasoning and Planing
+Strong System-2 model
+Cognitive
+Fig. 1. Illustration of test-time compute in the System-1 and System-2 model.
+1 Introduction
+Over the past decades, deep learning with its scaling effects has been the driving engine behind the artificial intelligence
+revolution. Particularly in the text modality, large language models (LLMs) represented by the GPT series [24, 226, 229]
+have demonstrated that larger models and more training data lead to better performance on downstream tasks. However,
+on the one hand, further scaling in the training phase becomes difficult due to the scarcity of data and computational
+resources [299]; on the other hand, existing models still perform far below expectations in terms 

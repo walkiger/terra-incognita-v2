@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z",
+  "source_pdf": "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/source.pdf",
+  "title_hint": "arXiv:2503.06337v4  [cs.LG]  12 Jun 2025 Pretraining Generative Flow Networks with Inexpensive Rewards for Molecular Graph Generation Mohit Pandey 1 Gopeshh Subbaraj 2 Artem Cherkasov 1 Martin Ester 3 Emmanuel Bengio 4",
+  "updated_at": "2026-05-08T15:09:06Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:01Z",
+      "artifacts": [
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/source.pdf",
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:06Z",
+      "artifacts": [
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:06Z",
+      "artifacts": [
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:06Z",
+      "artifacts": [
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:06Z",
+      "artifacts": [
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/l4_analysis.json",
+        "research/extracted/arxiv_2503_06337v4_cs_lg_12_jun_2025_pretraining_generative_flow_network_20260508T150759Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4534; pdf_sha256=edfb194dcca69553df48236b8f394a536abe1eb03cdaca2640d95355d725a3fe; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "edfb194dcca69553df48236b8f394a536abe1eb03cdaca2640d95355d725a3fe"
+}

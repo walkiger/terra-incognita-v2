@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "getting_sick_after_seeing_a_doctor_diagnosing_and_mitigating_knowledge_c_20260508T150722Z",
+  "extracted_at": "2026-05-08T15:10:39Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page3_1",
+      "presentation": {
+        "latex": "event pairs (e, before, eai), where i = 1, 2, · · ·, etc. The case where evaluating the temporal status of a single event (happened, happening, will happen, etc.) can also be easily adapted in this framework by replacing the features of event pairs to a single event.",
+        "unicode_plain": "event pairs (e, before, eai), where i = 1, 2, · · ·, etc. The case where evaluating the temporal status of a single event (happened, happening, will happen, etc.) can also be easily adapted in this framework by replacing the features of event pairs to a single event."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "event pairs (e, before, eai), where i = 1, 2, · · ·, etc. The case where evaluating the temporal status of a single event (happened, happening, will happen, etc.) can also be easily adapted in this framework by replacing the features of event pairs to a single event."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "b(P1, P2, r) = c(P1, P2, r)P r′∈R c(P1, P2, r′) (1) For example, in tense bias, the bias score of the tense pattern (VBD, VBZ) (past tense and third per- son singular present tense) when only considering two relations R = {before, after} is defined as:",
+        "unicode_plain": "b(P1, P2, r) = c(P1, P2, r)P r′∈R c(P1, P2, r′) (1) For example, in tense bias, the bias score of the tense pattern (VBD, VBZ) (past tense and third per- son singular present tense) when only considering two relations R = {before, after} is defined as:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(P1, P2, r) = c(P1, P2, r)P r′∈R c(P1, P2, r′) (1) For example, in tense bias, the bias score of the tense pattern (VBD, VBZ) (past tense and third per- son singular present tense) when only considering two relations R = {before, after} is defined as:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "r′∈R c(P1, P2, r′) (1) For example, in tense bias, the bias score of the tense pattern (VBD, VBZ) (past tense and third per- son singular present tense) when only considering two relations R = {before, after} is defined as: b(VBD,VBZ, before)= c(VBD, VBZ, before)",
+        "unicode_plain": "r′∈R c(P1, P2, r′) (1) For example, in tense bias, the bias score of the tense pattern (VBD, VBZ) (past tense and third per- son singular present tense) when only considering two relations R = {before, after} is defined as: b(VBD,VBZ, before)= c(VBD, VBZ, before)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "r′∈R c(P1, P2, r′) (1) For example, in tense bias, the bias score of the tense pattern (VBD, VBZ) (past tense and third per- son singular present tense) when only considering two relations R = {before, after} is defined as: b(VBD,VBZ, before)= c(VBD, VBZ, before)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "two relations R = {before, after} is defined as: b(VBD,VBZ, before)= c(VBD, VBZ, before) c(VBD, VBZ, before)+c(VBD, VBZ, after) (2) Knowledge Conflict Detection. In a set of rela- tions, those with higher bias scores indicate higher",
+        "unicode_plain": "two relations R = {before, after} is defined as: b(VBD,VBZ, before)= c(VBD, VBZ, before) c(VBD, VBZ, before)+c(VBD, VBZ, after) (2) Knowledge Conflict Detection. In a set of rela- tions, those with higher bias scores indicate higher"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "two relations R = {before, after} is defined as: b(VBD,VBZ, before)= c(VBD, VBZ, before) c(VBD, VBZ, before)+c(VBD, VBZ, after) (2) Knowledge Conflict Detection. In a set of rela- tions, those with higher bias scores indicate higher"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "b(VBD,VBZ, before)= c(VBD, VBZ, before) c(VBD, VBZ, before)+c(VBD, VBZ, after) (2) Knowledge Conflict Detection. In a set of rela- tions, those with higher bias scores indicate higher",
+        "unicode_plain": "b(VBD,VBZ, before)= c(VBD, VBZ, before) c(VBD, VBZ, before)+c(VBD, VBZ, after) (2) Knowledge Conflict Detection. In a set of rela- tions, those with higher bias scores indicate higher"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(VBD,VBZ, before)= c(VBD, VBZ, before) c(VBD, VBZ, before)+c(VBD, VBZ, after) (2) Knowledge Conflict Detection. In a set of rela- tions, those with higher bias scores indicate higher"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page4_6",
+      "presentation": {
+        "latex": "b(draw, adopt, before) = 1 .0 b(draw, approve, before) = 0 Relation Prior (warm-up) Question: What will happen in the future? True label: e2: approve. Biased Prediction: e3: adopt",
+        "unicode_plain": "b(draw, adopt, before) = 1 .0 b(draw, approve, before) = 0 Relation Prior (warm-up) Question: What will happen in the future? True label: e2: approve. Biased Prediction: e3: adopt"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(draw, adopt, before) = 1 .0 b(draw, approve, before) = 0 Relation Prior (warm-up) Question: What will happen in the future? True label: e2: approve. Biased Prediction: e3: adopt"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "b(draw, approve, before) = 0 Relation Prior (warm-up) Question: What will happen in the future? True label: e2: approve. Biased Prediction: e3: adopt b(approve, happened) = 0 .9",
+        "unicode_plain": "b(draw, approve, before) = 0 Relation Prior (warm-up) Question: What will happen in the future? True label: e2: approve. Biased Prediction: e3: adopt b(approve, happened) = 0 .9"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(draw, approve, before) = 0 Relation Prior (warm-up) Question: What will happen in the future? True label: e2: approve. Biased Prediction: e3: adopt b(approve, happened) = 0 .9"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page4_8",
+      "presentation": {
+        "latex": "b(approve, happened) = 0 .9 b(approve, future) = 0 .05 Tense (relation) (MATRES) Albright e1: told (VBD) ambassadors of 30 African countries in Washington, who came to the State Department toe2: offer (VB) condolences.",
+        "unicode_plain": "b(approve, happened) = 0 .9 b(approve, future) = 0 .05 Tense (relation) (MATRES) Albright e1: told (VBD) ambassadors of 30 African countries in Washington, who came to the State Department toe2: offer (VB) condolences."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(approve, happened) = 0 .9 b(approve, future) = 0 .05 Tense (relation) (MATRES) Albright e1: told (VBD) ambassadors of 30 African countries in Washington, who came to the State Department toe2: offer (VB) condolences."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page4_9",
+      "presentation": {
+        "latex": "b(approve, future) = 0 .05 Tense (relation) (MATRES) Albright e1: told (VBD) ambassadors of 30 African countries in Washington, who came to the State Department toe2: offer (VB) condolences. True label: e1 happens after e2; Biased Prediction: before",
+        "unicode_plain": "b(approve, future) = 0 .05 Tense (relation) (MATRES) Albright e1: told (VBD) ambassadors of 30 African countries in Washington, who came to the State Department toe2: offer (VB) condolences. True label: e1 happens after e2; Biased Prediction: before"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(approve, future) = 0 .05 Tense (relation) (MATRES) Albright e1: told (VBD) ambassadors of 30 African countries in Washington, who came to the State Department toe2: offer (VB) condolences. True label: e1 happens after e2; Biased Prediction: before"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "b(VBD, VB, before) = 0 .70 b(VBD, VB, after) = 0 .27 b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in",
+        "unicode_plain": "b(VBD, VB, before) = 0 .70 b(VBD, VB, after) = 0 .27 b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(VBD, VB, before) = 0 .70 b(VBD, VB, after) = 0 .27 b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "b(VBD, VB, after) = 0 .27 b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in spite of the e3: irritation of e4: bugs.",
+        "unicode_plain": "b(VBD, VB, after) = 0 .27 b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in spite of the e3: irritation of e4: bugs."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(VBD, VB, after) = 0 .27 b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in spite of the e3: irritation of e4: bugs."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in spite of the e3: irritation of e4: bugs. Question: What will happen in the future?",
+        "unicode_plain": "b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in spite of the e3: irritation of e4: bugs. Question: What will happen in the future?"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(VBD, VB, equal) = 0 .03 Tense (warm-up) (TORQUE) That’s what wille1: keep computer makers e2: coming (VBG) in spite of the e3: irritation of e4: bugs. Question: What will happen in the future?"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "b(VBG, happened) = 0 .42 b(VBG, future) = 0 .13 b(VBG, happening) = 0 .45 Narrative (MATRES) Now events aree1: doing the work for Schumer. Slepian’s death was among the first topics e2: raised in Saturday night’s debate between the",
+        "unicode_plain": "b(VBG, happened) = 0 .42 b(VBG, future) = 0 .13 b(VBG, happening) = 0 .45 Narrative (MATRES) Now events aree1: doing the work for Schumer. Slepian’s death was among the first topics e2: raised in Saturday night’s debate between the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(VBG, happened) = 0 .42 b(VBG, future) = 0 .13 b(VBG, happening) = 0 .45 Narrative (MATRES) Now events aree1: doing the work for Schumer. Slepian’s death was among the first topics e2: raised in Saturday night’s debate between the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "b(VBG, future) = 0 .13 b(VBG, happening) = 0 .45 Narrative (MATRES) Now events aree1: doing the work for Schumer. Slepian’s death was among the first topics e2: raised in Saturday night’s debate between the two men, ... ; True label: e1 happens after e2; Biased Prediction: before",
+        "unicode_plain": "b(VBG, future) = 0 .13 b(VBG, happening) = 0 .45 Narrative (MATRES) Now events aree1: doing the work for Schumer. Slepian’s death was among the first topics e2: raised in Saturday night’s debate between the two men, ... ; True label: e1 happens after e2; Biased Prediction: before"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "b(VBG, future) = 0 .13 b(VBG, happening) = 0 .45 Narrative (MATRES) Now events aree1: doing the work for Schumer. Slepian’s death was among the first topics e2: raised in Saturday night’s debate between the two men, ... ; True label: e1 happens after e2; Biased Prediction: before"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+Abstract
+Modern LLMs are trained to “think” primarily via explicit text generation, such as chain-of-thought
+(CoT), which defers reasoning to post-training and under-leverages pre-training data. We present
+andopen-sourceOuro, named after the recursive Ouroboros, a family of pre-trained Looped
+Language Models (LoopLM) that instead build reasoning into the pre-training phase through
+(i) iterative computation in latent space, (ii) an entropy-regularized objective for learned depth
+allocation, and (iii) scaling to7.7Ttokens. Ouro 1.4B and 2.6B models enjoy superior performance
+that match the results of up to 12B SOTA LLMs across a wide range of benchmarks. Through
+controlled experiments, we show this advantage stems not from increased knowledge capacity, but
+from superior knowledge manipulation capabilities. We also show that LoopLM yields reasoning
+traces more aligned with final outputs than explicit CoT. We hope our results show the potential of
+LoopLM as a novel scaling direction in the reasoning era.
+Correspondence:ridger@ucsc.edu,zhangge.eli@bytedance.com,huang.wenhao@bytedance.com,jsn@ucsc.edu
+Project Page & Base / Reasoning Models:http://ouro-llm.github.io
+ARC-C BBH
+MMLU-Pro
+MMLU
+MBPP+GSM8K
+Wino-
+grande
+Hellaswag
+ARC-C BBH
+MMLU-Pro
+MMLU
+HumanEval+
+MBPP+
+MATH500
+GSM8K
+Wino-
+grande
+Hellaswag
+Ouro 1.4B
+HumanEval+MATH500
+Gemma3 1B Qwen3 1.7B Gemma3 4B Qwen3 4B
+Ouro 2.6B
+Gemma3 4B Qwen3 4B Gemma3 12B Qwen3 8B
+Layer N
+Layer 2
+Layer 1
+Input 
+Embedding
+Exit Gate
+𝒑𝒊
+Head
+𝓛𝒊
+× R
+Current Loop = 𝒊 
+Figure 1Ouro Looped Language Model performance. (Left) The parameter-shared looped architecture. (Middle &
+Right) Radar plots comparing the Ouro 1.4B and 2.6B models, both with 4 recurrent steps (red), against individual
+transformer baselines. Our models demonstrate strong performance comparable to or exceeding much larger baselines.
+1
+arXiv:2510.25741v4  [cs.CL]  17 Nov 2025
+1 Introduction
+The advancement of Large Language Models (LLMs) has historically relied on scaling up model size as
+the primary driver, accompanied by increases in data and compute [1–4]. However, deploying models with
+hundreds of billions of parameters requires extensive infrastructure, increasing latency and cost while limiting
+accessibility. These factors makeparameter efficiencycritical: achieving better model capability within a
+fixed parameter budget. Such models not only mitigate overfitting on finite datasets with fewer trainable
+parameters, but also enable more practical deployment with lighter infrastructure. To achieve such parameter
+efficiency, two main avenues have been explored. The first expands the training corpus regardless of model
+size [5], though data scarcity increasingly limits this path. The second leverages inference-time compute
+through Chain-of-Thought (CoT) reasoning [6], allowing models to spend more compute on complex problems
+via extended token generation.
+We explore a third pathway based on architectural innovation: achieving dynamic computation within a
+fixed parameter budget.This is accomplished by recursively applying shared parameters, where a group of
+weight-tied layers are iteratively reused during the forward pass. We call this the Looped Language Model
+(LoopLM). The design yields several advantages. First, LoopLM enables adaptive computation via a learned
+early-exit mechanism: simple inputs can terminate after fewer recurrent steps, while complex ones allocate
+more iterations. This decouples the compute depth from parameter count. Second, unlike inference-time
+methods such as CoT, LoopLM scales by deepening its internal computational graph rather than extending
+the output sequence, avoiding context-length bloat. Finally, LoopLM can improve capacity per parameter
+and outperform standard transformers of larger sizes when trained on the same data.
+An extensive range of prior studies have explored LoopLM at modest scales [7–14], from the seminal Universal
+Transformer [15] to recursive Transformers [16] and latent reasoning approaches [17–19]. Yet whether Looped
+Language Models translate into frontier-level gains at practically meaningful scales is unproven. To this end,
+we ask:
+Does LoopLM exhibit more favorable scaling behavior (in capabilities, efficiency and safety),
+compared to non-recursive transformer models?
+We show the answer is yes. We characterize LoopLM’s scaling trajectory and saturation behavior, demon-
+strating that LoopLM offers a more efficient path to higher performance. These claims are evaluated under
+multi-trillion-token training regimes typical of SoTA foundation models, extending well beyond prior work.
+Beyond the empirical gains, we analyze the mechanisms behind these improvements by asking the following
+questions:
+1. Does the recursive reuse of weights yield the capability gains typically obtained by increasing depth
+with unshared weights?

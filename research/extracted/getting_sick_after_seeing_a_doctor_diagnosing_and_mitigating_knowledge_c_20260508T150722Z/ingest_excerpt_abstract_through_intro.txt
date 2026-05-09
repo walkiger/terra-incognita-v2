@@ -1,0 +1,244 @@
+Abstract
+Event temporal reasoning aims at identifying
+the temporal relations between two or more
+events from narratives. However, knowledge
+conflicts arise when there is a mismatch be-
+tween the actual temporal relations of events in
+the context and the prior knowledge or biases
+learned by the model. In this paper, we propose
+to detect knowledge-conflict examples in event
+temporal reasoning using bias indicators, which
+include event relation prior bias, tense bias,
+narrative bias, and dependency bias. We define
+conflict examples as those where event rela-
+tions are opposite to biased or prior relations.
+To mitigate event-related knowledge conflicts,
+we introduce a Counterfactual Data Augmenta-
+tion (CDA) based method that can be applied to
+both Pre-trained Language Models (PLMs) and
+Large Language Models (LLMs) either as ad-
+ditional training data or demonstrations for In-
+Context Learning. Experiments suggest both
+PLMs and LLMs suffer from knowledge con-
+flicts in event temporal reasoning, and CDA
+has the potential for reducing hallucination and
+improving model performance1.
+1 Introduction
+An important goal of event understanding is to iden-
+tify the temporal relations ( TEMP RELS) among
+events described in natural language text (Cham-
+bers et al., 2007). This task aligns with human’s
+cognitive ability (Zacks and Tversky, 2001; Za-
+cks et al., 2007), which often involves routinely
+reasoning about how events happening around us
+are temporally sequenced, planned, and lead to
+consequences and decisions (Schank and Abelson,
+1977). From the intelligent system perspective, it
+also benefits many NLP applications for narrative
+understanding (Li et al., 2018; Cai et al., 2022),
+schema induction (Li et al., 2021), and question
+answering (Zhu et al., 2017; Stricker, 2021).
+1Code and data are available at https://github.com/
+tqfang/event-temporal-knowledge-conflict
+Corpus Statistics:Count(see, before, sick): 3Count(see, after, sick):   8see the doctor happens [MASK]sick.before: 5.8×10!"after: 7.0×10!"[MASK]
+ChatGPT:
+I went to e1: seethe doctor. However, I was more seriously e2: sick.Q: the temporal relation between e1 and e2?A: before
+PLM: 
+Bias Indicators (Prior Knowledge in the Corpus or LM)
+Q: select the correct temporal relation. 1. Seeing a doctor happens before sick.  2. Seeing a doctor happens after sick. A: The correct temporal relation is: 2. Seeing a doctor happens aftersick. 
+Knowledge-Conflict Example
+I went to e1: seethe doctor because I was seriously e2: sick.Q: the temporal relation between e1 and e2?A: after
+Normal Example
+Figure 1: An example of a knowledge-conflict instance.
+The actual TEMP REL in the context differs from the
+biased or prior TEMP REL in the corpus and the language
+model, leading to the emergence of knowledge conflicts.
+In event temporal reasoning, the input includes
+two parts, the event mentions and the context. The
+TEMP REL a model seeks to infer should be based
+on the context, rather than only revealed by the
+event mentions themselves. For example, in Fig. 1,
+without a context, the event mention see (the doc-
+tor) and sick have certain temporal prior where
+see the doctor statistically happen more often after
+sick, either by corpus statistics or probing a masked
+PLM. However, under the context of “I went to see
+the doctor, However, I was more seriously sick,”
+we can infer that see happens before sick instead of
+after due to the presence of the connectiveHowever.
+This is known as the phenomenon of knowledge
+conflicts (Longpre et al., 2021), where the contex-
+tual information contradicts the knowledge memo-
+rized by the language model. Hence, the essential
+requirement for accountable temporal reasoning
+is context-faithfulness (Wang et al., 2023b; Zhou
+et al., 2023), where models are expected to perform
+reasoning based on the context instead of guessing
+using only the prior knowledge about the events
+arXiv:2305.14970v2  [cs.CL]  8 Apr 2024
+encoded in their parameters.
+However, most current language models, includ-
+ing both Pre-trained Language Models (PLMs) and
+Large Language Models (LLMs) 2, rely on short-
+cuts from the mentions without being faithful to
+the context (Xu et al., 2022; Bender et al., 2021) to
+varying degrees, leading to hallucination. This is-
+sue is particularly severe in contexts where event or
+entity mentions have a different relation prior than
+what is presented in the context. Though entity-
+related knowledge conflicts (Longpre et al., 2021;
+Wang et al., 2022a; Li et al., 2022) have recently
+attracted much attention, questions about event-
+related knowledge conflicts remained intact.
+First, it is necessary to understand the con-
+flicts regarding relations of events, which is more
+complicated than that of a single event. Second,
+the substitution-based paradigm defined in entity
+knowledge conflicts or spurious correlation detec-
+tion (Longpre et al., 2021) cannot be directly ap-
+plied to events. Entity mentions can often be re-
+placed randomly with other entities with the same
+typing to study the faithfulness towards the con-
+text other than the entity mention, which remains
+unchanged after the replacement. For example,
+in open-domain QA, a possible question can be
+“Who is the CEO of Twitter?” based on the context
+“Yaccarino succeeded Elon Musk as the CEO of
+Twitter”. To check whether models faithfully rely
+on the context instead of hallucinating, Yaccarino
+in the context can be changed to a random name to
+see if the model can still output the “correct” CEO
+instead of Yaccarino as they have learned in pre-
+training. However, events are usually denoted by
+predicates in the context (Bethard et al., 2007), and
+directly substituting the predicate (e.g., from see
+in Fig. 1 to another random verb such as play) will
+alter the semantic meaning of the whole context,
+including both the predicate and its dependency
+with the arguments, making it infeasible to analyze
+the faithfulness towards the original context. Thus,
+instead of resorting to a substitution, in this paper,
+we study the effect of knowledge conflicts in event
+temporal reasoning by selecting conflict examples
+from the original dataset based on corpus statistics,
+and evaluate models on the conflict subsets.
+We outline the contributions of this paper as
+follows. First, we define four types of bias that
+2PLMs, or smaller models, are used in a pre-train and fine-
+tune paradigm, while LLMs, larger and more powerful models
+with over 10B parameters, are commonly employed through
+in-context learning (Sun, 2023).
+can lead to knowledge conflicts, including event-
+relation bias, narrative bias, tense bias, and depen-
+dency bias. The data instances where the actual
+TEMP REL contradicts with the prior TEMP REL are
+referred to as knowledge-conflict instances (§3), as
+they conflict with the prior knowledge provided to
+language models. Second, to mitigate the effect of
+knowledge conflicts, we propose a Counterfactual
+Data Augmentation (CDA) technique that explic-
+itly generates contexts with knowledge-conflict el-
+ements, thereby reducing the overall bias in the
+data distribution. CDA can be applied to both
+fine-tuned PLMs and LLMs with (test-time) in-
+context learning (§3.3). Third, we study the effect
+of various kinds of knowledge conflicts and our pro-
+posed bias mitigation method on two popular event
+temporal reasoning benchmarks, TORQUE (Ning
+et al., 2020) and MATRES (Ning et al., 2018). We
+show that models suffer from performance drop
+on knowledge-conflict subsets, and our bias-aware
+data augmentation method outperforms baselines
+by a remarkable margin on both bias mitigation
+and overall performance (§4).
+2 Related Works
+Event Temporal Reasoning. Event temporal
+reasoning aims at identifying the temporal relations
+(TEMP REL) of events in narratives. There are two
+common ways of formulating this problem. The
+first formulation is the TEMP REL extraction task,
+which involves determining theTEMP REL between
+two annotated event triggers from a pre-defined re-
+lation set (Bethard et al., 2007, 2017; Ning et al.,
+2018; Naik et al., 2019). Meanwhile, another for-
+mulation is a reading comprehension task, which in-
+volves determining more complicated TEMP RELS
+expressed in natural language questions (Ning et al.,
+2020; Han et al., 2021). To conduct event tempo-
+ral reasoning, literature has leveraged various ap-
+proaches, including graph neural networks (Zhang
+et al., 2022; Zhou et al., 2022), rhetorical discourse
+features and temporal arguments from semantic
+role labels (Mathur et al., 2021), distant supervi-
+sion (Zhou et al., 2021; Zhao et al., 2021), and
+event relation joint learning (Wang et al., 2020,
+2023c, 2022b). LLMs such as GPT3 (Brown et al.,
+2020) and ChatGPT are also leveraged for event
+temporal reasoning (Chan et al., 2023) with care-
+fully designed prompts and In-Context Learning.
+Our work differs from previous studies in that we
+study the knowledge conflicts in event temporal
+reasoning and how to mitigate them.
+Knowledge Conflict in Language Models.
+Knowledge conflicts have been widely studied for
+entity-centric NLU tasks (Schuster et al., 2021;
+Wang et al., 2024). For example, Longpre et al.
+(2021) studied the knowledge conflict in open-
+domain question answering using entity substi-
+tution. Li et al. (2022) also adopted this strat-
+egy to study the enhancement of a PLM’s robust-
+ness against context noise with a knowledge-aware
+working memory. Schuster et al. (2021) proposed
+a dataset using the user edits in Wikipedia as subtle
+changes for the context and study the effect of such
+changes on language models. Xu et al. (2022) sys-
+tematically formulate six types of biases in entity
+typing to study spurious correlations. Certain types
+of biases, such as Mention-Context and Named
+Entity bias, can reflect knowledge conflicts in en-
+tities. Typical mitigation methods of knowledge
+conflicts include causal analysis and coutnerfactual
+analysis (Wang et al., 2023a, 2022a), and test-time-
+only LLM prompting methods using counterfactual
+demonstration and opinion-based prompting (Zhou
+et al., 2023). However, the knowledge conflicts of
+event-event TEMP RELS are under-explored. Feng
+et al. (2022) proposed a dataset studying the differ-
+ential effects of TEMP REL reasoning given addi-
+tional contexts, while their focus is on annotating
+additional out-of-distribution data instead of explor-
+ing existing knowledge conflicts within the dataset.
+Our work systematically defines and detects knowl-
+edge conflicts in event temporal reasoning and pro-
+poses a data-augmentation-based method to miti-
+gate those conflicts based on the detected bias.
+3 Event Knowledge Conflict
+We introduce the problem definition (§3.1) and
+formally define four types of bias and how to select
+knowledge-conflict data (§3.2). We then introduce
+our proposed Counterfactual Data Augmentation
+for mitigating knowledge conflict (§3.3).
+3.1 Problem Definition
+In event temporal reasoning, the primary objective
+is to determine the TEMP REL between two or more
+events. Without the loss of generality, our study is
+based on pairwise event relations: the relation r of
+an event pair (e1, e2) based on the context c. More
+complex cases can be easily addressed by breaking
+down the relations involving multiple events into
+pairwise relations. For example, in TORQUE, a
+question might be formulated as “what happens
+before e?”, where e can be a target event trigger.
+Then, the answers ea1, ea2, · · · can form multiple
+event pairs (e, before, eai), where i = 1, 2, · · ·, etc.
+The case where evaluating the temporal status of
+a single event (happened, happening, will happen,
+etc.) can also be easily adapted in this framework
+by replacing the features of event pairs to a single
+event.
+To study event-related knowledge conflict, we
+create an automated framework to use corpus
+co-occurrence statistics to select conflict subsets.
+Similar to the co-occurrence statistics in report-
+ing bias (Gordon and Durme, 2013), to obtain
+knowledge-conflict data, we first d

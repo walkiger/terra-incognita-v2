@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "published_as_a_conference_paper_at_iclr_2023_cf_lownets_c_ontinuous_cont_20260508T150718Z",
+  "extracted_at": "2026-05-08T15:11:52Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "M =⟨S,A,P,R,γ ⟩. (1) In the process,s∈S represents the state space of the environment. At each time step, agent receives a states and selects an action a on the action spaceA. This results in a transition to the next state s′ according to the state transition function P (s′|s,a ) :S×A×S→ [0, 1]. Then the agent gets the reward r based on the reward function R(s,a ) : S×A→ R. A stochastic policy π m",
+        "unicode_plain": "M =⟨S,A,P,R,γ ⟩. (1) In the process,s∈S represents the state space of the environment. At each time step, agent receives a states and selects an action a on the action spaceA. This results in a transition to the next state s′ according to the state transition function P (s′|s,a ) :S×A×S→ [0, 1]. Then the agent gets the reward r based on the reward function R(s,a ) : S×A→ R. A stochastic policy π maps"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "M =⟨S,A,P,R,γ ⟩. (1) In the process,s∈S represents the state space of the environment. At each time step, agent receives a states and selects an action a on the action spaceA. This results in a transition to the next state s′ according to the state transition function P (s′|s,a ) :S×A×S→ [0, 1]. Then the agent gets the reward r based on the reward function R(s,a ) : S×A→ R. A stochastic policy π maps"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "t=1, where n is the trajectory length. The goal of an agent is to maximize the discounted return Es0:n,a0:n [∑∞ t=0γtrt|s0 =s,a 0 =a,π ], where E is the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor. 2.2 G ENERATIVE FLOW NETWORK GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition",
+        "unicode_plain": "t=1, where n is the trajectory length. The goal of an agent is to maximize the discounted return Es0:n,a0:n [∑∞ t=0γtrt|s0 =s,a 0 =a,π ], where E is the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor. 2.2 G ENERATIVE FLOW NETWORK GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1, where n is the trajectory length. The goal of an agent is to maximize the discounted return Es0:n,a0:n [∑∞ t=0γtrt|s0 =s,a 0 =a,π ], where E is the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor. 2.2 G ENERATIVE FLOW NETWORK GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "t=0γtrt|s0 =s,a 0 =a,π ], where E is the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor. 2.2 G ENERATIVE FLOW NETWORK GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla ",
+        "unicode_plain": "t=0γtrt|s0 =s,a 0 =a,π ], where E is the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor. 2.2 G ENERATIVE FLOW NETWORK GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=0γtrt|s0 =s,a 0 =a,π ], where E is the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor. 2.2 G ENERATIVE FLOW NETWORK GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents and children through nodes (states), which depends on the discrete state space and discrete action space. The framework",
+        "unicode_plain": "GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents and children through nodes (states), which depends on the discrete state space and discrete action space. The framework is optimized by the following ﬂow consistency equations:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents and children through nodes (states), which depends on the discrete state space and discrete action space. The framework is optimized by the following ﬂow consistency equations:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents and children through nodes (states), which depends on the discrete state space and discrete action space. The framework is optimized by the following ﬂow consistency equations: ∑ s,a:T (s,a)=s′",
+        "unicode_plain": "and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents and children through nodes (states), which depends on the discrete state space and discrete action space. The framework is optimized by the following ﬂow consistency equations: ∑ s,a:T (s,a)=s′"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents and children through nodes (states), which depends on the discrete state space and discrete action space. The framework is optimized by the following ﬂow consistency equations: ∑ s,a:T (s,a)=s′"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "s,a:T (s,a)=s′ F (s,a ) =R (s′) + ∑ a′∈A(s′) F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow",
+        "unicode_plain": "s,a:T (s,a)=s′ F (s,a ) =R (s′) + ∑ a′∈A(s′) F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "s,a:T (s,a)=s′ F (s,a ) =R (s′) + ∑ a′∈A(s′) F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "F (s,a ) =R (s′) + ∑ a′∈A(s′) F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow F (s) of nodes.",
+        "unicode_plain": "F (s,a ) =R (s′) + ∑ a′∈A(s′) F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow F (s) of nodes."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "F (s,a ) =R (s′) + ∑ a′∈A(s′) F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow F (s) of nodes."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow F (s) of nodes. 2",
+        "unicode_plain": "F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow F (s) of nodes. 2"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "F (s′,a′), (2) which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow F (s) of nodes. 2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "denotes the continuous action space. Deﬁne a trajectoryτ = (s1,...,s n) in this continuous task as a sequence sampled elements ofS such that every transitionat :st→st+1∈A . Further, we deﬁne an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈ τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with th",
+        "unicode_plain": "denotes the continuous action space. Deﬁne a trajectoryτ = (s1,...,s n) in this continuous task as a sequence sampled elements ofS such that every transitionat :st→st+1∈A . Further, we deﬁne an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈ τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "denotes the continuous action space. Deﬁne a trajectoryτ = (s1,...,s n) in this continuous task as a sequence sampled elements ofS such that every transitionat :st→st+1∈A . Further, we deﬁne an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈ τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈ τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into the ﬁnal stat",
+        "unicode_plain": "an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈ τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into the ﬁnal state is deﬁned as the terminating transition, andF (s→sf) is a terminating ﬂow."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈ τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into the ﬁnal state is deﬁned as the terminating transition, andF (s→sf) is a terminating ﬂow."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into the ﬁnal state is deﬁned as the terminating transition, andF (s→sf) is a terminating ﬂow. A trajectory ﬂow F (τ",
+        "unicode_plain": "τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into the ﬁnal state is deﬁned as the terminating transition, andF (s→sf) is a terminating ﬂow. A trajectory ﬂow F (τ) : τ ↦→ R+ is deﬁned as any nonnegative function deﬁned on the set of"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into the ﬁnal state is deﬁned as the terminating transition, andF (s→sf) is a terminating ﬂow. A trajectory ﬂow F (τ) : τ ↦→ R+ is deﬁned as any nonnegative function deﬁned on the set of"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page3_12",
+      "presentation": {
+        "latex": "a continuous ﬂow network. Let T (s,a ) = s′ indicate an actiona that could make a transition from states to attains′. Then we make the following assumptions. Assumption 1. Assume that the continuous take (S,A) is an “acyclic” task, which means that arbitrarily sampled trajectoriesτ are acyclic, i.e., si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j. Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz co",
+        "unicode_plain": "a continuous ﬂow network. Let T (s,a ) = s′ indicate an actiona that could make a transition from states to attains′. Then we make the following assumptions. Assumption 1. Assume that the continuous take (S,A) is an “acyclic” task, which means that arbitrarily sampled trajectoriesτ are acyclic, i.e., si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j. Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz continuous, i.e.,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "a continuous ﬂow network. Let T (s,a ) = s′ indicate an actiona that could make a transition from states to attains′. Then we make the following assumptions. Assumption 1. Assume that the continuous take (S,A) is an “acyclic” task, which means that arbitrarily sampled trajectoriesτ are acyclic, i.e., si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j. Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz continuous, i.e.,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page3_13",
+      "presentation": {
+        "latex": "si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j. Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz continuous, i.e., |F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3) |F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4) whereL is a constant. Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that",
+        "unicode_plain": "si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j. Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz continuous, i.e., |F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3) |F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4) whereL is a constant. Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j. Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz continuous, i.e., |F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3) |F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4) whereL is a constant. Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "|F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3) |F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4) whereL is a constant. Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that T (st,at) = st+1, i.e., taking action at inst is the only way to get to st+1. Hence we can deﬁne st :=g(st+1,at), whereg(·) is a transition function. And assume actions are the translation actio",
+        "unicode_plain": "|F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3) |F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4) whereL is a constant. Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that T (st,at) = st+1, i.e., taking action at inst is the only way to get to st+1. Hence we can deﬁne st :=g(st+1,at), whereg(·) is a transition function. And assume actions are the translation actions."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "|F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3) |F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4) whereL is a constant. Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that T (st,at) = st+1, i.e., taking action at inst is the only way to get to st+1. Hence we can deﬁne st :=g(st+1,at), whereg(·) is a transition function. And assume actions are the translation actions."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

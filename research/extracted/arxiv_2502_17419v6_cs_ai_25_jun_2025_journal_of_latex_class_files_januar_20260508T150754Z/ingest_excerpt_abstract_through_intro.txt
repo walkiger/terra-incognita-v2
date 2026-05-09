@@ -1,0 +1,203 @@
+Abstract—Achieving human-level intelligence requires refining the transition from the fast, intuitive System 1 to the slower, more
+deliberate System 2 reasoning. While System 1 excels in quick, heuristic decisions, System 2 relies on logical reasoning for more
+accurate judgments and reduced biases. Foundational Large Language Models (LLMs) excel at fast decision-making but lack the depth
+for complex reasoning, as they have not yet fully embraced the step-by-step analysis characteristic of true System 2 thinking. Recently,
+reasoning LLMs like OpenAI’s o1/o3 and DeepSeek’s R1 have demonstrated expert-level performance in fields such as mathematics
+and coding, closely mimicking the deliberate reasoning of System 2 and showcasing human-like cognitive abilities. This survey begins
+with a brief overview of the progress in foundational LLMs and the early development of System 2 technologies, exploring how their
+combination has paved the way for reasoning LLMs. Next, we discuss how to construct reasoning LLMs, analyzing their features, the
+core methods enabling advanced reasoning, and the evolution of various reasoning LLMs. Additionally, we provide an overview of
+reasoning benchmarks, offering an in-depth comparison of the performance of representative reasoning LLMs. Finally, we explore
+promising directions for advancing reasoning LLMs and maintain a real-time GitHub Repository to track the latest developments. We
+hope this survey will serve as a valuable resource to inspire innovation and drive progress in this rapidly evolving field.
+Index Terms—Slow-thinking, Large Language Models, Human-like Reasoning, Decision Making in AI, AGI
+✦
+1 I NTRODUCTION
+“Don’t teach. Incentivize.”
+— Hyung Won Chung, OpenAI
+Version: v1 (major update on February 24, 2025)
+∗Core contribution. §Significant contribution. †Corresponding author.
+Duzhen Zhang, Jiahua Dong, and Le Song are with the Mo-
+hamed bin Zayed University of Artificial Intelligence, Abu Dhabi,
+UAE (E-mail: bladedancer957@gmail.com; dongjiahua1995@gmail.com;
+le.song@mbzuai.ac.ae).
+Zhong-Zhi Li, Pei-Jie Wang, Bao-Long Bi, Ling-Rui Mei, Xiuyi Chen,
+Fei Yin, and Cheng-Lin Liu are with the Institute of Automation, Chi-
+nese Academy of Sciences, Beijing, China (E-mail: lizhongzhi2022@ia.ac.cn;
+wangpeijie2023@ia.ac.cn, bibaolong23z@ict.ac.cn, meilingrui25b@ict.ac.cn
+hugheren.chan@gmail.com; fyin@nlpr.ia.ac.cn; liucl@nlpr.ia.ac.cn).
+Ming-Liang Zhang is with the Alibaba Group, Beijing, China (E-mail:
+luxing.zml@taobao.com).
+Bao-Long Bi, Ling-Rui Mei are with the Chinese Academy of Sciences, Beijing,
+China (E-mail: bibaolong23z@ict.ac.cn, meilingrui25b@ict.ac.cn).
+Xiao Liang is with the University of California,Los Angles, USA (E-mail:
+luxing.zml@taobao.com).
+Zengyan Liu, Yuxuan Yao, Zhiwei Li, and Zhijiang Guo are with City Univer-
+sity of Hong Kong and the Hong Kong University of Science and Technology
+(Guangzhou), China (E-mail: zengyaliu2-c@my.cityu.edu.hk; yuxuanyao3-
+c@my.cityu.edu.hk; zhiweil466@gmail.com; zhijiangguo@hkust-gz.edu.cn).
+Jiaxin Zhang is with the University of Strathclyde, Glasgow, UK (E-mail:
+jiaxin.zhang@strath.ac.uk).
+Haotian Xu is with the Xiaohongshu Inc, Beijing, China (E-mail: xuhao-
+tian@xiaohongshu.com).
+Yingying Zhang is with the East China Normal University, Shanghai, China
+(E-mail: yyzhang@fem.ecnu.edu.cn).
+Junfeng Fang is with the Nanyang Technological University, Singapore (E-
+mail: junhaozheng47@outlook.com).
+Junhao Zheng is with the South China University of Technology, Guangzhou,
+China (E-mail: junhaozheng47@outlook.com).
+A
+CHIEVING human-level intelligence requires refining
+the transition from System 1 to System 2 reasoning
+[1]–[5]. Dual-system theory suggests that human cognition
+operates through two modes: System 1, which is fast, auto-
+matic, and intuitive, enabling quick decisions with minimal
+effort, and System 2 , which is slower, more analytical, and
+deliberate [6], [7]. While System 1 is efficient for routine
+tasks, it is prone to cognitive biases, especially in complex or
+uncertain situations, leading to judgment errors. In contrast,
+System 2 relies on logical reasoning and systematic thinking,
+resulting in more accurate and rational decisions [8]–[11]. By
+mitigating the biases of System 1, System 2 provides a more
+refined approach to problem-solving [12]–[15].
+The development of foundational Large Language Mod-
+els (LLMs) 1 has marked a major milestone in Artificial
+Intelligence (AI). Models such as GPT-4o [16] and DeepSeek-
+v3 [17] have demonstrated impressive capabilities in text
+generation, language translation, and a variety of perception
+tasks [18]–[28]. These models, trained on extensive datasets
+and utilizing advanced algorithms, excel in understanding
+and generating human-like responses. However, despite
+their impressive achievements, foundational LLMs operate
+in a manner similar to System 1 reasoning, relying on fast,
+heuristic-driven decision-making. While they perform ex-
+1. In this paper, “reasoning” refers to answering questions involving
+complex, multi-step processes with intermediate steps. Foundational
+LLMs: LLMs with basic reasoning abilities, handling simple or single-
+step tasks. Reasoning LLMs: LLMs that excel in complex tasks like cod-
+ing and mathematical proofs, incorporating a “thinking” process–tasks
+that foundational LLMs struggle with.
+JOURNAL OF LATEX CLASS FILES, JANUARY 2025 2
+ceptionally well in providing rapid responses, they often fall
+short in scenarios requiring deep, logical analysis and preci-
+sion in complex reasoning tasks. This limitation becomes
+especially clear in situations involving intricate problem-
+solving, logical analysis, or nuanced understanding, where
+these models do not yet match human cognitive abilities.
+In contrast, reasoning LLMs represent a significant ad-
+vancement in the evolution of language models. Models
+like OpenAI’s o1/o3 [29], [30] and DeepSeek’s R1 [31] are
+designed to emulate the slower, more deliberate reason-
+ing associated with System 2 thinking. Unlike foundational
+LLMs, reasoning LLMs are equipped with mechanisms for
+processing information step-by-step, allowing them to make
+more accurate and rational decisions. This shift from fast-
+thinking, intuitive processes to more methodical, reasoning-
+driven models enables reasoning LLMs to tackle complex
+tasks, such as advanced mathematics [32]–[37], logical rea-
+soning [38]–[44], and multimodal reasoning [45]–[47], with
+expert-level performance, exhibiting human-like cognitive
+abilities. As a result, reasoning LLMs are increasingly seen
+as capable of achieving the deep, logical thinking needed
+for tasks that were once considered beyond AI’s reach. The
+recent timeline of reasoning LLMs is presented in Figure 1.
+1.1 Structure of the Survey
+This survey offers a comprehensive overview of the key con-
+cepts, methods, and challenges involved in the development
+of reasoning LLMs. As illustrated in Figure 2, this survey is
+organized as follows:
+1) Section 2 offers a concise overview of the progress in
+foundational LLMs (Section 2.1) and the early develop-
+ment of key System 2 technologies, including symbolic
+logic systems (Section 2.2), Monte Carlo Tree Search
+(MCTS) (Section 2.3), and Reinforcement Learning (RL)
+(Section 2.4), highlighting how their combination has
+paved the way for reasoning LLMs.
+2) Section 3 introduces reasoning LLMs and outlines their
+construction process. Specifically, Section 3.1 presents
+the characteristics of reasoning LLMs from two per-
+spectives: output behavior (Section 3.1.1) and training
+dynamics (Section 3.1.2), emphasizing their differences
+from foundational LLMs. Section 3.2 identifies the core
+methods necessary for achieving advanced reasoning
+capabilities, focusing on five aspects: Structure Search
+(Section 3.2.1), Reward Modeling (Section 3.2.2), Self
+Improvement (Section 3.2.3), Macro Action (Section
+3.2.4), and Reinforcement Fine-Tuning (Section 3.2.5).
+Each section delves into the specific characteristics of
+these methods and introduces representative reasoning
+LLMs for each approach. Section 3.3 traces the evolu-
+tionary stages of reasoning LLMs.
+3) Section 4 evaluates representative reasoning LLMs.
+Specifically, Section 4.1 reviews current mainstream
+reasoning benchmarks, covering both plain text and
+multimodal benchmarks across various task types. Sec-
+tion 4.2 outlines the current evaluation metrics, while
+Section 4.3 analyzes and compares the performance of
+mainstream reasoning LLMs with their foundational
+counterparts based on these benchmarks.
+4) Section 5 summarizes several recent technical areas re-
+lated to Reasoning LLMs. Section 5.1 summarizes tech-
+nologies related to large-scale RL training. Section 5.2
+discusses several safety issues related to LRM. Section
+5.3 summarizes the field of integrating Reasoning LLMs
+with Agents. Section 5.4 summarizes the technologies
+of Adaptive Reasoning LLMs and Efficient Reasoning
+LLMs.
+5) Section 6 highlights the limitations of existing reasoning
+LLMs and outlines several promising future develop-
+ment directions for these models.
+6) Finally, we conclude the paper in Section 7 and provide
+a real-time tracking GitHub Repository to monitor the
+latest developments in the field.
+We hope this survey serves as a valuable resource, fostering
+innovation and progress in this rapidly evolving domain.
+1.2 Contribution of the Survey
+Recently, several analyses and replications of specific tech-
+nical approaches have been conducted [48]–[55], yet there
+remains a lack of systematic analysis and organization.
+Research [56] has focused only on slow-thinking methods
+during testing. Meanwhile, studies [57]–[59] have primarily
+concentrated on training or achieving reasoning LLMs, often
+from the perspective of RL.
+Our survey distinguishes itself from and contributes to
+the existing literature in the following ways:
+1) Rather than focusing on a single technical approach, we
+offer a comprehensive overview of the key concepts,
+methods, and challenges involved in reasoning LLMs.
+2) We summarize the key advancements of early System 2
+and how they have paved the way for reasoning LLMs,
+specifically in combination with foundational LLMs–a
+crucial aspect often overlooked in previous works.
+3) We present a more thorough and inclusive summary of
+the core methods necessary for constructing reasoning
+LLMs, including but not limited to RL.
+2 F OUNDATIONS OF REASONING LLM S
+In this section, we provide a concise overview of the
+progress in foundational LLMs and the early development
+of key System 2 technologies, highlighting critical advance-
+ments that, when combined with foundational LLMs, have
+paved the way for reasoning LLMs. These advancements
+include symbolic logic systems, MCTS, and RL.
+2.1 Foundational LLMs
+The development of foundational LLMs saw significant
+advancements with the introduction of pretrained Trans-
+formers [18] in 2018-2019, notably through BERT [19] and
+GPT [21]. These models leveraged unsupervised pretrain-
+ing on vast text corpora, followed by fine-tuning for task-
+specific applications. This approach enabled them to de-
+velop a broad language understanding before specializing
+in tasks such as sentiment analysis, entity recognition, and
+question answering. BERT’s bidirectional context processing
+improved word understanding, while GPT excelled in text
+generation with its unidirectional design.
+JOURNAL OF LATEX CLASS FILES, JANUARY 2025 3
+Fig. 1. The recent timeline of reasoning LLMs, covering core methods and the release of open-source and closed-source reproduction projects.
+The release of GPT-2 [22] in 2019, with 1.5 billion param-
+eters, marked a significant leap in generative performance,
+though it also raised ethical concerns. GPT-3 [23], with
+175 billion parameters, further demonstrated the power
+of unsupervised pretraining, excelling in few-shot learning
+and performing well across a wide range of NLP tasks. In
+subsequent years, multimodal models like CLIP [60] and
+DALL-E [61] emerged, integrating tex

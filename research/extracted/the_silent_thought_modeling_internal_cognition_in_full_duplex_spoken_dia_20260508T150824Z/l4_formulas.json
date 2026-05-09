@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "the_silent_thought_modeling_internal_cognition_in_full_duplex_spoken_dia_20260508T150824Z",
+  "extracted_at": "2026-05-08T15:12:22Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page3_1",
+      "presentation": {
+        "latex": "Pθ(Y txt|X) = TY t=1 Pθ(Y txt t |Y txt <t , X≤t).(1)",
+        "unicode_plain": "Pθ(Y txt|X) = TY t=1 Pθ(Y txt t |Y txt <t , X≤t).(1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Pθ(Y txt|X) = TY t=1 Pθ(Y txt t |Y txt <t , X≤t).(1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "<t , X≤t).(1) Finally, an autoregressive decoder (parameterized by ψ) predicts the agent’s speech tokens Y spc based on the text tokens and the hidden statesh l from the LLM: Pψ(Y spc|X, Y txt, hl) = TY",
+        "unicode_plain": "<t , X≤t).(1) Finally, an autoregressive decoder (parameterized by ψ) predicts the agent’s speech tokens Y spc based on the text tokens and the hidden statesh l from the LLM: Pψ(Y spc|X, Y txt, hl) = TY"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "<t , X≤t).(1) Finally, an autoregressive decoder (parameterized by ψ) predicts the agent’s speech tokens Y spc based on the text tokens and the hidden statesh l from the LLM: Pψ(Y spc|X, Y txt, hl) = TY"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "Pψ(Y spc|X, Y txt, hl) = TY t=1 Pψ(Y spc t |Y spc <t , Y txt",
+        "unicode_plain": "Pψ(Y spc|X, Y txt, hl) = TY t=1 Pψ(Y spc t |Y spc <t , Y txt"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Pψ(Y spc|X, Y txt, hl) = TY t=1 Pψ(Y spc t |Y spc <t , Y txt"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "Y txt = [<SIL>, . . . , <SIL>, <BOS>, R i,1, Ri2 , . . . , Ri,T , <PAD>, . . . , <PAD>, <EOS>], (3) where Ri,t is the response token at time step t, and <BOS> and <EOS> denote the beginning and the end of the agent’s",
+        "unicode_plain": "Y txt = [<SIL>, . . . , <SIL>, <BOS>, R i,1, Ri2 , . . . , Ri,T , <PAD>, . . . , <PAD>, <EOS>], (3) where Ri,t is the response token at time step t, and <BOS> and <EOS> denote the beginning and the end of the agent’s"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Y txt = [<SIL>, . . . , <SIL>, <BOS>, R i,1, Ri2 , . . . , Ri,T , <PAD>, . . . , <PAD>, <EOS>], (3) where Ri,t is the response token at time step t, and <BOS> and <EOS> denote the beginning and the end of the agent’s"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "Zt−1 =Softmax(y txt t−1)E, where E∈R |V|×d denotes the vocabulary embedding matrix of the LLM. This latent reasoning approach precludes effective teacher- forcing supervision during the training phase, as latent rep- resentations cannot be obtained to supervise the LLM’s",
+        "unicode_plain": "Zt−1 =Softmax(y txt t−1)E, where E∈R |V|×d denotes the vocabulary embedding matrix of the LLM. This latent reasoning approach precludes effective teacher- forcing supervision during the training phase, as latent rep- resentations cannot be obtained to supervise the LLM’s"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Zt−1 =Softmax(y txt t−1)E, where E∈R |V|×d denotes the vocabulary embedding matrix of the LLM. This latent reasoning approach precludes effective teacher- forcing supervision during the training phase, as latent rep- resentations cannot be obtained to supervise the LLM’s"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "that drive the latent reasoning capability of the SDLMs: (1) Conditional Reconstruction, which encourages the model to generate a high-quality response Y txt given the observed user inputXand the latent reasoningZ, following a poste- rior distribution qϕ(Z|X, Y txt) offered by a “Global-aware Expert” model; (2) Variational Regularization, which acts",
+        "unicode_plain": "that drive the latent reasoning capability of the SDLMs: (1) Conditional Reconstruction, which encourages the model to generate a high-quality response Y txt given the observed user inputXand the latent reasoningZ, following a poste- rior distribution qϕ(Z|X, Y txt) offered by a “Global-aware Expert” model; (2) Variational Regularization, which acts"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "that drive the latent reasoning capability of the SDLMs: (1) Conditional Reconstruction, which encourages the model to generate a high-quality response Y txt given the observed user inputXand the latent reasoningZ, following a poste- rior distribution qϕ(Z|X, Y txt) offered by a “Global-aware Expert” model; (2) Variational Regularization, which acts"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "Gt = 1 when the time step t corresponds to the assistant’s turn (i.e., t falls between the indices of <BOS> and <EOS>), and Gt = 0 otherwise. The complete user speech stream and assistant text token stream Y txt, which is defined in (3), are converted into speech embeddings X and text embed- dings H txt, respectively. These are summed and fed into a",
+        "unicode_plain": "Gt = 1 when the time step t corresponds to the assistant’s turn (i.e., t falls between the indices of <BOS> and <EOS>), and Gt = 0 otherwise. The complete user speech stream and assistant text token stream Y txt, which is defined in (3), are converted into speech embeddings X and text embed- dings H txt, respectively. These are summed and fed into a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Gt = 1 when the time step t corresponds to the assistant’s turn (i.e., t falls between the indices of <BOS> and <EOS>), and Gt = 0 otherwise. The complete user speech stream and assistant text token stream Y txt, which is defined in (3), are converted into speech embeddings X and text embed- dings H txt, respectively. These are summed and fed into a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page4_8",
+      "presentation": {
+        "latex": "and Gt = 0 otherwise. The complete user speech stream and assistant text token stream Y txt, which is defined in (3), are converted into speech embeddings X and text embed- dings H txt, respectively. These are summed and fed into a non-causal encoder, termed the Global-aware Expert model Qϕ. This Expert model leverages global conversational in-",
+        "unicode_plain": "and Gt = 0 otherwise. The complete user speech stream and assistant text token stream Y txt, which is defined in (3), are converted into speech embeddings X and text embed- dings H txt, respectively. These are summed and fed into a non-causal encoder, termed the Global-aware Expert model Qϕ. This Expert model leverages global conversational in-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "and Gt = 0 otherwise. The complete user speech stream and assistant text token stream Y txt, which is defined in (3), are converted into speech embeddings X and text embed- dings H txt, respectively. These are summed and fed into a non-causal encoder, termed the Global-aware Expert model Qϕ. This Expert model leverages global conversational in-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_6",
+      "presentation": {
+        "latex": "he =Q ϕ(X+H txt),(6) W e t =Softmax(Linear(h e t )),(7) Zt =W e t E.(8)",
+        "unicode_plain": "he =Q ϕ(X+H txt),(6) W e t =Softmax(Linear(h e t )),(7) Zt =W e t E.(8)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(6)",
+        "verbatim_snippet": "he =Q ϕ(X+H txt),(6) W e t =Softmax(Linear(h e t )),(7) Zt =W e t E.(8)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "t =Softmax(Linear(h e t )),(7) Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue.",
+        "unicode_plain": "t =Softmax(Linear(h e t )),(7) Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t =Softmax(Linear(h e t )),(7) Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_7",
+      "presentation": {
+        "latex": "t )),(7) Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the",
+        "unicode_plain": "t )),(7) Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(7)",
+        "verbatim_snippet": "t )),(7) Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the LLM’s input embeddings are defined as follows:",
+        "unicode_plain": "Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the LLM’s input embeddings are defined as follows:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Zt =W e t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the LLM’s input embeddings are defined as follows:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_8",
+      "presentation": {
+        "latex": "t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the LLM’s input embeddings are defined as follows: Hin =X+ (1−G)⊙Z+G⊙H txt, (9)",
+        "unicode_plain": "t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the LLM’s input embeddings are defined as follows: Hin =X+ (1−G)⊙Z+G⊙H txt, (9)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(8)",
+        "verbatim_snippet": "t E.(8) We expectQϕ to learn the approximate posterior distribution qϕ(Z|X, Y txt) when it has access to the entire dialogue. After deriving the latent reasoning embedding label, the LLM’s input embeddings are defined as follows: Hin =X+ (1−G)⊙Z+G⊙H txt, (9)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_9",
+      "presentation": {
+        "latex": "Hin =X+ (1−G)⊙Z+G⊙H txt, (9) This means that we use the latent reasoning embedding labels to replace the embeddings of <SIL> tokens used as padding during the user’s speech. 4",
+        "unicode_plain": "Hin =X+ (1−G)⊙Z+G⊙H txt, (9) This means that we use the latent reasoning embedding labels to replace the embeddings of <SIL> tokens used as padding during the user’s speech. 4"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(9)",
+        "verbatim_snippet": "Hin =X+ (1−G)⊙Z+G⊙H txt, (9) This means that we use the latent reasoning embedding labels to replace the embeddings of <SIL> tokens used as padding during the user’s speech. 4"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,695 @@
+{
+  "batch_id": "pdf-batch-regen-20260508",
+  "started_at": "2026-05-08T07:01:23Z",
+  "completed_at": "2026-05-08T07:03:40Z",
+  "extractor_version": "research-agent@terraincognita-prB-20260508",
+  "method_tag_vocabulary": [
+    "message_passing_gnn",
+    "graph_convolution",
+    "attention_on_graphs",
+    "energy_based_training",
+    "contrastive_learning",
+    "knowledge_graph_completion",
+    "logical_query_answering",
+    "survey",
+    "benchmark_or_dataset",
+    "liquid_neural_network",
+    "invertible_neural_network",
+    "bayesian_inference",
+    "pretraining_or_finetuning",
+    "llm_prompting",
+    "neuro_symbolic"
+  ],
+  "documents": [
+    {
+      "document_id": "a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z",
+      "manifest_path": "research/extracted/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z/manifest.json",
+      "pdf_sha256": "faf05d317a141d4dc64b04a1ae074a8ea6301ec8d34310807f8e047364e6df4f",
+      "page_count": 10,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z/l2_outline.json",
+        "research/extracted/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z/l3_entities.json",
+        "research/extracted/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z/l4_analysis.json",
+        "research/extracted/a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "message_passing_gnn",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z",
+      "manifest_path": "research/extracted/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z/manifest.json",
+      "pdf_sha256": "6392a0f6c67e6da684e414bd074d52b3c022830e691dda09cb8478ede2b7211a",
+      "page_count": 13,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z/l2_outline.json",
+        "research/extracted/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z/l3_entities.json",
+        "research/extracted/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z/l4_analysis.json",
+        "research/extracted/arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "liquid_neural_network",
+        "logical_query_answering",
+        "message_passing_gnn",
+        "neuro_symbolic",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z",
+      "manifest_path": "research/extracted/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z/manifest.json",
+      "pdf_sha256": "c3b99f36233afae17f5651258cb7525bf4d56f6a374daaee2c64c49506bcc4e1",
+      "page_count": 14,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z/l2_outline.json",
+        "research/extracted/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z/l3_entities.json",
+        "research/extracted/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z/l4_analysis.json",
+        "research/extracted/can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "pretraining_or_finetuning"
+      ]
+    },
+    {
+      "document_id": "commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z",
+      "manifest_path": "research/extracted/commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z/manifest.json",
+      "pdf_sha256": "c725554b0654061c272339872ca32000ce2009fdaa9d54939225f5ecb0a4eb39",
+      "page_count": 10,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z/l2_outline.json",
+        "research/extracted/commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z/l3_entities.json",
+        "research/extracted/commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z/l4_analysis.json",
+        "research/extracted/commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "llm_prompting",
+        "pretraining_or_finetuning"
+      ]
+    },
+    {
+      "document_id": "deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z",
+      "manifest_path": "research/extracted/deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z/manifest.json",
+      "pdf_sha256": "1a1510c9146ef7e35ef49a1f082a8e25f2142205e738ea122c7d6a57c826e653",
+      "page_count": 15,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z/l2_outline.json",
+        "research/extracted/deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z/l3_entities.json",
+        "research/extracted/deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z/l4_analysis.json",
+        "research/extracted/deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "llm_prompting",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z",
+      "manifest_path": "research/extracted/efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z/manifest.json",
+      "pdf_sha256": "681ad4ce2c05e3c60eb757a28e5196667fc82f3b66e6ad492007795ab154472e",
+      "page_count": 30,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z/l2_outline.json",
+        "research/extracted/efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z/l3_entities.json",
+        "research/extracted/efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z/l4_analysis.json",
+        "research/extracted/efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "invertible_neural_network",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z",
+      "manifest_path": "research/extracted/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z/manifest.json",
+      "pdf_sha256": "34b6664ae69f1a9a7af8038a1127dfe35521321570ad8ef9f13a49391e5ba22c",
+      "page_count": 51,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z/l2_outline.json",
+        "research/extracted/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z/l3_entities.json",
+        "research/extracted/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z/l4_analysis.json",
+        "research/extracted/energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "energy_based_training",
+        "graph_convolution",
+        "invertible_neural_network",
+        "llm_prompting",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z",
+      "manifest_path": "research/extracted/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z/manifest.json",
+      "pdf_sha256": "663fc8cff37befec5cf84cc0c79b51b42058575705f224b7c7a482dd8ac3088c",
+      "page_count": 23,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z/l2_outline.json",
+        "research/extracted/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z/l3_entities.json",
+        "research/extracted/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z/l4_analysis.json",
+        "research/extracted/graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "message_passing_gnn",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z",
+      "manifest_path": "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/manifest.json",
+      "pdf_sha256": "1b2cd2afdc34c092038d1304a6f9bc9321bd3db08abee9da097baea125dcb5bf",
+      "page_count": 28,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l2_outline.json",
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l3_entities.json",
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l4_analysis.json",
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "liquid_neural_network",
+        "llm_prompting",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z",
+      "manifest_path": "research/extracted/graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z/manifest.json",
+      "pdf_sha256": "de4596e0aaff61955178609ee8f2c7ea895b8f33cb504fdb18c36631e447b8f6",
+      "page_count": 16,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z/l2_outline.json",
+        "research/extracted/graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z/l3_entities.json",
+        "research/extracted/graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z/l4_analysis.json",
+        "research/extracted/graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "energy_based_training",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "llm_prompting",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z",
+      "manifest_path": "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/manifest.json",
+      "pdf_sha256": "6a6fc456f8cef5f5b21dfe3193f42691b2b28dc16414b4f42880d99bd73a1b17",
+      "page_count": 18,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l2_outline.json",
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l3_entities.json",
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l4_analysis.json",
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "liquid_neural_network",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z",
+      "manifest_path": "research/extracted/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z/manifest.json",
+      "pdf_sha256": "dc308487dd7c3cc729f84de183bc043e3036a1900eda9703e32ff99cd0d7c7f7",
+      "page_count": 11,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z/l2_outline.json",
+        "research/extracted/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z/l3_entities.json",
+        "research/extracted/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z/l4_analysis.json",
+        "research/extracted/implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "energy_based_training",
+        "graph_convolution",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z",
+      "manifest_path": "research/extracted/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z/manifest.json",
+      "pdf_sha256": "0d14336cbd9284a72203e2a4fc1e4c1f274893777cc2ef5d1f858fac925084ca",
+      "page_count": 37,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z/l2_outline.json",
+        "research/extracted/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z/l3_entities.json",
+        "research/extracted/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z/l4_analysis.json",
+        "research/extracted/knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "energy_based_training",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "llm_prompting",
+        "logical_query_answering",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z",
+      "manifest_path": "research/extracted/neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z/manifest.json",
+      "pdf_sha256": "4672e6b2a516de4b724036f9814e750fa341e60729588266d43799dd421d90a1",
+      "page_count": 12,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z/l2_outline.json",
+        "research/extracted/neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z/l3_entities.json",
+        "research/extracted/neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z/l4_analysis.json",
+        "research/extracted/neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "knowledge_graph_completion",
+        "logical_query_answering",
+        "pretraining_or_finetuning"
+      ]
+    },
+    {
+      "document_id": "proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z",
+      "manifest_path": "research/extracted/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z/manifest.json",
+      "pdf_sha256": "9b1f3b2b2c78c1678f15ac495f64fc496339babfb65ea78d04f734a512c35eeb",
+      "page_count": 12,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z/l2_outline.json",
+        "research/extracted/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z/l3_entities.json",
+        "research/extracted/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z/l4_analysis.json",
+        "research/extracted/proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "llm_prompting",
+        "message_passing_gnn",
+        "neuro_symbolic",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z",
+      "manifest_path": "research/extracted/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z/manifest.json",
+      "pdf_sha256": "12af48acf015cdf213b2cacce1930e6a316623bae15ea2ea13213b3cdd39efaf",
+      "page_count": 12,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z/l2_outline.json",
+        "research/extracted/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z/l3_entities.json",
+        "research/extracted/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z/l4_analysis.json",
+        "research/extracted/proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "llm_prompting",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z",
+      "manifest_path": "research/extracted/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z/manifest.json",
+      "pdf_sha256": "a7d811a44e1c65bf27da3a01859f23a8edbe33b8f96114b4b5066aedb078f284",
+      "page_count": 12,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z/l2_outline.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z/l3_entities.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z/l4_analysis.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z",
+      "manifest_path": "research/extracted/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z/manifest.json",
+      "pdf_sha256": "50d1ae7b708c49264290270248eeb02cd88527b62ae29e514d412563b2e32691",
+      "page_count": 16,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z/l2_outline.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z/l3_entities.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z/l4_analysis.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "benchmark_or_dataset",
+        "graph_convolution",
+        "llm_prompting",
+        "logical_query_answering",
+        "message_passing_gnn",
+        "neuro_symbolic",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z",
+      "manifest_path": "research/extracted/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z/manifest.json",
+      "pdf_sha256": "d8ce39389b41d970784536e2f88876d22e0f0b6cab1e81eb8ac5b09974b54f98",
+      "page_count": 14,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z/l2_outline.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z/l3_entities.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z/l4_analysis.json",
+        "research/extracted/published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "knowledge_graph_completion",
+        "llm_prompting",
+        "logical_query_answering",
+        "message_passing_gnn",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "temporal_knowledge_graph_completion_a_survey_20260508T065744Z",
+      "manifest_path": "research/extracted/temporal_knowledge_graph_completion_a_survey_20260508T065744Z/manifest.json",
+      "pdf_sha256": "a1ea2480d8952e0fdee7eb3af58e44fd734979dbcedb4e4d6a15ab103eb6db86",
+      "page_count": 9,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/temporal_knowledge_graph_completion_a_survey_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/temporal_knowledge_graph_completion_a_survey_20260508T065744Z/l2_outline.json",
+        "research/extracted/temporal_knowledge_graph_completion_a_survey_20260508T065744Z/l3_entities.json",
+        "research/extracted/temporal_knowledge_graph_completion_a_survey_20260508T065744Z/l4_analysis.json",
+        "research/extracted/temporal_knowledge_graph_completion_a_survey_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "attention_on_graphs",
+        "bayesian_inference",
+        "benchmark_or_dataset",
+        "contrastive_learning",
+        "graph_convolution",
+        "knowledge_graph_completion",
+        "llm_prompting",
+        "message_passing_gnn",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z",
+      "manifest_path": "research/extracted/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z/manifest.json",
+      "pdf_sha256": "0f7a5de2f678fc8d57023eab57d8b51f667323bd9de7e45c44865f84fc4a2607",
+      "page_count": 11,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z/l2_outline.json",
+        "research/extracted/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z/l3_entities.json",
+        "research/extracted/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z/l4_analysis.json",
+        "research/extracted/towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "llm_prompting",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    },
+    {
+      "document_id": "what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z",
+      "manifest_path": "research/extracted/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z/manifest.json",
+      "pdf_sha256": "a47ccf6a51d88c2e267f6458297e04df4bd4f768e4dab895ceb09d38498071cf",
+      "page_count": 21,
+      "status": {
+        "L1": "complete",
+        "L2": "complete",
+        "L3": "complete",
+        "L4": "complete",
+        "l4_formulas": "complete"
+      },
+      "artifacts": [
+        "research/extracted/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z/l1_raw_text.json",
+        "research/extracted/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z/l2_outline.json",
+        "research/extracted/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z/l3_entities.json",
+        "research/extracted/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z/l4_analysis.json",
+        "research/extracted/what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z/l4_formulas.json"
+      ],
+      "method_tags": [
+        "benchmark_or_dataset",
+        "llm_prompting",
+        "pretraining_or_finetuning",
+        "survey"
+      ]
+    }
+  ],
+  "formula_stats": {
+    "a_survey_on_graph_neural_networks_for_knowledge_graph_completion_20260508T065744Z": 14,
+    "arxiv_2307_08411v1_cs_ai_17_jul_2023_neurosymbolic_ai_for_reasoning_on_b_20260508T065744Z": 1,
+    "can_a_suit_of_armor_conduct_electricity_a_new_dataset_for_open_book_ques_20260508T065744Z": 14,
+    "commonsense_qa_a_question_answering_challenge_targeting_20260508T065744Z": 1,
+    "deep_bidirectional_language_knowledge_graph_pretraining_20260508T065744Z": 14,
+    "efficient_bayesian_inference_using_physics_informed_invertible_neural_ne_20260508T065744Z": 14,
+    "energy_based_epistemic_uncertainty_for_graph_neural_networks_20260508T065744Z": 14,
+    "graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z": 14,
+    "graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z": 14,
+    "graph_structure_refinement_with_energy_based_contrastive_learning_20260508T065744Z": 14,
+    "hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z": 14,
+    "implicit_generation_and_modeling_with_energy_based_models_yilun_du_mit_c_20260508T065744Z": 12,
+    "knowledge_augmented_graph_machine_learning_for_drug_discovery_a_survey_20260508T065744Z": 14,
+    "neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z": 14,
+    "proceedings_of_the_2021_conference_of_the_north_american_chapter_of_the_20260508T065744Z": 14,
+    "proceedings_of_the_23rd_workshop_on_biomedical_language_processing_pages_20260508T065744Z": 4,
+    "published_as_a_conference_paper_at_iclr_2018_graph_attention_networks_pe_20260508T065744Z": 14,
+    "published_as_a_conference_paper_at_iclr_2022_grease_lm_g_raph_reas_oning_20260508T065744Z": 14,
+    "published_as_a_conference_paper_at_iclr_2022_neural_methods_for_logical_20260508T065744Z": 14,
+    "temporal_knowledge_graph_completion_a_survey_20260508T065744Z": 14,
+    "towards_energy_aware_requirements_dependency_classification_knowledge_gr_20260508T065744Z": 14,
+    "what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z": 12
+  },
+  "validation": {
+    "l4_formulas_schema": "jsonschema Draft2020-12 ok (inline in batch_fill_research_layers)",
+    "manifest_schema": "pytest tests/test_research_manifest_jsonschema.py"
+  }
+}

@@ -1,0 +1,144 @@
+Abstract
+In recent years, machine learning models have made strides t owards human-like
+reasoning capabilities from several directions. In this wo rk, we review the current
+state of the literature and describe the remaining steps to a chieve a neural model
+which can perform System 2 reasoning analogous to a human. We argue that
+if current models are insufﬁcient to be classed as performin g reasoning, there
+remains very little additional progress needed to attain th at goal.
+1 Introduction
+The dual process theory of thought processes is long standin g within psychology ( Wason & Evans,
+1974; Evans, 2008; Stanovich & West, 2000) and was popularized more broadly by Kahneman
+(2012). In this framework, human thinking capabilities are conce ptualized as two distinct modes
+of thought. System 1 is fast, automatic, instinctive, and mo re emotional; System 2 is slower, ef-
+fortful, deliberate, and more logical. System 1 is, in essen ce, unconscious thought, and System 2
+is conscious thought; though there is not yet consensus on wh ether “ah-ha” moments which come
+following an incubation period are triggered by unconsciou s work of System 1 or 2 ( Christensen,
+2005; Gilhooly, 2016). Additionally, due to its instinctive and reactive nature , System 1 is more
+prone to bias than System 2, though System 2 is not without bia s (Tversky & Kahneman, 1974).
+In comparison to these two cognitive systems of thought, fee d-forward neural networks are some-
+times described as being analogous to System 1. Their output s are immediate and automatic, yielded
+immediately without what might call “deliberation”. Like w ith System 1, the computational system
+producing the output does not and can not provide an explicit explanation for why it produced a cer-
+tain response, making interpretability challenging, even when attempting to induce it to provide an
+a posteriori justiﬁcation for its response ( Jung et al., 2022). Such systems are effectively performing
+pattern matching for their current stimulus against the bod y of data imbibed during training.
+In comparison, symbolic rule-based algorithms (classical “artiﬁcial intelligence”), whether they are
+manually or programatically created, can provide an explan ation for their reasoning. However their
+performance is limited because the space of the real-world i s too large to be handled with a narrow
+set of rules that are coded in the stimulus domain ( Yihe et al., 2019).
+In this work, we review the existing literature in the space o f reasoning from the perspective of
+cognitive psychology and machine learning, and we speculat e on what form a neural network would
+need to take for it to be able to perform reasoning in the style of System 2. We argue the majority
+of hurdles needed to achieve this task have already been clea red, and there are a small number of
+pieces of the puzzle remaining. Thus complex agents, traine d through deep learning, that can reason
+logically about the real-world will be available in the near -term, if they are not here already.
+The First Workshop on System-2 Reasoning at Scale, NeurIPS 2 024.
+2 Background
+2.1 Modalities of human thought
+Historic texts indicate that ancient philosophers such as P lato believed that thinking was synony-
+mous with an inner monologue (
+Wiley, 2006). However, whilst an internal monologue (inner
+speech) is common, it is not ubiquitous and most people overe stimate how often their thoughts
+are expressed verbally ( Hurlburt et al., 2013). There is a wide variety of inner experiences across
+humans (Hurlburt & Heavy, 2006), and most people are surprised when they ﬁrst discover that other
+people’s internal experiences differ greatly from their ow n.
+The modalities of human inner thought are ( Hurlburt & Schwitzgebel, 2011; Hurlburt et al., 2013):
+• Inner speaking/inner monologue — thoughts expressed verb ally, e.g. talking to yourself,
+hearing your/a voice while recalling.
+• Inner seeing/visual imagery — thoughts expressed visuall y, e.g. picturing a memory or
+imagining a hypothetical scene.
+• Feelings — a conscious experience of emotional processes, e.g. sadness when grieving.
+• Unsymbolized thinking — thoughts expressed without words or images, e.g. drinking a
+glass of water, without internal discussion or commentary.
+• Sensory awareness — attending to a sensory aspect of the env ironment for an unimportant
+reason, e.g. hearing someone talk but seeing the light reﬂec ting off their glasses.
+Most people experience inner speech and inner imagery some o f the time but not all of the time,
+with the majority of their thought processes unsymbolized ( Hurlburt et al., 2013). However there
+are outliers in each direction, with some people having no in ner speech (anauralia), constant inner
+speech, no mind’s eye (aphantasia), or extremely vivid ment al imagery as detailed as sensory stim-
+uli (hyperphantasia). Day-to-day observations of people a cross society demonstrate, and academic
+studies conﬁrm, that people are able to complete tasks irres pective of whether their internal thoughts
+are represented through speech, imagery, or neither ( Keogh et al., 2021; Hinwar & Lambert, 2021);
+though the lack of inner sight does impair the ability to reca ll visual characteristics ( Monzel et al. ,
+2022; Bainbridge et al., 2021). Additionally, note that those possessing an inner monolo gue who
+speak multiple languages can have their inner monologue ﬂip between languages depending on re-
+cent context. These observations lead us to hypothesize tha t conscious thoughts (i.e. System 2
+thinking) are fundamentally abstract in nature , but can be projected to language and visual
+modalities internally.
+2.2 What is System 2 reasoning?
+As a thought exercise, consider the task of solving this illu strative example from the Cognitive
+Reﬂection Test (Frederick, 2005):
+A bat and a ball together cost $1.10. The bat costs $1 more than the ball. How much does
+the ball cost?
+F or illustrative purposes, please brieﬂy solve the problem yourself before reading ahead. System 1
+is responsible for the automatic response which immediatel y comes to mind on reading the problem:
+ten cents. This answer is yielded in an involuntary manner, s eemingly to all who hear the question
+for the ﬁrst time. However, by engaging System 2 we can verify whether the intuitive solution is
+correct, and reason about it. By reﬂecting on the intuitive a nswer, one can observe that if this were
+the price of the ball, the total would be $1.20, hence the answ er is incorrect. Since as the total price
+is the difference in price between the two objects ($1) plus twice the price of the ball, the answer is
+in fact 5 cents.
+If we analyze it, it appears that the instinctive response st ems from pattern matching—the problem
+looks at ﬁrst glance like other problems comparing the quant ity of two items, which we have solved
+in the past using the “subtraction” method, hence we instinc tively try to apply it here. Analogous
+mistakes can be seen in large language model (LLM) outputs, w here they respond to a fake logic
+puzzle as if it were real (
+Richardson, 2024).
+2
+One way to conceptualize such reasoning is as a series of hypo thesis generation and veriﬁcation
+steps. If the initial hypothesis fails the veriﬁcation, we t hen come up with a new hypothesis condi-
+tioned on the new information generated during the veriﬁcat ion process. This process is repeated
+until a revised hypothesis satisﬁes the veriﬁcation step. S uch a framework is similar to the Actor-
+Critic reinforcement learning algorithm ( Konda & Tsitsiklis, 1999), with the actor analogous to the
+hypothesis generator and the critic as the veriﬁer. This cou ld be interpreted as alternating steps of
+System 1 (for hypothesis generation) and 2 (critique), howe ver such a construction is contrary to
+prevalent psychological models of cognitive processes suc h as the dual process theory.
+Alternatively, human reasoning can be conceptualized as a t rain of thought in a continuous stream
+of consciousness ( Potter et al., 2014; James, 2012). This framework is comparable to the chain-of-
+thought LLM prompting technique ( Wei et al., 2022), in which a model reaches its ﬁnal output by
+focusing on a series of steps.
+2.3 Existing neural reasoning agents
+Previous work has found that by prompting LLMs with an in-con text example of chain-of-thought
+reasoning, and asking it to think step-by-step for its own an swer, models can be coerced into “think-
+ing” step-by-step (
+Wei et al., 2022). Providing such a prompt changes the distribution of most l ikely
+initial next tokens to be steps towards the solution instead of an immediate answer. By having
+the model attend to its own outputs as it progresses, it can bu ild on its previous steps, eventually
+producing a ﬁnal result that is more likely to be accurate ( Wei et al., 2022; Li et al. , 2024). How-
+ever, recent work has demonstrated the majority of the gains seen when using chain-of-thought
+prompting can be matched by prompting with a long series of ta sk-independent ﬁller tokens instead,
+suggesting the length of the sequence and the size of the comp ute graph is more important than
+the textual output ( Pfau et al., 2024). This implies the transformer can process data through uns een
+computations within the hidden layers of the network, unwit nessed in the chain-of-thought tokens
+that it outputs. Such ﬁndings may be analogous to System 2 rea soning in humans, which we noted
+in Section 2.1 are primarily non-symbolic but can be projected to consciou sly observed language
+streams ( Hurlburt et al., 2013), though such a hypothesis is challenging to investigate du e to the
+difﬁculties of interpreting deep transformer representat ions (Rai et al., 2024).
+In the domain of closed-world games, tremendous gains were s een by applying deep reinforcement
+learning models that learn through self-play to optimize a v alue function ( Silver et al., 2016, 2017,
+2018). In this case, the value network can be ﬁt to predict the like lihood of each player winning the
+game from a given position. The result of the game can be objec tively determined by continuing to
+play the match and seeing who wins, providing a strong traini ng signal to the value network. And
+since the value network is able to ﬁt this task, it is able to st eer the actor model effectively. Results
+are further improved by performing a Monte Carlo Markov chai n tree search at inference time,
+guided by the model’s predictions to prune the tree to a narro w range of feasible moves, to evaluate
+future game states and choose an optimal move. Such searches are similar to the Tree-of-thoughts
+approach to improve chain-of-thoughts reasoning ( Long, 2023; Y ao et al., 2023).
+Similarly, when deploying LLMs on mathematics problems, st ep-level veriﬁcation of chain-of-
+thought has been shown to be effective training technique ( Cobbe et al. , 2021; Uesato et al. , 2022;
+Lightman et al., 2024).
+3 Future steps and potential pitfalls
+3.1 Learning to reason
+Given the existing neural reasoning techniques, and their analogous relationship to human reasoning
+processes, we posit that networks already can learn to reaso n.
+Multiple works have shown training LLMs to reason step-by-s tep is best achieved by step-level
+feedback (
+Zelikman et al., 2022; Pfau et al., 2024; Lightman et al., 2024). One issue for training a
+reasoning model at scale is thus that there is a lack of large- scale reasoning datasets to train on in
+which humans have written out their train of thoughts explic itly. However, such data can be ac-
+quired at modest scale (e.g. Y ang et al., 2018), and, by explicitly labelling which steps are valid and
+which are not, such data can be used to train a veriﬁer that pre dicts whether individual logical rea-
+soning steps are sound. This veriﬁer, similar to the rationa lization evaluator used by Zelikman et al.
+3
+(2022), can then serve a similar role to the step-wise maths proble m solver of Lightman et al. (2024).
+Using this, we can bootstrap more chain-of-thou

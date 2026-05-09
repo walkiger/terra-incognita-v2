@@ -1,0 +1,52 @@
+Towards System 2 Reasoning in LLMs:
+Learning How to Think With Meta
+Chain-of-Thought
+Violet Xiang2, Charlie Snell3, Kanishk Gandhi2, Alon Albalak1, Anikait Singh2, Chase Blagden1, Duy Phung1,
+Rafael Rafailov2,1, Nathan Lile1, Dakota Mahan1, Louis Castricato1, Jan-Philipp Fränken2, Nick Haber2 and
+Chelsea Finn2
+1SynthLabs.ai, 2Stanford University,3UC Berkeley
+We propose a novel framework, Meta Chain-of-Thought (Meta-CoT), which extends traditional Chain-of-
+Thought (CoT) by explicitly modeling the underlying reasoning required to arrive at a particular CoT. We
+present empirical evidence from state-of-the-art models exhibiting behaviors consistent with in-context search,
+and explore methods for producing Meta-CoT via process supervision, synthetic data generation, and search
+algorithms. Finally, we outline a concrete pipeline for training a model to produce Meta-CoTs, incorporating
+instruction tuning with linearized search traces and reinforcement learning post-training. Finally, we discuss
+open research questions, including scaling laws, verifier roles, and the potential for discovering novel reasoning
+algorithms. This work provides a theoretical and practical roadmap to enable Meta-CoT in LLMs, paving the
+way for more powerful and human-like reasoning in artificial intelligence.
+Give a man a fish and you feed him for a day;
+teach a man to fish and you feed him for a lifetime.
+-Proverb
+Contents
+1 Introduction 4
+1.1 Motivation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.2 Outline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2 Meta Chain-Of-Thought 6
+2.1 Deriving The Meta-CoT Process . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2 Why Does (Classical) CoT Fail? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3 Towards Deliberate Reasoning With Language Models - Search 9
+3.1 Inference-Time Compute: Search . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.2 Inference-Time Compute: Verification . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+Authors are ordered randomly. Correspondence to team@synthlabs.ai.
+arXiv:2501.04682v1  [cs.AI]  8 Jan 2025
+Towards System 2 Reasoning in LLMs: Learning How to Think With Meta Chain-of-Thought
+3.3 From Best-of-N To General Search . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.4 Is Search (Inference Time Compute) A Fundamental Capability Shift? . . . . . . . . . 14
+4 Towards Meta-CoT Reasoning 15
+4.1 Bootstrapping Meta-CoT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.1.1 Self-Taught Reasoner . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.1.2 Meta-STaR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+4.2 Empirical Examples Of Internalizing Search . . . . . . . . . . . . . . . . . . . . . . . 16
+4.2.1 Small-Scale Empirical Results on Internalizing Search . . . . . . . . . . . . . . 16
+4.2.2 In-context Exploration For LLMs . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2.3 Using variable Compute . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2.4 Backtracking in LLMs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.3 Synthetic Meta-CoT Via Search . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+4.3.1 Monte-Carlo Tree Search . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4.3.2 A* search . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4.4 Do Advanced Reasoning Systems Implement In-Context Search? . . . . . . . . . . . . 23
+5 Process Supervision 26
+5.1 Learning Process Reward Models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+5.2 PRM Quality And Its Effect On Search . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+5.3 Verifiable Versus Open-Ended Problems . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+6 Meta Reinforcement Learning - Learn

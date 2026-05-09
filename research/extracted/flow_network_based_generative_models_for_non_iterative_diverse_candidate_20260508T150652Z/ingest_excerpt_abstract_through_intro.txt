@@ -1,0 +1,139 @@
+Abstract
+This paper is about the problem of learning a stochastic policy for generating
+an object (like a molecular graph) from a sequence of actions, such that the
+probability of generating an object is proportional to a given positive reward for
+that object. Whereas standard return maximization tends to converge to a single
+return-maximizing sequence, there are cases where we would like to sample a
+diverse set of high-return solutions. These arise, for example, in black-box function
+optimization when few rounds are possible, each with large batches of queries,
+where the batches should be diverse, e.g., in the design of new molecules. One
+can also see this as a problem of approximately converting an energy function to a
+generative distribution. While MCMC methods can achieve that, they are expensive
+and generally only perform local exploration. Instead, training a generative policy
+amortizes the cost of search during training and yields to fast generation. Using
+insights from Temporal Difference learning, we propose GFlowNet, based on a
+view of the generative process as a ﬂow network, making it possible to handle the
+tricky case where different trajectories can yield the same ﬁnal state, e.g., there
+are many ways to sequentially add atoms to generate some molecular graph. We
+cast the set of trajectories as a ﬂow and convert the ﬂow consistency equations into
+a learning objective, akin to the casting of the Bellman equations into Temporal
+Difference methods. We prove that any global minimum of the proposed objectives
+yields a policy which samples from the desired distribution, and demonstrate the
+improved performance and diversity of GFlowNet on a simple domain where there
+are many modes to the reward function, and on a molecule synthesis task.
+1 Introduction
+The maximization of expected return R in reinforcement learning (RL) is generally achieved by
+putting all the probability mass of the policyπ on the highest-return sequence of actions. In this paper,
+we study the scenario where our objective is not to generate the single highest-reward sequence of
+actions but rather to sample a distribution of trajectories whose probability is proportional to a given
+positive return or reward function. This can be useful in tasks where exploration is important, i.e., we
+want to sample from the leading modes of the return function. This is equivalent to the problem of
+turning an energy function into a corresponding generative model, where the object to be generated is
+obtained via a sequence of actions. By changing the temperature of the energy function (i.e., scaling
+it multiplicatively) or by taking the power of the return, one can control how selective the generator
+should be, i.e., only generate from around the highest modes at low temperature or explore more with
+a higher temperature.
+A motivating application for this setup is iterative black-box optimization where the learner has
+access to an oracle which can compute a reward for a large batch of candidates at each round, e.g., in
+drug-discovery applications. Diversity of the generated candidates is particularly important when the
+oracle is itself uncertain, e.g., it may consist of cellular assays which is a cheap proxy for clinical
+35th Conference on Neural Information Processing Systems (NeurIPS 2021).
+arXiv:2106.04399v2  [cs.LG]  19 Nov 2021
+trials, or it may consist of the result of a docking simulation (estimating how well a candidate small
+molecule binds to a target protein) which is a proxy for more accurate but more expensive downstream
+evaluations (like cellular assays or in-vivo assays in mice).
+When calling the oracle is expensive (e.g. it involves a biological experiment), a standard way (Anger-
+mueller et al., 2020) to apply machine learning in such exploration settings is to take the data already
+collected from the oracle (say a set of (x,y ) pairs wherex is a candidate solution an y is a scalar
+evaluation ofx from the oracle) and train a supervised proxyf (viewed as a simulator) which predicts
+y fromx. The function f or a variant off which incorporates uncertainty about its value, like in
+Bayesian optimization (Srinivas et al., 2010; Negoescu et al., 2011), can then be used as a reward
+functionR to train a generative model or a policy that will produce a batch of candidates for the
+next experimental assays. Searching for x which maximizes R(x) is not sufﬁcient because we
+would like to sample for the batch of queries a representative set ofx’s with high values ofR, i.e.,
+around modes ofR(x). Note that alternative ways to obtain diversity exist, e.g., with batch Bayesian
+optimization (Kirsch et al., 2019). An advantage of the proposed approach is that the computational
+cost is linear in the size of the batch (by opposition with methods which compare pairs of candidates,
+which is at least quadratic). With the possibility of assays of a hundred thousand candidates using
+synthetic biology, linear scaling would be a great advantage.
+In this paper, we thus focus on the speciﬁc machine learning problem of turning a given positive
+reward or return function into a generative policy which samples with a probability propor-
+tional to the return. In applications like the one mentioned above, we only apply the reward function
+after having generated a candidate, i.e., the reward is zero except in a terminal state, and the return is
+the terminal reward. We are in the so-called episodic setting of RL.
+The proposed approach views the probability assigned to an action given a state as the ﬂow associated
+with a network whose nodes are states, and outgoing edges from that node are deterministic transitions
+driven by an action (not to be confused with normalizing ﬂows; Rezende and Mohamed (2016)).
+The total ﬂow into the network is the sum of the rewards in the terminal states (i.e., a partition
+function) and can be shown to be the ﬂow at the root node (or start state). The proposed algorithm is
+inspired by Bellman updates and converges when the incoming and outgoing ﬂow into and out of
+each state match. A policy which chooses an action with probability proportional to the outgoing ﬂow
+corresponding to that action is proven to achieve the desired result, i.e., the probability of sampling a
+terminal state is proportional to its reward. In addition, we show that the resulting setup is off-policy;
+it converges to the above solution even if the training trajectories come from a different policy, so
+long as it has large enough support on the state space.
+The main contributions of this paper are as follows:
+• We propose GFlowNet, a novel generative method for unnormalized probability distributions
+based on ﬂow networks and local ﬂow-matching conditions: the ﬂow incoming to a state must
+match the outgoing ﬂow.
+• We prove crucial properties of GFlowNet, including the link between the ﬂow-matching
+conditions (which many training objectives can provide) and the resulting match of the
+generated policy with the target reward function. We also prove its ofﬂine properties and
+asymptotic convergence (if the training objective can be minimized). We also demonstrate
+that previous related work (Buesing et al., 2019) which sees the generative process like a tree
+would fail when there are many action sequences which can lead to the same state.
+• We demonstrate on synthetic data the usefulness of departing from seeking one mode of the
+return, and instead seeking to model the entire distribution and all its modes.
+• We successfully apply GFlowNet to a large scale molecule synthesis domain, with comparative
+experiments against PPO and MCMC methods.
+All implementations are available at https://github.com/bengioe/gflownet.
+2 Approximating Flow Network generative models with a TD-like objective
+Consider a discrete setX and policyπ(a|s) to sequentially buildx∈X with probabilityπ(x) with
+π(x)≈ R(x)
+Z = R(x)∑
+x′∈XR(x′) (1)
+2
+whereR(x)> 0 is a reward for a terminal statex. This would be useful to sample novel drug-like
+molecules when given a reward functionR that scores molecules based on their chemical properties.
+Being able to sample from the high modes ofR(x) would provide diversity in the batches of generated
+molecules sent to assays. This is in contrast with the typical RL objective of maximizing return which
+we have found to often end up focusing around one or very few good molecules. In our context,R(x)
+is a proxy for the actual values obtained from assays, which means it can be called often and cheaply.
+R(x) is retrained or ﬁne-tuned each time we acquire new data from the assays.
+What method should one use to generate batches sampled fromπ(x)∝R(x)? Let’s ﬁrst think of the
+state space under which we would operate.
+LetS denote the set of states andX⊂S denote the set of terminal states. LetA be a ﬁnite set, the
+alphabet,A(s)⊆A be the set of allowed actions at states, and letA∗(s) be the set of all sequences
+of actions allowed after states. To every action sequence⃗ a= (a1,a 2,a 3,...,a h) ofai∈A,h≤H
+corresponds a singlex, i.e. the environment is deterministic so we can deﬁne a functionC mapping a
+sequence of actions⃗ ato anx. If such a sequence is ‘incomplete’ we deﬁne its reward to be 0. When
+the correspondence between action sequences and states is bijective, a states is uniquely described
+by some sequence⃗ a, and we can visualize the generative process as the traversal of a tree from a
+single root node to a leaf corresponding to the sequence of actions along the way.
+However, when this correspondence is non-injective, i.e. when multiple action sequences describe
+the samex, things get trickier. Instead of a tree, we get a directed acyclic graph or DAG (assuming that
+the sequences must be of ﬁnite length, i.e., there are no deterministic cycles), as illustrated in Figure 1.
+For example, and of interest here, molecules can be seen as graphs, which can be described in
+multiple orders (canonical representations such as SMILES strings also have this problem: there may
+be multiple descriptions for the same actual molecule). The standard approach to such a sampling
+problem is to use iterative MCMC methods (Xie et al., 2021; Grathwohl et al., 2021). Another
+option is to relax the desire to havep(x)∝R(x) and to use non-interative (sequential) RL methods
+(Gottipati et al., 2020), but these are at high risk of getting stuck in local maxima and of missing
+modes. Indeed, in our setting, the policy which maximizes the expected return (which is the expected
+ﬁnal reward) generates the sequence with the highest return (i.e., a single molecule).
+2.1 Flow Networks
+In this section we propose the Generative Flow Network framework, or GFlowNet, which enables us
+to learn policies such thatp(x)∝R(x) when sampled. We ﬁrst discuss why existing methods are
+inadequate, and then show how we can use the metaphor of ﬂows, sinks and sources, to construct
+adequate policies. We then show that such policies can be learned via a ﬂow-matching objective.
+With existing methods in the bijective case, one can think of the sequential generation of onex as an
+episode in a tree-structured deterministic MDP, where all leavesx are terminal states (with reward
+R(x)) and the root is initial states0. Interestingly, in such a case one can express the pseudo-value of
+a state ˜V (s) as the sum of all the rewards of the descendants ofs (Buesing et al., 2019).
+In the non-injective case, these methods are inadequate. Constructing π(τ )≈ R(τ )/Z, e.g. as
+per Buesing et al. (2019), MaxEnt RL (Haarnoja et al., 2017), or via an autoregressive method (Nash
+and Durkan, 2019; Shi et al., 2021) has a particular problem as shown below: if multiple action
+sequences⃗ a(i.e. multiple trajectoriesτ) lead to a ﬁnal statex, then a serious bias can be introduced
+in the generative probabilities. Let us denote ⃗ a+⃗b as the concatenation of the two sequences of
+actions⃗ aand⃗b, and by extensions +⃗b the state reached by applying the actions in⃗b from states.
+Proposition 1. Let C : A∗ ↦→ Sassociate each allowed action sequence ⃗ 

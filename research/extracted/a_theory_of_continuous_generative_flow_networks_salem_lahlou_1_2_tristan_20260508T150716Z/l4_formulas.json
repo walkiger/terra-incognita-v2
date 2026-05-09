@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "a_theory_of_continuous_generative_flow_networks_salem_lahlou_1_2_tristan_20260508T150716Z",
+  "extracted_at": "2026-05-08T15:08:34Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "All states are reachable from𝑠0 All open sets are reachable from𝑠0 with nonzero likelihood (1) The state⊥has no outgoing edges The state ⊥is absorbing (2) The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likel",
+        "unicode_plain": "All states are reachable from𝑠0 All open sets are reachable from𝑠0 with nonzero likelihood (1) The state⊥has no outgoing edges The state ⊥is absorbing (2) The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. "
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "All states are reachable from𝑠0 All open sets are reachable from𝑠0 with nonzero likelihood (1) The state⊥has no outgoing edges The state ⊥is absorbing (2) The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "The state⊥has no outgoing edges The state ⊥is absorbing (2) The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 ",
+        "unicode_plain": "The state⊥has no outgoing edges The state ⊥is absorbing (2) The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. 3"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "The state⊥has no outgoing edges The state ⊥is absorbing (2) The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_7",
+      "presentation": {
+        "latex": "The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. 3 Terminating distribution𝑃⊤ 𝐹 Terminating state measur",
+        "unicode_plain": "The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. 3 Terminating distribution𝑃⊤ 𝐹 Terminating state measure𝑃⊤ Def. 9 and Thm. 1"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(7)",
+        "verbatim_snippet": "The state graph is acyclic (⇒trajectory lengths are bounded)The measurable pointed graph is finitely absorbing (7) State flow𝐹, forward policy𝑃𝐹, backward policy𝑃𝐵 Flow measure𝜇, forward kernel𝑃𝐹, backward kernel𝑃𝐵 Defs. 3 and 5 Transition likelihoods𝑃𝐹(−|𝑠) only positive along edges Transition kernels𝑃𝐹(𝑠,−)absolutely continuous w.r.t.𝜅 Def. 3 Terminating distribution𝑃⊤ 𝐹 Terminating state measure𝑃⊤ Def. 9 and Thm. 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page3_4",
+      "presentation": {
+        "latex": "Detailed balance:𝐹(𝑠)𝑃𝐹(𝑠′|𝑠) = 𝐹(𝑠′)𝑃𝐵(𝑠|𝑠′) Detailed balance:𝜇(𝑑𝑠)𝑃𝐹(𝑠, 𝑑𝑠′) = 𝜇(𝑑𝑠′)𝑃𝐵(𝑠′, 𝑑𝑠) Def. 5 Trajectory balance:𝑍 𝑃𝐹(𝜏) = 𝑅(𝑥𝜏)𝑃𝐵(𝜏 | 𝑥𝜏) Trajectory balance: 𝑍 𝑃𝐹(𝑠0, 𝑑𝑠1) . . . 𝑃𝐹(𝑠𝑛, {⊥}) = 𝑅(𝑑𝑠𝑛)𝑃𝐵(𝑠𝑛, 𝑑𝑠𝑛−1) . . . 𝑃𝐵(𝑠1, {𝑠0}) Def. 6 tantly, however, the soundness of the theory relies upon the following assumptions, which need to be carefully verified",
+        "unicode_plain": "Detailed balance:𝐹(𝑠)𝑃𝐹(𝑠′|𝑠) = 𝐹(𝑠′)𝑃𝐵(𝑠|𝑠′) Detailed balance:𝜇(𝑑𝑠)𝑃𝐹(𝑠, 𝑑𝑠′) = 𝜇(𝑑𝑠′)𝑃𝐵(𝑠′, 𝑑𝑠) Def. 5 Trajectory balance:𝑍 𝑃𝐹(𝜏) = 𝑅(𝑥𝜏)𝑃𝐵(𝜏 | 𝑥𝜏) Trajectory balance: 𝑍 𝑃𝐹(𝑠0, 𝑑𝑠1) . . . 𝑃𝐹(𝑠𝑛, {⊥}) = 𝑅(𝑑𝑠𝑛)𝑃𝐵(𝑠𝑛, 𝑑𝑠𝑛−1) . . . 𝑃𝐵(𝑠1, {𝑠0}) Def. 6 tantly, however, the soundness of the theory relies upon the following assumptions, which need to be carefully verified"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Detailed balance:𝐹(𝑠)𝑃𝐹(𝑠′|𝑠) = 𝐹(𝑠′)𝑃𝐵(𝑠|𝑠′) Detailed balance:𝜇(𝑑𝑠)𝑃𝐹(𝑠, 𝑑𝑠′) = 𝜇(𝑑𝑠′)𝑃𝐵(𝑠′, 𝑑𝑠) Def. 5 Trajectory balance:𝑍 𝑃𝐹(𝜏) = 𝑅(𝑥𝜏)𝑃𝐵(𝜏 | 𝑥𝜏) Trajectory balance: 𝑍 𝑃𝐹(𝑠0, 𝑑𝑠1) . . . 𝑃𝐹(𝑠𝑛, {⊥}) = 𝑅(𝑑𝑠𝑛)𝑃𝐵(𝑠𝑛, 𝑑𝑠𝑛−1) . . . 𝑃𝐵(𝑠1, {𝑠0}) Def. 6 tantly, however, the soundness of the theory relies upon the following assumptions, which need to be carefully verified"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page3_5",
+      "presentation": {
+        "latex": "Trajectory balance:𝑍 𝑃𝐹(𝜏) = 𝑅(𝑥𝜏)𝑃𝐵(𝜏 | 𝑥𝜏) Trajectory balance: 𝑍 𝑃𝐹(𝑠0, 𝑑𝑠1) . . . 𝑃𝐹(𝑠𝑛, {⊥}) = 𝑅(𝑑𝑠𝑛)𝑃𝐵(𝑠𝑛, 𝑑𝑠𝑛−1) . . . 𝑃𝐵(𝑠1, {𝑠0}) Def. 6 tantly, however, the soundness of the theory relies upon the following assumptions, which need to be carefully verified when training a GFlowNet in an infinite space:",
+        "unicode_plain": "Trajectory balance:𝑍 𝑃𝐹(𝜏) = 𝑅(𝑥𝜏)𝑃𝐵(𝜏 | 𝑥𝜏) Trajectory balance: 𝑍 𝑃𝐹(𝑠0, 𝑑𝑠1) . . . 𝑃𝐹(𝑠𝑛, {⊥}) = 𝑅(𝑑𝑠𝑛)𝑃𝐵(𝑠𝑛, 𝑑𝑠𝑛−1) . . . 𝑃𝐵(𝑠1, {𝑠0}) Def. 6 tantly, however, the soundness of the theory relies upon the following assumptions, which need to be carefully verified when training a GFlowNet in an infinite space:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Trajectory balance:𝑍 𝑃𝐹(𝜏) = 𝑅(𝑥𝜏)𝑃𝐵(𝜏 | 𝑥𝜏) Trajectory balance: 𝑍 𝑃𝐹(𝑠0, 𝑑𝑠1) . . . 𝑃𝐹(𝑠𝑛, {⊥}) = 𝑅(𝑑𝑠𝑛)𝑃𝐵(𝑠𝑛, 𝑑𝑠𝑛−1) . . . 𝑃𝐵(𝑠1, {𝑠0}) Def. 6 tantly, however, the soundness of the theory relies upon the following assumptions, which need to be carefully verified when training a GFlowNet in an infinite space:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page3_6",
+      "presentation": {
+        "latex": "𝐹 (𝑠 → 𝑠′) 𝑑𝑠′ = ∫ 𝑎 𝐹 (𝑠 → 𝑇 (𝑠, 𝑎)) 𝑑𝑎, where the second integral is taken over actions and 𝑇 (𝑠, 𝑎) is the state reached by taking action 𝑎 from 𝑠. This change",
+        "unicode_plain": "𝐹 (𝑠 → 𝑠′) 𝑑𝑠′ = ∫ 𝑎 𝐹 (𝑠 → 𝑇 (𝑠, 𝑎)) 𝑑𝑎, where the second integral is taken over actions and 𝑇 (𝑠, 𝑎) is the state reached by taking action 𝑎 from 𝑠. This change"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝐹 (𝑠 → 𝑠′) 𝑑𝑠′ = ∫ 𝑎 𝐹 (𝑠 → 𝑇 (𝑠, 𝑎)) 𝑑𝑎, where the second integral is taken over actions and 𝑇 (𝑠, 𝑎) is the state reached by taking action 𝑎 from 𝑠. This change"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "cases, such as sampling in Euclidean spaces where𝑇 (𝑠, 𝑎) = 𝑠 + 𝑎). These issues are concerning for the scope of that method’s applicability. 3.2. Structured state space Note. To help the reader form a mental picture, we list the concepts introduced and their discrete analogues in Table 1",
+        "unicode_plain": "cases, such as sampling in Euclidean spaces where𝑇 (𝑠, 𝑎) = 𝑠 + 𝑎). These issues are concerning for the scope of that method’s applicability. 3.2. Structured state space Note. To help the reader form a mental picture, we list the concepts introduced and their discrete analogues in Table 1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "cases, such as sampling in Euclidean spaces where𝑇 (𝑠, 𝑎) = 𝑠 + 𝑎). These issues are concerning for the scope of that method’s applicability. 3.2. Structured state space Note. To help the reader form a mental picture, we list the concepts introduced and their discrete analogues in Table 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "pointed graph 𝐺 = ( ¯S, T , Σ, 𝑠0, ⊥, 𝜅, 𝜅 𝑏, 𝜈) consists of: • A topological space ( ¯S, T ), where T is the set of open subsets of ¯S and Σ is the Borel 𝜎-algebra associated to the topology on ¯S; • A pair of distinct distinguished states 𝑠0 ∈ ¯S and ⊥ ∈ ¯S, called the source state and sink state, such that {𝑠0} and",
+        "unicode_plain": "pointed graph 𝐺 = ( ¯S, T , Σ, 𝑠0, ⊥, 𝜅, 𝜅 𝑏, 𝜈) consists of: • A topological space ( ¯S, T ), where T is the set of open subsets of ¯S and Σ is the Borel 𝜎-algebra associated to the topology on ¯S; • A pair of distinct distinguished states 𝑠0 ∈ ¯S and ⊥ ∈ ¯S, called the source state and sink state, such that {𝑠0} and"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pointed graph 𝐺 = ( ¯S, T , Σ, 𝑠0, ⊥, 𝜅, 𝜅 𝑏, 𝜈) consists of: • A topological space ( ¯S, T ), where T is the set of open subsets of ¯S and Σ is the Borel 𝜎-algebra associated to the topology on ¯S; • A pair of distinct distinguished states 𝑠0 ∈ ¯S and ⊥ ∈ ¯S, called the source state and sink state, such that {𝑠0} and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "{⊥} are both open and closed sets. We defineS = ¯S \\ {⊥} and S◦ = S \\ { 𝑠0}, so the topology on ¯S is the disjoint union topology on {𝑠0}, {⊥}, and S◦. • A 𝜎-finite transition kernel 𝜅 on ( ¯S, Σ), called the refer- ence kernel, 3",
+        "unicode_plain": "{⊥} are both open and closed sets. We defineS = ¯S \\ {⊥} and S◦ = S \\ { 𝑠0}, so the topology on ¯S is the disjoint union topology on {𝑠0}, {⊥}, and S◦. • A 𝜎-finite transition kernel 𝜅 on ( ¯S, Σ), called the refer- ence kernel, 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "{⊥} are both open and closed sets. We defineS = ¯S \\ {⊥} and S◦ = S \\ { 𝑠0}, so the topology on ¯S is the disjoint union topology on {𝑠0}, {⊥}, and S◦. • A 𝜎-finite transition kernel 𝜅 on ( ¯S, Σ), called the refer- ence kernel, 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "and S◦ = S \\ { 𝑠0}, so the topology on ¯S is the disjoint union topology on {𝑠0}, {⊥}, and S◦. • A 𝜎-finite transition kernel 𝜅 on ( ¯S, Σ), called the refer- ence kernel, 3",
+        "unicode_plain": "and S◦ = S \\ { 𝑠0}, so the topology on ¯S is the disjoint union topology on {𝑠0}, {⊥}, and S◦. • A 𝜎-finite transition kernel 𝜅 on ( ¯S, Σ), called the refer- ence kernel, 3"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "and S◦ = S \\ { 𝑠0}, so the topology on ¯S is the disjoint union topology on {𝑠0}, {⊥}, and S◦. • A 𝜎-finite transition kernel 𝜅 on ( ¯S, Σ), called the refer- ence kernel, 3"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "∀𝐵 ∈ T \\ {∅} ∃ 𝑛 ≥ 0 : 𝜅𝑛 (𝑠0, 𝐵) > 0, (1) 𝜅(⊥, −) = 𝛿⊥, (2) ∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5)",
+        "unicode_plain": "∀𝐵 ∈ T \\ {∅} ∃ 𝑛 ≥ 0 : 𝜅𝑛 (𝑠0, 𝐵) > 0, (1) 𝜅(⊥, −) = 𝛿⊥, (2) ∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "∀𝐵 ∈ T \\ {∅} ∃ 𝑛 ≥ 0 : 𝜅𝑛 (𝑠0, 𝐵) > 0, (1) 𝜅(⊥, −) = 𝛿⊥, (2) ∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "𝜅(⊥, −) = 𝛿⊥, (2) ∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6)",
+        "unicode_plain": "𝜅(⊥, −) = 𝛿⊥, (2) ∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "𝜅(⊥, −) = 𝛿⊥, (2) ∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6) The measurable pointed graph is called finitely absorbing if",
+        "unicode_plain": "∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6) The measurable pointed graph is called finitely absorbing if"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "∀𝐵 ∈ Σ, 𝑠 ↦→ 𝜅(𝑠, 𝐵) is continuous, (3) ∀𝐵 ∈ Σ ⊗ Σ, (( 𝑠0, 𝑠0) ∉ 𝐵, (⊥, ⊥) ∉ 𝐵) ⇒ 𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6) The measurable pointed graph is called finitely absorbing if"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6) The measurable pointed graph is called finitely absorbing if ∃𝑁 > 0 : supp(𝜅 𝑁 (𝑠0, −)) = {⊥}, (7) in which case the minimal such 𝑁 is called the maximal",
+        "unicode_plain": "𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6) The measurable pointed graph is called finitely absorbing if ∃𝑁 > 0 : supp(𝜅 𝑁 (𝑠0, −)) = {⊥}, (7) in which case the minimal such 𝑁 is called the maximal"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "𝜈 ⊗ 𝜅(𝐵) = 𝜈 ⊗ 𝜅𝑏 (𝐵), (4) ∀𝐵 ∈ Σ, 𝜅 𝑏 (𝑠0, 𝐵) = 0, (5) ∀𝑠 ∈ S , 𝜅 (𝑠, {⊥}) > 0 ⇒ 𝜅(𝑠, {⊥}) = 1. (6) The measurable pointed graph is called finitely absorbing if ∃𝑁 > 0 : supp(𝜅 𝑁 (𝑠0, −)) = {⊥}, (7) in which case the minimal such 𝑁 is called the maximal"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

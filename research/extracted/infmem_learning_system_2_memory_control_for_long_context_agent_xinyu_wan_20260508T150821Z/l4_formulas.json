@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "infmem_learning_system_2_memory_control_for_long_context_agent_xinyu_wan_20260508T150821Z",
+  "extracted_at": "2026-05-08T15:11:04Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "ory state and single-pass processing, which yields O(1) memory and O(n) computation over a document of n seg- ments. However, these agents rely on passive, reactive update policies and are unable to revisit earlier context to recover missing evidence when needed (Packer et al., 2023; Yu et al., 2025).",
+        "unicode_plain": "ory state and single-pass processing, which yields O(1) memory and O(n) computation over a document of n seg- ments. However, these agents rely on passive, reactive update policies and are unable to revisit earlier context to recover missing evidence when needed (Packer et al., 2023; Yu et al., 2025)."
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          1
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "ory state and single-pass processing, which yields O(1) memory and O(n) computation over a document of n seg- ments. However, these agents rely on passive, reactive update policies and are unable to revisit earlier context to recover missing evidence when needed (Packer et al., 2023; Yu et al., 2025)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page3_2",
+      "presentation": {
+        "latex": "t=1.InfMemmaintains a bounded memory statem t (a token sequence) with a fixed budget|m t| ≤M. After reading each chunk, the agent updates its memory by selectively overwriting an older entry, keeping the per-step context size constant and ensuring end-to-end complexity linear inT.",
+        "unicode_plain": "t=1.InfMemmaintains a bounded memory statem t (a token sequence) with a fixed budget|m t| ≤M. After reading each chunk, the agent updates its memory by selectively overwriting an older entry, keeping the per-step context size constant and ensuring end-to-end complexity linear inT."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1.InfMemmaintains a bounded memory statem t (a token sequence) with a fixed budget|m t| ≤M. After reading each chunk, the agent updates its memory by selectively overwriting an older entry, keeping the per-step context size constant and ensuring end-to-end complexity linear inT."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page3_3",
+      "presentation": {
+        "latex": "j=1 (e.g., paragraphs) from the same document. Unlike the coarse streaming chunks, these units are compact and globally indexed. When triggered by PRETHINK,InfMem can jump to any part of the document (past or future) to retrieve the top-kt units and summarize them into a concise context rt, while preserving the coarse-grained reading flow.",
+        "unicode_plain": "j=1 (e.g., paragraphs) from the same document. Unlike the coarse streaming chunks, these units are compact and globally indexed. When triggered by PRETHINK,InfMem can jump to any part of the document (past or future) to retrieve the top-kt units and summarize them into a concise context rt, while preserving the coarse-grained reading flow."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "j=1 (e.g., paragraphs) from the same document. Unlike the coarse streaming chunks, these units are compact and globally indexed. When triggered by PRETHINK,InfMem can jump to any part of the document (past or future) to retrieve the top-kt units and summarize them into a concise context rt, while preserving the coarse-grained reading flow."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page4_4",
+      "presentation": {
+        "latex": "structured control record ct = (at, ut, kt) that specifies the step-taction: • ACTION at ∈ {“STOP”,“RETRIEVE”} : whether the current memory is sufficient to answer q (stop) or addi- tional in-document evidence is needed (retrieve); • QUERY ut (if at =“RETRIEVE” ): a single dynamic",
+        "unicode_plain": "structured control record ct = (at, ut, kt) that specifies the step-taction: • ACTION at ∈ {“STOP”,“RETRIEVE”} : whether the current memory is sufficient to answer q (stop) or addi- tional in-document evidence is needed (retrieve); • QUERY ut (if at =“RETRIEVE” ): a single dynamic"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "structured control record ct = (at, ut, kt) that specifies the step-taction: • ACTION at ∈ {“STOP”,“RETRIEVE”} : whether the current memory is sufficient to answer q (stop) or addi- tional in-document evidence is needed (retrieve); • QUERY ut (if at =“RETRIEVE” ): a single dynamic"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "• QUERY ut (if at =“RETRIEVE” ): a single dynamic query synthesized from(q, m t−1); • TOPK kt ∈ {1, . . . , K max} (if at =“RETRIEVE” ): the number of retrieval units to fetch. Together,(at, ut, kt) define the control decisions at step t: whether to stop, and if continuing,what to retrieveandhow",
+        "unicode_plain": "• QUERY ut (if at =“RETRIEVE” ): a single dynamic query synthesized from(q, m t−1); • TOPK kt ∈ {1, . . . , K max} (if at =“RETRIEVE” ): the number of retrieval units to fetch. Together,(at, ut, kt) define the control decisions at step t: whether to stop, and if continuing,what to retrieveandhow"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "• QUERY ut (if at =“RETRIEVE” ): a single dynamic query synthesized from(q, m t−1); • TOPK kt ∈ {1, . . . , K max} (if at =“RETRIEVE” ): the number of retrieval units to fetch. Together,(at, ut, kt) define the control decisions at step t: whether to stop, and if continuing,what to retrieveandhow"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page4_6",
+      "presentation": {
+        "latex": "• TOPK kt ∈ {1, . . . , K max} (if at =“RETRIEVE” ): the number of retrieval units to fetch. Together,(at, ut, kt) define the control decisions at step t: whether to stop, and if continuing,what to retrieveandhow much to retrieve. Optionally, PRETHINKmay also emit a brief natural-language rationale (e.g., missing evidence or",
+        "unicode_plain": "• TOPK kt ∈ {1, . . . , K max} (if at =“RETRIEVE” ): the number of retrieval units to fetch. Together,(at, ut, kt) define the control decisions at step t: whether to stop, and if continuing,what to retrieveandhow much to retrieve. Optionally, PRETHINKmay also emit a brief natural-language rationale (e.g., missing evidence or"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "• TOPK kt ∈ {1, . . . , K max} (if at =“RETRIEVE” ): the number of retrieval units to fetch. Together,(at, ut, kt) define the control decisions at step t: whether to stop, and if continuing,what to retrieveandhow much to retrieve. Optionally, PRETHINKmay also emit a brief natural-language rationale (e.g., missing evidence or"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "RETRIEVE: global in-document evidence.If at = “RETRIEVE” ,InfMemretrieves top- kt relevant retrieval units from the same document (no external corpus) and concatenates them into a compact context: Pt ←RETRIEVE(u t, kt;{p 1, . . . , pN }), rt ←Concat(P t), (1)",
+        "unicode_plain": "RETRIEVE: global in-document evidence.If at = “RETRIEVE” ,InfMemretrieves top- kt relevant retrieval units from the same document (no external corpus) and concatenates them into a compact context: Pt ←RETRIEVE(u t, kt;{p 1, . . . , pN }), rt ←Concat(P t), (1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "RETRIEVE: global in-document evidence.If at = “RETRIEVE” ,InfMemretrieves top- kt relevant retrieval units from the same document (no external corpus) and concatenates them into a compact context: Pt ←RETRIEVE(u t, kt;{p 1, . . . , pN }), rt ←Concat(P t), (1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "rt ←Concat(P t), (1) with separators and (optionally) unit identifiers to preserve provenance. WRITE: evidence-aware composition and joint compres- sion.If at =“RETRIEVE” ,InfMemoverwrites the memory with a bounded new state:",
+        "unicode_plain": "rt ←Concat(P t), (1) with separators and (optionally) unit identifiers to preserve provenance. WRITE: evidence-aware composition and joint compres- sion.If at =“RETRIEVE” ,InfMemoverwrites the memory with a bounded new state:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "rt ←Concat(P t), (1) with separators and (optionally) unit identifiers to preserve provenance. WRITE: evidence-aware composition and joint compres- sion.If at =“RETRIEVE” ,InfMemoverwrites the memory with a bounded new state:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page4_9",
+      "presentation": {
+        "latex": "sion.If at =“RETRIEVE” ,InfMemoverwrites the memory with a bounded new state: mt ←WRITE(q, m t−1, ct, rt;M),s.t.|m t| ≤M.(2) WRITEhas access to (q, mt−1, ct) as well as the retrieved evidence rt, and then performs evidence-aware composition: it connects the retrieved support rt with the newly observed",
+        "unicode_plain": "sion.If at =“RETRIEVE” ,InfMemoverwrites the memory with a bounded new state: mt ←WRITE(q, m t−1, ct, rt;M),s.t.|m t| ≤M.(2) WRITEhas access to (q, mt−1, ct) as well as the retrieved evidence rt, and then performs evidence-aware composition: it connects the retrieved support rt with the newly observed"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "sion.If at =“RETRIEVE” ,InfMemoverwrites the memory with a bounded new state: mt ←WRITE(q, m t−1, ct, rt;M),s.t.|m t| ≤M.(2) WRITEhas access to (q, mt−1, ct) as well as the retrieved evidence rt, and then performs evidence-aware composition: it connects the retrieved support rt with the newly observed"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "mt ←WRITE(q, m t−1, ct, rt;M),s.t.|m t| ≤M.(2) WRITEhas access to (q, mt−1, ct) as well as the retrieved evidence rt, and then performs evidence-aware composition: it connects the retrieved support rt with the newly observed content in ct in order to identify and encode the composition- critical facts and the bridging links into a bounded updated",
+        "unicode_plain": "mt ←WRITE(q, m t−1, ct, rt;M),s.t.|m t| ≤M.(2) WRITEhas access to (q, mt−1, ct) as well as the retrieved evidence rt, and then performs evidence-aware composition: it connects the retrieved support rt with the newly observed content in ct in order to identify and encode the composition- critical facts and the bridging links into a bounded updated"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "mt ←WRITE(q, m t−1, ct, rt;M),s.t.|m t| ≤M.(2) WRITEhas access to (q, mt−1, ct) as well as the retrieved evidence rt, and then performs evidence-aware composition: it connects the retrieved support rt with the newly observed content in ct in order to identify and encode the composition- critical facts and the bridging links into a bounded updated"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "EARLYSTOPand end-of-sequence answering.If at = “STOP” at a step, the agent halts the retrieval and the mem- ory updates: it directly produces the final answer using the current memory. Otherwise, it continues until the end of the chunk stream (t=T ). After termination (early stopping or reaching the end-of-sequence),InfMemgenerates:",
+        "unicode_plain": "EARLYSTOPand end-of-sequence answering.If at = “STOP” at a step, the agent halts the retrieval and the mem- ory updates: it directly produces the final answer using the current memory. Otherwise, it continues until the end of the chunk stream (t=T ). After termination (early stopping or reaching the end-of-sequence),InfMemgenerates:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EARLYSTOPand end-of-sequence answering.If at = “STOP” at a step, the agent halts the retrieval and the mem- ory updates: it directly produces the final answer using the current memory. Otherwise, it continues until the end of the chunk stream (t=T ). After termination (early stopping or reaching the end-of-sequence),InfMemgenerates:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "chunk stream (t=T ). After termination (early stopping or reaching the end-of-sequence),InfMemgenerates: ˆy←ANSWER(q, m ⋆), wherem ⋆ denotes the final memory state at termination. 4. Training InfMem InfMem instantiates explicit (System-2-style) control over a",
+        "unicode_plain": "chunk stream (t=T ). After termination (early stopping or reaching the end-of-sequence),InfMemgenerates: ˆy←ANSWER(q, m ⋆), wherem ⋆ denotes the final memory state at termination. 4. Training InfMem InfMem instantiates explicit (System-2-style) control over a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "chunk stream (t=T ). After termination (early stopping or reaching the end-of-sequence),InfMemgenerates: ˆy←ANSWER(q, m ⋆), wherem ⋆ denotes the final memory state at termination. 4. Training InfMem InfMem instantiates explicit (System-2-style) control over a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "stages: (1)SFT warmupfor protocol adherence, and (2) RL alignmentfor task success and efficiency. 4.1. SFT Warmup via Supervised Distillation Train–test consistent prompting.We distill a strong teacher model (e.g., Qwen3-32B) to a smaller student model using prompt templates that strictly mirror the",
+        "unicode_plain": "stages: (1)SFT warmupfor protocol adherence, and (2) RL alignmentfor task success and efficiency. 4.1. SFT Warmup via Supervised Distillation Train–test consistent prompting.We distill a strong teacher model (e.g., Qwen3-32B) to a smaller student model using prompt templates that strictly mirror the"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "stages: (1)SFT warmupfor protocol adherence, and (2) RL alignmentfor task success and efficiency. 4.1. SFT Warmup via Supervised Distillation Train–test consistent prompting.We distill a strong teacher model (e.g., Qwen3-32B) to a smaller student model using prompt templates that strictly mirror the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "{“STOP”,“RETRIEVE”} . If at =“RETRIEVE” , the teacher executes RETRIEVEand then WRITE; if at = “STOP” , the rollout terminates and the final answer is pro- duced. This enforces stricttrain–test consistency: the stu- dent receives supervision signals only on inference-valid actions, emphasizing on protocol format and execution reli-",
+        "unicode_plain": "{“STOP”,“RETRIEVE”} . If at =“RETRIEVE” , the teacher executes RETRIEVEand then WRITE; if at = “STOP” , the rollout terminates and the final answer is pro- duced. This enforces stricttrain–test consistency: the stu- dent receives supervision signals only on inference-valid actions, emphasizing on protocol format and execution reli-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "{“STOP”,“RETRIEVE”} . If at =“RETRIEVE” , the teacher executes RETRIEVEand then WRITE; if at = “STOP” , the rollout terminates and the final answer is pro- duced. This enforces stricttrain–test consistency: the stu- dent receives supervision signals only on inference-valid actions, emphasizing on protocol format and execution reli-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

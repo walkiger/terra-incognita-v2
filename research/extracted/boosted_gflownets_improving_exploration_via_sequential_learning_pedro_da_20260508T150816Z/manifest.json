@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z",
+  "source_pdf": "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/source.pdf",
+  "title_hint": "Boosted GFlowNets: Improving Exploration via Sequential Learning Pedro Dall’Antonia1 Tiago da Silva2 Daniel A. de César L. C. Mattos4",
+  "updated_at": "2026-05-08T15:09:18Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:18Z",
+      "artifacts": [
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/source.pdf",
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:18Z",
+      "artifacts": [
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:18Z",
+      "artifacts": [
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:18Z",
+      "artifacts": [
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:18Z",
+      "artifacts": [
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/l4_analysis.json",
+        "research/extracted/boosted_gflownets_improving_exploration_via_sequential_learning_pedro_da_20260508T150816Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4262; pdf_sha256=e68ad2a84034a4f9bb16e15b89f4b767dc8ad4f7422acf6faae4515c1991fdec; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "e68ad2a84034a4f9bb16e15b89f4b767dc8ad4f7422acf6faae4515c1991fdec"
+}

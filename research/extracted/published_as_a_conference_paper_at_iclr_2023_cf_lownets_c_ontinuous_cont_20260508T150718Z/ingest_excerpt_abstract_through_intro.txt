@@ -1,0 +1,190 @@
+ABSTRACT
+Generative ﬂow networks (GFlowNets), as an emerging technique, can be used as
+an alternative to reinforcement learning for exploratory control tasks. GFlowNet
+aims to generate distribution proportional to the rewards over terminating states,
+and to sample different candidates in an active learning fashion. GFlowNets need
+to form a DAG and compute the ﬂow matching loss by traversing the inﬂows and
+outﬂows of each node in the trajectory. No experiments have yet concluded that
+GFlowNets can be used to handle continuous tasks. In this paper, we propose gen-
+erative continuous ﬂow networks (CFlowNets) that can be applied to continuous
+control tasks. First, we present the theoretical formulation of CFlowNets. Then,
+a training framework for CFlowNets is proposed, including the action selection
+process, the ﬂow approximation algorithm, and the continuous ﬂow matching loss
+function. Afterward, we theoretically prove the error bound of the ﬂow approx-
+imation. The error decreases rapidly as the number of ﬂow samples increases.
+Finally, experimental results on continuous control tasks demonstrate the perfor-
+mance advantages of CFlowNets compared to many reinforcement learning meth-
+ods, especially regarding exploration ability.
+1 I NTRODUCTION
+As an emerging technology, generative ﬂow networks (GFlowNets) (Bengio et al., 2021a;b) can
+make up for the shortcomings of reinforcement learning (Kaelbling et al., 1996; Sutton & Barto,
+2018) on exploratory tasks. Speciﬁcally, based on the Bellman equation (Sutton & Barto, 2018),
+reinforcement learning is usually trained to maximize the expectation of future rewards; hence the
+learned policy is more inclined to sample action sequences with higher rewards. In contrast, the
+training goal of GFlowNets is to deﬁne a distribution proportional to the rewards over terminating
+states, i.e., the parent states of the ﬁnal states, rather than generating a single high-reward action
+sequence (Bengio et al., 2021a). This is more like sampling different candidates in an active learning
+setting (Bengio et al., 2021b), thus better suited for exploration tasks.
+GFlowNets construct the state transitions of trajectories into a directed acyclic graph (DAG) struc-
+ture. Each node in the graph structure corresponds to a different state, and actions correspond
+to transitions between different states, that is, an edge connecting different nodes in the graph.
+For discrete tasks, the number of nodes in this graph structure is limited, and each edge can only
+correspond to one discrete action. However, in real environments, the state and action spaces are
+continuous for many tasks, such as quadrupedal locomotion (Kohl & Stone, 2004), autonomous
+driving (Kiran et al., 2021; Shalev-Shwartz et al., 2016; Pan et al., 2017), or dexterous in-hand ma-
+nipulation (Andrychowicz et al., 2020). Moreover, the reward distributions corresponding to these
+environments may be multimodal, requiring more diversity exploration. The needs of these envi-
+ronments closely match the strengths of GFlowNets. (Bengio et al., 2021b) proposes an idea for
+adapting GFlowNets to continuous tasks by replacing sums with integrals for continuous variables,
+∗Corresponding Author: Shuang Luo. This work was completed while Shuang Luo and Haozhi Wang were
+members of the Huawei Noah’s Ark Lab for advanced study.
+1
+arXiv:2303.02430v1  [cs.LG]  4 Mar 2023
+Published as a conference paper at ICLR 2023
+and they suggest the use of integrable densities and detailed balance (DB) or trajectory balance
+(TB) Malkin et al. (2022) criterion to obtain tractable training objectives, which can avoid some
+integration operations. However, this idea has not been veriﬁed experimentally.
+In this paper, we propose generative Continuous Flow Networks, named CFlowNets for short, for
+continuous control tasks to generate policies that can be proportional to continuous reward func-
+tions. Applying GFlowNets to continuous control tasks is exceptionally challenging. In generative
+ﬂow networks, the transition probability is deﬁned as the ratio of action ﬂow and state ﬂow. For
+discrete state and action spaces, we can form a DAG and compute the state ﬂow by traversing a
+node’s incoming and outgoing ﬂows. Conversely, it is impossible for continuous tasks to traverse all
+state-action pairs and corresponding rewards. To address this issue, we use important sampling to
+approximate the integrals over inﬂows and outﬂows in the ﬂow-matching constraint, where we use
+a deep neural network to predict the parent nodes of each state in the sampled trajectory. The main
+contributions of this paper are summarized as the following:
+Main Contributions: 1) We extend the theoretical formulation and ﬂow matching theorem of pre-
+vious GFlowNets to continuous scenarios. Based on this, a loss function for training CFlowNets is
+presented; 2) We propose an efﬁcient way to sample actions with probabilities approximately pro-
+portional to the output of the ﬂow network, and propose a ﬂow sampling approach to approximate
+continuous inﬂows and outﬂows, which allows us to construct a continuous ﬂow matching loss; 3)
+We theoretically analyze the error bound between sampled ﬂows and inﬂows/outﬂows, and the tail
+becomes minor as the number of ﬂow samples increases; 4) We conduct experiments based on con-
+tinuous control tasks to demonstrate that CFlowNets can outperform current state-of-the-art RL algo-
+rithms, especially in terms of exploration capabilities. To the best of our knowledge, our work is the
+ﬁrst to empirically demonstrate the effectiveness of ﬂow networks on continuous control tasks. The
+codes are available at http://gitee.com/mindspore/models/tree/master/research/gﬂownets/cﬂownets
+2 PRELIMINARIES
+2.1 M ARKOV DECISION PROCESS
+A stochastic, discrete-time and sequential decision task can be described as a Markov Decision
+Process (MDP) , which is canonically formulated by the tuple:
+M =⟨S,A,P,R,γ ⟩. (1)
+In the process,s∈S represents the state space of the environment. At each time step, agent receives
+a states and selects an action a on the action spaceA. This results in a transition to the next state
+s′ according to the state transition function P (s′|s,a ) :S×A×S→ [0, 1]. Then the agent gets
+the reward r based on the reward function R(s,a ) : S×A→ R. A stochastic policy π maps
+each state to a distribution over actions π(·|s) and gives the probability π(a|s) of choosing action
+a in state s. The agent interacts with the environment by executing the policy π and obtaining
+the admissible trajectories{(st,at,rt,st+1)}n
+t=1, where n is the trajectory length. The goal of an
+agent is to maximize the discounted return Es0:n,a0:n [∑∞
+t=0γtrt|s0 =s,a 0 =a,π ], where E is
+the expectation over the distribution of the trajectories andγ∈ [0, 1) is the discount factor.
+2.2 G ENERATIVE FLOW NETWORK
+GFlowNet sees the MDP as a ﬂow network. Deﬁne s′ = T (s,a ) andF (s) as the node’s transition
+and the total ﬂow going through s. Deﬁne an edge/action ﬂow F (s,a ) = F (s→ s′) as the ﬂow
+through an edges→s′. The training process of vanilla GFlowNets needs to sum the ﬂow of parents
+and children through nodes (states), which depends on the discrete state space and discrete action
+space. The framework is optimized by the following ﬂow consistency equations:
+∑
+s,a:T (s,a)=s′
+F (s,a ) =R (s′) +
+∑
+a′∈A(s′)
+F (s′,a′), (2)
+which means that for any nodes, the incoming ﬂow equals the outgoing ﬂow, which is the total ﬂow
+F (s) of nodes.
+2
+Published as a conference paper at ICLR 2023
+3 CF LOWNETS : T HEORETICAL FORMULATION
+Considering a continuous task with tuple (S,A), whereS denotes the continuous state space andA
+denotes the continuous action space. Deﬁne a trajectoryτ = (s1,...,s n) in this continuous task as a
+sequence sampled elements ofS such that every transitionat :st→st+1∈A . Further, we deﬁne
+an acyclic trajectory τ = (s1,...,s n) as a trajectory satisﬁes the acyclic constraint:∀sm∈ τ,sk∈
+τ,m ̸= k, we have sm̸= sk. Denote s0 andsf respectively as the initial state and the ﬁnal state
+related with the continuous task (S,A), we deﬁne the complete trajectory as any sampled acyclic
+trajectory from (S,A) starting in s0 and ending in sf . Correspondingly, a transition s→ sf into
+the ﬁnal state is deﬁned as the terminating transition, andF (s→sf) is a terminating ﬂow.
+A trajectory ﬂow F (τ) : τ ↦→ R+ is deﬁned as any nonnegative function deﬁned on the set of
+complete trajectories τ. For each trajectory τ, the associated ﬂow F (τ) contains the number of
+particles (Bengio et al., 2021b) sharing the same path τ. In addition, the tuple (S,A,F ) is called
+a continuous ﬂow network. Let T (s,a ) = s′ indicate an actiona that could make a transition from
+states to attains′. Then we make the following assumptions.
+Assumption 1. Assume that the continuous take (S,A) is an “acyclic” task, which means that
+arbitrarily sampled trajectoriesτ are acyclic, i.e.,
+si̸=sj,∀si,sj∈τ = (s0,...,s n),i̸=j.
+Assumption 2. Assume the ﬂow functionF (s,a ) is Lipschitz continuous, i.e.,
+|F (s,a )−F (s,a′)|≤ L||a−a′||, a,a′∈A, (3)
+|F (s,a )−F (s′,a )|≤ L||s−s′||, s,s′∈S , (4)
+whereL is a constant.
+Assumption 3. Assume that for any state pair (st,st+1), there is a unique action at such that
+T (st,at) = st+1, i.e., taking action at inst is the only way to get to st+1. Hence we can deﬁne
+st :=g(st+1,at), whereg(·) is a transition function. And assume actions are the translation actions.
+The necessity and rationality of Assumptions 1-3 are analyzed in the appendix. Under Assumption 1,
+we deﬁne the parent setP(st) of a statest as the set that contains all of the direct parents ofst that
+could make a direct transition to st, i.e.,P(st) ={s∈S : T (s,a ∈A ) = st}. Similarly, deﬁne
+the child setC(st) of a state st as the set contains all of the direct children of st that could make a
+direct transition from st, i.e.,C(st) ={s∈S : T (st,a ∈A ) = s}. Then, we have the following
+continuous ﬂow deﬁnitions, where Assumptions 2-3 make these integrals integrable and meaningful.
+Deﬁnition 1 (Continuous State Flow). The continuous state ﬂow F (s) :S↦→ R is the integral of
+the complete trajectory ﬂows passing through the state:
+F (s) =
+∫
+τ :s∈τ
+F (τ)dτ. (5)
+Deﬁnition 2 (Continuous Inﬂows) . For any state st, its inﬂows are the integral of ﬂows that can
+reach statest, i.e.,
+∫
+s∈P(st)
+F (s→st)ds =
+∫
+s:T (s,a)=st
+F (s,a )ds =F (st) =
+∫
+a:T (s,a)=st
+F (s,a )da, (6)
+wherea :s→st ands =g(st,a ) since Assumption 3 holds.
+Deﬁnition 3 (Continuous Outﬂows) . For any statest, the outﬂows are the integral of ﬂows passing
+through statest with all possible actionsa∈A , i.e.,
+∫
+s∈C(st)
+F (st→s)ds =F (st) =
+∫
+a∈A
+F (st,a )da. (7)
+Based on the above deﬁnitions, we can deﬁne the transition probabilityP (s→s′|s) of edges→s′
+as a special case of conditional probability introduced in Bengio et al. (2021b). In particular, the
+forward transition probability is given by
+PF (st+1|st) :=P (st→st+1|st) = F (st→st+1)
+F (st) . (8)
+3
+Published as a conference paper at ICLR 2023
+Similarly, the backwards transition probability is given by
+PB(st|st+1) :=P (st→st+1|st+1) = F (st→st+1)
+F (st+1) . (9)
+For any trajectory sampled from a continuous task (S,A), we have
+∀τ = (s1,...,s n),PF (τ) :=
+n−1∏
+t=1
+PF (st+1|st) (10)
+∀τ = (s1,...,s n),PB(τ) :=
+n−1∏
+t=1
+PB(st|st+1), (11)
+and we further have
+∀s∈S\{ sf},
+∫
+s′∈C(s)
+PF (s′|s)ds′ = 1 and∀s∈S\{ s0},
+∫
+s′∈P(s)
+PB(s′|s)ds′ = 1. (12)
+Given any trajectory τ = (s0,...,s n,s ) that starts in s0 and ends in s, a Markovian ﬂow (Bengio
+et al., 2021b) is deﬁned as the ﬂow that satisﬁes
+P (s→s′|τ) =P (s→s′|s) =PF (s′|s),
+and the corresponding ﬂow network (S,A,F ) is called a Markovian ﬂow network (Bengio et al.,
+2021b). Then, we present Theorem 1 proved in the appendix B.1, which is an extension of Proposi-
+tion 19 in Bengio et al. (2021b) to continuous scenarios.
+Theorem 1 (Continuous Flow Matching Condition). Consider a non-negative function ˆF (s,a ) tak-
+ing a states∈S and an actiona∈A as inputs. Then we have ˆF corresponds to

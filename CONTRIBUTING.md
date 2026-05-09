@@ -16,6 +16,8 @@ Weitere Einstiege: **[`CLAUDE.md`](CLAUDE.md)**, **[`Anweisungen.md`](Anweisunge
 | Bereich | Pfad |
 |---------|------|
 | Produkt + Greenfield-Doku | **`app/`** (`app/docs/greenfield/`, `app/backend`, `app/engine`, `app/web`, …) |
+| Preseed-Knowledge (Snapshot) | **`knowledge/`** (`preseed_v2.json`, `verify.py`) |
+| Research-Korpus (JSON-Schichten, keine PDFs im Git) | **`research/`** (`extracted/`, `schema/`, siehe `research/README.md`) |
 | Compose / Ansible (Bootstrap) | **`deploy/`** |
 | Lokale Geheimnisse (nicht committen) | **`secrets/`** (nur Stub `.gitkeep` ist getrackt) |
 | Repo-weite Tests | **`tests/`** |

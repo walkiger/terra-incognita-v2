@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z",
+  "source_pdf": "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/source.pdf",
+  "title_hint": "Hybrid transformer model with liquid neural networks and learnable encodings for buildings ’ energy forecasting",
+  "updated_at": "2026-05-08T15:10:57Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T06:58:31Z",
+      "artifacts": [
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/source.pdf",
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:57Z",
+      "artifacts": [
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:57Z",
+      "artifacts": [
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:57Z",
+      "artifacts": [
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:57Z",
+      "artifacts": [
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l4_analysis.json",
+        "research/extracted/hybrid_transformer_model_with_liquid_neural_networks_and_learnable_encod_20260508T065744Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=18540; pdf_sha256=6a6fc456f8cef5f5b21dfe3193f42691b2b28dc16414b4f42880d99bd73a1b17; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "6a6fc456f8cef5f5b21dfe3193f42691b2b28dc16414b4f42880d99bd73a1b17"
+}

@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "graph_convolutional_networks_a_comprehensive_review_si_zhang1_introducti_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:10:42Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "are not limited to): (1) graph auto-encoder [21], (2) graph generative model [22, 23], (3) graph attention model [24, 25], and (4) graph recurrent neural networks [26, 27]. There exist several other related surveys on the topic of graph neural networks. Bron - stein et  al. review the mathematical details and a number of early approaches of geo - metric deep learning for both graphs and manifolds ",
+        "unicode_plain": "are not limited to): (1) graph auto-encoder [21], (2) graph generative model [22, 23], (3) graph attention model [24, 25], and (4) graph recurrent neural networks [26, 27]. There exist several other related surveys on the topic of graph neural networks. Bron - stein et  al. review the mathematical details and a number of early approaches of geo - metric deep learning for both graphs and manifolds [28]. Zhang et al. present a detailed"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "are not limited to): (1) graph auto-encoder [21], (2) graph generative model [22, 23], (3) graph attention model [24, 25], and (4) graph recurrent neural networks [26, 27]. There exist several other related surveys on the topic of graph neural networks. Bron - stein et  al. review the mathematical details and a number of early approaches of geo - metric deep learning for both graphs and manifolds [28]. Zhang et al. present a detailed"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page4_2",
+      "presentation": {
+        "latex": "rected connected graph G ={ V, E, A} , which consists of a set of nodes V with |V|=n  , a set of edges E with |E|= m and the adjacency matrix A . If there is an edge between node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 ",
+        "unicode_plain": "rected connected graph G ={ V, E, A} , which consists of a set of nodes V with |V|=n  , a set of edges E with |E|= m and the adjacency matrix A . If there is an edge between node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "rected connected graph G ={ V, E, A} , which consists of a set of nodes V with |V|=n  , a set of edges E with |E|= m and the adjacency matrix A . If there is an edge between node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page4_3",
+      "presentation": {
+        "latex": "a set of edges E with |E|= m and the adjacency matrix A . If there is an edge between node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding sy",
+        "unicode_plain": "a set of edges E with |E|= m and the adjacency matrix A . If there is an edge between node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "a set of edges E with |E|= m and the adjacency matrix A . If there is an edge between node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page4_4",
+      "presentation": {
+        "latex": "node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1",
+        "unicode_plain": "node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "node i and node j, the entry A(i, j) denotes the weight of the edge; otherwise, A(i, j) = 0 . For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page4_5",
+      "presentation": {
+        "latex": "For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1",
+        "unicode_plain": "For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "For unweighted graphs, we simply set A(i, j) = 1 . We denote the degree matrix of A as a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page4_6",
+      "presentation": {
+        "latex": "a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix.",
+        "unicode_plain": "a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "a diagonal matrix D , where D(i, i) = ∑n j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page4_7",
+      "presentation": {
+        "latex": "j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the",
+        "unicode_plain": "j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "j=1 A(i, j) . Then, the Laplacian matrix of A is denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page4_8",
+      "presentation": {
+        "latex": "denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the signal value on the node i [20]. Node attributes, for instance, can be considered as the",
+        "unicode_plain": "denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the signal value on the node i [20]. Node attributes, for instance, can be considered as the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "denoted as L = D − A . The corresponding symmetrically normalized Laplacian matrix is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the signal value on the node i [20]. Node attributes, for instance, can be considered as the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page4_9",
+      "presentation": {
+        "latex": "is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the signal value on the node i [20]. Node attributes, for instance, can be considered as the graph signals. Denote",
+        "unicode_plain": "is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the signal value on the node i [20]. Node attributes, for instance, can be considered as the graph signals. Denote"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "is ˜L = I − D− 1 2 AD− 1 2 , where I is an identity matrix. A graph signal defined on the nodes is represented as a vector x ∈ Rn , where x(i) is the signal value on the node i [20]. Node attributes, for instance, can be considered as the graph signals. Denote"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page4_10",
+      "presentation": {
+        "latex": "ˆf (ξ ) =� f , e2π iξ t � , where ξ is the frequency of ˆf  in the spectral domain and the complex exponential is the eigenfunction of the Laplace operator. Analogously, the graph Lapla - cian matrix L is the Laplace operator defined on a graph. Hence, an eigenvector of L associated with its corresponding eigenvalue is an analog to the complex exponential at a certain frequency. Note that the symm",
+        "unicode_plain": "ˆf (ξ ) =� f , e2π iξ t � , where ξ is the frequency of ˆf  in the spectral domain and the complex exponential is the eigenfunction of the Laplace operator. Analogously, the graph Lapla - cian matrix L is the Laplace operator defined on a graph. Hence, an eigenvector of L associated with its corresponding eigenvalue is an analog to the complex exponential at a certain frequency. Note that the symmetrically normalized Laplacian matrix ˜L and the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ˆf (ξ ) =� f , e2π iξ t � , where ξ is the frequency of ˆf  in the spectral domain and the complex exponential is the eigenfunction of the Laplace operator. Analogously, the graph Lapla - cian matrix L is the Laplace operator defined on a graph. Hence, an eigenvector of L associated with its corresponding eigenvalue is an analog to the complex exponential at a certain frequency. Note that the symmetrically normalized Laplacian matrix ˜L and the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "ticular, denote the eigenvalue decomposition of ˜L as ˜L = U/Lambda1UT where the lth column",
+        "unicode_plain": "ticular, denote the eigenvalue decomposition of ˜L as ˜L = U/Lambda1UT where the lth column"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ticular, denote the eigenvalue decomposition of ˜L as ˜L = U/Lambda1UT where the lth column"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page5_12",
+      "presentation": {
+        "latex": "(1)ˆx(/afii9838l ) =� x, ul �= n∑ i=1 x(i)u∗ l (i). (2)x(i) =",
+        "unicode_plain": "(1)ˆx(/afii9838l ) =� x, ul �= n∑ i=1 x(i)u∗ l (i). (2)x(i) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(1)ˆx(/afii9838l ) =� x, ul �= n∑ i=1 x(i)u∗ l (i). (2)x(i) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page5_13",
+      "presentation": {
+        "latex": "(2)x(i) = n∑ l=1 ˆx(/afii9838l )ul (i). (3)(x ∗G y)(i) = n∑",
+        "unicode_plain": "(2)x(i) = n∑ l=1 ˆx(/afii9838l )ul (i). (3)(x ∗G y)(i) = n∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(2)x(i) = n∑ l=1 ˆx(/afii9838l )ul (i). (3)(x ∗G y)(i) = n∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page5_14",
+      "presentation": {
+        "latex": "(3)(x ∗G y)(i) = n∑ l=1 ˆx(/afii9838l ) ˆy(/afii9838l )ul (i). (4)xout = x ∗G y = U ",
+        "unicode_plain": "(3)(x ∗G y)(i) = n∑ l=1 ˆx(/afii9838l ) ˆy(/afii9838l )ul (i). (4)xout = x ∗G y = U "
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "(3)(x ∗G y)(i) = n∑ l=1 ˆx(/afii9838l ) ˆy(/afii9838l )ul (i). (4)xout = x ∗G y = U "
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

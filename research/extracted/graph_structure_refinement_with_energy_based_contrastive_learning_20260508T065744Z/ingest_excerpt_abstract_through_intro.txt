@@ -1,0 +1,230 @@
+Abstract
+Graph Neural Networks (GNNs) have recently gained
+widespread attention as a successful tool for analyzing graph-
+structured data. However, imperfect graph structure with
+noisy links lacks enough robustness and may damage graph
+representations, therefore limiting the GNNs’ performance in
+practical tasks. Moreover, existing generative architectures
+fail to fit discriminative graph-related tasks. To tackle these
+issues, we introduce an unsupervised method based on a joint
+of generative training and discriminative training to learn
+graph structure and representation, aiming to improve the
+discriminative performance of generative models. We pro-
+pose an Energy-based Contrastive Learning (ECL) guided
+Graph Structure Refinement (GSR) framework, denoted as
+ECL-GSR. To our knowledge, this is the first work to com-
+bine energy-based models with contrastive learning for GSR.
+Specifically, we leverage ECL to approximate the joint dis-
+tribution of sample pairs, which increases the similarity be-
+tween representations of positive pairs while reducing the
+similarity between negative ones. Refined structure is pro-
+duced by augmenting and removing edges according to the
+similarity metrics among node representations. Extensive ex-
+periments demonstrate that ECL-GSR outperforms the state-
+of-the-art on eight benchmark datasets in node classification.
+ECL-GSR achieves faster training with fewer samples and
+memories against the leading baseline, highlighting its sim-
+plicity and efficiency in downstream tasks.
+Introduction
+With the explosive growth of graph-structured data, Graph
+Neural Networks (GNNs) (Zhu et al. 2019; Zhang and Zitnik
+2020; Zhang et al. 2019a; Xu et al. 2018) have emerged as
+a potent deep learning tool, experiencing notable advance-
+ments across diverse applications, such as node classifica-
+tion (Veliˇckovi´c et al. 2017; Kipf and Welling 2016), node
+clustering (Wang et al. 2019a; Zhang et al. 2019b), graph
+classification (Duvenaud et al. 2015; Lee, Lee, and Kang
+2019), link prediction (Peng et al. 2020; Srinivasan and
+Ribeiro 2019), recommendation systems (Wang et al. 2019b;
+Yu et al. 2021b), drug discovery (Wang et al. 2021b), and
+anomaly detection (Ding et al. 2019). GNNs usually adopt
+a message-passing scheme (Gilmer et al. 2017), aggregat-
+ing information from neighboring nodes within the observed
+topology to compute graph representations. The strong rep-
+resentational capacity of most GNNs hinges on the assump-
+tion that graph structure is sufficiently reliable and perfectly
+noise-free (Szegedy et al. 2013), considered as ground-truth
+information for model training. However, this assumption
+may hardly hold in real-world applications. This is due to
+the fact: i) Raw structure is typically derived from com-
+plex interactive systems, leading to inherent uncertainties
+and incomplete connections. Even worse, the GNN itera-
+tive mechanism with cascading effects repeatedly aggregates
+neighborhood features. Minor noises in the graph can prop-
+agate to adjacent nodes, influencing other node embeddings
+and potentially introducing further inaccuracies (Dai et al.
+2018). ii) Graph representation containing explicit structure
+is not informative enough to improve task performance. Raw
+topology only incorporates necessary physical connections,
+such as chemical bonds in molecules, and fails to capture
+abstract or implicit links among nodes. Furthermore, in var-
+ious graph-related tasks, such as text graph in natural lan-
+guage processing (Yao, Mao, and Luo 2019) or scene graph
+for images in computer vision (Suhail et al. 2021), the ex-
+plicit structure may either be absent or unavailable.
+To tackle these challenges mentioned above, Graph Struc-
+ture Refinement (GSR) involves learning invariant under-
+lying relationships by extracting general knowledge from
+graph data, rather than relying solely on task-specific infor-
+mation. Therefore, the primary concern of GSR lies in graph
+representation learning, which can be broadly classified into
+two categories (Wang et al. 2018a). On one hand, graph gen-
+erative models (Grover and Leskovec 2016; Dong, Chawla,
+and Swami 2017; Zheng et al. 2020) assume that each
+node follows an inherent connectivity distribution. Edges
+are viewed as samples from these distributions, with the
+models enhancing node representations by optimizing the
+likelihood of these observed edges. However, most down-
+stream tasks are inherently discriminative, such as node clas-
+sification and graph prediction. The state-of-the-art genera-
+tive models have significantly deviated from discriminative
+architectures (Grathwohl et al. 2020). On the other hand,
+discriminative models (Veliˇckovi´c et al. 2019; Wang et al.
+2018b; Hassani and Khasahmadi 2020) focus on learning
+a classifier to predict the presence of edges directly. They
+output a single scalar to represent the probability between
+node pair, thereby differentiating the connectivity of edges.
+Nonetheless, these models may suffer from overfitting to
+the training data, capturing noise instead of extracting la-
+arXiv:2412.17856v3  [cs.LG]  24 Mar 2025
+tent useful features, as well as lack the ability to generalize
+across different datasets and diverse graph structures. Re-
+cently, (Wang et al. 2022b) and (Kim and Ye 2022) establish
+a crucial connection between discriminative paradigms and
+Energy-based Models (EBMs) (LeCun et al. 2006), creat-
+ing a unified framework to generate higher-quality samples
+and better visual representations. Motivated by these find-
+ings, we advocate for incorporating EBMs and Contrastive
+Learning (CL) to unlock the potential of generative mod-
+els in addressing discriminative problems of graph-related
+tasks.
+In this paper, we explore a novel Energy-based Con-
+trastive Learning (ECL) approach to guide the GSR frame-
+work, termed ECL-GSR, which integrates EBMs with CL
+for unsupervised graph representation learning. Specifically,
+ECL complements discriminative training loss with gener-
+ative loss, supplying higher quality and more robust repre-
+sentations for downstream tasks. Theoretically, we demon-
+strate that the existing discriminative loss is merely a spe-
+cific instance of the ECL loss when the generative term is
+disabled. Empirically, ECL can be interpreted as maximiz-
+ing the joint log-likelihood of the similarity between positive
+sample pairs with EBMs and minimizing the similarity be-
+tween negative ones with CL, indicating the augmentations
+of identical and different samples, respectively. In GSR, we
+perform edge prediction by adding or removing links based
+on the similarity probabilities among node representations,
+further refining the raw structure. Finally, we evaluate ECL-
+GSR on the node classification task using the refined graph.
+The major contributions are threefold as follows:
+• We present a novel ECL-GSR framework for joint graph
+structure and representation learning. It is the first work to
+combine EBMs with CL as generative and discriminative
+paradigms for GSR.
+• Contrary to most GSR methods, ECL-GSR is a straight-
+forward implementation, demanding fewer training itera-
+tions, memory costs, and data samples to obtain the equiv-
+alent or better performance.
+• Extensive experiments on eight benchmark datasets
+demonstrate the superiority of ECL-GSR over current
+state-of-the-art methods. Ablation studies further confirm
+its effectiveness, efficiency, and robustness.
+Background
+Graph Structure Refinement
+Given a raw graph G = ( V, E, X) = ( A, X) with noisy
+topology, where V is the set of V = |V| nodes, E is the set
+of M = |E| edges, X ∈ RV ×D is the node feature matrix
+(the ith entry xi ∈ RD represents the attribute of node vi),
+and A ∈ RV ×V is the adjacency matrix (Ai,j > 0 indicates
+ei,j = (vi, vj), i, j ∈ M). The target of graph structure re-
+finement (Zhu et al. 2021) is to acquire a refined graph eG
+with a clean adjacency eA, along with corresponding repre-
+sentation eZ ∈ RV × eF , eF ≪ D, for downstream tasks.
+Energy-based Models
+Given a point χ sampled from the data distribution pd(χ),
+EBMs assign a scalar-valued energy function Eθ(χ) ∈ R
+by a DNN with parameters θ. The energy function define
+a probability distribution using the Boltzmann distribution
+pθ(χ) = exp(−Eθ(χ))
+Z(θ) , where Z(θ) is a normalizing constant
+or partition function ensuringpθ integrates to 1. EBMs lever-
+age the defined distributionpθ to model the data distribution
+pd by minimizing the negative log-likelihood ofpθ under pd,
+as indicated by:
+min
+θ
+Eχ∼pd [− log pθ(χ)]. (1)
+The derivative of the negative log-likelihoodL(θ) is:
+∇θL(θ) ∼= Eχ+∼pd [∇θEθ(χ+)] − Eχ−∼pθ [∇θEθ(χ−)] .
+(2)
+Eq. 2 decreases the energy values of positive samples
+χ+ while increasing those of negative ones χ− (Hinton
+2002). However, computing Z(θ) for most parameteriza-
+tions of Eθ(χ) is intractable. We employ Stochastic Gradi-
+ent Langevin Dynamics (SGLD) (Welling and Teh 2011) de-
+rived from Markov Chain Monte Carlo (MCMC) methods to
+reduce the mixing time of sampling procedure. Specifically,
+it generates pθ as an approximation of pd via iteratively up-
+dating χ, denoted as:
+χk+1 = χk − λ
+2 ∇χEθ(χk) + ωk , (3)
+where ωk ∼ N (0, λ). As k → ∞ and λ → 0, then pθ con-
+verges to pd. This process generates data samples through
+the energy function implicitly rather than explicitly.
+Contrastive Learning
+Given a set of random variables {χn}N
+n=1, we define a
+data augmentation T to generate two distinct views νn =
+t(χn), ν′
+n = t′(χn), i.e., t, t′ ∼ T . CL constitutes an un-
+supervised framework for representation learning, aiming to
+maximize the mutual information I between the represen-
+tations of two views νn and ν′
+m w.r.t the joint distribution
+p(νn, ν ′
+m). This is expressed as:
+max
+Dθ
+I(zn, z ′
+m) , (4)
+where zn = Dθ(νn) is the representation and Dθ(•) is a
+parametric DNN. When n = m, the views (νn, ν′
+m) are re-
+ferred to as a positive pair with the same marginal distri-
+bution. Conversely, they are called a negative pair. In prac-
+tice, each pair provides supervisory information to the other,
+playing a role similar to that of labels in a supervised man-
+ner. CL trains Dθ to encourage zn and its positive pair z′
+n to
+be close in the projection space while pushing away repre-
+sentations of all negative pairs z′
+m. This principle has been
+proven to be key in boosting performance (Chen et al. 2020).
+Methodology
+In this section, we delineate the proposed ECL-GSR frame-
+work. As shown in Fig. 1, our pipeline consists of four steps:
+Figure 1: Illustration of the procedure of ECL-GSR. Preprocessed dual-attribute graph undergoes data augmentations, energy-
+based contrastive learning, and edge prediction, achieving structure refinement. Refined graph is applied in node classification.
+preprocessing, energy-based contrastive learning, edge pre-
+diction, and node classification. Initially, we construct a
+dual-attribute graph by extracting contextual and structural
+information and acquiring subgraphs as input through edge
+sampling. Then, the ECL approach is introduced with the
+theorem and implementation. Next, we fine-tune the graph
+structure and evaluate the node classification task with raw
+features. Lastly, we present the final training objective.
+Preprocessing
+Dual-attribute graph Our framework can make full use
+of all trustworthy observations to maximize informative-
+ness by constructing a dual-attribute graph. We concate-
+nate the contextual information X c, and structural embed-
+ding X s as a new attribute, where X c is derived directly
+from the raw node features and X s is extracted using the
+DeepWalk (Perozzi, Al-Rfou, and Skiena 2014). Finally, the
+dual-attribute graph is represented as G† = ( X †, A), where
+X † = [X c, Xs] is the new node features.
+Edge sampling To address memory limitations, neigh-
+bor sampling techniques enable stochastic training on large
+graphs G by decomposing them into smaller subgraphs
+g. Each subgraph sequentially contributes to GNNs’ opti-
+mization, executing multiple gradient descent steps within 

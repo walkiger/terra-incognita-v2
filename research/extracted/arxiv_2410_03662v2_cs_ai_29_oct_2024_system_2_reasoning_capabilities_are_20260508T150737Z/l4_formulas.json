@@ -1,0 +1,123 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2410_03662v2_cs_ai_29_oct_2024_system_2_reasoning_capabilities_are_20260508T150737Z",
+  "extracted_at": "2026-05-08T15:08:50Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page6_1",
+      "presentation": {
+        "latex": "https://www.youtube.com/watch?v=KKF7kL0pGc4. Bai, Y ., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A., Chen, A., Goldie, A., Mirhoseini, A., McKinnon, C., Chen, C., Olsson, C., Olah, C., Hernandez, D., Drain, D., Ganguli, D., Li, D., Tran-Johnson, E., Perez, E., Kerr, J., Mueller, J., Ladish, J., Landau, J., Ndousse, K., Lukosuite, K., Lovitt, L., Sellitto, M., Elhage, N., Schiefer, N",
+        "unicode_plain": "https://www.youtube.com/watch?v=KKF7kL0pGc4. Bai, Y ., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A., Chen, A., Goldie, A., Mirhoseini, A., McKinnon, C., Chen, C., Olsson, C., Olah, C., Hernandez, D., Drain, D., Ganguli, D., Li, D., Tran-Johnson, E., Perez, E., Kerr, J., Mueller, J., Ladish, J., Landau, J., Ndousse, K., Lukosuite, K., Lovitt, L., Sellitto, M., Elhage, N., Schiefer, N., Merc ado, N., DasSarma, N., Lasenby, R., Lar-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "https://www.youtube.com/watch?v=KKF7kL0pGc4. Bai, Y ., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A., Chen, A., Goldie, A., Mirhoseini, A., McKinnon, C., Chen, C., Olsson, C., Olah, C., Hernandez, D., Drain, D., Ganguli, D., Li, D., Tran-Johnson, E., Perez, E., Kerr, J., Mueller, J., Ladish, J., Landau, J., Ndousse, K., Lukosuite, K., Lovitt, L., Sellitto, M., Elhage, N., Schiefer, N., Merc ado, N., DasSarma, N., Lasenby, R., Lar-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page6_2",
+      "presentation": {
+        "latex": "https://openreview.net/forum?id=Ua6zuk0WRH. Christensen, B. Problematic assumptions in incubation eff ect studies and what to do about them. Creative Cognition: Analogy And Incubation , 2005. 2https://vectorinstitute.ai/partnerships/current-partners/ 6",
+        "unicode_plain": "https://openreview.net/forum?id=Ua6zuk0WRH. Christensen, B. Problematic assumptions in incubation eff ect studies and what to do about them. Creative Cognition: Analogy And Incubation , 2005. 2https://vectorinstitute.ai/partnerships/current-partners/ 6"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "https://openreview.net/forum?id=Ua6zuk0WRH. Christensen, B. Problematic assumptions in incubation eff ect studies and what to do about them. Creative Cognition: Analogy And Incubation , 2005. 2https://vectorinstitute.ai/partnerships/current-partners/ 6"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page8_3",
+      "presentation": {
+        "latex": "URL https://openreview.net/forum?id=3EWTEy9MTM. Lightman, H., Kosaraju, V ., Burda, Y ., Edwards, H., Baker, B ., Lee, T., Leike, J., Schulman, J., Sutskever, I., and Cobbe, K. Let’s verify step by step. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=v8L0pN6EOi. Liu, Z., Lin, Y ., Cao, Y ., Hu, H., Wei, Y ., Zhang, Z., Lin, S., a nd G",
+        "unicode_plain": "URL https://openreview.net/forum?id=3EWTEy9MTM. Lightman, H., Kosaraju, V ., Burda, Y ., Edwards, H., Baker, B ., Lee, T., Leike, J., Schulman, J., Sutskever, I., and Cobbe, K. Let’s verify step by step. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=v8L0pN6EOi. Liu, Z., Lin, Y ., Cao, Y ., Hu, H., Wei, Y ., Zhang, Z., Lin, S., a nd Guo, B. Swin transformer: Hier-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "URL https://openreview.net/forum?id=3EWTEy9MTM. Lightman, H., Kosaraju, V ., Burda, Y ., Edwards, H., Baker, B ., Lee, T., Leike, J., Schulman, J., Sutskever, I., and Cobbe, K. Let’s verify step by step. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=v8L0pN6EOi. Liu, Z., Lin, Y ., Cao, Y ., Hu, H., Wei, Y ., Zhang, Z., Lin, S., a nd Guo, B. Swin transformer: Hier-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page8_4",
+      "presentation": {
+        "latex": "Learning Representations, 2024. URL https://openreview.net/forum?id=v8L0pN6EOi. Liu, Z., Lin, Y ., Cao, Y ., Hu, H., Wei, Y ., Zhang, Z., Lin, S., a nd Guo, B. Swin transformer: Hier- archical vision transformer using shifted windows. In 2021 IEEE/CVF International Conference on Computer Vision (ICCV), pp. 9992–10002, 2021. doi: 10.1109/ICCV48922.2021.00986. Long, J. Large language model guided tr",
+        "unicode_plain": "Learning Representations, 2024. URL https://openreview.net/forum?id=v8L0pN6EOi. Liu, Z., Lin, Y ., Cao, Y ., Hu, H., Wei, Y ., Zhang, Z., Lin, S., a nd Guo, B. Swin transformer: Hier- archical vision transformer using shifted windows. In 2021 IEEE/CVF International Conference on Computer Vision (ICCV), pp. 9992–10002, 2021. doi: 10.1109/ICCV48922.2021.00986. Long, J. Large language model guided tree-of-thought. arXiv preprint arXiv:2305.08291 , 2023."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Learning Representations, 2024. URL https://openreview.net/forum?id=v8L0pN6EOi. Liu, Z., Lin, Y ., Cao, Y ., Hu, H., Wei, Y ., Zhang, Z., Lin, S., a nd Guo, B. Swin transformer: Hier- archical vision transformer using shifted windows. In 2021 IEEE/CVF International Conference on Computer Vision (ICCV), pp. 9992–10002, 2021. doi: 10.1109/ICCV48922.2021.00986. Long, J. Large language model guided tree-of-thought. arXiv preprint arXiv:2305.08291 , 2023."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page9_5",
+      "presentation": {
+        "latex": "https://openreview.net/forum?id=NikbrdtYvG. Phuong, M., Aitchison, M., Catt, E., Cogan, S., Kaskasoli, A ., Krakovna, V ., Lindner, D., Rahtz, M., Assael, Y ., Hodkinson, S., Howard, H., Lieberum, T., Kumar, R., Raad, M. A., Webson, A., Ho, L., Lin, S., Farquhar, S., Hutter, M., Deletang, G., Ruoss, A ., El-Sayed, S., Brown, S., Dragan, A., Shah, R., Dafoe, A., and Shevlane, T. Evaluating frontie ",
+        "unicode_plain": "https://openreview.net/forum?id=NikbrdtYvG. Phuong, M., Aitchison, M., Catt, E., Cogan, S., Kaskasoli, A ., Krakovna, V ., Lindner, D., Rahtz, M., Assael, Y ., Hodkinson, S., Howard, H., Lieberum, T., Kumar, R., Raad, M. A., Webson, A., Ho, L., Lin, S., Farquhar, S., Hutter, M., Deletang, G., Ruoss, A ., El-Sayed, S., Brown, S., Dragan, A., Shah, R., Dafoe, A., and Shevlane, T. Evaluating frontie r models for dangerous capabilities."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          9
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "https://openreview.net/forum?id=NikbrdtYvG. Phuong, M., Aitchison, M., Catt, E., Cogan, S., Kaskasoli, A ., Krakovna, V ., Lindner, D., Rahtz, M., Assael, Y ., Hodkinson, S., Howard, H., Lieberum, T., Kumar, R., Raad, M. A., Webson, A., Ho, L., Lin, S., Farquhar, S., Hutter, M., Deletang, G., Ruoss, A ., El-Sayed, S., Brown, S., Dragan, A., Shah, R., Dafoe, A., and Shevlane, T. Evaluating frontie r models for dangerous capabilities."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    }
+  ]
+}

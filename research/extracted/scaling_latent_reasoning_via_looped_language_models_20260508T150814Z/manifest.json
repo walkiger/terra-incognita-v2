@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "scaling_latent_reasoning_via_looped_language_models_20260508T150814Z",
+  "source_pdf": "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/source.pdf",
+  "title_hint": "Scaling Latent Reasoning via Looped Language Models",
+  "updated_at": "2026-05-08T15:12:17Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:16Z",
+      "artifacts": [
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/source.pdf",
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:17Z",
+      "artifacts": [
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:17Z",
+      "artifacts": [
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:17Z",
+      "artifacts": [
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:17Z",
+      "artifacts": [
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/l4_analysis.json",
+        "research/extracted/scaling_latent_reasoning_via_looped_language_models_20260508T150814Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4843; pdf_sha256=cfde16aa3081458590b33c7292ed02897296c69e7ecd44f0b21465776c509df3; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "cfde16aa3081458590b33c7292ed02897296c69e7ecd44f0b21465776c509df3"
+}

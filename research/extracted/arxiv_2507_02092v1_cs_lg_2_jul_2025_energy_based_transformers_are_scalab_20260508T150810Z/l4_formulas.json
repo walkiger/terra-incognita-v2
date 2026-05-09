@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "arxiv_2507_02092v1_cs_lg_2_jul_2025_energy_based_transformers_are_scalab_20260508T150810Z",
+  "extracted_at": "2026-05-08T15:09:15Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page6_1",
+      "presentation": {
+        "latex": "distribution using a Boltzmann distribution pθ(x) = e−Eθ (x) Z(θ) where Z(θ) = R e−Eθ(x)dx is the intractable partition function involving an integral over all possible values of x. Due to the negative exponential, lower energy corresponds to higher probability, and higher energy corresponds to",
+        "unicode_plain": "distribution using a Boltzmann distribution pθ(x) = e−Eθ (x) Z(θ) where Z(θ) = R e−Eθ(x)dx is the intractable partition function involving an integral over all possible values of x. Due to the negative exponential, lower energy corresponds to higher probability, and higher energy corresponds to"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "distribution using a Boltzmann distribution pθ(x) = e−Eθ (x) Z(θ) where Z(θ) = R e−Eθ(x)dx is the intractable partition function involving an integral over all possible values of x. Due to the negative exponential, lower energy corresponds to higher probability, and higher energy corresponds to"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page6_2",
+      "presentation": {
+        "latex": "Z(θ) where Z(θ) = R e−Eθ(x)dx is the intractable partition function involving an integral over all possible values of x. Due to the negative exponential, lower energy corresponds to higher probability, and higher energy corresponds to lower probability. To avoid the intractability of the partition function, it is common to work with",
+        "unicode_plain": "Z(θ) where Z(θ) = R e−Eθ(x)dx is the intractable partition function involving an integral over all possible values of x. Due to the negative exponential, lower energy corresponds to higher probability, and higher energy corresponds to lower probability. To avoid the intractability of the partition function, it is common to work with"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Z(θ) where Z(θ) = R e−Eθ(x)dx is the intractable partition function involving an integral over all possible values of x. Due to the negative exponential, lower energy corresponds to higher probability, and higher energy corresponds to lower probability. To avoid the intractability of the partition function, it is common to work with"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page7_3",
+      "presentation": {
+        "latex": "2 for i = 0, . . . , N − 1 do 3 ˆyi+1 ← ˆyi − α∇ˆyi Eθ(x, ˆyi); 4 L ← J(ˆyN , y); 5 return L, update Eθ; Algorithm 2: Inference with Verification Inputs: Context x, EBM Eθ(x, ˆy)",
+        "unicode_plain": "2 for i = 0, . . . , N − 1 do 3 ˆyi+1 ← ˆyi − α∇ˆyi Eθ(x, ˆyi); 4 L ← J(ˆyN , y); 5 return L, update Eθ; Algorithm 2: Inference with Verification Inputs: Context x, EBM Eθ(x, ˆy)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "2 for i = 0, . . . , N − 1 do 3 ˆyi+1 ← ˆyi − α∇ˆyi Eθ(x, ˆyi); 4 L ← J(ˆyN , y); 5 return L, update Eθ; Algorithm 2: Inference with Verification Inputs: Context x, EBM Eθ(x, ˆy)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page7_4",
+      "presentation": {
+        "latex": "1 for j = 1, . . . , M do 2 Sample ˆy0,j ∼ N (0, I); 3 for i = 0, . . . , N − 1 do 4 ˆyi+1,j ← ˆyi,j − α∇ˆyi,j Eθ(x, ˆyi,j); 5 return ˆy∗ = argmin j Eθ \u0000",
+        "unicode_plain": "1 for j = 1, . . . , M do 2 Sample ˆy0,j ∼ N (0, I); 3 for i = 0, . . . , N − 1 do 4 ˆyi+1,j ← ˆyi,j − α∇ˆyi,j Eθ(x, ˆyi,j); 5 return ˆy∗ = argmin j Eθ \u0000"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "1 for j = 1, . . . , M do 2 Sample ˆy0,j ∼ N (0, I); 3 for i = 0, . . . , N − 1 do 4 ˆyi+1,j ← ˆyi,j − α∇ˆyi,j Eθ(x, ˆyi,j); 5 return ˆy∗ = argmin j Eθ \u0000"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page7_5",
+      "presentation": {
+        "latex": "3 for i = 0, . . . , N − 1 do 4 ˆyi+1,j ← ˆyi,j − α∇ˆyi,j Eθ(x, ˆyi,j); 5 return ˆy∗ = argmin j Eθ \u0000 x, ˆyN,j \u0001",
+        "unicode_plain": "3 for i = 0, . . . , N − 1 do 4 ˆyi+1,j ← ˆyi,j − α∇ˆyi,j Eθ(x, ˆyi,j); 5 return ˆy∗ = argmin j Eθ \u0000 x, ˆyN,j \u0001"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "3 for i = 0, . . . , N − 1 do 4 ˆyi+1,j ← ˆyi,j − α∇ˆyi,j Eθ(x, ˆyi,j); 5 return ˆy∗ = argmin j Eθ \u0000 x, ˆyN,j \u0001"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page7_6",
+      "presentation": {
+        "latex": "5 return ˆy∗ = argmin j Eθ \u0000 x, ˆyN,j \u0001 ; their dimension, contrastive methods struggle to scale because they must increase the energy of an",
+        "unicode_plain": "5 return ˆy∗ = argmin j Eθ \u0000 x, ˆyN,j \u0001 ; their dimension, contrastive methods struggle to scale because they must increase the energy of an"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "5 return ˆy∗ = argmin j Eθ \u0000 x, ˆyN,j \u0001 ; their dimension, contrastive methods struggle to scale because they must increase the energy of an"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "ˆyi+1 = ˆyi − α∇ˆyi Eθ(x, ˆyi), (1) where α is the step size (this is formalized in Algorithm 1). Then, the loss can be computed using any standard objective function. For this work, we use the same loss functions as existing papers to simplify experiments, so we use categorical cross-entropy for language modeling [74] and mean squared error for image denoising [75]. Importantly, this loss is back",
+        "unicode_plain": "ˆyi+1 = ˆyi − α∇ˆyi Eθ(x, ˆyi), (1) where α is the step size (this is formalized in Algorithm 1). Then, the loss can be computed using any standard objective function. For this work, we use the same loss functions as existing papers to simplify experiments, so we use categorical cross-entropy for language modeling [74] and mean squared error for image denoising [75]. Importantly, this loss is backpropagated through the entire"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "ˆyi+1 = ˆyi − α∇ˆyi Eθ(x, ˆyi), (1) where α is the step size (this is formalized in Algorithm 1). Then, the loss can be computed using any standard objective function. For this work, we use the same loss functions as existing papers to simplify experiments, so we use categorical cross-entropy for language modeling [74] and mean squared error for image denoising [75]. Importantly, this loss is backpropagated through the entire"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page7_8",
+      "presentation": {
+        "latex": "ˆyi+1 = ˆyi − α∇ˆyi Eθ \u0000 x, ˆyi \u0001 + ηi, η i ∼ N (0, σ), (2) where σ is the magnitude of the noise η. Without this random noise term, exploration is often limited",
+        "unicode_plain": "ˆyi+1 = ˆyi − α∇ˆyi Eθ \u0000 x, ˆyi \u0001 + ηi, η i ∼ N (0, σ), (2) where σ is the magnitude of the noise η. Without this random noise term, exploration is often limited"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ˆyi+1 = ˆyi − α∇ˆyi Eθ \u0000 x, ˆyi \u0001 + ηi, η i ∼ N (0, σ), (2) where σ is the magnitude of the noise η. Without this random noise term, exploration is often limited"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "+ ηi, η i ∼ N (0, σ), (2) where σ is the magnitude of the noise η. Without this random noise term, exploration is often limited to paths leading directly to the energy minimum, leaving other regions poorly defined. Third, varying the paths taken towards predicting solutions, by randomizing the gradient descent step size α and number of optimization steps, significantly improved generalization. Tog",
+        "unicode_plain": "+ ηi, η i ∼ N (0, σ), (2) where σ is the magnitude of the noise η. Without this random noise term, exploration is often limited to paths leading directly to the energy minimum, leaving other regions poorly defined. Third, varying the paths taken towards predicting solutions, by randomizing the gradient descent step size α and number of optimization steps, significantly improved generalization. Together, these techniques"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "+ ηi, η i ∼ N (0, σ), (2) where σ is the magnitude of the noise η. Without this random noise term, exploration is often limited to paths leading directly to the energy minimum, leaving other regions poorly defined. Third, varying the paths taken towards predicting solutions, by randomizing the gradient descent step size α and number of optimization steps, significantly improved generalization. Together, these techniques"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page12_10",
+      "presentation": {
+        "latex": "SD-XL V AE [114, 115]. Then, all models are trained using a Smooth L1 loss with β = 1.0 on the Something Something V2 dataset [ 116], where we report the minimum validation loss achieved. In Figure 9 we report scaling results for the embedding dimension and non-embedding parameter count, as we found these axes behaved the most linearly. The results demonstrate that, despite achieving a higher init",
+        "unicode_plain": "SD-XL V AE [114, 115]. Then, all models are trained using a Smooth L1 loss with β = 1.0 on the Something Something V2 dataset [ 116], where we report the minimum validation loss achieved. In Figure 9 we report scaling results for the embedding dimension and non-embedding parameter count, as we found these axes behaved the most linearly. The results demonstrate that, despite achieving a higher initial loss, EBTs scale at a more than 33% faster rate than the Transformer++."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          12
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "SD-XL V AE [114, 115]. Then, all models are trained using a Smooth L1 loss with β = 1.0 on the Something Something V2 dataset [ 116], where we report the minimum validation loss achieved. In Figure 9 we report scaling results for the embedding dimension and non-embedding parameter count, as we found these axes behaved the most linearly. The results demonstrate that, despite achieving a higher initial loss, EBTs scale at a more than 33% faster rate than the Transformer++."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page13_11",
+      "presentation": {
+        "latex": "In Distribution Noise σ = 0.1 OOD Noise σ = 0.2 ImageNet-1k Classification Model PSNR ↑ MSE Pixel ↓ PSNR ↑ MSE Pixel ↓ Top 1 Acc. ↑ Top 5 Acc. ↑ DiT 26.58 142.98 19.56 718.7 0.31% 1.36% EBT 27.25 122.55 23.29 305.2 5.32% 13.2% uncertainty (Facet 2) through their energy scalar. To confirm this, we visualize results for different energies when predicting video frames in Figure 11. The results demons",
+        "unicode_plain": "In Distribution Noise σ = 0.1 OOD Noise σ = 0.2 ImageNet-1k Classification Model PSNR ↑ MSE Pixel ↓ PSNR ↑ MSE Pixel ↓ Top 1 Acc. ↑ Top 5 Acc. ↑ DiT 26.58 142.98 19.56 718.7 0.31% 1.36% EBT 27.25 122.55 23.29 305.2 5.32% 13.2% uncertainty (Facet 2) through their energy scalar. To confirm this, we visualize results for different energies when predicting video frames in Figure 11. The results demonstrate that EBTs successfully"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "In Distribution Noise σ = 0.1 OOD Noise σ = 0.2 ImageNet-1k Classification Model PSNR ↑ MSE Pixel ↓ PSNR ↑ MSE Pixel ↓ Top 1 Acc. ↑ Top 5 Acc. ↑ DiT 26.58 142.98 19.56 718.7 0.31% 1.36% EBT 27.25 122.55 23.29 305.2 5.32% 13.2% uncertainty (Facet 2) through their energy scalar. To confirm this, we visualize results for different energies when predicting video frames in Figure 11. The results demonstrate that EBTs successfully"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page13_12",
+      "presentation": {
+        "latex": "during training (σ = 0.1), as well as at a higher noise level (σ = 0.2), representing Out-of-Distribution 13",
+        "unicode_plain": "during training (σ = 0.1), as well as at a higher noise level (σ = 0.2), representing Out-of-Distribution 13"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          13
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "during training (σ = 0.1), as well as at a higher noise level (σ = 0.2), representing Out-of-Distribution 13"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page14_13",
+      "presentation": {
+        "latex": "feed in T = 0. The results are shown in Table 4, where the performance of EBTs is much higher than DiTs, achieving a Top-1 and Top-5 accu- racy around 10× higher than that of DiTs. This suggests that EBTs learn better image represen- tations than DiTs, and therefore that EBTs offer",
+        "unicode_plain": "feed in T = 0. The results are shown in Table 4, where the performance of EBTs is much higher than DiTs, achieving a Top-1 and Top-5 accu- racy around 10× higher than that of DiTs. This suggests that EBTs learn better image represen- tations than DiTs, and therefore that EBTs offer"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          14
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "feed in T = 0. The results are shown in Table 4, where the performance of EBTs is much higher than DiTs, achieving a Top-1 and Top-5 accu- racy around 10× higher than that of DiTs. This suggests that EBTs learn better image represen- tations than DiTs, and therefore that EBTs offer"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page23_14",
+      "presentation": {
+        "latex": "[123] URL https://www.youtube.com/watch?v=6nJZopACRuQ&ab_channel=OpenAI. 15 23",
+        "unicode_plain": "[123] URL https://www.youtube.com/watch?v=6nJZopACRuQ&ab_channel=OpenAI. 15 23"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          23
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "[123] URL https://www.youtube.com/watch?v=6nJZopACRuQ&ab_channel=OpenAI. 15 23"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

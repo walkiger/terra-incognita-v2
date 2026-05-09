@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z",
+  "source_pdf": "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/source.pdf",
+  "title_hint": "Equilibrium Propagation: Bridging the Gap Between Energy-Based Models and Backpropagation Benjamin Scellier and Yoshua Bengio*",
+  "updated_at": "2026-05-08T15:09:55Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:06:46Z",
+      "artifacts": [
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/source.pdf",
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:55Z",
+      "artifacts": [
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:55Z",
+      "artifacts": [
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:55Z",
+      "artifacts": [
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:09:55Z",
+      "artifacts": [
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/l4_analysis.json",
+        "research/extracted/equilibrium_propagation_bridging_the_gap_between_energy_based_models_and_20260508T150645Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=25127; pdf_sha256=88e25a42e6ad73756427aa002b1adf3d92607c2a575414eaffbdf7afbebc0528; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "88e25a42e6ad73756427aa002b1adf3d92607c2a575414eaffbdf7afbebc0528"
+}

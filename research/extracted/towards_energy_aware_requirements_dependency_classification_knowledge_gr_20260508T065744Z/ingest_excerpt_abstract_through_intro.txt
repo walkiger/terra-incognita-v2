@@ -1,0 +1,145 @@
+Abstract—The continuous evolution of system specifications
+necessitates frequent evaluation of conflicting requirements, a
+process that is traditionally labor-intensive. Although large lan-
+guage models (LLMs) have demonstrated significant potential
+in automating this detection, their massive computational re-
+quirements often lead to excessive energy waste. Consequently,
+there is a growing need to transition toward Small Language
+Models (SLMs) and energy-aware architectures for sustainable
+Requirements Engineering. This study proposes and empirically
+evaluates a energy-aware framework that compares Knowledge
+Graph-based Retrieval (KGR) with Vector-based Semantic Re-
+trieval (VSR) to enhance SLM-based inference at the 7B–8B
+parameter scale. By leveraging structured graph traversal and
+high-dimensional semantic mapping, we extract requirement
+candidates which are then classified as conflicting or neu-
+tral through an inference engine. We evaluate these retrieval-
+enhanced strategies across Zero-Shot, Few-Shot, and Chain-of-
+Thought prompting methods. Using a three-pillar sustainability
+framework—measuring energy consumption (Wh), latency (s),
+and carbon emissions (gCO 2eq)—alongside standard accuracy
+metrics (F1-score), this research provides a first systematic
+empirical evaluation and trade-off analysis between predictive
+performance and environmental impact. Our findings highlight
+the effectiveness of structured versus semantic retrieval in detect-
+ing requirement conflicts, offering a reproducible, sustainability-
+aware architecture for energy-efficient requirement engineering.
+Index Terms—requirements engineering, retrieval augmented
+generation, large language model, conflict detection, energy-
+aware classification.
+I. INTRODUCTION
+Requirements interdependencies define how requirements
+relate to and influence one another [1], playing a critical
+role in the delivery of robust software systems. Despite
+their importance, existing literature lacks a unified framework
+to systematically capture and classify these interdependen-
+cies [2].Requires,Conflict,SimilarandRefinesare some
+of the common relation types. However, identification and
+classification ofConflictdependency type - where fulfilling
+one requirement may hinder, contradict, exclude, or violate
+another (e.g., performance vs. security trade-offs, resource
+constraints, temporal/logical incompatibilities) [1] [3] [4] -
+remains a significant and active challenge in Requirements
+Engineering (RE) mainly due to the subtle semantic con-
+tradictions, negations, domain-specific constraints, and multi-
+requirement interactions beyond basic NLP/pattern-matching
+[5] [6]. Unidentified or poorly managed conflicting require-
+ments can lead organizations to delays, wasted resources, and
+risks to compliance and customer satisfaction [7] [4].
+Problem.Recent advancement in the state-of-the-art of
+Large Language Models (LLMs) has transformed the land-
+scape of RE [6], demonstrating a high potential to capture
+the fine semantic nuances required for tasks such as require-
+ment traceability and specification analysis [8], [9]. In the
+context of Conflict dependency type detection, where deep
+linguistic understanding is vital to prevent costly late-stage
+corrections [10], these models bridge the gaps that traditional
+information retrieval techniques often struggle to address [11],
+[12]. However, the deployment of massive LLMs is hampered
+by significant computational overhead, characterized by high
+energy consumption, large carbon footprints, and the lack of
+a specific project context [13]. This creates a pressing need to
+explore how Small Language Models (SLMs), typically in the
+7B-8B range, perform similar classification tasks. Although
+SLMs are more resource-efficient, they require robust, context-
+sensitive augmentation to handle the full scale of complex
+software repositories [14]. Consequently, the transition from
+brute-force inference to context-aware retrieval is essential to
+make SLM-based RE both practical and accurate.
+State-of-the-art retrieval-augmented techniques primarily
+rely on two paradigms: Vector-based Semantic Retrieval (VSR)
+and Knowledge Graph-based Retrieval (KGR).VSRoffers
+superior latency by encoding requirements in high-dimensional
+spaces yet it frequently suffers fromstructural blindness- an
+inability to map the hierarchical and relational dependencies
+inherent in software specifications. In contrast,KGRsystems
+provide a structured environment that defines these subtle
+dependencies, which is essential for avoiding the misidenti-
+fication of conflicts. AlthoughKGRis computationally more
+intensive during the initial indexing phase, evidence suggests
+that it may reduce long-term environmental costs by elimi-
+natingcontextual noisethat forces models into redundant and
+energy-intensive processing cycles [15].
+Solution.In this work, we present a retrieval approach
+that leverages a Knowledge Graph-based method to effectively
+capture the hierarchical and relational dependencies inherent
+in software specifications. Compared to state-of-the-art generic
+vector-based semantic retrieval and vanilla LLMs (as baseline),
+arXiv:2603.23954v1  [cs.SE]  25 Mar 2026
+ours is a systematic empirical study that evaluates energy-
+aware framework across five diverse datasets using zero-
+shot, few-shot, and chain-of-thought prompting techniques
+under accuracy, energy and carbon constraints. Our proposed
+approach demonstrates a reproducible and environmentally
+responsible framework for the automated and effective de-
+tection of conflict requirements dependency type, comparable
+to state-of-the-art methods. These results contribute to the
+advancement of sustainable and automated software require-
+ments dependency detection. We define our research questions
+with Conflict dependency type detection in focus, as follows:
+RQ1:How do Knowledge Graph-based Retrieval (KGR) and
+Vector-based Semantic Retrieval (VSR) compare across
+environmental sustainability metrics, specifically energy
+consumption (Wh), latency (s), and carbon emissions
+(gCO2eq), relative to retrieval efficiency (Recall@K)?
+RQ2:What is the impact of different prompting strategies
+(Zero-Shot, Few-Shot, and Chain-of-Thought) on the
+multi-dimensional sustainability profile and classification
+accuracy (Macro F1-score) of SLMs?
+RQ3:To what extent does the integrated retrieval-augmented
+pipelines improve the sustainability-to-performance ratio
+compared to vanilla SLM (baseline) inference for require-
+ments classification?
+The main contributions of this research are four fold:
+-Empirical comparison:We present the first systematic em-
+pirical comparison of Knowledge-Graph Retrieval (KGR)
+versus Vector Semantic Retrieval (VSR) under strict en-
+ergy and carbon constraints for SLM-based requirements
+dependency detection. While entity-centric GraphRAG ideas
+exist, their application to energy-aware RE dependency
+classification with open 7–8B SLMs has not been studied.
+-Retrieval Architectures:We present a novelKGRpipeline
+designed to overcome the structural blindness of traditional
+VSR, capturing the hierarchical dependencies that high-
+dimensional embeddings often miss. We conduct this em-
+pirical evaluation on the five datasets (CDN, OpenCOSS,
+PURE, UA V , WorldVista, IBM-UA V), small-to-medium in
+size which span safety-critical, healthcare, and aerospace
+domains.
+-Sustainability Analysis:We provide a systematic analysis of
+how predictive accuracy (F1-score) relates to environmental
+costs, using a three-pillar sustainability framework that
+measures energy consumption (Wh), latency (s), and carbon
+emissions (gCO 2eq) across the pipeline.
+-Open Science:We provide an open-source implementation
+source code, prompts, sensitivity analysis and replication
+package1.
+The rest of the paper is organized as follows. Section II
+presents the preliminary concepts used in this study. Section
+II elaborates on our approach and details the methodology. The
+results are documented in Section IV, followed by a discussion
+in Section V. Related works are documented in Section VI
+1https://anonymous.4open.science/r/Energy-aware-Requirements-
+Dependency-Classification-99BC/
+while threats to validity are explained in Section VII. Section
+VIII concludes the paper.

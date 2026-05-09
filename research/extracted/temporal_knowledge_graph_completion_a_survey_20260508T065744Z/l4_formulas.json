@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "temporal_knowledge_graph_completion_a_survey_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:12:20Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "ral validity of facts as G = (E;R;T;D), where E,R and T are the sets of entities, relations, and timestamps, respec- tively.D2E\u0002R\u0002E\u0002T is the collection of facts con- tained in the knowledge graph. A fact is a quadruple denoted s =fh;r;t; g, where h, t, r and",
+        "unicode_plain": "ral validity of facts as G = (E;R;T;D), where E,R and T are the sets of entities, relations, and timestamps, respec- tively.D2E\u0002R\u0002E\u0002T is the collection of facts con- tained in the knowledge graph. A fact is a quadruple denoted s =fh;r;t; g, where h, t, r and"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ral validity of facts as G = (E;R;T;D), where E,R and T are the sets of entities, relations, and timestamps, respec- tively.D2E\u0002R\u0002E\u0002T is the collection of facts con- tained in the knowledge graph. A fact is a quadruple denoted s =fh;r;t; g, where h, t, r and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "s =fh;r;t; g, where h, t, r and are the head entity, the tail entity, the relation between the two entities, and the times- tamp indicating the temporal validity, respectively. Due to the recent progress of representation learning, many meth-",
+        "unicode_plain": "s =fh;r;t; g, where h, t, r and are the head entity, the tail entity, the relation between the two entities, and the times- tamp indicating the temporal validity, respectively. Due to the recent progress of representation learning, many meth-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "s =fh;r;t; g, where h, t, r and are the head entity, the tail entity, the relation between the two entities, and the times- tamp indicating the temporal validity, respectively. Due to the recent progress of representation learning, many meth-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "where [x]+ = max(x; 0) and is a hyper-parameter that regulates how large the score margin is expected. The cross- entropy loss [Li et al., 2021a ] also aims at obtaining a large separation gap between facts and negative samples, but it does not enforce a ﬁxed score margin for all facts:",
+        "unicode_plain": "where [x]+ = max(x; 0) and is a hyper-parameter that regulates how large the score margin is expected. The cross- entropy loss [Li et al., 2021a ] also aims at obtaining a large separation gap between facts and negative samples, but it does not enforce a ﬁxed score margin for all facts:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where [x]+ = max(x; 0) and is a hyper-parameter that regulates how large the score margin is expected. The cross- entropy loss [Li et al., 2021a ] also aims at obtaining a large separation gap between facts and negative samples, but it does not enforce a ﬁxed score margin for all facts:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "exp(q(s0)): (2) The binary cross entropy loss [Liu et al., 2020a] emphasizes the score of individual facts and negative samples as follows: ` = X x2D[D\u0000",
+        "unicode_plain": "exp(q(s0)): (2) The binary cross entropy loss [Liu et al., 2020a] emphasizes the score of individual facts and negative samples as follows: ` = X x2D[D\u0000"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "exp(q(s0)): (2) The binary cross entropy loss [Liu et al., 2020a] emphasizes the score of individual facts and negative samples as follows: ` = X x2D[D\u0000"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "yq(x) + (1\u0000y)q(x); (3) where y = 1 if x2D and y = 0 otherwise. The conve- nient calculation makes binary cross-entropy loss favorable for neural network-based TKGC methods. Benchmark Datasets. We summarize six benchmark datasets widely used for the evaluation of TKGC methods in",
+        "unicode_plain": "yq(x) + (1\u0000y)q(x); (3) where y = 1 if x2D and y = 0 otherwise. The conve- nient calculation makes binary cross-entropy loss favorable for neural network-based TKGC methods. Benchmark Datasets. We summarize six benchmark datasets widely used for the evaluation of TKGC methods in"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "yq(x) + (1\u0000y)q(x); (3) where y = 1 if x2D and y = 0 otherwise. The conve- nient calculation makes binary cross-entropy loss favorable for neural network-based TKGC methods. Benchmark Datasets. We summarize six benchmark datasets widely used for the evaluation of TKGC methods in"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "where y = 1 if x2D and y = 0 otherwise. The conve- nient calculation makes binary cross-entropy loss favorable for neural network-based TKGC methods. Benchmark Datasets. We summarize six benchmark datasets widely used for the evaluation of TKGC methods in Table 1. The ICEWS and GDELT datasets contain events",
+        "unicode_plain": "where y = 1 if x2D and y = 0 otherwise. The conve- nient calculation makes binary cross-entropy loss favorable for neural network-based TKGC methods. Benchmark Datasets. We summarize six benchmark datasets widely used for the evaluation of TKGC methods in Table 1. The ICEWS and GDELT datasets contain events"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where y = 1 if x2D and y = 0 otherwise. The conve- nient calculation makes binary cross-entropy loss favorable for neural network-based TKGC methods. Benchmark Datasets. We summarize six benchmark datasets widely used for the evaluation of TKGC methods in Table 1. The ICEWS and GDELT datasets contain events"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page3_7",
+      "presentation": {
+        "latex": "des et al., 2013 ], q(h;r;t ) = keh +er\u0000etk, regards r as the translation between h and t. For TKGC, facts become quadruples due to additional timestamps. Therefore, TKGC expects more ﬂexible models to further learn the temporal dy- namics of knowledge graphs with the provided timestamps of facts. We observe that many TKGC methods are built upon",
+        "unicode_plain": "des et al., 2013 ], q(h;r;t ) = keh +er\u0000etk, regards r as the translation between h and t. For TKGC, facts become quadruples due to additional timestamps. Therefore, TKGC expects more ﬂexible models to further learn the temporal dy- namics of knowledge graphs with the provided timestamps of facts. We observe that many TKGC methods are built upon"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "des et al., 2013 ], q(h;r;t ) = keh +er\u0000etk, regards r as the translation between h and t. For TKGC, facts become quadruples due to additional timestamps. Therefore, TKGC expects more ﬂexible models to further learn the temporal dy- namics of knowledge graphs with the provided timestamps of facts. We observe that many TKGC methods are built upon"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "knowledge graph as a series of graph snapshots (G = fG1;G2;:::;GjTjg), and learns the graph dynamics to predict links. – Reasoning with historical context: infers new links by reasoning with relevant historical facts (context) as p(sjcontext).",
+        "unicode_plain": "knowledge graph as a series of graph snapshots (G = fG1;G2;:::;GjTjg), and learns the graph dynamics to predict links. – Reasoning with historical context: infers new links by reasoning with relevant historical facts (context) as p(sjcontext)."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "knowledge graph as a series of graph snapshots (G = fG1;G2;:::;GjTjg), and learns the graph dynamics to predict links. – Reasoning with historical context: infers new links by reasoning with relevant historical facts (context) as p(sjcontext)."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "try of X can be approximated as Xijk \u0019 hai;bj;cki =Pd",
+        "unicode_plain": "try of X can be approximated as Xijk \u0019 hai;bj;cki =Pd"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "try of X can be approximated as Xijk \u0019 hai;bj;cki =Pd"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "comesq(s) =heh;er;et;e i. An imaginary timestamp is adopted for static facts so that the model is also capable of learning from facts with missing timestamps. A similar CP decomposition model is adopted by TNTComplEx [Lacroix et al., 2020 ], except that it uses complex-valued representa-",
+        "unicode_plain": "comesq(s) =heh;er;et;e i. An imaginary timestamp is adopted for static facts so that the model is also capable of learning from facts with missing timestamps. A similar CP decomposition model is adopted by TNTComplEx [Lacroix et al., 2020 ], except that it uses complex-valued representa-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "comesq(s) =heh;er;et;e i. An imaginary timestamp is adopted for static facts so that the model is also capable of learning from facts with missing timestamps. A similar CP decomposition model is adopted by TNTComplEx [Lacroix et al., 2020 ], except that it uses complex-valued representa-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page4_11",
+      "presentation": {
+        "latex": "and C 2 Rn3\u0002d3. An entry is approximated as Xijk =Pd1",
+        "unicode_plain": "and C 2 Rn3\u0002d3. An entry is approximated as Xijk =Pd1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "and C 2 Rn3\u0002d3. An entry is approximated as Xijk =Pd1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page4_12",
+      "presentation": {
+        "latex": "position whenW is super diagonal andd1 =d2 =d3. Simi- lar to CP decomposition TKGC methods, TuckERTNT[Shao et al., 2022] adopts the Tucker decomposition by regarding a knowledge graph as a 4-way tensor. Given a factfh;r;t; g, it scores its correctness as q(s) =hW;eh;er;et;e",
+        "unicode_plain": "position whenW is super diagonal andd1 =d2 =d3. Simi- lar to CP decomposition TKGC methods, TuckERTNT[Shao et al., 2022] adopts the Tucker decomposition by regarding a knowledge graph as a 4-way tensor. Given a factfh;r;t; g, it scores its correctness as q(s) =hW;eh;er;et;e"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "position whenW is super diagonal andd1 =d2 =d3. Simi- lar to CP decomposition TKGC methods, TuckERTNT[Shao et al., 2022] adopts the Tucker decomposition by regarding a knowledge graph as a 4-way tensor. Given a factfh;r;t; g, it scores its correctness as q(s) =hW;eh;er;et;e"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page4_13",
+      "presentation": {
+        "latex": "it scores its correctness as q(s) =hW;eh;er;et;e i, where W 2 Rde\u0002dr\u0002de\u0002d measures the interactions among en- tities, relations and timestamps. W also is interpreted as a high-dimensional linear classiﬁer that can distinguish facts",
+        "unicode_plain": "it scores its correctness as q(s) =hW;eh;er;et;e i, where W 2 Rde\u0002dr\u0002de\u0002d measures the interactions among en- tities, relations and timestamps. W also is interpreted as a high-dimensional linear classiﬁer that can distinguish facts"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "it scores its correctness as q(s) =hW;eh;er;et;e i, where W 2 Rde\u0002dr\u0002de\u0002d measures the interactions among en- tities, relations and timestamps. W also is interpreted as a high-dimensional linear classiﬁer that can distinguish facts"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page4_14",
+      "presentation": {
+        "latex": "ment, i.e., q(s) = keh + u(r; )\u0000 etk, where u(r; ) is the fusion function. It evaluates the prediction performance of three basic fusion functions of u(r; ), i.e., er:",
+        "unicode_plain": "ment, i.e., q(s) = keh + u(r; )\u0000 etk, where u(r; ) is the fusion function. It evaluates the prediction performance of three basic fusion functions of u(r; ), i.e., er:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ment, i.e., q(s) = keh + u(r; )\u0000 etk, where u(r; ) is the fusion function. It evaluates the prediction performance of three basic fusion functions of u(r; ), i.e., er:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

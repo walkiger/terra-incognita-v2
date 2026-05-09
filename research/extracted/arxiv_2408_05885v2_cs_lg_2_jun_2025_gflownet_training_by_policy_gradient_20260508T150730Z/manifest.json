@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z",
+  "source_pdf": "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/source.pdf",
+  "title_hint": "arXiv:2408.05885v2  [cs.LG]  2 Jun 2025 GFlowNet Training by Policy Gradients Puhua Niu 1 Shili Wu 1 Mingzhou Fan 1 Xiaoning Qian 1 2 3",
+  "updated_at": "2026-05-08T15:08:49Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:32Z",
+      "artifacts": [
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/source.pdf",
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:49Z",
+      "artifacts": [
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:49Z",
+      "artifacts": [
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:49Z",
+      "artifacts": [
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:49Z",
+      "artifacts": [
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/l4_analysis.json",
+        "research/extracted/arxiv_2408_05885v2_cs_lg_2_jun_2025_gflownet_training_by_policy_gradient_20260508T150730Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=7464; pdf_sha256=b31aae4dfaf3a262b0653ca76daf0df9facae72f04f4607dfde2b2162f13e288; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "b31aae4dfaf3a262b0653ca76daf0df9facae72f04f4607dfde2b2162f13e288"
+}

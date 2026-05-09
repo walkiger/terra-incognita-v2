@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:10:47Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "F /C0 1partial xÞ= Ux: (1) Here U is the matrix of eigenvectors of the normalized graph Laplacian L = IN /C0 D/C0 1 2 AD/C0 1 2 (D is the degree matrix and A is the adjacency matrix",
+        "unicode_plain": "F /C0 1ðxÞ¼ Ux: (1) Here U is the matrix of eigenvectors of the normalized graph Laplacian L ¼ IN /C0 D/C0 1 2 AD/C0 1 2 (D is the degree matrix and A is the adjacency matrix"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "F /C0 1ðxÞ¼ Ux: (1) Here U is the matrix of eigenvectors of the normalized graph Laplacian L ¼ IN /C0 D/C0 1 2 AD/C0 1 2 (D is the degree matrix and A is the adjacency matrix"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "= Upartial UT g /C12 UT xÞ; (2) where UT g is the ﬁlter in the spectral domain. If we simplify the ﬁlter by Fig. 2. The general design pipeline for a GNN model. J. Zhou et al. AI Open 1 (2020) 57 –81 60",
+        "unicode_plain": "¼ UðUT g /C12 UT xÞ; (2) where UT g is the ﬁlter in the spectral domain. If we simplify the ﬁlter by Fig. 2. The general design pipeline for a GNN model. J. Zhou et al. AI Open 1 (2020) 57 –81 60"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          4
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "¼ UðUT g /C12 UT xÞ; (2) where UT g is the ﬁlter in the spectral domain. If we simplify the ﬁlter by Fig. 2. The general design pipeline for a GNN model. J. Zhou et al. AI Open 1 (2020) 57 –81 60"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": "gw ⋆ x = Ugw UT x: (3) Next we introduce several typical spectral methods which design different ﬁlters gw. Spectral Network. Spectral network ( Bruna et al., 2014 ) uses a learn- able diagonal matrix as the ﬁlter, that is gw = diagpartial wÞ, where w 2 RN is the parameter. However, this operation is computationally inef ﬁcient",
+        "unicode_plain": "gw ⋆ x ¼ Ugw UT x: (3) Next we introduce several typical spectral methods which design different ﬁlters gw. Spectral Network. Spectral network ( Bruna et al., 2014 ) uses a learn- able diagonal matrix as the ﬁlter, that is gw ¼ diagðwÞ, where w 2 RN is the parameter. However, this operation is computationally inef ﬁcient"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": "gw ⋆ x ¼ Ugw UT x: (3) Next we introduce several typical spectral methods which design different ﬁlters gw. Spectral Network. Spectral network ( Bruna et al., 2014 ) uses a learn- able diagonal matrix as the ﬁlter, that is gw ¼ diagðwÞ, where w 2 RN is the parameter. However, this operation is computationally inef ﬁcient"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "x; (4) where ~L = 2 λmax L /C0 IN , λmax denotes the largest eigenvalue of L. The range of the eigenvalues in ~L is [-1, 1]. w 2 RK is now a vector of Chebyshev coefﬁcients. The Chebyshev polynomials are de ﬁned as Tkpartial xÞ=",
+        "unicode_plain": "x; (4) where ~L ¼ 2 λmax L /C0 IN , λmax denotes the largest eigenvalue of L. The range of the eigenvalues in ~L is [-1, 1]. w 2 RK is now a vector of Chebyshev coefﬁcients. The Chebyshev polynomials are de ﬁned as TkðxÞ¼"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "x; (4) where ~L ¼ 2 λmax L /C0 IN , λmax denotes the largest eigenvalue of L. The range of the eigenvalues in ~L is [-1, 1]. w 2 RK is now a vector of Chebyshev coefﬁcients. The Chebyshev polynomials are de ﬁned as TkðxÞ¼"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_6",
+      "presentation": {
+        "latex": "Ax: (6) GCN further introduces a renormalization trick to solve the exploding/ vanishing gradient problem in Eq. (6): IN \\theta  D/C0 1 2 AD/C0 1 2 → ~D",
+        "unicode_plain": "Ax: (6) GCN further introduces a renormalization trick to solve the exploding/ vanishing gradient problem in Eq. (6): IN þ D/C0 1 2 AD/C0 1 2 → ~D"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "(6)",
+        "verbatim_snippet": "Ax: (6) GCN further introduces a renormalization trick to solve the exploding/ vanishing gradient problem in Eq. (6): IN þ D/C0 1 2 AD/C0 1 2 → ~D"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_7",
+      "presentation": {
+        "latex": "XW; (7) where X 2 RN/C2 F is the input matrix, W 2 RF/C2 F 0 is the parameter and H 2 RN/C2 F 0",
+        "unicode_plain": "XW; (7) where X 2 RN/C2 F is the input matrix, W 2 RF/C2 F 0 is the parameter and H 2 RN/C2 F 0"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(7)",
+        "verbatim_snippet": "XW; (7) where X 2 RN/C2 F is the input matrix, W 2 RF/C2 F 0 is the parameter and H 2 RN/C2 F 0"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_8",
+      "presentation": {
+        "latex": "CA; (8) where AP is the PPMI matrix and DP is the diagonal degree matrix of AP. GWNN. Graph wavelet neural network (GWNN) ( Xu et al., 2019a ) uses the graph wavelet transform to replace the graph Fourier transform. It has several advantages: (1) graph wavelets can be fastly obtained without matrix decomposition; (2) graph wavelets are sparse and local-",
+        "unicode_plain": "CA; (8) where AP is the PPMI matrix and DP is the diagonal degree matrix of AP. GWNN. Graph wavelet neural network (GWNN) ( Xu et al., 2019a ) uses the graph wavelet transform to replace the graph Fourier transform. It has several advantages: (1) graph wavelets can be fastly obtained without matrix decomposition; (2) graph wavelets are sparse and local-"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(8)",
+        "verbatim_snippet": "CA; (8) where AP is the PPMI matrix and DP is the diagonal degree matrix of AP. GWNN. Graph wavelet neural network (GWNN) ( Xu et al., 2019a ) uses the graph wavelet transform to replace the graph Fourier transform. It has several advantages: (1) graph wavelets can be fastly obtained without matrix decomposition; (2) graph wavelets are sparse and local-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_10",
+      "presentation": {
+        "latex": "H = f partial Wc /C12 P* XÞ 2 RN/C2 K/C2 F ; (10) where X 2 RN/C2 F is the matrix of input features ( F is the dimension). P* is an N /C2 K /C2 N tensor which contains the power series { P; P2, …, PK }o f matrix P. And P is the degree-normalized transition matrix from the graphs adjacency matrix A. Each entity is transformed to a diffusion convolutional representation which is a K /C2 F matrix deﬁ",
+        "unicode_plain": "H ¼ f ðWc /C12 P* XÞ 2 RN/C2 K/C2 F ; (10) where X 2 RN/C2 F is the matrix of input features ( F is the dimension). P* is an N /C2 K /C2 N tensor which contains the power series { P; P2, …, PK }o f matrix P. And P is the degree-normalized transition matrix from the graphs adjacency matrix A. Each entity is transformed to a diffusion convolutional representation which is a K /C2 F matrix deﬁned by K hops"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "(10)",
+        "verbatim_snippet": "H ¼ f ðWc /C12 P* XÞ 2 RN/C2 K/C2 F ; (10) where X 2 RN/C2 F is the matrix of input features ( F is the dimension). P* is an N /C2 K /C2 N tensor which contains the power series { P; P2, …, PK }o f matrix P. And P is the degree-normalized transition matrix from the graphs adjacency matrix A. Each entity is transformed to a diffusion convolutional representation which is a K /C2 F matrix deﬁned by K hops"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_16",
+      "presentation": {
+        "latex": "; (16) where T denotes the total time steps. The message function Mt , vertex update function Ut and readout function R may have different settings. Hence the MPNN framework could instantiate several different models via different function settings. Speciﬁc settings for different models could be found in ( Gilmer et al., 2017 ).",
+        "unicode_plain": "; (16) where T denotes the total time steps. The message function Mt , vertex update function Ut and readout function R may have different settings. Hence the MPNN framework could instantiate several different models via different function settings. Speciﬁc settings for different models could be found in ( Gilmer et al., 2017 )."
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "(16)",
+        "verbatim_snippet": "; (16) where T denotes the total time steps. The message function Mt , vertex update function Ut and readout function R may have different settings. Hence the MPNN framework could instantiate several different models via different function settings. Speciﬁc settings for different models could be found in ( Gilmer et al., 2017 )."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_17",
+      "presentation": {
+        "latex": "; (17) where u is the index of all possible positions for position v, f partial ht v; ht uÞ computes a scalar between v and u representing the relation between them, gpartial ht",
+        "unicode_plain": "; (17) where u is the index of all possible positions for position v, f ðht v; ht uÞ computes a scalar between v and u representing the relation between them, gðht"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          7
+        ],
+        "equation_label": "(17)",
+        "verbatim_snippet": "; (17) where u is the index of all possible positions for position v, f ðht v; ht uÞ computes a scalar between v and u representing the relation between them, gðht"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_19",
+      "presentation": {
+        "latex": "ov = gpartial hv; xvÞ; (19) where xv; xco½v/C138; hN v ; xN v are the features of v, the features of its edges, the states and the features of the nodes in the neighborhood of v, respec- tively. f here is a parametric function called the local transition function.I t is shared among all nodes and updates the node state according to the input neighborhood. g is the local output function that descri",
+        "unicode_plain": "ov ¼ gðhv; xvÞ; (19) where xv; xco½v/C138; hN v ; xN v are the features of v, the features of its edges, the states and the features of the nodes in the neighborhood of v, respec- tively. f here is a parametric function called the local transition function.I t is shared among all nodes and updates the node state according to the input neighborhood. g is the local output function that describes how the"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "(19)",
+        "verbatim_snippet": "ov ¼ gðhv; xvÞ; (19) where xv; xco½v/C138; hN v ; xN v are the features of v, the features of its edges, the states and the features of the nodes in the neighborhood of v, respec- tively. f here is a parametric function called the local transition function.I t is shared among all nodes and updates the node state according to the input neighborhood. g is the local output function that describes how the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_20",
+      "presentation": {
+        "latex": "O = Gpartial H; XN Þ; (20) where F, the global transition function, and G, the global output function are stacked versions of f and g for all nodes in a graph, respectively. The value of H is the ﬁxed point of Eq. (20) and is uniquely de ﬁned with the assumption that F is a contraction map. With the suggestion of Banach ’s ﬁxed point theorem ( Khamsi and",
+        "unicode_plain": "O ¼ GðH; XN Þ; (20) where F, the global transition function, and G, the global output function are stacked versions of f and g for all nodes in a graph, respectively. The value of H is the ﬁxed point of Eq. (20) and is uniquely de ﬁned with the assumption that F is a contraction map. With the suggestion of Banach ’s ﬁxed point theorem ( Khamsi and"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "(20)",
+        "verbatim_snippet": "O ¼ GðH; XN Þ; (20) where F, the global transition function, and G, the global output function are stacked versions of f and g for all nodes in a graph, respectively. The value of H is the ﬁxed point of Eq. (20) and is uniquely de ﬁned with the assumption that F is a contraction map. With the suggestion of Banach ’s ﬁxed point theorem ( Khamsi and"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_21",
+      "presentation": {
+        "latex": "Ht\\theta 1 = Fpartial Ht ; XÞ; (21) where Ht denotes the t-th iteration of H. The dynamical system Eq. (21) converges exponentially fast to the solution for any initial value. Though experimental results have shown that GNN is a powerful architecture for modeling structural data, there are still several limitations:",
+        "unicode_plain": "Htþ1 ¼ FðHt ; XÞ; (21) where Ht denotes the t-th iteration of H. The dynamical system Eq. (21) converges exponentially fast to the solution for any initial value. Though experimental results have shown that GNN is a powerful architecture for modeling structural data, there are still several limitations:"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "(21)",
+        "verbatim_snippet": "Htþ1 ¼ FðHt ; XÞ; (21) where Ht denotes the t-th iteration of H. The dynamical system Eq. (21) converges exponentially fast to the solution for any initial value. Though experimental results have shown that GNN is a powerful architecture for modeling structural data, there are still several limitations:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_21",
+      "presentation": {
+        "latex": "where Ht denotes the t-th iteration of H. The dynamical system Eq. (21) converges exponentially fast to the solution for any initial value. Though experimental results have shown that GNN is a powerful architecture for modeling structural data, there are still several limitations: /C15 GNN requires f to be a contraction map which limits the model ’s",
+        "unicode_plain": "where Ht denotes the t-th iteration of H. The dynamical system Eq. (21) converges exponentially fast to the solution for any initial value. Though experimental results have shown that GNN is a powerful architecture for modeling structural data, there are still several limitations: /C15 GNN requires f to be a contraction map which limits the model ’s"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "(21)",
+        "verbatim_snippet": "where Ht denotes the t-th iteration of H. The dynamical system Eq. (21) converges exponentially fast to the solution for any initial value. Though experimental results have shown that GNN is a powerful architecture for modeling structural data, there are still several limitations: /C15 GNN requires f to be a contraction map which limits the model ’s"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

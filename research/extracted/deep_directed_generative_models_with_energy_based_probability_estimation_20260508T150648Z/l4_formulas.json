@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "deep_directed_generative_models_with_energy_based_probability_estimation_20260508T150648Z",
+  "extracted_at": "2026-05-08T15:09:25Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "PΘ(x) = e−EΘ(x) ZΘ ZΘ = ∑ x e−EΘ(x) (1)",
+        "unicode_plain": "PΘ(x) = e−EΘ(x) ZΘ ZΘ = ∑ x e−EΘ(x) (1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "PΘ(x) = e−EΘ(x) ZΘ ZΘ = ∑ x e−EΘ(x) (1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "e−EΘ(x) (1) where Zθ is a normalization factor and also called as a partition function. As we typically deﬁne the energy function as a sum of multiple terms, we can associate each term with an \"expert\", and the corresponding probability distribution is expressed as a product of experts (PoE) [7]: EΘ(x) = ∑",
+        "unicode_plain": "e−EΘ(x) (1) where Zθ is a normalization factor and also called as a partition function. As we typically deﬁne the energy function as a sum of multiple terms, we can associate each term with an \"expert\", and the corresponding probability distribution is expressed as a product of experts (PoE) [7]: EΘ(x) = ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "e−EΘ(x) (1) where Zθ is a normalization factor and also called as a partition function. As we typically deﬁne the energy function as a sum of multiple terms, we can associate each term with an \"expert\", and the corresponding probability distribution is expressed as a product of experts (PoE) [7]: EΘ(x) = ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "EΘ(x) = ∑ i ˜Eθi(x) PΘ(x) = e− ∑ i ˜Eθi(x)",
+        "unicode_plain": "EΘ(x) = ∑ i ˜Eθi(x) PΘ(x) = e− ∑ i ˜Eθi(x)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EΘ(x) = ∑ i ˜Eθi(x) PΘ(x) = e− ∑ i ˜Eθi(x)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "˜Eθi(x) PΘ(x) = e− ∑ i ˜Eθi(x) ZΘ = 1 ZΘ",
+        "unicode_plain": "˜Eθi(x) PΘ(x) = e− ∑ i ˜Eθi(x) ZΘ = 1 ZΘ"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜Eθi(x) PΘ(x) = e− ∑ i ˜Eθi(x) ZΘ = 1 ZΘ"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "e− ˜Eθi(x) = 1 ZΘ ∏ i ˜Pθi(x) (2) Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a",
+        "unicode_plain": "e− ˜Eθi(x) = 1 ZΘ ∏ i ˜Pθi(x) (2) Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "e− ˜Eθi(x) = 1 ZΘ ∏ i ˜Pθi(x) (2) Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "˜Pθi(x) (2) Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set of unnormalized distributions in the form of Student-t distribution, which has heavier tails ",
+        "unicode_plain": "˜Pθi(x) (2) Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set of unnormalized distributions in the form of Student-t distribution, which has heavier tails than a"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "˜Pθi(x) (2) Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set of unnormalized distributions in the form of Student-t distribution, which has heavier tails than a"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set of unnormalized distributions in the form of Student-t distribution, which has heavier tails than a norma",
+        "unicode_plain": "Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set of unnormalized distributions in the form of Student-t distribution, which has heavier tails than a normal distribution:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Each expert ˜Eθi is deﬁned by an unnormalized distribution as ˜Eθi(x) = − log ˜Pθi(x) with a parameter set θi, and also can be interpreted as a pattern detector of implausible conﬁgurations. For example, in the product of Student-t (PoT) model [16], the energy function is deﬁned by using a set of unnormalized distributions in the form of Student-t distribution, which has heavier tails than a normal distribution:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "˜Pθi(x) = 1( 1 + 1 2(W T i x)2)αi αi > 0 EΘ(x) = ∑",
+        "unicode_plain": "˜Pθi(x) = 1( 1 + 1 2(W T i x)2)αi αi > 0 EΘ(x) = ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜Pθi(x) = 1( 1 + 1 2(W T i x)2)αi αi > 0 EΘ(x) = ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "EΘ(x) = ∑ i αi log ( 1 +",
+        "unicode_plain": "EΘ(x) = ∑ i αi log ( 1 +"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EΘ(x) = ∑ i αi log ( 1 +"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_3",
+      "presentation": {
+        "latex": ")2) (3) It is also possible to use weak classiﬁers based on logistic regression as unnormalized distributions. Each weak classiﬁer corresponds to a single feature detector, and the responses of all weak classiﬁer are aggregated to assign an energy value: ˜Pθi(x) = σ (",
+        "unicode_plain": ")2) (3) It is also possible to use weak classiﬁers based on logistic regression as unnormalized distributions. Each weak classiﬁer corresponds to a single feature detector, and the responses of all weak classiﬁer are aggregated to assign an energy value: ˜Pθi(x) = σ ("
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(3)",
+        "verbatim_snippet": ")2) (3) It is also possible to use weak classiﬁers based on logistic regression as unnormalized distributions. Each weak classiﬁer corresponds to a single feature detector, and the responses of all weak classiﬁer are aggregated to assign an energy value: ˜Pθi(x) = σ ("
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "˜Pθi(x) = σ ( W T i x + bi ) EΘ(x) =",
+        "unicode_plain": "˜Pθi(x) = σ ( W T i x + bi ) EΘ(x) ="
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "˜Pθi(x) = σ ( W T i x + bi ) EΘ(x) ="
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "EΘ(x) = ∑ i log ( 1 + e−(WT",
+        "unicode_plain": "EΘ(x) = ∑ i log ( 1 + e−(WT"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EΘ(x) = ∑ i log ( 1 + e−(WT"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "i x+bi)) (4) Interestingly, restricted Boltzmann machines (RBM) [8] have a free energy over Gaussian visible units x with terms associated with binary hidden units h corresponding to experts that try to classify the input data x as being \"real\" or \"fake\" data, and the energy gets low when all experts agree: EΘ(x) = 1 σ2 xT x− bT x−",
+        "unicode_plain": "i x+bi)) (4) Interestingly, restricted Boltzmann machines (RBM) [8] have a free energy over Gaussian visible units x with terms associated with binary hidden units h corresponding to experts that try to classify the input data x as being \"real\" or \"fake\" data, and the energy gets low when all experts agree: EΘ(x) = 1 σ2 xT x− bT x−"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "i x+bi)) (4) Interestingly, restricted Boltzmann machines (RBM) [8] have a free energy over Gaussian visible units x with terms associated with binary hidden units h corresponding to experts that try to classify the input data x as being \"real\" or \"fake\" data, and the energy gets low when all experts agree: EΘ(x) = 1 σ2 xT x− bT x−"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page2_14",
+      "presentation": {
+        "latex": "EΘ(x) = 1 σ2 xT x− bT x− ∑ i log ∑",
+        "unicode_plain": "EΘ(x) = 1 σ2 xT x− bT x− ∑ i log ∑"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "EΘ(x) = 1 σ2 xT x− bT x− ∑ i log ∑"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

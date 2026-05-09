@@ -1,0 +1,197 @@
+Abstract
+Generative Flow Networks (GFlowNets) have been introduced as a method to sample a
+diverse set of candidates in an active learning context, with a training objective that makes
+them approximately sample in proportion to a given reward function. In this paper, we
+show a number of additional theoretical properties of GFlowNets, including a new local and
+efficient training objective called detailed balance for the analogy with MCMC. GFlowNets
+can be used to estimate joint probability distributions and the corresponding marginal dis-
+tributions where some variables are unspecified and, of particular interest, can represent
+distributions over composite objects like sets and graphs. GFlowNets amortize the work
+typically done by computationally expensive MCMC methods in a single but trained gen-
+erative pass. They could also be used to estimate partition functions and free energies,
+conditional probabilities of supersets (supergraphs) given a subset (subgraph), as well as
+marginal distributions over all supersets (supergraphs) of a given set (graph). We intro-
+duce variations enabling the estimation of entropy and mutual information, sampling from
+a Pareto frontier, connections to reward-maximizing policies, and extensions to stochastic
+environments, continuous actions and modular energy functions.
+1 Introduction
+Building upon the introduction of Generative Flow Networks (GFlowNets) by Bengio et al.
+(2021), we provide here an in-depth formal foundation and expansion of the set of theoretical
+results in ways that may be of interest for the active learning scenario of Bengio et al. (2021)
+but also much more broadly.
+∗. Equal Contribution
+©2023 Yoshua Bengio, Salem Lahlou, Tristan Deleu, Edward J. Hu, Mo Tiwari, Emmanuel Bengio.
+License: CC-BY 4.0, seehttps://creativecommons.org/licenses/by/4.0/. Attribution requirements are
+provided athttp://jmlr.org/papers/v24/22-0364.html.
+arXiv:2111.09266v5  [cs.LG]  24 Jan 2026
+Bengio, Lahlou, Deleu, Hu, Tiwari, Bengio
+1.1 What is a GFlowNet ?
+GFlowNets have properties which make them well-suited to perform amortized probabilistic
+inference in general, whether for sampling or for marginalizing. Sampling takes place at
+training time while run-time sampling or computations of marginalized quantities can be
+done in a single pass through a sequence of constructive stochastic steps. This makes
+GFlowNets an interesting alternative to Monte-Carlo Markov chains (MCMC) and related
+to amortized variational inference (Malkin et al., 2023).
+Because sampling of a compositional objectscan be achieved through a sequence of
+stochastic steps, very rich multimodal distributionsP T (s) over such objects can be repre-
+sented, and the offline training objectives make it possible to explore and discover modes of
+the distribution of interest. The key property of GFlowNets is that their sampling policy is
+trained to make the probabilityP T (s) of sampling an objectsapproximately proportional
+to the valueR(s) of a given reward function applied to that object. We also talk of an en-
+ergy functionE(s) =−logR(s), i.e., the reward function is non-negative and corresponds
+to an unnormalized probability. Whereas one typically trains a generative model from a
+dataset of positive examples, a GFlowNet is trained to match the given energy or reward
+function and convert it into a sampler. We view that sampler as a generative policy because
+the composite objectsis constructed through a sequence of smaller stochastic steps (see
+Fig. 1), often corresponding to constructively composing different elements ofs, like the
+edges of a graph.
+This conversion of an energy function or unnormalized probability function to a sampler
+is similar to what MCMC methods achieve but once trained, GFlowNets will generate a
+sample in one shot instead of generating a long sequence of samples whose distribution would
+gradually approach the desired one. GFlowNets thus avoid the lengthy stochastic search in
+the space of such objects and the associated mode-mixing intractability challenge of MCMC
+methods (Jasra et al., 2005; Bengio et al., 2013; Pompe et al., 2020). Multiple iid samples
+can be obtained from the GFlowNet by calling the sampler multiple times. GFlowNets
+exchange that intractability of sampling with MCMC for the challenge of amortized training
+of the generative policy. The latter problem would be equally intractable if the modes of the
+reward function did not have a inherent (but not necessarily known) structure over which
+the learner could generalize, i.e., the learner had almost no chance to correctly guess where
+to find new modes based on (i.e., training on) those it had already visited.
+The energy function or reward function (exponential of minus energy) is evaluated only
+at the end of the sequential construction process for objectss, in what we call a terminating
+state. Every such constructive sequence starts in the single initial states 0 and ends in a
+terminal state. As illustrated in Figure 2, we can visualize the set of all trajectories starting
+froms 0 and ending in a terminal states. The term ”flow” in ”generative flow networks”
+refers to unnormalized probabilities that can be learned by GFlowNet learning procedures.
+The flow in an intermediate statesis a weighted sum of the non-negative rewards of the
+terminating states reachable froms. Those weights are such as to avoid double-counting:
+if we were to inject a fixed flow of liquid ins 0 and dispatch that liquid in each child of any
+statesproportionally to the GFlowNet policy for choosing a child ofs, we would obtain
+the flow at each state and the flow at terminating states would match the reward function
+at those states. As shown in greater detail here and for the first time in the first GFlowNet
+2
+GFlowNet Foundations
+asdf
+st = 1
+2
+3
+GFlowNetPF π(A|st)
+drawat∼π(A|st)
+at = “Add a new node
+connected to node 2”
+T (st,a t) determines st+1
+st+1 = 1
+2
+3
+4 GFlowNetPF π(A|st+1) drawat+1∼π(A|st+1)
+at+1 = “. . . ”
+Figure 1: A diagram of how a GFlowNet iteratively constructs an object. We adopt notation
+that is common in the reinforcement learning literature:s t represents the state of the
+partially constructed object (in this case, a graph) at timet,a t represents the action taken
+by the GFlowNet at timetto transition to states t+1 =T(s t, at). In this diagram, the
+GFlowNet takes a 3-node graph as input and determines an action to take. The action,
+combined with the environment transition functionT(s t, at), determiness t+1: a four-node
+graph. This process repeats until an exit action is sampled and the sample is complete.
+paper (Bengio et al., 2021), this can be achieved with a flow constraint at each state: the
+sum of incoming flows must match the sum of outgoing flows.
+1.2 Contributions of this paper
+In this paper, an important contribution is the notion ofconditionalGFlowNet, which en-
+ables estimation of intractable sums corresponding to marginalization over many steps of
+object construction, and can thus be used to compute free energies 1 over different types
+of joint distributions, perhaps most interestingly over sets and graphs. This marginaliza-
+tion also enables estimation of entropies, conditional entropies and mutual information.
+GFlowNets can thus be generalized to estimate multiple flows corresponding to modeling a
+rich outcome (rather than a scalar reward function) .
+We refer the reader to Bengio et al. (2021) and Sec. 7 for a discussion of related ap-
+proaches and differences with common generative models and reinforcement learning (RL)
+methods. In an RL context, two interesting properties of GFlowNets already noted in that
+paper are that they (1) can be trained in an offline manner with trajectories sampled from a
+distribution different from the one represented by the GFlowNet and (2) they match the re-
+ward function in probability rather than try to find a configuration which maximizes rewards
+or returns. The latter property is particularly interesting in the context of exploration, to
+ensure the configurations sampled from the generative policy are both interesting and di-
+1. In machine learning, a free energy is the logarithm of an unnormalized marginal probability, a generally
+intractable sum of exponentiated negative energies.
+3
+Bengio, Lahlou, Deleu, Hu, Tiwari, Bengio
+s0 s1
+s2
+s3
+s4
+s5
+s6
+s7
+s8
+s9
+s10
+F(s0 →
+s2)
+sf
+sf sf
+sf
+sf
+sf
+s0 s1
+s2
+s3
+s4
+s5
+s6
+s7
+s8
+s9
+s10
+sf
+sf sf
+sf
+sf
+sf
+R(s9)
+R(s4)
+T erminatingstate
+s ∈ S f
+Initial state
+T erminal
+state
+Figure 2: Illustration of the structure of a Generative Flow Network (GFlowNet), as a
+pointed DAG over statess, with particles flowing along edges to represent the flow function.
+Any object sampled by the GFlowNet policy can be obtained by starting from initial state
+s0 and then at each step choosing a child with probability proportional to the GFlowNet
+policy’s transition probability. This process stops when a terminating action is chosen
+from a terminating states(yielding a terminal states f), at which point a rewardR(s) is
+obtained. The figure shows a tiny GFlowNet and the possible trajectories froms 0 to any
+of the terminal states. It illustrates that in general a state can be reached through several
+trajectories. GFlowNet algorithms learn a policy such that the probability of sampling
+terminating statesis proportional toR(s). It tries to learn a flow functionF(s) and
+F(s→s ′) over all states (including intermediate states)sand transitionss→s ′ with
+F(s) =R(s) at terminal states andF(s 0) being the sum of rewards over all terminal states.
+A sufficient property to achieve this is that at each state the sum of incoming flows equals
+the sum of outgoing flows.
+verse. It is also interesting to transform GFlowNets into amortized probabilistic inference
+machines: if we choose the reward function to be a prior (over some random variable) times
+a likelihood (how well some data is fit given that choice of random variable value), then the
+GFlowNet policy learns to sample from the corresponding Bayesian posterior (which is pro-
+portional to prior times likelihood). The ability of GFlowNets to generate a diverse set of
+samples then corresponds to the ability to sample from the modes of the target distribution.
+An important source of inspiration for GFlowNets is the way information propagates
+in temporal-difference RL methods (Sutton and Barto, 2018). Both rely on a principle of
+coherence for credit assignment which may only be achieved asymptotically when training
+converges. While exact gradient calculation may be intractable, because the number of
+paths in state space to consider is exponentially large, both methods rely on local coherence
+between different components and a training objective that states that if all the learned
+components are coherent with each other locally, then we obtain a system that estimates
+the quantities of interest globally. Examples include estimation of expected discounted
+returns in temporal-difference methods and probability measures with GFlowNets.
+This paper extends the theory of the original GFlowNet construction (Bengio et al.,
+2021) in several directions, including a new local training objective called detailed balance
+(for the analogy with the detailed balance condition of Monte-Carlo Markov chains) which
+avoids forming explicit sums required by the previously proposed flow matching loss, as well
+as formulations enabling the calculation of marginal probabilities (or free energies) for sub-
+4
+GFlowNet Foundations
+sets of variables, more generally for subsets of larger sets, or subgraphs, their application to
+estimating entropy and mutual information, and the introduction of an unsupervised form
+of GFlowNets (the reward function is not needed while training, only observations of out-
+comes) enabling sampling from a Pareto frontier, for example. Although basic GFlowNets
+are more similar to bandits (in that a reward is only provided at the end of a sequence of
+actions), they can be extended to take into account intermediate rewards and thus

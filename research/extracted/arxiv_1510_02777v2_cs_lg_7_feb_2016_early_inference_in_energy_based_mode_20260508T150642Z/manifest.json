@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z",
+  "source_pdf": "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/source.pdf",
+  "title_hint": "arXiv:1510.02777v2  [cs.LG]  7 Feb 2016 Early Inference in Energy-Based Models Approximates Back-Propagation Yoshua Bengio, CIFAR Senior Fellow and Asja Fischer",
+  "updated_at": "2026-05-08T15:08:34Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:06:44Z",
+      "artifacts": [
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/source.pdf",
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:08:34Z",
+      "artifacts": [
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/l4_analysis.json",
+        "research/extracted/arxiv_1510_02777v2_cs_lg_7_feb_2016_early_inference_in_energy_based_mode_20260508T150642Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=4039; pdf_sha256=4aa7edff3c632ad741f5419d3a44870e03dde22e35c635e26eac1d09c1a3e6f1; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "4aa7edff3c632ad741f5419d3a44870e03dde22e35c635e26eac1d09c1a3e6f1"
+}

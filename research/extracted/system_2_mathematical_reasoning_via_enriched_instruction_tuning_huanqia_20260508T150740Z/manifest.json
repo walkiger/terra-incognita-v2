@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z",
+  "source_pdf": "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/source.pdf",
+  "title_hint": "System-2 Mathematical Reasoning via Enriched Instruction Tuning Huanqia",
+  "updated_at": "2026-05-08T15:12:20Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:07:41Z",
+      "artifacts": [
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/source.pdf",
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:20Z",
+      "artifacts": [
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:20Z",
+      "artifacts": [
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:20Z",
+      "artifacts": [
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:12:20Z",
+      "artifacts": [
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/l4_analysis.json",
+        "research/extracted/system_2_mathematical_reasoning_via_enriched_instruction_tuning_huanqia_20260508T150740Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=12000; pdf_sha256=99022296d16e10346f70901b40b643d9ad34081cad5cac6f0c07497cc9a1a1c8; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "99022296d16e10346f70901b40b643d9ad34081cad5cac6f0c07497cc9a1a1c8"
+}

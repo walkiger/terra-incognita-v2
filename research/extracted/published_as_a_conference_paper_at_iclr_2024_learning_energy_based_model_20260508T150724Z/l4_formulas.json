@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "published_as_a_conference_paper_at_iclr_2024_learning_energy_based_model_20260508T150724Z",
+  "extracted_at": "2026-05-08T15:11:55Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "pθ(x) = 1 Zθ exp(fθ(x)), (1) where fθ is the unnormalized log density, or negative energy, parametrized by a neural network with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the log-likelihood function of an EBM can be approximately written as",
+        "unicode_plain": "pθ(x) = 1 Zθ exp(fθ(x)), (1) where fθ is the unnormalized log density, or negative energy, parametrized by a neural network with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the log-likelihood function of an EBM can be approximately written as"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pθ(x) = 1 Zθ exp(fθ(x)), (1) where fθ is the unnormalized log density, or negative energy, parametrized by a neural network with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the log-likelihood function of an EBM can be approximately written as"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_1",
+      "presentation": {
+        "latex": "exp(fθ(x)), (1) where fθ is the unnormalized log density, or negative energy, parametrized by a neural network with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the log-likelihood function of an EBM can be approximately written as L′(θ) = Epdata \u0014 ∂",
+        "unicode_plain": "exp(fθ(x)), (1) where fθ is the unnormalized log density, or negative energy, parametrized by a neural network with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the log-likelihood function of an EBM can be approximately written as L′(θ) = Epdata \u0014 ∂"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(1)",
+        "verbatim_snippet": "exp(fθ(x)), (1) where fθ is the unnormalized log density, or negative energy, parametrized by a neural network with a scalar output. Zθ is the normalizing constant or partition function. The derivative of the log-likelihood function of an EBM can be approximately written as L′(θ) = Epdata \u0014 ∂"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "L′(θ) = Epdata \u0014 ∂ ∂θ fθ(x) \u0015 − Epθ \u0014 ∂",
+        "unicode_plain": "L′(θ) = Epdata \u0014 ∂ ∂θ fθ(x) \u0015 − Epθ \u0014 ∂"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "L′(θ) = Epdata \u0014 ∂ ∂θ fθ(x) \u0015 − Epθ \u0014 ∂"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "examples perturbed by a Gaussian diffusion process: x0, x1, ..., xT such that x0 ∼ pdata; xt+1 = αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of {yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as",
+        "unicode_plain": "examples perturbed by a Gaussian diffusion process: x0, x1, ..., xT such that x0 ∼ pdata; xt+1 = αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of {yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "examples perturbed by a Gaussian diffusion process: x0, x1, ..., xT such that x0 ∼ pdata; xt+1 = αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of {yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of {yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as pθ(yt|xt+1) = 1",
+        "unicode_plain": "αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of {yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as pθ(yt|xt+1) = 1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "αt+1xt + σt+1ϵ. Denote yt = αt+1xt for notation simplicity. The marginal distributions of {yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as pθ(yt|xt+1) = 1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "{yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as pθ(yt|xt+1) = 1 ˜Zθ,t(xt+1)",
+        "unicode_plain": "{yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as pθ(yt|xt+1) = 1 ˜Zθ,t(xt+1)"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "{yt; t = 1 , ..., T} are modeled by a sequence of EBMs: pθ(yt) = 1 Zθ,t exp(fθ(yt; t)). Then the conditional EBM of yt given the sample xt+1 at a higher noise level can be derived as pθ(yt|xt+1) = 1 ˜Zθ,t(xt+1)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "pθ(yt|xt+1) = 1 ˜Zθ,t(xt+1) exp \u0012 fθ(yt; t) − 1 2σ2",
+        "unicode_plain": "pθ(yt|xt+1) = 1 ˜Zθ,t(xt+1) exp \u0012 fθ(yt; t) − 1 2σ2"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "pθ(yt|xt+1) = 1 ˜Zθ,t(xt+1) exp \u0012 fθ(yt; t) − 1 2σ2"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page3_8",
+      "presentation": {
+        "latex": "variance-preserving noise schedule (Song et al., 2021b), under which case we have xt = ¯αtx0 + ¯σtϵ, where ¯αt =QT t=1 αt and ¯σt = p 1 − ¯α2 t .",
+        "unicode_plain": "variance-preserving noise schedule (Song et al., 2021b), under which case we have xt = ¯αtx0 + ¯σtϵ, where ¯αt =QT t=1 αt and ¯σt = p 1 − ¯α2 t ."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "variance-preserving noise schedule (Song et al., 2021b), under which case we have xt = ¯αtx0 + ¯σtϵ, where ¯αt =QT t=1 αt and ¯σt = p 1 − ¯α2 t ."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page3_9",
+      "presentation": {
+        "latex": "where ¯αt =QT t=1 αt and ¯σt = p 1 − ¯α2 t . We estimate each EBM by maximizing the following recovery log-likelihood function at each noise",
+        "unicode_plain": "where ¯αt =QT t=1 αt and ¯σt = p 1 − ¯α2 t . We estimate each EBM by maximizing the following recovery log-likelihood function at each noise"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "where ¯αt =QT t=1 αt and ¯σt = p 1 − ¯α2 t . We estimate each EBM by maximizing the following recovery log-likelihood function at each noise"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page3_10",
+      "presentation": {
+        "latex": "t=1 αt and ¯σt = p 1 − ¯α2 t . We estimate each EBM by maximizing the following recovery log-likelihood function at each noise level (Bengio et al., 2013):",
+        "unicode_plain": "t=1 αt and ¯σt = p 1 − ¯α2 t . We estimate each EBM by maximizing the following recovery log-likelihood function at each noise level (Bengio et al., 2013):"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t=1 αt and ¯σt = p 1 − ¯α2 t . We estimate each EBM by maximizing the following recovery log-likelihood function at each noise level (Bengio et al., 2013):"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page3_11",
+      "presentation": {
+        "latex": "Jt(θ) = 1 n nX i=1 log pθ(yt,i|xt+1,i), (4) where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be",
+        "unicode_plain": "Jt(θ) = 1 n nX i=1 log pθ(yt,i|xt+1,i), (4) where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Jt(θ) = 1 n nX i=1 log pθ(yt,i|xt+1,i), (4) where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_4",
+      "presentation": {
+        "latex": "log pθ(yt,i|xt+1,i), (4) where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be achieved by running K steps of Langevin dynamics from the initialization point ˜y0 t = xt+1,i and iterating ˜yτ+1",
+        "unicode_plain": "log pθ(yt,i|xt+1,i), (4) where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be achieved by running K steps of Langevin dynamics from the initialization point ˜y0 t = xt+1,i and iterating ˜yτ+1"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "(4)",
+        "verbatim_snippet": "log pθ(yt,i|xt+1,i), (4) where {yt,i, xt+1,i} are pair of samples at time steps t and t + 1. Sampling from pθ(yt|xt+1) can be achieved by running K steps of Langevin dynamics from the initialization point ˜y0 t = xt+1,i and iterating ˜yτ+1"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page3_13",
+      "presentation": {
+        "latex": "t = xt+1,i and iterating ˜yτ+1 t = ˜yτ t + s2 t",
+        "unicode_plain": "t = xt+1,i and iterating ˜yτ+1 t = ˜yτ t + s2 t"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t = xt+1,i and iterating ˜yτ+1 t = ˜yτ t + s2 t"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_page3_14",
+      "presentation": {
+        "latex": "t = ˜yτ t + s2 t 2 \u0012 ∇yfθ(˜yτ",
+        "unicode_plain": "t = ˜yτ t + s2 t 2 \u0012 ∇yfθ(˜yτ"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          3
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "t = ˜yτ t + s2 t 2 \u0012 ∇yfθ(˜yτ"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

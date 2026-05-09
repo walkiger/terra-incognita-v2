@@ -1,0 +1,330 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "neural_answering_logical_queries_on_knowledge_graphs_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:11:32Z",
+  "notes": "Extractor capped at 14 candidates; additional equations may exist in figures or appendices.",
+  "formulas": [
+    {
+      "id": "eq_page2_1",
+      "presentation": {
+        "latex": "graph is denoted as G = (𝑉 , 𝑅, 𝑇) where 𝑉 = {𝑣1, 𝑣2, ..., 𝑣𝑛 } is the Table 1: Notations and definitions Symbols Definition G = (𝑉 , 𝑅, 𝑇) the knowledge graph 𝑣𝑖 the 𝑖th entity/node in knowledge graph e𝑖 the embedding of entity/node 𝑣𝑖",
+        "unicode_plain": "graph is denoted as G = (𝑉 , 𝑅, 𝑇) where 𝑉 = {𝑣1, 𝑣2, ..., 𝑣𝑛 } is the Table 1: Notations and definitions Symbols Definition G = (𝑉 , 𝑅, 𝑇) the knowledge graph 𝑣𝑖 the 𝑖th entity/node in knowledge graph e𝑖 the embedding of entity/node 𝑣𝑖"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "graph is denoted as G = (𝑉 , 𝑅, 𝑇) where 𝑉 = {𝑣1, 𝑣2, ..., 𝑣𝑛 } is the Table 1: Notations and definitions Symbols Definition G = (𝑉 , 𝑅, 𝑇) the knowledge graph 𝑣𝑖 the 𝑖th entity/node in knowledge graph e𝑖 the embedding of entity/node 𝑣𝑖"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page2_2",
+      "presentation": {
+        "latex": "G = (𝑉 , 𝑅, 𝑇) the knowledge graph 𝑣𝑖 the 𝑖th entity/node in knowledge graph e𝑖 the embedding of entity/node 𝑣𝑖 𝑟𝑖 the 𝑖th relation/edge in knowledge graph Q = (𝑈 , 𝑅, 𝐿) a dependency graph 𝑈 the node set of Q",
+        "unicode_plain": "G = (𝑉 , 𝑅, 𝑇) the knowledge graph 𝑣𝑖 the 𝑖th entity/node in knowledge graph e𝑖 the embedding of entity/node 𝑣𝑖 𝑟𝑖 the 𝑖th relation/edge in knowledge graph Q = (𝑈 , 𝑅, 𝐿) a dependency graph 𝑈 the node set of Q"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "G = (𝑉 , 𝑅, 𝑇) the knowledge graph 𝑣𝑖 the 𝑖th entity/node in knowledge graph e𝑖 the embedding of entity/node 𝑣𝑖 𝑟𝑖 the 𝑖th relation/edge in knowledge graph Q = (𝑈 , 𝑅, 𝐿) a dependency graph 𝑈 the node set of Q"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page2_3",
+      "presentation": {
+        "latex": "Q = (𝑈 , 𝑅, 𝐿) a dependency graph 𝑈 the node set of Q 𝑢𝑖 the 𝑖th node in 𝑈 𝐿 Logical operations b𝑖 the box embedding of 𝑈𝑖 b𝑐",
+        "unicode_plain": "Q = (𝑈 , 𝑅, 𝐿) a dependency graph 𝑈 the node set of Q 𝑢𝑖 the 𝑖th node in 𝑈 𝐿 Logical operations b𝑖 the box embedding of 𝑈𝑖 b𝑐"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Q = (𝑈 , 𝑅, 𝐿) a dependency graph 𝑈 the node set of Q 𝑢𝑖 the 𝑖th node in 𝑈 𝐿 Logical operations b𝑖 the box embedding of 𝑈𝑖 b𝑐"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page2_4",
+      "presentation": {
+        "latex": "set of nodes/entities, 𝑅 = {𝑟1, 𝑟2, ..., 𝑟𝑚 } is the set of relations and 𝑇 is the set of triples. Each triple in the knowledge graph can be denoted as (ℎ, 𝑟, 𝑡) where ℎ ∈ 𝑉 is the head (i.e., subject) of the triple, 𝑡 ∈ 𝑉 is the tail (i.e., object) of the triple and 𝑟 ∈ 𝑅 is the edge (i.e., relation, predicate) of the triple which connects the head ℎ to the tail 𝑡. The knowledge graph structure i",
+        "unicode_plain": "set of nodes/entities, 𝑅 = {𝑟1, 𝑟2, ..., 𝑟𝑚 } is the set of relations and 𝑇 is the set of triples. Each triple in the knowledge graph can be denoted as (ℎ, 𝑟, 𝑡) where ℎ ∈ 𝑉 is the head (i.e., subject) of the triple, 𝑡 ∈ 𝑉 is the tail (i.e., object) of the triple and 𝑟 ∈ 𝑅 is the edge (i.e., relation, predicate) of the triple which connects the head ℎ to the tail 𝑡. The knowledge graph structure information can be denoted"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "set of nodes/entities, 𝑅 = {𝑟1, 𝑟2, ..., 𝑟𝑚 } is the set of relations and 𝑇 is the set of triples. Each triple in the knowledge graph can be denoted as (ℎ, 𝑟, 𝑡) where ℎ ∈ 𝑉 is the head (i.e., subject) of the triple, 𝑡 ∈ 𝑉 is the tail (i.e., object) of the triple and 𝑟 ∈ 𝑅 is the edge (i.e., relation, predicate) of the triple which connects the head ℎ to the tail 𝑡. The knowledge graph structure information can be denoted"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page2_5",
+      "presentation": {
+        "latex": "as an 𝑛 × 𝑛 adjacency matrix A with A(𝑖, 𝑗 ) = 1 if 𝑣𝑖 is connected with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency, we randomly divide all the nodes in the knowledge graph into different groups, and use a three dimensional tensor T to denote the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅, T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node i",
+        "unicode_plain": "as an 𝑛 × 𝑛 adjacency matrix A with A(𝑖, 𝑗 ) = 1 if 𝑣𝑖 is connected with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency, we randomly divide all the nodes in the knowledge graph into different groups, and use a three dimensional tensor T to denote the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅, T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "as an 𝑛 × 𝑛 adjacency matrix A with A(𝑖, 𝑗 ) = 1 if 𝑣𝑖 is connected with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency, we randomly divide all the nodes in the knowledge graph into different groups, and use a three dimensional tensor T to denote the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅, T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page2_6",
+      "presentation": {
+        "latex": "with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency, we randomly divide all the nodes in the knowledge graph into different groups, and use a three dimensional tensor T to denote the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅, T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot",
+        "unicode_plain": "with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency, we randomly divide all the nodes in the knowledge graph into different groups, and use a three dimensional tensor T to denote the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅, T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "with 𝑣 𝑗 , and A(𝑖, 𝑗 ) = 0 otherwise. For the computational efficiency, we randomly divide all the nodes in the knowledge graph into different groups, and use a three dimensional tensor T to denote the connectivity between different groups. For each relation 𝑟𝑖 ∈ 𝑅, T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page2_7",
+      "presentation": {
+        "latex": "T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot vector x𝑖 to denote which group it belongs to. If node 𝑣𝑖 belongs to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1,",
+        "unicode_plain": "T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot vector x𝑖 to denote which group it belongs to. If node 𝑣𝑖 belongs to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "T (𝑖, 𝑗, 𝑘 ) = 1 if any node in group 𝑗 connects with any node in group 𝑘 by relation 𝑟𝑖. For each node 𝑣𝑖, we use a row one-hot vector x𝑖 to denote which group it belongs to. If node 𝑣𝑖 belongs to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page2_8",
+      "presentation": {
+        "latex": "to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1, otherwise, it equals to 0. Following the definition in [5], [19], [20], a first-order logic query contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially",
+        "unicode_plain": "to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1, otherwise, it equals to 0. Following the definition in [5], [19], [20], a first-order logic query contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "to group 𝑗 then x𝑖 [ 𝑗] = 1, otherwise, it equals to 0. For a node set 𝑆, we can use a row multi-hot vector x𝑆 to denote its group information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1, otherwise, it equals to 0. Following the definition in [5], [19], [20], a first-order logic query contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page2_9",
+      "presentation": {
+        "latex": "information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1, otherwise, it equals to 0. Following the definition in [5], [19], [20], a first-order logic query contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially quantified bound variables 𝑢1, ..., 𝑢𝑘 and a single target variable 𝑢?, which provides the query answer. In mathematical form, it can be",
+        "unicode_plain": "information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1, otherwise, it equals to 0. Following the definition in [5], [19], [20], a first-order logic query contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially quantified bound variables 𝑢1, ..., 𝑢𝑘 and a single target variable 𝑢?, which provides the query answer. In mathematical form, it can be"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "information. If any node in 𝑆 belongs to group 𝑗, then x𝑆 [ 𝑗] = 1, otherwise, it equals to 0. Following the definition in [5], [19], [20], a first-order logic query contains a non-variable anchor entity set ˜𝑈 ⊆ 𝑉 , existentially quantified bound variables 𝑢1, ..., 𝑢𝑘 and a single target variable 𝑢?, which provides the query answer. In mathematical form, it can be"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page2_10",
+      "presentation": {
+        "latex": "defined as𝑞[𝑢?] = 𝑢?.∃𝑢1, ..., 𝑢𝑘 : 𝜋1 ∨𝜋2 ∨... ∨𝜋𝑛, where 𝜋𝑖 = 𝜚𝑖1 ∧ 𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs to projection or negation [ 20]. For example, GQE [ 5] considers conjunctive logical query, Query2Box [ 19] considers existential positive first-order (EPFO) logical queries. In this paper, we consider logical queries which can support four kinds of logical",
+        "unicode_plain": "defined as𝑞[𝑢?] = 𝑢?.∃𝑢1, ..., 𝑢𝑘 : 𝜋1 ∨𝜋2 ∨... ∨𝜋𝑛, where 𝜋𝑖 = 𝜚𝑖1 ∧ 𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs to projection or negation [ 20]. For example, GQE [ 5] considers conjunctive logical query, Query2Box [ 19] considers existential positive first-order (EPFO) logical queries. In this paper, we consider logical queries which can support four kinds of logical operations:"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "defined as𝑞[𝑢?] = 𝑢?.∃𝑢1, ..., 𝑢𝑘 : 𝜋1 ∨𝜋2 ∨... ∨𝜋𝑛, where 𝜋𝑖 = 𝜚𝑖1 ∧ 𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs to projection or negation [ 20]. For example, GQE [ 5] considers conjunctive logical query, Query2Box [ 19] considers existential positive first-order (EPFO) logical queries. In this paper, we consider logical queries which can support four kinds of logical operations:"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page2_11",
+      "presentation": {
+        "latex": "𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs to projection or negation [ 20]. For example, GQE [ 5] considers conjunctive logical query, Query2Box [ 19] considers existential positive first-order (EPFO) logical queries. In this paper, we consider logical queries which can support four kinds of logical operations: projection, intersection, union and difference. Besides t",
+        "unicode_plain": "𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs to projection or negation [ 20]. For example, GQE [ 5] considers conjunctive logical query, Query2Box [ 19] considers existential positive first-order (EPFO) logical queries. In this paper, we consider logical queries which can support four kinds of logical operations: projection, intersection, union and difference. Besides this, instead"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "𝜚𝑖1∧...∧𝜚𝑖𝑚 and 𝜚𝑖𝑚 = 𝜛( ˜𝑢𝑎, 𝑢𝑖 ) or 𝜛(𝑢𝑖, 𝑢𝑗 ) or 𝜛(𝑢𝑖, 𝑢?). 𝜛 belongs to projection or negation [ 20]. For example, GQE [ 5] considers conjunctive logical query, Query2Box [ 19] considers existential positive first-order (EPFO) logical queries. In this paper, we consider logical queries which can support four kinds of logical operations: projection, intersection, union and difference. Besides this, instead"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page2_12",
+      "presentation": {
+        "latex": "A logical query graph (i.e., dependency graph) Q = (𝑈 , 𝑅, 𝐿) is the graph expression of the logical query, where the upper case letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set which is the same as the relation set of G, and 𝐿 denotes log",
+        "unicode_plain": "A logical query graph (i.e., dependency graph) Q = (𝑈 , 𝑅, 𝐿) is the graph expression of the logical query, where the upper case letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set which is the same as the relation set of G, and 𝐿 denotes logical"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "A logical query graph (i.e., dependency graph) Q = (𝑈 , 𝑅, 𝐿) is the graph expression of the logical query, where the upper case letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set which is the same as the relation set of G, and 𝐿 denotes logical"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    },
+    {
+      "id": "eq_page2_13",
+      "presentation": {
+        "latex": "letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set which is the same as the relation set of G, and 𝐿 denotes logical operations. According to the definition of first-order logic, Q is a Directed Acyclic Graph (DAG), with the anchor entities ",
+        "unicode_plain": "letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set which is the same as the relation set of G, and 𝐿 denotes logical operations. According to the definition of first-order logic, Q is a Directed Acyclic Graph (DAG), with the anchor entities as the"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "letter 𝑈 = { ˜𝑈 , 𝑈?} denotes the node set, with ˜𝑈 as the anchor node set and 𝑈? as the variable node set (we use ˜𝑢 𝑗 and 𝑢 𝑗 to index the specific node in ˜𝑈 and 𝑈? respectively), 𝑅 denotes the relation set which is the same as the relation set of G, and 𝐿 denotes logical operations. According to the definition of first-order logic, Q is a Directed Acyclic Graph (DAG), with the anchor entities as the"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_13"
+      ]
+    },
+    {
+      "id": "eq_2",
+      "presentation": {
+        "latex": "aim to embed (1) each entity of the knowledge graph as a point, (2)",
+        "unicode_plain": "aim to embed (1) each entity of the knowledge graph as a point, (2)"
+      },
+      "semantic_role": "other",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          2
+        ],
+        "equation_label": "(2)",
+        "verbatim_snippet": "aim to embed (1) each entity of the knowledge graph as a point, (2)"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "medium",
+      "links_to_claims": [
+        "claim_formula_14"
+      ]
+    }
+  ]
+}

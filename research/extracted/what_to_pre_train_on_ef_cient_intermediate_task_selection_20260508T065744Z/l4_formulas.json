@@ -1,0 +1,284 @@
+{
+  "schema_version": "l4_formulas_v0",
+  "document_id": "what_to_pre_train_on_ef_cient_intermediate_task_selection_20260508T065744Z",
+  "extracted_at": "2026-05-08T15:13:26Z",
+  "notes": "Equations captured from PDF text layer via heuristics numbered (n) tails and math-token lines; LaTeX field is a lossy reconstruction.",
+  "formulas": [
+    {
+      "id": "eq_page5_1",
+      "presentation": {
+        "latex": "with k-Nearest Neighbors (kNN), withk = 1 and Euclidian distance, and logistic/ linear regression (linear) as proxy models. For both, we ﬁrst com- pute hM xi , the token-wise averaged output represen- tations of MS, for each training input xi∈ DT .",
+        "unicode_plain": "with k-Nearest Neighbors (kNN), withk = 1 and Euclidian distance, and logistic/ linear regression (linear) as proxy models. For both, we ﬁrst com- pute hM xi , the token-wise averaged output represen- tations of MS, for each training input xi∈ DT ."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "with k-Nearest Neighbors (kNN), withk = 1 and Euclidian distance, and logistic/ linear regression (linear) as proxy models. For both, we ﬁrst com- pute hM xi , the token-wise averaged output represen- tations of MS, for each training input xi∈ DT ."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_1"
+      ]
+    },
+    {
+      "id": "eq_page5_2",
+      "presentation": {
+        "latex": "T ={(hM xi,yi)}N i=1 as the target dataset embedded by MS. In the next step, we apply the proxy model onDM T and obtain",
+        "unicode_plain": "T ={(hM xi,yi)}N i=1 as the target dataset embedded by MS. In the next step, we apply the proxy model onDM T and obtain"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "T ={(hM xi,yi)}N i=1 as the target dataset embedded by MS. In the next step, we apply the proxy model onDM T and obtain"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_2"
+      ]
+    },
+    {
+      "id": "eq_page5_3",
+      "presentation": {
+        "latex": "i=1 as the target dataset embedded by MS. In the next step, we apply the proxy model onDM T and obtain its performance using cross-validation. By repeat- ing this process for each intermediate task model,",
+        "unicode_plain": "i=1 as the target dataset embedded by MS. In the next step, we apply the proxy model onDM T and obtain its performance using cross-validation. By repeat- ing this process for each intermediate task model,"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          5
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "i=1 as the target dataset embedded by MS. In the next step, we apply the proxy model onDM T and obtain its performance using cross-validation. By repeat- ing this process for each intermediate task model,"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_3"
+      ]
+    },
+    {
+      "id": "eq_page6_4",
+      "presentation": {
+        "latex": "Fθ = Ex,y∼Pθ (X,Y ) [∇θ log Pθ(x, y)·∇θ log Pθ(x, y)⊺] We follow the implementation details given in Vu et al. (2020). For a datasetD and a modelM ﬁne- tuned onD, we compute the empirical FIM based on D’s examples. The task embeddings are the diagonal entries of the FIM.",
+        "unicode_plain": "Fθ = Ex,y∼Pθ (X,Y ) [∇θ log Pθ(x, y)·∇θ log Pθ(x, y)⊺] We follow the implementation details given in Vu et al. (2020). For a datasetD and a modelM ﬁne- tuned onD, we compute the empirical FIM based on D’s examples. The task embeddings are the diagonal entries of the FIM."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Fθ = Ex,y∼Pθ (X,Y ) [∇θ log Pθ(x, y)·∇θ log Pθ(x, y)⊺] We follow the implementation details given in Vu et al. (2020). For a datasetD and a modelM ﬁne- tuned onD, we compute the empirical FIM based on D’s examples. The task embeddings are the diagonal entries of the FIM."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_4"
+      ]
+    },
+    {
+      "id": "eq_page6_5",
+      "presentation": {
+        "latex": "Regretk = O(S,t)    max s∈S E[T (s, t)]−",
+        "unicode_plain": "Regretk = O(S,t)    max s∈S E[T (s, t)]−"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          6
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "Regretk = O(S,t)    max s∈S E[T (s, t)]−"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_5"
+      ]
+    },
+    {
+      "id": "eq_page8_6",
+      "presentation": {
+        "latex": "mental setup in §5, we set e = 15 for TaskEmb ande = 1 for FSFT/ FS-TaskEmb. We ﬁnd that embedding-based methods require two orders of magnitude fewer computations compared to ﬁne- tuning approaches. The difference may be even larger when we consider more intermediate tasks.",
+        "unicode_plain": "mental setup in §5, we set e = 15 for TaskEmb ande = 1 for FSFT/ FS-TaskEmb. We ﬁnd that embedding-based methods require two orders of magnitude fewer computations compared to ﬁne- tuning approaches. The difference may be even larger when we consider more intermediate tasks."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "mental setup in §5, we set e = 15 for TaskEmb ande = 1 for FSFT/ FS-TaskEmb. We ﬁnd that embedding-based methods require two orders of magnitude fewer computations compared to ﬁne- tuning approaches. The difference may be even larger when we consider more intermediate tasks."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_6"
+      ]
+    },
+    {
+      "id": "eq_page8_7",
+      "presentation": {
+        "latex": "ande = 1 for FSFT/ FS-TaskEmb. We ﬁnd that embedding-based methods require two orders of magnitude fewer computations compared to ﬁne- tuning approaches. The difference may be even larger when we consider more intermediate tasks. Since ﬁne-tuning approaches do not yield gains that",
+        "unicode_plain": "ande = 1 for FSFT/ FS-TaskEmb. We ﬁnd that embedding-based methods require two orders of magnitude fewer computations compared to ﬁne- tuning approaches. The difference may be even larger when we consider more intermediate tasks. Since ﬁne-tuning approaches do not yield gains that"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "ande = 1 for FSFT/ FS-TaskEmb. We ﬁnd that embedding-based methods require two orders of magnitude fewer computations compared to ﬁne- tuning approaches. The difference may be even larger when we consider more intermediate tasks. Since ﬁne-tuning approaches do not yield gains that"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_7"
+      ]
+    },
+    {
+      "id": "eq_page8_8",
+      "presentation": {
+        "latex": "model = BERT 400 200 0 200 400 400 200",
+        "unicode_plain": "model = BERT 400 200 0 200 400 400 200"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "model = BERT 400 200 0 200 400 400 200"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_8"
+      ]
+    },
+    {
+      "id": "eq_page8_9",
+      "presentation": {
+        "latex": "model = RoBERTa Figure 3: Clustering of BERT and RoBERTa TaskEmbs, respectively, using T-SNE. Colors indicate task types. We compared different random seeds, all of which resulted in similar visualizations. Classification M. Choice QA Tagging",
+        "unicode_plain": "model = RoBERTa Figure 3: Clustering of BERT and RoBERTa TaskEmbs, respectively, using T-SNE. Colors indicate task types. We compared different random seeds, all of which resulted in similar visualizations. Classification M. Choice QA Tagging"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          8
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "model = RoBERTa Figure 3: Clustering of BERT and RoBERTa TaskEmbs, respectively, using T-SNE. Colors indicate task types. We compared different random seeds, all of which resulted in similar visualizations. Classification M. Choice QA Tagging"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_9"
+      ]
+    },
+    {
+      "id": "eq_page16_10",
+      "presentation": {
+        "latex": "DCGp(R) = p∑ i=1 2reli− 1 log2(i + 1) In our setting,R refers to a ranking of interme-",
+        "unicode_plain": "DCGp(R) = p∑ i=1 2reli− 1 log2(i + 1) In our setting,R refers to a ranking of interme-"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          16
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "DCGp(R) = p∑ i=1 2reli− 1 log2(i + 1) In our setting,R refers to a ranking of interme-"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_10"
+      ]
+    },
+    {
+      "id": "eq_page16_11",
+      "presentation": {
+        "latex": "tasks, thus we setp =|S|. The NDCG ﬁnally normalizes the DCG of the ranking predicted by the task selection method (Rpred) by the perfect ranking produced by the empirical transfer results (Rtrue). An NDCG of 100% indicates a perfect ranking.",
+        "unicode_plain": "tasks, thus we setp =|S|. The NDCG ﬁnally normalizes the DCG of the ranking predicted by the task selection method (Rpred) by the perfect ranking produced by the empirical transfer results (Rtrue). An NDCG of 100% indicates a perfect ranking."
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          16
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "tasks, thus we setp =|S|. The NDCG ﬁnally normalizes the DCG of the ranking predicted by the task selection method (Rpred) by the perfect ranking produced by the empirical transfer results (Rtrue). An NDCG of 100% indicates a perfect ranking."
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_11"
+      ]
+    },
+    {
+      "id": "eq_page16_12",
+      "presentation": {
+        "latex": "NDCGp(R) = DCGp(Rpred) DCGp(Rtrue) C.2 Choice of metrics Our selection of evaluation metrics combines two measures that both evaluate the quality of the full ranking (NDCG) and the top selections of each",
+        "unicode_plain": "NDCGp(R) = DCGp(Rpred) DCGp(Rtrue) C.2 Choice of metrics Our selection of evaluation metrics combines two measures that both evaluate the quality of the full ranking (NDCG) and the top selections of each"
+      },
+      "semantic_role": "definition",
+      "symbols": [],
+      "evidence": {
+        "pages": [
+          16
+        ],
+        "equation_label": "",
+        "verbatim_snippet": "NDCGp(R) = DCGp(Rpred) DCGp(Rtrue) C.2 Choice of metrics Our selection of evaluation metrics combines two measures that both evaluate the quality of the full ranking (NDCG) and the top selections of each"
+      },
+      "rationale": {
+        "why_this_form": "Authors introduce this expression in the cited section to relate quantities named in the surrounding prose (PDF text layer may omit full typesetting fidelity)."
+      },
+      "confidence": "low",
+      "links_to_claims": [
+        "claim_formula_12"
+      ]
+    }
+  ]
+}

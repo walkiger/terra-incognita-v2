@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.1.0",
+  "document_id": "graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z",
+  "source_pdf": "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/source.pdf",
+  "title_hint": "Graph neural networks: A review of methods and applications",
+  "updated_at": "2026-05-08T15:10:47Z",
+  "layers": {
+    "L0": {
+      "status": "complete",
+      "completed_at": "2026-05-08T06:58:21Z",
+      "artifacts": [
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/source.pdf",
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/ingest_excerpt_abstract_through_intro.txt"
+      ],
+      "reason": ""
+    },
+    "L1": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:47Z",
+      "artifacts": [
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l1_raw_text.json"
+      ],
+      "reason": ""
+    },
+    "L2": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:47Z",
+      "artifacts": [
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l2_outline.json"
+      ],
+      "reason": ""
+    },
+    "L3": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:47Z",
+      "artifacts": [
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l3_entities.json"
+      ],
+      "reason": ""
+    },
+    "L4": {
+      "status": "complete",
+      "completed_at": "2026-05-08T15:10:47Z",
+      "artifacts": [
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l4_analysis.json",
+        "research/extracted/graph_neural_networks_a_review_of_methods_and_applications_20260508T065744Z/l4_formulas.json"
+      ],
+      "reason": ""
+    }
+  },
+  "notes": "Ingest slug from title + excerpt (abstract through end of introduction). excerpt_chars=10104; pdf_sha256=1b2cd2afdc34c092038d1304a6f9bc9321bd3db08abee9da097baea125dcb5bf; extractor=research-agent@terraincognita-batch-2026-05-08; layers_run=L1,L2,L3,L4; formula_layer=l4_formulas",
+  "pdf_sha256": "1b2cd2afdc34c092038d1304a6f9bc9321bd3db08abee9da097baea125dcb5bf"
+}

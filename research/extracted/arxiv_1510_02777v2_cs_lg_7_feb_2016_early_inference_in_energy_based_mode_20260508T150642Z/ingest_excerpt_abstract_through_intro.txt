@@ -1,0 +1,77 @@
+Abstract
+We show that Langevin MCMC inference in an
+energy-based model with latent variables has the
+property that the early steps of inference, start-
+ing from a stationary point, correspond to prop-
+agating error gradients into internal layers, simi-
+larly to back-propagation. The error that is back-
+propagated is with respect to visible units that
+have received an outside driving force pushing
+them away from the stationary point. Back-
+propagated error gradients correspond to tempo-
+ral derivatives of the activation of hidden units.
+This observation could be an element of a theory
+for explaining how brains perform credit assign-
+ment in deep hierarchies as efﬁciently as back-
+propagation does. In this theory, the continuous-
+valued latent variables correspond to averaged
+voltage potential (across time, spikes, and pos-
+sibly neurons in the same minicolumn), and neu-
+ral computation corresponds to approximate in-
+ference and error back-propagation at the same
+time.
+1. Introduction
+It has been hypothesized numerous times (Hinton and Se-
+jnowski, 1986; Friston and Stephan, 2007; Berkes et al. ,
+2011), that, given a state of sensory information (current
+and past inputs), neurons are collectively performing infer-
+ence, i.e., moving towards conﬁgurations that better “ex-
+plain” the observed sensory data. We can think of the con-
+ﬁguration of internal neurons (hidden units or latent vari-
+ables) as an “explanation” for the observed sensory data.
+Under this hypothesis, when an unexpected signal arrives at
+visible neurons1, the other neurons will change their state
+(from one that is near a stochastic equilibrium) so as to
+better reﬂect that change in input. If this error signal is
+1in contact with the outside world, sensory neurons or internal
+neurons that directly reﬂect the sensory signal
+slowly driving visible neurons towards the externally ob-
+served value, this creates a perturbation for the whole net-
+work. In this paper, we consider what happens early in this
+process, when the perturbation due to the incorrect predic-
+tion of visible neurons is propagated towards inner areas
+of the brain (hidden units and hidden layers). We show
+how the propagation of this perturbation is mathematically
+equivalent to the propagation of activations gradients by the
+back-propagation algorithm in a deep neural network.
+This result assumes that latent variables are continuous-
+valued (unlike in the Boltzmann machine), making the sys-
+tem an energy-based model similar to the continuous Hop-
+ﬁeld net (Hopﬁeld, 1984), deﬁned by an energy function
+over both continuous visible and hidden units. It also as-
+sumes that the neurons are leaky integrators with injected
+noise. As a consequence neural computation corresponds
+to gradually going down the energy while adding noise,
+which corresponds to running a Langevin Monte-Carlo
+Markov chain (MCMC) as inference mechanism.
+This work is only a stepping stone. Several points still need
+to be elucidated before a complete theory of learning, infer-
+ence and credit assignment is elaborated that is both biolog-
+ically plausible and makes sense from a machine learning
+point of view for whole networks (with global optimization
+of the whole network and not being limited to learning of
+visible neurons that receive a target). In particular, ener gy
+based models require symmetry of connections, but note
+that hidden units in the model need not correspond exactly
+to actual neurons in the brain (it could be groups of neu-
+rons in a cortical microcircuit, for example). It remains to
+be shown how a form of symmetry could arise from the
+learning procedure itself, for example because of an unsu-
+pervised learning objective similar to the one used to train
+autoencoders. As shown in this paper, synaptic changes ap-
+proximately proportional to the stochastic gradient with re-
+spect to the prediction error could be achieved if the synap-
+tic updates follow the learning rule studied by Bengioet al.
+(2015b) in order to mimic spike-timing dependent plastic-
+ity (STDP).
+1
