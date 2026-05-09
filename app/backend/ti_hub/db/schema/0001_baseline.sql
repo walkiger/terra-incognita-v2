@@ -1,5 +1,5 @@
 -- Hub SQLite baseline (M1.1). Source of truth: app/docs/greenfield/architecture/mvp.md § Hub-SQLite-Schema
--- FTS virtual table for replay_events is deferred to M1.2.
+-- Full-text projections for replay_events: `schema/0002_replay_fts.sql` (M1.2).
 
 CREATE TABLE meta (
   schema_version INTEGER NOT NULL,

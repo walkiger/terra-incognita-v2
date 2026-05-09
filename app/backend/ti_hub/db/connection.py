@@ -1,18 +1,24 @@
-"""Async SQLite connection manager for the Hub (M1.1).
+"""Async SQLite connection manager for the Hub (M1.1+) including ordered schema files (M1.2 FTS).
 
-See ``app/docs/greenfield/implementation/mvp/M1-data-foundation.md`` § M1.1.
+See ``app/docs/greenfield/implementation/mvp/M1-data-foundation.md`` § M1.1 / § M1.2.
 """
 
 from __future__ import annotations
 
 import asyncio
 import time
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Final
 
 import aiosqlite
 
-_SCHEMA_FILE: Final = Path(__file__).resolve().parent / "schema" / "0001_baseline.sql"
+_SCHEMA_DIR: Final = Path(__file__).resolve().parent / "schema"
+_SCHEMA_FILES: Final[tuple[Path, ...]] = (
+    _SCHEMA_DIR / "0001_baseline.sql",
+    _SCHEMA_DIR / "0002_replay_fts.sql",
+)
 
 _PRAGMA_BOOTSQL: Final = """
 PRAGMA journal_mode=WAL;
@@ -23,7 +29,7 @@ PRAGMA cache_size=-8192;
 PRAGMA temp_store=MEMORY;
 """
 
-SCHEMA_VERSION: Final[int] = 1
+SCHEMA_VERSION: Final[int] = 2
 APP_VERSION: Final[str] = "0.2.0-dev"
 
 
@@ -70,11 +76,21 @@ class HubSQLite:
             await self._write.close()
             self._write = None
 
-    async def init_schema(self, sql_path: Path | None = None) -> None:
-        """Apply baseline DDL and seed ``meta``."""
+    @asynccontextmanager
+    async def write_session(self) -> AsyncIterator[aiosqlite.Connection]:
+        """Serialize writer access; caller must ``commit`` when mutating data."""
 
-        path = sql_path or _SCHEMA_FILE
-        ddl = path.read_text(encoding="utf-8")
+        async with self._write_lock:
+            if self._write is None:
+                msg = "connect() before write_session()"
+                raise RuntimeError(msg)
+            yield self._write
+
+    async def init_schema(self, sql_path: Path | None = None) -> None:
+        """Apply ordered DDL files and seed ``meta``."""
+
+        paths: tuple[Path, ...] = (sql_path,) if sql_path is not None else _SCHEMA_FILES
+        ddl = "\n".join(p.read_text(encoding="utf-8") for p in paths)
         async with self._write_lock:
             if self._write is None:
                 msg = "connect() before init_schema()"

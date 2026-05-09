@@ -18,6 +18,8 @@ _EXPECTED_TABLES = frozenset(
         "engine_connections",
         "encounters",
         "replay_events",
+        "replay_events_fts",
+        "replay_fts_rebuild_signals",
         "snapshots",
         "meta",
     }
@@ -31,7 +33,7 @@ async def test_schema_creates_all_tables() -> None:
     await hub.init_schema()
     names = await hub.table_names()
     assert names >= _EXPECTED_TABLES
-    assert "replay_events_fts" not in names
+    assert "replay_events_fts" in names
     await hub.close()
 
 
