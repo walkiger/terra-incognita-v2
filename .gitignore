@@ -48,6 +48,10 @@ secrets/*
 !secrets/hub.sops.yaml
 !secrets/example-age-devONLY.age.key
 
+# Claude Code — local permission cache + cloned worktrees (may contain secrets; never ship)
+.claude/worktrees/
+**/.claude/settings.local.json
+
 # Optional local archive mirrors (not part of this repo by default)
 archive/
 
