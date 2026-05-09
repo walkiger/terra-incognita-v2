@@ -1,0 +1,2 @@
+Alembic migration scripts for `ti_hub` Hub SQLite (`M1-data-foundation.md` § M1.3).
+Use `Makefile` target `migrate` or `TI_HUB_ALEMBIC_URL=… uv run alembic …` — see `docs/operations/migrations.md`.

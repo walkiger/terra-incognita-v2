@@ -250,7 +250,7 @@ Alle Gates blockieren den Merge.
 | ----- | ----------------------------------- | ----- | -------------------------------------- | --- | ------ | ---------- |
 | M1.1  | sqlite-baseline-schema              | —     | `feature/sqlite-baseline-schema`       | 5   | [x]    | 2026-05-09 |
 | M1.2  | sqlite-fts5-replay-events           | —     | `feature/sqlite-fts5-replay-events`    | 16  | [x]    | 2026-05-09 |
-| M1.3  | alembic-migrations-bootstrap        | —     | `feature/alembic-migrations-bootstrap` | —   | [ ]    |            |
+| M1.3  | alembic-migrations-bootstrap        | —     | `feature/alembic-migrations-bootstrap` | 17  | [ ]    | 2026-05-09 |
 | M1.4  | repository-layer-users              | —     | `feature/repo-users`                   | —   | [ ]    |            |
 | M1.5  | repository-layer-encounters         | —     | `feature/repo-encounters`              | —   | [ ]    |            |
 | M1.6  | repository-layer-replay-events      | —     | `feature/repo-replay-events`           | —   | [ ]    |            |

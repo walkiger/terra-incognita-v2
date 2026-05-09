@@ -8,7 +8,11 @@ version = "0.1.0"
 description = "Terra Incognita v2 greenfield — hub Python package (ti_hub)"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = ["aiosqlite>=0.20"]
+dependencies = [
+    "aiosqlite>=0.20",
+    "alembic>=1.14,<2",
+    "sqlalchemy>=2.0,<3",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -37,6 +41,7 @@ markers = [
     "compose_hub: hub compose smoke tests (need Docker Compose v2)",
     "compose_vault: vault compose smoke tests (need Docker Compose v2)",
     "compose_observability: hub default profile Prom/Grafana smoke (Docker)",
+    "alembic_isolation: runs only via tests/db/test_alembic_migrations (CI duplicate guard)",
 ]
 
 [tool.coverage.run]

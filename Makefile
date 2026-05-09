@@ -1,6 +1,6 @@
 .POSIX:
 MAKEFLAGS += --warn-undefined-variables
-.PHONY: bootstrap test fmt lint compose-hub compose-vault secrets-decrypt
+.PHONY: bootstrap test fmt lint migrate compose-hub compose-vault secrets-decrypt
 
 bootstrap:
 	@echo "=== bootstrap: uv sync + pre-commit hooks ==="
@@ -9,7 +9,7 @@ bootstrap:
 
 test:
 	@echo "=== test: pytest (excludes compose_* Docker markers) ==="
-	uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability"
+	uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
 
 fmt:
 	@echo "=== fmt: ruff format (hub API stub + ti_hub + tests) ==="
@@ -18,6 +18,10 @@ fmt:
 lint:
 	@echo "=== lint: ruff check (hub API stub + ti_hub + tests) ==="
 	uv run ruff check deploy/api/app app/backend/ti_hub tests
+
+migrate:
+	@echo "=== migrate: alembic upgrade head (set TI_HUB_ALEMBIC_URL=sqlite+aiosqlite:///path/hub.sqlite) ==="
+	uv run alembic -c app/backend/ti_hub/db/alembic.ini upgrade head
 
 secrets-decrypt:
 	@echo "=== secrets-decrypt → secrets/hub.env (needs sops + SOPS_AGE_KEY_FILE) ==="
