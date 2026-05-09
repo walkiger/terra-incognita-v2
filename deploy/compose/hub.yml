@@ -7,8 +7,8 @@ services:
   api:
     profiles: ["minimal", "default"]
     build:
-      context: ../api
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: deploy/api/Dockerfile
     restart: unless-stopped
     oom_score_adj: -100
     mem_limit: 352m

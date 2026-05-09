@@ -1,4 +1,4 @@
-"""Prometheus metrics wiring for Hub API stub (M0.9)."""
+"""Prometheus metrics wiring for Hub API (M0.9 bootstrap; full instrumentation in M5)."""
 
 from __future__ import annotations
 

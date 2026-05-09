@@ -7,10 +7,10 @@ repos:
     hooks:
       - id: ruff-format
         args: [--target-version, py312]
-        files: ^(deploy/api/app|app/backend/ti_hub|tests)/
+        files: ^(app/backend/(api|models|ti_hub)|tests)/
       - id: ruff
         args: [--target-version, py312]
-        files: ^(deploy/api/app|app/backend/ti_hub|tests)/
+        files: ^(app/backend/(api|models|ti_hub)|tests)/
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0

@@ -446,4 +446,4 @@ ist die Arbeit nachweislich gemerged und das CI grün.
 
 ---
 
-_Stand: 2026-05-09 · Status: Phase **M0** in Arbeit (Schritte siehe Tabelle oben); §6–7 definieren Pflicht-Updates am Phasen-Ende._
+_Stand: 2026-05-09 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** in Arbeit (M1.1–M1.2 `[x]`, M1.3 in PR #17) · API-Bootstrap-Scaffold in `app/backend/api/` für M5.1 vorbereitet_
