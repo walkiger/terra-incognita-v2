@@ -1,0 +1,11 @@
+# Vault / mirror VM tunnel routing. Replace `TUNNEL_ID` + credential path as for Hub.
+
+tunnel: TUNNEL_ID
+credentials-file: /etc/cloudflared/credentials/TUNNEL_ID.json
+
+ingress:
+  # mirror.app.terra.<zone> — Vault edge (Caddy heartbeat / future mirror UI)
+  - hostname: mirror.app.terra.example.tld
+    service: http://caddy:80
+
+  - service: http_status:404

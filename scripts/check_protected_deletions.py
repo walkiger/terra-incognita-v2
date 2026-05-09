@@ -151,7 +151,10 @@ def _is_ci() -> bool:
 
 
 def _ci_base_ref() -> str:
-    return os.environ.get("GITHUB_BASE_REF") or "main"
+    raw = (os.environ.get("GITHUB_BASE_REF") or "main").strip()
+    if raw.startswith("refs/heads/"):
+        raw = raw[len("refs/heads/") :]
+    return raw or "main"
 
 
 def _ci_deletions(base: str) -> list[str]:

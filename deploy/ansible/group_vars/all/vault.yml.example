@@ -1,0 +1,7 @@
+# Example Ansible vars for Vault VM — Litestream/R2 placeholders (M0.8 template).
+# Copy into your inventory `group_vars/vault/` (do not commit real secrets).
+
+vault_litestream_replica_url: "s3://REPLACE_BUCKET/litestream"
+vault_r2_account_id: "REPLACE"
+vault_r2_access_key_id: "REPLACE"
+vault_r2_secret_access_key: "REPLACE"

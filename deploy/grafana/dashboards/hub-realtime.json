@@ -1,0 +1,15 @@
+{
+  "uid": "hub-realtime-stub",
+  "title": "Hub Realtime",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "text",
+      "title": "Stub",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "content": "M0.9 stub — WS / NATS throughput after M2/M5." }
+    }
+  ]
+}

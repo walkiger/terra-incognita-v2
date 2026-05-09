@@ -10,10 +10,10 @@ Minimal hub skeleton: **Caddy** → **API** stub (`/v1/health`), **NATS**, **clo
 
 ### Profiles
 
-| Profile | Command |
-|---------|---------|
-| **`minimal`** | From repo root: `docker compose -f deploy/compose/hub.yml -f deploy/compose/hub.override.dev.yml --profile minimal up -d --build` — core services only (mem limits Σ ≤ 720 MB). |
-| **`default`** (full monitoring) | Same files plus `--profile default` — adds **prom-node-exporter**. |
+| Profile                         | Command                                                                                                                                                                         |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`minimal`**                   | From repo root: `docker compose -f deploy/compose/hub.yml -f deploy/compose/hub.override.dev.yml --profile minimal up -d --build` — core services only (mem limits Σ ≤ 720 MB). |
+| **`default`** (full monitoring) | Same files plus `--profile default` — adds **prom-node-exporter**.                                                                                                              |
 
 Core services are listed under **both** `minimal` and **`default`**; exporters only under **`default`**.
 
@@ -42,10 +42,10 @@ Vault / mirror VM skeleton: **Caddy** serves a JSON heartbeat on **`GET /`**, **
 
 ### Profiles
 
-| Profile | Command |
-|---------|---------|
+| Profile       | Command                                                                                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`minimal`** | From repo root: `docker compose -f deploy/compose/vault.yml -f deploy/compose/vault.override.dev.yml --profile minimal up -d --build` — Σ **`mem_limit`** ≤ **480 MB**. |
-| **`default`** | Same plus **`prom-node-exporter`**. |
+| **`default`** | Same plus **`prom-node-exporter`**.                                                                                                                                     |
 
 ### Ports
 

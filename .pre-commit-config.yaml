@@ -1,0 +1,43 @@
+# See https://pre-commit.com for usage.
+exclude: ^(\.venv|archive/research|research/extracted|research/|knowledge/preseed_v2\.json|scripts/research/|memory/session/|\.cursor/agents/)
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.12
+    hooks:
+      - id: ruff-format
+        args: [--target-version, py312]
+        files: ^(deploy/api/app|app/backend/ti_hub|tests)/
+      - id: ruff
+        args: [--target-version, py312]
+        files: ^(deploy/api/app|app/backend/ti_hub|tests)/
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+        exclude: ^deploy/compose/
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        exclude: ^Anweisungen\.md$
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types_or: [markdown, yaml, json]
+        files: ^(README\.md|CONTRIBUTING\.md|CLAUDE\.md|catchup\.md|docs/.+|deploy/.+|app/docs/greenfield/implementation/mvp/(00-index|M0-bootstrap)\.md|memory/system/decisions\.md|archive/legacy-docs/Implementierungen\.Architektur\.md|\.github/workflows/.+|\.agent-os/pr-spec\.json|\.pre-commit-config\.yaml)$
+
+  - repo: local
+    hooks:
+      - id: check-protected-deletions
+        name: check-protected-deletions
+        entry: python scripts/check_protected_deletions.py
+        language: system
+        pass_filenames: false
+      - id: strip-cursor-coauthor-trailer
+        name: strip Cursor Co-authored-by trailer
+        entry: python scripts/strip_cursor_coauthor_trailer.py
+        language: system
+        stages: [prepare-commit-msg]
