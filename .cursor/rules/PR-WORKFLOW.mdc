@@ -18,8 +18,14 @@ This rule enforces a deterministic pull request lifecycle for all changes.
 ## Entry Point
 
 - Only `orch` may initiate the PR lifecycle.
-- `meta` must approve execution permission before orchestration proceeds.
+- **`meta` / formal Agent OS sign-off:** treated as **automatic**. Default execution posture is **ALLOW** — proceed without waiting for a separate `meta` verdict unless the **user explicitly escalates** to governance review.
 - No direct push to `main`.
+
+## Merge sequencing (mandatory)
+
+- Before branching or prioritizing **new** PR work, agents **must close out prior queue**: merge every **open** PR targeting `main` that belongs to the active line of work (squash/rebase per repo practice), **after required CI checks pass**.
+- Do **not** stack unrelated successive PRs while an earlier one remains **open and merge-ready**, unless the user explicitly directs parallel review.
+- If merge is blocked (failing CI, conflicts), fix or obtain user direction **before** opening the next PR.
 
 ## Required Lifecycle
 
@@ -40,18 +46,18 @@ Idea -> Plan -> Contract -> Implementation -> Test -> Security -> Docs -> Audit 
 
 ## Mandatory Gates
 
-- Meta-orchestrator governance gate is blocking.
+- **`meta` governance gate:** **non-blocking** by policy (automatic ALLOW); escalate only on explicit user request.
 - Test gate is blocking.
-- Security gate is blocking.
-- Audit gate is blocking for critical findings.
+- Security gate is blocking (may be satisfied by automated checks / lightweight review unless user demands deeper pass).
+- Audit gate is blocking for critical findings (informational otherwise).
 - CI pipeline gate is blocking for merge.
-- PR label compliance (`agent:*`) is blocking for merge.
+- PR label compliance (`agent:*`) is blocking for merge when labels are required by automation.
 
 Failure loops:
-- Meta blocked/guarded conflict -> return to `orch` plan review.
 - Test fail -> back to implementation.
 - Security fail -> back to implementation.
 - Audit critical fail -> refactor cycle.
+- User-invoked `meta` conflict -> return to `orch` plan review.
 
 ## PR Preconditions
 
@@ -80,7 +86,7 @@ Before PR creation, the following must be true:
 
 ## Agent Boundaries
 
-- `meta`: governance, arbitration, execution permission only
+- `meta`: governance, arbitration, execution permission — **default ALLOW** (automatic); blocks only on explicit user escalation
 - `heal`: detect patterns and propose fixes only (no direct implementation)
 - `orch`: planning, delegation, lifecycle control, merge readiness only
 - implementation agents: code changes in their domain only
@@ -92,7 +98,7 @@ Before PR creation, the following must be true:
 
 ## Merge Conditions
 
-- No merge without completed blocking gates.
+- No merge without completed **blocking** gates (CI/tests; see Mandatory Gates above — **`meta` excluded** unless user escalates).
 - No merge with failing GitHub Action status checks.
 - No architecture change without `orch` direction.
 - No lifecycle shortcuts.

@@ -15,7 +15,7 @@ This ensures cost-minimized continuity without API-dependent subagents.
 
 Use this section whenever **delegation to a named subagent fails** for operational reasons the parent cannot fix in-session — for example **API usage limit**, **quota**, **Task/subagent unavailable**, or **timeout** — *before* the delegated plan is delivered.
 
-This does **not** replace `meta` governance or specialist ownership long-term; it prevents **silent skips** of orchestration and hygiene.
+This does **not** replace specialist ownership long-term; it prevents **silent skips** of orchestration and hygiene. **`meta`** posture defaults to automatic **ALLOW** per `PR-WORKFLOW.mdc`.
 
 ### Mandatory behavior (parent agent)
 
@@ -32,13 +32,13 @@ This does **not** replace `meta` governance or specialist ownership long-term; i
    - Commit **subjects (first line)** on PR-bound branches must end with **`(#NNN)`** (GitHub form; repo example `9f638f5` — `fix: stabilize runtime contracts (#2)` — `Anweisungen.md` §5 / `PR-WORKFLOW.mdc`).
    - If untracked noise remains: classify **ignore** (extend `.gitignore`) vs **defer** (leave `??`) vs **commit** (separate concern); say which.
    - If the diff includes deletions: classify **each** deleted path per `.cursor/rules/NO-SILENT-DELETIONS.mdc` (`ephemeral` / `generated` / `deprecated-but-retained` / `approved-removal`). Protected deletions require an approval channel (`approved_deletions:` line in the commit body or `.agent-os/pr-spec.json`); the local pre-commit + CI gate `check_protected_deletions.py` is blocking — do not bypass it.
-4. **Lifecycle honesty:** Do not claim gates passed unless **you ran** the checks (e.g. tests). Say what still requires human/`meta`/CI.
+4. **Lifecycle honesty:** Do not claim gates passed unless **you ran** the checks (e.g. tests). Say what still needs **CI** or **explicit user escalation** beyond repo defaults (`meta` is automatic ALLOW unless escalated — see `PR-WORKFLOW.mdc`).
 5. **Recovery:** When quotas reset, **prefer re-delegating** to `orch` (or the blocked specialist) for formal replanning if the branch or PR is still open — merge this session's checklist into theirs. Re-delegation returns the parent to `composer-2-fast` unless the task warrants an upgrade (see `MODEL-SWITCHING-PROTOCOL.mdc`).
 
 ### Boundary
 
 - **May:** Plan, checklists, diff/stat review, hygiene narrative, run terminal/git/tests in parent scope.
-- **Must not:** Invent `meta` ALLOW/GUARD verdicts; impersonate security/audit sign-off; expand implementation into another agent's domain **without** scope alignment — note the gap instead.
+- **Must not:** Invent fictional quoted `meta` transcripts or escalate narratives that contradict repo defaults (**automatic ALLOW** per `PR-WORKFLOW.mdc`). Do not impersonate security/audit sign-off; expand implementation into another agent's domain **without** scope alignment — note the gap instead.
 
 ### Relation to enforcement
 

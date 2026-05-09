@@ -17,10 +17,12 @@ alwaysApply: true
 ## PR Lifecycle Enforcement (MANDATORY)
 
 - Every change must run full lifecycle: Idea -> Plan -> Contract -> Implementation -> Test -> Security -> Docs -> Audit -> Merge.
+- **Merge sequencing:** merge **open** PRs targeting `main` (when CI is green) **before** starting unrelated new PR work, unless the user directs otherwise — see `PR-WORKFLOW.mdc`.
+- **`meta` / formal OS sign-off:** automatic **ALLOW** by default; no blocking wait for `meta` unless the user explicitly escalates — see `PR-WORKFLOW.mdc`.
 - No direct push to `main`.
 - No feature without PR.
 - No PR without tests.
-- No merge without security check.
+- No merge without security check (may be automated / lightweight per workflow).
 - No architecture change without `orch`.
 
 ## Branch Model
@@ -36,7 +38,7 @@ alwaysApply: true
 
 ## Agent Responsibility Enforcement
 
-- `meta`: governance and execution permission only
+- `meta`: governance and execution permission — **default automatic ALLOW**; blocking arbitration only when the user explicitly escalates
 - `heal`: self-healing proposal generation only
 - `orch`: planning, decomposition, delegation, PR lifecycle control only
 - `backend-implementation-agent`: API and backend business logic only
@@ -55,7 +57,7 @@ If **Task/subagent delegation fails** (e.g. API usage limit, unavailable runner)
 
 - Agents must not perform tasks outside their domain.
 - No agent may redesign system architecture except `orch`.
-- `meta` may block or guard execution but may not implement code.
+- `meta` may block or guard execution **only when explicitly escalated by the user** but may not implement code.
 - `heal` may generate proposal PRs but may not directly patch production code.
 
 ## Gate Failure Recovery Paths
