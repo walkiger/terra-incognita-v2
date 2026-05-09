@@ -51,8 +51,8 @@ jobs:
         with:
           version: "0.11.12"
       - run: uv sync --frozen --extra dev
-      - name: Pytest (excludes compose_* markers)
-        run: .venv/bin/python -m pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
+      - name: Pytest with coverage (excludes compose_* markers)
+        run: .venv/bin/python -m pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation" --cov=ti_hub --cov=api --cov=models --cov-report=term-missing
 
   schema-lint:
     runs-on: ubuntu-latest
