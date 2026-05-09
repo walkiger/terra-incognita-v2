@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "terra-incognita-engine"
+version = "0.0.0"
+description = "Local LNN/EBM/KG engine stub — implemented starting M3"
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["terra_engine"]

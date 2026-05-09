@@ -16,8 +16,11 @@ Greenfield-Neustart für das Thin-Shell-MVP: Planung und Produktcode unter **`ap
 ## Tests
 
 ```text
-py -m pip install -r requirements-ci.txt
-py -m pytest tests/test_repo_layout.py -q
+# Install uv: https://docs.astral.sh/uv/getting-started/installation/
+uv sync --extra dev
+uv run pytest tests -q
 ```
 
-CI (GitHub Actions) führt denselben Layout-Test aus.
+Alternativ: **`make bootstrap`** dann **`make test`** (GNU Make; ruft `uv` auf).
+
+CI (GitHub Actions) synchronisiert mit **`uv sync --frozen --extra dev`** und führt Lint, Format-Check, **mypy** und **pytest** aus.

@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "terra-incognita-v2"
+version = "0.1.0"
+description = "Terra Incognita v2 greenfield — hub Python package (ti_hub)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["aiosqlite>=0.20"]
+
+[project.optional-dependencies]
+dev = [
+    "coverage[toml]>=7.6",
+    "mypy>=1.13",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=6.0",
+    "pytest>=8.0",
+    "ruff>=0.8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["app/backend"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["app/backend"]
+
+[tool.coverage.run]
+branch = true
+source = ["ti_hub"]
+omit = ["*/tests/*"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+exclude = [
+    ".venv",
+    "scripts",
+    "research",
+    "knowledge",
+    "archive",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "app/backend"
+explicit_package_bases = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = ["aiosqlite", "aiosqlite.*"]
+ignore_missing_imports = true

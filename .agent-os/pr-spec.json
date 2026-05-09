@@ -1,24 +1,24 @@
 {
-  "feature": "M1.1 Hub SQLite baseline schema (ti_hub.db) + CI pytest wiring",
-  "branch": "feature/sqlite-baseline-schema",
+  "feature": "M0.2 Python baseline — uv lockfile, ruff, mypy strict, pyproject (replace pip requirements-ci)",
+  "branch": "chore/python-pyproject-baseline",
   "agents": ["orch", "backend-implementation-agent", "test-agent-fast-ci"],
   "tasks": {
     "orch": [
-      "Land MVP data-layer slice M1.1; next open PR is M1.2 FTS / Alembic per index",
-      "Commit subjects end with (#5)"
+      "Land M0.2; keep merge-open-PR-first discipline",
+      "Commit subjects end with (#6)"
     ],
     "backend-implementation-agent": [
-      "Keep schema aligned with architecture/mvp.md Hub-SQLite excerpt"
+      "Keep ti_hub mypy-clean under strict settings"
     ],
     "test-agent-fast-ci": [
-      "Maintain tests/db/test_baseline_schema.py + layout tests green"
+      "Maintain tests/test_tooling.py + DB tests + layout tests green under uv CI"
     ]
   },
-  "approved_deletions": [],
+  "approved_deletions": ["pytest.ini", "requirements-ci.txt"],
   "acceptance_criteria": [
-    "CI passes: pytest tests/",
-    "Baseline DDL matches M1.1 (no FTS yet)",
-    "meta.schema_version == 1 after init_schema",
-    "HubSQLite pragmas + readonly URI reads verified"
+    "CI: uv sync --frozen --extra dev + ruff check/format + mypy ti_hub + pytest",
+    "make bootstrap/test/fmt/lint use uv",
+    "uv.lock committed; no root requirements-ci.txt",
+    "app/engine/pyproject.toml stub present for separate engine package path"
   ]
 }

@@ -4,7 +4,6 @@ import asyncio
 from pathlib import Path
 
 import pytest
-
 from ti_hub.db.connection import (
     APP_VERSION,
     SCHEMA_VERSION,
@@ -31,7 +30,7 @@ async def test_schema_creates_all_tables() -> None:
     await hub.connect()
     await hub.init_schema()
     names = await hub.table_names()
-    assert _EXPECTED_TABLES <= names
+    assert names >= _EXPECTED_TABLES
     assert "replay_events_fts" not in names
     await hub.close()
 
