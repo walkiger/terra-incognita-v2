@@ -47,6 +47,8 @@
 
 Wenn die Domain **nicht** als Zone in Cloudflare liegt (z. B. nur DNS bei **is-into.tech**): **`cloudflared tunnel route dns`** entfällt oder scheitert — stattdessen **CNAME** vom gewünschten Hostnamen auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim DNS-Provider setzen. Tunnel und Connector funktionieren trotzdem.
 
+**Wichtig:** Eine Zone bei Cloudflare ist **nicht** nötig, um im Tunnel einen **Public Hostname** (FQDN → Origin-URL) anzulegen — nur für automatisch angelegte DNS-Einträge. **Ohne** diesen Public-Hostname-Eintrag ist die Route für den FQDN leer.
+
 ---
 
 ## 3. Cloudflare Tunnel — Schritte nach Modus
@@ -77,7 +79,7 @@ cloudflared version
 1. Zero Trust → **Networks** → **Tunnels** → Tunnel erstellen (z. B. **`terra-hub`**).
 2. **Install connector** → OS **Linux** → Token kopieren.
 3. Auf der VM: **`sudo cloudflared service install <TOKEN>`** → Dienst aktiv (**`systemctl enable --now cloudflared`** falls nicht automatisch).
-4. Im Tunnel **Public Hostnames**: Hostname → **`http://127.0.0.1:8080`**.
+4. Im Tunnel **Public Hostnames** (**Pflicht**, sonst extern **HTTP 530** — siehe §5.2): exakt den öffentlichen **FQDN** eintragen (z. B. **`terra-incognita.is-into.tech`**) → Service **`http://127.0.0.1:8080`** (**HTTP**, kein `https://` zum localhost).
 5. DNS beim Provider: **CNAME** → **`<TUNNEL_UUID>.cfargotunnel.com`** (UUID aus der Tunnel-Übersicht, nicht die „Replica ID“).
 
 **Sicherheit:** Token wie ein Passwort behandeln; nicht ins Repo committen; bei Leak im Dashboard rotieren.
@@ -162,7 +164,17 @@ https://terra-incognita.is-into.tech/v1/health   → 200, JSON
 
 (Hostnamen anpassen.)
 
-### 5.2 HTTP **530** von Cloudflare + lokaler **`Connection refused` auf :8080**
+### 5.2 HTTP **530** trotz lokalem **`127.0.0.1:8080` → 200**
+
+**Symptom:** `curl -fsSI https://<öffentlicher-host>/v1/health` liefert **HTTP 530** (auch **von der Hub-VM** aus); parallel `curl -fsS http://127.0.0.1:8080/v1/health` → **200** mit JSON.
+
+**Typische Ursache:** Der Connector ist verbunden („Replica connected“), aber unter **Zero Trust → Tunnel → Public Hostnames** fehlt noch ein Eintrag für **genau diesen FQDN**. Der Edge weiß dann nicht, welche Origin-URL der Tunnel bedienen soll.
+
+**Maßnahme:** Public Hostname **hinzufügen**: Hostname = voller öffentlicher Name (z. B. **`terra-incognita.is-into.tech`**) → Service **`http://127.0.0.1:8080`**. DNS weiter per **CNAME** auf **`<TUNNEL_UUID>.cfargotunnel.com`** beim Provider — **ohne** Cloudflare-Zone möglich.
+
+**Verwechslung vermeiden:** Die **Tunnel-UUID** (für DNS/CNAME) ist **nicht** dieselbe wie eine **Replica-ID** in der Connector-Liste.
+
+### 5.3 HTTP **530** von Cloudflare + lokaler **`Connection refused` auf :8080**
 
 | Ursache                                   | Maßnahme                                                 |
 | ----------------------------------------- | -------------------------------------------------------- |
@@ -170,7 +182,7 @@ https://terra-incognita.is-into.tech/v1/health   → 200, JSON
 | Stack nicht gestartet / Caddy unhealthy   | **`docker compose ps`**, Logs **`api`** / **`caddy`**.   |
 | Public Hostname zeigt auf falschen Port   | Im Tunnel **Service** exakt **`http://127.0.0.1:8080`**. |
 
-### 5.3 Doppelter Tunnel-Connector
+### 5.4 Doppelter Tunnel-Connector
 
 Symptome: instabile Replikas, unerwartete Fehler. **Nur einen** Connector pro Tunnel-ID — bei Host-Tunnel **`hub.override.host-tunnel.yml`** nutzen.
 
