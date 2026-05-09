@@ -4,6 +4,12 @@
 
 ---
 
+## 2026-05-09 — M1.5 EncountersRepository (`feature/repo-encounters`)
+
+**PR #21**: `EncountersRepository`, `Encounter` / `EncounterDraft`, SQL CHECK auf `encounters.source` (`schema/0003_encounters_source_check.sql`, Alembic `0003_encounters_source`), `meta.schema_version` / Hub Init jetzt **3**. Index **M1.5** `[x]` und `M1-data-foundation.md` §6 mitgeführt.
+
+---
+
 ## 2026-05-09 — M1.4 UsersRepository (`feature/repo-users`)
 
 **PR #20**: `BaseRepository`, `UsersRepository`, Pydantic `User` / `UserCredentials`; Runtime-Deps `pydantic`, `email-validator`. Index **M1.4** `[x]` und `M1-data-foundation.md` §6 mitgeführt.

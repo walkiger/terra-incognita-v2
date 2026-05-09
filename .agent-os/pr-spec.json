@@ -1,24 +1,21 @@
 {
-  "feature": "M1.4 — Repository layer users (BaseRepository + UsersRepository + Pydantic models)",
-  "branch": "feature/repo-users",
+  "feature": "M1.6 — Repository layer replay events (Hybrid-Planner port)",
+  "branch": "feature/repo-replay-events",
   "agents": ["backend-implementation-agent", "test-agent-fast-ci"],
   "tasks": {
     "backend-implementation-agent": [
-      "Implement ti_hub.db.repos.base.BaseRepository with explicit tenant user_id helpers",
-      "Implement models.user (User public + UserCredentials internal)",
-      "Implement UsersRepository per app/docs/greenfield/implementation/mvp/M1-data-foundation.md § M1.4",
-      "Add pydantic runtime dependency in pyproject.toml",
-      "Update docs bundle: 00-index.md M1.4 row, M1-data-foundation §6/footer"
+      "Implement ReplayEventsRepository per app/docs/greenfield/implementation/mvp/M1-data-foundation.md § M1.6",
+      "Port hybrid planner / FTS integration paths into repository layer",
+      "Docs bundle: index M1.6 row + M1 §6 + footer"
     ],
     "test-agent-fast-ci": [
-      "Add tests/db/repos/test_users_repo.py matching § M1.4 AC",
-      "Run pytest + coverage gate on repos.users and models.user"
+      "Extend tests/db/repos for replay events + replay_query parity tests listed in § M1.6"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "UsersRepository methods match spec; duplicate email → EmailAlreadyRegistered; invalid status CHECK → RepositoryError",
-    "Index + M1 phase doc updated in same PR",
-    "CI green including migration-roundtrip unchanged by M1.4"
+    "ReplayEventsRepository behaviours match § M1.6 AC",
+    "Alembic vs canonical SQL stays aligned",
+    "CI green"
   ]
 }
