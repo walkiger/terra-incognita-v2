@@ -39,7 +39,7 @@ where = ["app/backend"]
 testpaths = ["tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
-addopts = ["--timeout=120"]
+addopts = ["--timeout=120", "--timeout-method=thread"]
 pythonpath = ["app/backend"]
 markers = [
     "compose_hub: hub compose smoke tests (need Docker Compose v2)",
