@@ -51,8 +51,13 @@ jobs:
         with:
           version: "0.11.12"
       - run: uv sync --frozen --extra dev
-      - name: Pytest (excludes compose_* markers; coverage disabled — runner stability)
-        run: timeout 180 uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
+      - name: Pytest with coverage (excludes compose_* markers)
+        run: uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation" --cov=ti_hub --cov=api --cov=models --cov-report=xml --cov-report=term-missing
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-xml
+          path: coverage.xml
 
   schema-lint:
     runs-on: ubuntu-latest
@@ -122,6 +127,6 @@ jobs:
           version: "0.11.12"
       - run: uv sync --frozen --extra dev
       - name: Compose hub + vault minimal smoke
-        run: uv run pytest tests/integration -q -m "compose_hub or compose_vault" --timeout=0
+        run: uv run pytest tests/integration -q -m "compose_hub or compose_vault"
       - name: Hub default profile (Prometheus + Grafana)
-        run: uv run pytest tests/integration -q -m compose_observability --timeout=0
+        run: uv run pytest tests/integration -q -m compose_observability
