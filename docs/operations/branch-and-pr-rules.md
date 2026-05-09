@@ -37,6 +37,7 @@ Ab Phase **M1** gilt als Standard:
 2. **Commit nur über PR nach `main`:** Kein direkter Push auf **`main`**; jeder Commit liegt auf einem Branch (`feature/*`, `fix/*`, …) und geht nur per **PR** ein.
 3. **Genau ein Plan-Schritt pro PR:** Eine PR erfüllt **genau einen** Eintrag **`Mn.k`** aus **`app/docs/greenfield/implementation/mvp/00-index.md`** (Slug/Branch-Spalte). Ausnahmen (**Bundle-PR**) nur, wenn **`orch`** / Index das ausdrücklich vorsieht und im PR-Body begründet ist.
 4. **Nachweis:** PR-Body verlinkt oder nennt **`Mn.k`** und den **Slug**; mit dem Merge wird **`00-index.md`** auf **`[x]`**, **Datum** und **PR-Nummer** aktualisiert (vorzugsweise **in derselben PR**, nicht „still“ auf `main`).
+5. **Index + Phasendoku (+ Onboarding):** Dieselbe PR enthält die Pflege von **`app/docs/greenfield/implementation/mvp/00-index.md`** **und** der zugehörigen Phasendatei (z. B. **`M1-data-foundation.md`** §6 _Erledigte Änderungen_ / Stand-Zeile). Bei geänderten Pfaden oder Kommandos zusätzlich **`CONTRIBUTING.md`**, **`CLAUDE.md`** oder **`README.md`** — kein `[x]` im Index ohne diese Bundles.
 
 **Hinweis:** Phase **M0** wurde teils **gebündelt** (historisch); ab **M1** gilt die 1:1-Regel **strikt**, außer dokumentierte Bundle-Ausnahme.
 
