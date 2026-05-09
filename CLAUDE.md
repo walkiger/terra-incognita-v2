@@ -28,7 +28,7 @@ Git-/Agent-Disziplin: **`Anweisungen.md`** und **`.cursor/rules/`**.
 
 ```text
 uv sync --extra dev
-uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability"
+uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
 ```
 
 Voller Integration/Docker-Lauf (CI **`compose-smoke`**):

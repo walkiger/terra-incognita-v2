@@ -173,22 +173,26 @@ tests/db/test_replay_fts.py
 **Vorbedingungen:** M1.1 gemerged
 **Berührte Pfade:**
 ```
-backend/db/alembic.ini
-backend/db/alembic/
-├── env.py                                ← async-fähig
+app/backend/ti_hub/db/alembic.ini
+app/backend/ti_hub/db/alembic/
+├── env.py                                ← sync SQLite engine (normalized URL from env)
 ├── script.py.mako
 └── versions/
     ├── 0001_baseline.py
     └── 0002_replay_fts.py
 docs/operations/migrations.md
 tests/db/test_alembic_migrations.py
+Makefile
+.github/workflows/ci.yml
 ```
 
 **Formel-Refs:** —
 
 **Akzeptanzkriterien:**
-1. Alembic ist konfiguriert für **SQLite-Async** (`asyncio.run`-basierter
-   `env.py`).
+1. Alembic ist konfiguriert für **`TI_HUB_ALEMBIC_URL`** (üblicherweise
+   `sqlite+aiosqlite:///…`); **`env.py`** normalisiert intern zu
+   **`sqlite:///…`** (synchron), damit das bestehende canonical DDL per
+   **`sqlite3.Connection.executescript`** aus den Dateien **`schema/000*.sql`** geladen werden kann.
 2. Migrations 0001 und 0002 entsprechen 1:1 den DDLs aus M1.1 / M1.2 —
    das DDL-File ist die Quelle, die Migration ist Ableitung.
 3. `make migrate` führt `alembic upgrade head` aus.
@@ -196,8 +200,7 @@ tests/db/test_alembic_migrations.py
    Kommentar, **nur** für Test-Kontexte. Produktiv wird kein Downgrade
    ausgeführt.
 5. CI-Schritt `migration-roundtrip-test`:
-   * Frisches `:memory:` → `upgrade head` → Schema-Diff gegen
-     `0001+0002`-DDL = leer.
+   * Frische Datei-SQLite unter `tmpdir` → `upgrade head` → ``sqlite_master``-Vergleich gegen dasselbe `0001`+`0002`-`executescript` = keine Abweichung (Alembic-Systemtabelle ausgenommen).
 6. `docs/operations/migrations.md` dokumentiert:
    * „Wie eine neue Migration angelegt wird"
    * „Wie ein Notfall-Rollback aussieht (Restore aus R2)"
