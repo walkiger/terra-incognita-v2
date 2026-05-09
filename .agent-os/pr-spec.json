@@ -1,29 +1,25 @@
 {
-  "feature": "Knowledge preseed snapshot (preseed_v2.json), verification helper, and committed research corpus under knowledge/ and research/",
-  "branch": "chore/knowledge-research-corpus",
-  "agents": ["orch", "research-agent", "documentation-agent", "test-agent-fast-ci"],
+  "feature": "Agent OS / CI helper scripts and research utilities under scripts/ (landed after corpus PR #2)",
+  "branch": "chore/agent-scripts-tooling",
+  "agents": ["orch", "backend-implementation-agent", "test-agent-fast-ci"],
   "tasks": {
     "orch": [
-      "Keep pr-spec aligned with branch scope until merge",
-      "This PR excludes the untracked scripts/ batch — land it on a follow-up branch (e.g. chore/agent-scripts-tooling); stage paths explicitly there (no git add .)",
-      "PR #2 open for chore/knowledge-research-corpus — commit subjects end with (#2)"
+      "Keep pr-spec aligned with this branch until merge",
+      "Stage scripts explicitly—no blind git add .",
+      "PR #3 — commit subjects end with (#3)"
     ],
-    "research-agent": [
-      "Confirm corpus layout and README pointers match extraction conventions"
-    ],
-    "documentation-agent": [
-      "Ensure knowledge/README.md and research/README.md explain verify/regeneration at high level when PR finalizes"
+    "backend-implementation-agent": [
+      "Treat scripts as tooling only; validate imports and paths against repo root when touched"
     ],
     "test-agent-fast-ci": [
-      "Maintain tests/test_repo_layout.py green; extend smoke tests only if new layout invariants are agreed"
+      "Keep tests/test_repo_layout.py green; extend CI only if wiring scripts into workflows is in scope"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
     "CI passes (tests/test_repo_layout.py)",
-    "knowledge/preseed_v2.json and knowledge/verify.py land with knowledge/README.md describing intent",
-    "research/ tree is intentional scope (extracted samples + schema + work artifacts as documented)",
-    "Untracked scripts/ tooling stays out of this PR — follow-up PR only; optional .gitignore patterns only if truly local junk",
-    "No protected-path deletions without approved_deletions channel"
+    "New scripts are intentional scope (agent gates, research helpers, optional API smoke tests + README)",
+    "No protected-path deletions without approved_deletions channel",
+    "Secrets/API keys remain out of git (scripts consume env or CLI flags only)"
   ]
 }
