@@ -14,7 +14,8 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-# Omit hub.override.dev.yml: published host ports collide when hub smoke runs earlier in the same CI job.
+# Omit hub.override.dev.yml — avoids host port collisions when hub smoke runs in the same
+# CI job.
 _COMPOSE_PATHS = (
     REPO_ROOT / "deploy/compose/hub.yml",
     REPO_ROOT / "deploy/compose/hub.override.ci.yml",
