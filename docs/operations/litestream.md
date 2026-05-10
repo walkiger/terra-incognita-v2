@@ -41,7 +41,7 @@ docker compose -f deploy/compose/hub.yml -f deploy/compose/hub.override.dev.yml 
   litestream replicate -config /etc/litestream.yml
 ```
 
-(Longo-running **`replicate`** is already the default container command; this exec is only needed for one-shot debugging.)
+(Long-running **`replicate`** is already the default container command; this exec is only needed for one-shot debugging.)
 
 ## Restore a copy locally or on a fresh disk
 
