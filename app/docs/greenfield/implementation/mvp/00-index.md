@@ -256,7 +256,7 @@ Alle Gates blockieren den Merge.
 | M1.6  | repository-layer-replay-events      | —     | `feature/repo-replay-events`           | 22  | [x]    | 2026-05-10 |
 | M1.7  | repository-layer-snapshots-manifest | —     | `feature/repo-snapshots-manifest`      | 23  | [x]    | 2026-05-10 |
 | M1.8  | litestream-config-hub               | —     | `feature/litestream-config-hub`        | 25  | [x]    | 2026-05-10 |
-| M1.9  | r2-bucket-naming-and-iam            | —     | `chore/r2-bucket-naming-and-iam`       | —   | [ ]    |            |
+| M1.9  | r2-bucket-naming-and-iam            | —     | `chore/r2-bucket-naming-and-iam`       | 26  | [x]    | 2026-05-10 |
 | M1.10 | vault-r2-pull-worker                | —     | `feature/vault-r2-pull-worker`         | —   | [ ]    |            |
 | M1.11 | restore-drill-script                | —     | `feature/restore-drill-script`         | —   | [ ]    |            |
 
@@ -447,4 +447,4 @@ ist die Arbeit nachweislich gemerged und das CI grün.
 
 ---
 
-_Stand: 2026-05-10 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** in Arbeit (M1.1–M1.8 `[x]`; nächster Schritt **M1.9** (`chore/r2-bucket-naming-and-iam`)) · Hub-API-Stubs unter `app/backend/api/` (u. a. nach PR #18)_
+_Stand: 2026-05-10 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** in Arbeit (M1.1–M1.9 `[x]`; nächster Schritt **M1.10** (`feature/vault-r2-pull-worker`)) · Hub-API-Stubs unter `app/backend/api/` (u. a. nach PR #18)_
