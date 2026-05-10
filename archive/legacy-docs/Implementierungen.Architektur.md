@@ -27,6 +27,7 @@
 | systemd services | [ ] | systemd/ | Phase 0.023 (Legacy-Monolith) |
 | GitHub Actions CI | [x] | .github/workflows/ci.yml | Greenfield **terra-incognita-v2** M0: lint, type-check, tests+coverage, schema-lint, protected-deletions, secrets-layout, pre-commit-ci, compose-smokes · Stubs **`ci-build-images.yml`**, **`cd-release.yml`**, **`nightly-soak.yml`** (noch ohne produktives Deploy) |
 | docker-compose (Greenfield) | [x] | deploy/compose/ | **`hub.yml`** / **`vault.yml`** (+ Overrides Quicktunnel/Dev/Observability) · Legacy Root-`docker-compose.yml` (Phase 0.023) entfällt für v2 |
+| Litestream / R2 / Vault mirror | [x] | deploy/litestream/, docs/operations/litestream.md, docs/operations/r2-buckets.md, scripts/operations/restore_hub.sh | Greenfield **terra-incognita-v2** M1.8–M1.11 · Hub SQLite Replikation · IAM-Doku · Vault **`r2-pull`** Worker · Restore-Skript |
 
 ---
 

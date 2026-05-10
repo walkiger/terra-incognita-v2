@@ -19,6 +19,7 @@
 | Secrets decrypt                    | **`make secrets-decrypt`** (benötigt **`sops`** und **`SOPS_AGE_KEY_FILE`**, siehe [`secrets/README.md`](secrets/README.md))                                                                                                                                                             |
 
 - **Litestream / Hub backup:** Compose-Profil **`litestream`** + Operatorhandbuch [`docs/operations/litestream.md`](docs/operations/litestream.md).
+- **Restore drill:** [`docs/operations/restore-drill.md`](docs/operations/restore-drill.md) · [`scripts/operations/restore_hub.sh`](scripts/operations/restore_hub.sh).
 
 Windows: GNU **`make`** (Git Bash/WSL). **`py`** für lokale Tool-Aufrufe siehe **`CLAUDE.md`**.
 

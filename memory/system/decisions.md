@@ -6,6 +6,8 @@
 
 ---
 
+**2026-05-10 — M1 Abschluss (M1.8–M1.11):** Litestream auf dem Hub (`deploy/litestream/config*.yml`, Compose Profil `litestream`, CI-MinIO-Overlay), eingefrorene R2-Bucket-/IAM-Politik (`docs/operations/r2-buckets.md`), produktiver Vault-`r2-pull`-Loop mit Prometheus/JSON-Status (`deploy/workers/r2-pull/pull.py`, `deploy/prometheus/prometheus.vault.yml`), Restore-Skript (`scripts/operations/restore_hub.sh`). Operativer Abschluss-Titel **`v0.2.0`** nach Merge per Git-Tag; orch springt auf **M2.1** (`feature/engine-ws-frame-schemas`, `.agent-os/pr-spec.json`).
+
 **2026-05-09 — Policy:** Pro abgeschlossenem Greenfield-Schritt **`Mn.k`**: **`00-index.md`** (`[x]`, Datum, PR) **und** die **Phasendatei** (§ _Erledigte Änderungen_ / Stand); bei Kommando- oder Pfadänderungen zusätzlich **`CONTRIBUTING.md`** / **`CLAUDE.md`** / **`README.md`** — **dieselbe PR**. Kanon: **`00-index.md` §7**, **`docs/operations/branch-and-pr-rules.md`** (PR-Abschnitt).
 
 **2026-05-09 — Orch:** `.agent-os/pr-spec.json` auf Branch **`chore/knowledge-research-corpus`** zurückgeführt (vorher fälschlich M0.1/`main`). Lokaler Testlauf: `py -m pytest tests/test_repo_layout.py -q` → grün.

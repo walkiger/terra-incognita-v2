@@ -4,6 +4,12 @@
 
 ---
 
+## 2026-05-10 — M1 Abschluss Block M1.8–M1.11 (Persistence)
+
+**PR #24**: Litestream Hub (`deploy/litestream`, Compose Profil **`litestream`**, MinIO-CI-Overlay), R2/IAM-Doku (`docs/operations/r2-buckets.md`), Vault **`r2-pull`** (Prometheus `deploy/prometheus/prometheus.vault.yml`), Restore (`scripts/operations/restore_hub.sh`, `docs/operations/restore-drill.md`). Index **M1** komplett **`[x]`**; Tag **`v0.2.0`** nach Merge separat setzen.
+
+---
+
 ## 2026-05-09 — M1.5 EncountersRepository (`feature/repo-encounters`)
 
 **PR #21**: `EncountersRepository`, `Encounter` / `EncounterDraft`, SQL CHECK auf `encounters.source` (`schema/0003_encounters_source_check.sql`, Alembic `0003_encounters_source`), `meta.schema_version` / Hub Init jetzt **3**. Index **M1.5** `[x]` und `M1-data-foundation.md` §6 mitgeführt.

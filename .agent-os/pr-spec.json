@@ -1,19 +1,24 @@
 {
-  "feature": "M1.11 — Hub restore drill script and documentation",
-  "branch": "feature/restore-drill-script",
-  "agents": ["documentation-agent", "test-agent-fast-ci"],
+  "feature": "M2.1 — Engine WebSocket frame schemas",
+  "branch": "feature/engine-ws-frame-schemas",
+  "agents": [
+    "backend-implementation-agent",
+    "documentation-agent",
+    "test-agent-fast-ci"
+  ],
   "tasks": {
-    "documentation-agent": [
-      "docs/operations/restore-drill.md operational narrative",
-      "Phase-close bundle on merge: index §6, catchup, memory decisions, Implementierungen column"
+    "backend-implementation-agent": [
+      "Define canonical WS frame types per app/docs/greenfield/implementation/mvp/M2-engine-protocol.md § M2.1",
+      "Implement schema validation hooks (Pydantic or equivalent) colocated with engine protocol package"
     ],
+    "documentation-agent": ["Docs bundle: index M2.1 row + M2 §6 when merging"],
     "test-agent-fast-ci": [
-      "tests/integration/test_restore_script.py dry-run / bash smoke per repo conventions"
+      "Contract tests for allowed frames + rejection cases listed in M2.1 AC"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "restore_hub.sh idempotent flow documented",
-    "CI green; tag v0.2.0 pushed post-phase-close per §6"
+    "Frame schemas frozen + version field policy documented",
+    "CI green including new contract tests"
   ]
 }
