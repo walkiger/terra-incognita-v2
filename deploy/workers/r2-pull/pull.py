@@ -98,7 +98,6 @@ def _run_litestream_restore() -> subprocess.CompletedProcess[str]:
         "restore",
         "-config",
         str(CONFIG_PATH),
-        "-if-replica-exists",
         str(DB_PATH),
     ]
     return subprocess.run(
