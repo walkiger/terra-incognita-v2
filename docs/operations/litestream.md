@@ -10,7 +10,11 @@ Canonical config files:
 | [`deploy/litestream/config.ci.yml`](../../deploy/litestream/config.ci.yml)                 | Faster checkpoints for CI smoke only (`min-checkpoint-page-count: 1`).                                    |
 | [`deploy/litestream/config.vault-pull.yml`](../../deploy/litestream/config.vault-pull.yml) | Vault `r2-pull` worker restore target path (`/var/lib/vault/db/terra.sqlite`), same replica URL as Hub.   |
 
+The Vault **`r2-pull`** worker polls with **`litestream restore`**. Because restore **does not overwrite** an existing output file, the worker deletes `terra.sqlite` and typical sidecars (`-wal`, `-shm`, `-journal`) before each restore so every cycle can reflect the latest replica state (brief read unavailability on Vault during restore).
+
 Compose integrates Litestream behind profile **`litestream`** in [`deploy/compose/hub.yml`](../../deploy/compose/hub.yml). Minimal stacks omit this profile until credentials exist.
+
+For steady replication the Hub stack caps the Litestream service at **48 MiB** (`mem_limit` in `hub.yml`). CI stacks layer [`deploy/compose/hub.override.litestream-ci.yml`](../../deploy/compose/hub.override.litestream-ci.yml), which raises that limit because **`docker compose exec litestream litestream restore …`** runs in the same cgroup as `replicate` and briefly needs more RAM while replaying WAL segments.
 
 ## Environment variables (profile `litestream`)
 

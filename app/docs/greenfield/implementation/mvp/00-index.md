@@ -256,7 +256,7 @@ Alle Gates blockieren den Merge.
 | M1.6  | repository-layer-replay-events      | —     | `feature/repo-replay-events`           | 22  | [x]    | 2026-05-10 |
 | M1.7  | repository-layer-snapshots-manifest | —     | `feature/repo-snapshots-manifest`      | 23  | [x]    | 2026-05-10 |
 | M1.8  | litestream-config-hub               | —     | `feature/litestream-config-hub`        | 25  | [x]    | 2026-05-10 |
-| M1.9  | r2-bucket-naming-and-iam            | —     | `chore/r2-bucket-naming-and-iam`       | 26  | [x]    | 2026-05-10 |
+| M1.9  | r2-bucket-naming-and-iam            | —     | `chore/r2-bucket-naming-and-iam`       | 29  | [x]    | 2026-05-10 |
 | M1.10 | vault-r2-pull-worker                | —     | `feature/vault-r2-pull-worker`         | 27  | [x]    | 2026-05-10 |
 | M1.11 | restore-drill-script                | —     | `feature/restore-drill-script`         | 28  | [x]    | 2026-05-10 |
 

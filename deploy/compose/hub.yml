@@ -93,7 +93,7 @@ services:
   # Hub SQLite replication → R2/MinIO (profile `litestream`; see docs/operations/litestream.md).
   litestream:
     profiles: ["litestream"]
-    image: ghcr.io/benbjohnson/litestream:0.3.13
+    image: litestream/litestream:0.3.13
     restart: unless-stopped
     mem_limit: 48m
     mem_reservation: 32m

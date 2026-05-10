@@ -551,7 +551,7 @@ tests/integration/test_r2_pull.py
 
 1. `pull.py` ist ein Python-Script (kein Daemon-Framework nötig):
    - Schleife mit `asyncio.sleep(30)` zwischen Iterationen.
-   - Pro Iteration: `litestream restore -if-replica-exists … /var/lib/vault/db/terra.sqlite`.
+   - Pro Iteration: lokale SQLite-Dateifamilie (`terra.sqlite`, `-wal`, `-shm`, `-journal`) löschen, dann `litestream restore -config … /var/lib/vault/db/terra.sqlite` (Litestream überschreibt keine bestehende Zieldatei — ohne Löschen bliebe der Spiegel stale).
    - Läuft als nicht-root-User.
    - Loggt JSON-Lines mit `level`, `lag_seconds`, `bytes_pulled`,
      `restore_duration_ms`.
@@ -646,7 +646,7 @@ M1 gilt als grün abgeschlossen, wenn:
 - **M1.6** `feature/repo-replay-events` → PR #22 — 2026-05-10
 - **M1.7** `feature/repo-snapshots-manifest` → PR #23 — 2026-05-10
 - **M1.8** `feature/litestream-config-hub` → PR #25 — 2026-05-10
-- **M1.9** `chore/r2-bucket-naming-and-iam` → PR #26 — 2026-05-10
+- **M1.9** `chore/r2-bucket-naming-and-iam` → PR #29 — 2026-05-10
 - **M1.10** `feature/vault-r2-pull-worker` → PR #27 — 2026-05-10
 - **M1.11** `feature/restore-drill-script` → PR #28 — 2026-05-10
 

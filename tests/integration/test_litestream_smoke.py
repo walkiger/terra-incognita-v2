@@ -14,10 +14,11 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
+# Omit hub.override.dev.yml — avoids host port collisions when hub smoke runs in the same
+# CI job.
 _COMPOSE_PATHS = (
     REPO_ROOT / "deploy/compose/hub.yml",
     REPO_ROOT / "deploy/compose/hub.override.ci.yml",
-    REPO_ROOT / "deploy/compose/hub.override.dev.yml",
     REPO_ROOT / "deploy/compose/hub.override.litestream-ci.yml",
 )
 
@@ -53,7 +54,19 @@ def litestream_hub_stack_module() -> str:
     up = [*argv, "up", "-d", "--build", "--wait", "--wait-timeout", "300"]
     down = [*argv, "down", "-v", "--remove-orphans"]
 
-    subprocess.run(up, cwd=REPO_ROOT, check=True, timeout=420, env=env)
+    proc = subprocess.run(
+        up,
+        cwd=REPO_ROOT,
+        check=False,
+        timeout=420,
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0:
+        raise AssertionError(
+            f"docker compose up failed:\n{proc.stdout}\n{proc.stderr}",
+        )
     try:
         yield project_id
     finally:
@@ -109,16 +122,16 @@ def test_replicate_and_restore(litestream_hub_stack_module: str) -> None:
             "-T",
             "litestream",
             "litestream",
+            "restore",
             "-config",
             "/etc/litestream.yml",
-            "restore",
             "-o",
             "/var/lib/terra/db/restored.sqlite",
             "/var/lib/terra/db/terra.sqlite",
         ],
         cwd=REPO_ROOT,
         check=True,
-        timeout=120,
+        timeout=180,
         env=env,
     )
 
