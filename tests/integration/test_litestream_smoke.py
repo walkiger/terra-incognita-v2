@@ -65,8 +65,7 @@ def litestream_hub_stack_module() -> str:
     )
     if proc.returncode != 0:
         raise AssertionError(
-            "docker compose up failed:\n"
-            f"{proc.stdout}\n{proc.stderr}",
+            f"docker compose up failed:\n{proc.stdout}\n{proc.stderr}",
         )
     try:
         yield project_id
