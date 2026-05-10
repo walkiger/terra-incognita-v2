@@ -14,6 +14,7 @@ from ti_hub.db.repos.exceptions import (
 
 _SHA = "a" * 64
 _SHA2 = "b" * 64
+_SHA3 = "c" * 64
 
 
 async def _make_hub() -> HubSQLite:
@@ -111,6 +112,62 @@ async def test_expire_older_than() -> None:
         await conn.commit()
 
     assert listing[0].status == "expired"
+
+
+@pytest.mark.asyncio
+async def test_cross_tenant_same_sha_independent() -> None:
+    """Two users can initiate snapshots with the same sha256 — no collision."""
+    hub = await _make_hub()
+    async with hub.write_session() as conn:
+        users = UsersRepository(conn)
+        snapshots = SnapshotsRepository(conn)
+        user_a = await users.create("snap-x-a@example.com", "$argon2id$h")
+        user_b = await users.create("snap-x-b@example.com", "$argon2id$h")
+
+        snap_a = await snapshots.initiate(user_a.id, "full", 512, _SHA)
+        snap_b = await snapshots.initiate(user_b.id, "full", 512, _SHA)
+        await conn.commit()
+
+    assert snap_a.id != snap_b.id
+    assert snap_a.user_id == user_a.id
+    assert snap_b.user_id == user_b.id
+
+
+@pytest.mark.asyncio
+async def test_expire_ready_snapshot() -> None:
+    hub = await _make_hub()
+    async with hub.write_session() as conn:
+        users = UsersRepository(conn)
+        snapshots = SnapshotsRepository(conn)
+        user = await users.create("snap-g@example.com", "$argon2id$h")
+
+        snap = await snapshots.initiate(user.id, "full", 256, _SHA3)
+        done = await snapshots.complete(snap.id, "r2/key/ready")
+        assert done.status == "ready"
+
+        expired = await snapshots.expire(snap.id)
+        await conn.commit()
+
+    assert expired.status == "expired"
+    assert expired.id == snap.id
+
+
+@pytest.mark.asyncio
+async def test_expire_already_expired_raises() -> None:
+    hub = await _make_hub()
+    async with hub.write_session() as conn:
+        users = UsersRepository(conn)
+        snapshots = SnapshotsRepository(conn)
+        user = await users.create("snap-h@example.com", "$argon2id$h")
+
+        snap = await snapshots.initiate(user.id, "incremental", 128, _SHA3)
+        await snapshots.expire(snap.id)
+        await conn.commit()
+
+    async with hub.write_session() as conn:
+        snapshots = SnapshotsRepository(conn)
+        with pytest.raises(IllegalSnapshotStateError):
+            await snapshots.expire(snap.id)
 
 
 @pytest.mark.asyncio
