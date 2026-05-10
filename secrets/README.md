@@ -3,7 +3,7 @@
 | Datei | Zweck |
 |-------|--------|
 | `.sops.yaml` | `creation_rules` + Age-Recipient für YAML unter `secrets/*.yaml`. |
-| `hub.sops.yaml` | Verschlüsselte Hub-Secrets (Beispiel-Felder — **vor Produktion rotieren**). |
+| `hub.sops.yaml` | Verschlüsselte Hub-Secrets (Beispiel-Felder — **vor Produktion rotieren**). Erwartete Key-Namen für R2/Litestream sind in **`docs/operations/r2-buckets.md`** beschrieben (M1.9). |
 | `example-age-devONLY.age.key` | **Nur Greenfield-Template:** Private Age-Identity zum Entschlüsseln der Beispieldatei. **Niemals produktive Geheimnisse mit diesem Key verschlüsseln.** |
 
 ## Lokales Entschlüsseln
