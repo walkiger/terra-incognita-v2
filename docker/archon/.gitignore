@@ -1,0 +1,8 @@
+# Lokale Konfiguration — nicht ins Git
+.env
+compose.override.yml
+Dockerfile.user
+
+# Laufzeit-Daten (falls lokale Bind-Mounts genutzt werden)
+data/
+user-home/

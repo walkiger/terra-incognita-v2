@@ -1,0 +1,67 @@
+# =============================================================================
+# Archon — terra-incognita-v2
+# =============================================================================
+#
+# Usage (aus dem docker/archon/ Verzeichnis oder mit -f):
+#   docker compose -f docker/archon/compose.yml up -d
+#
+# Profiles:
+#   default            SQLite (kein extra Setup)
+#   --profile with-db  lokales Postgres statt SQLite
+#
+# Eigene Erweiterungen (pro Rechner):
+#   cp compose.override.example.yml compose.override.yml
+#   # compose.override.yml anpassen, dann:
+#   docker compose -f docker/archon/compose.yml -f docker/archon/compose.override.yml up -d
+#
+# compose.override.yml ist gitignored — bleibt lokal.
+# =============================================================================
+
+services:
+  app:
+    image: ghcr.io/coleam00/archon:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ARCHON_DOCKER: "true"
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      # DB und Auth als named volumes (nicht ins Git)
+      - archon_data:/.archon
+      - archon_user_home:/home/appuser
+      # Workflows aus dem Repo einbinden — NACH dem /.archon-Volume,
+      # damit chown beim Start nicht blockiert wird.
+      # TODO P1: sauber via archon workflow sync oder separatem Pfad lösen
+      # - ../../.archon/workflows:/.archon/workflows:ro
+    networks:
+      - archon-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT:-3000}/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    dns:
+      - 8.8.8.8
+
+  postgres:
+    image: postgres:17-alpine
+    profiles: [with-db]
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: archon
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - archon_pg_data:/var/lib/postgresql/data
+    networks:
+      - archon-net
+
+volumes:
+  archon_data:
+  archon_user_home:
+  archon_pg_data:
+
+networks:
+  archon-net:

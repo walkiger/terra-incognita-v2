@@ -62,6 +62,13 @@ archive/
 !.cursor/agents/
 !.cursor/agents/**
 
+# Archon — lokale Laufzeitdaten und Secrets
+docker/archon/.env
+docker/archon/compose.override.yml
+docker/archon/Dockerfile.user
+docker/archon/data/
+docker/archon/user-home/
+
 # Agent OS ephemeral / generated local state
 .agent-os/meta-state.json
 .agent-os/self-heal/

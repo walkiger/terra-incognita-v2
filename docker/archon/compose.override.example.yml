@@ -1,0 +1,31 @@
+# =============================================================================
+# Archon — Per-User Compose Override (Vorlage)
+# =============================================================================
+#
+# Kopiere nach compose.override.yml (gitignored), passe an, dann:
+#   docker compose -f docker/archon/compose.yml \
+#                  -f docker/archon/compose.override.yml up -d
+#
+# Anwendungsfall: eigener Benutzername, zusätzliche Bind-Mounts,
+# abweichende Ports, eigenes Dockerfile.user.
+# =============================================================================
+
+services:
+  app:
+    # Eigenes Image mit zusätzlichen Tools (optional):
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.user
+
+    environment:
+      # Optionale Overrides pro Nutzer:
+      # ARCHON_TELEMETRY_DISABLED: "1"   # Alternativ zu DO_NOT_TRACK
+      {}
+
+    volumes:
+      # Beispiel: lokale gitconfig einbinden
+      # - ~/.gitconfig:/home/appuser/.gitconfig:ro
+      #
+      # Beispiel: zusätzliche Workflows aus lokalem Pfad
+      # - ./my-private-workflows:/.archon/workflows/local:ro
+      []

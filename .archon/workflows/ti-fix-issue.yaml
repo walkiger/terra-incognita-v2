@@ -1,0 +1,127 @@
+name: ti-fix-issue
+description: |
+  Use when: A GitHub issue needs to be fixed for terra-incognita-v2.
+  Triggers: "fix issue", "fix #NNN", "resolve issue", "bug fix", "close issue".
+  Does: Fetch issue → governance check → plan fix → implement → fast test → security spot-check
+        → verify → PR with (#NNN) reference.
+  NOT for: New features (use ti-pr-lifecycle), large refactors, research tasks.
+
+provider: claude
+model: sonnet
+
+nodes:
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 1: FETCH ISSUE
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: fetch-issue
+    bash: |
+      ISSUE_NUMBER=$(echo "$ARGUMENTS" | grep -oE '#?[0-9]+' | grep -oE '[0-9]+' | head -1)
+      if [ -z "$ISSUE_NUMBER" ]; then
+        echo "ERROR: No issue number found in: $ARGUMENTS"
+        exit 1
+      fi
+      echo "$ISSUE_NUMBER" > "$ARTIFACTS_DIR/.issue-number"
+      gh issue view "$ISSUE_NUMBER" --json number,title,body,labels,assignees,state
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 2: GOVERNANCE CHECK
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: meta-check
+    command: ti-meta
+    depends_on: [fetch-issue]
+    context: fresh
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 3: PLAN FIX
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: plan-fix
+    prompt: |
+      You are ORCH planning a focused bug fix for terra-incognita-v2.
+
+      Issue details:
+      $fetch-issue.output
+
+      Governance status:
+      $meta-check.output
+
+      If meta-check is BLOCKED, stop and report why.
+
+      Otherwise:
+      1. Identify root cause of the issue
+      2. Define minimal fix scope (no scope creep)
+      3. Propose branch name: fix/<slug>
+      4. List files likely affected
+      5. Define acceptance criteria (what proves the issue is fixed)
+      6. Flag any risks
+
+      Output: concise fix plan with branch name and acceptance criteria.
+    depends_on: [meta-check]
+    context: fresh
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 4: BRANCH + IMPLEMENT
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: branch-setup
+    command: archon-plan-setup
+    depends_on: [plan-fix]
+    context: fresh
+
+  - id: implement-fix
+    command: archon-implement-tasks
+    depends_on: [branch-setup]
+    context: fresh
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 5: TEST
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: run-tests
+    bash: |
+      uv run pytest tests -q \
+        -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation" \
+        2>&1 | tee "$ARTIFACTS_DIR/test-output.txt"
+    depends_on: [implement-fix]
+
+  - id: test-review
+    command: ti-test-fast-ci
+    depends_on: [run-tests]
+    context: fresh
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 6: SECURITY SPOT-CHECK
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: security-check
+    command: ti-security
+    depends_on: [implement-fix]
+    context: fresh
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 7: VERIFY + PR
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: verify
+    command: ti-verifier
+    depends_on: [test-review, security-check]
+    context: fresh
+
+  - id: create-pr
+    prompt: |
+      Create a PR for this bug fix using gh CLI.
+
+      Issue number: $(cat $ARTIFACTS_DIR/.issue-number)
+      Fix plan: $plan-fix.output
+      Verification: $verify.output
+
+      Rules:
+      - Title format: "fix: <short description> (#ISSUE_NUMBER)"
+      - Branch: fix/<slug>
+      - PR body: Summary / Root Cause / Fix Approach / Tests / Closes #NNN
+      - Link issue with "Closes #NNN" in PR body
+      - No Co-Authored-By lines in commits or PR body
+    depends_on: [verify]
+    context: fresh
