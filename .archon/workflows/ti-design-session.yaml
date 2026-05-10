@@ -1,0 +1,88 @@
+name: ti-design-session
+description: |
+  Use when: Design thinking, architecture decisions, brainstorming, or strategic planning for terra-incognita-v2.
+  Triggers: "design", "design session", "architecture", "brainstorm", "think through",
+            "plan", "strategy", "how should we", "what's the best way", "discuss".
+  Does: Deep design conversation with memory context → structured output → saves to memory/system/.
+  Provider: Claude (Sonnet/Opus) — for design sessions via Telegram where quality matters most.
+  NOT for: Code implementation (use ti-pr-lifecycle), PR review (use archon-smart-pr-review).
+
+  Telegram usage: "design session: how should we structure the vault failover?"
+  Saves decisions to memory/system/decisions.md for orch to pick up in next lifecycle.
+
+provider: claude
+model: sonnet
+
+nodes:
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 1: LOAD PROJECT MEMORY
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: load-context
+    prompt: |
+      You are preparing for a design session on terra-incognita-v2.
+
+      Load and summarize relevant context:
+      - memory/system/architecture.md
+      - memory/system/decisions.md
+      - memory/system/constraints.md
+      - app/docs/greenfield/implementation/mvp/00-index.md (current MVP phase)
+
+      Topic from user: $ARGUMENTS
+
+      Output: concise context summary (max 300 words) + identify which existing
+      decisions or constraints are most relevant to this topic.
+    context: fresh
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 2: DEEP DESIGN ANALYSIS
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: design
+    prompt: |
+      You are a senior architect for terra-incognita-v2 (FastAPI + React/three.js).
+
+      Project context:
+      $load-context.output
+
+      Design topic: $ARGUMENTS
+
+      Conduct a thorough design analysis:
+      1. **Problem statement** — what exactly are we solving?
+      2. **Constraints** — what can't we change? (tech stack, MVP scope, existing decisions)
+      3. **Options** — 2-3 concrete approaches with trade-offs
+      4. **Recommendation** — clear winner with rationale
+      5. **Risks** — what could go wrong with the recommendation?
+      6. **Next steps** — concrete tasks for `orch` to pick up
+
+      Be direct. No fluffy prose. This output goes into project memory.
+    depends_on: [load-context]
+    context: fresh
+    model: opus
+
+  # ═══════════════════════════════════════════════════════════════════
+  # STEP 3: SAVE TO PROJECT MEMORY
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: save-decision
+    prompt: |
+      Save the design decision to project memory.
+
+      Design output:
+      $design.output
+
+      Instructions:
+      1. Read memory/system/decisions.md (create if missing)
+      2. Append a new entry in this format:
+         ---
+         Decision: <one-line title>
+         Date: <today>
+         Context: <2-3 sentences>
+         Decision: <what was decided>
+         Rationale: <why>
+         Status: active
+         ---
+      3. Write back to memory/system/decisions.md
+      4. Output: "Saved: <decision title>"
+    depends_on: [design]
+    context: fresh
