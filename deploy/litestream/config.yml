@@ -1,0 +1,23 @@
+# Litestream replication — Hub primary SQLite → S3-compatible object store (R2 / MinIO).
+#
+# Required env when using profile `litestream`:
+#   ACCESS_KEY_ID, SECRET_ACCESS_KEY — object-store credentials
+#   REPLICA_ENDPOINT — e.g. https://<account>.r2.cloudflarestorage.com or http://minio:9000 (CI)
+#   REPLICA_URL — s3://<bucket>/litestream/<env>/terra.sqlite
+#   SKIP_VERIFY — optional "true" for TLS skip (MinIO dev only)
+#
+# Hub DB path is fixed for persistence + backups (see docs/operations/litestream.md).
+
+access-key-id: ${ACCESS_KEY_ID}
+secret-access-key: ${SECRET_ACCESS_KEY}
+
+dbs:
+  - path: /var/lib/terra/db/terra.sqlite
+    min-checkpoint-page-count: 1024
+    replicas:
+      - url: ${REPLICA_URL}
+        endpoint: ${REPLICA_ENDPOINT}
+        force-path-style: true
+        skip-verify: ${SKIP_VERIFY:-false}
+        retention: 720h
+        validation-interval: 12h

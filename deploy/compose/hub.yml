@@ -17,6 +17,10 @@ services:
       - "8000"
     environment:
       METRICS_BEARER_TOKEN: ${METRICS_BEARER_TOKEN:-bootstrap-metrics-token}
+      # Persisted SQLite (M1.8); default URI reserved for M5 wiring — DB init stays migrations-backed later.
+      TI_HUB_DATABASE_URL: ${TI_HUB_DATABASE_URL:-sqlite+aiosqlite:////var/lib/terra/db/terra.sqlite}
+    volumes:
+      - hub_db_data:/var/lib/terra/db
     networks:
       - hub
     healthcheck:
@@ -85,6 +89,29 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  # Hub SQLite replication → R2/MinIO (profile `litestream`; see docs/operations/litestream.md).
+  litestream:
+    profiles: ["litestream"]
+    image: ghcr.io/benbjohnson/litestream:0.3.13
+    restart: unless-stopped
+    mem_limit: 48m
+    mem_reservation: 32m
+    volumes:
+      - hub_db_data:/var/lib/terra/db
+      - ../litestream/config.yml:/etc/litestream.yml:ro
+    command: ["replicate", "-config", "/etc/litestream.yml"]
+    environment:
+      ACCESS_KEY_ID: ${ACCESS_KEY_ID:-}
+      SECRET_ACCESS_KEY: ${SECRET_ACCESS_KEY:-}
+      REPLICA_ENDPOINT: ${REPLICA_ENDPOINT:-}
+      REPLICA_URL: ${REPLICA_URL:-}
+      SKIP_VERIFY: ${SKIP_VERIFY:-false}
+    networks:
+      - hub
+    depends_on:
+      api:
+        condition: service_healthy
 
   cloudflared:
     profiles: ["minimal", "default"]
@@ -217,6 +244,9 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+volumes:
+  hub_db_data:
 
 networks:
   hub:

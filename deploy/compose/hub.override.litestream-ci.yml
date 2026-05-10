@@ -1,0 +1,62 @@
+# CI / Litestream smoke: MinIO as S3 stand-in + bucket bootstrap for profile `litestream`.
+
+services:
+  minio:
+    profiles: ["litestream"]
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: litestream
+      MINIO_ROOT_PASSWORD: litestream_ci_secret_change_me
+    expose:
+      - "9000"
+    volumes:
+      - litestream_ci_minio:/data
+    networks:
+      - hub
+    mem_limit: 256m
+    mem_reservation: 128m
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -qO- http://127.0.0.1:9000/minio/health/live >/dev/null",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  minio-init:
+    profiles: ["litestream"]
+    image: minio/mc:RELEASE.2025-04-16T18-13-26Z
+    networks:
+      - hub
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        mc alias set local http://minio:9000 litestream litestream_ci_secret_change_me &&
+        mc mb local/terra-litestream-ci --ignore-existing
+    restart: "no"
+
+  litestream:
+    volumes:
+      - hub_db_data:/var/lib/terra/db
+      - ../litestream/config.ci.yml:/etc/litestream.yml:ro
+    environment:
+      ACCESS_KEY_ID: litestream
+      SECRET_ACCESS_KEY: litestream_ci_secret_change_me
+      REPLICA_ENDPOINT: http://minio:9000
+      REPLICA_URL: s3://terra-litestream-ci/litestream/ci/terra.sqlite
+      SKIP_VERIFY: "true"
+    depends_on:
+      api:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+
+volumes:
+  litestream_ci_minio:

@@ -255,10 +255,12 @@ Alle Gates blockieren den Merge.
 | M1.5  | repository-layer-encounters         | —     | `feature/repo-encounters`              | 21  | [x]    | 2026-05-09 |
 | M1.6  | repository-layer-replay-events      | —     | `feature/repo-replay-events`           | 22  | [x]    | 2026-05-10 |
 | M1.7  | repository-layer-snapshots-manifest | —     | `feature/repo-snapshots-manifest`      | 23  | [x]    | 2026-05-10 |
-| M1.8  | litestream-config-hub               | —     | `feature/litestream-config-hub`        | —   | [ ]    |            |
-| M1.9  | r2-bucket-naming-and-iam            | —     | `chore/r2-bucket-naming-and-iam`       | —   | [ ]    |            |
-| M1.10 | vault-r2-pull-worker                | —     | `feature/vault-r2-pull-worker`         | —   | [ ]    |            |
-| M1.11 | restore-drill-script                | —     | `feature/restore-drill-script`         | —   | [ ]    |            |
+| M1.8  | litestream-config-hub               | —     | `feature/litestream-config-hub`        | 24  | [x]    | 2026-05-10 |
+| M1.9  | r2-bucket-naming-and-iam            | —     | `chore/r2-bucket-naming-and-iam`       | 24  | [x]    | 2026-05-10 |
+| M1.10 | vault-r2-pull-worker                | —     | `feature/vault-r2-pull-worker`         | 24  | [x]    | 2026-05-10 |
+| M1.11 | restore-drill-script                | —     | `feature/restore-drill-script`         | 24  | [x]    | 2026-05-10 |
+
+**Phase:** [x] abgeschlossen am **2026-05-10** · Phase-Tag **`v0.2.0`** _(nach Merge: `git tag v0.2.0 && git push origin v0.2.0` — Gate siehe `M1-data-foundation.md` §5)_
 
 **Phase-Tag bei Abschluss:** `v0.2.0`
 
@@ -447,4 +449,4 @@ ist die Arbeit nachweislich gemerged und das CI grün.
 
 ---
 
-_Stand: 2026-05-10 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** in Arbeit (M1.1–M1.7 `[x]`; nächster Schritt **M1.8**) · Hub-API-Stubs unter `app/backend/api/` (u. a. nach PR #18)_
+_Stand: 2026-05-10 · Status: Phase **M0** abgeschlossen (`v0.1.0`) · Phase **M1** abgeschlossen (`v0.2.0` Tag nach Merge setzen) · nächster Schritt **M2.1** (`feature/engine-ws-frame-schemas`) · Hub-API-Stubs unter `app/backend/api/` (u. a. nach PR #18)_
