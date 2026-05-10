@@ -89,7 +89,8 @@ def _run_sql(vol: str, dbfile: str, shell_fragment: str) -> str:
 
 
 def test_pulls_initial_replica(r2_sync_stack_module: str) -> None:
-    time.sleep(45)
+    # Worker backs off 60s after the first failed restore (replica not ready); wait past that window.
+    time.sleep(90)
     out = _run_sql(
         _vault_vol(r2_sync_stack_module), "terra.sqlite", "'SELECT id FROM smoke WHERE id=42;'"
     )
@@ -100,7 +101,7 @@ def test_subsequent_changes_propagate(r2_sync_stack_module: str) -> None:
     hub_vol = _hub_vol(r2_sync_stack_module)
     _run_sql(hub_vol, "terra.sqlite", "'INSERT INTO smoke(id) VALUES (99);'")
     _run_sql(hub_vol, "terra.sqlite", "'PRAGMA wal_checkpoint(TRUNCATE);'")
-    time.sleep(45)
+    time.sleep(90)
     out = _run_sql(
         _vault_vol(r2_sync_stack_module), "terra.sqlite", "'SELECT id FROM smoke WHERE id=99;'"
     )
