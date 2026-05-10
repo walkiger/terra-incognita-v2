@@ -1,5 +1,8 @@
-# Vault edge — M0.4 stub heartbeat on `/` (mirror/Litestream UI comes later).
+# Vault edge — `/vault/status` proxies worker JSON; `/` bootstrap heartbeat.
 :80 {
+	handle /vault/status {
+		reverse_proxy http://r2-pull:8082
+	}
 	@vault_root path_regexp vault_root ^/$
 	handle @vault_root {
 		respond `{"ok":true,"role":"vault","version":"0.0.1-bootstrap"}` 200

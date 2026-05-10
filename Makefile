@@ -9,7 +9,7 @@ bootstrap:
 
 test:
 	@echo "=== test: pytest (excludes compose_* Docker markers) ==="
-	uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not compose_litestream and not alembic_isolation"
+	uv run pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not compose_litestream and not compose_r2_pull and not alembic_isolation"
 
 fmt:
 	@echo "=== fmt: ruff format (api + ti_hub + models + tests) ==="

@@ -1,0 +1,15 @@
+# Vault Prometheus — scrape local r2-pull worker (M1.10).
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: vault-r2-pull
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets: ["r2-pull:8081"]
