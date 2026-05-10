@@ -17,6 +17,27 @@ class EmailAlreadyRegistered(RepositoryError):
         super().__init__(f"email already registered: {email}")
 
 
+class SnapshotTooLargeError(RepositoryError):
+    """Raised when ``expected_size_bytes`` exceeds the 64 MB hard limit."""
+
+    def __init__(self, size_bytes: int, limit: int) -> None:
+        self.size_bytes = size_bytes
+        self.limit = limit
+        super().__init__(f"snapshot size {size_bytes} exceeds limit {limit}")
+
+
+class IllegalSnapshotStateError(RepositoryError):
+    """Raised when a state transition is not allowed by the snapshot lifecycle."""
+
+    def __init__(self, snapshot_id: int, current: str, attempted: str) -> None:
+        self.snapshot_id = snapshot_id
+        self.current = current
+        self.attempted = attempted
+        super().__init__(
+            f"snapshot {snapshot_id}: cannot transition from '{current}' via '{attempted}'"
+        )
+
+
 def raise_repository_integrity(
     exc: sqlite3.IntegrityError,
     *,
