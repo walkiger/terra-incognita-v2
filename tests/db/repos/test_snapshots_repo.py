@@ -134,6 +134,28 @@ async def test_cross_tenant_same_sha_independent() -> None:
 
 
 @pytest.mark.asyncio
+async def test_cross_tenant_same_r2_key_independent() -> None:
+    """Two users can complete snapshots with the same r2_key — no r2_key collision."""
+    hub = await _make_hub()
+    async with hub.write_session() as conn:
+        users = UsersRepository(conn)
+        snapshots = SnapshotsRepository(conn)
+        user_a = await users.create("snap-y-a@example.com", "$argon2id$h")
+        user_b = await users.create("snap-y-b@example.com", "$argon2id$h")
+
+        snap_a = await snapshots.initiate(user_a.id, "full", 512, _SHA)
+        snap_b = await snapshots.initiate(user_b.id, "full", 512, _SHA2)
+        done_a = await snapshots.complete(snap_a.id, "r2/shared/key")
+        done_b = await snapshots.complete(snap_b.id, "r2/shared/key")
+        await conn.commit()
+
+    assert done_a.r2_key == "r2/shared/key"
+    assert done_b.r2_key == "r2/shared/key"
+    assert done_a.user_id == user_a.id
+    assert done_b.user_id == user_b.id
+
+
+@pytest.mark.asyncio
 async def test_expire_ready_snapshot() -> None:
     hub = await _make_hub()
     async with hub.write_session() as conn:
