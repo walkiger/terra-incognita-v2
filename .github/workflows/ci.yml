@@ -56,7 +56,7 @@ jobs:
           version: "0.11.12"
       - run: uv sync --frozen --extra dev
       - name: Pytest (excludes compose_* markers)
-        run: .venv/bin/python -m pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation"
+        run: .venv/bin/python -m pytest tests -q -m "not compose_hub and not compose_vault and not compose_observability and not compose_litestream and not alembic_isolation"
 
   schema-lint:
     runs-on: ubuntu-latest
@@ -122,7 +122,7 @@ jobs:
 
   compose-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     needs: [lint, test, migration-roundtrip-test]
     steps:
       - uses: actions/checkout@v4
@@ -132,5 +132,7 @@ jobs:
       - run: uv sync --frozen --extra dev
       - name: Compose hub + vault minimal smoke
         run: .venv/bin/python -m pytest tests/integration -q -m "compose_hub or compose_vault"
+      - name: Hub Litestream + MinIO smoke
+        run: .venv/bin/python -m pytest tests/integration/test_litestream_smoke.py -q -m compose_litestream
       - name: Hub default profile (Prometheus + Grafana)
         run: .venv/bin/python -m pytest tests/integration -q -m compose_observability
