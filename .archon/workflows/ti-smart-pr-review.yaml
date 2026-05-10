@@ -1,0 +1,128 @@
+name: ti-smart-pr-review
+description: |
+  Use when: Smart PR review for terra-incognita-v2 — Claude für scope/sync/fixes, Pi für Analysis.
+  Triggers: "smart review", "review PR", "review PR #NNN", "quick review", "ti review".
+  Does: Scope (Claude) → sync → classify (Pi/free) → parallel analysis (Pi/free) →
+        synthesize (Claude) → auto-fix CRITICAL/HIGH (Claude).
+
+  Identisch mit archon-smart-pr-review aber:
+  - Analysis-Nodes (classify, code-review, error-handling, test-coverage, comment-quality,
+    docs-impact) nutzen Pi/OpenRouter (kostenlos, schont Claude-Budget)
+  - Scope, sync, synthesize, implement-fixes bleiben bei Claude
+
+# Orchestration-Default: Claude
+provider: claude
+model: sonnet
+
+nodes:
+  # Claude — benötigt Codebase-Kontext und gh-CLI
+  - id: scope
+    command: archon-pr-review-scope
+    provider: claude
+
+  - id: sync
+    command: archon-sync-pr-with-main
+    depends_on: [scope]
+    provider: claude
+
+  # Pi/Free — einfache Klassifizierung, kein Tool-Zugriff nötig
+  - id: classify
+    prompt: |
+      You are a PR complexity classifier. Analyze the PR scope below and determine
+      which review agents should run.
+
+      ## PR Scope
+      $scope.output
+
+      ## Rules
+      - **Code review**: Always run unless the diff is empty or only touches non-code files.
+      - **Error handling**: Run if the diff touches code with try/catch, error handling, async/await.
+      - **Test coverage**: Run if the diff touches source code (not just tests, docs, or config).
+      - **Comment quality**: Run if the diff adds or modifies comments, docstrings, or JSDoc.
+      - **Docs impact**: Run if the diff adds/removes/renames public APIs, CLI flags, or env vars.
+
+      Classify complexity: trivial / small / medium / large
+    depends_on: [scope]
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
+    allowed_tools: []
+    output_format:
+      type: object
+      properties:
+        run_code_review:
+          type: string
+          enum: ["true", "false"]
+        run_error_handling:
+          type: string
+          enum: ["true", "false"]
+        run_test_coverage:
+          type: string
+          enum: ["true", "false"]
+        run_comment_quality:
+          type: string
+          enum: ["true", "false"]
+        run_docs_impact:
+          type: string
+          enum: ["true", "false"]
+        complexity:
+          type: string
+          enum: ["trivial", "small", "medium", "large"]
+        reasoning:
+          type: string
+      required:
+        - run_code_review
+        - run_error_handling
+        - run_test_coverage
+        - run_comment_quality
+        - run_docs_impact
+        - complexity
+        - reasoning
+
+  # Pi/Free — parallele Analysis-Agents
+  - id: code-review
+    command: archon-code-review-agent
+    depends_on: [classify, sync]
+    when: "$classify.output.run_code_review == 'true'"
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
+
+  - id: error-handling
+    command: archon-error-handling-agent
+    depends_on: [classify, sync]
+    when: "$classify.output.run_error_handling == 'true'"
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
+
+  - id: test-coverage
+    command: archon-test-coverage-agent
+    depends_on: [classify, sync]
+    when: "$classify.output.run_test_coverage == 'true'"
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
+
+  - id: comment-quality
+    command: archon-comment-quality-agent
+    depends_on: [classify, sync]
+    when: "$classify.output.run_comment_quality == 'true'"
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
+
+  - id: docs-impact
+    command: archon-docs-impact-agent
+    depends_on: [classify, sync]
+    when: "$classify.output.run_docs_impact == 'true'"
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
+
+  # Claude — Synthese braucht Urteilsvermögen + gh-CLI für PR-Kommentar
+  - id: synthesize
+    command: archon-synthesize-review
+    depends_on:
+      [code-review, error-handling, test-coverage, comment-quality, docs-impact]
+    trigger_rule: one_success
+    provider: claude
+
+  - id: implement-fixes
+    command: archon-implement-review-fixes
+    depends_on: [synthesize]
+    provider: claude

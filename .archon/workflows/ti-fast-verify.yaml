@@ -1,11 +1,12 @@
 name: ti-fast-verify
 description: |
-  Use when: Quick confidence check before pushing or requesting review.
+  Use when: Quick pre-push confidence check on current branch.
   Triggers: "fast verify", "quick check", "pre-push check", "ci check", "verify branch".
-  Does: Run tests → smart PR review (Archon) → independent verifier (terra-incognita-v2 gate).
+  Does: Run tests (bash) → independent verifier gate (Pi/free).
+  For PR review: use ti-smart-pr-review instead.
 
-provider: claude
-model: sonnet
+provider: pi
+model: openrouter/deepseek/deepseek-r1-0528:free
 
 nodes:
   - id: run-tests
@@ -15,12 +16,9 @@ nodes:
         2>&1 | tee "$ARTIFACTS_DIR/test-output.txt"
       echo "Test exit code: $?"
 
-  - id: smart-review
-    command: archon-smart-pr-review
-    depends_on: [run-tests]
-    context: fresh
-
   - id: verify
     command: ti-verifier
-    depends_on: [smart-review]
+    depends_on: [run-tests]
     context: fresh
+    provider: pi
+    model: openrouter/deepseek/deepseek-r1-0528:free
