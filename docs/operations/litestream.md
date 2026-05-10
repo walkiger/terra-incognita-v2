@@ -12,6 +12,8 @@ Canonical config files:
 
 Compose integrates Litestream behind profile **`litestream`** in [`deploy/compose/hub.yml`](../../deploy/compose/hub.yml). Minimal stacks omit this profile until credentials exist.
 
+For steady replication the Hub stack caps the Litestream service at **48 MiB** (`mem_limit` in `hub.yml`). CI stacks layer [`deploy/compose/hub.override.litestream-ci.yml`](../../deploy/compose/hub.override.litestream-ci.yml), which raises that limit because **`docker compose exec litestream litestream restore …`** runs in the same cgroup as `replicate` and briefly needs more RAM while replaying WAL segments.
+
 ## Environment variables (profile `litestream`)
 
 | Variable                              | Purpose                                                                                     |

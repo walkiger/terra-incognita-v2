@@ -37,6 +37,9 @@ services:
     restart: "no"
 
   litestream:
+    # Restore (`compose exec … restore`) shares this cgroup; prod keeps a tight limit in hub.yml.
+    mem_limit: 512m
+    mem_reservation: 128m
     volumes:
       - hub_db_data:/var/lib/terra/db
       - ../litestream/config.ci.yml:/etc/litestream.yml:ro
