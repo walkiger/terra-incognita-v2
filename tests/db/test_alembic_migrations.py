@@ -94,9 +94,11 @@ def test_migration_roundtrip_no_diff(tmp_path: Path) -> None:
         ddl1 = (_SCHEMA_DIR / "0001_baseline.sql").read_text(encoding="utf-8")
         ddl2 = (_SCHEMA_DIR / "0002_replay_fts.sql").read_text(encoding="utf-8")
         ddl3 = (_SCHEMA_DIR / "0003_encounters_source_check.sql").read_text(encoding="utf-8")
+        ddl4 = (_SCHEMA_DIR / "0004_snapshot_unique_per_user.sql").read_text(encoding="utf-8")
         con_b.executescript(ddl1)
         con_b.executescript(ddl2)
         con_b.executescript(ddl3)
+        con_b.executescript(ddl4)
         con_b.commit()
 
         rows_b = _sqlite_master_rows(con_b)
