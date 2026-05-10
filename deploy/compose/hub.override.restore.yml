@@ -1,0 +1,14 @@
+# hub.override.restore.yml — used by restore_hub.sh to replace the named
+# hub_db_data volume with a host bind mount pointing at the restored DB directory.
+#
+# RESTORE_DB_DIR must be exported before invoking docker compose:
+#   export RESTORE_DB_DIR=/path/to/dir/containing/terra.sqlite
+#
+# restore_hub.sh sets this automatically from $(dirname "$RESTORE_DB_PATH").
+
+services:
+  api:
+    volumes:
+      - type: bind
+        source: ${RESTORE_DB_DIR:?set RESTORE_DB_DIR to the directory containing the restored terra.sqlite}
+        target: /var/lib/terra/db
