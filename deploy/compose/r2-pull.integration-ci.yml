@@ -68,7 +68,7 @@ services:
     restart: "no"
 
   litestream_hub:
-    image: ghcr.io/benbjohnson/litestream:0.3.13
+    image: litestream/litestream:0.3.13
     volumes:
       - hub_demo_db:/var/lib/terra/db
       - ../litestream/config.ci.yml:/etc/litestream.yml:ro
