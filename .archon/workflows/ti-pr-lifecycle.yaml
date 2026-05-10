@@ -2,12 +2,11 @@ name: ti-pr-lifecycle
 description: |
   Use when: Starting any new feature, fix, refactor, or research task for terra-incognita-v2.
   Triggers: "new feature", "implement", "build feature", "start PR", "lifecycle", "feature request".
-  Does: Governance check → archon PIV loop (Explore→Plan→Implement→Validate) →
-        independent verifier gate → PR with (#NNN) format.
-  NOT for: Bug fixes (use ti-fix-issue), quick reviews (use archon-smart-pr-review).
+  Does: Governance check → plan → implement → validate → verifier gate → PR.
+  Provider: Pi/OpenRouter (free) throughout. Claude-Budget ist für Cursor reserviert.
 
-provider: claude
-model: sonnet
+provider: pi
+model: openrouter/deepseek/deepseek-chat-v3-0324:free
 
 nodes:
   - id: meta-check
@@ -16,13 +15,12 @@ nodes:
 
   - id: load-memory
     prompt: |
-      Load project context for terra-incognita-v2 before implementation begins.
-      Read and summarize relevant content from:
+      Load project context for terra-incognita-v2.
+      Read and summarize:
       - memory/system/architecture.md
       - memory/system/decisions.md
       - memory/runtime/open-issues.md
       - app/docs/greenfield/implementation/mvp/00-index.md (§7 Status table)
-      Output: concise context summary for the implementation agent.
     depends_on: [meta-check]
     context: fresh
 
@@ -45,7 +43,6 @@ nodes:
     command: archon-implement-tasks
     depends_on: [confirm]
     context: fresh
-    model: opus
 
   - id: validate
     command: archon-validate
@@ -63,6 +60,5 @@ nodes:
       Verification: $verify.output
       Only proceed if MERGE READINESS: VERIFIED. If BLOCKED, stop and list gates.
       PR rules: title "type: description (#NNN)", no Co-Authored-By, draft first.
-      Use: gh pr create --draft --title "..." --body "..."
     depends_on: [verify]
     context: fresh

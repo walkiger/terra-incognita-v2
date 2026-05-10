@@ -2,11 +2,11 @@ name: ti-fix-issue
 description: |
   Use when: A GitHub issue needs to be fixed for terra-incognita-v2.
   Triggers: "fix issue", "fix #NNN", "resolve issue", "bug fix", "close issue".
-  Does: Governance check → archon-fix-github-issue (full fix pipeline) → verifier gate.
-  NOT for: New features (use ti-pr-lifecycle), large refactors.
+  Does: Governance check → fix pipeline → verifier gate.
+  Provider: Pi/OpenRouter (free). Claude-Budget ist für Cursor reserviert.
 
-provider: claude
-model: sonnet
+provider: pi
+model: openrouter/deepseek/deepseek-chat-v3-0324:free
 
 nodes:
   - id: meta-check
@@ -17,7 +17,6 @@ nodes:
     command: archon-fix-github-issue
     depends_on: [meta-check]
     context: fresh
-    model: opus
 
   - id: verify
     command: ti-verifier
@@ -26,10 +25,9 @@ nodes:
 
   - id: enforce-rules
     prompt: |
-      Enforce terra-incognita-v2 PR rules after fix.
+      Enforce terra-incognita-v2 PR rules.
       Verifier: $verify.output
       If BLOCKED: post PR comment with blocking gates. Stop.
-      If VERIFIED: ensure all commits end with (#NNN), no Co-Authored-By anywhere.
-      Fix violations via git commit --amend or gh pr edit.
+      If VERIFIED: ensure all commits end with (#NNN), no Co-Authored-By.
     depends_on: [verify]
     context: fresh
