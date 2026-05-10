@@ -6,7 +6,7 @@ description: |
   For PR review: use ti-smart-pr-review instead.
 
 provider: pi
-model: openrouter/deepseek/deepseek-r1-0528:free
+model: openrouter/google/gemini-2.5-flash-preview:free
 
 nodes:
   - id: run-tests
@@ -21,4 +21,4 @@ nodes:
     depends_on: [run-tests]
     context: fresh
     provider: pi
-    model: openrouter/deepseek/deepseek-r1-0528:free
+    model: openrouter/google/gemini-2.5-flash-preview:free
