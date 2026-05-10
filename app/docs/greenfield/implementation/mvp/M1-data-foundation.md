@@ -648,7 +648,8 @@ M1 gilt als grün abgeschlossen, wenn:
 - **M1.8** `feature/litestream-config-hub` → PR #25 — 2026-05-10
 - **M1.9** `chore/r2-bucket-naming-and-iam` → PR #29 — 2026-05-10
 - **M1.10** `feature/vault-r2-pull-worker` → PR #27 — 2026-05-10
+- **M1.11** `feature/restore-drill-script` → PR #28 — 2026-05-10
 
 ---
 
-_Stand: 2026-05-10 · M1.1–M1.10 erledigt · nächster Schritt **M1.11** (`feature/restore-drill-script`)_
+_Stand: 2026-05-10 · M1.1–M1.11 erledigt · Phase **M1** geschlossen (`v0.2.0` Tag nach Merge setzen) · nächster Schritt **M2.1** (`feature/engine-ws-frame-schemas`)_

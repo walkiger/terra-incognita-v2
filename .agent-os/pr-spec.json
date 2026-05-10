@@ -1,6 +1,6 @@
 {
-  "feature": "M1.10 — Vault R2-pull Litestream mirror worker",
-  "branch": "feature/vault-r2-pull-worker",
+  "feature": "M2.1 — Engine WebSocket frame schemas",
+  "branch": "feature/engine-ws-frame-schemas",
   "agents": [
     "backend-implementation-agent",
     "documentation-agent",
@@ -8,19 +8,17 @@
   ],
   "tasks": {
     "backend-implementation-agent": [
-      "Async r2-pull worker: litestream restore loop, JSON logs, backoff",
-      "deploy/compose/vault.yml + Caddy /vault/status + Prometheus scrape wiring",
-      "Dockerfile includes litestream binary; deploy/litestream/config.vault-pull.yml"
+      "Define canonical WS frame types per app/docs/greenfield/implementation/mvp/M2-engine-protocol.md § M2.1",
+      "Implement schema validation hooks (Pydantic or equivalent) colocated with engine protocol package"
     ],
-    "documentation-agent": ["Docs bundle: index M1.10 row + M1 §6"],
+    "documentation-agent": ["Docs bundle: index M2.1 row + M2 §6 when merging"],
     "test-agent-fast-ci": [
-      "tests/integration/test_r2_pull.py with compose_r2_pull marker in CI"
+      "Contract tests for allowed frames + rejection cases listed in M2.1 AC"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "Replica pulls succeed against MinIO stand-in in CI",
-    "Prometheus metrics + /vault/status JSON exposed",
-    "CI compose-smoke includes compose_r2_pull step"
+    "Frame schemas frozen + version field policy documented",
+    "CI green including new contract tests"
   ]
 }
