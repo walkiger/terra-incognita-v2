@@ -58,7 +58,8 @@ litestream restore \
   -o "${RESTORE_DB_PATH}" \
   "${ORIGINAL_DB_PATH}"
 
-export TI_HUB_ALEMBIC_URL="${TI_HUB_ALEMBIC_URL:-sqlite+aiosqlite:////${RESTORE_DB_PATH}}"
+# sqlite+aiosqlite:/// + absolute path = 4 slashes total (SQLAlchemy canonical form).
+export TI_HUB_ALEMBIC_URL="${TI_HUB_ALEMBIC_URL:-sqlite+aiosqlite:///${RESTORE_DB_PATH}}"
 
 if have uv; then
   uv run alembic -c app/backend/ti_hub/db/alembic.ini upgrade head
@@ -66,7 +67,12 @@ else
   python -m alembic -c app/backend/ti_hub/db/alembic.ini upgrade head
 fi
 
-HUB_COMPOSE_CMD=${HUB_COMPOSE_CMD:-"docker compose -f deploy/compose/hub.yml -f deploy/compose/hub.override.dev.yml --profile minimal"}
+# Export the directory so hub.override.restore.yml can bind-mount it into the api container.
+# Without this, the Hub would start on an empty named volume and ignore the restored DB.
+export RESTORE_DB_DIR
+RESTORE_DB_DIR="$(dirname "${RESTORE_DB_PATH}")"
+
+HUB_COMPOSE_CMD=${HUB_COMPOSE_CMD:-"docker compose -f deploy/compose/hub.yml -f deploy/compose/hub.override.dev.yml -f deploy/compose/hub.override.restore.yml --profile minimal"}
 
 eval "${HUB_COMPOSE_CMD} up -d --wait --wait-timeout 300"
 

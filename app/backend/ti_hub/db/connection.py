@@ -19,6 +19,7 @@ _SCHEMA_FILES: Final[tuple[Path, ...]] = (
     _SCHEMA_DIR / "0001_baseline.sql",
     _SCHEMA_DIR / "0002_replay_fts.sql",
     _SCHEMA_DIR / "0003_encounters_source_check.sql",
+    _SCHEMA_DIR / "0004_snapshot_unique_per_user.sql",
 )
 
 _PRAGMA_BOOTSQL: Final = """
@@ -30,7 +31,7 @@ PRAGMA cache_size=-8192;
 PRAGMA temp_store=MEMORY;
 """
 
-SCHEMA_VERSION: Final[int] = 3
+SCHEMA_VERSION: Final[int] = 4
 APP_VERSION: Final[str] = "0.2.0-dev"
 
 

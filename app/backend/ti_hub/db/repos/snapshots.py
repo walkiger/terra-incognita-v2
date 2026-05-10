@@ -106,6 +106,30 @@ class SnapshotsRepository(BaseRepository):
         assert updated is not None
         return _row_to_snapshot(tuple(updated))
 
+    async def expire(self, snapshot_id: int) -> Snapshot:
+        """Explicitly expire a snapshot; valid from ``uploading`` or ``ready``."""
+        cur = await self.conn.execute(
+            f"SELECT {_COLS} FROM snapshots WHERE id = ?",
+            (snapshot_id,),
+        )
+        row = await cur.fetchone()
+        if row is None:
+            raise RepositoryError(f"snapshot {snapshot_id} not found")
+        snap = _row_to_snapshot(tuple(row))
+        if snap.status == "expired":
+            raise IllegalSnapshotStateError(snapshot_id, snap.status, "expire")
+        await self.conn.execute(
+            "UPDATE snapshots SET status = 'expired' WHERE id = ?",
+            (snapshot_id,),
+        )
+        sel = await self.conn.execute(
+            f"SELECT {_COLS} FROM snapshots WHERE id = ?",
+            (snapshot_id,),
+        )
+        updated = await sel.fetchone()
+        assert updated is not None
+        return _row_to_snapshot(tuple(updated))
+
     async def expire_older_than(self, threshold_ts: int) -> list[int]:
         """Expire all non-ready snapshots older than ``threshold_ts``.
 
