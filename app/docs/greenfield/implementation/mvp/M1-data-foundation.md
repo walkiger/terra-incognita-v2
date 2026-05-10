@@ -645,7 +645,8 @@ M1 gilt als grün abgeschlossen, wenn:
 - **M1.5** `feature/repo-encounters` → PR #21 — 2026-05-09
 - **M1.6** `feature/repo-replay-events` → PR #22 — 2026-05-10
 - **M1.7** `feature/repo-snapshots-manifest` → PR #23 — 2026-05-10
+- **M1.8** `feature/litestream-config-hub` → PR #25 — 2026-05-10
 
 ---
 
-_Stand: 2026-05-10 · M1.1–M1.7 erledigt · nächster Schritt M1.8 (`feature/litestream-config-hub`)_
+_Stand: 2026-05-10 · M1.1–M1.8 erledigt · nächster Schritt **M1.9** (`chore/r2-bucket-naming-and-iam`)_

@@ -1,0 +1,15 @@
+# CI-only Litestream tuning — faster checkpoints for integration smoke (keep prod settings in config.yml).
+
+access-key-id: ${ACCESS_KEY_ID}
+secret-access-key: ${SECRET_ACCESS_KEY}
+
+dbs:
+  - path: /var/lib/terra/db/terra.sqlite
+    min-checkpoint-page-count: 1
+    replicas:
+      - url: ${REPLICA_URL}
+        endpoint: ${REPLICA_ENDPOINT}
+        force-path-style: true
+        skip-verify: ${SKIP_VERIFY:-false}
+        retention: 720h
+        validation-interval: 12h

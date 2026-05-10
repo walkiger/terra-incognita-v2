@@ -1,21 +1,20 @@
 {
-  "feature": "M1.6 — Repository layer replay events (Hybrid-Planner port)",
-  "branch": "feature/repo-replay-events",
-  "agents": ["backend-implementation-agent", "test-agent-fast-ci"],
+  "feature": "M1.9 — R2 bucket naming and IAM documentation",
+  "branch": "chore/r2-bucket-naming-and-iam",
+  "agents": ["documentation-agent", "test-agent-fast-ci"],
   "tasks": {
-    "backend-implementation-agent": [
-      "Implement ReplayEventsRepository per app/docs/greenfield/implementation/mvp/M1-data-foundation.md § M1.6",
-      "Port hybrid planner / FTS integration paths into repository layer",
-      "Docs bundle: index M1.6 row + M1 §6 + footer"
+    "documentation-agent": [
+      "Add docs/operations/r2-buckets.md with frozen bucket names, object layout, IAM roles, rotation policy",
+      "Docs bundle: index M1.9 row + M1 §6 per §7 rule"
     ],
     "test-agent-fast-ci": [
-      "Extend tests/db/repos for replay events + replay_query parity tests listed in § M1.6"
+      "tests/test_docs_links.py guard that r2-buckets doc is present"
     ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [
-    "ReplayEventsRepository behaviours match § M1.6 AC",
-    "Alembic vs canonical SQL stays aligned",
+    "r2-buckets.md merged",
+    "Docs-links guard passes",
     "CI green"
   ]
 }
