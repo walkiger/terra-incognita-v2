@@ -1,38 +1,24 @@
 name: ti-fast-verify
 description: |
-  Use when: Quick confidence check on current branch before pushing or requesting review.
-  Triggers: "fast verify", "quick check", "run tests and verify", "ci check", "pre-push check".
-  Does: Runs test suite → fast CI review → independent verifier gate check.
-  NOT for: Full PR lifecycle (use ti-pr-lifecycle), security audit (use ti-security standalone).
+  Use when: Quick pre-push confidence check on current branch.
+  Triggers: "fast verify", "quick check", "pre-push check", "ci check", "verify branch".
+  Does: Run tests (bash) → independent verifier gate (Pi/free).
+  For PR review: use ti-smart-pr-review instead.
 
-provider: claude
-model: sonnet
+provider: pi
+model: openrouter/google/gemini-2.5-flash-preview:free
 
 nodes:
-  # ═══════════════════════════════════════════════════════════════════
-  # STEP 1: RUN TESTS
-  # ═══════════════════════════════════════════════════════════════════
-
   - id: run-tests
     bash: |
       uv run pytest tests -q \
         -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation" \
         2>&1 | tee "$ARTIFACTS_DIR/test-output.txt"
-
-  # ═══════════════════════════════════════════════════════════════════
-  # STEP 2: FAST CI REVIEW
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: test-review
-    command: ti-test-fast-ci
-    depends_on: [run-tests]
-    context: fresh
-
-  # ═══════════════════════════════════════════════════════════════════
-  # STEP 3: INDEPENDENT VERIFICATION
-  # ═══════════════════════════════════════════════════════════════════
+      echo "Test exit code: $?"
 
   - id: verify
     command: ti-verifier
-    depends_on: [test-review]
+    depends_on: [run-tests]
     context: fresh
+    provider: pi
+    model: openrouter/google/gemini-2.5-flash-preview:free

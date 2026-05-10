@@ -2,112 +2,63 @@ name: ti-pr-lifecycle
 description: |
   Use when: Starting any new feature, fix, refactor, or research task for terra-incognita-v2.
   Triggers: "new feature", "implement", "build feature", "start PR", "lifecycle", "feature request".
-  Does: Full Agent OS lifecycle — governance check → plan → contract → implement → test →
-        security → docs → audit → independent verify → PR creation.
-  NOT for: Quick hotfixes (use ti-fix-issue), standalone reviews (use archon-smart-pr-review),
-           or fast CI only (use ti-fast-verify).
+  Does: Governance check → plan → implement → validate → verifier gate → PR.
+  Provider: Pi/OpenRouter (free) throughout. Claude-Budget ist für Cursor reserviert.
 
-  Lifecycle: Meta-Check → Orch Plan → Contract → Implement → Test → Security → Docs → Audit → Verify → PR
-
-provider: claude
-model: sonnet
+provider: pi
+model: openrouter/google/gemini-2.5-flash-preview:free
 
 nodes:
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 0: GOVERNANCE CHECK
-  # ═══════════════════════════════════════════════════════════════════
-
   - id: meta-check
     command: ti-meta
     context: fresh
 
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 1: ORCHESTRATION & PLANNING
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: orch-plan
-    command: ti-orch
+  - id: load-memory
+    prompt: |
+      Load project context for terra-incognita-v2.
+      Read and summarize:
+      - memory/system/architecture.md
+      - memory/system/decisions.md
+      - memory/runtime/open-issues.md
+      - app/docs/greenfield/implementation/mvp/00-index.md (§7 Status table)
     depends_on: [meta-check]
     context: fresh
-    model: opus
 
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 2: BRANCH SETUP
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: branch-setup
-    command: archon-plan-setup
-    depends_on: [orch-plan]
+  - id: plan
+    command: archon-create-plan
+    depends_on: [load-memory]
     context: fresh
 
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 3: IMPLEMENTATION
-  # ═══════════════════════════════════════════════════════════════════
+  - id: setup
+    command: archon-plan-setup
+    depends_on: [plan]
+    context: fresh
+
+  - id: confirm
+    command: archon-confirm-plan
+    depends_on: [setup]
+    context: fresh
 
   - id: implement
     command: archon-implement-tasks
-    depends_on: [branch-setup]
-    context: fresh
-    model: opus
-
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 4: TESTING (fast profile)
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: run-tests
-    bash: |
-      uv run pytest tests -q \
-        -m "not compose_hub and not compose_vault and not compose_observability and not alembic_isolation" \
-        2>&1 | tee "$ARTIFACTS_DIR/test-output.txt"
-      echo "exit_code=$?" >> "$ARTIFACTS_DIR/test-output.txt"
-    depends_on: [implement]
-
-  - id: test-review
-    command: ti-test-fast-ci
-    depends_on: [run-tests]
+    depends_on: [confirm]
     context: fresh
 
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 5: SECURITY REVIEW
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: security-review
-    command: ti-security
+  - id: validate
+    command: archon-validate
     depends_on: [implement]
     context: fresh
-
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 6: DOCUMENTATION
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: docs-update
-    command: ti-documentation
-    depends_on: [test-review, security-review]
-    context: fresh
-
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 7: CODE AUDIT
-  # ═══════════════════════════════════════════════════════════════════
-
-  - id: code-audit
-    command: ti-code-audit
-    depends_on: [docs-update]
-    context: fresh
-
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 7.5: INDEPENDENT VERIFICATION
-  # ═══════════════════════════════════════════════════════════════════
 
   - id: verify
     command: ti-verifier
-    depends_on: [code-audit]
+    depends_on: [validate]
     context: fresh
 
-  # ═══════════════════════════════════════════════════════════════════
-  # PHASE 8: PR CREATION
-  # ═══════════════════════════════════════════════════════════════════
-
   - id: create-pr
-    command: archon-create-pr
+    prompt: |
+      Create a draft PR using gh CLI.
+      Verification: $verify.output
+      Only proceed if MERGE READINESS: VERIFIED. If BLOCKED, stop and list gates.
+      PR rules: title "type: description (#NNN)", no Co-Authored-By, draft first.
     depends_on: [verify]
     context: fresh
