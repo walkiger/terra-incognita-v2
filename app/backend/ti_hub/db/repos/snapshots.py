@@ -60,7 +60,7 @@ class SnapshotsRepository(BaseRepository):
         ts = int(time.time())
         try:
             cur = await self.conn.execute(
-                f"""
+                """
                 INSERT INTO snapshots
                     (user_id, ts, scope, size_bytes, content_sha256, r2_key, status)
                 VALUES (?, ?, ?, ?, ?, ?, 'uploading')
