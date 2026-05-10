@@ -14,10 +14,10 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
+# Omit hub.override.dev.yml: published host ports collide when hub smoke runs earlier in the same CI job.
 _COMPOSE_PATHS = (
     REPO_ROOT / "deploy/compose/hub.yml",
     REPO_ROOT / "deploy/compose/hub.override.ci.yml",
-    REPO_ROOT / "deploy/compose/hub.override.dev.yml",
     REPO_ROOT / "deploy/compose/hub.override.litestream-ci.yml",
 )
 
