@@ -208,7 +208,7 @@ Makefile
    Kommentar, **nur** für Test-Kontexte. Produktiv wird kein Downgrade
    ausgeführt.
 5. CI-Schritt `migration-roundtrip-test`:
-   * Frische Datei-SQLite unter `tmpdir` → `upgrade head` → ``sqlite_master``-Vergleich gegen dasselbe `0001`+`0002`-`executescript` = keine Abweichung (Alembic-Systemtabelle ausgenommen).
+   - Frische Datei-SQLite unter `tmpdir` → `upgrade head` → `sqlite_master`-Vergleich gegen dasselbe `0001`+`0002`-`executescript` = keine Abweichung (Alembic-Systemtabelle ausgenommen).
 6. `docs/operations/migrations.md` dokumentiert:
    - „Wie eine neue Migration angelegt wird"
    - „Wie ein Notfall-Rollback aussieht (Restore aus R2)"
@@ -643,7 +643,8 @@ M1 gilt als grün abgeschlossen, wenn:
 - **M1.3** `feature/alembic-migrations-bootstrap` → PR #17 — 2026-05-09
 - **M1.4** `feature/repo-users` → PR #20 — 2026-05-09
 - **M1.5** `feature/repo-encounters` → PR #21 — 2026-05-09
+- **M1.6** `feature/repo-replay-events` → PR #22 — 2026-05-10
 
 ---
 
-_Stand: 2026-05-09 · M1.1–M1.5 erledigt · nächster Schritt M1.6 (`feature/repo-replay-events`)_
+_Stand: 2026-05-10 · M1.1–M1.6 erledigt · nächster Schritt M1.7 (`feature/repo-snapshots-manifest`)_

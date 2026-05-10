@@ -12,10 +12,12 @@ os.environ["METRICS_BEARER_TOKEN"] = "unit-test-token"
 from api.main import app
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def metrics_client() -> TestClient:
-    """Enter/exit the transport so background threads do not block pytest shutdown on Linux."""
-
+    # scope="function": TestClient torn down while the function event-loop is
+    # still active, letting anyio (Starlette 0.4x) shut down its ASGI thread
+    # cleanly.  scope="module" caused a 10-minute hang on Linux: the anyio
+    # cleanup ran after pytest-asyncio closed all event loops.
     with TestClient(app) as client:
         yield client
 
