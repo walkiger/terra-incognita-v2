@@ -292,6 +292,126 @@ async def _execute_substring_only(
     return [tuple(r) for r in await cur.fetchall()]
 
 
+def _aliased_filter_clauses(
+    *,
+    alias: str,
+    user_id: int,
+    since_ts: int | None,
+    until_ts: int | None,
+    kind: str | None,
+) -> tuple[list[str], list[Any]]:
+    """``_build_filter_clauses`` variant that prefixes every column with ``alias.``."""
+
+    clauses: list[str] = [f"{alias}.user_id = ?"]
+    params: list[Any] = [user_id]
+    if since_ts is not None:
+        clauses.append(f"{alias}.ts >= ?")
+        params.append(int(since_ts))
+    if until_ts is not None:
+        clauses.append(f"{alias}.ts <= ?")
+        params.append(int(until_ts))
+    if kind is not None:
+        clauses.append(f"{alias}.kind = ?")
+        params.append(kind)
+    return clauses, params
+
+
+def _aliased_substring_filter_sql(alias: str) -> str:
+    parts = [
+        f"COALESCE(json_extract({alias}.payload_json, '{path}'), '') LIKE ? ESCAPE '\\'"
+        for path in _JSON_FIELDS
+    ]
+    return "(" + " OR ".join(parts) + ")"
+
+
+def _aliased_substring_hits_sql(alias: str) -> str:
+    parts = [
+        f"(CASE WHEN COALESCE(json_extract({alias}.payload_json, '{path}'), '') "
+        f"LIKE ? ESCAPE '\\' THEN 1 ELSE 0 END)"
+        for path in _JSON_FIELDS
+    ]
+    return "(" + " + ".join(parts) + ")"
+
+
+async def _execute_combined(
+    conn: aiosqlite.Connection,
+    *,
+    user_id: int,
+    cap: int,
+    since_ts: int | None,
+    until_ts: int | None,
+    kind: str | None,
+    q: str,
+    score_weights: ReplayScoreWeights,
+) -> list[tuple[Any, ...]]:
+    """``α · bm25/(bm25+1) + β · hits/3``; filter is union (substring ∪ FTS).
+
+    terra-080 invariants:
+      - ``COALESCE`` lifts missing BM25 to ``0.0`` (rows that hit substring only).
+      - tie-break ``id ASC``.
+      - ``α=β=0`` is rejected upstream by :func:`_validate_combined_weights`.
+    """
+
+    clauses, params = _aliased_filter_clauses(
+        alias="re",
+        user_id=user_id,
+        since_ts=since_ts,
+        until_ts=until_ts,
+        kind=kind,
+    )
+    fts_q = fts5_query_from_user_text(q)
+    pattern = replay_like_substring_pattern(q)
+    alpha = float(score_weights.bm25)
+    beta = float(score_weights.substring)
+
+    bm25_norm = (
+        "CASE WHEN fm.bm25_raw IS NULL THEN 0.0 ELSE (-fm.bm25_raw) / ((-fm.bm25_raw) + 1.0) END"
+    )
+    score_expr = (
+        f"(? * ({bm25_norm}) + ? * (CAST({_aliased_substring_hits_sql('re')} AS REAL) / 3.0))"
+    )
+    union_filter = f"(fm.rowid IS NOT NULL OR {_aliased_substring_filter_sql('re')})"
+
+    sql = (
+        "WITH fts_matches AS ("
+        "  SELECT rowid, bm25(replay_events_fts) AS bm25_raw "
+        "  FROM replay_events_fts "
+        "  WHERE replay_events_fts MATCH ?"
+        ") "
+        "SELECT re.id, re.user_id, re.ts, re.kind, re.payload_json, re.schema_ver, "
+        f"{score_expr} AS replay_score "
+        "FROM replay_events re "
+        "LEFT JOIN fts_matches fm ON fm.rowid = re.id "
+        f"WHERE {' AND '.join(clauses)} "
+        f"  AND {union_filter} "
+        "ORDER BY replay_score DESC, re.id ASC LIMIT ?"
+    )
+    select_patterns = [pattern] * 3
+    where_patterns = [pattern] * 3
+    # SQL `?` order matches the textual order in `score_expr`:
+    #   ? * (bm25_norm)      -- α (no inner params)
+    # + ? * (CAST(<3 ?>...)) -- β, then 3 hits patterns
+    bound = (
+        fts_q,
+        alpha,
+        beta,
+        *select_patterns,
+        *params,
+        *where_patterns,
+        cap + 1,
+    )
+    cur = await conn.execute(sql, bound)
+    return [tuple(r) for r in await cur.fetchall()]
+
+
+def _validate_combined_weights(score_weights: ReplayScoreWeights) -> None:
+    """terra-080: ``combined`` with α=β=0 → :class:`InvalidQueryError`."""
+
+    if score_weights.bm25 == 0.0 and score_weights.substring == 0.0:
+        msg = "combined policy requires at least one non-zero score weight"
+        raise InvalidQueryError(msg)
+
+
 def _split_score(rows: list[tuple[Any, ...]]) -> list[ReplayQueryRow]:
     out: list[ReplayQueryRow] = []
     for r in rows:
@@ -334,8 +454,9 @@ async def query_replay_window(
 ) -> ReplayQueryPage:
     """Dispatch to the right policy executor and lift to :class:`ReplayQueryPage`.
 
-    ``score_weights`` is unused here for ``bm25_only`` / ``substring_only`` but is
-    preserved for echo. ``combined`` is added in commit 4.
+    ``score_weights`` is unused for ``bm25_only`` / ``substring_only`` (the
+    repository echoes the requested weights back regardless) but is required
+    for ``combined``.
     """
 
     _validate_q(q)
@@ -366,9 +487,18 @@ async def query_replay_window(
             q=q,
         )
     elif eff_policy == "combined":
-        # Combined policy lands in commit 4. Score-weight echo is preserved.
-        msg = "combined policy is not yet implemented (M1.6 commit 4)"
-        raise NotImplementedError(msg)
+        assert q is not None
+        _validate_combined_weights(score_weights)
+        rows = await _execute_combined(
+            conn,
+            user_id=user_id,
+            cap=cap,
+            since_ts=since_ts,
+            until_ts=until_ts,
+            kind=kind,
+            q=q,
+            score_weights=score_weights,
+        )
     else:
         rows = await _execute_chronological(
             conn,

@@ -1,14 +1,11 @@
-"""M1.6 — replay_query Hybrid Planner port (terra-076..082).
-
-Commit 3 covers chronological / ``bm25_only`` / ``substring_only``; ``combined``
-+ score-weight + invalid-zero-zero land in commit 4.
-"""
+"""M1.6 — replay_query Hybrid Planner port (terra-076..082)."""
 
 from __future__ import annotations
 
 import pytest
 from models import ReplayEventDraft, ReplayScoreWeights, ReplayWindowRequest
 from ti_hub.db.connection import HubSQLite
+from ti_hub.db.replay_query import InvalidQueryError
 from ti_hub.db.repos import ReplayEventsRepository, UsersRepository
 
 
@@ -315,4 +312,254 @@ async def test_tenant_isolation_query_window() -> None:
     assert len(only_a.items) == 1
     assert len(only_b.items) == 1
     assert a_for_beta.items == []
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_hybrid_combined_score_blends_bm25_and_substring() -> None:
+    """terra-080: ``α · bm25/(bm25+1) + β · hits/3``; both contribute when both match."""
+
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    uid = await _seed_user_and_events(
+        hub,
+        fixtures=[
+            # Substring-only match (no FTS hit on 'moon' because token is in JSON
+            # whitespace — but actually 'moon' will match FTS too here, so make it
+            # substring-only by using a substring that isn't a full token).
+            {"ts": 1, "payload": {"message": "moonlit", "msg": "moonlit"}},
+            # FTS + substring (token "moon" exact + substring "moon")
+            {"ts": 2, "payload": {"message": "moon", "word": "moon"}},
+            # Neither.
+            {"ts": 3, "payload": {"message": "sun"}},
+        ],
+    )
+
+    weights = ReplayScoreWeights(bm25=1.0, substring=1.0)
+    async with hub.write_session() as conn:
+        repo = ReplayEventsRepository(conn)
+        resp = await repo.query_window(
+            uid,
+            ReplayWindowRequest(
+                q="moon",
+                ranking_mode="hybrid",
+                ranking_policy="combined",
+                score_weights=weights,
+            ),
+        )
+
+    assert resp.effective_policy == "combined"
+    payloads = [it.event.payload for it in resp.items]
+    assert {"message": "sun"} not in payloads
+    assert all(it.score is not None for it in resp.items)
+    # Score is monotonically non-increasing.
+    scores = [it.score for it in resp.items]
+    assert scores == sorted(scores, reverse=True)
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_combined_filter_is_union_of_substring_and_fts() -> None:
+    """A row matching only substring (no FTS token hit) must still appear in ``combined``."""
+
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    uid = await _seed_user_and_events(
+        hub,
+        fixtures=[
+            # 'moonlit' is one FTS token; substring 'moon' matches it (LIKE %moon%)
+            # but FTS query "moon" would NOT match 'moonlit' as a separate token.
+            {"ts": 1, "payload": {"message": "moonlit"}},
+            # FTS-only: payload field 'text' is FTS-indexed (raw payload_json) but
+            # is not in the substring search field set ($.message/$.msg/$.word).
+            {"ts": 2, "payload": {"text": "moon"}},
+        ],
+    )
+
+    async with hub.write_session() as conn:
+        repo = ReplayEventsRepository(conn)
+        resp = await repo.query_window(
+            uid,
+            ReplayWindowRequest(
+                q="moon",
+                ranking_mode="hybrid",
+                ranking_policy="combined",
+            ),
+        )
+
+    payloads = [it.event.payload for it in resp.items]
+    assert {"message": "moonlit"} in payloads, "substring-only match must be kept"
+    assert {"text": "moon"} in payloads, "FTS-only match must be kept"
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_combined_null_bm25_coalesces_to_zero() -> None:
+    """Substring-only match must contribute α·0 to score (no NULL leak)."""
+
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    uid = await _seed_user_and_events(
+        hub,
+        fixtures=[
+            # Substring-only (no FTS token "moon" because field is "moonlit").
+            {"ts": 1, "payload": {"message": "moonlit"}},
+        ],
+    )
+
+    weights = ReplayScoreWeights(bm25=1.0, substring=0.0)
+    async with hub.write_session() as conn:
+        repo = ReplayEventsRepository(conn)
+        # bm25=1.0, β=0 → only the BM25 contribution counts; for substring-only
+        # rows that's 0 (NULL coalesced) → score == 0.0.
+        resp = await repo.query_window(
+            uid,
+            ReplayWindowRequest(
+                q="moon",
+                ranking_mode="hybrid",
+                ranking_policy="combined",
+                score_weights=weights,
+            ),
+        )
+
+    assert len(resp.items) == 1
+    assert resp.items[0].score == pytest.approx(0.0)
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_combined_invalid_zero_zero_weights_rejected() -> None:
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    uid = await _seed_user_and_events(
+        hub,
+        fixtures=[{"ts": 1, "payload": {"message": "moon"}}],
+    )
+
+    async with hub.write_session() as conn:
+        repo = ReplayEventsRepository(conn)
+        with pytest.raises(InvalidQueryError):
+            await repo.query_window(
+                uid,
+                ReplayWindowRequest(
+                    q="moon",
+                    ranking_mode="hybrid",
+                    ranking_policy="combined",
+                    score_weights=ReplayScoreWeights(bm25=0.0, substring=0.0),
+                ),
+            )
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_combined_tie_break_id_ascending() -> None:
+    """When two rows score identically the lower id wins (terra-080 RAM parity)."""
+
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    # Two substring-only rows with identical ``hits/3`` (= 1/3) and no FTS hit
+    # → identical combined score → tie-break must be id ASC.
+    uid = await _seed_user_and_events(
+        hub,
+        fixtures=[
+            {"ts": 1, "payload": {"message": "moonlit"}},
+            {"ts": 2, "payload": {"message": "moonlit"}},
+            {"ts": 3, "payload": {"message": "moonlit"}},
+        ],
+    )
+
+    weights = ReplayScoreWeights(bm25=0.0, substring=1.0)
+    async with hub.write_session() as conn:
+        repo = ReplayEventsRepository(conn)
+        resp = await repo.query_window(
+            uid,
+            ReplayWindowRequest(
+                q="moon",
+                ranking_mode="hybrid",
+                ranking_policy="combined",
+                score_weights=weights,
+            ),
+        )
+
+    ids = [it.event.id for it in resp.items]
+    scores = [it.score for it in resp.items]
+    assert scores == [pytest.approx(1.0 / 3.0)] * len(ids)
+    assert ids == sorted(ids), "tie-break must be id ASC"
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_combined_score_formula_exact_value() -> None:
+    """Pin the exact ``α·bm25/(bm25+1) + β·hits/3`` value with α=β=0.5 (terra-080)."""
+
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    uid = await _seed_user_and_events(
+        hub,
+        fixtures=[
+            # 1-field substring match, no FTS hit (payload uses 'message' but
+            # value 'moonlit' contains 'moon' as substring only).
+            {"ts": 1, "payload": {"message": "moonlit"}},
+        ],
+    )
+
+    weights = ReplayScoreWeights(bm25=0.5, substring=0.5)
+    async with hub.write_session() as conn:
+        repo = ReplayEventsRepository(conn)
+        resp = await repo.query_window(
+            uid,
+            ReplayWindowRequest(
+                q="moon",
+                ranking_mode="hybrid",
+                ranking_policy="combined",
+                score_weights=weights,
+            ),
+        )
+
+    # bm25 contribution = α · 0 = 0 (substring-only row).
+    # substring contribution = β · 1/3.
+    expected = 0.5 * 0.0 + 0.5 * (1.0 / 3.0)
+    assert len(resp.items) == 1
+    assert resp.items[0].score == pytest.approx(expected)
+    await hub.close()
+
+
+@pytest.mark.asyncio
+async def test_q_max_length_enforced() -> None:
+    hub = HubSQLite(":memory:")
+    await hub.connect()
+    await hub.init_schema()
+    uid = await _seed_user_and_events(hub, fixtures=[])
+
+    # Pydantic validates at request-construction time (≤ 128 chars) so we
+    # validate the inner guard via a direct call to the query module too.
+    from pydantic import ValidationError
+
+    with pytest.raises(ValidationError):
+        ReplayWindowRequest(q="a" * 129)
+
+    from ti_hub.db.replay_query import query_replay_window
+
+    async with hub.write_session() as conn:
+        with pytest.raises(InvalidQueryError):
+            await query_replay_window(
+                conn,
+                user_id=uid,
+                limit=10,
+                after_id=None,
+                since_ts=None,
+                until_ts=None,
+                kind=None,
+                q="a" * 200,
+                q_match=None,
+                ranking_mode="chronological",
+                ranking_policy=None,
+                score_weights=ReplayScoreWeights(),
+            )
     await hub.close()
