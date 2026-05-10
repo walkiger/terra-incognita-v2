@@ -3,7 +3,7 @@
 M1.4: models.user      — User, UserCredentials
 M1.5: models.encounter — Encounter, EncounterDraft
 M1.6: models.replay_event — ReplayEvent, ReplayWindowResponse
-M1.7: models.snapshot  — Snapshot
+M1.7: models.snapshot  — Snapshot, SnapshotInitiateRequest
 """
 
 from .encounter import Encounter, EncounterDraft, EncounterSource
@@ -18,6 +18,7 @@ from .replay_event import (
     ReplayWindowRequest,
     ReplayWindowResponse,
 )
+from .snapshot import Snapshot, SnapshotInitiateRequest, SnapshotScope, SnapshotStatus
 from .user import User, UserCredentials
 
 __all__ = [
@@ -33,6 +34,10 @@ __all__ = [
     "ReplayScoreWeights",
     "ReplayWindowRequest",
     "ReplayWindowResponse",
+    "Snapshot",
+    "SnapshotInitiateRequest",
+    "SnapshotScope",
+    "SnapshotStatus",
     "User",
     "UserCredentials",
 ]
