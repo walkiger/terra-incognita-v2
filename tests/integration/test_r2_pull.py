@@ -89,7 +89,8 @@ def _run_sql(vol: str, dbfile: str, shell_fragment: str) -> str:
 
 
 def test_pulls_initial_replica(r2_sync_stack_module: str) -> None:
-    # Worker backs off 60s after the first failed restore (replica not ready); wait past that window.
+    # Worker sleeps 60s after first failed restore (replica not yet seeded).
+    # Wait past that window before asserting on Vault SQLite.
     time.sleep(90)
     out = _run_sql(
         _vault_vol(r2_sync_stack_module), "terra.sqlite", "'SELECT id FROM smoke WHERE id=42;'"
