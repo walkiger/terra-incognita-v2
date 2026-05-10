@@ -54,7 +54,20 @@ def litestream_hub_stack_module() -> str:
     up = [*argv, "up", "-d", "--build", "--wait", "--wait-timeout", "300"]
     down = [*argv, "down", "-v", "--remove-orphans"]
 
-    subprocess.run(up, cwd=REPO_ROOT, check=True, timeout=420, env=env)
+    proc = subprocess.run(
+        up,
+        cwd=REPO_ROOT,
+        check=False,
+        timeout=420,
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0:
+        raise AssertionError(
+            "docker compose up failed:\n"
+            f"{proc.stdout}\n{proc.stderr}",
+        )
     try:
         yield project_id
     finally:
