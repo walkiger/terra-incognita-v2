@@ -25,7 +25,8 @@ ORIGINAL_DB_PATH="${ORIGINAL_DB_PATH:-/var/lib/terra/db/terra.sqlite}"
 have() { command -v "$1" >/dev/null 2>&1; }
 
 if [[ "${RESTORE_HUB_DRY_RUN}" == "1" ]]; then
-  for binary in bash docker curl litestream python; do
+  # Live restore still requires litestream below; dry-run only asserts tooling CI has for glue checks.
+  for binary in bash docker curl python; do
     have "${binary}" || {
       echo "error: missing prerequisite command: ${binary}" >&2
       exit 1

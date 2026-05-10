@@ -30,6 +30,8 @@ cd /srv/terra-incognita-v2
 RESTORE_HUB_DRY_RUN=1 ./scripts/operations/restore_hub.sh
 ```
 
+Dry-run asserts **Docker**, **Compose**, **curl**, and **python** on `PATH` — **not** **litestream** (required only for the live restore below); see [`scripts/operations/restore_hub.sh`](../../scripts/operations/restore_hub.sh).
+
 4. Execute live restore:
 
 ```bash
