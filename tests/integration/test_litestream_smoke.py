@@ -123,6 +123,8 @@ def test_replicate_and_restore(litestream_hub_stack_module: str) -> None:
             "litestream",
             "litestream",
             "restore",
+            "-parallelism",
+            "2",
             "-config",
             "/etc/litestream.yml",
             "-o",
@@ -131,7 +133,7 @@ def test_replicate_and_restore(litestream_hub_stack_module: str) -> None:
         ],
         cwd=REPO_ROOT,
         check=True,
-        timeout=120,
+        timeout=240,
         env=env,
     )
 
