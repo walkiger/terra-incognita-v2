@@ -1,7 +1,11 @@
 {
   "feature": "M1.10 — Vault R2-pull Litestream mirror worker",
   "branch": "feature/vault-r2-pull-worker",
-  "agents": ["backend-implementation-agent", "documentation-agent", "test-agent-fast-ci"],
+  "agents": [
+    "backend-implementation-agent",
+    "documentation-agent",
+    "test-agent-fast-ci"
+  ],
   "tasks": {
     "backend-implementation-agent": [
       "Async r2-pull worker: litestream restore loop, JSON logs, backoff",
@@ -9,7 +13,9 @@
       "Dockerfile includes litestream binary; deploy/litestream/config.vault-pull.yml"
     ],
     "documentation-agent": ["Docs bundle: index M1.10 row + M1 §6"],
-    "test-agent-fast-ci": ["tests/integration/test_r2_pull.py with compose_r2_pull marker in CI"]
+    "test-agent-fast-ci": [
+      "tests/integration/test_r2_pull.py with compose_r2_pull marker in CI"
+    ]
   },
   "approved_deletions": [],
   "acceptance_criteria": [

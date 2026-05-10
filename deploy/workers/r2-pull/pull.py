@@ -95,9 +95,9 @@ def _start_status_server() -> tuple[HTTPServer, threading.Thread]:
 def _run_litestream_restore() -> subprocess.CompletedProcess[str]:
     cmd = [
         "litestream",
+        "restore",
         "-config",
         str(CONFIG_PATH),
-        "restore",
         "-if-replica-exists",
         str(DB_PATH),
     ]
