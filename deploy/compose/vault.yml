@@ -56,7 +56,12 @@ services:
       - vault
     healthcheck:
       test:
-        ["CMD-SHELL", "curl -sf http://localhost:8082/vault/status || exit 1"]
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8082/vault/status', timeout=3)",
+        ]
       interval: 30s
       timeout: 5s
       retries: 3
