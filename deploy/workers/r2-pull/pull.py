@@ -55,6 +55,16 @@ STATE: dict[str, Any] = {
 LOG = logging.getLogger("r2-pull")
 
 
+def _unlink_sqlite_family(db: Path) -> None:
+    """Litestream restore refuses to overwrite an existing DB; drop prior files each pull."""
+    for suffix in ("", "-wal", "-shm", "-journal"):
+        path = db.parent / f"{db.name}{suffix}"
+        try:
+            path.unlink()
+        except FileNotFoundError:
+            pass
+
+
 def _log_json(level: str, msg: str, **fields: object) -> None:
     payload = {"ts": time.time(), "level": level, "msg": msg, **fields}
     print(json.dumps(payload), flush=True)
@@ -93,6 +103,7 @@ def _start_status_server() -> tuple[HTTPServer, threading.Thread]:
 
 
 def _run_litestream_restore() -> subprocess.CompletedProcess[str]:
+    _unlink_sqlite_family(DB_PATH)
     cmd = [
         "litestream",
         "restore",

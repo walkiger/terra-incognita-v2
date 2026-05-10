@@ -551,7 +551,7 @@ tests/integration/test_r2_pull.py
 
 1. `pull.py` ist ein Python-Script (kein Daemon-Framework nötig):
    - Schleife mit `asyncio.sleep(30)` zwischen Iterationen.
-   - Pro Iteration: `litestream restore -if-replica-exists … /var/lib/vault/db/terra.sqlite`.
+   - Pro Iteration: lokale SQLite-Dateifamilie (`terra.sqlite`, `-wal`, `-shm`, `-journal`) löschen, dann `litestream restore -config … /var/lib/vault/db/terra.sqlite` (Litestream überschreibt keine bestehende Zieldatei — ohne Löschen bliebe der Spiegel stale).
    - Läuft als nicht-root-User.
    - Loggt JSON-Lines mit `level`, `lag_seconds`, `bytes_pulled`,
      `restore_duration_ms`.

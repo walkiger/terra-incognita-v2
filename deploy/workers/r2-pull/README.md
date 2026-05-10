@@ -2,6 +2,8 @@
 
 Python asyncio worker (`pull.py`) pulls the Hub Litestream replica into `/var/lib/vault/db/terra.sqlite` on a fixed cadence (default **30 s**, exponential backoff to **5 min** on failures).
 
+Each iteration **removes** any existing `terra.sqlite` plus SQLite sidecar files (`-wal`, `-shm`, `-journal`) before running **`litestream restore`**, because Litestream refuses to overwrite an existing destination database and would otherwise never advance the mirror after the first successful restore.
+
 ## Endpoints (container)
 
 | Port     | Purpose                                                             |
